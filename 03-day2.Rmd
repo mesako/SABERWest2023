@@ -1,3 +1,25 @@
-# Literature
+# Day 2 Literature
 
-Here is a review of existing methods.
+Day 2:
+- Using ggplot2
+- Install ggplot package
+- Understanding the general theory of ggplot ( data into aes into geoms )
+- Different kinds of plot (geom_bar, geom_hist, geom_point)
+- Discrete vs. continuous plots
+- Trendlines (geom_smooth)
+- How to find new plot styles (ie demo searching for plots, show plot gallery websites)
+- Facets (maybe just for students who want challenge)
+- Data processing (getting started from a file)
+- Previewing data and looking for issues
+- Normalizing data
+- Dealing with NAs, Transforming Data Types, Scaling Values, Filtering Values
+- What is a tibble()
+- What is a pipe, piping functions together
+- Tidyverse for group_by and summarise
+- Statistical ideas for analyzing data
+- Fit a lm() regression model of two vectors, or two columns of dataframe, get a summary of these
+- Interpreting summary statistics
+- Uncertainty and significance 
+- Error bars and confidence intervals
+- Visualizing and interpreting this
+
