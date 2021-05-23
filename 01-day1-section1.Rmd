@@ -6,6 +6,35 @@ You can label chapter and section titles using `{#label}` after them, e.g., we c
 
 ![Tank doesn't need R, they just stare](img/tank.gif)
 
+## Day 1 thoughts
+
+Day 1:
+- Data literacy 
+- including R data types (as maps to visualization and interpretation)
+- Identifying different types of data
+- Factors, numeric, character strings, logicals 
+- Why it matters
+- Variable types
+- Mapping how to put data into a variable types ( numeric, character, factor )
+- Variable structures
+- Know what a vector is 
+- Know what dataframe is
+- How to identify and inspect
+- Logic and conditionals 
+- Evaluating things as TRUE and FALSE
+- Operators like ==, !=, >, <
+- How to do "if"
+- Functions
+- Looking at documentation and using the help function
+- Using functions
+- Understanding arguments
+- Preliminary data investigation
+- Using functions on vectors and dataframe columns to calculate summary statistics
+- Picking the type of plot based on the available data or the research question
+- Use hist() to plot a histogram of some numeric vector
+- Use plot() to compare two vectors
+- use plot() to demonstrate that there's a bunch of other named arguments (title), and that documentation can be extensive in ?plot
+
 ## Another subsection
 
 Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
