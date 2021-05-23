@@ -1,0 +1,27 @@
+--- 
+title: "DLL 2021 R section syllabus"
+author: 
+    - "darachm"
+    - "etc"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: 
+    - book.bib
+    - packages.bib
+biblio-style: apalike
+link-citations: yes
+github-repo: darachm/dll-r
+description: "Beginnings of a syllabus for DLL R section 2021"
+new_session: yes
+---
+
+# Into
+
+Yo.
+Expectations
+
+## How to use this site
+
+Well, clicky tappy tap
