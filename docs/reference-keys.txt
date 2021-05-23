@@ -4,9 +4,10 @@ into
 how-to-use-this-site
 intro
 subsection
+day-1-thoughts
 another-subsection
 meet-of-the-matter
 sub-section
 sub-section-1
-literature
-methods
+day-2-literature
+day-3
