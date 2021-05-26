@@ -1,5 +1,7 @@
 # Day 2 Literature
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RdPpRT9fR0w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Day 2:
 - Using ggplot2
 - Install ggplot package
