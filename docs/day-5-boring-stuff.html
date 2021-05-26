@@ -140,13 +140,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="day-4-into-to-r.html"><a href="day-4-into-to-r.html"><i class="fa fa-check"></i><b>2</b> Day 4 - into to R</a></li>
 <li class="chapter" data-level="3" data-path="day-2-tidy-plots.html"><a href="day-2-tidy-plots.html"><i class="fa fa-check"></i><b>3</b> Day 2 - tidy plots</a></li>
-<li class="chapter" data-level="4" data-path="day-5-boring-stuff.html"><a href="day-5-boring-stuff.html"><i class="fa fa-check"></i><b>4</b> Day 5 - boring stuff</a><ul>
-<li class="chapter" data-level="4.1" data-path="day-5-boring-stuff.html"><a href="day-5-boring-stuff.html#sub-section"><i class="fa fa-check"></i><b>4.1</b> 3sub section</a></li>
-<li class="chapter" data-level="4.2" data-path="day-5-boring-stuff.html"><a href="day-5-boring-stuff.html#sub-section-1"><i class="fa fa-check"></i><b>4.2</b> 4sub section</a></li>
-</ul></li>
+<li class="chapter" data-level="4" data-path="day-5-boring-stuff.html"><a href="day-5-boring-stuff.html"><i class="fa fa-check"></i><b>4</b> Day 5 - boring stuff</a></li>
 <li class="chapter" data-level="5" data-path="meet-of-the-matter.html"><a href="meet-of-the-matter.html"><i class="fa fa-check"></i><b>5</b> meet of the matter</a><ul>
-<li class="chapter" data-level="5.1" data-path="meet-of-the-matter.html"><a href="meet-of-the-matter.html#sub-section-2"><i class="fa fa-check"></i><b>5.1</b> 3sub section</a></li>
-<li class="chapter" data-level="5.2" data-path="meet-of-the-matter.html"><a href="meet-of-the-matter.html#sub-section-3"><i class="fa fa-check"></i><b>5.2</b> 4sub section</a></li>
+<li class="chapter" data-level="5.1" data-path="meet-of-the-matter.html"><a href="meet-of-the-matter.html#sub-section"><i class="fa fa-check"></i><b>5.1</b> 3sub section</a></li>
+<li class="chapter" data-level="5.2" data-path="meet-of-the-matter.html"><a href="meet-of-the-matter.html#sub-section-1"><i class="fa fa-check"></i><b>5.2</b> 4sub section</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -170,16 +167,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="day-5---boring-stuff" class="section level1">
 <h1><span class="header-section-number">4</span> Day 5 - boring stuff</h1>
-<p>There it is</p>
-<div id="sub-section" class="section level2">
-<h2><span class="header-section-number">4.1</span> 3sub section</h2>
-<p>Reference a figure by its code chunk label with the <code>fig:</code> prefix, e.g., see Figure <a href="#fig:nice-fig"><strong>??</strong></a>. Similarly, you can reference tables generated from <code>knitr::kable()</code>, e.g., see Table <a href="day-5-boring-stuff.html#tab:nice-tab">4.1</a>.</p>
+<p>Day 5: Building an effective workflow</p>
+<ul>
+<li>Intro: Day 5 Objective: At the end of this day, scholars will have the resources to choose an effective workflow for themselves, including code organization, scaling analyses (loops &amp; functions), and using popular R compatible tools share code (e.g. github), and communicate results (e.g. Rmarkdown, Rshiny, plotly). Scaling up code stuff with loops and functions.</li>
+<li>Package management (Darach)</li>
+<li>Objective X.X: Scholars will understand that packages are how repeatedly useful code is shared in the community, and be able to install and load packages from CRAN, Bioconductor, and Github</li>
+<li>Scholars will understand that there are multiple repos, and that is good, but CRAN is the One True Repo</li>
+<li>Scholars will know how to Install devtools from CRAN</li>
+<li>Scholars will know how to use devtools to install from github</li>
+<li>Scholars will know how to install Bioconductor package from CRAN</li>
+<li>Scholars will know how to find and install packages from Bioconductor</li>
+<li>Scholars will know how to explore the namespace for a package, ie ?packagename:: and TAB or ?packagename::</li>
+<li>Writing modular code with functions (Darach/Melissa)</li>
+<li>Objective X.X: Scholars will begin to understand the value of “functional”/“modular” code, ie writing a function to do things, and will understand how to write a basic function</li>
+<li>Exercise</li>
+<li>Present a missing functionality in R : standard err (I think that’s the one?)</li>
+<li>Write code to copy paste to do this</li>
+<li>Then write a function to do that, and it looks a lot more tidy</li>
+<li>Scholars will understand that functions can be one-off (ie lambda, function(x){} ), and that’s okay</li>
+<li>Doing lots of stuff - loops (Darach)</li>
+<li>Loops</li>
+<li>How to think about a for loop</li>
+<li>Students can write a for loop</li>
+<li>Specifically in context of processing multiple files, so list.files() ?</li>
+<li>Students know that other control structures exist (do, while), and that they’re controlled by boolean logic</li>
+<li>Apply is a thing</li>
+<li>Scholars will be familiar with that folks have strong opinions about using apply instead of for loops</li>
+<li>Scholars will understand that getting the code done is the most important thing, but that good use of apply can be something to develop later to make code run faster, cleaner</li>
+<li>Scholars will be able to read what an example of apply or s/lapply is doing, so that they can read examples online</li>
+<li>Scholars will have heard the term “lambda function” ?</li>
+<li>Getting advanced help and documentation (Darach)</li>
+<li>Objective X.X: Scholars will know how to get official docs ( ? ) and how to skim/read these</li>
+<li>Objective X.X: Scholars will see how easy it is to use a search engine to try and find other answers</li>
+<li>Objective X.X: Scholars will understand the intention of the Slack being a learning community, or something (set expectations about this)</li>
+<li>Source up problems from the class?</li>
+<li>Demo a weird plot idea, search for how to do it on stack overflow?</li>
+<li>Maybe how to change the color of facet labels in a ggplot facet graph, that’s a bit tricky and demonstrates why base R is important…</li>
+</ul>
+<!--
+Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+-->
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
 <a class="sourceLine" id="cb1-2" title="2">  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</a>
 <a class="sourceLine" id="cb1-3" title="3">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
 <a class="sourceLine" id="cb1-4" title="4">)</a></code></pre></div>
 <table>
-<caption><span id="tab:nice-tab">Table 4.1: </span>Here is a nice table!</caption>
+<caption><span id="tab:nice-kable">Table 4.1: </span>Here is a nice table!</caption>
 <thead>
 <tr class="header">
 <th align="right">Sepal.Length</th>
@@ -332,12 +365,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-</div>
-<div id="sub-section-1" class="section level2">
-<h2><span class="header-section-number">4.2</span> 4sub section</h2>
-<p>You can write citations, too. For example, we are using the <strong>bookdown</strong> package <span class="citation">[@R-bookdown]</span> in this sample book, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">[@xie2015]</span>.</p>
 
-</div>
 </div>
             </section>
 
@@ -377,7 +405,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/darachm/dll-r/edit/main/10-day5.Rmd",
+"link": "https://github.com/darachm/dll-r/edit/main/03-day5.Rmd",
 "text": "Edit"
 },
 "history": {

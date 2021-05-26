@@ -1,12 +1,10 @@
-tab:nice-tab
+tab:nice-kable
 tab:nice-tab-appendix
 intro
 how-to-use-this-site
 day-4---into-to-r
 day-2---tidy-plots
 day-5---boring-stuff
+meet-of-the-matter
 sub-section
 sub-section-1
-meet-of-the-matter
-sub-section-2
-sub-section-3
