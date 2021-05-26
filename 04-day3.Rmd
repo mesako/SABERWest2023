@@ -1,6 +1,6 @@
-# Day 3
+# Day 4 - into to R
 
-Day 3:
+Day 4:
 
 - Automation, workflows, Loops and apply?
 - Loops for automating workflow 
