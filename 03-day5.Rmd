@@ -1,18 +1,50 @@
 # Day 5 - boring stuff 
 
-There it is
+Day 5: Building an effective workflow
 
-## 3sub section
+- Intro: Day 5 Objective: At the end of this day, scholars will have the resources to choose an effective workflow for themselves, including code organization, scaling analyses (loops & functions), and using popular R compatible tools share code (e.g. github), and communicate results (e.g. Rmarkdown, Rshiny, plotly). Scaling up code stuff with loops and functions.
+- Package management (Darach)
+- Objective X.X: Scholars will understand that packages are how repeatedly useful code is shared in the community, and be able to install and load packages from CRAN, Bioconductor, and Github
+- Scholars will understand that there are multiple repos, and that is good, but CRAN is the One True Repo
+- Scholars will know how to Install devtools from CRAN
+- Scholars will know how to use devtools to install from github
+- Scholars will know how to install Bioconductor package from CRAN
+- Scholars will know how to find and install packages from Bioconductor
+- Scholars will know how to explore the namespace for a package, ie ?packagename:: and TAB or ?packagename::
+- Writing modular code with functions (Darach/Melissa)
+- Objective X.X: Scholars will begin to understand the value of "functional"/"modular" code, ie writing a function to do things, and will understand how to write a basic function
+- Exercise
+- Present a missing functionality in R : standard err (I think that's the one?)
+- Write code to copy paste to do this
+- Then write a function to do that, and it looks a lot more tidy
+- Scholars will understand that functions can be one-off (ie lambda, function(x){} ), and that's okay
+- Doing lots of stuff - loops (Darach)
+- Loops
+- How to think about a for loop
+- Students can write a for loop
+- Specifically in context of processing multiple files, so list.files() ?
+- Students know that other control structures exist (do, while), and that they're controlled by boolean logic
+- Apply is a thing
+- Scholars will be familiar with that folks have strong opinions about using apply instead of for loops
+- Scholars will understand that getting the code done is the most important thing, but that good use of apply can be something to develop later to make code run faster, cleaner
+- Scholars will be able to read what an example of apply or s/lapply is doing, so that they can read examples online
+- Scholars will have heard the term "lambda function" ?
+- Getting advanced help and documentation (Darach)
+- Objective X.X: Scholars will know how to get official docs ( ? ) and how to skim/read these
+- Objective X.X: Scholars will see how easy it is to use a search engine to try and find other answers
+- Objective X.X: Scholars will understand the intention of the Slack being a learning community, or something (set expectations about this)
+- Source up problems from the class?
+- Demo a weird plot idea, search for how to do it on stack overflow?
+- Maybe how to change the color of facet labels in a ggplot facet graph, that's a bit tricky and demonstrates why base R is important...
 
+<!--
 Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+-->
 
-```{r nice-tab, tidy=FALSE}
+```{r nice-kable, tidy=FALSE}
 knitr::kable(
   head(iris, 20), caption = 'Here is a nice table!',
   booktabs = TRUE
 )
 ```
 
-## 4sub section
-
-You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
