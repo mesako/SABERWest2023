@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 meet of the matter | DLL 2021 R section syllabus</title>
+  <title>2 Day 4 - into to R | DLL 2021 R section syllabus</title>
   <meta name="description" content="Beginnings of a syllabus for DLL R section 2021" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 meet of the matter | DLL 2021 R section syllabus" />
+  <meta property="og:title" content="2 Day 4 - into to R | DLL 2021 R section syllabus" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 meet of the matter | DLL 2021 R section syllabus" />
+  <meta name="twitter:title" content="2 Day 4 - into to R | DLL 2021 R section syllabus" />
   
   <meta name="twitter:description" content="Beginnings of a syllabus for DLL R section 2021" />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="day-5-boring-stuff.html"/>
-
+<link rel="prev" href="index.html"/>
+<link rel="next" href="day-2-tidy-plots.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -168,184 +168,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="meet-of-the-matter" class="section level1">
-<h1><span class="header-section-number">5</span> meet of the matter</h1>
-<p>There it is</p>
-<div id="sub-section-2" class="section level2">
-<h2><span class="header-section-number">5.1</span> 3sub section</h2>
-<p>Reference a figure by its code chunk label with the <code>fig:</code> prefix, e.g., see Figure <a href="#fig:nice-fig"><strong>??</strong></a>. Similarly, you can reference tables generated from <code>knitr::kable()</code>, e.g., see Table <a href="day-5-boring-stuff.html#tab:nice-tab">4.1</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
-<a class="sourceLine" id="cb2-2" title="2">  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</a>
-<a class="sourceLine" id="cb2-3" title="3">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb2-4" title="4">)</a></code></pre></div>
-<table>
-<caption><span id="tab:nice-tab-appendix">Table 5.1: </span>Here is a nice table!</caption>
-<thead>
-<tr class="header">
-<th align="right">Sepal.Length</th>
-<th align="right">Sepal.Width</th>
-<th align="right">Petal.Length</th>
-<th align="right">Petal.Width</th>
-<th align="left">Species</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.7</td>
-<td align="right">3.2</td>
-<td align="right">1.3</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.6</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.0</td>
-<td align="right">3.6</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.7</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.6</td>
-<td align="right">3.4</td>
-<td align="right">1.4</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.0</td>
-<td align="right">3.4</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.4</td>
-<td align="right">2.9</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.4</td>
-<td align="right">3.7</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.8</td>
-<td align="right">3.4</td>
-<td align="right">1.6</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.8</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.3</td>
-<td align="right">3.0</td>
-<td align="right">1.1</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.8</td>
-<td align="right">4.0</td>
-<td align="right">1.2</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.7</td>
-<td align="right">4.4</td>
-<td align="right">1.5</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.3</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.7</td>
-<td align="right">3.8</td>
-<td align="right">1.7</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.1</td>
-<td align="right">3.8</td>
-<td align="right">1.5</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div id="sub-section-3" class="section level2">
-<h2><span class="header-section-number">5.2</span> 4sub section</h2>
-<p>You can write citations, too. For example, we are using the <strong>bookdown</strong> package <span class="citation">[@R-bookdown]</span> in this sample book, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">[@xie2015]</span>.</p>
+<div id="day-4---into-to-r" class="section level1">
+<h1><span class="header-section-number">2</span> Day 4 - into to R</h1>
+<p>Day 4:</p>
+<ul>
+<li>Automation, workflows, Loops and apply?</li>
+<li>Loops for automating workflow</li>
+<li>Enough use of loops</li>
+<li>How to use apply very basically, survival skills ( apply df,2,mean) or something )</li>
+<li>Reading documentation - using ?</li>
+</ul>
+<p>Functions
+- Creating functions
+- arguments for new functions
+- Using packages
+- How to find and install CRAN
+- How to find and install Bioconductor
+- How to find and install stuff from git</p>
+<p>Sharing code
+- .R , .Rmd , git</p>
+<p>Testing code and troubleshooting</p>
+<p>Grand finale: Take a CSV dataset and turn it into an appropriate ggplot figure</p>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="day-5-boring-stuff.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="day-2-tidy-plots.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -377,7 +229,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/darachm/dll-r/edit/main/13-appendix.Rmd",
+"link": "https://github.com/darachm/dll-r/edit/main/04-day3.Rmd",
 "text": "Edit"
 },
 "history": {
