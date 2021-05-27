@@ -34,6 +34,7 @@
   
 
 <link rel="next" href="day-4-into-to-r.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -56,25 +57,27 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -83,9 +86,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -135,8 +138,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">DLL 2021 at Stanford, R section, syllabus</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Intro</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#how-to-edit-for-now"><i class="fa fa-check"></i><b>1.1</b> How to edit, for now</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Intro</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#how-to-edit-for-now"><i class="fa fa-check"></i><b>1.1</b> How to edit, for now</a>
+<ul>
 <li class="chapter" data-level="1.1.1" data-path="index.html"><a href="index.html#setup"><i class="fa fa-check"></i><b>1.1.1</b> Setup</a></li>
 <li class="chapter" data-level="1.1.2" data-path="index.html"><a href="index.html#editwork-on-it"><i class="fa fa-check"></i><b>1.1.2</b> Edit/work on it</a></li>
 <li class="chapter" data-level="1.1.3" data-path="index.html"><a href="index.html#publishing-onto-the-main-page-so-its-hosted-at-the-url"><i class="fa fa-check"></i><b>1.1.3</b> Publishing onto the main page, so it’s hosted at the URL</a></li>
@@ -145,9 +150,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2" data-path="day-4-into-to-r.html"><a href="day-4-into-to-r.html"><i class="fa fa-check"></i><b>2</b> Day 4 - into to R</a></li>
 <li class="chapter" data-level="3" data-path="day-2-tidy-plots.html"><a href="day-2-tidy-plots.html"><i class="fa fa-check"></i><b>3</b> Day 2 - tidy plots</a></li>
 <li class="chapter" data-level="4" data-path="day-5-boring-stuff.html"><a href="day-5-boring-stuff.html"><i class="fa fa-check"></i><b>4</b> Day 5 - boring stuff</a></li>
-<li class="chapter" data-level="5" data-path="meet-of-the-matter.html"><a href="meet-of-the-matter.html"><i class="fa fa-check"></i><b>5</b> meet of the matter</a><ul>
-<li class="chapter" data-level="5.1" data-path="meet-of-the-matter.html"><a href="meet-of-the-matter.html#sub-section"><i class="fa fa-check"></i><b>5.1</b> 3sub section</a></li>
-<li class="chapter" data-level="5.2" data-path="meet-of-the-matter.html"><a href="meet-of-the-matter.html#sub-section-1"><i class="fa fa-check"></i><b>5.2</b> 4sub section</a></li>
+<li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="appendix.html"><a href="appendix.html#additional-tutorials"><i class="fa fa-check"></i><b>5.1</b> Additional tutorials</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="appendix.html"><a href="appendix.html#sub-sub-section"><i class="fa fa-check"></i><b>5.1.1</b> sub sub section</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="appendix.html"><a href="appendix.html#more-challenges"><i class="fa fa-check"></i><b>5.2</b> More challenges</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -175,32 +184,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p class="author"><em>etc</em></p>
 <p class="date" style="margin-top: 1.5em;"><em>2021-05-27</em></p>
 </div>
-<div id="intro" class="section level1">
+<div id="intro" class="section level1" number="1">
 <h1><span class="header-section-number">1</span> Intro</h1>
 <p>Yo.
 Expectations</p>
-<div id="how-to-edit-for-now" class="section level2">
+<div id="how-to-edit-for-now" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> How to edit, for now</h2>
 <p>Each level 1 header is its own heading the left TOC</p>
-<div id="setup" class="section level3">
+<div id="setup" class="section level3" number="1.1.1">
 <h3><span class="header-section-number">1.1.1</span> Setup</h3>
 <ol style="list-style-type: decimal">
 <li><p>Clone the repo locally</p>
 <p><code>git clone https://github.com/darachm/dll-r</code></p></li>
 </ol>
 </div>
-<div id="editwork-on-it" class="section level3">
+<div id="editwork-on-it" class="section level3" number="1.1.2">
 <h3><span class="header-section-number">1.1.2</span> Edit/work on it</h3>
 <ul>
-<li><code>git pull</code> so you’re current! Error with what is in <code>docs/</code>?
-Do <code>git checkout docs/</code> to remove the edits to those, then <code>pull</code> again.</li>
-<li>Make or edit the files whose name starts with two digits and ends with Rmd,
-Like <code>01-day3.Rmd</code>. Feel free to run that in Rstudio or whatever.</li>
-<li>To test the full site, sun <code>./_build.sh</code> to build the <em>entire</em> site.
+<li><p><code>git pull</code> so you’re current! Error with what is in <code>docs/</code>?
+Do <code>git checkout docs/</code> to remove the edits to those, then <code>pull</code> again.</p></li>
+<li><p>Make or edit the files whose name starts with two digits and ends with Rmd,
+Like <code>01-day3.Rmd</code>. Feel free to run that in Rstudio or whatever.</p></li>
+<li><p>To test the full site, sun <code>./_build.sh</code> to build the <em>entire</em> site.
 ( Can Rstudio run this as a terminal ???
 There may be another way to do this in Rstudio - I believe
 they develop the bookdown package? )
-The entire site is in <code>docs/</code> because that is what github wants.</li>
+The entire site is in <code>docs/</code> because that is what github wants.</p></li>
 <li><p>When done, add and commit your changes.</p>
 <pre><code>  git add 02-day4.Rmd # or whatever you changed
   git commit -m &quot;nice commit message of what you have done&quot;
@@ -209,7 +218,7 @@ The entire site is in <code>docs/</code> because that is what github wants.</li>
   git push # to push it up to github</code></pre></li>
 </ul>
 </div>
-<div id="publishing-onto-the-main-page-so-its-hosted-at-the-url" class="section level3">
+<div id="publishing-onto-the-main-page-so-its-hosted-at-the-url" class="section level3" number="1.1.3">
 <h3><span class="header-section-number">1.1.3</span> Publishing onto the main page, so it’s hosted at the URL</h3>
 <pre><code>git checkout docs/ # this prevents errors from docs not matching what&#39;s published
 git pull # to make sure current

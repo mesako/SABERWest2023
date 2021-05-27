@@ -1,5 +1,4 @@
 tab:nice-kable
-tab:nice-tab-appendix
 intro
 how-to-edit-for-now
 setup
@@ -8,6 +7,7 @@ publishing-onto-the-main-page-so-its-hosted-at-the-url
 day-4---into-to-r
 day-2---tidy-plots
 day-5---boring-stuff
-meet-of-the-matter
-sub-section
-sub-section-1
+appendix
+additional-tutorials
+sub-sub-section
+more-challenges
