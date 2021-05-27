@@ -1,10 +1,20 @@
-# meet of the matter
+# Appendix
 
-There it is
+## Additional tutorials
 
-## 3sub section
+- a list
+- of tutorials
 
-Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+## More challenges
+
+Challenge yourself 
+
+- Extra datasets ere
+
+
+<blink>blink text</blink>
+
+<!--
 
 ```{r nice-tab-appendix, tidy=FALSE}
 knitr::kable(
@@ -13,6 +23,6 @@ knitr::kable(
 )
 ```
 
-## 4sub section
+Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+-->
 
-You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
