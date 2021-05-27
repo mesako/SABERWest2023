@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Day 4 - into to R | DLL 2021 R section syllabus</title>
+  <title>2 How to edit, for now | DLL 2021 R section syllabus</title>
   <meta name="description" content="Beginnings of a syllabus for DLL R section 2021" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Day 4 - into to R | DLL 2021 R section syllabus" />
+  <meta property="og:title" content="2 How to edit, for now | DLL 2021 R section syllabus" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Day 4 - into to R | DLL 2021 R section syllabus" />
+  <meta name="twitter:title" content="2 How to edit, for now | DLL 2021 R section syllabus" />
   
   <meta name="twitter:description" content="Beginnings of a syllabus for DLL R section 2021" />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="how-to-edit-for-now.html"/>
-<link rel="next" href="day-2-tidy-plots.html"/>
+<link rel="prev" href="index.html"/>
+<link rel="next" href="day-4-into-to-r.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -168,36 +168,53 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="day-4---into-to-r" class="section level1">
-<h1><span class="header-section-number">3</span> Day 4 - into to R</h1>
-<p>Day 4:</p>
+<div id="how-to-edit-for-now" class="section level1">
+<h1><span class="header-section-number">2</span> How to edit, for now</h1>
+<div id="setup" class="section level2">
+<h2><span class="header-section-number">2.1</span> Setup</h2>
+<ol style="list-style-type: decimal">
+<li><p>Clone the repo locally</p>
+<p><code>git clone https://github.com/darachm/dll-r</code></p></li>
+</ol>
+</div>
+<div id="editwork-on-it" class="section level2">
+<h2><span class="header-section-number">2.2</span> Edit/work on it</h2>
 <ul>
-<li>Automation, workflows, Loops and apply?</li>
-<li>Loops for automating workflow</li>
-<li>Enough use of loops</li>
-<li>How to use apply very basically, survival skills ( apply df,2,mean) or something )</li>
-<li>Reading documentation - using ?</li>
+<li><code>git pull</code> so you’re current! Error with what is in <code>docs/</code>?
+Do <code>git checkout docs/</code> to remove the edits to those, then <code>pull</code> again.</li>
+<li>Make or edit the files whose name starts with two digits and ends with Rmd,
+Like <code>01-day3.Rmd</code>. Feel free to run that in Rstudio or whatever.</li>
+<li>To test the full site, sun <code>./_build.sh</code> to build the <em>entire</em> site.
+( Can Rstudio run this as a terminal ???
+There may be another way to do this in Rstudio - I believe
+they develop the bookdown package? )
+The entire site is in <code>docs/</code> because that is what github wants.</li>
+<li><p>When done, add and commit your changes.</p>
+<pre><code>  git add 02-day4.Rmd # or whatever you changed
+  git commit -m &quot;nice commit message of what you have done&quot;
+  git checkout docs/ # this prevents errors from docs not matching what&#39;s published
+  git pull # to make sure current
+  git push # to push it up to github</code></pre></li>
 </ul>
-<p>Functions
-- Creating functions
-- arguments for new functions
-- Using packages
-- How to find and install CRAN
-- How to find and install Bioconductor
-- How to find and install stuff from git</p>
-<p>Sharing code
-- .R , .Rmd , git</p>
-<p>Testing code and troubleshooting</p>
-<p>Grand finale: Take a CSV dataset and turn it into an appropriate ggplot figure</p>
+</div>
+<div id="publishing-onto-the-main-page-so-its-hosted-at-the-url" class="section level2">
+<h2><span class="header-section-number">2.3</span> Publishing onto the main page, so it’s hosted at the URL</h2>
+<pre><code>git checkout docs/ # this prevents errors from docs not matching what&#39;s published
+git pull # to make sure current
+./_build.sh # builds the site in docs/
+git add docs/* # adds the entire site to the repo
+git commit -m &quot;updated site&quot;
+git push # to push it up to github</code></pre>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="how-to-edit-for-now.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="day-2-tidy-plots.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="day-4-into-to-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -229,7 +246,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/darachm/dll-r/edit/main/01-day3.Rmd",
+"link": "https://github.com/darachm/dll-r/edit/main/index.Rmd",
 "text": "Edit"
 },
 "history": {
