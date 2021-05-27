@@ -14,8 +14,7 @@ Challenge yourself
 - Extra datasets ere
 
 
-<!--
-
+## Rmd example of code chunk
 
 ```{r nice-tab-appendix, tidy=FALSE}
 knitr::kable(
@@ -24,6 +23,8 @@ knitr::kable(
 )
 ```
 
+
+<!--
 Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
 -->
 
