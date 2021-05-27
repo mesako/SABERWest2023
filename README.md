@@ -23,11 +23,11 @@ Which is accessible at
     The entire site is in `docs/` because that is what github wants.
 - When done, add and commit your changes.
 
-    git add 02-day4.Rmd # or whatever you changed
-    git commit -m "nice commit message of what you have done"
-    git checkout docs/ # this prevents errors from docs not matching what's published
-    git pull # to make sure current
-    git push # to push it up to github
+        git add 02-day4.Rmd # or whatever you changed
+        git commit -m "nice commit message of what you have done"
+        git checkout docs/ # this prevents errors from docs not matching what's published
+        git pull # to make sure current
+        git push # to push it up to github
 
 ## Publishing onto the main page, so it's hosted at the URL
 
