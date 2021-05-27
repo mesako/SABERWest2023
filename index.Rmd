@@ -22,6 +22,10 @@ Expectations
 
 ## How to edit, for now
 
+Here is a too-long video about how to edit this website.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LWTQiK9t9ks" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Each level 1 header is its own heading the left TOC
 
 ### Setup
