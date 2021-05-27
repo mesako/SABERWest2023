@@ -1,4 +1,5 @@
 tab:nice-kable
+tab:nice-tab-appendix
 intro
 how-to-edit-for-now
 setup
@@ -11,3 +12,4 @@ appendix
 additional-tutorials
 sub-sub-section
 more-challenges
+rmd-example-of-code-chunk
