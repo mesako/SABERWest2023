@@ -17,6 +17,8 @@ description: "A living syllabus for the R section of DLL 2021, at Stanford"
 new_session: yes
 ---
 
+# Introduction
+
 ## Course intent
 
 Here is what the course is trying to do.
