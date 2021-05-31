@@ -7,7 +7,11 @@ bookdown::gitbook:
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     edit: https://github.com/darachm/dll-r/edit/main/%s
-    download: ["html","pdf"]
+    download: ["html"] #,"pdf"]
+    highlight: zenburn
+  includes:
+    after_body: footer.html
+
 #bookdown::pdf_book:
 #  includes:
 #    in_header: preamble.tex
