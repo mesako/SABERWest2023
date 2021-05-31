@@ -1,8 +1,10 @@
 --- 
-title: "DLL 2021 R section syllabus"
+title: "DLL 2021, R section"
 author: 
     - "darachm"
-    - "etc"
+    - "etc?"
+    - "etc?"
+    - "etc?"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
@@ -11,52 +13,37 @@ documentclass: book
 biblio-style: apalike
 link-citations: yes
 github-repo: darachm/dll-r
-description: "Beginnings of a syllabus for DLL R section 2021"
+description: "A living syllabus for the R section of DLL 2021, at Stanford"
 new_session: yes
 ---
 
-# Intro
+## Course intent
 
-Yo.
-Expectations
+Here is what the course is trying to do.
+We want to get you to a basic framework so you can work with someone 
+effectively.
+That framework is getting you oriented with the basics and how to 
+think about figuring out tasks in R.
 
-## How to edit, for now
+## Structure and resources
 
-Here is a too-long video about how to edit this website.
+### This syllabus and videos
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/LWTQiK9t9ks" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+We've made this doc for your reference, and it's our living document of
+"slides" and reference.
 
-Each level 1 header is its own heading the left TOC
+We also made short videos for teaching, so that any mini-lectures 
+are concise and complete. It also allows us to work as assistants.
+These are uploaded on Youtube, and should be accessible via the embeds on
+this site.
 
-### Setup
-1. Clone the repo locally 
+### Slack channel
 
-    `git clone https://github.com/darachm/dll-r`
+We are going to set this up to be a good place to go for ideas/help.
 
-### Edit/work on it
+The channel is called .... what?
 
-- `git pull` so you're current! Error with what is in `docs/`?
-    Do `git checkout docs/` to remove the edits to those, then `pull` again.
-- Make or edit the files whose name starts with two digits and ends with Rmd,
-    Like `01-day3.Rmd`. Feel free to run that in Rstudio or whatever.
-- To test the full site, sun `./_build.sh` to build the *entire* site. 
-    ( Can Rstudio run this as a terminal ??? 
-    There may be another way to do this in Rstudio - I believe
-    they develop the bookdown package? )
-    The entire site is in `docs/` because that is what github wants.
-- When done, add and commit your changes.
+## Expectations
 
-        git add 02-day4.Rmd # or whatever you changed
-        git commit -m "nice commit message of what you have done"
-        git checkout docs/ # this prevents errors from docs not matching what's published
-        git pull # to make sure current
-        git push # to push it up to github
-
-### Publishing onto the main page, so it's hosted at the URL
-
-    git checkout docs/ # this prevents errors from docs not matching what's published
-    git pull # to make sure current
-    ./_build.sh # builds the site in docs/
-    git add docs/* # adds the entire site to the repo
-    git commit -m "updated site"
-    git push # to push it up to github
+1. Don't be a jerk
+1. Pull together
