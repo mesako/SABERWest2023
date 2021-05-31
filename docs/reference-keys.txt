@@ -1,10 +1,11 @@
 tab:nice-kable
 tab:nice-tab-appendix
-intro
-how-to-edit-for-now
-setup
-editwork-on-it
-publishing-onto-the-main-page-so-its-hosted-at-the-url
+introduction
+course-intent
+structure-and-resources
+this-syllabus-and-videos
+slack-channel
+expectations
 day-4---into-to-r
 day-2---tidy-plots
 day-5---boring-stuff
@@ -13,3 +14,7 @@ additional-tutorials
 sub-sub-section
 more-challenges
 rmd-example-of-code-chunk
+how-to-edit-this-document
+setup
+editwork-on-it
+publishing-onto-the-main-page-so-its-hosted-at-the-url
