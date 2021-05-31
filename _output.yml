@@ -3,9 +3,7 @@ bookdown::gitbook:
   config:
     toc:
       before: |
-        <li><a href="./">DLL 2021 at Stanford, R section, syllabus</a></li>
-      after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+        <li><a href="./">DLL 2021 R workshops</a></li>
     edit: https://github.com/darachm/dll-r/edit/main/%s
     download: ["html"] #,"pdf"]
     highlight: zenburn
