@@ -87,4 +87,174 @@ Be lazy, imitate others.
 
 ## Writing modular code
 
+What is modularity of code?
+
+Why?
+
+think more clearly than “hardcoding” stuff
+
+change things more easily without forgetting everything
+
+lets you operate at a higher level, by tweaking parameters in one place
+
+<!-- Exercise -->
+
+### Calculating standard error
+
+Let's calculate the standard error of a sample of values:
+
+```{r,stderr_fail}
+values <- c(4,3,2,2,5,3,6,2,2,4)
+stderr(values)
+```
+
+Er ... what? What is `stderr` doing?
+
+`?stderr`
+
+Write out the maths for the standard error of the mean
+
+calcuate it
+
+```{r,stderr_calc}
+sd(values)/sqrt(length(values)-1)
+```
+
+write a function that does it
+
+what do we save it as?
+
+test it
+
+### More complex modules
+
+More examples/exercise
+
+show a simulation of something…. genetic drift of a virus replicating?
+
+lineage G1312F
+
+exercise - wrap the entire analysis as a function
+
+talk about ease of calling
+
+gotcha about print() the plots
+
+exercise - make a parameter and argument
+
+ease of tweaking this
+
+exercise - break into subfunctions, generate and plot
+
+ease of changing models
+
+## Using modules many times - loops
+
+Doing lots of stuff - loops (Darach)
+
+show list.files() - challenge is to analyze a bunch of ….. ? protein seqs?
+
+could evaluate the claim that four basic amino acids in a row is unusual for SARS2 (ever seen a NLS?)
+
+Loops
+How to think about a for loop
+
+Specifically in context of processing multiple files, so list.files() ?
+
+Students know that other control structures exist (do, while), and that they're controlled by boolean logic
+
+Apply is a thing
+
+Scholars will be familiar with that folks have strong opinions about using apply instead of for loops
+
+Scholars will understand that getting the code done is the most important thing, but that good use of apply can be something to develop later to make code run faster, cleaner
+
+Scholars will be able to read what an example of apply or s/lapply is doing, so that they can read examples online
+
+Scholars will have heard the term "lambda function" ?
+
+Scholars will understand that functions can be one-off (ie lambda, function(x){} ), and that's okay
+
+## Packages are chunks of code (and sometimes data)
+
+Let’s take a look at your code from the last few days. How would you share this with the other people in the course?
+
+R, like other languages, is built on a package system - if you wrap up your code in particular expected ways and put it in particular expected places, it is very easy for others to get and use your code
+
+side note link for interested students, easy of making pakcages (for advanced advanced)
+
+### first stop - CRAN
+
+[CRAN]()
+
+```{r,eval=F}
+library("stringdist")
+```
+
+exercise - get the stringdist library, use it
+
+exercise - get a new viz layer, use it
+
+### next stop - github
+
+```{r,eval=F}
+library("devtools")
+```
+
+
+
+exercise - install devtools
+
+exercise - pull a package off github….. ? maybe some sort of viz again?
+
+problems with this
+
+### finally - Bioconductor 😬
+
+[How to install Bioconductor]()
+
+Scholars will know how to install Bioconductor package from CRAN
+
+Scholars will know how to find and install packages from Bioconductor
+
+explore the namespace for a package, ie ?packagename:: and TAB or ?packagename::
+
+how to print out all the packages you have loaded
+
+
+## Finding more help and documentation
+
+Need a problem
+
+```{r,eval=F}
+?geom_line
+```
+
+```{r,eval=F}
+?stringdist
+```
+
+Objective X.X: Scholars will know how to get official docs ( ? ) and how to skim/read these
+
+Objective X.X: Scholars will see how easy it is to use a search engine to try and find other answers
+
+Objective X.X: Scholars will understand the intention of the Slack being a learning community, or something (set expectations about this)
+
+Source up problems from the class?
+
+Demo a weird plot idea, search for how to do it on stack overflow?
+
+Maybe how to change the color of facet labels in a ggplot facet graph, that's a bit tricky and demonstrates why base R is important…
+
+## Reproducibility and sharing
+
+think about this
+
+think about the next person coming along, or yourself in 3 months
+
+links on syllabus for more info
+
+all sorts of automated stuff you can do
+
+
 
