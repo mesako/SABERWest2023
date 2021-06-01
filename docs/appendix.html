@@ -34,7 +34,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="day-5-boring-stuff.html"/>
+<link rel="prev" href="day-5-building-workflows.html"/>
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -147,7 +147,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="day-4-into-to-r.html"><a href="day-4-into-to-r.html"><i class="fa fa-check"></i><b>2</b> Day 4 - into to R</a></li>
 <li class="chapter" data-level="3" data-path="day-2-tidy-plots.html"><a href="day-2-tidy-plots.html"><i class="fa fa-check"></i><b>3</b> Day 2 - tidy plots</a></li>
-<li class="chapter" data-level="4" data-path="day-5-boring-stuff.html"><a href="day-5-boring-stuff.html"><i class="fa fa-check"></i><b>4</b> Day 5 - boring stuff</a></li>
+<li class="chapter" data-level="4" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows</a><ul>
+<li class="chapter" data-level="4.1" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#writing-reusable-code"><i class="fa fa-check"></i><b>4.1</b> Writing (re)usable code</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#style-guides-can-be-inspiring"><i class="fa fa-check"></i><b>4.1.1</b> Style guides can be inspiring</a></li>
+<li class="chapter" data-level="4.1.2" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#what-style-should-you-use"><i class="fa fa-check"></i><b>4.1.2</b> What style should you use?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#writing-modular-code"><i class="fa fa-check"></i><b>4.2</b> Writing modular code</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#calculating-standard-error"><i class="fa fa-check"></i><b>4.2.1</b> Calculating standard error</a></li>
+<li class="chapter" data-level="4.2.2" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#more-complex-modules"><i class="fa fa-check"></i><b>4.2.2</b> More complex modules</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#using-modules-many-times---loops"><i class="fa fa-check"></i><b>4.3</b> Using modules many times - loops</a></li>
+<li class="chapter" data-level="4.4" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#packages-are-chunks-of-code-and-sometimes-data"><i class="fa fa-check"></i><b>4.4</b> Packages are chunks of code (and sometimes data)</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#first-stop---cran"><i class="fa fa-check"></i><b>4.4.1</b> first stop - CRAN</a></li>
+<li class="chapter" data-level="4.4.2" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#next-stop---github"><i class="fa fa-check"></i><b>4.4.2</b> next stop - github</a></li>
+<li class="chapter" data-level="4.4.3" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#finally---bioconductor"><i class="fa fa-check"></i><b>4.4.3</b> finally - Bioconductor 😬</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#finding-more-help-and-documentation"><i class="fa fa-check"></i><b>4.5</b> Finding more help and documentation</a></li>
+<li class="chapter" data-level="4.6" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#reproducibility-and-sharing"><i class="fa fa-check"></i><b>4.6</b> Reproducibility and sharing</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a><ul>
 <li class="chapter" data-level="5.1" data-path="appendix.html"><a href="appendix.html#additional-tutorials"><i class="fa fa-check"></i><b>5.1</b> Additional tutorials</a><ul>
 <li class="chapter" data-level="5.1.1" data-path="appendix.html"><a href="appendix.html#sub-sub-section"><i class="fa fa-check"></i><b>5.1.1</b> sub sub section</a></li>
@@ -198,10 +215,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="rmd-example-of-code-chunk" class="section level2">
 <h2><span class="header-section-number">5.3</span> Rmd example of code chunk</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
-<a class="sourceLine" id="cb2-2" title="2">  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</a>
-<a class="sourceLine" id="cb2-3" title="3">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb2-4" title="4">)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
+<a class="sourceLine" id="cb11-2" title="2">  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</a>
+<a class="sourceLine" id="cb11-3" title="3">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb11-4" title="4">)</a></code></pre></div>
 <table>
 <caption><span id="tab:nice-tab-appendix">Table 5.1: </span>Here is a nice table!</caption>
 <thead>
@@ -409,6 +426,13 @@ Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Fig
 </div>
 </div>
 </div>
+
+
+
+
+
+
+
 <p style="margin-top:10em;text-align:center;font-size:small;">
     <a href="https://github.com/darachm/dll-r/blob/main/LICENSE.md">
         Licensed Creative Commons Attribution-NonCommercial-ShareAlike 4.0
@@ -424,7 +448,7 @@ Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Fig
           </div>
         </div>
       </div>
-<a href="day-5-boring-stuff.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="day-5-building-workflows.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>

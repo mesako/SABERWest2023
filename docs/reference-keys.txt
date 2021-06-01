@@ -1,4 +1,3 @@
-tab:nice-kable
 tab:nice-tab-appendix
 introduction
 course-intent
@@ -8,7 +7,20 @@ slack-channel
 expectations
 day-4---into-to-r
 day-2---tidy-plots
-day-5---boring-stuff
+day-5---building-workflows
+writing-reusable-code
+style-guides-can-be-inspiring
+what-style-should-you-use
+writing-modular-code
+calculating-standard-error
+more-complex-modules
+using-modules-many-times---loops
+packages-are-chunks-of-code-and-sometimes-data
+first-stop---cran
+next-stop---github
+finally---bioconductor
+finding-more-help-and-documentation
+reproducibility-and-sharing
 appendix
 additional-tutorials
 sub-sub-section
