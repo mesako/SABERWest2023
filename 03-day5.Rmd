@@ -1,50 +1,90 @@
-# Day 5 - boring stuff 
+# Day 5 - building workflows
 
-Day 5: Building an effective workflow
+Firstly, let's review the last two days.
+What have we done and how do we do it again?
 
-- Intro: Day 5 Objective: At the end of this day, scholars will have the resources to choose an effective workflow for themselves, including code organization, scaling analyses (loops & functions), and using popular R compatible tools share code (e.g. github), and communicate results (e.g. Rmarkdown, Rshiny, plotly). Scaling up code stuff with loops and functions.
-- Package management (Darach)
-- Objective X.X: Scholars will understand that packages are how repeatedly useful code is shared in the community, and be able to install and load packages from CRAN, Bioconductor, and Github
-- Scholars will understand that there are multiple repos, and that is good, but CRAN is the One True Repo
-- Scholars will know how to Install devtools from CRAN
-- Scholars will know how to use devtools to install from github
-- Scholars will know how to install Bioconductor package from CRAN
-- Scholars will know how to find and install packages from Bioconductor
-- Scholars will know how to explore the namespace for a package, ie ?packagename:: and TAB or ?packagename::
-- Writing modular code with functions (Darach/Melissa)
-- Objective X.X: Scholars will begin to understand the value of "functional"/"modular" code, ie writing a function to do things, and will understand how to write a basic function
-- Exercise
-- Present a missing functionality in R : standard err (I think that's the one?)
-- Write code to copy paste to do this
-- Then write a function to do that, and it looks a lot more tidy
-- Scholars will understand that functions can be one-off (ie lambda, function(x){} ), and that's okay
-- Doing lots of stuff - loops (Darach)
-- Loops
-- How to think about a for loop
-- Students can write a for loop
-- Specifically in context of processing multiple files, so list.files() ?
-- Students know that other control structures exist (do, while), and that they're controlled by boolean logic
-- Apply is a thing
-- Scholars will be familiar with that folks have strong opinions about using apply instead of for loops
-- Scholars will understand that getting the code done is the most important thing, but that good use of apply can be something to develop later to make code run faster, cleaner
-- Scholars will be able to read what an example of apply or s/lapply is doing, so that they can read examples online
-- Scholars will have heard the term "lambda function" ?
-- Getting advanced help and documentation (Darach)
-- Objective X.X: Scholars will know how to get official docs ( ? ) and how to skim/read these
-- Objective X.X: Scholars will see how easy it is to use a search engine to try and find other answers
-- Objective X.X: Scholars will understand the intention of the Slack being a learning community, or something (set expectations about this)
-- Source up problems from the class?
-- Demo a weird plot idea, search for how to do it on stack overflow?
-- Maybe how to change the color of facet labels in a ggplot facet graph, that's a bit tricky and demonstrates why base R is important...
+<!-- exercise -->
 
-<!--
-Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
--->
+Crack open your code - can you use it again?
+Can you adapt it to modify your question, feed in new data,
+and modify the scientifically-important bits easily?
 
-```{r nice-kable, tidy=FALSE}
-knitr::kable(
-  head(iris, 20), caption = 'Here is a nice table!',
-  booktabs = TRUE
+## Writing (re)usable code
+
+Let's look at two chunks of code from 
+[a paper](https://github.com/sashaflevy/PPiSeq) (lightly edited).
+The experiment is counting barcoded lineages of yeast cells to estimate
+"PPIs" (protein-protein interactions)[^zppi_note].
+here's an example of one style of writing R script:
+
+[^zppi_note]: Ask Darach if you want details, or 
+[read the paper](doi.org/10.7554/eLife.62365).
+
+```{r,example1,eval=F}
+# filter out bad barcode lineages ( <= 2 time points counts > 0, or maximum of each time point <= 5 or total counts of a lineage < 10)
+bad_index = rep(0, nrow(DBC_known_counts))
+for(i in 1:length(bad_index)){
+        counts = as.numeric(DBC_known_counts[i, 4:8])
+        if (length(which(counts != 0)) < 3 | max(counts) < 5 | sum(counts) < 10){
+                bad_index[i] = 1
+        }
+}
+length(which(bad_index == 1)) # 1447775
+```
+
+<!-- exercise -->
+
+- What is going on here?
+- How do you feed in new data?
+- How do you run this multiple times?
+- How do you change the logic?
+
+Here's another example from the same author:
+
+```{r,example2,eval=F}
+H202_Output <- PPI_calling_sigmoid(
+    PPI_multiple=dataFrameReader_T("/Volumes/zmliu_02/PPiseq_03/H2O2/counts/PPI_multiple_p.values.csv"),
+    specific_PPV=c(seq(0.5,0.58,by=0.02),seq(0.6,0.8,by=0.01),seq(0.82,0.9,by=0.02)),
+    Fitness=fitness(0,1,0.01),
+    p_value=seq(-4,0,0.1),
+    Neg_number_PPI=6e4,
+    Neg_ref_number=50, 
+    p_threshold=-4
+    p_loc=6, 
 )
 ```
+
+<!-- exercise -->
+
+Same questions.
+
+### Style guides can be inspiring
+
+- [tidyverse style guide](https://style.tidyverse.org/)
+- [google-specific changes](https://google.github.io/styleguide/Rguide.html)
+- [Jean Fan's](https://jef.works/R-style-guide/)
+- search for "R style guide"
+
+### What style should you use?
+
+Be inconsistently consistent!
+Balance for yourself:
+
+- How easy is it to write?
+- How easy is it for you to read?
+- How easy is it for others to read?
+- How similar is it to what everyone else is doing (a very good thing)?
+
+But most importantly, use what folks around you are using.
+Be lazy, imitate others.
+
+<!-- exercise -->
+
+- How would you describe your code writing style?
+- How do you name things?
+- How good are your comments?
+- What elements would you like to incorporate?
+
+## Writing modular code
+
 
