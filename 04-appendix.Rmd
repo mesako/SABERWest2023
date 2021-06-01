@@ -14,6 +14,13 @@ Challenge yourself
 - Extra datasets ere
 
 
+## Figures ideas
+
+- An [interactive page](https://ft-interactive.github.io/visual-vocabulary/)
+    showing different types of figures
+- A [R graph gallery](https://www.r-graph-gallery.com/)
+
+
 ## Rmd example of code chunk
 
 ```{r nice-tab-appendix, tidy=FALSE}
