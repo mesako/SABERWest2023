@@ -103,7 +103,7 @@ lets you operate at a higher level, by tweaking parameters in one place
 
 Let's calculate the standard error of a sample of values:
 
-```{r,stderr_fail}
+```{r,stderr_fail,error=T}
 values <- c(4,3,2,2,5,3,6,2,2,4)
 stderr(values)
 ```
