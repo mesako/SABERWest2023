@@ -6,3 +6,4 @@ _book
 _bookdown_files
 rsconnect
 *.md
+*.rds
