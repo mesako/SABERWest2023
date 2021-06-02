@@ -33,6 +33,7 @@ sub-sub-section
 more-challenges
 figures-ideas
 rmd-example-of-code-chunk
+more-example-rmds
 how-to-edit-this-document
 setup
 editwork-on-it
