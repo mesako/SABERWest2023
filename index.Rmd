@@ -14,7 +14,6 @@ biblio-style: apalike
 link-citations: yes
 github-repo: darachm/dll-r
 description: "A living syllabus for the R section of DLL 2021, at Stanford"
-new_session: yes
 ---
 
 # Workshop introduction
