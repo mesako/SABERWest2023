@@ -1,7 +1,8 @@
 ## Reading files
 
 
-```{r,read-file,error=T}
-read.csv("")
+```{r,read-file}
+irisz <- read.csv("data/iris.csv")
+head(irisz)
 ```
 
