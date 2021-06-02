@@ -1,0 +1,12 @@
+# Day 5 - building workflows
+
+We're gonna build workflows
+
+Firstly, let's review the last two days.
+What have we done and how do we do it again?
+
+<!-- exercise -->
+
+Crack open your code - can you use it again?
+Can you adapt it to modify your question, feed in new data,
+and modify the scientifically-important bits easily?

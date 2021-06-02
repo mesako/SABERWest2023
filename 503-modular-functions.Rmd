@@ -1,0 +1,62 @@
+## Writing modular code
+
+What is modularity of code?
+
+Why?
+
+think more clearly than “hardcoding” stuff
+
+change things more easily without forgetting everything
+
+lets you operate at a higher level, by tweaking parameters in one place
+
+<!-- Exercise -->
+
+### Calculating standard error
+
+Let's calculate the standard error of a sample of values:
+
+```{r,stderr_fail,error=T}
+values <- c(4,3,2,2,5,3,6,2,2,4)
+stderr(values)
+```
+
+Er ... what? What is `stderr` doing?
+
+`?stderr`
+
+Write out the maths for the standard error of the mean
+
+calcuate it
+
+```{r,stderr_calc}
+sd(values)/sqrt(length(values)-1)
+```
+
+write a function that does it
+
+what do we save it as?
+
+test it
+
+### More complex modules
+
+More examples/exercise
+
+show a simulation of something…. genetic drift of a virus replicating?
+
+lineage G1312F
+
+exercise - wrap the entire analysis as a function
+
+talk about ease of calling
+
+gotcha about print() the plots
+
+exercise - make a parameter and argument
+
+ease of tweaking this
+
+exercise - break into subfunctions, generate and plot
+
+ease of changing models

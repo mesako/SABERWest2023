@@ -1,0 +1,82 @@
+
+## Writing (re)usable code
+
+<!-- exercise -->
+
+Crack open your code - can you use it again?
+Can you adapt it to modify your question, feed in new data,
+and modify the scientifically-important bits easily?
+
+Let's look at two chunks of code from 
+[a paper](https://github.com/sashaflevy/PPiSeq) (lightly edited).
+The experiment is counting barcoded lineages of yeast cells to estimate
+"PPIs" (protein-protein interactions)[^zppi_note].
+here's an example of one style of writing R script:
+
+[^zppi_note]: Ask Darach if you want details, or 
+[read the paper](doi.org/10.7554/eLife.62365).
+
+```{r,example1,eval=F}
+# filter out bad barcode lineages ( <= 2 time points counts > 0, or maximum of each time point <= 5 or total counts of a lineage < 10)
+bad_index = rep(0, nrow(DBC_known_counts))
+for(i in 1:length(bad_index)){
+        counts = as.numeric(DBC_known_counts[i, 4:8])
+        if (length(which(counts != 0)) < 3 | max(counts) < 5 | sum(counts) < 10){
+                bad_index[i] = 1
+        }
+}
+length(which(bad_index == 1)) # 1447775
+```
+
+<!-- exercise -->
+
+- What is going on here?
+- How do you feed in new data?
+- How do you run this multiple times?
+- How do you change the logic?
+
+Here's another example from the same author:
+
+```{r,example2,eval=F}
+H202_Output <- PPI_calling_sigmoid(
+    PPI_multiple=dataFrameReader_T("/Volumes/zmliu_02/PPiseq_03/H2O2/counts/PPI_multiple_p.values.csv"),
+    specific_PPV=c(seq(0.5,0.58,by=0.02),seq(0.6,0.8,by=0.01),seq(0.82,0.9,by=0.02)),
+    Fitness=fitness(0,1,0.01),
+    p_value=seq(-4,0,0.1),
+    Neg_number_PPI=6e4,
+    Neg_ref_number=50, 
+    p_threshold=-4
+    p_loc=6, 
+)
+```
+
+<!-- exercise -->
+
+Same questions.
+
+### Style guides can be inspiring
+
+- [tidyverse style guide](https://style.tidyverse.org/)
+- [google-specific changes](https://google.github.io/styleguide/Rguide.html)
+- [Jean Fan's](https://jef.works/R-style-guide/)
+- search for "R style guide"
+
+### What style should you use?
+
+Be inconsistently consistent!
+Balance for yourself:
+
+- How easy is it to write?
+- How easy is it for you to read?
+- How easy is it for others to read?
+- How similar is it to what everyone else is doing (a very good thing)?
+
+But most importantly, use what folks around you are using.
+Be lazy, imitate others.
+
+<!-- exercise -->
+
+- How would you describe your code writing style?
+- How do you name things?
+- How good are your comments?
+- What elements would you like to incorporate?

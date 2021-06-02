@@ -1,0 +1,17 @@
+## Reproducibility and sharing
+
+what are these concepts
+
+why the hell we want others to use our code?
+Well I'll tell you why - the general intellect
+
+think about this
+
+think about the next person coming along, or yourself in 3 months
+
+links on syllabus for more info
+
+all sorts of automated stuff you can do
+
+
+

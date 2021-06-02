@@ -1,0 +1,3 @@
+# Day 4 - tidyverse and plots and such
+
+Today we're going ot look at tidyverse and reading files and plots and such

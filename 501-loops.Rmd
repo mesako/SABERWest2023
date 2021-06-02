@@ -1,0 +1,26 @@
+## Using code many times - loops
+
+Doing lots of stuff - loops (Darach)
+
+show list.files() - challenge is to analyze a bunch of ….. ? protein seqs?
+
+could evaluate the claim that four basic amino acids in a row is unusual for SARS2 (ever seen a NLS?)
+
+Loops
+How to think about a for loop
+
+Specifically in context of processing multiple files, so list.files() ?
+
+Students know that other control structures exist (do, while), and that they're controlled by boolean logic
+
+Apply is a thing
+
+Scholars will be familiar with that folks have strong opinions about using apply instead of for loops
+
+Scholars will understand that getting the code done is the most important thing, but that good use of apply can be something to develop later to make code run faster, cleaner
+
+Scholars will be able to read what an example of apply or s/lapply is doing, so that they can read examples online
+
+Scholars will have heard the term "lambda function" ?
+
+Scholars will understand that functions can be one-off (ie lambda, function(x){} ), and that's okay
