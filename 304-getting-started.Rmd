@@ -1,0 +1,341 @@
+## Data exploration pipelines
+
+**Learning Goals:**
+
+* Apply internet searches, help functions, and documentation to learn to use the appropriate functions. 
+* Assign and manipulate variables within the current environment/session in R.
+* Create, modify, and access into a vector (an ordered grouping of elements).
+* Create, modify, and access into a dataframe (an ordered two-dimensional grouping of elements with rows and columns).
+
+------
+
+### Getting Help in R
+
+If you run into any error while using R, it is a great idea to look up your error message in Google and read through forum posts on StackOverflow. You may find it also helps to know more about your session info such as the version of R you are using, and what packages you have currently loaded.
+
+```{r, eval=FALSE}
+sessionInfo()
+```
+
+You can look up what functions do using either a question mark `?` or the `help` function.
+
+```{r, eval=FALSE}
+?rm
+help(rm)
+```
+
+------
+
+### Variables
+
+You can assign variables using the `=` or `<-` operators. I will use the `<-` operator exclusively going forward.
+
+```{r}
+save.num <- 7
+save.num
+```
+
+Variables are mutable: you can overwrite the saved value of a variable with another value.
+
+```{r}
+save.num = 10
+save.num
+```
+
+Variables can be saved as other values such as character strings or boolean values (True or False).
+
+```{r}
+save.string <- "hello"
+save.bool <- TRUE
+```
+
+You can check what variables you have assigned in your current working environment.
+
+```{r}
+ls()
+```
+
+You can also remove saved variables.
+
+```{r}
+rm(save.num)
+ls()
+```
+
+------
+
+### Working with Vectors
+
+You can create vectors (an ordered list of elements) by combining elements with the `c` function.
+
+```{r}
+first.vector <- c(38, 32, 45, 23, 6, 56,
+                  234, 1239, 123, 123, 342, 1234)
+second.vector <- c(1, 34, 10)
+first.vector
+second.vector
+```
+
+```{r}
+third.vector <- c(first.vector, second.vector)
+third.vector
+fruits <- c("apples", "oranges", "bananas")
+```
+
+R comes with pre-built variables that you can use, such as the vector of all alphabetic characters.
+
+```{r}
+letters
+LETTERS
+```
+
+There are several helpful functions and an operator that can speed up your ability to generate vectors of numeric values. Explore what the `:` operator does below and generate a few numeric vectors of your own.
+
+```{r}
+1:4
+```
+
+```{r,eval=FALSE}
+?seq
+?rep
+```
+
+```{r}
+z <- seq(-pi, pi, length = 20)
+z
+```
+
+```{r}
+x <- c(1, 3, 2)
+x
+```
+
+```{r}
+y <- c(1, 4, 3)
+length(x)
+length(y)
+```
+
+What does the `length` function do? Test it on a few more vectors that you have created.
+
+```{r}
+x + y
+```
+
+You can perform mathematical operations on an entire numeric vector all at once.
+
+```{r}
+first.vector * 2
+```
+
+```{r,eval=FALSE}
+?sin
+```
+
+```{r}
+sin(first.vector)
+```
+
+------
+
+### Indexing and Subsetting
+
+Indexing is a way to access into a vector (or matrix/data frame) and pull out certain elements. There are multiple ways to index into a vector, one of the easiest ways is to pull out an element based on its order/position in the grouping (its index). We use `[]` immediately after the name of the grouping (in this case a vector) to access into it.
+
+```{r}
+second.vector[2] # pull out second element
+fruits[3] # pull out third fruit
+```
+
+```{r}
+fruits[2:3] # pull out 2nd and 3rd fruit
+fruits[c(1, 3)] # pull out 1st and 3rd fruit
+```
+
+You can remove elements of a vector by using the same syntax of indexing, but instead put a negative sign in front of the index number.
+
+```{r}
+fruits[-1]
+```
+
+------
+
+### Using Logicals
+
+You can also access elements in a vector that meet certain criteria (using conditional logic).
+
+```{r}
+second.vector < 20
+second.vector[second.vector < 20]
+```
+
+You can use the standard comparison operators like `>` or `<` to check greater than or less than. You can also use `==` to check for equality or `!=` to check that values are not equal.
+
+```{r}
+save.num <- 7
+save.num + 10
+save.num != 8
+save.num == 8
+```
+
+Conditional logic is where a statement evaluates to True or False. You can pair these conditional statements with an `if`/`else` statement that breaks up the code and only executes parts of the code where conditions are met.
+
+```{r}
+test.num <- 30
+
+if (test.num < 10) {
+  print("small")
+} else {
+  print("big")
+}
+```
+
+------
+
+### Working with Dataframes
+
+The most common data format we will deal with is a dataframe format. This means that data is stored in a 2D array with the rows referring to individual measurements (single patients, samples, cells, etc.) and the columns referring to parameters (genes, proteins, etc.) measured in each individual.
+
+```{r}
+my.data <- matrix(data = c(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                  nrow = 3, ncol = 3)
+my.data
+```
+
+We now convert this matrix into a dataframe type.
+
+```{r}
+my.data <- as.data.frame(my.data)
+```
+
+You can index into a dataframe and pull out one or more cells within the dataframe.
+
+```{r}
+my.data[1, 3]
+```
+
+Yo can pull out multiple elements at a time, specifying which row and column they reside in.
+
+```{r}
+my.data[c(1, 2), c(2, 3)]
+```
+
+```{r}
+my.data[1:2, 2:3]
+```
+
+If you provide the row and not the column, or vice versa, by default R will pull out all of the available columns and rows respectively.
+
+```{r}
+my.data[1:2, ] # pulls out the first two rows and all columns
+my.data[, 1:2] # pulls out the first two columns and all rows
+```
+
+It's possible to also remove elements in a dataframe using the negative sign.
+
+```{r}
+my.data[-c(1, 3), ] # removes the first and third rows
+```
+
+There are a few different functions you can use to investigate a dataframe, the size of it, and other aspects.
+
+```{r}
+dim(my.data)
+```
+
+We work with a dataframe instead of just a matrix because dataframes can tolerate different datatypes in the same table. The `gapminder` dataset is a pre-made dataset that we can play around with.
+
+```{r,message=FALSE}
+library(gapminder)
+```
+
+```{r}
+head(gapminder)
+```
+
+We can also generate our own dataframes from vectors that we put together into a table.
+
+```{r}
+cats <- data.frame(coat = c("calico", "black", "tabby"),
+                   weight = c(2.1, 5.0, 3.2),
+                   likes_string = c(1, 0, 1))
+cats
+```
+
+You can check what kind of data you are working with using the `class` and/or `typeof` functions.
+
+```{r}
+class(my.data) # tells you that A is a dataframe
+```
+
+You can use the following functions to investigate aspects of a given dataset.
+
+```{r}
+dim(gapminder)
+colnames(gapminder)
+summary(gapminder)
+```
+
+We can try to look at the beginning of a specific column in this dataset. Dataframes that have names for their columns allow you to index into the columns specifically by name using the `$` operator as shown below.
+
+```{r}
+head(gapminder$continent)
+```
+
+You can add new rows and columns using the `rbind` and `cbind` functions.
+
+```{r}
+cats <- cbind(cats, length = c(2, 3, 1))
+cats
+```
+
+You can also remove rows and columns using the trick with a negative index.
+
+```{r}
+cats[, -1]
+cats[-1, ]
+```
+
+You can merge two dataframes together using the `rbind` function assuming that their columns match up correctly.
+
+```{r}
+newcats <- data.frame(coat = c("white", "gold", "silver"),
+                      weight = c(3.1, 5.3, 1.9), 
+                      likes_string = c(1, 0, 0),
+                      length = c(4, 2, 3))
+newcats
+```
+
+```{r}
+cats <- rbind(cats, newcats)
+cats
+```
+
+------
+
+### Type Coercion and Factors
+
+```{r}
+cats <- rbind(cats, c(coat = "spotted", weight = 2.4,
+              likes_string = 0, length = 2.5))
+cats
+```
+
+```{r}
+cats[, 1]
+```
+
+What has happened with this new addition? If you tried to add a new cat to the dataframe that had a color that wasn't already represented in the data, chances are you had a warning and that color was turned to `NA`.
+
+```{r}
+cats[, 1]
+```
+
+You may have seen certain parts of dataframes are factors with levels. Factors are a special data type that deals with categorical data. They can be handy for certain manipulations or visualizations, but once a factor is created, it doesn't let you easily add new categories that were not in the original set. The easiest way around this is to treat the column as characters instead of as factors.
+
+```{r}
+cats <- rbind(cats, c(coat = "calico", weight = 3.2,
+                      likes_string = 1, length = 3))
+
+as.character(cats[, 1])
+```

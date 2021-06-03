@@ -8,6 +8,14 @@ expectations
 day-3---intoduction-to-r
 rstudio-and-basics
 data-exploration-pipelines
+data-exploration-pipelines-1
+getting-help-in-r
+variables
+working-with-vectors
+indexing-and-subsetting
+using-logicals
+working-with-dataframes
+type-coercion-and-factors
 day-4---tidyverse-and-plots-and-such
 reading-files
 making-plots-with-ggplot2
