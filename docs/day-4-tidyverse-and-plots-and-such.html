@@ -151,7 +151,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html"><i class="fa fa-check"></i><b>3</b> Day 4 - tidyverse and plots and such</a><ul>
 <li class="chapter" data-level="3.1" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#reading-files"><i class="fa fa-check"></i><b>3.1</b> Reading files</a></li>
-<li class="chapter" data-level="3.2" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#making-plots-with-ggplot2"><i class="fa fa-check"></i><b>3.2</b> Making plots with ggplot2</a></li>
+<li class="chapter" data-level="3.2" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#making-plots-with-ggplot2"><i class="fa fa-check"></i><b>3.2</b> Making plots with ggplot2</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.2.1</b> Getting started with a ggplot</a></li>
+<li class="chapter" data-level="3.2.2" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-numerical-vs.categorical-data"><i class="fa fa-check"></i><b>3.2.2</b> Plotting Numerical vs. Categorical Data</a></li>
+<li class="chapter" data-level="3.2.3" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.2.3</b> Plotting Error Bars</a></li>
+<li class="chapter" data-level="3.2.4" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-trends-in-big-data"><i class="fa fa-check"></i><b>3.2.4</b> Plotting Trends in Big Data</a></li>
+<li class="chapter" data-level="3.2.5" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#saving-your-figures"><i class="fa fa-check"></i><b>3.2.5</b> Saving Your Figures</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows</a><ul>
 <li class="chapter" data-level="4.1" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#using-code-many-times---loops"><i class="fa fa-check"></i><b>4.1</b> Using code many times - loops</a></li>
@@ -226,7 +232,324 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="making-plots-with-ggplot2" class="section level2">
 <h2><span class="header-section-number">3.2</span> Making plots with ggplot2</h2>
+<p><strong>Learning Goals:</strong></p>
+<ul>
+<li>List the roles of data, aesthetics, and geoms in ggplot functions.</li>
+<li>Choose the correct aesthetics and alter the geom parameters for a scatter plot, histogram, or box plot.</li>
+<li>Layer multiple geometries in a single plot.</li>
+<li>Customize plot scales, titles, subtitles, themes, fonts, layout, and orientation.</li>
+<li>Apply a facet to a plot.</li>
+<li>Save a ggplot to a file.</li>
+</ul>
+<div id="getting-started-with-a-ggplot" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Getting started with a ggplot</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<p>We will primarily be working in ggplot2 as it has the greatest degree of customization for visualization and offers many additional features over the basic plotting in R.</p>
+<p>Most ggplot calls to create a figure take the following form (you can read more using <code>help(ggplot)</code>):</p>
+<p><code>ggplot(data = &lt;DATA&gt;, mapping = aes(&lt;MAPPINGS&gt;)) + &lt;GEOM_FUNCTION&gt;()</code></p>
+<p>We will practice using our mammalian sleep dataset. You can look up more info about this dataset using the <code>help</code> function and the dataset name, <code>msleep</code>.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">head</span>(msleep)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 11
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+## 1 Cheetah Acin… carni Carn… lc                  12.1      NA        NA      11.9
+## 2 Owl mo… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
+## 3 Mounta… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
+## 4 Greate… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
+## 5 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+## 6 Three-… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
+## # … with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
+<p>You will first use the <code>ggplot()</code> function and bind the plot to a specific data frame using the data argument.</p>
+<p><code>ggplot(data = msleep)</code></p>
+<p>You will next need to define a mapping (using the aesthetic or <code>aes</code> function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc.</p>
+<p><code>ggplot(data = msleep, aes(x = brainwt, y = sleep_rem))</code></p>
+<p>You can then add ‘geoms’ – graphical representations of the data in the plot (points, lines, bars). ggplot2 offers many different geoms. We will use some common ones today including:</p>
+<ul>
+<li><code>geom_point()</code> for scatter plots, dot plots, etc.</li>
+<li><code>geom_boxplot()</code> for, well, boxplots!</li>
+<li><code>geom_line()</code> for trend lines, time series, etc.</li>
+</ul>
+<p>To add a geom to the plot use the <code>+</code> operator. Because we have two continuous variables, let’s use <code>geom_point()</code> first:</p>
+<p><code>ggplot(data = msleep, aes(x = brainwt, y = sleep_rem)) + geom_point()</code></p>
+<p>To save your work-in-progress, you can assign the plot to a variable.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt, <span class="dt">y =</span> sleep_rem))</a></code></pre></div>
+<p>We can now draw the plot as a scatterplot with points to represent each state.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">my_plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
+<p><img src="403-ggplot2_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>???</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">msleep2 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">brainwt_log =</span> <span class="kw">log</span>(brainwt))</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
+<p><img src="403-ggplot2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>???</p>
+<p>We can modify the appearance of the plot by changing aspects of the points we plot such as transparency (“alpha”) and color.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
+<p><img src="403-ggplot2_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>It is also possible to scale the color of the points by some variable present in the data.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem, <span class="dt">color =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
+<p><img src="403-ggplot2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>When generating visualizations, it is important to annotate the figure with meaningful labels on the axes to make them accessible for the viewer.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem, <span class="dt">color =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Brain Weight (log)&quot;</span>, </a>
+<a class="sourceLine" id="cb18-4" data-line-number="4">       <span class="dt">y =</span> <span class="st">&quot;Duration of REM Sleep&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
+<p><img src="403-ggplot2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<hr />
+</div>
+<div id="plotting-numerical-vs.categorical-data" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Plotting Numerical vs. Categorical Data</h3>
+<p>We can create histograms in ggplot2 that are more aesthetically pleasing than the default <code>hist</code> function.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">ggplot</span>(msleep, <span class="kw">aes</span>(<span class="dt">x =</span> sleep_total)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>)</a></code></pre></div>
+<p><img src="403-ggplot2_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>By adding a different parameter to <code>fill</code> in the <code>aes</code> we define throgh the <code>ggplot</code> function, we can separate out histograms according to different groupings such as here where we look at how total sleep distribution is distributed according to feeding behavior.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">ggplot</span>(msleep, <span class="kw">aes</span>(<span class="dt">x =</span> sleep_total, <span class="dt">fill =</span> vore)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>)</a></code></pre></div>
+<p><img src="403-ggplot2_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>We can look at how many individuals in the dataset fall into each category, such as feeding behavior.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb22-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>()</a></code></pre></div>
+<p><img src="403-ggplot2_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>We can look at how many total sleep distribution is distributed within each category of feeding behavior using separate box plots.</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> sleep_total)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb23-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="403-ggplot2_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>We can even drill down further and separate out another category, so that we can look at each feeding behavior and each conservation status (e.g. how the total sleep duration of domesticated herbivores compares to least concern carnivores).</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">ggplot</span>(msleep, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> sleep_total, <span class="dt">color =</span> conservation)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb24-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_boxplot</span>() </a></code></pre></div>
+<p><img src="403-ggplot2_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<hr />
+</div>
+<div id="plotting-error-bars" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> Plotting Error Bars</h3>
+<p>Discrete Variables
+ggplot(msleep2, aes(x = vore, y = awake)) +
+geom_bar(stat = “identity”)</p>
+<p>ggplot(msleep2, aes(x = vore, y = awake)) +
+geom_bar(stat = “summary”, fun = “median”)</p>
+<p>Error Bars
+ggplot(df, aes(x,y)) + geom_bar(blahblah) + geom_errorbar()
+you could do this, but then you need to have pre-calculated
+the mean value for each group and the SE in your data</p>
+<p>feeding.data &lt;- msleep2 %&gt;% group_by(vore) %&gt;%
+summarize(mean_se(awake))
+feeding.data</p>
+<p>What does mean_se do?
+?mean_se
+y is the mean
+ymin is mean - one SE
+ymax is mean + one SE</p>
+<p>ggplot(feeding.data, aes(x = vore, y = y)) +
+geom_bar(stat = “identity”)</p>
+<p>ggplot(feeding.data, aes(x = vore, y = y)) +
+geom_bar(stat = “identity”) +
+geom_errorbar(aes(ymin = ymin, ymax = ymax),
+width = 0.2)</p>
+<hr />
+</div>
+<div id="plotting-trends-in-big-data" class="section level3">
+<h3><span class="header-section-number">3.2.4</span> Plotting Trends in Big Data</h3>
+<p>Lots of these different figures summarize or aggregate the data. We may want to display the data with the individual points, but still show the overall trend across the data.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_bin2d</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density_2d</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<pre><code>## Warning: Removed 35 rows containing non-finite values (stat_bin2d).</code></pre>
+<pre><code>## Warning: Removed 35 rows containing non-finite values (stat_density2d).</code></pre>
+<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
+<p><img src="403-ggplot2_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>We can add a trendline with <code>geom_smooth</code> that you can check using <code>help(geom_smooth)</code>.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>()</a></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<pre><code>## Warning: Removed 35 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
+<p><img src="403-ggplot2_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">msleep3 &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">bodywt_log =</span> <span class="kw">log</span>(bodywt))</a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(msleep3, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb33-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()</a>
+<a class="sourceLine" id="cb33-5" data-line-number="5">my.plot</a></code></pre></div>
+<pre><code>## Warning: Removed 27 rows containing missing values (geom_point).</code></pre>
+<p><img src="403-ggplot2_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
+<p>We can also do this with trendlines that summarize only certain subsets of the data, such as ?</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> vore)) </a></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<pre><code>## Warning: Removed 35 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at -8.323</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 1.5975</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : There are other near singularities as well. 31.667</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : span too small. fewer
+## data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used at
+## -8.323</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
+## 1.5975</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : reciprocal condition
+## number 0</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : There are other near
+## singularities as well. 31.667</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at -8.0372</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 2.228</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : There are other near singularities as well. 3.8678</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : span too small. fewer
+## data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used at
+## -8.0372</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
+## 2.228</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : reciprocal condition
+## number 0</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : There are other near
+## singularities as well. 3.8678</code></pre>
+<pre><code>## Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning -
+## Inf
 
+## Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning -
+## Inf</code></pre>
+<p><img src="403-ggplot2_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>The above plot reflects the trends, but makes it hard to see the data that is contributing to each trend line. These differences can be most easily seen using <code>facet_wrap</code> or facetting that splits the figure into separate panel where the data has been filtered by the category (i.e. ?).</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb59-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> vore)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb59-4" data-line-number="4"><span class="st">    </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>vore)</a></code></pre></div>
+<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
+<pre><code>## Warning: Removed 35 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at -8.323</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 1.5975</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : There are other near singularities as well. 31.667</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : span too small. fewer
+## data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used at
+## -8.323</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
+## 1.5975</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : reciprocal condition
+## number 0</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : There are other near
+## singularities as well. 31.667</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : pseudoinverse used at -8.0372</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : neighborhood radius 2.228</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : reciprocal condition number 0</code></pre>
+<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
+## parametric, : There are other near singularities as well. 3.8678</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : span too small. fewer
+## data values than degrees of freedom.</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used at
+## -8.0372</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
+## 2.228</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : reciprocal condition
+## number 0</code></pre>
+<pre><code>## Warning in predLoess(object$y, object$x, newx = if
+## (is.null(newdata)) object$x else if (is.data.frame(newdata))
+## as.matrix(model.frame(delete.response(terms(object)), : There are other near
+## singularities as well. 3.8678</code></pre>
+<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
+<pre><code>## Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning -
+## Inf
+
+## Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning -
+## Inf</code></pre>
+<p><img src="403-ggplot2_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<hr />
+</div>
+<div id="saving-your-figures" class="section level3">
+<h3><span class="header-section-number">3.2.5</span> Saving Your Figures</h3>
+<p>If you want to save your images as a local individual file on your computer, there are two easy ways to do that.</p>
+<p>The first method uses <code>ggsave</code> to save the most recent ggplot figure you generated.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb84-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
+<a class="sourceLine" id="cb84-3" data-line-number="3"><span class="kw">ggsave</span>(<span class="st">&quot;plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
+<p>This function will save wherever your directory is currently. Check with <code>getwd()</code> and change with <code>setwd(folder name)</code>. You can also provide a precise file path in the new file name.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="kw">ggsave</span>(<span class="st">&quot;~/Downloads/plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
+<p>Here is an alternative method for saving your figures:</p>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="kw">pdf</span>(<span class="st">&quot;plot.pdf&quot;</span>) <span class="co"># creates the file</span></a>
+<a class="sourceLine" id="cb86-2" data-line-number="2"><span class="co"># png() also works if you want a different file format</span></a>
+<a class="sourceLine" id="cb86-3" data-line-number="3"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb86-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<pre><code>## Warning: Removed 35 rows containing non-finite values (stat_smooth).</code></pre>
+<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb90-1" data-line-number="1"><span class="kw">dev.off</span>() <span class="co"># finishes editing the file</span></a></code></pre></div>
+<pre><code>## quartz_off_screen 
+##                 2</code></pre>
+<p>Any changes to the figure that are contained between the initial creation of the figure (i.e. the <code>pdf</code> command) and the <code>dev.off</code> command will be included in the final saved image. However, the figure is being printed directly to the file it is writing and won’t appear elsewhere.</p>
+
+</div>
 </div>
 </div>
 <p style="margin-top:10em;text-align:center;font-size:small;">

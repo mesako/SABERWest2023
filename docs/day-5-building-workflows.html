@@ -151,7 +151,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html"><i class="fa fa-check"></i><b>3</b> Day 4 - tidyverse and plots and such</a><ul>
 <li class="chapter" data-level="3.1" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#reading-files"><i class="fa fa-check"></i><b>3.1</b> Reading files</a></li>
-<li class="chapter" data-level="3.2" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#making-plots-with-ggplot2"><i class="fa fa-check"></i><b>3.2</b> Making plots with ggplot2</a></li>
+<li class="chapter" data-level="3.2" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#making-plots-with-ggplot2"><i class="fa fa-check"></i><b>3.2</b> Making plots with ggplot2</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.2.1</b> Getting started with a ggplot</a></li>
+<li class="chapter" data-level="3.2.2" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-numerical-vs.categorical-data"><i class="fa fa-check"></i><b>3.2.2</b> Plotting Numerical vs. Categorical Data</a></li>
+<li class="chapter" data-level="3.2.3" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.2.3</b> Plotting Error Bars</a></li>
+<li class="chapter" data-level="3.2.4" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-trends-in-big-data"><i class="fa fa-check"></i><b>3.2.4</b> Plotting Trends in Big Data</a></li>
+<li class="chapter" data-level="3.2.5" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#saving-your-figures"><i class="fa fa-check"></i><b>3.2.5</b> Saving Your Figures</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows</a><ul>
 <li class="chapter" data-level="4.1" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#using-code-many-times---loops"><i class="fa fa-check"></i><b>4.1</b> Using code many times - loops</a></li>
@@ -245,15 +251,15 @@ and modify the scientifically-important bits easily?</p>
 The experiment is counting barcoded lineages of yeast cells to estimate
 “PPIs” (protein-protein interactions)<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>.
 here’s an example of one style of writing R script:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># filter out bad barcode lineages ( &lt;= 2 time points counts &gt; 0, or maximum of each time point &lt;= 5 or total counts of a lineage &lt; 10)</span></a>
-<a class="sourceLine" id="cb6-2" data-line-number="2">bad_index =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">nrow</span>(DBC_known_counts))</a>
-<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(bad_index)){</a>
-<a class="sourceLine" id="cb6-4" data-line-number="4">        counts =<span class="st"> </span><span class="kw">as.numeric</span>(DBC_known_counts[i, <span class="dv">4</span><span class="op">:</span><span class="dv">8</span>])</a>
-<a class="sourceLine" id="cb6-5" data-line-number="5">        <span class="cf">if</span> (<span class="kw">length</span>(<span class="kw">which</span>(counts <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)) <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span><span class="kw">max</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">|</span><span class="st"> </span><span class="kw">sum</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>){</a>
-<a class="sourceLine" id="cb6-6" data-line-number="6">                bad_index[i] =<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb6-7" data-line-number="7">        }</a>
-<a class="sourceLine" id="cb6-8" data-line-number="8">}</a>
-<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="kw">length</span>(<span class="kw">which</span>(bad_index <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)) <span class="co"># 1447775</span></a></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb92-1" data-line-number="1"><span class="co"># filter out bad barcode lineages ( &lt;= 2 time points counts &gt; 0, or maximum of each time point &lt;= 5 or total counts of a lineage &lt; 10)</span></a>
+<a class="sourceLine" id="cb92-2" data-line-number="2">bad_index =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">nrow</span>(DBC_known_counts))</a>
+<a class="sourceLine" id="cb92-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(bad_index)){</a>
+<a class="sourceLine" id="cb92-4" data-line-number="4">        counts =<span class="st"> </span><span class="kw">as.numeric</span>(DBC_known_counts[i, <span class="dv">4</span><span class="op">:</span><span class="dv">8</span>])</a>
+<a class="sourceLine" id="cb92-5" data-line-number="5">        <span class="cf">if</span> (<span class="kw">length</span>(<span class="kw">which</span>(counts <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)) <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span><span class="kw">max</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">|</span><span class="st"> </span><span class="kw">sum</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb92-6" data-line-number="6">                bad_index[i] =<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb92-7" data-line-number="7">        }</a>
+<a class="sourceLine" id="cb92-8" data-line-number="8">}</a>
+<a class="sourceLine" id="cb92-9" data-line-number="9"><span class="kw">length</span>(<span class="kw">which</span>(bad_index <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)) <span class="co"># 1447775</span></a></code></pre></div>
 <!-- exercise -->
 <ul>
 <li>What is going on here?</li>
@@ -262,16 +268,16 @@ here’s an example of one style of writing R script:</p>
 <li>How do you change the logic?</li>
 </ul>
 <p>Here’s another example from the same author:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">H202_Output &lt;-<span class="st"> </span><span class="kw">PPI_calling_sigmoid</span>(</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2">    <span class="dt">PPI_multiple=</span><span class="kw">dataFrameReader_T</span>(<span class="st">&quot;/Volumes/zmliu_02/PPiseq_03/H2O2/counts/PPI_multiple_p.values.csv&quot;</span>),</a>
-<a class="sourceLine" id="cb7-3" data-line-number="3">    <span class="dt">specific_PPV=</span><span class="kw">c</span>(<span class="kw">seq</span>(<span class="fl">0.5</span>,<span class="fl">0.58</span>,<span class="dt">by=</span><span class="fl">0.02</span>),<span class="kw">seq</span>(<span class="fl">0.6</span>,<span class="fl">0.8</span>,<span class="dt">by=</span><span class="fl">0.01</span>),<span class="kw">seq</span>(<span class="fl">0.82</span>,<span class="fl">0.9</span>,<span class="dt">by=</span><span class="fl">0.02</span>)),</a>
-<a class="sourceLine" id="cb7-4" data-line-number="4">    <span class="dt">Fitness=</span><span class="kw">fitness</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>),</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5">    <span class="dt">p_value=</span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="fl">0.1</span>),</a>
-<a class="sourceLine" id="cb7-6" data-line-number="6">    <span class="dt">Neg_number_PPI=</span><span class="fl">6e4</span>,</a>
-<a class="sourceLine" id="cb7-7" data-line-number="7">    <span class="dt">Neg_ref_number=</span><span class="dv">50</span>, </a>
-<a class="sourceLine" id="cb7-8" data-line-number="8">    <span class="dt">p_threshold=</span><span class="op">-</span><span class="dv">4</span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9">    <span class="dt">p_loc=</span><span class="dv">6</span>, </a>
-<a class="sourceLine" id="cb7-10" data-line-number="10">)</a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1">H202_Output &lt;-<span class="st"> </span><span class="kw">PPI_calling_sigmoid</span>(</a>
+<a class="sourceLine" id="cb93-2" data-line-number="2">    <span class="dt">PPI_multiple=</span><span class="kw">dataFrameReader_T</span>(<span class="st">&quot;/Volumes/zmliu_02/PPiseq_03/H2O2/counts/PPI_multiple_p.values.csv&quot;</span>),</a>
+<a class="sourceLine" id="cb93-3" data-line-number="3">    <span class="dt">specific_PPV=</span><span class="kw">c</span>(<span class="kw">seq</span>(<span class="fl">0.5</span>,<span class="fl">0.58</span>,<span class="dt">by=</span><span class="fl">0.02</span>),<span class="kw">seq</span>(<span class="fl">0.6</span>,<span class="fl">0.8</span>,<span class="dt">by=</span><span class="fl">0.01</span>),<span class="kw">seq</span>(<span class="fl">0.82</span>,<span class="fl">0.9</span>,<span class="dt">by=</span><span class="fl">0.02</span>)),</a>
+<a class="sourceLine" id="cb93-4" data-line-number="4">    <span class="dt">Fitness=</span><span class="kw">fitness</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>),</a>
+<a class="sourceLine" id="cb93-5" data-line-number="5">    <span class="dt">p_value=</span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="fl">0.1</span>),</a>
+<a class="sourceLine" id="cb93-6" data-line-number="6">    <span class="dt">Neg_number_PPI=</span><span class="fl">6e4</span>,</a>
+<a class="sourceLine" id="cb93-7" data-line-number="7">    <span class="dt">Neg_ref_number=</span><span class="dv">50</span>, </a>
+<a class="sourceLine" id="cb93-8" data-line-number="8">    <span class="dt">p_threshold=</span><span class="op">-</span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb93-9" data-line-number="9">    <span class="dt">p_loc=</span><span class="dv">6</span>, </a>
+<a class="sourceLine" id="cb93-10" data-line-number="10">)</a></code></pre></div>
 <!-- exercise -->
 <p>Same questions.</p>
 <div id="style-guides-can-be-inspiring" class="section level3">
@@ -316,14 +322,14 @@ Be lazy, imitate others.</p>
 <div id="calculating-standard-error" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> Calculating standard error</h3>
 <p>Let’s calculate the standard error of a sample of values:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">values &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">stderr</span>(values)</a></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1">values &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb94-2" data-line-number="2"><span class="kw">stderr</span>(values)</a></code></pre></div>
 <pre><code>## Error in stderr(values): unused argument (values)</code></pre>
 <p>Er … what? What is <code>stderr</code> doing?</p>
 <p><code>?stderr</code></p>
 <p>Write out the maths for the standard error of the mean</p>
 <p>calcuate it</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">sd</span>(values)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(values)<span class="op">-</span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1"><span class="kw">sd</span>(values)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(values)<span class="op">-</span><span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## [1] 0.4727122</code></pre>
 <p>write a function that does it</p>
 <p>what do we save it as?</p>
@@ -352,7 +358,7 @@ Be lazy, imitate others.</p>
 <div id="first-stop---cran" class="section level3">
 <h3><span class="header-section-number">4.4.1</span> first stop - CRAN</h3>
 <p><a href="">CRAN</a></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;stringdist&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;stringdist&quot;</span>)</a></code></pre></div>
 <p>exercise - get the stringdist library, use it</p>
 <p>exercise - get a new viz layer, use it</p>
 </div>
@@ -364,7 +370,7 @@ Be lazy, imitate others.</p>
 </div>
 <div id="next-stop---github" class="section level3">
 <h3><span class="header-section-number">4.4.3</span> next stop - github</h3>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;devtools&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;devtools&quot;</span>)</a></code></pre></div>
 <p>or <code>remotes</code>?</p>
 <p>exercise - pull a package off github… ? maybe some sort of viz again?</p>
 <p>Exercise - install a package from github and learn how to use it</p>
@@ -388,8 +394,8 @@ Be lazy, imitate others.</p>
 <div id="finding-more-help-and-documentation" class="section level2">
 <h2><span class="header-section-number">4.5</span> Finding more help and documentation</h2>
 <p>Need a problem</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">?geom_line</a></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">?stringdist</a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1">?geom_line</a></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" data-line-number="1">?stringdist</a></code></pre></div>
 <p>Objective X.X: Scholars will know how to get official docs ( ? ) and how to skim/read these</p>
 <p>Objective X.X: Scholars will see how easy it is to use a search engine to try and find other answers</p>
 <p>Objective X.X: Scholars will understand the intention of the Slack being a learning community, or something (set expectations about this)</p>
@@ -419,8 +425,8 @@ Well I’ll tell you why - the general intellect</p>
 <div id="finding-more-help-and-documentation-1" class="section level2">
 <h2><span class="header-section-number">4.8</span> Finding more help and documentation</h2>
 <p>Need a problem</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">?geom_line</a></code></pre></div>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" data-line-number="1">?stringdist</a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">?geom_line</a></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" data-line-number="1">?stringdist</a></code></pre></div>
 <p>Objective X.X: Scholars will know how to get official docs ( ? ) and how to skim/read these</p>
 <p>Objective X.X: Scholars will see how easy it is to use a search engine to try and find other answers</p>
 <p>Objective X.X: Scholars will understand the intention of the Slack being a learning community, or something (set expectations about this)</p>

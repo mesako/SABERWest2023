@@ -11,6 +11,11 @@ data-exploration-pipelines
 day-4---tidyverse-and-plots-and-such
 reading-files
 making-plots-with-ggplot2
+getting-started-with-a-ggplot
+plotting-numerical-vs.categorical-data
+plotting-error-bars
+plotting-trends-in-big-data
+saving-your-figures
 day-5---building-workflows
 using-code-many-times---loops
 writing-reusable-code
