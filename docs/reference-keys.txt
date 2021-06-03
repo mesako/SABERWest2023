@@ -8,7 +8,7 @@ expectations
 day-3---intoduction-to-r
 rstudio-and-basics
 data-exploration-pipelines
-data-exploration-pipelines-1
+getting-started-in-r
 getting-help-in-r
 variables
 working-with-vectors
