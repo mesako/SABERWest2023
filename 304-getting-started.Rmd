@@ -344,6 +344,13 @@ You may have seen certain parts of dataframes are factors with levels. Factors a
 ```{r}
 cats <- rbind(cats, c(coat = "calico", weight = 3.2,
                       likes_string = 1, length = 3))
+cats$coat
+```
 
-as.character(cats$coat)
+
+```{r}
+cats$coat <- as.character(cats$coat)
+cats <- rbind(cats, c(coat = "brown", weight = 4.6,
+                      likes_string = 0, length = 2.5))
+cats$coat
 ```

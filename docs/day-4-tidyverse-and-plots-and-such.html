@@ -228,8 +228,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="reading-files" class="section level2">
 <h2><span class="header-section-number">3.1</span> Reading files</h2>
-<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb119-2" data-line-number="2"><span class="kw">head</span>(irisz)</a></code></pre></div>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb121-2" data-line-number="2"><span class="kw">head</span>(irisz)</a></code></pre></div>
 <pre><code>##   X Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1 1          5.1         3.5          1.4         0.2  setosa
 ## 2 2          4.9         3.0          1.4         0.2  setosa
@@ -252,13 +252,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <div id="getting-started-with-a-ggplot" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Getting started with a ggplot</h3>
-<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb121-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb123-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <p>We will primarily be working in ggplot2 as it has the greatest degree of customization for visualization and offers many additional features over the basic plotting in R.</p>
 <p>Most ggplot calls to create a figure take the following form (you can read more using <code>help(ggplot)</code>):</p>
 <p><code>ggplot(data = &lt;DATA&gt;, mapping = aes(&lt;MAPPINGS&gt;)) + &lt;GEOM_FUNCTION&gt;()</code></p>
 <p>We will practice using our mammalian sleep dataset. You can look up more info about this dataset using the <code>help</code> function and the dataset name, <code>msleep</code>.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1"><span class="kw">head</span>(msleep)</a></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1"><span class="kw">head</span>(msleep)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
@@ -282,32 +282,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To add a geom to the plot use the <code>+</code> operator. Because we have two continuous variables, let’s use <code>geom_point()</code> first:</p>
 <p><code>ggplot(data = msleep, aes(x = brainwt, y = sleep_rem)) + geom_point()</code></p>
 <p>To save your work-in-progress, you can assign the plot to a variable.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1">my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt, <span class="dt">y =</span> sleep_rem))</a></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1">my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt, <span class="dt">y =</span> sleep_rem))</a></code></pre></div>
 <p>We can now draw the plot as a scatterplot with points to represent each state.</p>
-<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" data-line-number="1">my_plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1">my_plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>???</p>
-<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" data-line-number="1">msleep2 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">brainwt_log =</span> <span class="kw">log</span>(brainwt))</a>
-<a class="sourceLine" id="cb127-2" data-line-number="2"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1">msleep2 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">brainwt_log =</span> <span class="kw">log</span>(brainwt))</a>
+<a class="sourceLine" id="cb129-2" data-line-number="2"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>???</p>
 <p>We can modify the appearance of the plot by changing aspects of the points we plot such as transparency (“alpha”) and color.</p>
-<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb129-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb131-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>It is also possible to scale the color of the points by some variable present in the data.</p>
-<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem, <span class="dt">color =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb131-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem, <span class="dt">color =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb133-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>When generating visualizations, it is important to annotate the figure with meaningful labels on the axes to make them accessible for the viewer.</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem, <span class="dt">color =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb133-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb133-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Brain Weight (log)&quot;</span>, </a>
-<a class="sourceLine" id="cb133-4" data-line-number="4">       <span class="dt">y =</span> <span class="st">&quot;Duration of REM Sleep&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem, <span class="dt">color =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb135-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb135-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Brain Weight (log)&quot;</span>, </a>
+<a class="sourceLine" id="cb135-4" data-line-number="4">       <span class="dt">y =</span> <span class="st">&quot;Duration of REM Sleep&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <hr />
@@ -315,24 +315,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="plotting-numerical-vs.categorical-data" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> Plotting Numerical vs. Categorical Data</h3>
 <p>We can create histograms in ggplot2 that are more aesthetically pleasing than the default <code>hist</code> function.</p>
-<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" data-line-number="1"><span class="kw">ggplot</span>(msleep, <span class="kw">aes</span>(<span class="dt">x =</span> sleep_total)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb135-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="kw">ggplot</span>(msleep, <span class="kw">aes</span>(<span class="dt">x =</span> sleep_total)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb137-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>)</a></code></pre></div>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>By adding a different parameter to <code>fill</code> in the <code>aes</code> we define throgh the <code>ggplot</code> function, we can separate out histograms according to different groupings such as here where we look at how total sleep distribution is distributed according to feeding behavior.</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1"><span class="kw">ggplot</span>(msleep, <span class="kw">aes</span>(<span class="dt">x =</span> sleep_total, <span class="dt">fill =</span> vore)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb136-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1"><span class="kw">ggplot</span>(msleep, <span class="kw">aes</span>(<span class="dt">x =</span> sleep_total, <span class="dt">fill =</span> vore)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb138-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>)</a></code></pre></div>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>We can look at how many individuals in the dataset fall into each category, such as feeding behavior.</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb137-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb139-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>()</a></code></pre></div>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>We can look at how many total sleep distribution is distributed within each category of feeding behavior using separate box plots.</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> sleep_total)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb138-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> sleep_total)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb140-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>We can even drill down further and separate out another category, so that we can look at each feeding behavior and each conservation status (e.g. how the total sleep duration of domesticated herbivores compares to least concern carnivores).</p>
-<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" data-line-number="1"><span class="kw">ggplot</span>(msleep, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> sleep_total, <span class="dt">color =</span> conservation)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb139-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_boxplot</span>() </a></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1"><span class="kw">ggplot</span>(msleep, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> sleep_total, <span class="dt">color =</span> conservation)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb141-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_boxplot</span>() </a></code></pre></div>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <hr />
 </div>
@@ -366,33 +366,33 @@ width = 0.2)</p>
 <div id="plotting-trends-in-big-data" class="section level3">
 <h3><span class="header-section-number">3.2.4</span> Plotting Trends in Big Data</h3>
 <p>Lots of these different figures summarize or aggregate the data. We may want to display the data with the individual points, but still show the overall trend across the data.</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb140-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_bin2d</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb140-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density_2d</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb140-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb142-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_bin2d</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb142-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density_2d</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb142-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>We can add a trendline with <code>geom_smooth</code> that you can check using <code>help(geom_smooth)</code>.</p>
-<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb141-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb141-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb143-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb143-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>()</a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1">msleep3 &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">bodywt_log =</span> <span class="kw">log</span>(bodywt))</a>
-<a class="sourceLine" id="cb143-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb143-3" data-line-number="3">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(msleep3, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb143-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()</a>
-<a class="sourceLine" id="cb143-5" data-line-number="5">my.plot</a></code></pre></div>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1">msleep3 &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">bodywt_log =</span> <span class="kw">log</span>(bodywt))</a>
+<a class="sourceLine" id="cb145-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb145-3" data-line-number="3">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(msleep3, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb145-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()</a>
+<a class="sourceLine" id="cb145-5" data-line-number="5">my.plot</a></code></pre></div>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
 <p>We can also do this with trendlines that summarize only certain subsets of the data, such as ?</p>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb144-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> vore)) </a></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb146-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> vore)) </a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>The above plot reflects the trends, but makes it hard to see the data that is contributing to each trend line. These differences can be most easily seen using <code>facet_wrap</code> or facetting that splits the figure into separate panel where the data has been filtered by the category (i.e. ?).</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb146-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb146-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> vore)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb146-4" data-line-number="4"><span class="st">    </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>vore)</a></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb148-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb148-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> vore)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb148-4" data-line-number="4"><span class="st">    </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>vore)</a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <hr />
@@ -401,17 +401,17 @@ width = 0.2)</p>
 <h3><span class="header-section-number">3.2.5</span> Saving Your Figures</h3>
 <p>If you want to save your images as a local individual file on your computer, there are two easy ways to do that.</p>
 <p>The first method uses <code>ggsave</code> to save the most recent ggplot figure you generated.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb148-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
-<a class="sourceLine" id="cb148-3" data-line-number="3"><span class="kw">ggsave</span>(<span class="st">&quot;plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb150-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
+<a class="sourceLine" id="cb150-3" data-line-number="3"><span class="kw">ggsave</span>(<span class="st">&quot;plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
 <p>This function will save wherever your directory is currently. Check with <code>getwd()</code> and change with <code>setwd(folder name)</code>. You can also provide a precise file path in the new file name.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1"><span class="kw">ggsave</span>(<span class="st">&quot;~/Downloads/plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1"><span class="kw">ggsave</span>(<span class="st">&quot;~/Downloads/plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
 <p>Here is an alternative method for saving your figures:</p>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1"><span class="kw">pdf</span>(<span class="st">&quot;plot.pdf&quot;</span>) <span class="co"># creates the file</span></a>
-<a class="sourceLine" id="cb150-2" data-line-number="2"><span class="co"># png() also works if you want a different file format</span></a>
-<a class="sourceLine" id="cb150-3" data-line-number="3"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb150-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
-<a class="sourceLine" id="cb150-5" data-line-number="5"><span class="kw">dev.off</span>() <span class="co"># finishes editing the file</span></a></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1"><span class="kw">pdf</span>(<span class="st">&quot;plot.pdf&quot;</span>) <span class="co"># creates the file</span></a>
+<a class="sourceLine" id="cb152-2" data-line-number="2"><span class="co"># png() also works if you want a different file format</span></a>
+<a class="sourceLine" id="cb152-3" data-line-number="3"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb152-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
+<a class="sourceLine" id="cb152-5" data-line-number="5"><span class="kw">dev.off</span>() <span class="co"># finishes editing the file</span></a></code></pre></div>
 <p>Any changes to the figure that are contained between the initial creation of the figure (i.e. the <code>pdf</code> command) and the <code>dev.off</code> command will be included in the final saved image. However, the figure is being printed directly to the file it is writing and won’t appear elsewhere.</p>
 
 </div>

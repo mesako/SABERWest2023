@@ -551,9 +551,15 @@ Requires: interacting with R, calling functions, and saving variables</p>
 <p>You may have seen certain parts of dataframes are factors with levels. Factors are a special data type that deals with categorical data. They can be handy for certain manipulations or visualizations, but once a factor is created, it doesn’t let you easily add new categories that were not in the original set. The easiest way around this is to treat the column as characters instead of as factors.</p>
 <div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1">cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, <span class="kw">c</span>(<span class="dt">coat =</span> <span class="st">&quot;calico&quot;</span>, <span class="dt">weight =</span> <span class="fl">3.2</span>,</a>
 <a class="sourceLine" id="cb117-2" data-line-number="2">                      <span class="dt">likes_string =</span> <span class="dv">1</span>, <span class="dt">length =</span> <span class="dv">3</span>))</a>
-<a class="sourceLine" id="cb117-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb117-4" data-line-number="4"><span class="kw">as.character</span>(cats<span class="op">$</span>coat)</a></code></pre></div>
-<pre><code>## [1] &quot;calico&quot; &quot;black&quot;  &quot;tabby&quot;  &quot;white&quot;  &quot;gold&quot;   &quot;silver&quot; NA       &quot;calico&quot;</code></pre>
+<a class="sourceLine" id="cb117-3" data-line-number="3">cats<span class="op">$</span>coat</a></code></pre></div>
+<pre><code>## [1] calico black  tabby  white  gold   silver &lt;NA&gt;   calico
+## Levels: black calico gold silver tabby white</code></pre>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" data-line-number="1">cats<span class="op">$</span>coat &lt;-<span class="st"> </span><span class="kw">as.character</span>(cats<span class="op">$</span>coat)</a>
+<a class="sourceLine" id="cb119-2" data-line-number="2">cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, <span class="kw">c</span>(<span class="dt">coat =</span> <span class="st">&quot;brown&quot;</span>, <span class="dt">weight =</span> <span class="fl">4.6</span>,</a>
+<a class="sourceLine" id="cb119-3" data-line-number="3">                      <span class="dt">likes_string =</span> <span class="dv">0</span>, <span class="dt">length =</span> <span class="fl">2.5</span>))</a>
+<a class="sourceLine" id="cb119-4" data-line-number="4">cats<span class="op">$</span>coat</a></code></pre></div>
+<pre><code>## [1] &quot;calico&quot; &quot;black&quot;  &quot;tabby&quot;  &quot;white&quot;  &quot;gold&quot;   &quot;silver&quot; NA       &quot;calico&quot;
+## [9] &quot;brown&quot;</code></pre>
 
 </div>
 </div>
