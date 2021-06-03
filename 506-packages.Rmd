@@ -18,19 +18,36 @@ exercise - get the stringdist library, use it
 
 exercise - get a new viz layer, use it
 
+
+### How does this package work?
+
+?
+
+??
+
+etc
+
+
 ### next stop - github
 
 ```{r,eval=F}
 library("devtools")
 ```
 
+or `remotes`?
+
+exercise - pull a package off github... ? maybe some sort of viz again?
+
+Exercise - install a package from github and learn how to use it
+
+- [Ghibli color palette](https://github.com/ewenme/ghibli)
+- [Sports field plotting](https://github.com/rossdrucker/sportyR)
+- [Ridgeplots in ggplot2](https://github.com/wilkelab/ggridges)
 
 
-exercise - install devtools
+<!-- remotes::install_github("wilkelab/ggridges" -->
 
-exercise - pull a package off github….. ? maybe some sort of viz again?
-
-problems with this
+problems with this - security, eh
 
 ### finally - Bioconductor 😬
 
