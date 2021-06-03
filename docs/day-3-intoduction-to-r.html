@@ -525,29 +525,35 @@ Requires: interacting with R, calling functions, and saving variables</p>
 </div>
 <div id="type-coercion-and-factors" class="section level3">
 <h3><span class="header-section-number">2.3.7</span> Type Coercion and Factors</h3>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1">cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, <span class="kw">c</span>(<span class="dt">coat =</span> <span class="st">&quot;spotted&quot;</span>, <span class="dt">weight =</span> <span class="fl">2.4</span>,</a>
-<a class="sourceLine" id="cb108-2" data-line-number="2">              <span class="dt">likes_string =</span> <span class="dv">0</span>, <span class="dt">length =</span> <span class="fl">2.5</span>))</a>
-<a class="sourceLine" id="cb108-3" data-line-number="3">cats</a></code></pre></div>
-<pre><code>##      coat weight likes_string length
-## 1  calico    2.1            1      2
-## 2   black      5            0      3
-## 3   tabby    3.2            1      1
-## 4   white    3.1            1      4
-## 5    gold    5.3            0      2
-## 6  silver    1.9            0      3
-## 7 spotted    2.4            0    2.5</code></pre>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1">cats[, <span class="dv">1</span>]</a></code></pre></div>
-<pre><code>## [1] &quot;calico&quot;  &quot;black&quot;   &quot;tabby&quot;   &quot;white&quot;   &quot;gold&quot;    &quot;silver&quot;  &quot;spotted&quot;</code></pre>
+<p>??</p>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1">cats<span class="op">$</span>coat &lt;-<span class="st"> </span><span class="kw">as.factor</span>(cats<span class="op">$</span>coat)</a></code></pre></div>
+<p>???</p>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" data-line-number="1">cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, <span class="kw">c</span>(<span class="dt">coat =</span> <span class="st">&quot;spotted&quot;</span>, <span class="dt">weight =</span> <span class="fl">2.4</span>,</a>
+<a class="sourceLine" id="cb109-2" data-line-number="2">              <span class="dt">likes_string =</span> <span class="dv">0</span>, <span class="dt">length =</span> <span class="fl">2.5</span>))</a></code></pre></div>
+<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;spotted&quot;): invalid factor level,
+## NA generated</code></pre>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" data-line-number="1">cats</a></code></pre></div>
+<pre><code>##     coat weight likes_string length
+## 1 calico    2.1            1      2
+## 2  black      5            0      3
+## 3  tabby    3.2            1      1
+## 4  white    3.1            1      4
+## 5   gold    5.3            0      2
+## 6 silver    1.9            0      3
+## 7   &lt;NA&gt;    2.4            0    2.5</code></pre>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" data-line-number="1">cats<span class="op">$</span>coat</a></code></pre></div>
+<pre><code>## [1] calico black  tabby  white  gold   silver &lt;NA&gt;  
+## Levels: black calico gold silver tabby white</code></pre>
 <p>What has happened with this new addition? If you tried to add a new cat to the dataframe that had a color that wasn’t already represented in the data, chances are you had a warning and that color was turned to <code>NA</code>.</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1">cats[, <span class="dv">1</span>]</a></code></pre></div>
-<pre><code>## [1] &quot;calico&quot;  &quot;black&quot;   &quot;tabby&quot;   &quot;white&quot;   &quot;gold&quot;    &quot;silver&quot;  &quot;spotted&quot;</code></pre>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" data-line-number="1">cats<span class="op">$</span>coat</a></code></pre></div>
+<pre><code>## [1] calico black  tabby  white  gold   silver &lt;NA&gt;  
+## Levels: black calico gold silver tabby white</code></pre>
 <p>You may have seen certain parts of dataframes are factors with levels. Factors are a special data type that deals with categorical data. They can be handy for certain manipulations or visualizations, but once a factor is created, it doesn’t let you easily add new categories that were not in the original set. The easiest way around this is to treat the column as characters instead of as factors.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1">cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, <span class="kw">c</span>(<span class="dt">coat =</span> <span class="st">&quot;calico&quot;</span>, <span class="dt">weight =</span> <span class="fl">3.2</span>,</a>
-<a class="sourceLine" id="cb114-2" data-line-number="2">                      <span class="dt">likes_string =</span> <span class="dv">1</span>, <span class="dt">length =</span> <span class="dv">3</span>))</a>
-<a class="sourceLine" id="cb114-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb114-4" data-line-number="4"><span class="kw">as.character</span>(cats[, <span class="dv">1</span>])</a></code></pre></div>
-<pre><code>## [1] &quot;calico&quot;  &quot;black&quot;   &quot;tabby&quot;   &quot;white&quot;   &quot;gold&quot;    &quot;silver&quot;  &quot;spotted&quot;
-## [8] &quot;calico&quot;</code></pre>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" data-line-number="1">cats &lt;-<span class="st"> </span><span class="kw">rbind</span>(cats, <span class="kw">c</span>(<span class="dt">coat =</span> <span class="st">&quot;calico&quot;</span>, <span class="dt">weight =</span> <span class="fl">3.2</span>,</a>
+<a class="sourceLine" id="cb117-2" data-line-number="2">                      <span class="dt">likes_string =</span> <span class="dv">1</span>, <span class="dt">length =</span> <span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb117-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb117-4" data-line-number="4"><span class="kw">as.character</span>(cats<span class="op">$</span>coat)</a></code></pre></div>
+<pre><code>## [1] &quot;calico&quot; &quot;black&quot;  &quot;tabby&quot;  &quot;white&quot;  &quot;gold&quot;   &quot;silver&quot; NA       &quot;calico&quot;</code></pre>
 
 </div>
 </div>

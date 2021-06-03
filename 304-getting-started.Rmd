@@ -315,6 +315,14 @@ cats
 
 ### Type Coercion and Factors
 
+??
+
+```{r}
+cats$coat <- as.factor(cats$coat)
+```
+
+???
+
 ```{r}
 cats <- rbind(cats, c(coat = "spotted", weight = 2.4,
               likes_string = 0, length = 2.5))
@@ -322,13 +330,13 @@ cats
 ```
 
 ```{r}
-cats[, 1]
+cats$coat
 ```
 
 What has happened with this new addition? If you tried to add a new cat to the dataframe that had a color that wasn't already represented in the data, chances are you had a warning and that color was turned to `NA`.
 
 ```{r}
-cats[, 1]
+cats$coat
 ```
 
 You may have seen certain parts of dataframes are factors with levels. Factors are a special data type that deals with categorical data. They can be handy for certain manipulations or visualizations, but once a factor is created, it doesn't let you easily add new categories that were not in the original set. The easiest way around this is to treat the column as characters instead of as factors.
@@ -337,5 +345,5 @@ You may have seen certain parts of dataframes are factors with levels. Factors a
 cats <- rbind(cats, c(coat = "calico", weight = 3.2,
                       likes_string = 1, length = 3))
 
-as.character(cats[, 1])
+as.character(cats$coat)
 ```
