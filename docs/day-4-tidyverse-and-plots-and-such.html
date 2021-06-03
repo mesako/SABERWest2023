@@ -361,169 +361,30 @@ width = 0.2)</p>
 <a class="sourceLine" id="cb25-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_bin2d</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb25-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density_2d</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb25-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<pre><code>## Warning: Removed 35 rows containing non-finite values (stat_bin2d).</code></pre>
-<pre><code>## Warning: Removed 35 rows containing non-finite values (stat_density2d).</code></pre>
-<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>We can add a trendline with <code>geom_smooth</code> that you can check using <code>help(geom_smooth)</code>.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb26-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>()</a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<pre><code>## Warning: Removed 35 rows containing non-finite values (stat_smooth).</code></pre>
-<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">msleep3 &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">bodywt_log =</span> <span class="kw">log</span>(bodywt))</a>
-<a class="sourceLine" id="cb33-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb33-3" data-line-number="3">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(msleep3, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb33-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()</a>
-<a class="sourceLine" id="cb33-5" data-line-number="5">my.plot</a></code></pre></div>
-<pre><code>## Warning: Removed 27 rows containing missing values (geom_point).</code></pre>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">msleep3 &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">bodywt_log =</span> <span class="kw">log</span>(bodywt))</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(msleep3, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()</a>
+<a class="sourceLine" id="cb28-5" data-line-number="5">my.plot</a></code></pre></div>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-14-2.png" width="672" /></p>
 <p>We can also do this with trendlines that summarize only certain subsets of the data, such as ?</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> vore)) </a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> vore)) </a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<pre><code>## Warning: Removed 35 rows containing non-finite values (stat_smooth).</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : pseudoinverse used at -8.323</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : neighborhood radius 1.5975</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : reciprocal condition number 0</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : There are other near singularities as well. 31.667</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : span too small. fewer
-## data values than degrees of freedom.</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used at
-## -8.323</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-## 1.5975</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : reciprocal condition
-## number 0</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : There are other near
-## singularities as well. 31.667</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : pseudoinverse used at -8.0372</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : neighborhood radius 2.228</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : reciprocal condition number 0</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : There are other near singularities as well. 3.8678</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : span too small. fewer
-## data values than degrees of freedom.</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used at
-## -8.0372</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-## 2.228</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : reciprocal condition
-## number 0</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : There are other near
-## singularities as well. 3.8678</code></pre>
-<pre><code>## Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning -
-## Inf
-
-## Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning -
-## Inf</code></pre>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>The above plot reflects the trends, but makes it hard to see the data that is contributing to each trend line. These differences can be most easily seen using <code>facet_wrap</code> or facetting that splits the figure into separate panel where the data has been filtered by the category (i.e. ?).</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb59-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb59-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> vore)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb59-4" data-line-number="4"><span class="st">    </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>vore)</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> vore)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb31-4" data-line-number="4"><span class="st">    </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>vore)</a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<pre><code>## Warning: Removed 35 rows containing non-finite values (stat_smooth).</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : pseudoinverse used at -8.323</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : neighborhood radius 1.5975</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : reciprocal condition number 0</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : There are other near singularities as well. 31.667</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : span too small. fewer
-## data values than degrees of freedom.</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used at
-## -8.323</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-## 1.5975</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : reciprocal condition
-## number 0</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : There are other near
-## singularities as well. 31.667</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : span too small. fewer data values than degrees of freedom.</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : pseudoinverse used at -8.0372</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : neighborhood radius 2.228</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : reciprocal condition number 0</code></pre>
-<pre><code>## Warning in simpleLoess(y, x, w, span, degree = degree, parametric =
-## parametric, : There are other near singularities as well. 3.8678</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : span too small. fewer
-## data values than degrees of freedom.</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : pseudoinverse used at
-## -8.0372</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : neighborhood radius
-## 2.228</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : reciprocal condition
-## number 0</code></pre>
-<pre><code>## Warning in predLoess(object$y, object$x, newx = if
-## (is.null(newdata)) object$x else if (is.data.frame(newdata))
-## as.matrix(model.frame(delete.response(terms(object)), : There are other near
-## singularities as well. 3.8678</code></pre>
-<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
-<pre><code>## Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning -
-## Inf
-
-## Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning -
-## Inf</code></pre>
 <p><img src="403-ggplot2_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <hr />
 </div>
@@ -531,17 +392,17 @@ width = 0.2)</p>
 <h3><span class="header-section-number">3.2.5</span> Saving Your Figures</h3>
 <p>If you want to save your images as a local individual file on your computer, there are two easy ways to do that.</p>
 <p>The first method uses <code>ggsave</code> to save the most recent ggplot figure you generated.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb84-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
-<a class="sourceLine" id="cb84-3" data-line-number="3"><span class="kw">ggsave</span>(<span class="st">&quot;plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="kw">ggsave</span>(<span class="st">&quot;plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
 <p>This function will save wherever your directory is currently. Check with <code>getwd()</code> and change with <code>setwd(folder name)</code>. You can also provide a precise file path in the new file name.</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" data-line-number="1"><span class="kw">ggsave</span>(<span class="st">&quot;~/Downloads/plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">ggsave</span>(<span class="st">&quot;~/Downloads/plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
 <p>Here is an alternative method for saving your figures:</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb86-1" data-line-number="1"><span class="kw">pdf</span>(<span class="st">&quot;plot.pdf&quot;</span>) <span class="co"># creates the file</span></a>
-<a class="sourceLine" id="cb86-2" data-line-number="2"><span class="co"># png() also works if you want a different file format</span></a>
-<a class="sourceLine" id="cb86-3" data-line-number="3"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb86-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
-<a class="sourceLine" id="cb86-5" data-line-number="5"><span class="kw">dev.off</span>() <span class="co"># finishes editing the file</span></a></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">pdf</span>(<span class="st">&quot;plot.pdf&quot;</span>) <span class="co"># creates the file</span></a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="co"># png() also works if you want a different file format</span></a>
+<a class="sourceLine" id="cb35-3" data-line-number="3"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
+<a class="sourceLine" id="cb35-5" data-line-number="5"><span class="kw">dev.off</span>() <span class="co"># finishes editing the file</span></a></code></pre></div>
 <p>Any changes to the figure that are contained between the initial creation of the figure (i.e. the <code>pdf</code> command) and the <code>dev.off</code> command will be included in the final saved image. However, the figure is being printed directly to the file it is writing and won’t appear elsewhere.</p>
 
 </div>
