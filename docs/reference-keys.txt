@@ -10,6 +10,7 @@ rstudio-and-basics
 data-exploration-pipelines
 day-4---tidyverse-and-plots-and-such
 reading-files
+making-plots-with-ggplot2
 day-5---building-workflows
 using-code-many-times---loops
 writing-reusable-code
@@ -20,6 +21,7 @@ calculating-standard-error
 more-complex-modules
 packages-are-chunks-of-code-and-sometimes-data
 first-stop---cran
+how-does-this-package-work
 next-stop---github
 finally---bioconductor
 finding-more-help-and-documentation
@@ -38,3 +40,4 @@ how-to-edit-this-document
 setup
 editwork-on-it
 publishing-onto-the-main-page-so-its-hosted-at-the-url
+more-links

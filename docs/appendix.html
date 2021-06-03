@@ -27,7 +27,7 @@
 <meta name="author" content="etc?" />
 
 
-<meta name="date" content="2021-06-02" />
+<meta name="date" content="2021-06-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -74,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -151,6 +151,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html"><i class="fa fa-check"></i><b>3</b> Day 4 - tidyverse and plots and such</a><ul>
 <li class="chapter" data-level="3.1" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#reading-files"><i class="fa fa-check"></i><b>3.1</b> Reading files</a></li>
+<li class="chapter" data-level="3.2" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#making-plots-with-ggplot2"><i class="fa fa-check"></i><b>3.2</b> Making plots with ggplot2</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows</a><ul>
 <li class="chapter" data-level="4.1" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#using-code-many-times---loops"><i class="fa fa-check"></i><b>4.1</b> Using code many times - loops</a></li>
@@ -164,8 +165,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#packages-are-chunks-of-code-and-sometimes-data"><i class="fa fa-check"></i><b>4.4</b> Packages are chunks of code (and sometimes data)</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#first-stop---cran"><i class="fa fa-check"></i><b>4.4.1</b> first stop - CRAN</a></li>
-<li class="chapter" data-level="4.4.2" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#next-stop---github"><i class="fa fa-check"></i><b>4.4.2</b> next stop - github</a></li>
-<li class="chapter" data-level="4.4.3" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#finally---bioconductor"><i class="fa fa-check"></i><b>4.4.3</b> finally - Bioconductor 😬</a></li>
+<li class="chapter" data-level="4.4.2" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#how-does-this-package-work"><i class="fa fa-check"></i><b>4.4.2</b> How does this package work?</a></li>
+<li class="chapter" data-level="4.4.3" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#next-stop---github"><i class="fa fa-check"></i><b>4.4.3</b> next stop - github</a></li>
+<li class="chapter" data-level="4.4.4" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#finally---bioconductor"><i class="fa fa-check"></i><b>4.4.4</b> finally - Bioconductor 😬</a></li>
 </ul></li>
 <li class="chapter" data-level="4.5" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#finding-more-help-and-documentation"><i class="fa fa-check"></i><b>4.5</b> Finding more help and documentation</a></li>
 <li class="chapter" data-level="4.6" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#reproducibility-and-sharing"><i class="fa fa-check"></i><b>4.6</b> Reproducibility and sharing</a></li>
@@ -186,6 +188,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6.2" data-path="appendix.html"><a href="appendix.html#editwork-on-it"><i class="fa fa-check"></i><b>5.6.2</b> Edit/work on it</a></li>
 <li class="chapter" data-level="5.6.3" data-path="appendix.html"><a href="appendix.html#publishing-onto-the-main-page-so-its-hosted-at-the-url"><i class="fa fa-check"></i><b>5.6.3</b> Publishing onto the main page, so it’s hosted at the URL</a></li>
 </ul></li>
+<li class="chapter" data-level="5.7" data-path="appendix.html"><a href="appendix.html#more-links"><i class="fa fa-check"></i><b>5.7</b> More links</a></li>
 </ul></li>
 </ul>
 
@@ -234,10 +237,10 @@ showing different types of figures</li>
 </div>
 <div id="rmd-example-of-code-chunk" class="section level2">
 <h2><span class="header-section-number">5.4</span> Rmd example of code chunk</h2>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
-<a class="sourceLine" id="cb18-2" title="2">  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</a>
-<a class="sourceLine" id="cb18-3" title="3">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb18-4" title="4">)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4">)</a></code></pre></div>
 <table>
 <caption><span id="tab:nice-tab-appendix">Table 5.1: </span>Here is a nice table!</caption>
 <thead>
@@ -397,7 +400,7 @@ showing different types of figures</li>
 <div id="more-example-rmds" class="section level2">
 <h2><span class="header-section-number">5.5</span> More example Rmds</h2>
 <ul>
-<li><a href="extraRmds/worksheet.Rmd">extraRmds/worksheet.Rmd</a></li>
+<li><a href="extraRmds/worksheet.Rmd" class="uri">extraRmds/worksheet.Rmd</a></li>
 </ul>
 
 </div>
@@ -451,6 +454,13 @@ Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Fig
 -->
 
 </div>
+</div>
+<div id="more-links" class="section level2">
+<h2><span class="header-section-number">5.7</span> More links</h2>
+<ul>
+<li><a href="https://clauswilke.com/dataviz/">Claus Wilke’s dataviz bookdown</a></li>
+</ul>
+
 </div>
 </div>
 
