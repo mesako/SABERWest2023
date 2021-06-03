@@ -1,0 +1,7 @@
+## Making plots with ggplot2
+
+
+```{r,ggplot2,echo=FALSE}
+library(ggplot2)
+```
+
