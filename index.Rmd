@@ -1,17 +1,30 @@
 --- 
 title: "DLL 2021, R section"
 author: 
+    - "Melissa"
+    - "Margaret"
+    - "Samson"
+    - "Zac"
     - "darachm"
-    - "etc?"
-    - "etc?"
-    - "etc?"
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
+date: "Typeset on `r Sys.Date()`"
+output:
+  bookdown::gitbook:
+    css: style.css
+    config:
+      toc:
+        before: |
+          <li><a href="./">DLL 2021 R workshops</a></li>
+      edit: https://github.com/darachm/dll-r/edit/main/%s
+      download: ["html"] #,"pdf"]
+      highlight: zenburn
+    includes:
+      after_body: footer.html
 documentclass: book
-biblio-style: apalike
-link-citations: yes
 github-repo: darachm/dll-r
 description: "A living syllabus for the R section of DLL 2021, at Stanford"
+#site: bookdown::bookdown_site
+#biblio-style: apalike
+#link-citations: yes
 ---
 
 # Workshop introduction
@@ -23,8 +36,6 @@ We want to get you to a basic framework so you can work with someone
 effectively.
 That framework is getting you oriented with the basics and how to 
 think about figuring out tasks in R.
-
----
 
 ## Structure and resources
 
@@ -38,19 +49,14 @@ are concise and complete. It also allows us to work as assistants.
 These are uploaded on Youtube, and should be accessible via the embeds on
 this site.
 
----
-
 ### Slack channel
 
 We are going to set this up to be a good place to go for ideas/help.
 
 The channel is called .... what?
 
----
-
 ## Expectations
 
 1. Don't be a jerk
 1. Pull together
 
----
