@@ -93,13 +93,9 @@ The pieces:
   1 through 4 that is created, and it is put one at a time into `i` 
   (a new variable). You need the parentheses.
   
---
-
 - `{` and `}` denote the opening and closing brackets, specify the
   "code block" that is run each time.
   
---
-
 - inside this "code block" is `print(i)` - it prints the variable `i`,
   which is set to a value of 1, 2, 3, or 4 for each loop
 
@@ -117,8 +113,6 @@ How do we loop through and print each file name?
 
 What's the analogous component?
 
---
-
 ```{r,loop_through_files,cache=T}
 for (i in list.files(path="data/viral_structural_proteins")[1:5] ) {
   print(i)
@@ -128,8 +122,6 @@ for (i in list.files(path="data/viral_structural_proteins")[1:5] ) {
 ---
 
 How do we modify this to calculate the protein length?
-
---
 
 ```{r,loop_and_calculate_errors,cache=T,error=T}
 for (i in list.files(path="data/viral_structural_proteins")[1:5] ) {
@@ -141,8 +133,6 @@ for (i in list.files(path="data/viral_structural_proteins")[1:5] ) {
 ---
 
 Debugging...
-
---
 
 ```{r,loop_and_calculate,cache=T}
 for (i in list.files(path="data/viral_structural_proteins",
@@ -177,8 +167,6 @@ We'll save it first so we can count how many there are.
 `seq_along` is handy function, otherwise use something like
 `seq(1,length(x))`.
 
---
-
 ```{r,loop_save_and_index,cache=T}
 first_five <- list.files(path="data/viral_structural_proteins")[1:5]
 for (i in seq_along(first_five) ) {
@@ -189,8 +177,6 @@ for (i in seq_along(first_five) ) {
 ---
 
 Putting these together, we can save a vector of file names:
-
---
 
 ```{r,loop_save_and_index_filenames,cache=T}
 first_five <- list.files(path="data/viral_structural_proteins")[1:5]
@@ -206,8 +192,6 @@ filenamez
 ---
 
 And finally calculate the length of each protein:
-
---
 
 ```{r,loop_to_calc_lengths_work,cache=T,error=T}
 first_five <- list.files(path="data/viral_structural_proteins",
@@ -227,8 +211,6 @@ lengthz
 
 Now we can take off the `[1:5]` limiter, and do the whole set:
 
---
-
 ```{r,loop_to_calc_lengths_all,cache=T,error=T}
 first_five <- list.files(path="data/viral_structural_proteins",
                          full.names=T, pattern=".*tsv")
@@ -245,15 +227,11 @@ for (i in seq_along(first_five) ) {
 
 How do we go about visualizing/analyzing this?
 
---
-
 ```{r,base_viz_protein_lengths_error,cache=T,error=T}
 hist(lengthz)
 ```
 
 er what...?
-
---
 
 Numeric....
 
