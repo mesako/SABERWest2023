@@ -58,14 +58,27 @@ We can now draw the plot as a scatterplot with points to represent each state.
 my_plot + geom_point()
 ```
 
-------
+You might notice that all of the points are squished against the y-axis since many of the mammals in this dataset have low brain weights. You can see this if you plot a very simple histogram of `brainwt` to see its distribution, or if you get summary statistics.
 
-### Plot Aesthetics
+```{r}
+hist(msleep$brainwt)
+summary(msleep$brainwt)
+```
+
+As you can see, the minimum and median values are very low, but there are a few mammals with high `brainwt` as you can see by the much larger maximum value in this vector.
+
+To make more useful plots, we can transform this value using log-scaling. While we will have to note that the new values do not exactly match the real-world measurements anymore, patterns we see (i.e. something that correlates with higher brain weights) will still hold true.
 
 ```{r}
 msleep2 <- msleep %>% mutate(brainwt_log = log(brainwt))
 ggplot(msleep2, aes(x = brainwt_log, y = sleep_rem)) + geom_point()
 ```
+
+Here we use the `mutate` function to make a new variable called `brainwt_log` in our dataset (technically a new dataset copy that we have saved as `msleep2`). Plotting this variable as our x variable (i.e. independent variable), makes it easier to look for patterns.
+
+------
+
+### Plot Aesthetics
 
 ???
 

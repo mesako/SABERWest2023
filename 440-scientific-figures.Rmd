@@ -1,6 +1,10 @@
 ## Making Scientific Figures
 
-```{r,echo=FALSE}
+Making plots can be a great way to develop an intuition for your dataset, though to derive and communicate scientific insights, we need to have an idea of the uncertainty in our interpretations.
+
+Uncertainty describes ideas such as: are the values between two groups different enough, that it is unlikely that the differences are due to chance? Is the correlation between these variables strong enough that one can predict the other, with some level of confidence? *How statistically significant are the patterns we see?*
+
+```{r,echo=FALSE,message=FALSE}
 library(ggplot2)
 library(tidyverse)
 msleep2 <- msleep %>% mutate(brainwt_log = log(brainwt))
@@ -8,19 +12,19 @@ msleep2 <- msleep %>% mutate(brainwt_log = log(brainwt))
 
 ### Plotting Error Bars
 
-Discrete Variables
+When we compare measurements taken from two samples (i.e. two groups), we might want to see if the two groups have very different values for that specific measurement. If we have multiple observations within each group, we can take a summary statistic such as the mean or median and plot those against each other.
 
 ```{r}
 ggplot(msleep2, aes(x = vore, y = awake)) + 
-  geom_bar(stat = "summary", fun = "median")
+  geom_bar(stat = "summary", fun = "mean")
 ```
 
-Error Bars
+For example, here we have asked our `geom_bar` function to plot a summary, specifically the mean of each group, instead of plotting `identity` which usually means the value as is. Looking at this figure, we can't guess if the groups are significantly different without an idea of the uncertainty in our measurements through something like error bars. 
+Here is the convention for plotting error bars in ggplot2, as you can see it is just another kind of geom that we can add to our plot:
 
-`ggplot(data = <DATA>, mapping = aes(<MAPPINGS>) + geom_bar(stat = "identity") + geom_errorbar(aes(<MAPPINGS FOR ERROR BAR>))`
+`ggplot(data = <SUMMARY DATA>, mapping = aes(<SUMMARY MAPPINGS>) + geom_bar(stat = "identity") + geom_errorbar(aes(<ERROR MAPPINGS>))`
 
-you could do this, but then you need to have pre-calculated
-the mean value for each group and the SE in your data
+This method is straightforward, but you need to have pre-calculated the summary statistic for each group and the amount of error (i.e. standard error) from your data. That "aggregated" dataframe becomes the data that you provide to ggplot, instead of the original dataset. 
 
 ```{r}
 feeding.data <- msleep2 %>% group_by(vore) %>% 
@@ -39,6 +43,7 @@ ggplot(feeding.data, aes(x = vore, y = y)) +
   geom_bar(stat = "identity")
 ```
 
+Here we create the same plot as before from this aggregated dataset, just showing the mean value in each group.
 
 ```{r}
 ggplot(feeding.data, aes(x = vore, y = y)) + 
@@ -46,6 +51,8 @@ ggplot(feeding.data, aes(x = vore, y = y)) +
   geom_errorbar(aes(ymin = ymin, ymax = ymax),
                 width = 0.2)
 ```
+
+Now we add the error bars, mapping the `ymin` and `ymax` values to show where the bottom and top of each error bar should be.
 
 ------
 
@@ -90,5 +97,3 @@ ggplot(data = msleep2, mapping = aes(x = brainwt_log, y = sleep_rem)) +
     geom_smooth(aes(color = vore)) +
     facet_wrap( ~ vore)
 ```
-
-

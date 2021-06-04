@@ -1,6 +1,6 @@
 ## Saving Your Figures
 
-```{r,echo=FALSE}
+```{r,echo=FALSE,message=FALSE}
 library(ggplot2)
 library(tidyverse)
 msleep2 <- msleep %>% mutate(brainwt_log = log(brainwt))
