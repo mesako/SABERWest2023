@@ -574,15 +574,9 @@ list-style-type: none;
 ## [1] 4</code></pre>
 <p>The pieces:</p>
 <ul>
-<li><code>(i in 1:4)</code> is what is being looped over - <code>1:4</code> is a vector of 1 through 4 that is created, and it is put one at a time into <code>i</code> (a new variable). You need the parentheses.</li>
-</ul>
-<p>–</p>
-<ul>
-<li><code>{</code> and <code>}</code> denote the opening and closing brackets, specify the “code block” that is run each time.</li>
-</ul>
-<p>–</p>
-<ul>
-<li>inside this “code block” is <code>print(i)</code> - it prints the variable <code>i</code>, which is set to a value of 1, 2, 3, or 4 for each loop</li>
+<li><p><code>(i in 1:4)</code> is what is being looped over - <code>1:4</code> is a vector of 1 through 4 that is created, and it is put one at a time into <code>i</code> (a new variable). You need the parentheses.</p></li>
+<li><p><code>{</code> and <code>}</code> denote the opening and closing brackets, specify the “code block” that is run each time.</p></li>
+<li><p>inside this “code block” is <code>print(i)</code> - it prints the variable <code>i</code>, which is set to a value of 1, 2, 3, or 4 for each loop</p></li>
 </ul>
 </div><div class="slide section level2">
 
@@ -593,7 +587,6 @@ loops stuff
 
 <p>How do we loop through and print each file name?</p>
 <p>What’s the analogous component?</p>
-<p>–</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] ) {</a>
 <a class="sourceLine" id="cb11-2" title="2">  <span class="kw">print</span>(i)</a>
 <a class="sourceLine" id="cb11-3" title="3">}</a></code></pre></div>
@@ -605,7 +598,6 @@ loops stuff
 </div><div class="slide section level2">
 
 <p>How do we modify this to calculate the protein length?</p>
-<p>–</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] ) {</a>
 <a class="sourceLine" id="cb13-2" title="2">  <span class="kw">print</span>(i)</a>
 <a class="sourceLine" id="cb13-3" title="3">  <span class="kw">print</span>(<span class="kw">nchar</span>(<span class="kw">read.delim</span>(i)<span class="op">$</span>V3[[<span class="dv">1</span>]]))</a>
@@ -617,7 +609,6 @@ loops stuff
 </div><div class="slide section level2">
 
 <p>Debugging…</p>
-<p>–</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
 <a class="sourceLine" id="cb17-2" title="2">                     <span class="dt">full.names=</span>T)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] ) {</a>
 <a class="sourceLine" id="cb17-3" title="3">  <span class="kw">print</span>(<span class="kw">nchar</span>(<span class="kw">read.delim</span>(i,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F,<span class="dt">as.is=</span>T)<span class="op">$</span>V3[[<span class="dv">1</span>]]))</a>
@@ -642,7 +633,6 @@ loops stuff
 
 <p>Okay, but how do we access each position to save the value? We need to turn out list of files into indicies. We’ll save it first so we can count how many there are.</p>
 <p><code>seq_along</code> is handy function, otherwise use something like <code>seq(1,length(x))</code>.</p>
-<p>–</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
 <a class="sourceLine" id="cb25-2" title="2"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
 <a class="sourceLine" id="cb25-3" title="3">  <span class="kw">print</span>(first_five[i])</a>
@@ -655,7 +645,6 @@ loops stuff
 </div><div class="slide section level2">
 
 <p>Putting these together, we can save a vector of file names:</p>
-<p>–</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" title="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
 <a class="sourceLine" id="cb27-2" title="2">filenamez &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
 <a class="sourceLine" id="cb27-3" title="3"></a>
@@ -669,7 +658,6 @@ loops stuff
 </div><div class="slide section level2">
 
 <p>And finally calculate the length of each protein:</p>
-<p>–</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
 <a class="sourceLine" id="cb29-2" title="2">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
 <a class="sourceLine" id="cb29-3" title="3">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
@@ -685,7 +673,6 @@ loops stuff
 </div><div class="slide section level2">
 
 <p>Now we can take off the <code>[1:5]</code> limiter, and do the whole set:</p>
-<p>–</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" title="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
 <a class="sourceLine" id="cb31-2" title="2">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)</a>
 <a class="sourceLine" id="cb31-3" title="3">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
@@ -698,11 +685,9 @@ loops stuff
 </div><div class="slide section level2">
 
 <p>How do we go about visualizing/analyzing this?</p>
-<p>–</p>
 <div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" title="1"><span class="kw">hist</span>(lengthz)</a></code></pre></div>
 <pre><code>## Error in hist.default(lengthz): &#39;x&#39; must be numeric</code></pre>
 <p>er what…?</p>
-<p>–</p>
 <p>Numeric….</p>
 <div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
 <a class="sourceLine" id="cb34-2" title="2">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)</a>

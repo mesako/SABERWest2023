@@ -1,0 +1,11 @@
+day-3---intoduction-to-r
+rstudio-and-basics
+data-exploration-pipelines
+getting-started-in-r
+getting-help-in-r
+variables-and-data-types
+working-with-vectors
+indexing-and-subsetting
+using-logicals
+working-with-dataframes
+type-coercion-and-factors
