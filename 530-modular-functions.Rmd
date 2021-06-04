@@ -1,8 +1,25 @@
 ## Writing modular code
 
-What is modularity of code?
+How might you break up the tasks from the previous work, 
+about protein sequence lengths?
+
+---
+
+Here's one way. This is just one short workflow, and you start to have to
+handle and read a lot of interconnecting parts.
+
+![An un-modular diagram of tasks](img/unmodular.svg)
+
+---
+
+Another way to approach this is to cluster them into a hierarchy of modules.
+
+![A modular diagram of tasks](img/modular.svg)
 
 Why?
+
+
+---
 
 think more clearly than “hardcoding” stuff
 
