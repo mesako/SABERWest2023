@@ -9,10 +9,10 @@ x = 1
 x <- 1
 ```
 
-"Scoping"[^scoping] is a term that you can _really_ get into, but for now, 
-just use `<-`[^arrow-other-way]. 
-
-
-[^scoping] : oh boy computer science here
-[^arrow-other-way] : you can also go the other way, like `1 -> x`, but 
-    *nobody* does that
+"Scoping"
+^[Scoping is a computer science term for where a variable is define, globally,
+    locally, and how locally. Here's [a site with more info](https://bookdown.org/rdpeng/rprogdatascience/scoping-rules-of-r.html)
+    ]
+is a term that you can _really_ get into, but for now, 
+just use `<-` 
+^[You can also go the other way, like `1 -> x`, but *nobody* does that]
