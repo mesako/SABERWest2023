@@ -1,12 +1,18 @@
 # Day 5 - building workflows
 
-We're gonna build workflows
+Today we're going to learn about applying these R 
+skills to 
+repeat, reproduce, extend, and share your analyses.
 
-Firstly, let's review the last two days.
-What have we done and how do we do it again?
+First, let's review the last two days.
 
 <!-- exercise -->
 
-Crack open your code - can you use it again?
-Can you adapt it to modify your question, feed in new data,
-and modify the scientifically-important bits easily?
+- What have we done?
+- How do we do it many times?
+- Crack open your code - can you use it again?
+- Can you adapt it to modify your question, 
+  feed in new data, and modify the
+  scientifically-important bits easily?
+- Can you share it with someone and they follow
+  along?
