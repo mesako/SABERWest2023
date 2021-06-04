@@ -1,0 +1,15 @@
+## Applying basic stats
+
+
+* Objective 4.x: Scholars will have a sense for how to implement more advanced statistical tests in R
+* Scholars will be able to identify and use correlation functions, use different kinds of correlation, know how to deal with NAs
+* Scholars will be able to identify and use linear regression lm() using both raw variable and formulaic interfaces
+* Scholars will be able to plot error bars
+* Scholars will be able to calculate and plot confidence intervals
+
+
+```{r}
+#
+# 
+```
+

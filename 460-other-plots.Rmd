@@ -12,8 +12,6 @@ Scatterplots are a great way to look at two quantitative (numerical) values at t
 
 However, other plots may be more useful to look at differing numbers of variables (i.e. one quantitative variable) or different types of variables (i.e. qualitative or categorical data).
 
-## Using categorical data
-
 We can create histograms in ggplot2 that are more aesthetically pleasing than the default `hist` function. This shows the distribution of one quantitative variable.
 
 ```{r}
@@ -21,12 +19,7 @@ ggplot(msleep, aes(x = sleep_total)) +
     geom_histogram(bins = 10)
 ```
 
-By adding a different parameter to `fill` in the `aes` we define throgh the `ggplot` function, we can separate out histograms according to different groupings such as here where we look at how total sleep distribution is distributed according to feeding behavior.
-
-```{r}
-ggplot(msleep, aes(x = sleep_total, fill = vore)) +
-    geom_histogram(bins = 10)
-```
+### Using categorical data
 
 We can look at how many individuals in the dataset fall into each category, such as feeding behavior.
 
@@ -40,6 +33,15 @@ We can look at how many total sleep distribution is distributed within each cate
 ```{r}
 ggplot(data = msleep, aes(x = vore, y = sleep_total)) + 
   geom_boxplot()
+```
+
+### Visualizing between groups
+
+By adding a different parameter to `fill` in the `aes` we define throgh the `ggplot` function, we can separate out histograms according to different groupings such as here where we look at how total sleep distribution is distributed according to feeding behavior.
+
+```{r}
+ggplot(msleep, aes(x = sleep_total, fill = vore)) +
+    geom_histogram(bins = 10)
 ```
 
 We can even drill down further and separate out another category, so that we can look at each feeding behavior and each conservation status (e.g. how the total sleep duration of domesticated herbivores compares to least concern carnivores).

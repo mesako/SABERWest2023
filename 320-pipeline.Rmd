@@ -1,14 +1,16 @@
 ## Data exploration pipelines
 
 Approach: an Rmd tutorial with a simple dataset in R. This is meant to be a motivation for what one can do in R, not necessarily understanding syntax of every function/operation used
-Topics/Exercises
-Present a conceptual framework for a pipeline - more of a tutorial
-Use an Rmd file for this and introduce how to navigate the Rmd file
-Scholars can execute a given Rmd
-Scholars can modify a given Rmd
-Scholars know what the major pieces of an Rmd are (code and not code)
-Scholars know about caching and arguments for code chunks
-Scholars know how to make their own new Rmd file and run it
-Load a simple dataset in R - the iris dataset, peek at the table with head, summarize the columns, and make a scatter plot with base R. This introduces several topics 
+
+Topics/Exercises:
+* Present a conceptual framework for a pipeline - more of a tutorial
+* Use an Rmd file for this and introduce how to navigate the Rmd file
+* Scholars can execute a given Rmd
+* Scholars can modify a given Rmd
+* Scholars know what the major pieces of an Rmd are (code and not code)
+* Scholars know about caching and arguments for code chunks
+* Scholars know how to make their own new Rmd file and run it
+* Load a simple dataset in R - the iris dataset, peek at the table with head, summarize the columns, and make a scatter plot with base R. This introduces several topics 
+
 Requires: interacting with R, calling functions, and saving variables
 
