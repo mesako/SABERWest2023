@@ -1,26 +1,297 @@
+
+
+---
+
 ## Using code many times - loops
 
-Doing lots of stuff - loops (Darach)
+You will want to do the same thing multiple
+times - automation is great. Let's code up a
+simple little analysis - we'll calculate the
+length (number of amino acids) in a viral
+structural protein sequence.
 
-show list.files() - challenge is to analyze a bunch of ….. ? protein seqs?
+---
 
-could evaluate the claim that four basic amino acids in a row is unusual for SARS2 (ever seen a NLS?)
+These files are in "data".
 
-Loops
-How to think about a for loop
+```{r,calculate_one,cache=T}
+viral_protein_data <- 
+  read.delim("data/viral_structural_proteins/viral_proteins_001.tsv",
+    sep="\t",header=F)
+viral_protein_data
+```
 
-Specifically in context of processing multiple files, so list.files() ?
+How do we access the protein sequence? (`V3`)
 
-Students know that other control structures exist (do, while), and that they're controlled by boolean logic
+How do we calculate the number of characters in
+this sequence?
 
-Apply is a thing
+<!-- ??"number of characters" -->
 
-Scholars will be familiar with that folks have strong opinions about using apply instead of for loops
+Code it up!
 
-Scholars will understand that getting the code done is the most important thing, but that good use of apply can be something to develop later to make code run faster, cleaner
+---
 
-Scholars will be able to read what an example of apply or s/lapply is doing, so that they can read examples online
+### Doing things multiple times
 
-Scholars will have heard the term "lambda function" ?
+Let's do this for all the proteins.
+The simplest way of doing this is to copy and
+paste it.
 
-Scholars will understand that functions can be one-off (ie lambda, function(x){} ), and that's okay
+```{r,copy_paste_rep,cache=T}
+viral_protein_data <- 
+  read.delim("data/viral_structural_proteins/viral_proteins_002.tsv",
+      sep="\t",header=F, as.is=T)
+nchar(viral_protein_data$V3[[1]])
+viral_protein_data <- 
+  read.delim("data/viral_structural_proteins/viral_proteins_003.tsv",
+      sep="\t",header=F, as.is=T)
+nchar(viral_protein_data[1,"V3"])
+```
+
+Go ahead and do this for all 242 proteins 
+
+---
+
+... just kidding.
+
+Try this to, well, list files:
+
+```{r,list_files,cache=T}
+list.files(path="data/viral_structural_proteins")[1:5]
+```
+
+Note that I put a `[1:5]` to limit it to the first 5.
+You could also use `head()`.
+
+Now how do you calculate the number of characters for each protein?
+
+---
+
+### Loops
+
+Loops are when you loop back to do something again.
+The most common form of this is a `for` loop.
+Other "control statements" or "flow control statements" are
+`while`, `repeat`, and `if`.
+
+Let's look up what they do, with "?`for`"
+
+---
+
+Here's an example loop:
+
+```{r,loop_example_1,cache=T}
+for (i in 1:4) {
+  print(i)
+}
+```
+
+The pieces:
+
+- `(i in 1:4)` is what is being looped over - `1:4` is a vector of 
+  1 through 4 that is created, and it is put one at a time into `i` 
+  (a new variable). You need the parentheses.
+  
+--
+
+- `{` and `}` denote the opening and closing brackets, specify the
+  "code block" that is run each time.
+  
+--
+
+- inside this "code block" is `print(i)` - it prints the variable `i`,
+  which is set to a value of 1, 2, 3, or 4 for each loop
+
+---
+
+
+video1
+<!--
+loops stuff
+-->
+
+---
+
+How do we loop through and print each file name?
+
+What's the analogous component?
+
+--
+
+```{r,loop_through_files,cache=T}
+for (i in list.files(path="data/viral_structural_proteins")[1:5] ) {
+  print(i)
+}
+```
+
+---
+
+How do we modify this to calculate the protein length?
+
+--
+
+```{r,loop_and_calculate_errors,cache=T,error=T}
+for (i in list.files(path="data/viral_structural_proteins")[1:5] ) {
+  print(i)
+  print(nchar(read.delim(i)$V3[[1]]))
+}
+```
+
+---
+
+Debugging...
+
+--
+
+```{r,loop_and_calculate,cache=T}
+for (i in list.files(path="data/viral_structural_proteins",
+                     full.names=T)[1:5] ) {
+  print(nchar(read.delim(i,sep="\t",header=F,as.is=T)$V3[[1]]))
+}
+```
+
+---
+
+#### Storing values from a loop
+
+How do we store this value?
+
+In other languages, "append". But R is not built that way. It'll work,
+but it's very inefficient. The "R-way" to store values from a loop
+is to define a vector of the right length, 
+then put each element in it.
+
+```{r,vector_of_size,cache=T}
+vector("character",10)
+vector(mode="numeric",length=5)
+vector("logical",2)
+```
+
+---
+
+Okay, but how do we access each position to save the value?
+We need to turn out list of files into indicies.
+We'll save it first so we can count how many there are.
+
+`seq_along` is handy function, otherwise use something like
+`seq(1,length(x))`.
+
+--
+
+```{r,loop_save_and_index,cache=T}
+first_five <- list.files(path="data/viral_structural_proteins")[1:5]
+for (i in seq_along(first_five) ) {
+  print(first_five[i])
+}
+```
+
+---
+
+Putting these together, we can save a vector of file names:
+
+--
+
+```{r,loop_save_and_index_filenames,cache=T}
+first_five <- list.files(path="data/viral_structural_proteins")[1:5]
+filenamez <- vector("character",length(first_five))
+
+for (i in seq_along(first_five) ) {
+  filenamez[i] <- first_five[i]
+}
+
+filenamez
+```
+
+---
+
+And finally calculate the length of each protein:
+
+--
+
+```{r,loop_to_calc_lengths_work,cache=T,error=T}
+first_five <- list.files(path="data/viral_structural_proteins",
+                         full.names=T, pattern=".*tsv")[1:5]
+lengthz <- vector("character",length(first_five))
+
+for (i in seq_along(first_five) ) {
+  lengthz[i] <- nchar( read.delim(first_five[i],
+      header=F,as.is=T,sep="\t")$V3[[1]]
+    )
+}
+
+lengthz
+```
+
+---
+
+Now we can take off the `[1:5]` limiter, and do the whole set:
+
+--
+
+```{r,loop_to_calc_lengths_all,cache=T,error=T}
+first_five <- list.files(path="data/viral_structural_proteins",
+                         full.names=T, pattern=".*tsv")
+lengthz <- vector("character",length(first_five))
+
+for (i in seq_along(first_five) ) {
+  lengthz[i] <- nchar( read.delim(first_five[i],
+      header=F,as.is=T,sep="\t")$V3[[1]]
+    )
+}
+```
+
+---
+
+How do we go about visualizing/analyzing this?
+
+--
+
+```{r,base_viz_protein_lengths_error,cache=T,error=T}
+hist(lengthz)
+```
+
+er what...?
+
+--
+
+Numeric....
+
+```{r,loop_to_calc_lengths_all_fixed,cache=T,error=T}
+first_five <- list.files(path="data/viral_structural_proteins",
+                         full.names=T, pattern=".*tsv")
+lengthz <- vector("numeric",length(first_five))
+
+for (i in seq_along(first_five) ) {
+  lengthz[i] <- nchar( read.delim(first_five[i],
+      header=F,as.is=T,sep="\t")$V3[[1]]
+    )
+}
+```
+
+---
+
+```{r,base_viz_protein_lengths_fix,cache=T,error=T}
+hist(lengthz,breaks=50)
+```
+
+---
+
+```{r,ggplot_viz_protein_lengths,cache=T,error=T}
+library(ggplot2)
+ggplot( data.frame(length=lengthz) )+theme_classic()+
+  aes(x=length)+geom_histogram(bins=50)
+
+summary(lengthz)
+```
+
+---
+
+#### Other control structures
+
+video2
+
+- while
+- repeat
+
+
