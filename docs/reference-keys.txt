@@ -10,7 +10,7 @@ rstudio-and-basics
 data-exploration-pipelines
 getting-started-in-r
 getting-help-in-r
-variables
+variables-and-data-types
 working-with-vectors
 indexing-and-subsetting
 using-logicals
@@ -20,7 +20,9 @@ day-4---tidyverse-and-plots-and-such
 reading-files
 making-plots-with-ggplot2
 getting-started-with-a-ggplot
-plotting-numerical-vs.-categorical-data
+plot-aesthetics
+exploring-other-plots
+making-scientific-figures
 plotting-error-bars
 plotting-trends-in-big-data
 saving-your-figures

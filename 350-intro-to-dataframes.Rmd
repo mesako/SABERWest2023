@@ -1,0 +1,162 @@
+## Working with Dataframes
+
+The most common data format we will deal with is a dataframe format. This means that data is stored in a 2D array with the rows referring to individual measurements (single patients, samples, cells, etc.) and the columns referring to parameters (genes, proteins, etc.) measured in each individual.
+
+```{r}
+my.data <- matrix(data = c(1, 2, 3, 4, 5, 6, 7, 8, 9),
+                  nrow = 3, ncol = 3)
+my.data
+```
+
+We now convert this matrix into a dataframe type.
+
+```{r}
+my.data <- as.data.frame(my.data)
+```
+
+You can index into a dataframe and pull out one or more cells within the dataframe.
+
+```{r}
+my.data[1, 3]
+```
+
+Yo can pull out multiple elements at a time, specifying which row and column they reside in.
+
+```{r}
+my.data[c(1, 2), c(2, 3)]
+```
+
+```{r}
+my.data[1:2, 2:3]
+```
+
+If you provide the row and not the column, or vice versa, by default R will pull out all of the available columns and rows respectively.
+
+```{r}
+my.data[1:2, ] # pulls out the first two rows and all columns
+my.data[, 1:2] # pulls out the first two columns and all rows
+```
+
+It's possible to also remove elements in a dataframe using the negative sign.
+
+```{r}
+my.data[-c(1, 3), ] # removes the first and third rows
+```
+
+There are a few different functions you can use to investigate a dataframe, the size of it, and other aspects.
+
+```{r}
+dim(my.data)
+```
+
+We work with a dataframe instead of just a matrix because dataframes can tolerate different datatypes in the same table. The `gapminder` dataset is a pre-made dataset that we can play around with.
+
+```{r,message=FALSE}
+library(gapminder)
+```
+
+```{r}
+head(gapminder)
+```
+
+We can also generate our own dataframes from vectors that we put together into a table.
+
+```{r}
+cats <- data.frame(coat = c("calico", "black", "tabby"),
+                   weight = c(2.1, 5.0, 3.2),
+                   likes_string = c(1, 0, 1))
+cats
+```
+
+You can check what kind of data you are working with using the `class` and/or `typeof` functions.
+
+```{r}
+class(my.data) # tells you that A is a dataframe
+```
+
+You can use the following functions to investigate aspects of a given dataset.
+
+```{r}
+dim(gapminder)
+colnames(gapminder)
+summary(gapminder)
+```
+
+We can try to look at the beginning of a specific column in this dataset. Dataframes that have names for their columns allow you to index into the columns specifically by name using the `$` operator as shown below.
+
+```{r}
+head(gapminder$continent)
+```
+
+You can add new rows and columns using the `rbind` and `cbind` functions.
+
+```{r}
+cats <- cbind(cats, length = c(2, 3, 1))
+cats
+```
+
+You can also remove rows and columns using the trick with a negative index.
+
+```{r}
+cats[, -1]
+cats[-1, ]
+```
+
+You can merge two dataframes together using the `rbind` function assuming that their columns match up correctly.
+
+```{r}
+newcats <- data.frame(coat = c("white", "gold", "silver"),
+                      weight = c(3.1, 5.3, 1.9), 
+                      likes_string = c(1, 0, 0),
+                      length = c(4, 2, 3))
+newcats
+```
+
+```{r}
+cats <- rbind(cats, newcats)
+cats
+```
+
+------
+
+### Type Coercion and Factors
+
+??
+
+```{r}
+cats$coat <- as.factor(cats$coat)
+```
+
+???
+
+```{r}
+cats <- rbind(cats, c(coat = "spotted", weight = 2.4,
+              likes_string = 0, length = 2.5))
+cats
+```
+
+```{r}
+cats$coat
+```
+
+What has happened with this new addition? If you tried to add a new cat to the dataframe that had a color that wasn't already represented in the data, chances are you had a warning and that color was turned to `NA`.
+
+```{r}
+cats$coat
+```
+
+You may have seen certain parts of dataframes are factors with levels. Factors are a special data type that deals with categorical data. They can be handy for certain manipulations or visualizations, but once a factor is created, it doesn't let you easily add new categories that were not in the original set. The easiest way around this is to treat the column as characters instead of as factors.
+
+```{r}
+cats <- rbind(cats, c(coat = "calico", weight = 3.2,
+                      likes_string = 1, length = 3))
+cats$coat
+```
+
+
+```{r}
+cats$coat <- as.character(cats$coat)
+cats <- rbind(cats, c(coat = "brown", weight = 4.6,
+                      likes_string = 0, length = 2.5))
+cats$coat
+```

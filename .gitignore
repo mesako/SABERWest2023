@@ -7,3 +7,4 @@ _bookdown_files
 rsconnect
 *.md
 *.rds
+.DS_Store
