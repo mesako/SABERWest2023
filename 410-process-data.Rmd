@@ -1,0 +1,14 @@
+## Reading and processing data
+
+```{r}
+irisz <- read.csv("data/iris.csv")
+head(irisz)
+```
+
+* Scholars know how to find a file-reading function, know of a few
+* Scholars can use read.csv to read a file and save it as a variable, and tune some arguments
+* Scholars know that it is important to preview data and look for issues, and have some strategies/functions to do this
+* Scholars know what NAs are, some strategies to deal with these
+* Scholars know how to cast/transform value Types
+* Scholars know how to scale/normalize values
+* Scholars know how to filter entries in a data.frame
