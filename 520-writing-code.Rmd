@@ -1,4 +1,6 @@
 
+---
+
 ## Writing (re)usable code
 
 <!-- exercise -->
@@ -10,11 +12,10 @@ and modify the scientifically-important bits easily?
 Let's look at two chunks of code from 
 [a paper](https://github.com/sashaflevy/PPiSeq) (lightly edited).
 The experiment is counting barcoded lineages of yeast cells to estimate
-"PPIs" (protein-protein interactions)[^zppi_note].
+"PPIs" (protein-protein interactions)
+^[Ask Darach if you want details, or [read the paper](doi.org/10.7554/eLife.62365)]
 here's an example of one style of writing R script:
 
-[^zppi_note]: Ask Darach if you want details, or 
-[read the paper](doi.org/10.7554/eLife.62365).
 
 ```{r,example1,eval=F}
 # filter out bad barcode lineages ( <= 2 time points counts > 0, or maximum of each time point <= 5 or total counts of a lineage < 10)
