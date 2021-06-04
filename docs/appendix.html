@@ -166,16 +166,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.1" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.2.1</b> Getting started with a ggplot</a></li>
 <li class="chapter" data-level="3.2.2" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plot-aesthetics"><i class="fa fa-check"></i><b>3.2.2</b> Plot Aesthetics</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-numerical-vs.categorical-data"><i class="fa fa-check"></i><b>3.3</b> Plotting Numerical vs. Categorical Data</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.3.1</b> Plotting Error Bars</a></li>
-<li class="chapter" data-level="3.3.2" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-trends-in-big-data"><i class="fa fa-check"></i><b>3.3.2</b> Plotting Trends in Big Data</a></li>
-<li class="chapter" data-level="3.3.3" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#saving-your-figures"><i class="fa fa-check"></i><b>3.3.3</b> Saving Your Figures</a></li>
-</ul></li>
+<li class="chapter" data-level="3.3" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#exploring-other-plots"><i class="fa fa-check"></i><b>3.3</b> Exploring Other Plots</a></li>
 <li class="chapter" data-level="3.4" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#making-scientific-figures"><i class="fa fa-check"></i><b>3.4</b> Making Scientific Figures</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-error-bars-1"><i class="fa fa-check"></i><b>3.4.1</b> Plotting Error Bars</a></li>
-<li class="chapter" data-level="3.4.2" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-trends-in-big-data-1"><i class="fa fa-check"></i><b>3.4.2</b> Plotting Trends in Big Data</a></li>
+<li class="chapter" data-level="3.4.1" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.4.1</b> Plotting Error Bars</a></li>
+<li class="chapter" data-level="3.4.2" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-trends-in-big-data"><i class="fa fa-check"></i><b>3.4.2</b> Plotting Trends in Big Data</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#saving-your-figures-1"><i class="fa fa-check"></i><b>3.5</b> Saving Your Figures</a></li>
+<li class="chapter" data-level="3.5" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#saving-your-figures"><i class="fa fa-check"></i><b>3.5</b> Saving Your Figures</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows</a><ul>
 <li class="chapter" data-level="4.1" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#using-code-many-times---loops"><i class="fa fa-check"></i><b>4.1</b> Using code many times - loops</a><ul>
@@ -271,10 +267,10 @@ showing different types of figures</li>
 </div>
 <div id="rmd-example-of-code-chunk" class="section level2">
 <h2><span class="header-section-number">5.4</span> Rmd example of code chunk</h2>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
-<a class="sourceLine" id="cb228-2" data-line-number="2">  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</a>
-<a class="sourceLine" id="cb228-3" data-line-number="3">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb228-4" data-line-number="4">)</a></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
+<a class="sourceLine" id="cb222-2" data-line-number="2">  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</a>
+<a class="sourceLine" id="cb222-3" data-line-number="3">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb222-4" data-line-number="4">)</a></code></pre></div>
 <table>
 <caption><span id="tab:nice-tab-appendix">Table 5.1: </span>Here is a nice table!</caption>
 <thead>

@@ -1,0 +1,42 @@
+## Exploring Other Plots
+
+```{r,echo=FALSE}
+library(ggplot2)
+library(tidyverse)
+msleep2 <- msleep %>% mutate(brainwt_log = log(brainwt))
+```
+
+We can create histograms in ggplot2 that are more aesthetically pleasing than the default `hist` function.
+
+```{r}
+ggplot(msleep, aes(x = sleep_total)) +
+    geom_histogram(bins = 10)
+```
+
+By adding a different parameter to `fill` in the `aes` we define throgh the `ggplot` function, we can separate out histograms according to different groupings such as here where we look at how total sleep distribution is distributed according to feeding behavior.
+
+```{r}
+ggplot(msleep, aes(x = sleep_total, fill = vore)) +
+    geom_histogram(bins = 10)
+```
+
+We can look at how many individuals in the dataset fall into each category, such as feeding behavior.
+
+```{r}
+ggplot(data = msleep, aes(x = vore)) + 
+  geom_bar()
+```
+
+We can look at how many total sleep distribution is distributed within each category of feeding behavior using separate box plots.
+
+```{r}
+ggplot(data = msleep, aes(x = vore, y = sleep_total)) + 
+  geom_boxplot()
+```
+
+We can even drill down further and separate out another category, so that we can look at each feeding behavior and each conservation status (e.g. how the total sleep duration of domesticated herbivores compares to least concern carnivores).
+
+```{r}
+ggplot(msleep, aes(x = vore, y = sleep_total, color = conservation)) +
+    geom_boxplot() 
+```

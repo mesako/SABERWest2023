@@ -166,16 +166,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.1" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.2.1</b> Getting started with a ggplot</a></li>
 <li class="chapter" data-level="3.2.2" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plot-aesthetics"><i class="fa fa-check"></i><b>3.2.2</b> Plot Aesthetics</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-numerical-vs.categorical-data"><i class="fa fa-check"></i><b>3.3</b> Plotting Numerical vs. Categorical Data</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.3.1</b> Plotting Error Bars</a></li>
-<li class="chapter" data-level="3.3.2" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-trends-in-big-data"><i class="fa fa-check"></i><b>3.3.2</b> Plotting Trends in Big Data</a></li>
-<li class="chapter" data-level="3.3.3" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#saving-your-figures"><i class="fa fa-check"></i><b>3.3.3</b> Saving Your Figures</a></li>
-</ul></li>
+<li class="chapter" data-level="3.3" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#exploring-other-plots"><i class="fa fa-check"></i><b>3.3</b> Exploring Other Plots</a></li>
 <li class="chapter" data-level="3.4" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#making-scientific-figures"><i class="fa fa-check"></i><b>3.4</b> Making Scientific Figures</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-error-bars-1"><i class="fa fa-check"></i><b>3.4.1</b> Plotting Error Bars</a></li>
-<li class="chapter" data-level="3.4.2" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-trends-in-big-data-1"><i class="fa fa-check"></i><b>3.4.2</b> Plotting Trends in Big Data</a></li>
+<li class="chapter" data-level="3.4.1" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.4.1</b> Plotting Error Bars</a></li>
+<li class="chapter" data-level="3.4.2" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#plotting-trends-in-big-data"><i class="fa fa-check"></i><b>3.4.2</b> Plotting Trends in Big Data</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#saving-your-figures-1"><i class="fa fa-check"></i><b>3.5</b> Saving Your Figures</a></li>
+<li class="chapter" data-level="3.5" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html#saving-your-figures"><i class="fa fa-check"></i><b>3.5</b> Saving Your Figures</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows</a><ul>
 <li class="chapter" data-level="4.1" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#using-code-many-times---loops"><i class="fa fa-check"></i><b>4.1</b> Using code many times - loops</a><ul>
@@ -335,8 +331,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </div>
 </div>
-<div id="plotting-numerical-vs.categorical-data" class="section level2">
-<h2><span class="header-section-number">3.3</span> Plotting Numerical vs. Categorical Data</h2>
+<div id="exploring-other-plots" class="section level2">
+<h2><span class="header-section-number">3.3</span> Exploring Other Plots</h2>
 <pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
 <pre><code>## ✔ tibble  3.1.2     ✔ dplyr   1.0.6
 ## ✔ tidyr   1.1.3     ✔ stringr 1.4.0
@@ -348,103 +344,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We can create histograms in ggplot2 that are more aesthetically pleasing than the default <code>hist</code> function.</p>
 <div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1"><span class="kw">ggplot</span>(msleep, <span class="kw">aes</span>(<span class="dt">x =</span> sleep_total)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb140-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>)</a></code></pre></div>
-<p><img src="430-other-plot-types_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="430-other-plots_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>By adding a different parameter to <code>fill</code> in the <code>aes</code> we define throgh the <code>ggplot</code> function, we can separate out histograms according to different groupings such as here where we look at how total sleep distribution is distributed according to feeding behavior.</p>
 <div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" data-line-number="1"><span class="kw">ggplot</span>(msleep, <span class="kw">aes</span>(<span class="dt">x =</span> sleep_total, <span class="dt">fill =</span> vore)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb141-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>)</a></code></pre></div>
-<p><img src="430-other-plot-types_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="430-other-plots_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>We can look at how many individuals in the dataset fall into each category, such as feeding behavior.</p>
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb142-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>()</a></code></pre></div>
-<p><img src="430-other-plot-types_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="430-other-plots_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>We can look at how many total sleep distribution is distributed within each category of feeding behavior using separate box plots.</p>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> sleep_total)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb143-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
-<p><img src="430-other-plot-types_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="430-other-plots_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>We can even drill down further and separate out another category, so that we can look at each feeding behavior and each conservation status (e.g. how the total sleep duration of domesticated herbivores compares to least concern carnivores).</p>
 <div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1"><span class="kw">ggplot</span>(msleep, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> sleep_total, <span class="dt">color =</span> conservation)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb144-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_boxplot</span>() </a></code></pre></div>
-<p><img src="430-other-plot-types_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<hr />
-<div id="plotting-error-bars" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> Plotting Error Bars</h3>
-<p>Discrete Variables
-ggplot(msleep2, aes(x = vore, y = awake)) +
-geom_bar(stat = “identity”)</p>
-<p>ggplot(msleep2, aes(x = vore, y = awake)) +
-geom_bar(stat = “summary”, fun = “median”)</p>
-<p>Error Bars
-ggplot(df, aes(x,y)) + geom_bar(blahblah) + geom_errorbar()
-you could do this, but then you need to have pre-calculated
-the mean value for each group and the SE in your data</p>
-<p>feeding.data &lt;- msleep2 %&gt;% group_by(vore) %&gt;%
-summarize(mean_se(awake))
-feeding.data</p>
-<p>What does mean_se do?
-?mean_se
-y is the mean
-ymin is mean - one SE
-ymax is mean + one SE</p>
-<p>ggplot(feeding.data, aes(x = vore, y = y)) +
-geom_bar(stat = “identity”)</p>
-<p>ggplot(feeding.data, aes(x = vore, y = y)) +
-geom_bar(stat = “identity”) +
-geom_errorbar(aes(ymin = ymin, ymax = ymax),
-width = 0.2)</p>
-<hr />
-</div>
-<div id="plotting-trends-in-big-data" class="section level3">
-<h3><span class="header-section-number">3.3.2</span> Plotting Trends in Big Data</h3>
-<p>Lots of these different figures summarize or aggregate the data. We may want to display the data with the individual points, but still show the overall trend across the data.</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb145-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_bin2d</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb145-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density_2d</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb145-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="430-other-plot-types_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<p>We can add a trendline with <code>geom_smooth</code> that you can check using <code>help(geom_smooth)</code>.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb146-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb146-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>()</a></code></pre></div>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="430-other-plot-types_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1">msleep3 &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">bodywt_log =</span> <span class="kw">log</span>(bodywt))</a>
-<a class="sourceLine" id="cb148-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb148-3" data-line-number="3">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(msleep3, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb148-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()</a>
-<a class="sourceLine" id="cb148-5" data-line-number="5">my.plot</a></code></pre></div>
-<p><img src="430-other-plot-types_files/figure-html/unnamed-chunk-7-2.png" width="672" /></p>
-<p>We can also do this with trendlines that summarize only certain subsets of the data, such as ?</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb149-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> vore)) </a></code></pre></div>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="430-other-plot-types_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<p>The above plot reflects the trends, but makes it hard to see the data that is contributing to each trend line. These differences can be most easily seen using <code>facet_wrap</code> or facetting that splits the figure into separate panel where the data has been filtered by the category (i.e. ?).</p>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb151-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb151-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> vore)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb151-4" data-line-number="4"><span class="st">    </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>vore)</a></code></pre></div>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="430-other-plot-types_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<hr />
-</div>
-<div id="saving-your-figures" class="section level3">
-<h3><span class="header-section-number">3.3.3</span> Saving Your Figures</h3>
-<p>If you want to save your images as a local individual file on your computer, there are two easy ways to do that.</p>
-<p>The first method uses <code>ggsave</code> to save the most recent ggplot figure you generated.</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb153-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
-<a class="sourceLine" id="cb153-3" data-line-number="3"><span class="kw">ggsave</span>(<span class="st">&quot;plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
-<p>This function will save wherever your directory is currently. Check with <code>getwd()</code> and change with <code>setwd(folder name)</code>. You can also provide a precise file path in the new file name.</p>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="kw">ggsave</span>(<span class="st">&quot;~/Downloads/plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
-<p>Here is an alternative method for saving your figures:</p>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1"><span class="kw">pdf</span>(<span class="st">&quot;plot.pdf&quot;</span>) <span class="co"># creates the file</span></a>
-<a class="sourceLine" id="cb155-2" data-line-number="2"><span class="co"># png() also works if you want a different file format</span></a>
-<a class="sourceLine" id="cb155-3" data-line-number="3"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb155-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
-<a class="sourceLine" id="cb155-5" data-line-number="5"><span class="kw">dev.off</span>() <span class="co"># finishes editing the file</span></a></code></pre></div>
-<p>Any changes to the figure that are contained between the initial creation of the figure (i.e. the <code>pdf</code> command) and the <code>dev.off</code> command will be included in the final saved image. However, the figure is being printed directly to the file it is writing and won’t appear elsewhere.</p>
+<p><img src="430-other-plots_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 
-</div>
 </div>
 <div id="making-scientific-figures" class="section level2">
 <h2><span class="header-section-number">3.4</span> Making Scientific Figures</h2>
@@ -456,69 +373,78 @@ width = 0.2)</p>
 <pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<div id="plotting-error-bars-1" class="section level3">
+<div id="plotting-error-bars" class="section level3">
 <h3><span class="header-section-number">3.4.1</span> Plotting Error Bars</h3>
-<p>Discrete Variables
-ggplot(msleep2, aes(x = vore, y = awake)) +
-geom_bar(stat = “identity”)</p>
-<p>ggplot(msleep2, aes(x = vore, y = awake)) +
-geom_bar(stat = “summary”, fun = “median”)</p>
-<p>Error Bars
-ggplot(df, aes(x,y)) + geom_bar(blahblah) + geom_errorbar()
-you could do this, but then you need to have pre-calculated
+<p>Discrete Variables</p>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> awake)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb148-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">fun =</span> <span class="st">&quot;median&quot;</span>)</a></code></pre></div>
+<p><img src="440-scientific-figures_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Error Bars</p>
+<p><code>ggplot(data = &lt;DATA&gt;, mapping = aes(&lt;MAPPINGS&gt;) + geom_bar(stat = &quot;identity&quot;) + geom_errorbar(aes(&lt;MAPPINGS FOR ERROR BAR&gt;))</code></p>
+<p>you could do this, but then you need to have pre-calculated
 the mean value for each group and the SE in your data</p>
-<p>feeding.data &lt;- msleep2 %&gt;% group_by(vore) %&gt;%
-summarize(mean_se(awake))
-feeding.data</p>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1">feeding.data &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(vore) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb149-2" data-line-number="2"><span class="st">  </span><span class="kw">summarize</span>(<span class="kw">mean_se</span>(awake))</a>
+<a class="sourceLine" id="cb149-3" data-line-number="3">feeding.data</a></code></pre></div>
+<pre><code>## # A tibble: 5 x 4
+##   vore        y  ymin  ymax
+##   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1 carni   13.6  12.6   14.7
+## 2 herbi   14.5  13.6   15.4
+## 3 insecti  9.06  6.41  11.7
+## 4 omni    13.1  12.4   13.7
+## 5 &lt;NA&gt;    13.8  12.7   14.9</code></pre>
 <p>What does mean_se do?
 ?mean_se
 y is the mean
 ymin is mean - one SE
 ymax is mean + one SE</p>
-<p>ggplot(feeding.data, aes(x = vore, y = y)) +
-geom_bar(stat = “identity”)</p>
-<p>ggplot(feeding.data, aes(x = vore, y = y)) +
-geom_bar(stat = “identity”) +
-geom_errorbar(aes(ymin = ymin, ymax = ymax),
-width = 0.2)</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1"><span class="kw">ggplot</span>(feeding.data, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb151-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</a></code></pre></div>
+<p><img src="440-scientific-figures_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1"><span class="kw">ggplot</span>(feeding.data, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb152-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb152-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax),</a>
+<a class="sourceLine" id="cb152-4" data-line-number="4">                <span class="dt">width =</span> <span class="fl">0.2</span>)</a></code></pre></div>
+<p><img src="440-scientific-figures_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <hr />
 </div>
-<div id="plotting-trends-in-big-data-1" class="section level3">
+<div id="plotting-trends-in-big-data" class="section level3">
 <h3><span class="header-section-number">3.4.2</span> Plotting Trends in Big Data</h3>
 <p>Lots of these different figures summarize or aggregate the data. We may want to display the data with the individual points, but still show the overall trend across the data.</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb159-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_bin2d</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb159-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density_2d</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb159-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="440-scientific-figures_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb153-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_bin2d</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb153-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_density_2d</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb153-4" data-line-number="4"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="440-scientific-figures_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>We can add a trendline with <code>geom_smooth</code> that you can check using <code>help(geom_smooth)</code>.</p>
-<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb160-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb160-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb154-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb154-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>()</a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="440-scientific-figures_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1">msleep3 &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">bodywt_log =</span> <span class="kw">log</span>(bodywt))</a>
-<a class="sourceLine" id="cb162-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb162-3" data-line-number="3">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(msleep3, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb162-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()</a>
-<a class="sourceLine" id="cb162-5" data-line-number="5">my.plot</a></code></pre></div>
-<p><img src="440-scientific-figures_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<p><img src="440-scientific-figures_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1">msleep3 &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">bodywt_log =</span> <span class="kw">log</span>(bodywt))</a>
+<a class="sourceLine" id="cb156-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb156-3" data-line-number="3">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(msleep3, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb156-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()</a>
+<a class="sourceLine" id="cb156-5" data-line-number="5">my.plot</a></code></pre></div>
+<p><img src="440-scientific-figures_files/figure-html/unnamed-chunk-7-2.png" width="672" /></p>
 <p>We can also do this with trendlines that summarize only certain subsets of the data, such as ?</p>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb163-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> vore)) </a></code></pre></div>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb157-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> vore)) </a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="440-scientific-figures_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="440-scientific-figures_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>The above plot reflects the trends, but makes it hard to see the data that is contributing to each trend line. These differences can be most easily seen using <code>facet_wrap</code> or facetting that splits the figure into separate panel where the data has been filtered by the category (i.e. ?).</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb165-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb165-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> vore)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb165-4" data-line-number="4"><span class="st">    </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>vore)</a></code></pre></div>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb159-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb159-3" data-line-number="3"><span class="st">    </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> vore)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb159-4" data-line-number="4"><span class="st">    </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>vore)</a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="440-scientific-figures_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><img src="440-scientific-figures_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 
 </div>
 </div>
-<div id="saving-your-figures-1" class="section level2">
+<div id="saving-your-figures" class="section level2">
 <h2><span class="header-section-number">3.5</span> Saving Your Figures</h2>
 <pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
 <pre><code>## ✔ tibble  3.1.2     ✔ dplyr   1.0.6
@@ -530,17 +456,17 @@ width = 0.2)</p>
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <p>If you want to save your images as a local individual file on your computer, there are two easy ways to do that.</p>
 <p>The first method uses <code>ggsave</code> to save the most recent ggplot figure you generated.</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb170-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
-<a class="sourceLine" id="cb170-3" data-line-number="3"><span class="kw">ggsave</span>(<span class="st">&quot;plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb164-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
+<a class="sourceLine" id="cb164-3" data-line-number="3"><span class="kw">ggsave</span>(<span class="st">&quot;plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
 <p>This function will save wherever your directory is currently. Check with <code>getwd()</code> and change with <code>setwd(folder name)</code>. You can also provide a precise file path in the new file name.</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1"><span class="kw">ggsave</span>(<span class="st">&quot;~/Downloads/plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" data-line-number="1"><span class="kw">ggsave</span>(<span class="st">&quot;~/Downloads/plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
 <p>Here is an alternative method for saving your figures:</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1"><span class="kw">pdf</span>(<span class="st">&quot;plot.pdf&quot;</span>) <span class="co"># creates the file</span></a>
-<a class="sourceLine" id="cb172-2" data-line-number="2"><span class="co"># png() also works if you want a different file format</span></a>
-<a class="sourceLine" id="cb172-3" data-line-number="3"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb172-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
-<a class="sourceLine" id="cb172-5" data-line-number="5"><span class="kw">dev.off</span>() <span class="co"># finishes editing the file</span></a></code></pre></div>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1"><span class="kw">pdf</span>(<span class="st">&quot;plot.pdf&quot;</span>) <span class="co"># creates the file</span></a>
+<a class="sourceLine" id="cb166-2" data-line-number="2"><span class="co"># png() also works if you want a different file format</span></a>
+<a class="sourceLine" id="cb166-3" data-line-number="3"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb166-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
+<a class="sourceLine" id="cb166-5" data-line-number="5"><span class="kw">dev.off</span>() <span class="co"># finishes editing the file</span></a></code></pre></div>
 <p>Any changes to the figure that are contained between the initial creation of the figure (i.e. the <code>pdf</code> command) and the <code>dev.off</code> command will be included in the final saved image. However, the figure is being printed directly to the file it is writing and won’t appear elsewhere.</p>
 
 </div>

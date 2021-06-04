@@ -1,29 +1,32 @@
 ## Making Scientific Figures
 
-```{r,ggplot2,echo=FALSE}
+```{r,echo=FALSE}
 library(ggplot2)
 library(tidyverse)
 msleep2 <- msleep %>% mutate(brainwt_log = log(brainwt))
 ```
 
-
 ### Plotting Error Bars
 
 Discrete Variables
-ggplot(msleep2, aes(x = vore, y = awake)) + 
-  geom_bar(stat = "identity") 
 
+```{r}
 ggplot(msleep2, aes(x = vore, y = awake)) + 
   geom_bar(stat = "summary", fun = "median")
+```
 
 Error Bars
-ggplot(df, aes(x,y)) + geom_bar(blahblah) + geom_errorbar()
+
+`ggplot(data = <DATA>, mapping = aes(<MAPPINGS>) + geom_bar(stat = "identity") + geom_errorbar(aes(<MAPPINGS FOR ERROR BAR>))`
+
 you could do this, but then you need to have pre-calculated
 the mean value for each group and the SE in your data
 
+```{r}
 feeding.data <- msleep2 %>% group_by(vore) %>% 
   summarize(mean_se(awake))
 feeding.data
+```
 
 What does mean_se do?
 ?mean_se
@@ -31,13 +34,18 @@ y is the mean
 ymin is mean - one SE
 ymax is mean + one SE
 
+```{r}
 ggplot(feeding.data, aes(x = vore, y = y)) + 
   geom_bar(stat = "identity")
+```
 
+
+```{r}
 ggplot(feeding.data, aes(x = vore, y = y)) + 
   geom_bar(stat = "identity") + 
   geom_errorbar(aes(ymin = ymin, ymax = ymax),
                 width = 0.2)
+```
 
 ------
 

@@ -21,14 +21,11 @@ reading-files
 making-plots-with-ggplot2
 getting-started-with-a-ggplot
 plot-aesthetics
-plotting-numerical-vs.categorical-data
+exploring-other-plots
+making-scientific-figures
 plotting-error-bars
 plotting-trends-in-big-data
 saving-your-figures
-making-scientific-figures
-plotting-error-bars-1
-plotting-trends-in-big-data-1
-saving-your-figures-1
 day-5---building-workflows
 using-code-many-times---loops
 doing-things-multiple-times
