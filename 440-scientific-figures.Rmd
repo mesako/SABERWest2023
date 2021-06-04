@@ -1,4 +1,4 @@
-## Making Scientific Figures
+## Making scientific figures
 
 Making plots can be a great way to develop an intuition for your dataset, though to derive and communicate scientific insights, we need to have an idea of the uncertainty in our interpretations.
 
@@ -10,7 +10,7 @@ library(tidyverse)
 msleep2 <- msleep %>% mutate(brainwt_log = log(brainwt))
 ```
 
-### Plotting Error Bars
+### Plotting error bars
 
 When we compare measurements taken from two samples (i.e. two groups), we might want to see if the two groups have very different values for that specific measurement. If we have multiple observations within each group, we can take a summary statistic such as the mean or median and plot those against each other.
 
@@ -56,7 +56,7 @@ Now we add the error bars, mapping the `ymin` and `ymax` values to show where th
 
 ------
 
-### Plotting Trends in Big Data
+### Showing trends in data
 
 Lots of these different figures summarize or aggregate the data. We may want to display the data with the individual points, but still show the overall trend across the data.
 

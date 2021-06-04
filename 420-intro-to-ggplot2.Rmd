@@ -78,7 +78,7 @@ Here we use the `mutate` function to make a new variable called `brainwt_log` in
 
 ------
 
-### Plot Aesthetics
+### Changing plot aesthetics
 
 ???
 

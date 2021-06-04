@@ -9,7 +9,7 @@
 
 ------
 
-### Getting Help in R
+### Getting help in R
 
 If you run into any error while using R, it is a great idea to look up your error message in Google and read through forum posts on StackOverflow. You may find it also helps to know more about your session info such as the version of R you are using, and what packages you have currently loaded.
 
@@ -26,7 +26,7 @@ help(rm)
 
 ------
 
-### Variables and Data Types
+### Using variables and data types
 
 You can assign variables using the `=` or `<-` operators. I will use the `<-` operator exclusively going forward.
 

@@ -1,4 +1,4 @@
-## Exploring Other Plots
+## Exploring other plots
 
 ```{r,echo=FALSE,message=FALSE}
 library(ggplot2)
@@ -11,6 +11,8 @@ Let's consider how we make other plots besides a scatterplot.
 Scatterplots are a great way to look at two quantitative (numerical) values at the same time to observe patterns (i.e. correlations) between the variables or to identify interesting outliers.
 
 However, other plots may be more useful to look at differing numbers of variables (i.e. one quantitative variable) or different types of variables (i.e. qualitative or categorical data).
+
+## Using categorical data
 
 We can create histograms in ggplot2 that are more aesthetically pleasing than the default `hist` function. This shows the distribution of one quantitative variable.
 

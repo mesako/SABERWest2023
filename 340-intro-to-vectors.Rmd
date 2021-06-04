@@ -1,4 +1,4 @@
-## Working with Vectors
+## Working with vectors
 
 You can create vectors (an ordered list of elements) by combining elements with the `c` function.
 
@@ -72,7 +72,7 @@ sin(first.vector)
 
 ------
 
-### Indexing and Subsetting
+### Indexing and subsetting vectors
 
 Indexing is a way to access into a vector (or matrix/data frame) and pull out certain elements. There are multiple ways to index into a vector, one of the easiest ways is to pull out an element based on its order/position in the grouping (its index). We use `[]` immediately after the name of the grouping (in this case a vector) to access into it.
 
@@ -94,7 +94,7 @@ fruits[-1]
 
 ------
 
-### Using Logicals
+### Using logic and logicals
 
 You can also access elements in a vector that meet certain criteria (using conditional logic).
 
