@@ -8,3 +8,13 @@
         Website typeset with bookdown
     </a>
 </p>
+
+<script> 
+// This is to look through, everything that's a floating lone double dash,
+// delete it. This is left over for stuff that's trying to be pauses for
+// the slides
+var listz = document.getElementsByTagName("p");
+for (var i=0; i < listz.length; i++) { 
+    if (listz[i].innerText === "–") { listz[i].innerText = "" } 
+} 
+</script>
