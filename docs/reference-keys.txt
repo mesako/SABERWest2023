@@ -1,10 +1,10 @@
 tab:nice-tab-appendix
 workshop-introduction
-course-intent
+workshop-goals
 structure-and-resources
 this-syllabus-and-videos
 slack-channel
-expectations
+workshop-expectations
 day-3---intoduction-to-r
 rstudio-and-basics
 data-exploration-pipelines
