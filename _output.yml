@@ -10,6 +10,9 @@ bookdown::gitbook:
   includes:
     after_body: footer.html
 
+xaringan::moon_reader:
+  self_contained: true
+
 #bookdown::pdf_book:
 #  includes:
 #    in_header: preamble.tex

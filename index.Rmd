@@ -7,9 +7,7 @@ author:
     - "etc?"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
-output: bookdown::gitbook
 documentclass: book
-#bibliography: 
 biblio-style: apalike
 link-citations: yes
 github-repo: darachm/dll-r
@@ -26,6 +24,8 @@ effectively.
 That framework is getting you oriented with the basics and how to 
 think about figuring out tasks in R.
 
+---
+
 ## Structure and resources
 
 ### This syllabus and videos
@@ -38,13 +38,19 @@ are concise and complete. It also allows us to work as assistants.
 These are uploaded on Youtube, and should be accessible via the embeds on
 this site.
 
+---
+
 ### Slack channel
 
 We are going to set this up to be a good place to go for ideas/help.
 
 The channel is called .... what?
 
+---
+
 ## Expectations
 
 1. Don't be a jerk
 1. Pull together
+
+---
