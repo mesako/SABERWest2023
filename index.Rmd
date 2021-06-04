@@ -16,13 +16,12 @@ description: "A living syllabus for the R section of DLL 2021, at Stanford"
 
 # Workshop introduction
 
-## Course intent
+## Workshop goals
 
-Here is what the course is trying to do.
-We want to get you to a basic framework so you can work with someone 
-effectively.
-That framework is getting you oriented with the basics and how to 
-think about figuring out tasks in R.
+This short 3-day course aims to give you a basic framework so you can work with someone 
+effectively on a research project using R.
+
+This framework includes getting you oriented with basic skills (e.g. using RStudio, documenting your process with R Markdown, basic data analysis and visualization) and empowering you to figure out how to accomplish research-related tasks in R.
 
 ---
 
@@ -30,27 +29,29 @@ think about figuring out tasks in R.
 
 ### This syllabus and videos
 
-We've made this doc for your reference, and it's our living document of
-"slides" and reference.
+We developed this website/document for your reference, as a living textbook and collection of "slides" and code snippets.
 
-We also made short videos for teaching, so that any mini-lectures 
-are concise and complete. It also allows us to work as assistants.
-These are uploaded on Youtube, and should be accessible via the embeds on
-this site.
+We have also made short teaching videos uploaded on Youtube that are embedded where appropriate on this site. These mini-lectures are intended to complement the text for those with different learning preferences.
+
+You will be expected to progress through this website during asynchronous work time in this 3-day period. During synchronous meetings, you should plan to work directly with your peers and us on focused tasks. We will also be there to help with confusing or challenging topics that you want to discuss with someone live.
 
 ---
 
 ### Slack channel
 
-We are going to set this up to be a good place to go for ideas/help.
-
-The channel is called .... what?
+While you are working in asynchronous sessions, or if you just need help during the program, there is a Slack channel available where you can go for ideas/help. The channel is called *#codingtroubleshooting* and should be accessible to you on the SSRP Slack server.
 
 ---
 
-## Expectations
+## Workshop expectations
 
-1. Don't be a jerk
-1. Pull together
+1. Be respectful and compassionate.
+2. Teach one another, learn from one another.
+3. Aim for productive struggle.
++ You will learn best if you make a good faith effort before seeking help.
++ However, you should always seek help if you feel truly stuck.
+4. Create your own sense of challenge.
++ Pick activities that you will learn and grow from.
++ If you don't find something challenging, make it challenging for yourself.
 
 ---
