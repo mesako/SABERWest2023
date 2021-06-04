@@ -1,0 +1,41 @@
+## Troubleshooting, getting help, dissecting problems
+
+You will have problems.
+
+How do you (1) get past these and (2) learn from them?
+
+What kinds of errors did we encounter in this class?
+
+How do we deal with these?
+
+### Places to look for help
+
+- yourself - past notes, troubleshoot logically
+- the people around you, research mentors
+- Slack channel
+- github/gitlab "Issues" page - search first the closed issues!!!
+- StackOverflow - search first for similar problems!!!
+- twitter (for fun problems)
+
+It helps to have a...
+
+### Minimum reproducible example
+
+video1
+<!--
+show an error, simplify it by making MRE
+-->
+
+If you can't find an easy answer, it is important to begin to approach the
+problem like you would a science problem.
+
+Reduce the problem, eliminate extraneous variables.
+
+Use or capture intermediate steps to identify where the issue is.
+
+Collect `sessionInfo()` and share it with folks.
+
+
+<!-- maybe not....
+### Exercise - debug one of the following Rmds
+-->

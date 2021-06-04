@@ -1,6 +1,63 @@
-## Reproducibility and sharing
+## Reproducibile sharing - more `rmarkdown` and 
 
-what are these concepts
+How are you saving your notes for this class?
+<!-- rmd you better be... -->
+
+How do you usually save notes/code/instructions?
+
+How do you share this with others?
+
+### rmarkdown package
+
+The `rmarkdown` package was created by
+[Yihui Xie](https://www.rstudio.com/speakers/yihui-xie/),
+extending from previous work and ideas in 
+`knitr` and `sweave`.
+
+It's a way of mixing writing with code, such that
+you can run the code and it makes a pretty doc
+(and [more](https://rmarkdown.rstudio.com/gallery.html)).
+
+video1 overview
+<!-- 
+motivation / ie what it do
+video1 background / broad context
+yihui xie - grad student, wrote a bunch of packages, now works at Rstudio (pattern here…)
+sweave -> knitr -> rmarkdown
+how I’ve used it, how you could use it
+-->
+
+video2 chunk options
+<!--
+how to cache=T
+how to hide warnings/errors
+how to change figure sizes
+fig.align=”right”
+-->
+
+video3 head options 
+<!--title
+authors
+date, Sys.date
+format …. slides !
+*** themes **** &&%
+-->
+
+video4 how it does what it’s doing
+<!--what it’s doing behind the scenes - a diagram ( on paper )
+code gets pulled out and run, top to bottom
+-->
+
+
+### Sharing with others
+
+What does someone need to re-run your analyses?
+
+<!-- R, Rstudio, packages, scripts -->
+
+- R (often Rstudio)
+- what packages you're using
+- 
 
 why the hell we want others to use our code?
 Well I'll tell you why - the general intellect
