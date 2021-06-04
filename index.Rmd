@@ -1,17 +1,30 @@
 --- 
 title: "DLL 2021, R section"
 author: 
-    - "darachm"
     - "mesako"
-    - "etc?"
-    - "etc?"
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
+    - "Margaret"
+    - "Samson"
+    - "Zac"
+    - "darachm"
+date: "Typeset on `r Sys.Date()`"
+output:
+  bookdown::gitbook:
+    css: style.css
+    config:
+      toc:
+        before: |
+          <li><a href="./">DLL 2021 R workshops</a></li>
+      edit: https://github.com/darachm/dll-r/edit/main/%s
+      download: ["html"] #,"pdf"]
+      highlight: zenburn
+    includes:
+      after_body: footer.html
 documentclass: book
-biblio-style: apalike
-link-citations: yes
 github-repo: darachm/dll-r
 description: "A living syllabus for the R section of DLL 2021, at Stanford"
+#site: bookdown::bookdown_site
+#biblio-style: apalike
+#link-citations: yes
 ---
 
 # Workshop introduction
@@ -23,8 +36,6 @@ effectively on a research project using R.
 
 This framework includes getting you oriented with basic skills (e.g. using RStudio, documenting your process with R Markdown, basic data analysis and visualization) and empowering you to figure out how to accomplish research-related tasks in R.
 
----
-
 ## Structure and resources
 
 ### This syllabus and videos
@@ -35,16 +46,11 @@ We have also made short teaching videos uploaded on Youtube that are embedded wh
 
 You will be expected to progress through this website during asynchronous work time in this 3-day period. During synchronous meetings, you should plan to work directly with your peers and us on focused tasks. We will also be there to help with confusing or challenging topics that you want to discuss with someone live.
 
----
-
 ### Slack channel
 
 While you are working in asynchronous sessions, or if you just need help during the program, there is a Slack channel available where you can go for ideas/help. The channel is called *#codingtroubleshooting* and should be accessible to you on the SSRP Slack server.
 
----
-
 ## Workshop expectations
-
 1. Be respectful and compassionate.
 2. Teach one another, learn from one another.
 3. Aim for productive struggle.
@@ -54,4 +60,3 @@ While you are working in asynchronous sessions, or if you just need help during 
 + Pick activities that you will learn and grow from.
 + If you don't find something challenging, make it challenging for yourself.
 
----
