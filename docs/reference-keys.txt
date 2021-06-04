@@ -27,7 +27,9 @@ saving-your-figures
 day-5---building-workflows
 using-code-many-times---loops
 doing-things-multiple-times
-go-ahead-and-do-this-for-all-242-proteins
+loops
+storing-values-from-a-loop
+other-control-structures
 writing-reusable-code
 style-guides-can-be-inspiring
 what-style-should-you-use

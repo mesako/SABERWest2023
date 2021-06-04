@@ -13,4 +13,4 @@ pre code {
   white-space: inherit;
 }
 
-hr { display: none; }
+.book .book-body .page-wrapper .page-inner section.normal hr { display: none; }
