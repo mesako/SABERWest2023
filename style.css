@@ -13,4 +13,4 @@ pre code {
   white-space: inherit;
 }
 
-hr { display: none; }
+* hr { display: none; }
