@@ -1,0 +1,86 @@
+## Making Scientific Figures
+
+```{r,ggplot2,echo=FALSE}
+library(ggplot2)
+library(tidyverse)
+msleep2 <- msleep %>% mutate(brainwt_log = log(brainwt))
+```
+
+
+### Plotting Error Bars
+
+Discrete Variables
+ggplot(msleep2, aes(x = vore, y = awake)) + 
+  geom_bar(stat = "identity") 
+
+ggplot(msleep2, aes(x = vore, y = awake)) + 
+  geom_bar(stat = "summary", fun = "median")
+
+Error Bars
+ggplot(df, aes(x,y)) + geom_bar(blahblah) + geom_errorbar()
+you could do this, but then you need to have pre-calculated
+the mean value for each group and the SE in your data
+
+feeding.data <- msleep2 %>% group_by(vore) %>% 
+  summarize(mean_se(awake))
+feeding.data
+
+What does mean_se do?
+?mean_se
+y is the mean
+ymin is mean - one SE
+ymax is mean + one SE
+
+ggplot(feeding.data, aes(x = vore, y = y)) + 
+  geom_bar(stat = "identity")
+
+ggplot(feeding.data, aes(x = vore, y = y)) + 
+  geom_bar(stat = "identity") + 
+  geom_errorbar(aes(ymin = ymin, ymax = ymax),
+                width = 0.2)
+
+------
+
+### Plotting Trends in Big Data
+
+Lots of these different figures summarize or aggregate the data. We may want to display the data with the individual points, but still show the overall trend across the data.
+
+```{r, warning=FALSE}
+ggplot(data = msleep2, mapping = aes(x = brainwt_log, y = sleep_rem)) +
+    geom_bin2d() +
+    geom_density_2d() +
+    geom_point()
+```
+
+We can add a trendline with `geom_smooth` that you can check using `help(geom_smooth)`.
+
+```{r, warning=FALSE}
+ggplot(data = msleep2, mapping = aes(x = brainwt_log, y = sleep_rem)) +
+    geom_point(alpha = 0.5) +
+    geom_smooth()
+
+msleep3 <- msleep2 %>% mutate(bodywt_log = log(bodywt))
+
+my.plot <- ggplot(msleep3, aes(x = brainwt_log, y = bodywt_log)) + 
+  geom_point()
+my.plot
+
+```
+
+We can also do this with trendlines that summarize only certain subsets of the data, such as ?
+
+```{r, warning=FALSE}
+ggplot(data = msleep2, mapping = aes(x = brainwt_log, y = sleep_rem)) +
+    geom_smooth(aes(color = vore)) 
+```
+
+The above plot reflects the trends, but makes it hard to see the data that is contributing to each trend line. These differences can be most easily seen using `facet_wrap` or facetting that splits the figure into separate panel where the data has been filtered by the category (i.e. ?).
+
+```{r, warning=FALSE}
+ggplot(data = msleep2, mapping = aes(x = brainwt_log, y = sleep_rem)) +
+    geom_point() +
+    geom_smooth(aes(color = vore)) +
+    facet_wrap( ~ vore)
+```
+
+

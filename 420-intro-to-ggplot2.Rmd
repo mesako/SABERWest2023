@@ -1,0 +1,93 @@
+## Making plots with ggplot2
+
+**Learning Goals:**
+
+* List the roles of data, aesthetics, and geoms in ggplot functions.
+* Choose the correct aesthetics and alter the geom parameters for a scatter plot, histogram, or box plot.
+* Layer multiple geometries in a single plot.
+* Customize plot scales, titles, subtitles, themes, fonts, layout, and orientation.
+* Apply a facet to a plot.
+* Save a ggplot to a file.
+
+### Getting started with a ggplot
+
+```{r,ggplot2,message=FALSE}
+library(ggplot2)
+library(tidyverse)
+```
+
+We will primarily be working in ggplot2 as it has the greatest degree of customization for visualization and offers many additional features over the basic plotting in R.
+
+Most ggplot calls to create a figure take the following form (you can read more using `help(ggplot)`):
+
+`ggplot(data = <DATA>, mapping = aes(<MAPPINGS>)) + <GEOM_FUNCTION>()`
+
+We will practice using our mammalian sleep dataset. You can look up more info about this dataset using the `help` function and the dataset name, `msleep`.
+
+```{r}
+head(msleep)
+```
+
+You will first use the `ggplot()` function and bind the plot to a specific data frame using the data argument.
+
+`ggplot(data = msleep)`
+
+You will next need to define a mapping (using the aesthetic or `aes` function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc.
+
+`ggplot(data = msleep, aes(x = brainwt, y = sleep_rem))`
+
+You can then add ‘geoms’ – graphical representations of the data in the plot (points, lines, bars). ggplot2 offers many different geoms. We will use some common ones today including:
+
+* `geom_point()` for scatter plots, dot plots, etc.
+* `geom_boxplot()` for, well, boxplots!
+* `geom_line()` for trend lines, time series, etc.
+
+To add a geom to the plot use the `+` operator. Because we have two continuous variables, let’s use `geom_point()` first:
+
+`ggplot(data = msleep, aes(x = brainwt, y = sleep_rem)) + geom_point()`
+
+To save your work-in-progress, you can assign the plot to a variable.
+
+```{r}
+my_plot <- ggplot(data = msleep, aes(x = brainwt, y = sleep_rem))
+```
+
+We can now draw the plot as a scatterplot with points to represent each state.
+
+```{r}
+my_plot + geom_point()
+```
+
+------
+
+### Plot Aesthetics
+
+```{r}
+msleep2 <- msleep %>% mutate(brainwt_log = log(brainwt))
+ggplot(msleep2, aes(x = brainwt_log, y = sleep_rem)) + geom_point()
+```
+
+???
+
+We can modify the appearance of the plot by changing aspects of the points we plot such as transparency ("alpha") and color.
+
+```{r}
+ggplot(data = msleep2, aes(x = brainwt_log, y = sleep_rem)) +
+    geom_point(alpha = 0.5, color = "blue")
+```
+
+It is also possible to scale the color of the points by some variable present in the data.
+
+```{r}
+ggplot(msleep2, aes(x = brainwt_log, y = sleep_rem, color = vore)) + 
+  geom_point()
+```
+
+When generating visualizations, it is important to annotate the figure with meaningful labels on the axes to make them accessible for the viewer.
+
+```{r}
+ggplot(msleep2, aes(x = brainwt_log, y = sleep_rem, color = vore)) + 
+  geom_point() + 
+  labs(x = "Brain Weight (log)", 
+       y = "Duration of REM Sleep")
+```

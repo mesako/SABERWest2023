@@ -1,0 +1,64 @@
+## Getting started in R
+
+**Learning Goals:**
+
+* Apply internet searches, help functions, and documentation to learn to use the appropriate functions. 
+* Assign and manipulate variables within the current environment/session in R.
+* Create, modify, and access into a vector (an ordered grouping of elements).
+* Create, modify, and access into a dataframe (an ordered two-dimensional grouping of elements with rows and columns).
+
+------
+
+### Getting Help in R
+
+If you run into any error while using R, it is a great idea to look up your error message in Google and read through forum posts on StackOverflow. You may find it also helps to know more about your session info such as the version of R you are using, and what packages you have currently loaded.
+
+```{r, eval=FALSE}
+sessionInfo()
+```
+
+You can look up what functions do using either a question mark `?` or the `help` function.
+
+```{r, eval=FALSE}
+?rm
+help(rm)
+```
+
+------
+
+### Variables and Data Types
+
+You can assign variables using the `=` or `<-` operators. I will use the `<-` operator exclusively going forward.
+
+```{r}
+save.num <- 7
+save.num
+```
+
+Variables are mutable: you can overwrite the saved value of a variable with another value.
+
+```{r}
+save.num = 10
+save.num
+```
+
+Variables can be saved as other values such as character strings or boolean values (True or False).
+
+```{r}
+save.string <- "hello"
+save.bool <- TRUE
+```
+
+You can check what variables you have assigned in your current working environment.
+
+```{r}
+ls()
+```
+
+You can also remove saved variables.
+
+```{r}
+rm(save.num)
+ls()
+```
+
