@@ -1,60 +1,214 @@
-## Writing modular code
 
-How might you break up the tasks from the previous work, 
-about protein sequence lengths?
+<!--
 
----
+```{=html}
+<div class="incremental">
+```
+```{=html}
+</div>
+```
 
-Here's one way. This is just one short workflow, and you start to have to
-handle and read a lot of interconnecting parts.
+-->
 
-![An un-modular diagram of tasks](img/unmodular.svg)
+## Functions redux - why they're so great
 
----
+Functions are handy.
+For example, let's calculate the standard error of a sample of values:
 
-Another way to approach this is to cluster them into a hierarchy of modules.
-
-![A modular diagram of tasks](img/modular.svg)
-
-Why?
-
-
----
-
-think more clearly than “hardcoding” stuff
-
-change things more easily without forgetting everything
-
-lets you operate at a higher level, by tweaking parameters in one place
-
-<!-- Exercise -->
-
-### Calculating standard error
-
-Let's calculate the standard error of a sample of values:
-
+```{=html}
+<div class="incremental">
+```
 ```{r,stderr_fail,error=T}
 values <- c(4,3,2,2,5,3,6,2,2,4)
 stderr(values)
 ```
+```{=html}
+</div>
+```
 
-Er ... what? What is `stderr` doing?
+```{=html}
+<div class="incremental">
+```
+
+Er ... what? What does `stderr` do?
 
 `?stderr`
 
-Write out the maths for the standard error of the mean
-
-calcuate it
-
-```{r,stderr_calc}
-sd(values)/sqrt(length(values)-1)
+```{=html}
+</div>
 ```
 
-write a function that does it
+---
 
-what do we save it as?
+How do you calculate the standard error of the mean of a sample?
 
-test it
+```{=html}
+<div class="incremental">
+```
+```{r,stderr_calc,cache=T}
+sd(values)/sqrt(length(values))
+```
+
+Do we want to type this each time, copy and paste the code each time?
+
+```{r,stderr_calc_2,cache=T}
+values2 <- c(10,30,20)
+sd(values2)/sqrt(length(values))
+```
+
+This can lead to errors in writing, small incorrect parts.
+It also leaves all the complexity to the reader, so it makes it harder to
+understand when reading code - hard to notice small details.
+
+Where do we save it, how do we share it?
+
+Copy and pasting from a file is okay, but it takes up a lot more work/space.
+We could email around a file of code chunks, or share on github.
+
+How do we make sure it works?
+
+This is hard to do with copy-paste code chunks. Changing the chunk to work
+on a new input can be an opportunity for introducing errors, typos.
+
+```{=html}
+</div>
+```
+
+---
+
+#### Write it as a function!
+
+What are the parameters? Are any defaults set?
+What does it return?
+
+These can be copy and pasted, or `source()`'d from a `.R` file.
+Once you run it, you can test it and change inputs easily.
+Later, you could change the function and keep the same script of using the
+function.
+
+```{=html}
+<div class="incremental">
+```
+```{r,stderr_test,cache=T}
+sez <- function(x) {sd(x)/sqrt(length(x))}
+sez(values)
+
+sez(rnorm(10))
+sez(rnorm(100))
+sez(rpois(1e3,3))
+```
+```{=html}
+</div>
+```
+
+---
+
+## Using functions to write modular code
+
+How might you carry out the workflow from the previous work to
+calculate protein sequence lengths?
+
+```{=html}
+<div class="incremental">
+```
+
+One way is to flatten out all the tasks, 
+and to script each individual task each time.
+This requires the author, user, and reader to understand a lot of complexity.
+
+```{=html}
+<div class="mermaid">
+graph TD
+    classDef default line-height:10px;
+    classDef three line-height:10px,fill:yellow;
+    you[analyst] --> B[finding files] &    C[making a vector] &    D[looping] &    E[reading files] &    F[getting protein seq] &    G[calculting and saving nchar] &    H[plotting nchar]
+    B:::three;
+    C:::three;
+    D:::three;
+    E:::three;
+    F:::three;
+    G:::three;
+    H:::three;
+</div>
+```
+
+Another way to approach this is to cluster them into a hierarchy of modules.
+
+```{=html}
+<div class="mermaid">
+graph TD
+    classDef default line-height:10px;
+    classDef one  line-height:10px,fill:pink;
+    classDef two line-height:10px,fill:cyan;
+    classDef three line-height:10px,fill:yellow;
+    you2[analyst] --> find & read & plot;
+    find:::one --> B;
+    B[finding files]:::three;
+    read:::one --> looping & reading;
+    looping:::two --> C & D;
+    C[making a vector]:::three;
+    D[looping]:::three;
+    reading[reading and calc]:::two --> E & F & G;
+    E[reading files]:::three;
+    F[getting protein seq]:::three;
+    G[calculting and saving nchar]:::three;
+    plot:::one --> H;
+    H[plotting nchar]:::three;
+</div>
+```
+
+In this organization, the analyst can operate at levels of 
+<span style="color:magenta">steps</span>,
+<span style="color:cyan">modules</span>, and
+<span style="color:gold">specific instructions</span>,
+depending on what is needed.
+
+```{=html}
+</div>
+```
+
+---
+
+Organizing your workflows into composable modules lets you extend these to
+un-ancipiated complexity. You could imaging using these steps or modules:
+
+```{=html}
+<div class="mermaid">
+graph LR
+    classDef default line-height:12px;
+    vp[read viral proteins] --> cl[calculate lengths] --> hist[histogram]
+</div>
+```
+
+in new ways by composing the elements together, to analyze a different source
+of proteins, with a new analysis, with similar plots:
+
+```{=html}
+<div class="mermaid">
+graph LR
+    classDef default line-height:12px;
+    vp[read viral proteins] --> cl[calculate lengths] --> hist[histogram]
+    hp[read human proteins] --> cl --> boxplot[boxplot]
+    vp --> cgc[calculate GC%] --> gchist[histogram]
+    hp --> cgc --> gcboxplot[boxplot]
+</div>
+```
+
+---
+
+To do this, you want to:
+
+- try to not "hardcode" things - if it's a number, consider if it can be a
+    *parameter* that is "passed in" as an argument
+- write things as functions
+- think of standard ways that functions can accept and return values
+
+Consider, the `list.files()` and `hist()` functions are already built this way!
+How about a `ggplot2` style boxplot?
+
+Lets code that up inside a function. What should the function take,
+what should it do?
+
 
 ### More complex modules
 
@@ -91,3 +245,22 @@ Scholars will be able to read what an example of apply or s/lapply is doing, so 
 Scholars will have heard the term "lambda function" ?
 
 Scholars will understand that functions can be one-off (ie lambda, function(x){} ), and that's okay
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+    startOnLoad: false, // don't render initially, instead....
+    logLevel: 3, // for debugging
+});
+function initMermaid(s) { 
+  var diagrams = document.querySelectorAll('.mermaid');
+  var i;
+  for(i=0;i<diagrams.length;i++){
+    if(diagrams[i].offsetWidth>0){
+      mermaid.init(undefined, diagrams[i]);
+    }
+  }
+}
+initMermaid();
+</script>
