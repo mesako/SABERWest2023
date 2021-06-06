@@ -61,23 +61,24 @@ Now we add the error bars, mapping the `ymin` and `ymax` values to show where th
 Lots of these different figures summarize or aggregate the data. We may want to display the data with the individual points, but still show the overall trend across the data.
 
 ```{r, warning=FALSE}
-ggplot(data = msleep2, mapping = aes(x = brainwt_log, y = sleep_rem)) +
-    geom_bin2d() +
-    geom_density_2d() +
-    geom_point()
+msleep3 <- msleep2 %>% mutate(bodywt_log = log(bodywt))
+ggplot(data = msleep3, mapping = aes(x = brainwt_log, y = bodywt_log)) +
+  geom_density_2d() +
+  geom_point()
+```
+
+```{r, warning=FALSE}
+ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_density_2d() +
+  geom_point()
 ```
 
 We can add a trendline with `geom_smooth` that you can check using `help(geom_smooth)`.
 
 ```{r, warning=FALSE}
-ggplot(data = msleep2, mapping = aes(x = brainwt_log, y = sleep_rem)) +
-    geom_point(alpha = 0.5) +
-    geom_smooth()
-
-msleep3 <- msleep2 %>% mutate(bodywt_log = log(bodywt))
-
-my.plot <- ggplot(msleep3, aes(x = brainwt_log, y = bodywt_log)) + 
-  geom_point()
+my.plot <- ggplot(msleep3, aes(x = brainwt_log, y = bodywt_log)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth()
 my.plot
 
 ```
@@ -85,15 +86,16 @@ my.plot
 We can also do this with trendlines that summarize only certain subsets of the data, such as ?
 
 ```{r, warning=FALSE}
-ggplot(data = msleep2, mapping = aes(x = brainwt_log, y = sleep_rem)) +
-    geom_smooth(aes(color = vore)) 
+ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) + 
+  geom_point() +
+  geom_smooth(aes(color = Species)) 
 ```
 
 The above plot reflects the trends, but makes it hard to see the data that is contributing to each trend line. These differences can be most easily seen using `facet_wrap` or facetting that splits the figure into separate panel where the data has been filtered by the category (i.e. ?).
 
 ```{r, warning=FALSE}
-ggplot(data = msleep2, mapping = aes(x = brainwt_log, y = sleep_rem)) +
-    geom_point() +
-    geom_smooth(aes(color = vore)) +
-    facet_wrap( ~ vore)
+ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
+  geom_point() +
+  geom_smooth(aes(color = Species)) +
+  facet_wrap( ~ Species)
 ```

@@ -1,10 +1,5 @@
 ## Reading and processing data
 
-```{r}
-irisz <- read.csv("data/iris.csv")
-head(irisz)
-```
-
 * Scholars know how to find a file-reading function, know of a few
 * Scholars can use read.csv to read a file and save it as a variable, and tune some arguments
 * Scholars know that it is important to preview data and look for issues, and have some strategies/functions to do this
@@ -12,3 +7,92 @@ head(irisz)
 * Scholars know how to cast/transform value Types
 * Scholars know how to scale/normalize values
 * Scholars know how to filter entries in a data.frame
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+irisz <- read.csv("data/iris.csv")
+head(irisz)
+```
+
+```{r}
+head(irisz$Species)
+```
+
+Settings for read.csv
+
+```{r}
+irisz <- read.csv("data/iris.csv", stringsAsFactors = TRUE)
+head(irisz$Species)
+head(irisz$Location)
+```
+
+```{r}
+irisz <- read.csv("data/iris.csv", col.names = c("sep_len", "sep_wid", "pet_len", "pet_wid", "species", "loc"))
+head(irisz)
+```
+
+Examining Data
+
+```{r}
+str(irisz)
+summary(irisz)
+```
+
+```{r}
+unique(irisz$sep_len)
+```
+
+Handling Missing Data
+
+```{r}
+irisz <- read.csv("data/iris.csv", na.strings = c("", "n/a"), stringsAsFactors = TRUE)
+head(irisz)
+```
+
+```{r}
+str(irisz)
+summary(irisz)
+```
+
+Looking for anamolous data
+
+```{r}
+hist(irisz$Sepal.Length)
+hist(irisz$Sepal.Width)
+```
+
+```{r}
+hist(irisz$Petal.Length)
+hist(irisz$Petal.Width)
+```
+
+
+```{r}
+head(irisz$Sepal.Length)
+```
+
+```{r, eval = FALSE}
+?scale
+```
+
+```{r}
+x <- 1:10
+scale(x)
+scale(x, center = FALSE)
+scale(x, scale = FALSE)
+```
+
+```{r}
+head(scale(irisz$Sepal.Length))
+```
+
+```{r}
+library(scales)
+rescale(x)        
+```
+
+
+

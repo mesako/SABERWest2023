@@ -19,6 +19,11 @@ ggplot(msleep, aes(x = sleep_total)) +
     geom_histogram(bins = 10)
 ```
 
+```{r}
+ggplot(iris, aes(x = Sepal.Length)) +
+    geom_histogram(bins = 10)
+```
+
 ### Using categorical data
 
 We can look at how many individuals in the dataset fall into each category, such as feeding behavior.
@@ -35,6 +40,11 @@ ggplot(data = msleep, aes(x = vore, y = sleep_total)) +
   geom_boxplot()
 ```
 
+```{r}
+ggplot(data = iris, aes(x = Species, y = Sepal.Length)) + 
+  geom_boxplot()
+```
+
 ### Visualizing between groups
 
 By adding a different parameter to `fill` in the `aes` we define throgh the `ggplot` function, we can separate out histograms according to different groupings such as here where we look at how total sleep distribution is distributed according to feeding behavior.
@@ -44,9 +54,49 @@ ggplot(msleep, aes(x = sleep_total, fill = vore)) +
     geom_histogram(bins = 10)
 ```
 
+```{r}
+ggplot(iris, aes(x = Sepal.Length, fill = Species)) +
+    geom_histogram(bins = 10)
+```
+
 We can even drill down further and separate out another category, so that we can look at each feeding behavior and each conservation status (e.g. how the total sleep duration of domesticated herbivores compares to least concern carnivores).
 
 ```{r}
 ggplot(msleep, aes(x = vore, y = sleep_total, color = conservation)) +
     geom_boxplot() 
+```
+
+
+Why no heatmaps?
+
+The built-in heatmap function meets many needs while the ggplot2 equivalent (geom_tile) can be confusing. We don't recommend ggplot2 for heatmaps.
+
+```{r}
+temp.data <- cbind(log(msleep$brainwt), log(msleep$bodywt))
+head(temp.data)
+```
+
+```{r}
+heatmap(temp.data, labCol = c("brainwt", "bodywt"), cexCol = 1)
+```
+
+```{r}
+heatmap(temp.data, scale = "col", labCol = c("brainwt", "bodywt"), cexCol = 1)
+```
+
+```{r}
+heatmap(temp.data, scale = "col", labRow = msleep$name, labCol = c("brainwt", "bodywt"), cexCol = 1)
+```
+
+
+```{r}
+temp.data2 <- cbind(temp.data, msleep$sleep_total)
+heatmap(temp.data2, scale = "col", labRow = msleep$name,
+        labCol = c("brainwt", "bodywt", "total_sleep"), cexCol = 1)
+```
+
+```{r}
+temp.data3 <- cbind(temp.data2, msleep$sleep_rem)
+heatmap(temp.data3, scale = "col", labRow = msleep$name,
+        labCol = c("brainwt", "bodywt", "total_sleep", "rem_sleep"), cexCol = 1)
 ```

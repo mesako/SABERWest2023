@@ -11,6 +11,7 @@ data-exploration-pipelines
 getting-started-in-r
 getting-help-in-r
 using-variables-and-data-types
+using-functions
 working-with-vectors
 indexing-and-subsetting-vectors
 using-logic-and-logicals
@@ -25,13 +26,13 @@ using-tidyverse-1
 making-plots-with-ggplot2
 getting-started-with-a-ggplot
 changing-plot-aesthetics
-saving-figures-locally
 exploring-other-plots
 using-categorical-data
 visualizing-between-groups
 making-scientific-figures
 plotting-error-bars
 showing-trends-in-data
+saving-figures-locally
 applying-basic-stats
 day-5---building-workflows
 using-code-many-times---loops
