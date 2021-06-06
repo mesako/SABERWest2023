@@ -71,9 +71,12 @@ dim(iris.temp)
 You can use the following functions to investigate aspects of a given dataset.
 
 ```{r}
+str(iris)
 colnames(iris)
 summary(iris)
 ```
+
+Comment on datatypes in iris???
 
 We can try to look at the beginning of a specific column in this dataset. Dataframes that have names for their columns allow you to index into the columns specifically by name using the `$` operator as shown below.
 

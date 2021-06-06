@@ -86,7 +86,8 @@ my.plot
 We can also do this with trendlines that summarize only certain subsets of the data, such as ?
 
 ```{r, warning=FALSE}
-ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
+ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) + 
+  geom_point() +
   geom_smooth(aes(color = Species)) 
 ```
 

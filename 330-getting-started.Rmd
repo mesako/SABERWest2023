@@ -7,6 +7,13 @@
 * Create, modify, and access into a vector (an ordered grouping of elements).
 * Create, modify, and access into a dataframe (an ordered two-dimensional grouping of elements with rows and columns).
 
+
+Goal is to be able to interact with datasets like iris
+
+```{r}
+head(iris, n = 10)
+```
+
 ------
 
 ### Getting help in R
@@ -42,7 +49,7 @@ save.num <- 10
 save.num
 ```
 
-Variables can be saved as other values such as character strings or boolean values (True or False).
+Variables can be saved as other values such as character strings or boolean values (`TRUE` or `FALSE`).
 
 ```{r}
 save.string <- "hello"
@@ -62,3 +69,31 @@ rm(save.num)
 ls()
 ```
 
+### Using functions
+
+```{r, eval = FALSE}
+?c
+```
+
+arguments
+... arguments
+
+arguments as input
+
+```{r}
+save.data <- c(1, 4, 6, 2, 3, 8, NA)
+```
+
+```{r, eval = FALSE}
+?mean
+```
+
+```{r}
+mean(save.data)
+```
+
+arguments as settings
+
+```{r}
+mean(save.data, na.rm = TRUE)
+```
