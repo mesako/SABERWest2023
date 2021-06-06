@@ -38,7 +38,7 @@ save.num
 Variables are mutable: you can overwrite the saved value of a variable with another value.
 
 ```{r}
-save.num = 10
+save.num <- 10
 save.num
 ```
 
