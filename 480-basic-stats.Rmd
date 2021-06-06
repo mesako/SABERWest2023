@@ -9,7 +9,59 @@
 
 
 ```{r}
-#
-# 
+library(tidyverse)
+head(msleep)
+```
+
+```{r}
+median(msleep$brainwt, na.rm = TRUE)
+mean(msleep$brainwt, na.rm = TRUE)
+sd(msleep$brainwt, na.rm = TRUE)
+var(msleep$brainwt, na.rm = TRUE)
+```
+
+```{r}
+median(msleep$bodywt, na.rm = TRUE)
+mean(msleep$bodywt, na.rm = TRUE)
+sd(msleep$bodywt, na.rm = TRUE)
+var(msleep$bodywt, na.rm = TRUE)
+```
+
+
+```{r}
+hist(msleep$brainwt)
+```
+
+
+```{r}
+cor(msleep$brainwt, msleep$bodywt)
+```
+
+```{r}
+summary(msleep)
+```
+
+
+```{r}
+msleep2 <- msleep %>% drop_na(brainwt)
+dim(msleep)
+dim(msleep2)
+```
+
+
+```{r}
+cor(msleep2$brainwt, msleep2$bodywt)
+```
+
+```{r}
+library(Hmisc)
+rcorr(msleep2$brainwt, msleep2$bodywt, type = "pearson")
+rcorr(msleep2$brainwt, msleep2$bodywt, type = "spearman")
+```
+
+
+```{r}
+my.mod <- lm(formula = brainwt ~ bodywt, data = msleep2)
+summary(my.mod)
 ```
 
