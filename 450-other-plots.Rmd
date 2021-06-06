@@ -65,3 +65,38 @@ We can even drill down further and separate out another category, so that we can
 ggplot(msleep, aes(x = vore, y = sleep_total, color = conservation)) +
     geom_boxplot() 
 ```
+
+
+Why no heatmaps?
+
+The built-in heatmap function meets many needs while the ggplot2 equivalent (geom_tile) can be confusing. We don't recommend ggplot2 for heatmaps.
+
+```{r}
+temp.data <- cbind(log(msleep$brainwt), log(msleep$bodywt))
+head(temp.data)
+```
+
+```{r}
+heatmap(temp.data, labCol = c("brainwt", "bodywt"))
+```
+
+```{r}
+heatmap(temp.data, scale = "col", labCol = c("brainwt", "bodywt"))
+```
+
+```{r}
+heatmap(temp.data, scale = "col", labRow = msleep$name, labCol = c("brainwt", "bodywt"))
+```
+
+
+```{r}
+temp.data2 <- cbind(temp.data, msleep$sleep_total)
+heatmap(temp.data2, scale = "col", labRow = msleep$name,
+        labCol = c("brainwt", "bodywt", "total_sleep"))
+```
+
+```{r}
+temp.data3 <- cbind(temp.data2, msleep$sleep_rem)
+heatmap(temp.data3, scale = "col", labRow = msleep$name,
+        labCol = c("brainwt", "bodywt", "total_sleep", "rem_sleep"))
+```

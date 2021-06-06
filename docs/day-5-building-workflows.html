@@ -274,10 +274,10 @@ length (number of amino acids) in a viral
 structural protein sequence.</p>
 <hr />
 <p>These files are in “data”.</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" data-line-number="1">viral_protein_data &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb266-2" data-line-number="2"><span class="st">  </span><span class="kw">read.delim</span>(<span class="st">&quot;data/viral_structural_proteins/viral_proteins_001.tsv&quot;</span>,</a>
-<a class="sourceLine" id="cb266-3" data-line-number="3">    <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F)</a>
-<a class="sourceLine" id="cb266-4" data-line-number="4">viral_protein_data</a></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" data-line-number="1">viral_protein_data &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb277-2" data-line-number="2"><span class="st">  </span><span class="kw">read.delim</span>(<span class="st">&quot;data/viral_structural_proteins/viral_proteins_001.tsv&quot;</span>,</a>
+<a class="sourceLine" id="cb277-3" data-line-number="3">    <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F)</a>
+<a class="sourceLine" id="cb277-4" data-line-number="4">viral_protein_data</a></code></pre></div>
 <pre><code>##                                       V1               V2
 ## 1 YP_009507797.1 structural polyprotein  Everglades virus
 ##                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       V3
@@ -293,21 +293,21 @@ this sequence?</p>
 <p>Let’s do this for all the proteins.
 The simplest way of doing this is to copy and
 paste it.</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" data-line-number="1">viral_protein_data &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb268-2" data-line-number="2"><span class="st">  </span><span class="kw">read.delim</span>(<span class="st">&quot;data/viral_structural_proteins/viral_proteins_002.tsv&quot;</span>,</a>
-<a class="sourceLine" id="cb268-3" data-line-number="3">      <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F, <span class="dt">as.is=</span>T)</a>
-<a class="sourceLine" id="cb268-4" data-line-number="4"><span class="kw">nchar</span>(viral_protein_data<span class="op">$</span>V3[[<span class="dv">1</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" data-line-number="1">viral_protein_data &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb279-2" data-line-number="2"><span class="st">  </span><span class="kw">read.delim</span>(<span class="st">&quot;data/viral_structural_proteins/viral_proteins_002.tsv&quot;</span>,</a>
+<a class="sourceLine" id="cb279-3" data-line-number="3">      <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F, <span class="dt">as.is=</span>T)</a>
+<a class="sourceLine" id="cb279-4" data-line-number="4"><span class="kw">nchar</span>(viral_protein_data<span class="op">$</span>V3[[<span class="dv">1</span>]])</a></code></pre></div>
 <pre><code>## [1] 177</code></pre>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb270-1" data-line-number="1">viral_protein_data &lt;-<span class="st"> </span></a>
-<a class="sourceLine" id="cb270-2" data-line-number="2"><span class="st">  </span><span class="kw">read.delim</span>(<span class="st">&quot;data/viral_structural_proteins/viral_proteins_003.tsv&quot;</span>,</a>
-<a class="sourceLine" id="cb270-3" data-line-number="3">      <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F, <span class="dt">as.is=</span>T)</a>
-<a class="sourceLine" id="cb270-4" data-line-number="4"><span class="kw">nchar</span>(viral_protein_data[<span class="dv">1</span>,<span class="st">&quot;V3&quot;</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" data-line-number="1">viral_protein_data &lt;-<span class="st"> </span></a>
+<a class="sourceLine" id="cb281-2" data-line-number="2"><span class="st">  </span><span class="kw">read.delim</span>(<span class="st">&quot;data/viral_structural_proteins/viral_proteins_003.tsv&quot;</span>,</a>
+<a class="sourceLine" id="cb281-3" data-line-number="3">      <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F, <span class="dt">as.is=</span>T)</a>
+<a class="sourceLine" id="cb281-4" data-line-number="4"><span class="kw">nchar</span>(viral_protein_data[<span class="dv">1</span>,<span class="st">&quot;V3&quot;</span>])</a></code></pre></div>
 <pre><code>## [1] 137</code></pre>
 <p>Go ahead and do this for all 242 proteins</p>
 <hr />
 <p>… just kidding.</p>
 <p>Try this to, well, list files:</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" data-line-number="1"><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" data-line-number="1"><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
 <pre><code>## [1] &quot;viral_proteins_000.tsv&quot; &quot;viral_proteins_001.tsv&quot; &quot;viral_proteins_002.tsv&quot;
 ## [4] &quot;viral_proteins_003.tsv&quot; &quot;viral_proteins_004.tsv&quot;</code></pre>
 <p>Note that I put a <code>[1:5]</code> to limit it to the first 5.
@@ -324,9 +324,9 @@ Other “control statements” or “flow control statements” are
 <p>Let’s look up what they do, with “?<code>for</code>”</p>
 <hr />
 <p>Here’s an example loop:</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</a>
-<a class="sourceLine" id="cb274-2" data-line-number="2">  <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb274-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</a>
+<a class="sourceLine" id="cb285-2" data-line-number="2">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb285-3" data-line-number="3">}</a></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -349,9 +349,9 @@ loops stuff
 <hr />
 <p>How do we loop through and print each file name?</p>
 <p>What’s the analogous component?</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] ) {</a>
-<a class="sourceLine" id="cb276-2" data-line-number="2">  <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb276-3" data-line-number="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb287"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb287-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] ) {</a>
+<a class="sourceLine" id="cb287-2" data-line-number="2">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb287-3" data-line-number="3">}</a></code></pre></div>
 <pre><code>## [1] &quot;viral_proteins_000.tsv&quot;
 ## [1] &quot;viral_proteins_001.tsv&quot;
 ## [1] &quot;viral_proteins_002.tsv&quot;
@@ -359,20 +359,20 @@ loops stuff
 ## [1] &quot;viral_proteins_004.tsv&quot;</code></pre>
 <hr />
 <p>How do we modify this to calculate the protein length?</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] ) {</a>
-<a class="sourceLine" id="cb278-2" data-line-number="2">  <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb278-3" data-line-number="3">  <span class="kw">print</span>(<span class="kw">nchar</span>(<span class="kw">read.delim</span>(i)<span class="op">$</span>V3[[<span class="dv">1</span>]]))</a>
-<a class="sourceLine" id="cb278-4" data-line-number="4">}</a></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb289-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] ) {</a>
+<a class="sourceLine" id="cb289-2" data-line-number="2">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb289-3" data-line-number="3">  <span class="kw">print</span>(<span class="kw">nchar</span>(<span class="kw">read.delim</span>(i)<span class="op">$</span>V3[[<span class="dv">1</span>]]))</a>
+<a class="sourceLine" id="cb289-4" data-line-number="4">}</a></code></pre></div>
 <pre><code>## [1] &quot;viral_proteins_000.tsv&quot;</code></pre>
 <pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file &#39;viral_proteins_000.tsv&#39;: No such
 ## file or directory</code></pre>
 <pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection</code></pre>
 <hr />
 <p>Debugging…</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
-<a class="sourceLine" id="cb282-2" data-line-number="2">                     <span class="dt">full.names=</span>T)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] ) {</a>
-<a class="sourceLine" id="cb282-3" data-line-number="3">  <span class="kw">print</span>(<span class="kw">nchar</span>(<span class="kw">read.delim</span>(i,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F,<span class="dt">as.is=</span>T)<span class="op">$</span>V3[[<span class="dv">1</span>]]))</a>
-<a class="sourceLine" id="cb282-4" data-line-number="4">}</a></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" data-line-number="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
+<a class="sourceLine" id="cb293-2" data-line-number="2">                     <span class="dt">full.names=</span>T)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] ) {</a>
+<a class="sourceLine" id="cb293-3" data-line-number="3">  <span class="kw">print</span>(<span class="kw">nchar</span>(<span class="kw">read.delim</span>(i,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F,<span class="dt">as.is=</span>T)<span class="op">$</span>V3[[<span class="dv">1</span>]]))</a>
+<a class="sourceLine" id="cb293-4" data-line-number="4">}</a></code></pre></div>
 <pre><code>## [1] 1248
 ## [1] 1254
 ## [1] 177
@@ -386,11 +386,11 @@ loops stuff
 but it’s very inefficient. The “R-way” to store values from a loop
 is to define a vector of the right length,
 then put each element in it.</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" data-line-number="1"><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1"><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="dv">10</span>)</a></code></pre></div>
 <pre><code>##  [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1"><span class="kw">vector</span>(<span class="dt">mode=</span><span class="st">&quot;numeric&quot;</span>,<span class="dt">length=</span><span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1"><span class="kw">vector</span>(<span class="dt">mode=</span><span class="st">&quot;numeric&quot;</span>,<span class="dt">length=</span><span class="dv">5</span>)</a></code></pre></div>
 <pre><code>## [1] 0 0 0 0 0</code></pre>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" data-line-number="1"><span class="kw">vector</span>(<span class="st">&quot;logical&quot;</span>,<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" data-line-number="1"><span class="kw">vector</span>(<span class="st">&quot;logical&quot;</span>,<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>## [1] FALSE FALSE</code></pre>
 <hr />
 <p>Okay, but how do we access each position to save the value?
@@ -398,10 +398,10 @@ We need to turn out list of files into indicies.
 We’ll save it first so we can count how many there are.</p>
 <p><code>seq_along</code> is handy function, otherwise use something like
 <code>seq(1,length(x))</code>.</p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" data-line-number="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb290-2" data-line-number="2"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
-<a class="sourceLine" id="cb290-3" data-line-number="3">  <span class="kw">print</span>(first_five[i])</a>
-<a class="sourceLine" id="cb290-4" data-line-number="4">}</a></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" data-line-number="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb301-2" data-line-number="2"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
+<a class="sourceLine" id="cb301-3" data-line-number="3">  <span class="kw">print</span>(first_five[i])</a>
+<a class="sourceLine" id="cb301-4" data-line-number="4">}</a></code></pre></div>
 <pre><code>## [1] &quot;viral_proteins_000.tsv&quot;
 ## [1] &quot;viral_proteins_001.tsv&quot;
 ## [1] &quot;viral_proteins_002.tsv&quot;
@@ -409,65 +409,65 @@ We’ll save it first so we can count how many there are.</p>
 ## [1] &quot;viral_proteins_004.tsv&quot;</code></pre>
 <hr />
 <p>Putting these together, we can save a vector of file names:</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" data-line-number="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb292-2" data-line-number="2">filenamez &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
-<a class="sourceLine" id="cb292-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb292-4" data-line-number="4"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
-<a class="sourceLine" id="cb292-5" data-line-number="5">  filenamez[i] &lt;-<span class="st"> </span>first_five[i]</a>
-<a class="sourceLine" id="cb292-6" data-line-number="6">}</a>
-<a class="sourceLine" id="cb292-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb292-8" data-line-number="8">filenamez</a></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" data-line-number="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb303-2" data-line-number="2">filenamez &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
+<a class="sourceLine" id="cb303-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb303-4" data-line-number="4"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
+<a class="sourceLine" id="cb303-5" data-line-number="5">  filenamez[i] &lt;-<span class="st"> </span>first_five[i]</a>
+<a class="sourceLine" id="cb303-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb303-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb303-8" data-line-number="8">filenamez</a></code></pre></div>
 <pre><code>## [1] &quot;viral_proteins_000.tsv&quot; &quot;viral_proteins_001.tsv&quot; &quot;viral_proteins_002.tsv&quot;
 ## [4] &quot;viral_proteins_003.tsv&quot; &quot;viral_proteins_004.tsv&quot;</code></pre>
 <hr />
 <p>And finally calculate the length of each protein:</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" data-line-number="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
-<a class="sourceLine" id="cb294-2" data-line-number="2">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb294-3" data-line-number="3">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
-<a class="sourceLine" id="cb294-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb294-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
-<a class="sourceLine" id="cb294-6" data-line-number="6">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( <span class="kw">read.delim</span>(first_five[i],</a>
-<a class="sourceLine" id="cb294-7" data-line-number="7">      <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb294-8" data-line-number="8">    )</a>
-<a class="sourceLine" id="cb294-9" data-line-number="9">}</a>
-<a class="sourceLine" id="cb294-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb294-11" data-line-number="11">lengthz</a></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" data-line-number="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
+<a class="sourceLine" id="cb305-2" data-line-number="2">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb305-3" data-line-number="3">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
+<a class="sourceLine" id="cb305-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb305-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
+<a class="sourceLine" id="cb305-6" data-line-number="6">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( <span class="kw">read.delim</span>(first_five[i],</a>
+<a class="sourceLine" id="cb305-7" data-line-number="7">      <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb305-8" data-line-number="8">    )</a>
+<a class="sourceLine" id="cb305-9" data-line-number="9">}</a>
+<a class="sourceLine" id="cb305-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb305-11" data-line-number="11">lengthz</a></code></pre></div>
 <pre><code>## [1] &quot;1248&quot; &quot;1254&quot; &quot;177&quot;  &quot;137&quot;  &quot;117&quot;</code></pre>
 <hr />
 <p>Now we can take off the <code>[1:5]</code> limiter, and do the whole set:</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" data-line-number="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
-<a class="sourceLine" id="cb296-2" data-line-number="2">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)</a>
-<a class="sourceLine" id="cb296-3" data-line-number="3">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
-<a class="sourceLine" id="cb296-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb296-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
-<a class="sourceLine" id="cb296-6" data-line-number="6">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( <span class="kw">read.delim</span>(first_five[i],</a>
-<a class="sourceLine" id="cb296-7" data-line-number="7">      <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb296-8" data-line-number="8">    )</a>
-<a class="sourceLine" id="cb296-9" data-line-number="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" data-line-number="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
+<a class="sourceLine" id="cb307-2" data-line-number="2">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)</a>
+<a class="sourceLine" id="cb307-3" data-line-number="3">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
+<a class="sourceLine" id="cb307-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb307-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
+<a class="sourceLine" id="cb307-6" data-line-number="6">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( <span class="kw">read.delim</span>(first_five[i],</a>
+<a class="sourceLine" id="cb307-7" data-line-number="7">      <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb307-8" data-line-number="8">    )</a>
+<a class="sourceLine" id="cb307-9" data-line-number="9">}</a></code></pre></div>
 <hr />
 <p>How do we go about visualizing/analyzing this?</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1"><span class="kw">hist</span>(lengthz)</a></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" data-line-number="1"><span class="kw">hist</span>(lengthz)</a></code></pre></div>
 <pre><code>## Error in hist.default(lengthz): &#39;x&#39; must be numeric</code></pre>
 <p>er what…?</p>
 <p>Numeric….</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" data-line-number="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
-<a class="sourceLine" id="cb299-2" data-line-number="2">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)</a>
-<a class="sourceLine" id="cb299-3" data-line-number="3">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;numeric&quot;</span>,<span class="kw">length</span>(first_five))</a>
-<a class="sourceLine" id="cb299-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb299-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
-<a class="sourceLine" id="cb299-6" data-line-number="6">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( <span class="kw">read.delim</span>(first_five[i],</a>
-<a class="sourceLine" id="cb299-7" data-line-number="7">      <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb299-8" data-line-number="8">    )</a>
-<a class="sourceLine" id="cb299-9" data-line-number="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" data-line-number="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
+<a class="sourceLine" id="cb310-2" data-line-number="2">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)</a>
+<a class="sourceLine" id="cb310-3" data-line-number="3">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;numeric&quot;</span>,<span class="kw">length</span>(first_five))</a>
+<a class="sourceLine" id="cb310-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb310-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
+<a class="sourceLine" id="cb310-6" data-line-number="6">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( <span class="kw">read.delim</span>(first_five[i],</a>
+<a class="sourceLine" id="cb310-7" data-line-number="7">      <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb310-8" data-line-number="8">    )</a>
+<a class="sourceLine" id="cb310-9" data-line-number="9">}</a></code></pre></div>
 <hr />
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" data-line-number="1"><span class="kw">hist</span>(lengthz,<span class="dt">breaks=</span><span class="dv">50</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" data-line-number="1"><span class="kw">hist</span>(lengthz,<span class="dt">breaks=</span><span class="dv">50</span>)</a></code></pre></div>
 <p><img src="510-loops_files/figure-html/base_viz_protein_lengths_fix-1.png" width="672" /></p>
 <hr />
-<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb301-2" data-line-number="2"><span class="kw">ggplot</span>( <span class="kw">data.frame</span>(<span class="dt">length=</span>lengthz) )<span class="op">+</span><span class="kw">theme_classic</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb301-3" data-line-number="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x=</span>length)<span class="op">+</span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">50</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb312-2" data-line-number="2"><span class="kw">ggplot</span>( <span class="kw">data.frame</span>(<span class="dt">length=</span>lengthz) )<span class="op">+</span><span class="kw">theme_classic</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb312-3" data-line-number="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x=</span>length)<span class="op">+</span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">50</span>)</a></code></pre></div>
 <p><img src="510-loops_files/figure-html/ggplot_viz_protein_lengths-1.png" width="672" /></p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" data-line-number="1"><span class="kw">summary</span>(lengthz)</a></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" data-line-number="1"><span class="kw">summary</span>(lengthz)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##     1.0   231.5   646.0   729.2  1089.0  3390.0</code></pre>
 <hr />
@@ -496,15 +496,15 @@ The experiment is counting barcoded lineages of yeast cells to estimate
 “PPIs” (protein-protein interactions)
 <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>
 here’s an example of one style of writing R script:</p>
-<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" data-line-number="1"><span class="co"># filter out bad barcode lineages ( &lt;= 2 time points counts &gt; 0, or maximum of each time point &lt;= 5 or total counts of a lineage &lt; 10)</span></a>
-<a class="sourceLine" id="cb304-2" data-line-number="2">bad_index =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">nrow</span>(DBC_known_counts))</a>
-<a class="sourceLine" id="cb304-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(bad_index)){</a>
-<a class="sourceLine" id="cb304-4" data-line-number="4">        counts =<span class="st"> </span><span class="kw">as.numeric</span>(DBC_known_counts[i, <span class="dv">4</span><span class="op">:</span><span class="dv">8</span>])</a>
-<a class="sourceLine" id="cb304-5" data-line-number="5">        <span class="cf">if</span> (<span class="kw">length</span>(<span class="kw">which</span>(counts <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)) <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span><span class="kw">max</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">|</span><span class="st"> </span><span class="kw">sum</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>){</a>
-<a class="sourceLine" id="cb304-6" data-line-number="6">                bad_index[i] =<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb304-7" data-line-number="7">        }</a>
-<a class="sourceLine" id="cb304-8" data-line-number="8">}</a>
-<a class="sourceLine" id="cb304-9" data-line-number="9"><span class="kw">length</span>(<span class="kw">which</span>(bad_index <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)) <span class="co"># 1447775</span></a></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" data-line-number="1"><span class="co"># filter out bad barcode lineages ( &lt;= 2 time points counts &gt; 0, or maximum of each time point &lt;= 5 or total counts of a lineage &lt; 10)</span></a>
+<a class="sourceLine" id="cb315-2" data-line-number="2">bad_index =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">nrow</span>(DBC_known_counts))</a>
+<a class="sourceLine" id="cb315-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(bad_index)){</a>
+<a class="sourceLine" id="cb315-4" data-line-number="4">        counts =<span class="st"> </span><span class="kw">as.numeric</span>(DBC_known_counts[i, <span class="dv">4</span><span class="op">:</span><span class="dv">8</span>])</a>
+<a class="sourceLine" id="cb315-5" data-line-number="5">        <span class="cf">if</span> (<span class="kw">length</span>(<span class="kw">which</span>(counts <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)) <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span><span class="kw">max</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">|</span><span class="st"> </span><span class="kw">sum</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb315-6" data-line-number="6">                bad_index[i] =<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb315-7" data-line-number="7">        }</a>
+<a class="sourceLine" id="cb315-8" data-line-number="8">}</a>
+<a class="sourceLine" id="cb315-9" data-line-number="9"><span class="kw">length</span>(<span class="kw">which</span>(bad_index <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)) <span class="co"># 1447775</span></a></code></pre></div>
 <!-- exercise -->
 <ul>
 <li>What is going on here?</li>
@@ -513,16 +513,16 @@ here’s an example of one style of writing R script:</p>
 <li>How do you change the logic?</li>
 </ul>
 <p>Here’s another example from the same author:</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" data-line-number="1">H202_Output &lt;-<span class="st"> </span><span class="kw">PPI_calling_sigmoid</span>(</a>
-<a class="sourceLine" id="cb305-2" data-line-number="2">    <span class="dt">PPI_multiple=</span><span class="kw">dataFrameReader_T</span>(<span class="st">&quot;/Volumes/zmliu_02/PPiseq_03/H2O2/counts/PPI_multiple_p.values.csv&quot;</span>),</a>
-<a class="sourceLine" id="cb305-3" data-line-number="3">    <span class="dt">specific_PPV=</span><span class="kw">c</span>(<span class="kw">seq</span>(<span class="fl">0.5</span>,<span class="fl">0.58</span>,<span class="dt">by=</span><span class="fl">0.02</span>),<span class="kw">seq</span>(<span class="fl">0.6</span>,<span class="fl">0.8</span>,<span class="dt">by=</span><span class="fl">0.01</span>),<span class="kw">seq</span>(<span class="fl">0.82</span>,<span class="fl">0.9</span>,<span class="dt">by=</span><span class="fl">0.02</span>)),</a>
-<a class="sourceLine" id="cb305-4" data-line-number="4">    <span class="dt">Fitness=</span><span class="kw">fitness</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>),</a>
-<a class="sourceLine" id="cb305-5" data-line-number="5">    <span class="dt">p_value=</span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="fl">0.1</span>),</a>
-<a class="sourceLine" id="cb305-6" data-line-number="6">    <span class="dt">Neg_number_PPI=</span><span class="fl">6e4</span>,</a>
-<a class="sourceLine" id="cb305-7" data-line-number="7">    <span class="dt">Neg_ref_number=</span><span class="dv">50</span>, </a>
-<a class="sourceLine" id="cb305-8" data-line-number="8">    <span class="dt">p_threshold=</span><span class="op">-</span><span class="dv">4</span></a>
-<a class="sourceLine" id="cb305-9" data-line-number="9">    <span class="dt">p_loc=</span><span class="dv">6</span>, </a>
-<a class="sourceLine" id="cb305-10" data-line-number="10">)</a></code></pre></div>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" data-line-number="1">H202_Output &lt;-<span class="st"> </span><span class="kw">PPI_calling_sigmoid</span>(</a>
+<a class="sourceLine" id="cb316-2" data-line-number="2">    <span class="dt">PPI_multiple=</span><span class="kw">dataFrameReader_T</span>(<span class="st">&quot;/Volumes/zmliu_02/PPiseq_03/H2O2/counts/PPI_multiple_p.values.csv&quot;</span>),</a>
+<a class="sourceLine" id="cb316-3" data-line-number="3">    <span class="dt">specific_PPV=</span><span class="kw">c</span>(<span class="kw">seq</span>(<span class="fl">0.5</span>,<span class="fl">0.58</span>,<span class="dt">by=</span><span class="fl">0.02</span>),<span class="kw">seq</span>(<span class="fl">0.6</span>,<span class="fl">0.8</span>,<span class="dt">by=</span><span class="fl">0.01</span>),<span class="kw">seq</span>(<span class="fl">0.82</span>,<span class="fl">0.9</span>,<span class="dt">by=</span><span class="fl">0.02</span>)),</a>
+<a class="sourceLine" id="cb316-4" data-line-number="4">    <span class="dt">Fitness=</span><span class="kw">fitness</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>),</a>
+<a class="sourceLine" id="cb316-5" data-line-number="5">    <span class="dt">p_value=</span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="fl">0.1</span>),</a>
+<a class="sourceLine" id="cb316-6" data-line-number="6">    <span class="dt">Neg_number_PPI=</span><span class="fl">6e4</span>,</a>
+<a class="sourceLine" id="cb316-7" data-line-number="7">    <span class="dt">Neg_ref_number=</span><span class="dv">50</span>, </a>
+<a class="sourceLine" id="cb316-8" data-line-number="8">    <span class="dt">p_threshold=</span><span class="op">-</span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb316-9" data-line-number="9">    <span class="dt">p_loc=</span><span class="dv">6</span>, </a>
+<a class="sourceLine" id="cb316-10" data-line-number="10">)</a></code></pre></div>
 <!-- exercise -->
 <p>Same questions.</p>
 <div id="style-guides-can-be-inspiring" class="section level3">
@@ -567,14 +567,14 @@ Be lazy, imitate others.</p>
 <div id="calculating-standard-error" class="section level3">
 <h3><span class="header-section-number">4.3.1</span> Calculating standard error</h3>
 <p>Let’s calculate the standard error of a sample of values:</p>
-<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" data-line-number="1">values &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb306-2" data-line-number="2"><span class="kw">stderr</span>(values)</a></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" data-line-number="1">values &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb317-2" data-line-number="2"><span class="kw">stderr</span>(values)</a></code></pre></div>
 <pre><code>## Error in stderr(values): unused argument (values)</code></pre>
 <p>Er … what? What is <code>stderr</code> doing?</p>
 <p><code>?stderr</code></p>
 <p>Write out the maths for the standard error of the mean</p>
 <p>calcuate it</p>
-<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" data-line-number="1"><span class="kw">sd</span>(values)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(values)<span class="op">-</span><span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" data-line-number="1"><span class="kw">sd</span>(values)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(values)<span class="op">-</span><span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## [1] 0.4727122</code></pre>
 <p>write a function that does it</p>
 <p>what do we save it as?</p>
@@ -609,7 +609,7 @@ Be lazy, imitate others.</p>
 <div id="first-stop---cran" class="section level3">
 <h3><span class="header-section-number">4.4.1</span> first stop - CRAN</h3>
 <p><a href="">CRAN</a></p>
-<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;stringdist&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb321-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;stringdist&quot;</span>)</a></code></pre></div>
 <p>exercise - get the stringdist library, use it</p>
 <p>exercise - get a new viz layer, use it</p>
 </div>
@@ -621,7 +621,7 @@ Be lazy, imitate others.</p>
 </div>
 <div id="next-stop---github" class="section level3">
 <h3><span class="header-section-number">4.4.3</span> next stop - github</h3>
-<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;devtools&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;devtools&quot;</span>)</a></code></pre></div>
 <p>or <code>remotes</code>?</p>
 <p>exercise - pull a package off github… ? maybe some sort of viz again?</p>
 <p>Exercise - install a package from github and learn how to use it</p>
@@ -645,8 +645,8 @@ Be lazy, imitate others.</p>
 <div id="finding-more-help-and-documentation" class="section level2">
 <h2><span class="header-section-number">4.5</span> Finding more help and documentation</h2>
 <p>Need a problem</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" data-line-number="1">?geom_line</a></code></pre></div>
-<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" data-line-number="1">?stringdist</a></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" data-line-number="1">?geom_line</a></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" data-line-number="1">?stringdist</a></code></pre></div>
 <p>Objective X.X: Scholars will know how to get official docs ( ? ) and how to skim/read these</p>
 <p>Objective X.X: Scholars will see how easy it is to use a search engine to try and find other answers</p>
 <p>Objective X.X: Scholars will understand the intention of the Slack being a learning community, or something (set expectations about this)</p>
@@ -697,9 +697,9 @@ x &lt;- 1:10
 y &lt;- 1:10
 plot(x,y)
 ```</code></pre>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb315-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb315-3" data-line-number="3"><span class="kw">plot</span>(x,y)</a></code></pre></div>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb326-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb326-3" data-line-number="3"><span class="kw">plot</span>(x,y)</a></code></pre></div>
 <p><img src="560-rmarkdown-and-repro_files/figure-html/name_of_chunk-1.png" width="288" style="display: block; margin: auto 0 auto auto;" /></p>
 <p>It is possible to enable figure captions.</p>
 <p>video2 chunk options
@@ -764,7 +764,7 @@ into HTML, PDF, and/or slides.</p>
 <li>what packages you’re using</li>
 <li></li>
 </ul>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb329-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
 <pre><code>## Error in get(genname, envir = envir) : object &#39;testthat_print&#39; not found</code></pre>
 <pre><code>## ─ Session info ───────────────────────────────────────────────────────────────
 ##  setting  value                       

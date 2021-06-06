@@ -65,3 +65,12 @@ my.mod <- lm(formula = brainwt ~ bodywt, data = msleep2)
 summary(my.mod)
 ```
 
+```{r}
+my.mod2 <- lm(formula = sleep_total ~ bodywt + brainwt, data = msleep2)
+summary(my.mod2)
+```
+
+```{r}
+my.mod2 <- lm(formula = sleep_total ~ bodywt + brainwt, data = msleep2)
+summary(my.mod2)
+```
