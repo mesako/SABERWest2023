@@ -77,26 +77,26 @@ head(temp.data)
 ```
 
 ```{r}
-heatmap(temp.data, labCol = c("brainwt", "bodywt"))
+heatmap(temp.data, labCol = c("brainwt", "bodywt"), cexCol = 0.5)
 ```
 
 ```{r}
-heatmap(temp.data, scale = "col", labCol = c("brainwt", "bodywt"))
+heatmap(temp.data, scale = "col", labCol = c("brainwt", "bodywt"), cexCol = 0.5)
 ```
 
 ```{r}
-heatmap(temp.data, scale = "col", labRow = msleep$name, labCol = c("brainwt", "bodywt"))
+heatmap(temp.data, scale = "col", labRow = msleep$name, labCol = c("brainwt", "bodywt"), cexCol = 0.5)
 ```
 
 
 ```{r}
 temp.data2 <- cbind(temp.data, msleep$sleep_total)
 heatmap(temp.data2, scale = "col", labRow = msleep$name,
-        labCol = c("brainwt", "bodywt", "total_sleep"))
+        labCol = c("brainwt", "bodywt", "total_sleep"), cexCol = 0.5)
 ```
 
 ```{r}
 temp.data3 <- cbind(temp.data2, msleep$sleep_rem)
 heatmap(temp.data3, scale = "col", labRow = msleep$name,
-        labCol = c("brainwt", "bodywt", "total_sleep", "rem_sleep"))
+        labCol = c("brainwt", "bodywt", "total_sleep", "rem_sleep"), cexCol = 0.5)
 ```
