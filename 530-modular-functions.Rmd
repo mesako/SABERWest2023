@@ -196,19 +196,31 @@ graph LR
 
 ---
 
-To do this, you want to:
+### Tips for modular workflows
 
-- try to not "hardcode" things - if it's a number, consider if it can be a
-    *parameter* that is "passed in" as an argument
-- write things as functions
-- think of standard ways that functions can accept and return values
+- Try to not "hardcode" things - if it's a number, consider if it can be a
+    *parameter* that is "passed in" as an argument.
+
+- Group repeated code functions - some folks say you should never repeat
+    code (but do what works for you!).
+
+- Try to read inputs and outputs as general, flexible formats -
+    strings of filenames, vectors
+
+- Write a comment at the top of the function that says what it's doing
+    and what to expect, generally comment things.
 
 Consider, the `list.files()` and `hist()` functions are already built this way!
 How about a `ggplot2` style boxplot?
 
+---
+
+#### Let's write a plotting module/function
+
 Lets code that up inside a function. What should the function take,
 what should it do?
 
+---
 
 ### More complex modules
 
