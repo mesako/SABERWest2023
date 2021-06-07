@@ -1,34 +1,40 @@
 ## Packages are chunks of code (and sometimes data)
 
-Let’s take a look at your code from the last few days. How would you share this with the other people in the course?
+Let’s take a look at your code from the last few days. 
+How would you share this with the other people in the course?
 
-R, like other languages, is built on a package system - if you wrap up your code in particular expected ways and put it in particular expected places, it is very easy for others to get and use your code
+R, like other languages, is built on a package system - if you wrap up your 
+code in particular expected ways and put it in particular expected places, 
+it is very easy for others to get and use your code
 
-side note link for interested students, easy of making pakcages (for advanced advanced)
+Packages are 
+[said to be easy to make](https://ourcodingclub.github.io/tutorials/writing-r-package/),
+but they're very easy to use.
 
-### first stop - CRAN
+---
+
+### CRAN is the canonical R package resource
 
 [CRAN]()
+
+historical context
 
 ```{r,eval=F}
 library("stringdist")
 ```
 
-exercise - get the stringdist library, use it
+Call `library()` function, with an argument of the library name,
+as a string.
 
-exercise - get a new viz layer, use it
+- get the stringdist library, use it
+- get a new viz layer, use it
 
+---
 
-### How does this package work?
+### github is a common place for sharing code in development
 
-?
-
-??
-
-etc
-
-
-### next stop - github
+Installing from github requires some different programming -
+and there's libraries with functions for this.
 
 ```{r,eval=F}
 library("devtools")
