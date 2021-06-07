@@ -55,7 +55,9 @@ Exercise - install a package from github and learn how to use it
 
 problems with this - security, eh
 
-### finally - Bioconductor 😬
+---
+
+### Bioconductor is a great place for bio-related packages 😬 
 
 [How to install Bioconductor]()
 
@@ -67,6 +69,7 @@ explore the namespace for a package, ie ?packagename:: and TAB or ?packagename::
 
 how to print out all the packages you have loaded
 
+---
 
 ## Finding more help and documentation
 
@@ -92,15 +95,4 @@ Demo a weird plot idea, search for how to do it on stack overflow?
 
 Maybe how to change the color of facet labels in a ggplot facet graph, that's a bit tricky and demonstrates why base R is important…
 
-## Reproducibility and sharing
-
-think about this
-
-think about the next person coming along, or yourself in 3 months
-
-links on syllabus for more info
-
-all sorts of automated stuff you can do
-
-
-
+---
