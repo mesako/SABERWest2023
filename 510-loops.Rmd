@@ -1,7 +1,3 @@
-
-
----
-
 ## Using code many times - loops
 
 You will want to do the same thing multiple
@@ -10,21 +6,27 @@ simple little analysis - we'll calculate the
 length (number of amino acids) in a viral
 structural protein sequence.
 
+These files are in the `data/viral_structural_proteins` folder,
+are tab-delimited three fields, and look like this:
+
+    Q8V433.1 Membrane protein       Bovine respiratory coronavirus (strain 98TXSF-110-LUN)  MSSVTTPAPVYTWTA...
+
+
 ---
 
-These files are in "data".
+Let's read one in.
+We'll need to use `read.delim`, specify a tab separator, and ignore the lack
+of a header.
 
 ```{r,calculate_one,cache=T}
-viral_protein_data <- 
-  read.delim("data/viral_structural_proteins/viral_proteins_001.tsv",
+viral_protein_data <- read.delim("data/viral_structural_proteins/viral_proteins_100.tsv",
     sep="\t",header=F)
 viral_protein_data
 ```
 
-How do we access the protein sequence? (`V3`)
-
-How do we calculate the number of characters in
-this sequence?
+- How do we find the column names?
+- What are two ways to access the protein sequence?
+- How do we calculate the number of characters in this sequence?
 
 <!-- ??"number of characters" -->
 
@@ -39,12 +41,10 @@ The simplest way of doing this is to copy and
 paste it.
 
 ```{r,copy_paste_rep,cache=T}
-viral_protein_data <- 
-  read.delim("data/viral_structural_proteins/viral_proteins_002.tsv",
+viral_protein_data <- read.delim("data/viral_structural_proteins/viral_proteins_002.tsv",
       sep="\t",header=F, as.is=T)
 nchar(viral_protein_data$V3[[1]])
-viral_protein_data <- 
-  read.delim("data/viral_structural_proteins/viral_proteins_003.tsv",
+viral_protein_data <- read.delim("data/viral_structural_proteins/viral_proteins_003.tsv",
       sep="\t",header=F, as.is=T)
 nchar(viral_protein_data[1,"V3"])
 ```
@@ -62,20 +62,43 @@ list.files(path="data/viral_structural_proteins")[1:5]
 ```
 
 Note that I put a `[1:5]` to limit it to the first 5.
-You could also use `head()`.
+You could also use `head()`. It's a good idea to work
+with a small subset of files while you are iterating
+through development, then scale it up to the entirety.
 
 Now how do you calculate the number of characters for each protein?
+
+How do we do this for every file listed ... ?
 
 ---
 
 ### Loops
 
-Loops are when you loop back to do something again.
+<!-- video -->
+
+Loops are for running a "code block" as many times
+as the "condition" determines.
+
+- A "code block" is either one line of code, or multiple
+    lines of code surrounded by curly brackets - {}
+
+        {
+            code <- "in a block" 
+            with <- "multiple lines" 
+        }
+
+- A "condition" is an expression of code that
+    can either evaluate to either `TRUE` or `FALSE`, or 
+    set a variable for each time running the code block.
+
 The most common form of this is a `for` loop.
 Other "control statements" or "flow control statements" are
 `while`, `repeat`, and `if`.
 
 Let's look up what they do, with "?`for`"
+Note the back ticks! These are a trick in R to make anything
+be interpreted as literally what you type, and not
+any special characters. Like "?`+`", or "?`?`"
 
 ---
 
@@ -101,25 +124,20 @@ The pieces:
 
 ---
 
-
-video1
-<!--
-loops stuff
--->
-
----
-
 How do we loop through and print each file name?
 
-What's the analogous component?
+What are the (1) code block and (2) loop condition ?
+
+```{=html}
+<div class="incremental">
+```
+
 
 ```{r,loop_through_files,cache=T}
 for (i in list.files(path="data/viral_structural_proteins")[1:5] ) {
   print(i)
 }
 ```
-
----
 
 How do we modify this to calculate the protein length?
 
@@ -128,6 +146,10 @@ for (i in list.files(path="data/viral_structural_proteins")[1:5] ) {
   print(i)
   print(nchar(read.delim(i)$V3[[1]]))
 }
+```
+
+```{=html}
+</div>
 ```
 
 ---
@@ -264,12 +286,4 @@ summary(lengthz)
 ```
 
 ---
-
-#### Other control structures
-
-video2
-
-- while
-- repeat
-
 

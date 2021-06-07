@@ -1,7 +1,5 @@
 # Day 5 - building workflows
 
----
-
 Today we're going to learn about applying these R 
 skills to 
 repeat, reproduce, extend, and share your analyses.

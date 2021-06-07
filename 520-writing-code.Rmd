@@ -1,21 +1,22 @@
 
----
-
 ## Writing (re)usable code
 
-<!-- exercise -->
+- Crack open your code - can you use it again?
 
-Crack open your code - can you use it again?
-Can you adapt it to modify your question, feed in new data,
+- Can you adapt it to modify your question, feed in new data,
 and modify the scientifically-important bits easily?
+
+---
+
+#### Examples
 
 Let's look at two chunks of code from 
 [a paper](https://github.com/sashaflevy/PPiSeq) (lightly edited).
 The experiment is counting barcoded lineages of yeast cells to estimate
 "PPIs" (protein-protein interactions)
 ^[Ask Darach if you want details, or [read the paper](doi.org/10.7554/eLife.62365)]
-here's an example of one style of writing R script:
 
+Here's an example of one style of writing R script:
 
 ```{r,example1,eval=F}
 # filter out bad barcode lineages ( <= 2 time points counts > 0, or maximum of each time point <= 5 or total counts of a lineage < 10)
@@ -36,6 +37,8 @@ length(which(bad_index == 1)) # 1447775
 - How do you run this multiple times?
 - How do you change the logic?
 
+---
+
 Here's another example from the same author:
 
 ```{r,example2,eval=F}
@@ -55,6 +58,16 @@ H202_Output <- PPI_calling_sigmoid(
 
 Same questions.
 
+---
+
+What are some differences?
+
+What's useful for you?
+
+What's a lot of effort to do?
+
+---
+
 ### Style guides can be inspiring
 
 - [tidyverse style guide](https://style.tidyverse.org/)
@@ -62,7 +75,7 @@ Same questions.
 - [Jean Fan's](https://jef.works/R-style-guide/)
 - search for "R style guide"
 
-### What style should you use?
+What style should you use?
 
 Be inconsistently consistent!
 Balance for yourself:
@@ -73,11 +86,14 @@ Balance for yourself:
 - How similar is it to what everyone else is doing (a very good thing)?
 
 But most importantly, use what folks around you are using.
-Be lazy, imitate others.
+Be lazy, imitate others!
+
+---
 
 <!-- exercise -->
 
 - How would you describe your code writing style?
 - How do you name things?
 - How good are your comments?
-- What elements would you like to incorporate?
+- What ideas would you like to incorporate?
+
