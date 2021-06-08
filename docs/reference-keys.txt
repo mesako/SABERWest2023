@@ -39,6 +39,10 @@ plotting-error-bars
 showing-trends-in-data
 saving-figures-locally
 applying-basic-stats
+describing-quantitative-variables
+finding-differences-in-data
+identifying-correlations
+producing-linear-models
 day-5---building-workflows
 using-code-many-times---loops
 doing-things-multiple-times

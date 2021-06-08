@@ -1,43 +1,89 @@
 ## Applying basic stats
 
-Scholars will have a sense for how to implement more advanced statistical tests in R
-
 ```{r, include=FALSE}
 library(tidyverse)
 ```
 
-?
+Following up on our analysis using visualizations, we will review different types of statistical tests that we can perform on data. We will again revisit the mammalian sleep dataset `msleep`.
 
 ```{r}
 head(msleep)
 ```
 
-basic stats
-describe quantitative variables
+------
+
+### Describing quantitative variables
+
+There are several ways to describe quantitative measurements. We might first look at the range of values using the `quantile` function, which returns the min, max, and median values as well as the 25th and 75th percentiles.  
+
+```{r}
+quantile(msleep$brainwt, na.rm = TRUE)
+```
+
+Note that we are using the setting `na.rm = TRUE` as an argument to these functions so that it ignores `NA` values in the data.
+
+You can also directly isolate some of these values using the functions `min` or `max`. We might describe the center of our data, that is the mean or the median values using those respective function names. 
 
 ```{r}
 median(msleep$brainwt, na.rm = TRUE)
 mean(msleep$brainwt, na.rm = TRUE)
-sd(msleep$brainwt, na.rm = TRUE)
-var(msleep$brainwt, na.rm = TRUE)
 ```
 
-?
+We might also want to describe the spread in the data, such as the standard deviation or the interquartile range. 
 
 ```{r}
-median(msleep$bodywt, na.rm = TRUE)
-mean(msleep$bodywt, na.rm = TRUE)
-sd(msleep$bodywt, na.rm = TRUE)
-var(msleep$bodywt, na.rm = TRUE)
+sd(msleep$brainwt, na.rm = TRUE)
+IQR(msleep$brainwt, na.rm = TRUE)
 ```
 
-?
+Visualizations are a great way to see this information in one picture. We have learned to create a fancier histogram, but the `hist` function always works for quick viewing.
 
 ```{r}
 hist(msleep$brainwt)
 ```
 
-?
+It is clear from this image that the data is skewed towards approaching 0 with a few high outliers. 
+
+------
+
+### Finding differences in data
+
+For the following statistical tests, we want to determine if measurements of a quantitative variable taken on a certain group of samples are different from similar measurements taken from a different group of samples.
+
+To know if these differences are **statistically significant**, we need to be aware of the uncertainty in our data. Even if we have collect many observations, there is generally noisiness and error in those measurements. Thus, we have uncertainty if the mean value we calculate for a group is in fact the true mean.
+
+We can calculate a confidence interval to describe our guess for the mean in our data. That is, we can identify the mean based on our samples, but also provide an upper or lower bound for where the mean might be.
+
+```{r}
+t.test(msleep$brainwt)
+```
+
+We use this `t.test` function because we assume that our data is normally distributed (which is not necessarily always the case) and it has a small sample size.
+
+calculate t-test
+
+```{r}
+insectivores <- msleep %>% 
+  filter(vore == "insecti") %>%
+  select(awake)
+
+other.mammals <- msleep %>% 
+  filter(vore != "insecti") %>%
+  select(awake)
+
+t.test(insectivores, other.mammals, alternative = "less")
+```
+
+calculate ANOVA
+
+```{r}
+anova.msleep <- aov(awake ~ vore, data = msleep)
+summary(anova.msleep)
+```
+
+------
+
+### Identifying correlations
 
 ```{r}
 cor(msleep$brainwt, msleep$bodywt)
@@ -46,7 +92,7 @@ cor(msleep$brainwt, msleep$bodywt)
 know how to deal with NAs
 
 ```{r}
-summary(msleep)
+summary(msleep$brainwt)
 ```
 
 ?
@@ -55,24 +101,6 @@ summary(msleep)
 msleep2 <- msleep %>% drop_na(brainwt)
 dim(msleep)
 dim(msleep2)
-```
-
-calculate confidence intervals
-
-```{r}
-#?
-```
-
-calculate t-test
-
-```{r}
-#?
-```
-
-calculate ANOVA
-
-```{r}
-#?
 ```
 
 identify and use correlation functions
@@ -87,6 +115,10 @@ library(Hmisc)
 rcorr(msleep2$brainwt, msleep2$bodywt, type = "pearson")
 rcorr(msleep2$brainwt, msleep2$bodywt, type = "spearman")
 ```
+
+------
+
+### Producing linear models
 
 identify and use linear regression lm() using both raw variable and formulaic interfaces
 
