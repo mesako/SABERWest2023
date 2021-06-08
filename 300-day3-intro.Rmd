@@ -11,3 +11,19 @@ By the end of today's session, students will be able to:
 * Create, modify, and access into a vector (an ordered grouping of elements).
 * Create, modify, and access into a dataframe (an ordered two-dimensional grouping of elements with rows and columns).
 * Apply existing functions to accomplish a specific task in R. 
+
+**Preparing for Today:**
+Please read through all parts of Section 1: Workshop Introduction.
+
+**Today's Schedule:**
+
+|   Start Time  |   End Time  |   Activity    |          Description          |
+| ------------- | ----------- | ------------- | ----------------------------- |
+| 10:00 AM PDT  | 10:45 AM PDT| Synchronous   | Welcome session on Zoom       |
+| 10:45 AM PDT  | 11:30 AM PDT| Asynchronous  | Work through sections 2.1-2.3 |
+| 11:30 AM PDT  | 12:15 PM PDT| Synchronous   | Peer coding exercises on Zoom |
+| 12:15 PM PDT  | 12:45 PM PDT| Lunch Break   | Take a computer break!        |
+| 12:45 PM PDT  | 1:30 PM PDT | Asynchronous  | Work through sections 2.4-2.5 |
+| 1:30 PM PDT   | 2:30 PM PDT | Synchronous   | Peer coding exercises on Zoom |
+| 2:30 PM PDT   | 3:00 PM PDT | Snack Break   | Take a computer break!        |
+| 3:00 PM PDT   | 3:30 PM PDT | Asynchronous  | Wrap-up session on Zoom       |

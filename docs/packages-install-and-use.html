@@ -74,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -294,11 +294,11 @@ already installed.
 Call <code>library()</code> function, with an argument of the library name,
 as a string.</p>
 <p>Try loading this one:</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" title="1"><span class="kw">library</span>(<span class="st">&quot;stringdist&quot;</span>)</a>
-<a class="sourceLine" id="cb360-2" title="2"><span class="kw">library</span>(stringdist)</a></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;stringdist&quot;</span>)</a>
+<a class="sourceLine" id="cb358-2" data-line-number="2"><span class="kw">library</span>(stringdist)</a></code></pre></div>
 <p>Don’t have it? You can look for packages by using a search engine, or finding
 suggestions in the documentation, papers. Once you have a package name, use</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb361-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;stringdist&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb359-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;stringdist&quot;</span>)</a></code></pre></div>
 <p>to install it. You may need to select a “mirror”. This is just where you
 are downloading from, usually just go with “0-Cloud”
 <a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>.</p>
@@ -317,10 +317,10 @@ what’s called your library,</p>
 loading, you’ll just want one function.
 For example, this website is generated with one function, <code>render_book()</code>
 in the package <code>bookdown</code>. Instead of:</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" title="1"><span class="kw">library</span>(bookdown)</a>
-<a class="sourceLine" id="cb362-2" title="2"><span class="kw">render_book</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" data-line-number="1"><span class="kw">library</span>(bookdown)</a>
+<a class="sourceLine" id="cb360-2" data-line-number="2"><span class="kw">render_book</span>()</a></code></pre></div>
 <p>I can save a line by just using <code>::</code></p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb363-1" title="1">bookdown<span class="op">::</span><span class="kw">render_book</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb361-1" data-line-number="1">bookdown<span class="op">::</span><span class="kw">render_book</span>()</a></code></pre></div>
 <p>This means I am looking in library <code>bookdown</code> for function <code>render_book</code>.
 The function is hidden again right afterwards, but it is useful if you just
 want to run one function from a library, once.</p>
@@ -330,7 +330,7 @@ want to run one function from a library, once.</p>
 <h3><span class="header-section-number">4.5.3</span> Github is a common place for sharing packges in development</h3>
 <p>Installing from github requires some different programming -
 and there’s libraries with functions for this.</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" title="1"><span class="kw">library</span>(<span class="st">&quot;remotes&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;remotes&quot;</span>)</a></code></pre></div>
 <p>This used to be part of the <code>devtools</code> package, but the authors have been
 “uncoupling” these to make each package simple and composable.</p>
 <div id="lets-install-a-package-off-of-github." class="section level4">
@@ -338,7 +338,7 @@ and there’s libraries with functions for this.</p>
 <p>Here’s a cool <a href="https://github.com/ewenme/ghibli">Ghibli color palette</a>,
 so you can change sets of colors for your plots.
 Try installing it with:</p>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" title="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ewenme/ghibli&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb363-1" data-line-number="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ewenme/ghibli&quot;</span>)</a></code></pre></div>
 <p>Then adapt one of your previous plots (that has colors) to use these new
 color palettes.</p>
 <p>Exercise - install a package from github and learn how to use it</p>
@@ -357,13 +357,13 @@ color palettes.</p>
 packages. It’s where a lot of bioinformatics software gets published.
 However, it has it’s own package system and thus package manager.
 You will have to install it … from CRAN. Like so:</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</a></code></pre></div>
 <p>That installs a package with a function that then installs Bioconductor
 packages. It’s actually easy. Let’s give it a try by installing and
 using the <code>limma</code> package to analyze some gene expression data.</p>
 <p>If you’re recall from before, we can use <code>::</code> to avoid having to actually
 <code>library</code> the whole package:</p>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb367-1" title="1">BiocManager<span class="op">::</span><span class="kw">install</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" data-line-number="1">BiocManager<span class="op">::</span><span class="kw">install</span>()</a></code></pre></div>
 <p><a href="">How to install Bioconductor</a></p>
 <p>Scholars will know how to install Bioconductor package from CRAN</p>
 <p>Scholars will know how to find and install packages from Bioconductor</p>
@@ -381,8 +381,8 @@ their datasets.</p>
 <div id="finding-more-help-and-documentation" class="section level3">
 <h3><span class="header-section-number">4.5.6</span> Finding more help and documentation</h3>
 <p>Need a problem</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" title="1">?geom_line</a></code></pre></div>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb369-1" title="1">?stringdist</a></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" data-line-number="1">?geom_line</a></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb367-1" data-line-number="1">?stringdist</a></code></pre></div>
 <p>Objective X.X: Scholars will know how to get official docs ( ? ) and how to skim/read these</p>
 <p>Objective X.X: Scholars will see how easy it is to use a search engine to try and find other answers</p>
 <p>Objective X.X: Scholars will understand the intention of the Slack being a learning community, or something (set expectations about this)</p>

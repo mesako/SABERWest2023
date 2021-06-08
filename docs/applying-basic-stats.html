@@ -74,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -268,38 +268,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="applying-basic-stats" class="section level2">
 <h2><span class="header-section-number">3.6</span> Applying basic stats</h2>
 <p>Following up on our analysis using visualizations, we will review different types of statistical tests that we can perform on data. We will again revisit the mammalian sleep dataset <code>msleep</code>.</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" title="1"><span class="kw">head</span>(msleep)</a></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" data-line-number="1"><span class="kw">head</span>(msleep)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
-##   name  genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-## 1 Chee… Acin… carni Carn… lc                  12.1      NA        NA      11.9
-## 2 Owl … Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
-## 3 Moun… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
-## 4 Grea… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
-## 5 Cow   Bos   herbi Arti… domesticated         4         0.7       0.667  20  
-## 6 Thre… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+## 1 Cheetah Acin… carni Carn… lc                  12.1      NA        NA      11.9
+## 2 Owl mo… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
+## 3 Mounta… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
+## 4 Greate… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
+## 5 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+## 6 Three-… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
 ## # … with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
 <hr />
 <div id="describing-quantitative-variables" class="section level3">
 <h3><span class="header-section-number">3.6.1</span> Describing quantitative variables</h3>
 <p>There are several ways to describe quantitative measurements. We might first look at the range of values using the <code>quantile</code> function, which returns the min, max, and median values as well as the 25th and 75th percentiles.</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" title="1"><span class="kw">quantile</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" data-line-number="1"><span class="kw">quantile</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>##      0%     25%     50%     75%    100% 
 ## 0.00014 0.00290 0.01240 0.12550 5.71200</code></pre>
 <p>Note that we are using the setting <code>na.rm = TRUE</code> as an argument to these functions so that it ignores <code>NA</code> values in the data.</p>
 <p>You can also directly isolate some of these values using the functions <code>min</code> or <code>max</code>. We might describe the center of our data, that is the mean or the median values using those respective function names.</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" title="1"><span class="kw">median</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1"><span class="kw">median</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 0.0124</code></pre>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" title="1"><span class="kw">mean</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" data-line-number="1"><span class="kw">mean</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 0.2815814</code></pre>
 <p>We might also want to describe the spread in the data, such as the standard deviation or the interquartile range.</p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" title="1"><span class="kw">sd</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1"><span class="kw">sd</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 0.9764137</code></pre>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" title="1"><span class="kw">IQR</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1"><span class="kw">IQR</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 0.1226</code></pre>
 <p>Visualizations are a great way to see this information in one picture. We have learned to create a fancier histogram, but the <code>hist</code> function always works for quick viewing.</p>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" title="1"><span class="kw">hist</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
-<p><img src="460-basic-stats_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1"><span class="kw">hist</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
+<p><img src="460-basic-stats_files/figure-html/stats5-1.png" width="672" /></p>
 <p>It is clear from this image that the data is skewed towards approaching 0 with a few high outliers.</p>
 <hr />
 </div>
@@ -308,7 +308,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For the following statistical tests, we want to determine if measurements of a quantitative variable taken on a certain group of samples are different from similar measurements taken from a different group of samples.</p>
 <p>To know if these differences are <strong>statistically significant</strong>, we need to be aware of the uncertainty in our data. Even if we have collect many observations, there is generally noisiness and error in those measurements. Thus, we have uncertainty if the mean value we calculate for a group is in fact the true mean.</p>
 <p>We can calculate a confidence interval to describe our guess for the mean in our data. That is, we can identify the mean based on our samples, but also provide an upper or lower bound for where the mean might be.</p>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" title="1"><span class="kw">t.test</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1"><span class="kw">t.test</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -320,17 +320,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean of x 
 ## 0.2815814</code></pre>
-<p>We use this <code>t.test</code> function because we assume that our data is normally distributed (which is not necessarily always the case) and it has a small sample size.</p>
-<p>calculate t-test</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" title="1">insectivores &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb271-2" title="2"><span class="st">  </span><span class="kw">filter</span>(vore <span class="op">==</span><span class="st"> &quot;insecti&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb271-3" title="3"><span class="st">  </span><span class="kw">select</span>(awake)</a>
-<a class="sourceLine" id="cb271-4" title="4"></a>
-<a class="sourceLine" id="cb271-5" title="5">other.mammals &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb271-6" title="6"><span class="st">  </span><span class="kw">filter</span>(vore <span class="op">!=</span><span class="st"> &quot;insecti&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb271-7" title="7"><span class="st">  </span><span class="kw">select</span>(awake)</a>
-<a class="sourceLine" id="cb271-8" title="8"></a>
-<a class="sourceLine" id="cb271-9" title="9"><span class="kw">t.test</span>(insectivores, other.mammals, <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
+<p>We use this <code>t.test</code> function because we assume that our data is normally distributed (which is not necessarily always the case) and it has a small sample size. You can see that while the mean for brain weight from this popular is 0.28, the range is fairly large (between 0.2 and 0.54) because of how big the variability is in the data.</p>
+<p>If we want to determine if two populations have a difference in their mean values that is statistically significant, we can calculate the t-test between two sets of observations. Let’s look at whether the average time spent awake by mammals who are insectivores is significantly less than those who are not.</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1">insectivores &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb265-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(vore <span class="op">==</span><span class="st"> &quot;insecti&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb265-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(awake)</a>
+<a class="sourceLine" id="cb265-4" data-line-number="4"><span class="kw">head</span>(insectivores)</a></code></pre></div>
+<pre><code>## # A tibble: 5 x 1
+##   awake
+##   &lt;dbl&gt;
+## 1   4.3
+## 2   4.1
+## 3   5.9
+## 4  15.6
+## 5  15.4</code></pre>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" data-line-number="1">other.mammals &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb267-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(vore <span class="op">!=</span><span class="st"> &quot;insecti&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb267-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(awake)</a>
+<a class="sourceLine" id="cb267-4" data-line-number="4"><span class="kw">head</span>(other.mammals)</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 1
+##   awake
+##   &lt;dbl&gt;
+## 1  11.9
+## 2   7  
+## 3   9.6
+## 4   9.1
+## 5  20  
+## 6   9.6</code></pre>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1"><span class="kw">t.test</span>(insectivores, other.mammals, <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -342,9 +359,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean of x mean of y 
 ##   9.06000  13.86056</code></pre>
+<p>These results show a p-value of</p>
 <p>calculate ANOVA</p>
-<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" title="1">anova.msleep &lt;-<span class="st"> </span><span class="kw">aov</span>(awake <span class="op">~</span><span class="st"> </span>vore, <span class="dt">data =</span> msleep)</a>
-<a class="sourceLine" id="cb273-2" title="2"><span class="kw">summary</span>(anova.msleep)</a></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1">anova.msleep &lt;-<span class="st"> </span><span class="kw">aov</span>(awake <span class="op">~</span><span class="st"> </span>vore, <span class="dt">data =</span> msleep)</a>
+<a class="sourceLine" id="cb271-2" data-line-number="2"><span class="kw">summary</span>(anova.msleep)</a></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)  
 ## vore         3  133.7   44.58   2.234 0.0916 .
 ## Residuals   72 1437.0   19.96                 
@@ -355,23 +373,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="identifying-correlations" class="section level3">
 <h3><span class="header-section-number">3.6.3</span> Identifying correlations</h3>
-<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" title="1"><span class="kw">cor</span>(msleep<span class="op">$</span>brainwt, msleep<span class="op">$</span>bodywt)</a></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" data-line-number="1"><span class="kw">cor</span>(msleep<span class="op">$</span>brainwt, msleep<span class="op">$</span>bodywt)</a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>know how to deal with NAs</p>
-<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" title="1"><span class="kw">summary</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb275-1" data-line-number="1"><span class="kw">summary</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ## 0.00014 0.00290 0.01240 0.28158 0.12550 5.71200      27</code></pre>
 <p>?</p>
-<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" title="1">msleep2 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>(brainwt)</a>
-<a class="sourceLine" id="cb279-2" title="2"><span class="kw">dim</span>(msleep)</a></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb277-1" data-line-number="1">msleep2 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>(brainwt)</a>
+<a class="sourceLine" id="cb277-2" data-line-number="2"><span class="kw">dim</span>(msleep)</a></code></pre></div>
 <pre><code>## [1] 83 11</code></pre>
-<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" title="1"><span class="kw">dim</span>(msleep2)</a></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb279-1" data-line-number="1"><span class="kw">dim</span>(msleep2)</a></code></pre></div>
 <pre><code>## [1] 56 11</code></pre>
 <p>identify and use correlation functions
 use different kinds of correlation</p>
-<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" title="1"><span class="kw">cor</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt)</a></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb281-1" data-line-number="1"><span class="kw">cor</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt)</a></code></pre></div>
 <pre><code>## [1] 0.9337822</code></pre>
-<div class="sourceCode" id="cb285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb285-1" title="1"><span class="kw">library</span>(Hmisc)</a></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb283-1" data-line-number="1"><span class="kw">library</span>(Hmisc)</a></code></pre></div>
 <pre><code>## Loading required package: lattice</code></pre>
 <pre><code>## Loading required package: survival</code></pre>
 <pre><code>## Loading required package: Formula</code></pre>
@@ -383,7 +401,7 @@ use different kinds of correlation</p>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     format.pval, units</code></pre>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" title="1"><span class="kw">rcorr</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt, <span class="dt">type =</span> <span class="st">&quot;pearson&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" data-line-number="1"><span class="kw">rcorr</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt, <span class="dt">type =</span> <span class="st">&quot;pearson&quot;</span>)</a></code></pre></div>
 <pre><code>##      x    y
 ## x 1.00 0.93
 ## y 0.93 1.00
@@ -395,7 +413,7 @@ use different kinds of correlation</p>
 ##   x  y 
 ## x     0
 ## y  0</code></pre>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" title="1"><span class="kw">rcorr</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt, <span class="dt">type =</span> <span class="st">&quot;spearman&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" data-line-number="1"><span class="kw">rcorr</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt, <span class="dt">type =</span> <span class="st">&quot;spearman&quot;</span>)</a></code></pre></div>
 <pre><code>##      x    y
 ## x 1.00 0.96
 ## y 0.96 1.00
@@ -412,8 +430,8 @@ use different kinds of correlation</p>
 <div id="producing-linear-models" class="section level3">
 <h3><span class="header-section-number">3.6.4</span> Producing linear models</h3>
 <p>identify and use linear regression lm() using both raw variable and formulaic interfaces</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" title="1">my.mod &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> brainwt <span class="op">~</span><span class="st"> </span>bodywt, <span class="dt">data =</span> msleep2)</a>
-<a class="sourceLine" id="cb296-2" title="2"><span class="kw">summary</span>(my.mod)</a></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" data-line-number="1">my.mod &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> brainwt <span class="op">~</span><span class="st"> </span>bodywt, <span class="dt">data =</span> msleep2)</a>
+<a class="sourceLine" id="cb294-2" data-line-number="2"><span class="kw">summary</span>(my.mod)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = brainwt ~ bodywt, data = msleep2)
@@ -432,8 +450,8 @@ use different kinds of correlation</p>
 ## Residual standard error: 0.3526 on 54 degrees of freedom
 ## Multiple R-squared:  0.8719, Adjusted R-squared:  0.8696 
 ## F-statistic: 367.7 on 1 and 54 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" title="1">my.mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> sleep_total <span class="op">~</span><span class="st"> </span>bodywt <span class="op">+</span><span class="st"> </span>brainwt, <span class="dt">data =</span> msleep2)</a>
-<a class="sourceLine" id="cb298-2" title="2"><span class="kw">summary</span>(my.mod2)</a></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" data-line-number="1">my.mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> sleep_total <span class="op">~</span><span class="st"> </span>bodywt <span class="op">+</span><span class="st"> </span>brainwt, <span class="dt">data =</span> msleep2)</a>
+<a class="sourceLine" id="cb296-2" data-line-number="2"><span class="kw">summary</span>(my.mod2)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = sleep_total ~ bodywt + brainwt, data = msleep2)
@@ -453,8 +471,8 @@ use different kinds of correlation</p>
 ## Residual standard error: 4.193 on 53 degrees of freedom
 ## Multiple R-squared:  0.1337, Adjusted R-squared:  0.101 
 ## F-statistic: 4.088 on 2 and 53 DF,  p-value: 0.02232</code></pre>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" title="1">my.mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> sleep_total <span class="op">~</span><span class="st"> </span>bodywt <span class="op">+</span><span class="st"> </span>brainwt, <span class="dt">data =</span> msleep2)</a>
-<a class="sourceLine" id="cb300-2" title="2"><span class="kw">summary</span>(my.mod2)</a></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" data-line-number="1">my.mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> sleep_total <span class="op">~</span><span class="st"> </span>bodywt <span class="op">+</span><span class="st"> </span>brainwt, <span class="dt">data =</span> msleep2)</a>
+<a class="sourceLine" id="cb298-2" data-line-number="2"><span class="kw">summary</span>(my.mod2)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = sleep_total ~ bodywt + brainwt, data = msleep2)

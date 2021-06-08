@@ -12,3 +12,19 @@ By the end of today's session, students will be able to:
 * Customize plot scales, titles, subtitles, themes, fonts, layout, and orientation.
 * Apply a facet to a plot.
 * Save a ggplot to a file.
+
+**Preparing for Today:**
+Please make sure you have completed all readings and activities from Section 2: Day 3 - introduction to R. You will also have some time at the start of the day to do the first sections 3.1-3.3.
+
+**Today's Schedule:**
+
+|   Start Time  |   End Time  |   Activity    |          Description          |
+| ------------- | ----------- | ------------- | ----------------------------- |
+| 10:00 AM PDT  | 10:45 AM PDT| Asynchronous  | Work through sections 3.1-3.3 |
+| 10:45 AM PDT  | 11:30 AM PDT| Synchronous   | Peer coding exercises on Zoom |
+| 11:30 AM PDT  | 12:15 PM PDT| Asynchronous  | Work through sections 3.4-3.5 |
+| 12:15 PM PDT  | 12:45 PM PDT| Lunch Break   | Take a computer break!        |
+| 12:45 PM PDT  | 1:30 PM PDT | Synchronous   | Peer coding exercises on Zoom |
+| 1:30 PM PDT   | 2:00 PM PDT | Asynchronous  | Work through sections 3.6     |
+| 2:00 PM PDT   | 2:30 PM PDT | Snack Break   | Take a computer break!        |
+| 2:30 PM PDT   | 3:30 PM PDT | Synchronous   | Wrap-up session on Zoom       |

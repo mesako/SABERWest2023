@@ -6,7 +6,7 @@ library(tidyverse)
 
 Following up on our analysis using visualizations, we will review different types of statistical tests that we can perform on data. We will again revisit the mammalian sleep dataset `msleep`.
 
-```{r}
+```{r,stats1,cache=TRUE}
 head(msleep)
 ```
 
@@ -16,7 +16,7 @@ head(msleep)
 
 There are several ways to describe quantitative measurements. We might first look at the range of values using the `quantile` function, which returns the min, max, and median values as well as the 25th and 75th percentiles.  
 
-```{r}
+```{r,stats2,cache=TRUE}
 quantile(msleep$brainwt, na.rm = TRUE)
 ```
 
@@ -24,21 +24,21 @@ Note that we are using the setting `na.rm = TRUE` as an argument to these functi
 
 You can also directly isolate some of these values using the functions `min` or `max`. We might describe the center of our data, that is the mean or the median values using those respective function names. 
 
-```{r}
+```{r,stats3,cache=TRUE}
 median(msleep$brainwt, na.rm = TRUE)
 mean(msleep$brainwt, na.rm = TRUE)
 ```
 
 We might also want to describe the spread in the data, such as the standard deviation or the interquartile range. 
 
-```{r}
+```{r,stats4,cache=TRUE}
 sd(msleep$brainwt, na.rm = TRUE)
 IQR(msleep$brainwt, na.rm = TRUE)
 ```
 
 Visualizations are a great way to see this information in one picture. We have learned to create a fancier histogram, but the `hist` function always works for quick viewing.
 
-```{r}
+```{r,stats5,cache=TRUE}
 hist(msleep$brainwt)
 ```
 
@@ -54,29 +54,33 @@ To know if these differences are **statistically significant**, we need to be aw
 
 We can calculate a confidence interval to describe our guess for the mean in our data. That is, we can identify the mean based on our samples, but also provide an upper or lower bound for where the mean might be.
 
-```{r}
+```{r,stats6,cache=TRUE}
 t.test(msleep$brainwt)
 ```
 
-We use this `t.test` function because we assume that our data is normally distributed (which is not necessarily always the case) and it has a small sample size.
+We use this `t.test` function because we assume that our data is normally distributed (which is not necessarily always the case) and it has a small sample size. You can see that while the mean for brain weight from this popular is 0.28, the range is fairly large (between 0.2 and 0.54) because of how big the variability is in the data.
 
-calculate t-test
+If we want to determine if two populations have a difference in their mean values that is statistically significant, we can calculate the t-test between two sets of observations. Let's look at whether the average time spent awake by mammals who are insectivores is significantly less than those who are not.
 
-```{r}
+```{r,stats7,cache=TRUE}
 insectivores <- msleep %>% 
   filter(vore == "insecti") %>%
   select(awake)
+head(insectivores)
 
 other.mammals <- msleep %>% 
   filter(vore != "insecti") %>%
   select(awake)
+head(other.mammals)
 
 t.test(insectivores, other.mammals, alternative = "less")
 ```
 
+These results show a p-value of 
+
 calculate ANOVA
 
-```{r}
+```{r,stats8,cache=TRUE}
 anova.msleep <- aov(awake ~ vore, data = msleep)
 summary(anova.msleep)
 ```
@@ -85,19 +89,19 @@ summary(anova.msleep)
 
 ### Identifying correlations
 
-```{r}
+```{r,stats9,cache=TRUE}
 cor(msleep$brainwt, msleep$bodywt)
 ```
 
 know how to deal with NAs
 
-```{r}
+```{r,stats10,cache=TRUE}
 summary(msleep$brainwt)
 ```
 
 ?
 
-```{r}
+```{r,stats11,cache=TRUE}
 msleep2 <- msleep %>% drop_na(brainwt)
 dim(msleep)
 dim(msleep2)
@@ -106,11 +110,11 @@ dim(msleep2)
 identify and use correlation functions
 use different kinds of correlation
 
-```{r}
+```{r,stats12,cache=TRUE}
 cor(msleep2$brainwt, msleep2$bodywt)
 ```
 
-```{r}
+```{r,stats13,cache=TRUE}
 library(Hmisc)
 rcorr(msleep2$brainwt, msleep2$bodywt, type = "pearson")
 rcorr(msleep2$brainwt, msleep2$bodywt, type = "spearman")
@@ -122,17 +126,17 @@ rcorr(msleep2$brainwt, msleep2$bodywt, type = "spearman")
 
 identify and use linear regression lm() using both raw variable and formulaic interfaces
 
-```{r}
+```{r,stats14,cache=TRUE}
 my.mod <- lm(formula = brainwt ~ bodywt, data = msleep2)
 summary(my.mod)
 ```
 
-```{r}
+```{r,stats15,cache=TRUE}
 my.mod2 <- lm(formula = sleep_total ~ bodywt + brainwt, data = msleep2)
 summary(my.mod2)
 ```
 
-```{r}
+```{r,stats16,cache=TRUE}
 my.mod2 <- lm(formula = sleep_total ~ bodywt + brainwt, data = msleep2)
 summary(my.mod2)
 ```
