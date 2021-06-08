@@ -630,17 +630,17 @@ how to scale/normalize values</p>
 <p>What does <code>mean_se</code> do? We can check.</p>
 <div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1">?mean_se</a></code></pre></div>
 <p>This function returns three values, <code>y</code>, <code>ymin</code>, and <code>ymax</code> which correspond to the mean, the mean minus one standard error, and the mean plus one standard error. The mean value will be the height of each bar on the barplot, while <code>ymin</code> corresponds to the bottom of the error bar and <code>ymax</code> to the top of the error bar.</p>
-<p>Let’s first plot the height of the bars using this new <code>feeding.data</code> dataset and mapping <code>y</code> to our new <code>y</code> column generated from the <code>mean_se</code> function.</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1"><span class="kw">ggplot</span>(feeding.data, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb214-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</a></code></pre></div>
+<p>Let’s first plot the height of the bars using this new <code>feeding.data</code> dataset and mapping <code>y</code> to our new <code>y</code> column generated from the <code>mean_se</code> function. Here we create the same plot as before from this aggregated dataset, just showing the mean value in each group.</p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(feeding.data, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb214-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</a>
+<a class="sourceLine" id="cb214-3" data-line-number="3">my.plot</a></code></pre></div>
 <p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>Here we create the same plot as before from this aggregated dataset, just showing the mean value in each group.</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1"><span class="kw">ggplot</span>(feeding.data, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb215-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb215-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax),</a>
-<a class="sourceLine" id="cb215-4" data-line-number="4">                <span class="dt">width =</span> <span class="fl">0.2</span>)</a></code></pre></div>
-<p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Now we add the error bars, mapping the <code>ymin</code> and <code>ymax</code> values to the arguments that happen to have the same name in the <code>geom_errorbar</code> function. We add in the <code>width</code> setting just for aesthetics.</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">my.plot &lt;-<span class="st"> </span>my.plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax),</a>
+<a class="sourceLine" id="cb215-2" data-line-number="2">                                   <span class="dt">width =</span> <span class="fl">0.2</span>)</a>
+<a class="sourceLine" id="cb215-3" data-line-number="3">my.plot</a></code></pre></div>
+<p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Now it is more clear that insectivores have significantly less time awake compared to other kinds of mammals.</p>
 <hr />
 </div>
 <div id="showing-trends-in-data" class="section level3">
