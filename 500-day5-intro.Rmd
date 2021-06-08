@@ -17,4 +17,13 @@ First, let's review the last two days.
 - Can you share it with someone and they follow
   along?
 
+Our goals are to learn how to:
+
+- read lots of files, and different kinds of delimited files
+- use loops to do similar steps for many inputs
+- obtain and use packages to user other people's work
+- how to get more help and documentation
+- write code, and design workflows, while thinking about future readers/users
+- design steps/chunks of work as modular functions to make adaptable workflows
+- more fun tricks in generating Rmarkdown reports
 
