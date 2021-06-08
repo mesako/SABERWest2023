@@ -485,18 +485,17 @@ how to scale/normalize values</p>
 <p><code>ggplot(data = msleep)</code></p>
 <p>You will next need to define a mapping (using the aesthetic or <code>aes</code> function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc.</p>
 <p><code>ggplot(data = msleep, aes(x = brainwt, y = sleep_rem))</code></p>
-<p>You can then add ‘geoms’ – graphical representations of the data in the plot (points, lines, bars). ggplot2 offers many different geoms. We will use some common ones today including:</p>
+<p>You can then add “geoms” or graphical representations of the data in the plot (points, lines, bars). <code>ggplot2</code> offers many different geoms including:</p>
 <ul>
 <li><code>geom_point()</code> for scatter plots, dot plots, etc.</li>
 <li><code>geom_boxplot()</code> for, well, boxplots!</li>
 <li><code>geom_line()</code> for trend lines, time series, etc.</li>
 </ul>
-<p>To add a geom to the plot use the <code>+</code> operator. Because we have two continuous variables, let’s use <code>geom_point()</code> first:</p>
-<p><code>ggplot(data = msleep, aes(x = brainwt, y = sleep_rem)) + geom_point()</code></p>
-<p>To save your work-in-progress, you can assign the plot to a variable.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1">my_plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt, <span class="dt">y =</span> sleep_rem))</a></code></pre></div>
-<p>We can now draw the plot as a scatterplot with points to represent each state.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1">my_plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p>To add a geom to the plot use the <code>+</code> operator. To plot using two continuous variables, we will use <code>geom_point()</code> first. To save your work-in-progress, you can assign the plot to a variable.</p>
+<p>First we establish our coordinate system.</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt, <span class="dt">y =</span> sleep_rem))</a></code></pre></div>
+<p>We can now draw the plot as a scatterplot with points to represent each mammal’s measurements from the <code>msleep</code> dataset.</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1">my.plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>You might notice that all of the points are squished against the y-axis since many of the mammals in this dataset have low brain weights.</p>
@@ -532,7 +531,8 @@ how to scale/normalize values</p>
 <div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem, <span class="dt">color =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb198-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb198-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Brain Weight (log)&quot;</span>, </a>
-<a class="sourceLine" id="cb198-4" data-line-number="4">       <span class="dt">y =</span> <span class="st">&quot;Duration of REM Sleep&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb198-4" data-line-number="4">       <span class="dt">y =</span> <span class="st">&quot;Duration of REM Sleep&quot;</span>,</a>
+<a class="sourceLine" id="cb198-5" data-line-number="5">       <span class="dt">color =</span> <span class="st">&quot;Feeding Behavior&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <hr />
@@ -589,7 +589,7 @@ how to scale/normalize values</p>
 <p>Next, we feed these numeric values into the <code>heatmap</code> function along with some arguments that specify settings for displaying the figure. We use <code>labCol</code> to specify how to label these columns and <code>cexCol</code> to control the text size of these labels. We set <code>labRow</code> to be the names of each species from the msleep dataset.</p>
 <div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1"><span class="kw">heatmap</span>(temp.data, <span class="dt">labRow =</span> msleep<span class="op">$</span>name, <span class="dt">labCol =</span> <span class="kw">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>), <span class="dt">cexCol =</span> <span class="dv">1</span>)</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
-<p>This first heatmap will look strange because it colors each box by its magnitude, but body weight of a mammal is always greater than its brain weight. We want to scale within each column so that the depth of the color reflects whether the mammal has a high brain weight or high body weight <em>relative to the other mammals</em>.</p>
+<p>This first heatmap will look strange because it colors each box by its magnitude, but body weight of a mammal is always greater than its brain weight. We want to scale within each column so that the depth of the color reflects whether the mammal has a high brain weight or high body weight <strong>relative to the other mammals</strong>.</p>
 <div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" data-line-number="1"><span class="kw">heatmap</span>(temp.data, <span class="dt">scale =</span> <span class="st">&quot;col&quot;</span>, <span class="dt">labRow =</span> msleep<span class="op">$</span>name, <span class="dt">labCol =</span> <span class="kw">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>), <span class="dt">cexCol =</span> <span class="dv">1</span>)</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>Using the <code>scale</code> argument which we set to <code>&quot;col&quot;</code>, now the color of the columns is more meaningful. For example, it makes sense that the measurements taken on an Asian elephant are much higher than those from a mole rat, so the color of those cells is deeper.</p>
@@ -605,15 +605,15 @@ how to scale/normalize values</p>
 <div id="making-scientific-figures" class="section level2">
 <h2><span class="header-section-number">3.5</span> Making scientific figures</h2>
 <p>Making plots can be a great way to develop an intuition for your dataset, though to derive and communicate scientific insights, we need to have an idea of the uncertainty in our interpretations.</p>
-<p>Uncertainty describes ideas such as: are the values between two groups different enough, that it is unlikely that the differences are due to chance? Is the correlation between these variables strong enough that one can predict the other, with some level of confidence? <em>How statistically significant are the patterns we see?</em></p>
+<p>Uncertainty describes ideas such as: are the values between two groups different enough, that it is unlikely that the differences are due to chance? Is the correlation between these variables strong enough that one can predict the other, with some level of confidence? <strong>How statistically significant are the patterns we see?</strong></p>
 <div id="plotting-error-bars" class="section level3">
 <h3><span class="header-section-number">3.5.1</span> Plotting error bars</h3>
 <p>When we compare measurements taken from two samples (i.e. two groups), we might want to see if the two groups have very different values for that specific measurement. If we have multiple observations within each group, we can take a summary statistic such as the mean or median and plot those against each other.</p>
 <div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> awake)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb210-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">fun =</span> <span class="st">&quot;mean&quot;</span>)</a></code></pre></div>
 <p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
-<p>For example, here we have asked our <code>geom_bar</code> function to plot a summary, specifically the mean of each group, instead of plotting <code>identity</code> which usually means the value as is. Looking at this figure, we can’t guess if the groups are significantly different without an idea of the uncertainty in our measurements through something like error bars.
-Here is the convention for plotting error bars in ggplot2, as you can see it is just another kind of geom that we can add to our plot:</p>
+<p>For example, here we have asked our <code>geom_bar</code> function to plot a summary, specifically the mean of each group, instead of plotting <code>identity</code> which usually means the value as is. Looking at this figure, we can’t guess if the groups are significantly different without an idea of the uncertainty in our measurements through something like error bars.</p>
+<p>Here is the convention for plotting error bars in ggplot2, as you can see it is just another kind of geom that we can add to our plot:</p>
 <p><code>ggplot(data = &lt;SUMMARY DATA&gt;, mapping = aes(&lt;SUMMARY MAPPINGS&gt;) + geom_bar(stat = &quot;identity&quot;) + geom_errorbar(aes(&lt;ERROR MAPPINGS&gt;))</code></p>
 <p>This method is straightforward, but you need to have pre-calculated the summary statistic for each group and the amount of error (i.e. standard error) from your data. That “aggregated” dataframe becomes the data that you provide to ggplot, instead of the original dataset.</p>
 <div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">feeding.data &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(vore) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -627,55 +627,53 @@ Here is the convention for plotting error bars in ggplot2, as you can see it is 
 ## 3 insecti  9.06  6.41  11.7
 ## 4 omni    13.1  12.4   13.7
 ## 5 &lt;NA&gt;    13.8  12.7   14.9</code></pre>
-<p>What does mean_se do?
-?mean_se
-y is the mean
-ymin is mean - one SE
-ymax is mean + one SE</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1"><span class="kw">ggplot</span>(feeding.data, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb213-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</a></code></pre></div>
-<p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p>Here we create the same plot as before from this aggregated dataset, just showing the mean value in each group.</p>
+<p>What does <code>mean_se</code> do? We can check.</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1">?mean_se</a></code></pre></div>
+<p>This function returns three values, <code>y</code>, <code>ymin</code>, and <code>ymax</code> which correspond to the mean, the mean minus one standard error, and the mean plus one standard error. The mean value will be the height of each bar on the barplot, while <code>ymin</code> corresponds to the bottom of the error bar and <code>ymax</code> to the top of the error bar.</p>
+<p>Let’s first plot the height of the bars using this new <code>feeding.data</code> dataset and mapping <code>y</code> to our new <code>y</code> column generated from the <code>mean_se</code> function.</p>
 <div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1"><span class="kw">ggplot</span>(feeding.data, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb214-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb214-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax),</a>
-<a class="sourceLine" id="cb214-4" data-line-number="4">                <span class="dt">width =</span> <span class="fl">0.2</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb214-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</a></code></pre></div>
 <p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>Now we add the error bars, mapping the <code>ymin</code> and <code>ymax</code> values to show where the bottom and top of each error bar should be.</p>
+<p>Here we create the same plot as before from this aggregated dataset, just showing the mean value in each group.</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1"><span class="kw">ggplot</span>(feeding.data, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb215-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb215-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax),</a>
+<a class="sourceLine" id="cb215-4" data-line-number="4">                <span class="dt">width =</span> <span class="fl">0.2</span>)</a></code></pre></div>
+<p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Now we add the error bars, mapping the <code>ymin</code> and <code>ymax</code> values to the arguments that happen to have the same name in the <code>geom_errorbar</code> function. We add in the <code>width</code> setting just for aesthetics.</p>
 <hr />
 </div>
 <div id="showing-trends-in-data" class="section level3">
 <h3><span class="header-section-number">3.5.2</span> Showing trends in data</h3>
-<p>Lots of these different figures summarize or aggregate the data. We may want to display the data with the individual points, but still show the overall trend across the data.</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">msleep3 &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">bodywt_log =</span> <span class="kw">log</span>(bodywt))</a>
-<a class="sourceLine" id="cb215-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep3, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb215-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_density_2d</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb215-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Sepal.Width)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb216-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_density_2d</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb216-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p>Lots of these different figures summarize or aggregate the data. We may want to display the data with the individual points, but still show the overall trend across the data. Some good plots that do this are <code>geom_density_2d</code> which provides a contour plot.</p>
+<p>Let’s check out the trend in our <code>msleep</code> data between body weight and brain weight. We will create a new column where we take the log value of body weight, like we did with brain weight.</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1">msleep3 &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">bodywt_log =</span> <span class="kw">log</span>(bodywt))</a>
+<a class="sourceLine" id="cb216-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep3, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb216-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_density_2d</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb216-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-<p>We can add a trendline with <code>geom_smooth</code> that you can check using <code>help(geom_smooth)</code>.</p>
+<p>As you can see the density of points almost look like they fit a line. As brain weight increases then body weight increases, or vice versa. We can add a trendline to this plot with the <code>geom_smooth</code> function.</p>
 <div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(msleep3, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb217-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb217-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>()</a>
 <a class="sourceLine" id="cb217-4" data-line-number="4">my.plot</a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
-<p>We can also do this with trendlines that summarize only certain subsets of the data, such as ?</p>
+<p>We can also do this with trendlines that summarize only certain subsets of the data, such as those that belong to a specific category. We will flip back to our <code>iris</code> dataset to look at how sepal length compares to sepal width between different species of iris.</p>
 <div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Sepal.Width)) <span class="op">+</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb219-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb219-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Species)) </a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<p>The above plot reflects the trends, but makes it hard to see the data that is contributing to each trend line. These differences can be most easily seen using <code>facet_wrap</code> or facetting that splits the figure into separate panel where the data has been filtered by the category (i.e. ?).</p>
+<p>We create a seaprate trendline for each by specifiying the <code>aes</code> with color mapping to <code>Species</code> within the <code>geom_smooth</code> function.</p>
+<p>The above plot may make it hard to see the data that is contributing to each trend line. Using <code>facet_wrap</code> again, we can split the figure into separate panel where the data has been filtered by the category (i.e. species).</p>
 <div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Sepal.Width)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb221-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb221-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Species)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb221-4" data-line-number="4"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>Species)</a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Now it is clear that there is a positive correlation (as one goes up, the other goes up) in each species of iris, but some species have a sharper upward trend than others.</p>
 <hr />
 </div>
 <div id="saving-figures-locally" class="section level3">
@@ -685,7 +683,7 @@ ymax is mean + one SE</p>
 <div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb223-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
 <a class="sourceLine" id="cb223-3" data-line-number="3"><span class="kw">ggsave</span>(<span class="st">&quot;plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
-<p>This function will save wherever your directory is currently. Check with <code>getwd()</code> and change with <code>setwd(folder name)</code>. You can also provide a precise file path in the new file name.</p>
+<p>This function will save the figure just produced by this code wherever your directory is currently. You can check your current directory with <code>getwd()</code> and change with <code>setwd(&lt;FOLDER NAME&gt;)</code>. You can also provide a precise file path in the new file name.</p>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1"><span class="kw">ggsave</span>(<span class="st">&quot;~/Downloads/plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
 <p>Here is an alternative method for saving your figures:</p>
 <div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1"><span class="kw">pdf</span>(<span class="st">&quot;plot.pdf&quot;</span>) <span class="co"># creates the file</span></a>

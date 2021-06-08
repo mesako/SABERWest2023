@@ -2,7 +2,7 @@
 
 Making plots can be a great way to develop an intuition for your dataset, though to derive and communicate scientific insights, we need to have an idea of the uncertainty in our interpretations.
 
-Uncertainty describes ideas such as: are the values between two groups different enough, that it is unlikely that the differences are due to chance? Is the correlation between these variables strong enough that one can predict the other, with some level of confidence? *How statistically significant are the patterns we see?*
+Uncertainty describes ideas such as: are the values between two groups different enough, that it is unlikely that the differences are due to chance? Is the correlation between these variables strong enough that one can predict the other, with some level of confidence? **How statistically significant are the patterns we see?**
 
 ```{r,include=FALSE}
 library(ggplot2)
@@ -20,6 +20,7 @@ ggplot(msleep2, aes(x = vore, y = awake)) +
 ```
 
 For example, here we have asked our `geom_bar` function to plot a summary, specifically the mean of each group, instead of plotting `identity` which usually means the value as is. Looking at this figure, we can't guess if the groups are significantly different without an idea of the uncertainty in our measurements through something like error bars. 
+
 Here is the convention for plotting error bars in ggplot2, as you can see it is just another kind of geom that we can add to our plot:
 
 `ggplot(data = <SUMMARY DATA>, mapping = aes(<SUMMARY MAPPINGS>) + geom_bar(stat = "identity") + geom_errorbar(aes(<ERROR MAPPINGS>))`
@@ -32,11 +33,15 @@ feeding.data <- msleep2 %>% group_by(vore) %>%
 feeding.data
 ```
 
-What does mean_se do?
+What does `mean_se` do? We can check.
+
+```{r, eval=FALSE}
 ?mean_se
-y is the mean
-ymin is mean - one SE
-ymax is mean + one SE
+```
+
+This function returns three values, `y`, `ymin`, and `ymax` which correspond to the mean, the mean minus one standard error, and the mean plus one standard error. The mean value will be the height of each bar on the barplot, while `ymin` corresponds to the bottom of the error bar and `ymax` to the top of the error bar.
+
+Let's first plot the height of the bars using this new `feeding.data` dataset and mapping `y` to our new `y` column generated from the `mean_se` function.
 
 ```{r}
 ggplot(feeding.data, aes(x = vore, y = y)) + 
@@ -52,13 +57,15 @@ ggplot(feeding.data, aes(x = vore, y = y)) +
                 width = 0.2)
 ```
 
-Now we add the error bars, mapping the `ymin` and `ymax` values to show where the bottom and top of each error bar should be.
+Now we add the error bars, mapping the `ymin` and `ymax` values to the arguments that happen to have the same name in the `geom_errorbar` function. We add in the `width` setting just for aesthetics.
 
 ------
 
 ### Showing trends in data
 
-Lots of these different figures summarize or aggregate the data. We may want to display the data with the individual points, but still show the overall trend across the data.
+Lots of these different figures summarize or aggregate the data. We may want to display the data with the individual points, but still show the overall trend across the data. Some good plots that do this are `geom_density_2d` which provides a contour plot.
+
+Let's check out the trend in our `msleep` data between body weight and brain weight. We will create a new column where we take the log value of body weight, like we did with brain weight.
 
 ```{r, warning=FALSE}
 msleep3 <- msleep2 %>% mutate(bodywt_log = log(bodywt))
@@ -67,23 +74,16 @@ ggplot(data = msleep3, mapping = aes(x = brainwt_log, y = bodywt_log)) +
   geom_point()
 ```
 
-```{r, warning=FALSE}
-ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
-  geom_density_2d() +
-  geom_point()
-```
-
-We can add a trendline with `geom_smooth` that you can check using `help(geom_smooth)`.
+As you can see the density of points almost look like they fit a line. As brain weight increases then body weight increases, or vice versa. We can add a trendline to this plot with the `geom_smooth` function.
 
 ```{r, warning=FALSE}
 my.plot <- ggplot(msleep3, aes(x = brainwt_log, y = bodywt_log)) +
   geom_point(alpha = 0.5) +
   geom_smooth()
 my.plot
-
 ```
 
-We can also do this with trendlines that summarize only certain subsets of the data, such as ?
+We can also do this with trendlines that summarize only certain subsets of the data, such as those that belong to a specific category. We will flip back to our `iris` dataset to look at how sepal length compares to sepal width between different species of iris. 
 
 ```{r, warning=FALSE}
 ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) + 
@@ -91,7 +91,9 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_smooth(aes(color = Species)) 
 ```
 
-The above plot reflects the trends, but makes it hard to see the data that is contributing to each trend line. These differences can be most easily seen using `facet_wrap` or facetting that splits the figure into separate panel where the data has been filtered by the category (i.e. ?).
+We create a seaprate trendline for each by specifiying the `aes` with color mapping to `Species` within the `geom_smooth` function.
+
+The above plot may make it hard to see the data that is contributing to each trend line. Using `facet_wrap` again, we can split the figure into separate panel where the data has been filtered by the category (i.e. species).
 
 ```{r, warning=FALSE}
 ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
@@ -99,6 +101,8 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_smooth(aes(color = Species)) +
   facet_wrap( ~ Species)
 ```
+
+Now it is clear that there is a positive correlation (as one goes up, the other goes up) in each species of iris, but some species have a sharper upward trend than others.
 
 ------
 
@@ -114,7 +118,7 @@ ggplot(msleep2, aes(x = brainwt_log, y = sleep_rem)) + geom_point() +
 ggsave("plot.png", width = 5, height = 5)
 ```
 
-This function will save wherever your directory is currently. Check with `getwd()` and change with `setwd(folder name)`. You can also provide a precise file path in the new file name.
+This function will save the figure just produced by this code wherever your directory is currently. You can check your current directory with `getwd()` and change with `setwd(<FOLDER NAME>)`. You can also provide a precise file path in the new file name.
 
 ```{r, eval=FALSE}
 ggsave("~/Downloads/plot.png", width = 5, height = 5)
