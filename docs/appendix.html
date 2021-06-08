@@ -154,13 +154,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.3.3" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html#using-functions"><i class="fa fa-check"></i><b>2.3.3</b> Using functions</a></li>
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html#working-with-vectors"><i class="fa fa-check"></i><b>2.4</b> Working with vectors</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html#indexing-and-subsetting-vectors"><i class="fa fa-check"></i><b>2.4.1</b> Indexing and subsetting vectors</a></li>
-<li class="chapter" data-level="2.4.2" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html#using-logic-and-logicals"><i class="fa fa-check"></i><b>2.4.2</b> Using logic and logicals</a></li>
+<li class="chapter" data-level="2.4.1" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html#building-vectors"><i class="fa fa-check"></i><b>2.4.1</b> Building vectors</a></li>
+<li class="chapter" data-level="2.4.2" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html#indexing-and-subsetting-vectors"><i class="fa fa-check"></i><b>2.4.2</b> Indexing and subsetting vectors</a></li>
+<li class="chapter" data-level="2.4.3" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html#using-logic-and-logicals"><i class="fa fa-check"></i><b>2.4.3</b> Using logic and logicals</a></li>
+<li class="chapter" data-level="2.4.4" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html#modifying-vectors"><i class="fa fa-check"></i><b>2.4.4</b> Modifying vectors</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html#working-with-dataframes"><i class="fa fa-check"></i><b>2.5</b> Working with dataframes</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html#exploring-dataframes"><i class="fa fa-check"></i><b>2.5.1</b> Exploring dataframes</a></li>
-<li class="chapter" data-level="2.5.2" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html#building-and-modifying-dataframes"><i class="fa fa-check"></i><b>2.5.2</b> Building and modifying dataframes</a></li>
-<li class="chapter" data-level="2.5.3" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html#handling-datatypes-in-dataframes"><i class="fa fa-check"></i><b>2.5.3</b> Handling datatypes in dataframes</a></li>
+<li class="chapter" data-level="2.5.1" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html#indexing-and-subsetting-dataframes"><i class="fa fa-check"></i><b>2.5.1</b> Indexing and subsetting dataframes</a></li>
+<li class="chapter" data-level="2.5.2" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html#exploring-dataframes"><i class="fa fa-check"></i><b>2.5.2</b> Exploring dataframes</a></li>
+<li class="chapter" data-level="2.5.3" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html#building-and-modifying-dataframes"><i class="fa fa-check"></i><b>2.5.3</b> Building and modifying dataframes</a></li>
+<li class="chapter" data-level="2.5.4" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html#handling-datatypes-in-dataframes"><i class="fa fa-check"></i><b>2.5.4</b> Handling datatypes in dataframes</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="day-4-tidyverse-and-plots-and-such.html"><a href="day-4-tidyverse-and-plots-and-such.html"><i class="fa fa-check"></i><b>3</b> Day 4 - tidyverse and plots and such</a><ul>
@@ -276,10 +279,10 @@ showing different types of figures</li>
 </div>
 <div id="rmd-example-of-code-chunk" class="section level2">
 <h2><span class="header-section-number">5.4</span> Rmd example of code chunk</h2>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb355-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
-<a class="sourceLine" id="cb355-2" data-line-number="2">  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</a>
-<a class="sourceLine" id="cb355-3" data-line-number="3">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb355-4" data-line-number="4">)</a></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
+<a class="sourceLine" id="cb360-2" data-line-number="2">  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</a>
+<a class="sourceLine" id="cb360-3" data-line-number="3">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb360-4" data-line-number="4">)</a></code></pre></div>
 <table>
 <caption><span id="tab:nice-tab-appendix">Table 5.1: </span>Here is a nice table!</caption>
 <thead>

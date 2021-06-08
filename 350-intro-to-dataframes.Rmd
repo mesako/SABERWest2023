@@ -1,47 +1,50 @@
 ## Working with dataframes
 
-The most common data format we will deal with is a dataframe format. This means that data is stored in a 2D array with the rows referring to individual measurements (single patients, samples, cells, etc.) and the columns referring to parameters (genes, proteins, etc.) measured in each individual.
+We can now work our way from vectors to dataframes. The most common data format we will deal with in research is a dataframe format.
 
-We work with a dataframe instead of a matrix (another datatype in R) because dataframes can tolerate different datatypes in the same table. 
+A dataframe has data is stored in a tabular format with the rows generally referring to individual measurements (single patients, samples, cells, etc.) and the columns referring to parameters (genes, proteins, etc.) measured in each individual. Essentially a dataframe can be thought of a bunch of vectors lined up in columns or lined up in rows.
+
+We work with a dataframe instead of a matrix (another datatype in R) because dataframes can tolerate different datatypes in the same table. As seen below, a matrix will easily accept data all of the same datatype, but do unexpected things when you provide multiple datatypes.
 
 ```{r}
-my.matrix <- matrix(data = c(1, 2, 3, 4, 5, 6, 7, 8, 9),
+matrix1 <- matrix(data = c(1, 2, 3, 4, 5, 6, 7, 8, 9),
                     nrow = 3, ncol = 3)
-my.matrix
-my.matrix <- matrix(data = c(1, "apple", 3, TRUE, "cat", 6, 7, NA, FALSE),
+matrix1
+matrix2 <- matrix(data = c(1, "apple", 3, TRUE, "cat", 6, 7, NA, FALSE),
                     nrow = 3, ncol = 3)
-my.matrix
+matrix2
 ```
 
-Tibbles will pop up as we work in *tidyverse*. Tibbles are very similar to dataframes in their ability to handle different data types across their different columns.
+Now `matrix1` looks normal, but you may notice that `matrix2` has quotation marks around its elements, including the numbers and the `TRUE`/`FALSE` values. This means these elements are all being treated like character strings because we included elements like `apple` and R wants them to be one consistent type.
 
-We will use a built-in dataset called `iris`.
+While we are working mainly with dataframes, tibbles will pop up as we work in *tidyverse*. Tibbles are very similar to dataframes in their ability to handle different data types across their different columns. You can think of them as very similar entities.
+
+We will first explore the built-in `iris` dataset. If you look up its documentation, you will notice that it is described as a dataframe and does contain both numeric values and character strings for the names of species.
 
 ```{r,eval=FALSE}
 ?iris
 ```
 
-For the sake of this exercise, we will assign a new variable called `iris.temp` that is a shorter version of the original dataset.
+For the sake of this exercise, we will assign a new variable called `iris.temp` that is a shorter version of the original dataset. The `head` function returns just the first few rows and here we use an argument to request the first 10.
 
 ```{r}
 iris.temp <- head(iris, n = 10)
 iris.temp
 ```
 
-You can index into a dataframe and pull out one or more cells within the dataframe.
+### Indexing and subsetting dataframes
+
+You can index into a dataframe and pull out one or more cells within the dataframe. Note that we are providing two coordinates to explain which row (the first number before the comma) and which column (the second number after the comma) to find the exact element (or cell in the table).
 
 ```{r}
 iris.temp[1, 3]
 ```
 
-Yo can pull out multiple elements at a time, specifying which row and column they reside in.
+You can pull out multiple elements at a time, specifying which row and column they reside in.
 
 ```{r}
-iris.temp[c(1, 2), c(2, 3)]
-```
-
-```{r}
-iris.temp[1:2, 2:3]
+iris.temp[c(1, 2), c(2, 3)] # gives us the 2nd and 3rd columns of the 1st and 2nd rows
+iris.temp[1:3, 3:5] # gives us the 3rd through 5th columns of the 1st through 3rd rows
 ```
 
 If you provide the row and not the column, or vice versa, by default R will pull out all of the available columns and rows respectively.
@@ -59,102 +62,117 @@ head(iris.temp)
 head(iris.temp2)
 ```
 
+We saved the shorter dataset into a new variable and when we preview `iris.temp` against `iris.temp2` you may be able to see the missing rows.
+
 ### Exploring dataframes
 
-There are a few different functions you can use to investigate a dataframe, the size of it, and other aspects.
+When you are first presented with a dataframe, for example data that was collected in your research lab that you are tasked with analyzing, you will want to learn more about it. There are a few different functions you can use to investigate a dataframe, the size of it, and other aspects.
+
+The `dim` function, short for dimensions, returns the number of rows and columns.
 
 ```{r}
 dim(iris)
 dim(iris.temp)
 ```
 
-You can use the following functions to investigate aspects of a given dataset.
+This shows you that `iris.temp` is in fact just the first 10 rows of `iris`. You can use the following functions: `str` for structure, `colnames` for column names, and `summary` to investigate aspects of a given dataset.
 
 ```{r}
-str(iris)
 colnames(iris)
+str(iris)
 summary(iris)
 ```
 
-Comment on datatypes in iris???
+The `str` function reveals that the `iris` dataframe contains different data types. Specifcally, it mostly contains columns of numbers as well as a column of factors or categorical data referring to which species the iris belonged to.
 
-We can try to look at the beginning of a specific column in this dataset. Dataframes that have names for their columns allow you to index into the columns specifically by name using the `$` operator as shown below.
+The `summary` function tries to tell us more info about each column. For numerical data, it summarizes the min and max values, the quartiles, and the center values (e.g. median or mean). For categorical data like the `Species` column, this function shows how many rows belong to each category.
+
+We can try to look at the beginning of a specific column in this dataset to get a better understanding for it. Dataframes that have names for their columns allow you to index into the columns specifically by name using the `$` operator as shown below.
 
 ```{r}
 head(iris$Species)
 ```
 
+Remember the `head` function lets us preview a longer set of data, either showing the first few elements of a vector or the first few rows of a dataframe.
+
 ### Building and modifying dataframes
 
-We can also generate our own dataframes from vectors that we put together into a table.
+We can also generate our own dataframes from vectors that we put together into a table. Revisiting our heart rate measurement example, let's build a dataframe of patient data.
 
 ```{r}
 patient.data <- data.frame(name = c("oakley", "rashmi", "kiran"),
                            heart_rate = c(78, 68, 95),
-                           disease_status = c(0, 0, 1))
+                           disease_status = c(FALSE, FALSE, TRUE))
 patient.data
 ```
 
-You can check what kind of data you are working with using the `class` and/or `typeof` functions.
+We can inspect the dataframe we have created using the same functions.
 
 ```{r}
-class(patient.data) # tells you that patient.data is a dataframe
+str(patient.data)
+summary(patient.data)
 ```
 
-You can add new rows and columns using the `rbind` and `cbind` functions.
+You can add new rows and columns using the `rbind` and `cbind` functions. Let's pretend that we had collected additional information about our patients, such as their self-reported gender. We can add this as a new column (`cbind` short for bind column).
 
 ```{r}
 patient.data <- cbind(patient.data, gender = c("M", "F", NA))
 patient.data
 ```
 
-You can also remove rows and columns using the trick with a negative index.
-
-```{r}
-patient.data[, -1]
-patient.data[-1, ]
-```
-
-You can merge two dataframes together using the `rbind` function assuming that their columns match up correctly.
+You can merge two dataframes together using the `rbind` function assuming that their columns match up correctly. Let's pretend that we had another day at the clinic and collected additional patient measurements. 
 
 ```{r}
 more.patients <- data.frame(name = c("eun", "sasha", "mattie"),
                             heart_rate = c(86, 79, 64),
-                            disease_status = c(1, 1, 0),
+                            disease_status = c(TRUE, TRUE, FALSE),
                             gender = c(NA, "M", "F"))
 more.patients
 ```
+
+Let's use `rbind`, short for binding rows, to add these additional rows to the bottom of our first dataframe `patient.data`.
 
 ```{r}
 all.patients <- rbind(patient.data, more.patients)
 all.patients
 ```
 
+You can also remove rows and columns using the trick with a negative index.
+
+```{r}
+patient.data[, -1] # removes first column
+patient.data[-1, ] # removes first row
+```
+
 ------
 
 ### Handling datatypes in dataframes 
 
-coercion and Factors
+One of the great strengths of a dataframe is that it can handle each column containing different datatypes. Our patient data has columns of character strings, logicals, and numerical values.
 
-??
+However, you should take care that sometimes unexpected behavior may arise when a column in your dataframe is one datatype and you add data that is not compatible with that datatype.
+
+Remember that vectors can only contain one datatype at a time? Each column in the dataframe is essentially a vector.
+
+We briefly discussed factors as categorical variables. Let's pretend that for our analysis we wanted to treat gender as a categorical variable. Factors are a special datatype that deals with categorical data and can be handy for certain manipulations or visualizations.
+
+To do this, we can coerce data into a different datatype using functions like `as.function`.
 
 ```{r}
+head(all.patients$gender)
 all.patients$gender <- as.factor(all.patients$gender)
+head(all.patients$gender)
 ```
 
-???
+This vector of factors shows which category each element belongs to, and then summarizes what the possible categories are down at the bottom where it prints the `Levels` of this factor. This can cause issues if we introduce data that does not match these categories. Let's try adding a new patient's data.
 
 ```{r}
 all.patients <- rbind(all.patients, 
                       c(name = "lupe",
                         heart_rate = 72,
-                        disease_status = 0,
+                        disease_status = FALSE,
                         gender = "NB"))
 all.patients
-```
-
-```{r}
-all.patients$gender
 ```
 
 What has happened with this new addition? If you tried to add a new patient to the dataframe that had a gender that wasn't already represented in the data, chances are you had a warning and that gender was turned to `NA`.
@@ -163,23 +181,27 @@ What has happened with this new addition? If you tried to add a new patient to t
 all.patients$gender
 ```
 
-You may have seen certain parts of dataframes are factors with levels. Factors are a special data type that deals with categorical data. They can be handy for certain manipulations or visualizations, but once a factor is created, it doesn't let you easily add new categories that were not in the original set. The easiest way around this is to treat the column as characters instead of as factors.
+Once a factor is created, it doesn't let you easily add new categories that were not in the original set. We will not get issues though if we add a new patient whose gender is represented as one of the levels in our gender factor.
 
 ```{r}
 all.patients <- rbind(all.patients, 
                       c(name = "chihiro", 
                         heart_rate = 101, 
-                        disease_status = 1, 
+                        disease_status = TRUE, 
                         gender = "M"))
 all.patients$gender
 ```
+
+So how do we fix this? The easiest way around this is to treat the column as characters instead of as factors.
 
 ```{r}
 all.patients$gender <- as.character(all.patients$gender)
 all.patients <- rbind(all.patients, 
                       c(name = "ayodele", 
                         heart_rate = 101, 
-                        disease_status = 1, 
+                        disease_status = TRUE, 
                         gender = "NB"))
 all.patients$gender
 ```
+
+There will be times that we want to treat certain columns in our data as a factor, but take care that you add compatible data to each column of your existing dataset.

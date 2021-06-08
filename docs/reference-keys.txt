@@ -13,9 +13,12 @@ getting-help-in-r
 using-variables-and-data-types
 using-functions
 working-with-vectors
+building-vectors
 indexing-and-subsetting-vectors
 using-logic-and-logicals
+modifying-vectors
 working-with-dataframes
+indexing-and-subsetting-dataframes
 exploring-dataframes
 building-and-modifying-dataframes
 handling-datatypes-in-dataframes
