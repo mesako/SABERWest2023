@@ -1,0 +1,20 @@
+## What is a workflow?
+
+What does it take to do an analysis?
+
+When you embark on some project, it's helpful (but not necessary) to plan
+where you are going. 
+It's best to setup and keep track of factors like:
+
+- What data am I analyzing? What format is it in, and is that going to change?
+    Will there be a lot more of this data that I want to process in the future?
+- What kind of analyses do I want to do? What major steps do I have in my 
+    process? _What work from others can I re-use and build upon?_
+- What do I want to generate? What is the desired outcome, and for whom is
+    this intended?
+
+In the author's experience, bioinformatic workflows often involve reading in
+big (or many) flat files, processing the data into a useful form, sometimes
+using extra packages to analyze the data, then generating plots and statistical
+summaries of what you found - usually in an Rmarkdown-generated report.
+
