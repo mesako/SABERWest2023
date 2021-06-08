@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2.5 Working with dataframes | DLL 2021, R section</title>
+  <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2.5 Working with dataframes | DLL 2021, R section" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
+  <meta name="github-repo" content="darachm/dll-r" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2.5 Working with dataframes | DLL 2021, R section" />
+  
+  <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
+  
+
+<meta name="author" content="mesako" />
+<meta name="author" content="Margaret" />
+<meta name="author" content="Samson" />
+<meta name="author" content="Zac" />
+<meta name="author" content="darachm" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="2-4-working-with-vectors.html"/>
+<link rel="next" href="3-day-4-tidyverse-and-visualizations.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">DLL 2021 R workshops</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Workshop introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-1-workshop-goals.html"><a href="1-1-workshop-goals.html"><i class="fa fa-check"></i><b>1.1</b> Workshop goals</a></li>
+<li class="chapter" data-level="1.2" data-path="1-2-structure-and-resources.html"><a href="1-2-structure-and-resources.html"><i class="fa fa-check"></i><b>1.2</b> Structure and resources</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="1-2-structure-and-resources.html"><a href="1-2-structure-and-resources.html#this-syllabus-and-videos"><i class="fa fa-check"></i><b>1.2.1</b> This syllabus and videos</a></li>
+<li class="chapter" data-level="1.2.2" data-path="1-2-structure-and-resources.html"><a href="1-2-structure-and-resources.html#slack-channel"><i class="fa fa-check"></i><b>1.2.2</b> Slack channel</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="1-3-workshop-expectations.html"><a href="1-3-workshop-expectations.html"><i class="fa fa-check"></i><b>1.3</b> Workshop expectations</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-day-3-intoduction-to-r.html"><a href="2-day-3-intoduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Day 3 - intoduction to R</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-1-navigating-rstudio.html"><a href="2-1-navigating-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Navigating Rstudio</a></li>
+<li class="chapter" data-level="2.2" data-path="2-2-using-rmds.html"><a href="2-2-using-rmds.html"><i class="fa fa-check"></i><b>2.2</b> Using Rmds</a></li>
+<li class="chapter" data-level="2.3" data-path="2-3-getting-started-in-r.html"><a href="2-3-getting-started-in-r.html"><i class="fa fa-check"></i><b>2.3</b> Getting started in R</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="2-3-getting-started-in-r.html"><a href="2-3-getting-started-in-r.html#getting-help-in-r"><i class="fa fa-check"></i><b>2.3.1</b> Getting help in R</a></li>
+<li class="chapter" data-level="2.3.2" data-path="2-3-getting-started-in-r.html"><a href="2-3-getting-started-in-r.html#using-variables-and-data-types"><i class="fa fa-check"></i><b>2.3.2</b> Using variables and data types</a></li>
+<li class="chapter" data-level="2.3.3" data-path="2-3-getting-started-in-r.html"><a href="2-3-getting-started-in-r.html#using-functions"><i class="fa fa-check"></i><b>2.3.3</b> Using functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="2-4-working-with-vectors.html"><a href="2-4-working-with-vectors.html"><i class="fa fa-check"></i><b>2.4</b> Working with vectors</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="2-4-working-with-vectors.html"><a href="2-4-working-with-vectors.html#building-vectors"><i class="fa fa-check"></i><b>2.4.1</b> Building vectors</a></li>
+<li class="chapter" data-level="2.4.2" data-path="2-4-working-with-vectors.html"><a href="2-4-working-with-vectors.html#indexing-and-subsetting-vectors"><i class="fa fa-check"></i><b>2.4.2</b> Indexing and subsetting vectors</a></li>
+<li class="chapter" data-level="2.4.3" data-path="2-4-working-with-vectors.html"><a href="2-4-working-with-vectors.html#using-logic-and-logicals"><i class="fa fa-check"></i><b>2.4.3</b> Using logic and logicals</a></li>
+<li class="chapter" data-level="2.4.4" data-path="2-4-working-with-vectors.html"><a href="2-4-working-with-vectors.html#modifying-vectors"><i class="fa fa-check"></i><b>2.4.4</b> Modifying vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="2-5-working-with-dataframes.html"><a href="2-5-working-with-dataframes.html"><i class="fa fa-check"></i><b>2.5</b> Working with dataframes</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="2-5-working-with-dataframes.html"><a href="2-5-working-with-dataframes.html#indexing-and-subsetting-dataframes"><i class="fa fa-check"></i><b>2.5.1</b> Indexing and subsetting dataframes</a></li>
+<li class="chapter" data-level="2.5.2" data-path="2-5-working-with-dataframes.html"><a href="2-5-working-with-dataframes.html#exploring-dataframes"><i class="fa fa-check"></i><b>2.5.2</b> Exploring dataframes</a></li>
+<li class="chapter" data-level="2.5.3" data-path="2-5-working-with-dataframes.html"><a href="2-5-working-with-dataframes.html#building-and-modifying-dataframes"><i class="fa fa-check"></i><b>2.5.3</b> Building and modifying dataframes</a></li>
+<li class="chapter" data-level="2.5.4" data-path="2-5-working-with-dataframes.html"><a href="2-5-working-with-dataframes.html#handling-datatypes-in-dataframes"><i class="fa fa-check"></i><b>2.5.4</b> Handling datatypes in dataframes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-day-4-tidyverse-and-visualizations.html"><a href="3-day-4-tidyverse-and-visualizations.html"><i class="fa fa-check"></i><b>3</b> Day 4 - tidyverse and visualizations</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-1-reading-and-processing-data.html"><a href="3-1-reading-and-processing-data.html"><i class="fa fa-check"></i><b>3.1</b> Reading and processing data</a></li>
+<li class="chapter" data-level="3.2" data-path="3-2-using-tidyverse.html"><a href="3-2-using-tidyverse.html"><i class="fa fa-check"></i><b>3.2</b> Using tidyverse</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-using-tidyverse-1.html"><a href="3-3-using-tidyverse-1.html"><i class="fa fa-check"></i><b>3.3</b> Using tidyverse</a></li>
+<li class="chapter" data-level="3.4" data-path="3-4-making-plots-with-ggplot2.html"><a href="3-4-making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="3-4-making-plots-with-ggplot2.html"><a href="3-4-making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.4.1</b> Getting started with a ggplot</a></li>
+<li class="chapter" data-level="3.4.2" data-path="3-4-making-plots-with-ggplot2.html"><a href="3-4-making-plots-with-ggplot2.html#changing-plot-aesthetics"><i class="fa fa-check"></i><b>3.4.2</b> Changing plot aesthetics</a></li>
+<li class="chapter" data-level="3.4.3" data-path="3-4-making-plots-with-ggplot2.html"><a href="3-4-making-plots-with-ggplot2.html#exploring-other-plots"><i class="fa fa-check"></i><b>3.4.3</b> Exploring other plots</a></li>
+<li class="chapter" data-level="3.4.4" data-path="3-4-making-plots-with-ggplot2.html"><a href="3-4-making-plots-with-ggplot2.html#using-categorical-data"><i class="fa fa-check"></i><b>3.4.4</b> Using categorical data</a></li>
+<li class="chapter" data-level="3.4.5" data-path="3-4-making-plots-with-ggplot2.html"><a href="3-4-making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>3.4.5</b> Visualizing between groups</a></li>
+<li class="chapter" data-level="3.4.6" data-path="3-4-making-plots-with-ggplot2.html"><a href="3-4-making-plots-with-ggplot2.html#generating-heatmaps"><i class="fa fa-check"></i><b>3.4.6</b> Generating heatmaps</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="3-5-making-scientific-figures.html"><a href="3-5-making-scientific-figures.html"><i class="fa fa-check"></i><b>3.5</b> Making scientific figures</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="3-5-making-scientific-figures.html"><a href="3-5-making-scientific-figures.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.5.1</b> Plotting error bars</a></li>
+<li class="chapter" data-level="3.5.2" data-path="3-5-making-scientific-figures.html"><a href="3-5-making-scientific-figures.html#showing-trends-in-data"><i class="fa fa-check"></i><b>3.5.2</b> Showing trends in data</a></li>
+<li class="chapter" data-level="3.5.3" data-path="3-5-making-scientific-figures.html"><a href="3-5-making-scientific-figures.html#saving-figures-locally"><i class="fa fa-check"></i><b>3.5.3</b> Saving figures locally</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="3-6-applying-basic-stats.html"><a href="3-6-applying-basic-stats.html"><i class="fa fa-check"></i><b>3.6</b> Applying basic stats</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-day-5-building-workflows.html"><a href="4-day-5-building-workflows.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-1-using-code-many-times-loops.html"><a href="4-1-using-code-many-times-loops.html"><i class="fa fa-check"></i><b>4.1</b> Using code many times - loops</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="4-1-using-code-many-times-loops.html"><a href="4-1-using-code-many-times-loops.html#doing-things-multiple-times"><i class="fa fa-check"></i><b>4.1.1</b> Doing things multiple times</a></li>
+<li class="chapter" data-level="4.1.2" data-path="4-1-using-code-many-times-loops.html"><a href="4-1-using-code-many-times-loops.html#loops"><i class="fa fa-check"></i><b>4.1.2</b> Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="4-2-writing-reusable-code.html"><a href="4-2-writing-reusable-code.html"><i class="fa fa-check"></i><b>4.2</b> Writing (re)usable code</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="4-2-writing-reusable-code.html"><a href="4-2-writing-reusable-code.html#style-guides-can-be-inspiring"><i class="fa fa-check"></i><b>4.2.1</b> Style guides can be inspiring</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="4-3-functions-redux-why-theyre-so-great.html"><a href="4-3-functions-redux-why-theyre-so-great.html"><i class="fa fa-check"></i><b>4.3</b> Functions redux - why they’re so great</a></li>
+<li class="chapter" data-level="4.4" data-path="4-4-using-functions-to-write-modular-code.html"><a href="4-4-using-functions-to-write-modular-code.html"><i class="fa fa-check"></i><b>4.4</b> Using functions to write modular code</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="4-4-using-functions-to-write-modular-code.html"><a href="4-4-using-functions-to-write-modular-code.html#tips-for-modular-workflows"><i class="fa fa-check"></i><b>4.4.1</b> Tips for modular workflows</a></li>
+<li class="chapter" data-level="4.4.2" data-path="4-4-using-functions-to-write-modular-code.html"><a href="4-4-using-functions-to-write-modular-code.html#more-complex-workflow"><i class="fa fa-check"></i><b>4.4.2</b> More complex workflow</a></li>
+<li class="chapter" data-level="4.4.3" data-path="4-4-using-functions-to-write-modular-code.html"><a href="4-4-using-functions-to-write-modular-code.html#apply-is-a-popular-tool"><i class="fa fa-check"></i><b>4.4.3</b> Apply is a popular tool</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="4-5-packages-are-chunks-of-code-and-sometimes-data.html"><a href="4-5-packages-are-chunks-of-code-and-sometimes-data.html"><i class="fa fa-check"></i><b>4.5</b> Packages are chunks of code (and sometimes data)</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="4-5-packages-are-chunks-of-code-and-sometimes-data.html"><a href="4-5-packages-are-chunks-of-code-and-sometimes-data.html#cran-is-the-canonical-r-package-resource"><i class="fa fa-check"></i><b>4.5.1</b> CRAN is the canonical R package resource</a></li>
+<li class="chapter" data-level="4.5.2" data-path="4-5-packages-are-chunks-of-code-and-sometimes-data.html"><a href="4-5-packages-are-chunks-of-code-and-sometimes-data.html#github-is-a-common-place-for-sharing-code-in-development"><i class="fa fa-check"></i><b>4.5.2</b> github is a common place for sharing code in development</a></li>
+<li class="chapter" data-level="4.5.3" data-path="4-5-packages-are-chunks-of-code-and-sometimes-data.html"><a href="4-5-packages-are-chunks-of-code-and-sometimes-data.html#bioconductor-is-a-great-place-for-bio-related-packages"><i class="fa fa-check"></i><b>4.5.3</b> Bioconductor is a great place for bio-related packages 😬</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="4-6-finding-more-help-and-documentation.html"><a href="4-6-finding-more-help-and-documentation.html"><i class="fa fa-check"></i><b>4.6</b> Finding more help and documentation</a></li>
+<li class="chapter" data-level="4.7" data-path="4-7-reproducibile-sharing-more-rmarkdown-and.html"><a href="4-7-reproducibile-sharing-more-rmarkdown-and.html"><i class="fa fa-check"></i><b>4.7</b> Reproducibile sharing - more <code>rmarkdown</code> and</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="4-7-reproducibile-sharing-more-rmarkdown-and.html"><a href="4-7-reproducibile-sharing-more-rmarkdown-and.html#rmarkdown-package"><i class="fa fa-check"></i><b>4.7.1</b> rmarkdown package</a></li>
+<li><a href="4-7-reproducibile-sharing-more-rmarkdown-and.html#section"></a></li>
+<li class="chapter" data-level="4.7.2" data-path="4-7-reproducibile-sharing-more-rmarkdown-and.html"><a href="4-7-reproducibile-sharing-more-rmarkdown-and.html#sharing-with-others"><i class="fa fa-check"></i><b>4.7.2</b> Sharing with others</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="4-8-reproducibility-and-sharing.html"><a href="4-8-reproducibility-and-sharing.html"><i class="fa fa-check"></i><b>4.8</b> Reproducibility and sharing</a></li>
+<li class="chapter" data-level="4.9" data-path="4-9-troubleshooting-getting-help-dissecting-problems.html"><a href="4-9-troubleshooting-getting-help-dissecting-problems.html"><i class="fa fa-check"></i><b>4.9</b> Troubleshooting, getting help, dissecting problems</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="4-9-troubleshooting-getting-help-dissecting-problems.html"><a href="4-9-troubleshooting-getting-help-dissecting-problems.html#places-to-look-for-help"><i class="fa fa-check"></i><b>4.9.1</b> Places to look for help</a></li>
+<li class="chapter" data-level="4.9.2" data-path="4-9-troubleshooting-getting-help-dissecting-problems.html"><a href="4-9-troubleshooting-getting-help-dissecting-problems.html#minimum-reproducible-example"><i class="fa fa-check"></i><b>4.9.2</b> Minimum reproducible example</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="4-10-conclusion-other-concepts.html"><a href="4-10-conclusion-other-concepts.html"><i class="fa fa-check"></i><b>4.10</b> Conclusion, other concepts</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-appendix.html"><a href="5-appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a><ul>
+<li class="chapter" data-level="5.1" data-path="5-1-additional-tutorials.html"><a href="5-1-additional-tutorials.html"><i class="fa fa-check"></i><b>5.1</b> Additional tutorials</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="5-1-additional-tutorials.html"><a href="5-1-additional-tutorials.html#sub-sub-section"><i class="fa fa-check"></i><b>5.1.1</b> sub sub section</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="5-2-more-challenges.html"><a href="5-2-more-challenges.html"><i class="fa fa-check"></i><b>5.2</b> More challenges</a></li>
+<li class="chapter" data-level="5.3" data-path="5-3-figures-ideas.html"><a href="5-3-figures-ideas.html"><i class="fa fa-check"></i><b>5.3</b> Figures ideas</a></li>
+<li class="chapter" data-level="5.4" data-path="5-4-rmd-example-of-code-chunk.html"><a href="5-4-rmd-example-of-code-chunk.html"><i class="fa fa-check"></i><b>5.4</b> Rmd example of code chunk</a></li>
+<li class="chapter" data-level="5.5" data-path="5-5-more-example-rmds.html"><a href="5-5-more-example-rmds.html"><i class="fa fa-check"></i><b>5.5</b> More example Rmds</a></li>
+<li class="chapter" data-level="5.6" data-path="5-6-how-to-edit-this-document.html"><a href="5-6-how-to-edit-this-document.html"><i class="fa fa-check"></i><b>5.6</b> How to edit this document</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="5-6-how-to-edit-this-document.html"><a href="5-6-how-to-edit-this-document.html#setup"><i class="fa fa-check"></i><b>5.6.1</b> Setup</a></li>
+<li class="chapter" data-level="5.6.2" data-path="5-6-how-to-edit-this-document.html"><a href="5-6-how-to-edit-this-document.html#editwork-on-it"><i class="fa fa-check"></i><b>5.6.2</b> Edit/work on it</a></li>
+<li class="chapter" data-level="5.6.3" data-path="5-6-how-to-edit-this-document.html"><a href="5-6-how-to-edit-this-document.html#publishing-onto-the-main-page-so-its-hosted-at-the-url"><i class="fa fa-check"></i><b>5.6.3</b> Publishing onto the main page, so it’s hosted at the URL</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="5-7-more-links.html"><a href="5-7-more-links.html"><i class="fa fa-check"></i><b>5.7</b> More links</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">DLL 2021, R section</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="working-with-dataframes" class="section level2">
+<h2><span class="header-section-number">2.5</span> Working with dataframes</h2>
+<p>We can now work our way from vectors to dataframes. The most common data format we will deal with in research is a dataframe format.</p>
+<p>A dataframe has data is stored in a tabular format with the rows generally referring to individual measurements (single patients, samples, cells, etc.) and the columns referring to parameters (genes, proteins, etc.) measured in each individual. Essentially a dataframe can be thought of a bunch of vectors lined up in columns or lined up in rows.</p>
+<p>We work with a dataframe instead of a matrix (another datatype in R) because dataframes can tolerate different datatypes in the same table. As seen below, a matrix will easily accept data all of the same datatype, but do unexpected things when you provide multiple datatypes.</p>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb80-1" title="1">matrix1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>),</a>
+<a class="sourceLine" id="cb80-2" title="2">                    <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb80-3" title="3">matrix1</a></code></pre></div>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9</code></pre>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb82-1" title="1">matrix2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="st">&quot;apple&quot;</span>, <span class="dv">3</span>, <span class="ot">TRUE</span>, <span class="st">&quot;cat&quot;</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="ot">NA</span>, <span class="ot">FALSE</span>),</a>
+<a class="sourceLine" id="cb82-2" title="2">                    <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb82-3" title="3">matrix2</a></code></pre></div>
+<pre><code>##      [,1]    [,2]   [,3]   
+## [1,] &quot;1&quot;     &quot;TRUE&quot; &quot;7&quot;    
+## [2,] &quot;apple&quot; &quot;cat&quot;  NA     
+## [3,] &quot;3&quot;     &quot;6&quot;    &quot;FALSE&quot;</code></pre>
+<p>Now <code>matrix1</code> looks normal, but you may notice that <code>matrix2</code> has quotation marks around its elements, including the numbers and the <code>TRUE</code>/<code>FALSE</code> values. This means these elements are all being treated like character strings because we included elements like <code>apple</code> and R wants them to be one consistent type.</p>
+<p>While we are working mainly with dataframes, tibbles will pop up as we work in <em>tidyverse</em>. Tibbles are very similar to dataframes in their ability to handle different data types across their different columns. You can think of them as very similar entities.</p>
+<p>We will first explore the built-in <code>iris</code> dataset. If you look up its documentation, you will notice that it is described as a dataframe and does contain both numeric values and character strings for the names of species.</p>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb84-1" title="1">?iris</a></code></pre></div>
+<p>For the sake of this exercise, we will assign a new variable called <code>iris.temp</code> that is a shorter version of the original dataset. The <code>head</code> function returns just the first few rows and here we use an argument to request the first 10.</p>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb85-1" title="1">iris.temp &lt;-<span class="st"> </span><span class="kw">head</span>(iris, <span class="dt">n =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb85-2" title="2">iris.temp</a></code></pre></div>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1           5.1         3.5          1.4         0.2  setosa
+## 2           4.9         3.0          1.4         0.2  setosa
+## 3           4.7         3.2          1.3         0.2  setosa
+## 4           4.6         3.1          1.5         0.2  setosa
+## 5           5.0         3.6          1.4         0.2  setosa
+## 6           5.4         3.9          1.7         0.4  setosa
+## 7           4.6         3.4          1.4         0.3  setosa
+## 8           5.0         3.4          1.5         0.2  setosa
+## 9           4.4         2.9          1.4         0.2  setosa
+## 10          4.9         3.1          1.5         0.1  setosa</code></pre>
+<div id="indexing-and-subsetting-dataframes" class="section level3">
+<h3><span class="header-section-number">2.5.1</span> Indexing and subsetting dataframes</h3>
+<p>You can index into a dataframe and pull out one or more cells within the dataframe. Note that we are providing two coordinates to explain which row (the first number before the comma) and which column (the second number after the comma) to find the exact element (or cell in the table).</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb87-1" title="1">iris.temp[<span class="dv">1</span>, <span class="dv">3</span>]</a></code></pre></div>
+<pre><code>## [1] 1.4</code></pre>
+<p>You can pull out multiple elements at a time, specifying which row and column they reside in.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1">iris.temp[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)] <span class="co"># gives us the 2nd and 3rd columns of the 1st and 2nd rows</span></a></code></pre></div>
+<pre><code>##   Sepal.Width Petal.Length
+## 1         3.5          1.4
+## 2         3.0          1.4</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1">iris.temp[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">5</span>] <span class="co"># gives us the 3rd through 5th columns of the 1st through 3rd rows</span></a></code></pre></div>
+<pre><code>##   Petal.Length Petal.Width Species
+## 1          1.4         0.2  setosa
+## 2          1.4         0.2  setosa
+## 3          1.3         0.2  setosa</code></pre>
+<p>If you provide the row and not the column, or vice versa, by default R will pull out all of the available columns and rows respectively.</p>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1">iris.temp[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ] <span class="co"># pulls out the first two rows and all columns</span></a></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa</code></pre>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb95-1" title="1">iris.temp[, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="co"># pulls out the first two columns and all rows</span></a></code></pre></div>
+<pre><code>##    Sepal.Length Sepal.Width
+## 1           5.1         3.5
+## 2           4.9         3.0
+## 3           4.7         3.2
+## 4           4.6         3.1
+## 5           5.0         3.6
+## 6           5.4         3.9
+## 7           4.6         3.4
+## 8           5.0         3.4
+## 9           4.4         2.9
+## 10          4.9         3.1</code></pre>
+<p>It’s possible to also remove elements in a dataframe using the negative sign.</p>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb97-1" title="1">iris.temp2 &lt;-<span class="st"> </span>iris.temp[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), ] <span class="co"># removes the first and third rows</span></a>
+<a class="sourceLine" id="cb97-2" title="2"><span class="kw">head</span>(iris.temp)</a></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 1          5.1         3.5          1.4         0.2  setosa
+## 2          4.9         3.0          1.4         0.2  setosa
+## 3          4.7         3.2          1.3         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb99-1" title="1"><span class="kw">head</span>(iris.temp2)</a></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+## 2          4.9         3.0          1.4         0.2  setosa
+## 4          4.6         3.1          1.5         0.2  setosa
+## 5          5.0         3.6          1.4         0.2  setosa
+## 6          5.4         3.9          1.7         0.4  setosa
+## 7          4.6         3.4          1.4         0.3  setosa
+## 8          5.0         3.4          1.5         0.2  setosa</code></pre>
+<p>We saved the shorter dataset into a new variable and when we preview <code>iris.temp</code> against <code>iris.temp2</code> you may be able to see the missing rows.</p>
+</div>
+<div id="exploring-dataframes" class="section level3">
+<h3><span class="header-section-number">2.5.2</span> Exploring dataframes</h3>
+<p>When you are first presented with a dataframe, for example data that was collected in your research lab that you are tasked with analyzing, you will want to learn more about it. There are a few different functions you can use to investigate a dataframe, the size of it, and other aspects.</p>
+<p>The <code>dim</code> function, short for dimensions, returns the number of rows and columns.</p>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb101-1" title="1"><span class="kw">dim</span>(iris)</a></code></pre></div>
+<pre><code>## [1] 150   5</code></pre>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb103-1" title="1"><span class="kw">dim</span>(iris.temp)</a></code></pre></div>
+<pre><code>## [1] 10  5</code></pre>
+<p>This shows you that <code>iris.temp</code> is in fact just the first 10 rows of <code>iris</code>. You can use the following functions: <code>str</code> for structure, <code>colnames</code> for column names, and <code>summary</code> to investigate aspects of a given dataset.</p>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb105-1" title="1"><span class="kw">colnames</span>(iris)</a></code></pre></div>
+<pre><code>## [1] &quot;Sepal.Length&quot; &quot;Sepal.Width&quot;  &quot;Petal.Length&quot; &quot;Petal.Width&quot;  &quot;Species&quot;</code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb107-1" title="1"><span class="kw">str</span>(iris)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb109-1" title="1"><span class="kw">summary</span>(iris)</a></code></pre></div>
+<pre><code>##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
+##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
+##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
+##  Median :5.800   Median :3.000   Median :4.350   Median :1.300  
+##  Mean   :5.843   Mean   :3.057   Mean   :3.758   Mean   :1.199  
+##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.:1.800  
+##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :2.500  
+##        Species  
+##  setosa    :50  
+##  versicolor:50  
+##  virginica :50  
+##                 
+##                 
+## </code></pre>
+<p>The <code>str</code> function reveals that the <code>iris</code> dataframe contains different data types. Specifcally, it mostly contains columns of numbers as well as a column of factors or categorical data referring to which species the iris belonged to.</p>
+<p>The <code>summary</code> function tries to tell us more info about each column. For numerical data, it summarizes the min and max values, the quartiles, and the center values (e.g. median or mean). For categorical data like the <code>Species</code> column, this function shows how many rows belong to each category.</p>
+<p>We can try to look at the beginning of a specific column in this dataset to get a better understanding for it. Dataframes that have names for their columns allow you to index into the columns specifically by name using the <code>$</code> operator as shown below.</p>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb111-1" title="1"><span class="kw">head</span>(iris<span class="op">$</span>Species)</a></code></pre></div>
+<pre><code>## [1] setosa setosa setosa setosa setosa setosa
+## Levels: setosa versicolor virginica</code></pre>
+<p>Remember the <code>head</code> function lets us preview a longer set of data, either showing the first few elements of a vector or the first few rows of a dataframe.</p>
+</div>
+<div id="building-and-modifying-dataframes" class="section level3">
+<h3><span class="header-section-number">2.5.3</span> Building and modifying dataframes</h3>
+<p>We can also generate our own dataframes from vectors that we put together into a table. Revisiting our heart rate measurement example, let’s build a dataframe of patient data.</p>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb113-1" title="1">patient.data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">name =</span> <span class="kw">c</span>(<span class="st">&quot;oakley&quot;</span>, <span class="st">&quot;rashmi&quot;</span>, <span class="st">&quot;kiran&quot;</span>),</a>
+<a class="sourceLine" id="cb113-2" title="2">                           <span class="dt">heart_rate =</span> <span class="kw">c</span>(<span class="dv">78</span>, <span class="dv">68</span>, <span class="dv">95</span>),</a>
+<a class="sourceLine" id="cb113-3" title="3">                           <span class="dt">disease_status =</span> <span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb113-4" title="4">patient.data</a></code></pre></div>
+<pre><code>##     name heart_rate disease_status
+## 1 oakley         78          FALSE
+## 2 rashmi         68          FALSE
+## 3  kiran         95           TRUE</code></pre>
+<p>We can inspect the dataframe we have created using the same functions.</p>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb115-1" title="1"><span class="kw">str</span>(patient.data)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    3 obs. of  3 variables:
+##  $ name          : Factor w/ 3 levels &quot;kiran&quot;,&quot;oakley&quot;,..: 2 3 1
+##  $ heart_rate    : num  78 68 95
+##  $ disease_status: logi  FALSE FALSE TRUE</code></pre>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb117-1" title="1"><span class="kw">summary</span>(patient.data)</a></code></pre></div>
+<pre><code>##      name     heart_rate    disease_status 
+##  kiran :1   Min.   :68.00   Mode :logical  
+##  oakley:1   1st Qu.:73.00   FALSE:2        
+##  rashmi:1   Median :78.00   TRUE :1        
+##             Mean   :80.33                  
+##             3rd Qu.:86.50                  
+##             Max.   :95.00</code></pre>
+<p>You can add new rows and columns using the <code>rbind</code> and <code>cbind</code> functions. Let’s pretend that we had collected additional information about our patients, such as their self-reported gender. We can add this as a new column (<code>cbind</code> short for bind column).</p>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb119-1" title="1">patient.data &lt;-<span class="st"> </span><span class="kw">cbind</span>(patient.data, <span class="dt">gender =</span> <span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="ot">NA</span>))</a>
+<a class="sourceLine" id="cb119-2" title="2">patient.data</a></code></pre></div>
+<pre><code>##     name heart_rate disease_status gender
+## 1 oakley         78          FALSE      M
+## 2 rashmi         68          FALSE      F
+## 3  kiran         95           TRUE   &lt;NA&gt;</code></pre>
+<p>You can merge two dataframes together using the <code>rbind</code> function assuming that their columns match up correctly. Let’s pretend that we had another day at the clinic and collected additional patient measurements.</p>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb121-1" title="1">more.patients &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">name =</span> <span class="kw">c</span>(<span class="st">&quot;eun&quot;</span>, <span class="st">&quot;sasha&quot;</span>, <span class="st">&quot;mattie&quot;</span>),</a>
+<a class="sourceLine" id="cb121-2" title="2">                            <span class="dt">heart_rate =</span> <span class="kw">c</span>(<span class="dv">86</span>, <span class="dv">79</span>, <span class="dv">64</span>),</a>
+<a class="sourceLine" id="cb121-3" title="3">                            <span class="dt">disease_status =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>),</a>
+<a class="sourceLine" id="cb121-4" title="4">                            <span class="dt">gender =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>))</a>
+<a class="sourceLine" id="cb121-5" title="5">more.patients</a></code></pre></div>
+<pre><code>##     name heart_rate disease_status gender
+## 1    eun         86           TRUE   &lt;NA&gt;
+## 2  sasha         79           TRUE      M
+## 3 mattie         64          FALSE      F</code></pre>
+<p>Let’s use <code>rbind</code>, short for binding rows, to add these additional rows to the bottom of our first dataframe <code>patient.data</code>.</p>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb123-1" title="1">all.patients &lt;-<span class="st"> </span><span class="kw">rbind</span>(patient.data, more.patients)</a>
+<a class="sourceLine" id="cb123-2" title="2">all.patients</a></code></pre></div>
+<pre><code>##     name heart_rate disease_status gender
+## 1 oakley         78          FALSE      M
+## 2 rashmi         68          FALSE      F
+## 3  kiran         95           TRUE   &lt;NA&gt;
+## 4    eun         86           TRUE   &lt;NA&gt;
+## 5  sasha         79           TRUE      M
+## 6 mattie         64          FALSE      F</code></pre>
+<p>You can also remove rows and columns using the trick with a negative index.</p>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb125-1" title="1">patient.data[, <span class="dv">-1</span>] <span class="co"># removes first column</span></a></code></pre></div>
+<pre><code>##   heart_rate disease_status gender
+## 1         78          FALSE      M
+## 2         68          FALSE      F
+## 3         95           TRUE   &lt;NA&gt;</code></pre>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb127-1" title="1">patient.data[<span class="op">-</span><span class="dv">1</span>, ] <span class="co"># removes first row</span></a></code></pre></div>
+<pre><code>##     name heart_rate disease_status gender
+## 2 rashmi         68          FALSE      F
+## 3  kiran         95           TRUE   &lt;NA&gt;</code></pre>
+<hr />
+</div>
+<div id="handling-datatypes-in-dataframes" class="section level3">
+<h3><span class="header-section-number">2.5.4</span> Handling datatypes in dataframes</h3>
+<p>One of the great strengths of a dataframe is that it can handle each column containing different datatypes. Our patient data has columns of character strings, logicals, and numerical values.</p>
+<p>However, you should take care that sometimes unexpected behavior may arise when a column in your dataframe is one datatype and you add data that is not compatible with that datatype.</p>
+<p>Remember that vectors can only contain one datatype at a time? Each column in the dataframe is essentially a vector.</p>
+<p>We briefly discussed factors as categorical variables. Let’s pretend that for our analysis we wanted to treat gender as a categorical variable. Factors are a special datatype that deals with categorical data and can be handy for certain manipulations or visualizations.</p>
+<p>To do this, we can coerce data into a different datatype using functions like <code>as.function</code>.</p>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb129-1" title="1"><span class="kw">head</span>(all.patients<span class="op">$</span>gender)</a></code></pre></div>
+<pre><code>## [1] M    F    &lt;NA&gt; &lt;NA&gt; M    F   
+## Levels: F M</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb131-1" title="1">all.patients<span class="op">$</span>gender &lt;-<span class="st"> </span><span class="kw">as.factor</span>(all.patients<span class="op">$</span>gender)</a>
+<a class="sourceLine" id="cb131-2" title="2"><span class="kw">head</span>(all.patients<span class="op">$</span>gender)</a></code></pre></div>
+<pre><code>## [1] M    F    &lt;NA&gt; &lt;NA&gt; M    F   
+## Levels: F M</code></pre>
+<p>This vector of factors shows which category each element belongs to, and then summarizes what the possible categories are down at the bottom where it prints the <code>Levels</code> of this factor. This can cause issues if we introduce data that does not match these categories. Let’s try adding a new patient’s data.</p>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb133-1" title="1">all.patients &lt;-<span class="st"> </span><span class="kw">rbind</span>(all.patients, </a>
+<a class="sourceLine" id="cb133-2" title="2">                      <span class="kw">c</span>(<span class="dt">name =</span> <span class="st">&quot;lupe&quot;</span>,</a>
+<a class="sourceLine" id="cb133-3" title="3">                        <span class="dt">heart_rate =</span> <span class="dv">72</span>,</a>
+<a class="sourceLine" id="cb133-4" title="4">                        <span class="dt">disease_status =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb133-5" title="5">                        <span class="dt">gender =</span> <span class="st">&quot;NB&quot;</span>))</a></code></pre></div>
+<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;lupe&quot;): invalid factor level, NA
+## generated
+
+## Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;lupe&quot;): invalid factor level, NA
+## generated</code></pre>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1">all.patients</a></code></pre></div>
+<pre><code>##     name heart_rate disease_status gender
+## 1 oakley         78          FALSE      M
+## 2 rashmi         68          FALSE      F
+## 3  kiran         95           TRUE   &lt;NA&gt;
+## 4    eun         86           TRUE   &lt;NA&gt;
+## 5  sasha         79           TRUE      M
+## 6 mattie         64          FALSE      F
+## 7   &lt;NA&gt;         72          FALSE   &lt;NA&gt;</code></pre>
+<p>What has happened with this new addition? If you tried to add a new patient to the dataframe that had a gender that wasn’t already represented in the data, chances are you had a warning and that gender was turned to <code>NA</code>.</p>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb137-1" title="1">all.patients<span class="op">$</span>gender</a></code></pre></div>
+<pre><code>## [1] M    F    &lt;NA&gt; &lt;NA&gt; M    F    &lt;NA&gt;
+## Levels: F M</code></pre>
+<p>Once a factor is created, it doesn’t let you easily add new categories that were not in the original set. We will not get issues though if we add a new patient whose gender is represented as one of the levels in our gender factor.</p>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb139-1" title="1">all.patients &lt;-<span class="st"> </span><span class="kw">rbind</span>(all.patients, </a>
+<a class="sourceLine" id="cb139-2" title="2">                      <span class="kw">c</span>(<span class="dt">name =</span> <span class="st">&quot;chihiro&quot;</span>, </a>
+<a class="sourceLine" id="cb139-3" title="3">                        <span class="dt">heart_rate =</span> <span class="dv">101</span>, </a>
+<a class="sourceLine" id="cb139-4" title="4">                        <span class="dt">disease_status =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb139-5" title="5">                        <span class="dt">gender =</span> <span class="st">&quot;M&quot;</span>))</a></code></pre></div>
+<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;chihiro&quot;): invalid factor level,
+## NA generated</code></pre>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb141-1" title="1">all.patients<span class="op">$</span>gender</a></code></pre></div>
+<pre><code>## [1] M    F    &lt;NA&gt; &lt;NA&gt; M    F    &lt;NA&gt; M   
+## Levels: F M</code></pre>
+<p>So how do we fix this? The easiest way around this is to treat the column as characters instead of as factors.</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1">all.patients<span class="op">$</span>gender &lt;-<span class="st"> </span><span class="kw">as.character</span>(all.patients<span class="op">$</span>gender)</a>
+<a class="sourceLine" id="cb143-2" title="2">all.patients &lt;-<span class="st"> </span><span class="kw">rbind</span>(all.patients, </a>
+<a class="sourceLine" id="cb143-3" title="3">                      <span class="kw">c</span>(<span class="dt">name =</span> <span class="st">&quot;ayodele&quot;</span>, </a>
+<a class="sourceLine" id="cb143-4" title="4">                        <span class="dt">heart_rate =</span> <span class="dv">101</span>, </a>
+<a class="sourceLine" id="cb143-5" title="5">                        <span class="dt">disease_status =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb143-6" title="6">                        <span class="dt">gender =</span> <span class="st">&quot;NB&quot;</span>))</a></code></pre></div>
+<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;ayodele&quot;): invalid factor level,
+## NA generated</code></pre>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" title="1">all.patients<span class="op">$</span>gender</a></code></pre></div>
+<pre><code>## [1] &quot;M&quot;  &quot;F&quot;  NA   NA   &quot;M&quot;  &quot;F&quot;  NA   &quot;M&quot;  &quot;NB&quot;</code></pre>
+<p>There will be times that we want to treat certain columns in our data as a factor, but take care that you add compatible data to each column of your existing dataset.</p>
+
+</div>
+</div>
+<!-- </div> -->
+<p style="margin-top:10em;text-align:center;font-size:small;">
+    <a href="https://github.com/darachm/dll-r/blob/main/LICENSE.md">
+        Licensed Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+    </a>
+</p>
+<p style="text-align:center;font-size:small;">
+    <a href="https://github.com/rstudio/bookdown" target="blank">
+        Website typeset with bookdown
+    </a>
+</p>
+
+<script> 
+// This is to look through, everything that's a floating lone double dash,
+// delete it. This is left over for stuff that's trying to be pauses for
+// the slides
+var listz = document.getElementsByTagName("p");
+for (var i=0; i < listz.length; i++) { 
+    if (listz[i].innerText === "–") { listz[i].innerText = "" } 
+} 
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="2-4-working-with-vectors.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="3-day-4-tidyverse-and-visualizations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/darachm/dll-r/edit/main/350-intro-to-dataframes.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["DLL 2021 R syllabus site.html"],
+"toc": {
+"collapse": "subsection"
+},
+"highlight": "zenburn"
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3.1 Reading and processing data | DLL 2021, R section</title>
+  <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3.1 Reading and processing data | DLL 2021, R section" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
+  <meta name="github-repo" content="darachm/dll-r" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3.1 Reading and processing data | DLL 2021, R section" />
+  
+  <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
+  
+
+<meta name="author" content="mesako" />
+<meta name="author" content="Margaret" />
+<meta name="author" content="Samson" />
+<meta name="author" content="Zac" />
+<meta name="author" content="darachm" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="3-day-4-tidyverse-and-visualizations.html"/>
+<link rel="next" href="3-2-using-tidyverse.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">DLL 2021 R workshops</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Workshop introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="1-1-workshop-goals.html"><a href="1-1-workshop-goals.html"><i class="fa fa-check"></i><b>1.1</b> Workshop goals</a></li>
+<li class="chapter" data-level="1.2" data-path="1-2-structure-and-resources.html"><a href="1-2-structure-and-resources.html"><i class="fa fa-check"></i><b>1.2</b> Structure and resources</a><ul>
+<li class="chapter" data-level="1.2.1" data-path="1-2-structure-and-resources.html"><a href="1-2-structure-and-resources.html#this-syllabus-and-videos"><i class="fa fa-check"></i><b>1.2.1</b> This syllabus and videos</a></li>
+<li class="chapter" data-level="1.2.2" data-path="1-2-structure-and-resources.html"><a href="1-2-structure-and-resources.html#slack-channel"><i class="fa fa-check"></i><b>1.2.2</b> Slack channel</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="1-3-workshop-expectations.html"><a href="1-3-workshop-expectations.html"><i class="fa fa-check"></i><b>1.3</b> Workshop expectations</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="2-day-3-intoduction-to-r.html"><a href="2-day-3-intoduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Day 3 - intoduction to R</a><ul>
+<li class="chapter" data-level="2.1" data-path="2-1-navigating-rstudio.html"><a href="2-1-navigating-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Navigating Rstudio</a></li>
+<li class="chapter" data-level="2.2" data-path="2-2-using-rmds.html"><a href="2-2-using-rmds.html"><i class="fa fa-check"></i><b>2.2</b> Using Rmds</a></li>
+<li class="chapter" data-level="2.3" data-path="2-3-getting-started-in-r.html"><a href="2-3-getting-started-in-r.html"><i class="fa fa-check"></i><b>2.3</b> Getting started in R</a><ul>
+<li class="chapter" data-level="2.3.1" data-path="2-3-getting-started-in-r.html"><a href="2-3-getting-started-in-r.html#getting-help-in-r"><i class="fa fa-check"></i><b>2.3.1</b> Getting help in R</a></li>
+<li class="chapter" data-level="2.3.2" data-path="2-3-getting-started-in-r.html"><a href="2-3-getting-started-in-r.html#using-variables-and-data-types"><i class="fa fa-check"></i><b>2.3.2</b> Using variables and data types</a></li>
+<li class="chapter" data-level="2.3.3" data-path="2-3-getting-started-in-r.html"><a href="2-3-getting-started-in-r.html#using-functions"><i class="fa fa-check"></i><b>2.3.3</b> Using functions</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="2-4-working-with-vectors.html"><a href="2-4-working-with-vectors.html"><i class="fa fa-check"></i><b>2.4</b> Working with vectors</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="2-4-working-with-vectors.html"><a href="2-4-working-with-vectors.html#building-vectors"><i class="fa fa-check"></i><b>2.4.1</b> Building vectors</a></li>
+<li class="chapter" data-level="2.4.2" data-path="2-4-working-with-vectors.html"><a href="2-4-working-with-vectors.html#indexing-and-subsetting-vectors"><i class="fa fa-check"></i><b>2.4.2</b> Indexing and subsetting vectors</a></li>
+<li class="chapter" data-level="2.4.3" data-path="2-4-working-with-vectors.html"><a href="2-4-working-with-vectors.html#using-logic-and-logicals"><i class="fa fa-check"></i><b>2.4.3</b> Using logic and logicals</a></li>
+<li class="chapter" data-level="2.4.4" data-path="2-4-working-with-vectors.html"><a href="2-4-working-with-vectors.html#modifying-vectors"><i class="fa fa-check"></i><b>2.4.4</b> Modifying vectors</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="2-5-working-with-dataframes.html"><a href="2-5-working-with-dataframes.html"><i class="fa fa-check"></i><b>2.5</b> Working with dataframes</a><ul>
+<li class="chapter" data-level="2.5.1" data-path="2-5-working-with-dataframes.html"><a href="2-5-working-with-dataframes.html#indexing-and-subsetting-dataframes"><i class="fa fa-check"></i><b>2.5.1</b> Indexing and subsetting dataframes</a></li>
+<li class="chapter" data-level="2.5.2" data-path="2-5-working-with-dataframes.html"><a href="2-5-working-with-dataframes.html#exploring-dataframes"><i class="fa fa-check"></i><b>2.5.2</b> Exploring dataframes</a></li>
+<li class="chapter" data-level="2.5.3" data-path="2-5-working-with-dataframes.html"><a href="2-5-working-with-dataframes.html#building-and-modifying-dataframes"><i class="fa fa-check"></i><b>2.5.3</b> Building and modifying dataframes</a></li>
+<li class="chapter" data-level="2.5.4" data-path="2-5-working-with-dataframes.html"><a href="2-5-working-with-dataframes.html#handling-datatypes-in-dataframes"><i class="fa fa-check"></i><b>2.5.4</b> Handling datatypes in dataframes</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="3-day-4-tidyverse-and-visualizations.html"><a href="3-day-4-tidyverse-and-visualizations.html"><i class="fa fa-check"></i><b>3</b> Day 4 - tidyverse and visualizations</a><ul>
+<li class="chapter" data-level="3.1" data-path="3-1-reading-and-processing-data.html"><a href="3-1-reading-and-processing-data.html"><i class="fa fa-check"></i><b>3.1</b> Reading and processing data</a></li>
+<li class="chapter" data-level="3.2" data-path="3-2-using-tidyverse.html"><a href="3-2-using-tidyverse.html"><i class="fa fa-check"></i><b>3.2</b> Using tidyverse</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-using-tidyverse-1.html"><a href="3-3-using-tidyverse-1.html"><i class="fa fa-check"></i><b>3.3</b> Using tidyverse</a></li>
+<li class="chapter" data-level="3.4" data-path="3-4-making-plots-with-ggplot2.html"><a href="3-4-making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a><ul>
+<li class="chapter" data-level="3.4.1" data-path="3-4-making-plots-with-ggplot2.html"><a href="3-4-making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.4.1</b> Getting started with a ggplot</a></li>
+<li class="chapter" data-level="3.4.2" data-path="3-4-making-plots-with-ggplot2.html"><a href="3-4-making-plots-with-ggplot2.html#changing-plot-aesthetics"><i class="fa fa-check"></i><b>3.4.2</b> Changing plot aesthetics</a></li>
+<li class="chapter" data-level="3.4.3" data-path="3-4-making-plots-with-ggplot2.html"><a href="3-4-making-plots-with-ggplot2.html#exploring-other-plots"><i class="fa fa-check"></i><b>3.4.3</b> Exploring other plots</a></li>
+<li class="chapter" data-level="3.4.4" data-path="3-4-making-plots-with-ggplot2.html"><a href="3-4-making-plots-with-ggplot2.html#using-categorical-data"><i class="fa fa-check"></i><b>3.4.4</b> Using categorical data</a></li>
+<li class="chapter" data-level="3.4.5" data-path="3-4-making-plots-with-ggplot2.html"><a href="3-4-making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>3.4.5</b> Visualizing between groups</a></li>
+<li class="chapter" data-level="3.4.6" data-path="3-4-making-plots-with-ggplot2.html"><a href="3-4-making-plots-with-ggplot2.html#generating-heatmaps"><i class="fa fa-check"></i><b>3.4.6</b> Generating heatmaps</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="3-5-making-scientific-figures.html"><a href="3-5-making-scientific-figures.html"><i class="fa fa-check"></i><b>3.5</b> Making scientific figures</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="3-5-making-scientific-figures.html"><a href="3-5-making-scientific-figures.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.5.1</b> Plotting error bars</a></li>
+<li class="chapter" data-level="3.5.2" data-path="3-5-making-scientific-figures.html"><a href="3-5-making-scientific-figures.html#showing-trends-in-data"><i class="fa fa-check"></i><b>3.5.2</b> Showing trends in data</a></li>
+<li class="chapter" data-level="3.5.3" data-path="3-5-making-scientific-figures.html"><a href="3-5-making-scientific-figures.html#saving-figures-locally"><i class="fa fa-check"></i><b>3.5.3</b> Saving figures locally</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="3-6-applying-basic-stats.html"><a href="3-6-applying-basic-stats.html"><i class="fa fa-check"></i><b>3.6</b> Applying basic stats</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="4-day-5-building-workflows.html"><a href="4-day-5-building-workflows.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-1-using-code-many-times-loops.html"><a href="4-1-using-code-many-times-loops.html"><i class="fa fa-check"></i><b>4.1</b> Using code many times - loops</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="4-1-using-code-many-times-loops.html"><a href="4-1-using-code-many-times-loops.html#doing-things-multiple-times"><i class="fa fa-check"></i><b>4.1.1</b> Doing things multiple times</a></li>
+<li class="chapter" data-level="4.1.2" data-path="4-1-using-code-many-times-loops.html"><a href="4-1-using-code-many-times-loops.html#loops"><i class="fa fa-check"></i><b>4.1.2</b> Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="4-2-writing-reusable-code.html"><a href="4-2-writing-reusable-code.html"><i class="fa fa-check"></i><b>4.2</b> Writing (re)usable code</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="4-2-writing-reusable-code.html"><a href="4-2-writing-reusable-code.html#style-guides-can-be-inspiring"><i class="fa fa-check"></i><b>4.2.1</b> Style guides can be inspiring</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="4-3-functions-redux-why-theyre-so-great.html"><a href="4-3-functions-redux-why-theyre-so-great.html"><i class="fa fa-check"></i><b>4.3</b> Functions redux - why they’re so great</a></li>
+<li class="chapter" data-level="4.4" data-path="4-4-using-functions-to-write-modular-code.html"><a href="4-4-using-functions-to-write-modular-code.html"><i class="fa fa-check"></i><b>4.4</b> Using functions to write modular code</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="4-4-using-functions-to-write-modular-code.html"><a href="4-4-using-functions-to-write-modular-code.html#tips-for-modular-workflows"><i class="fa fa-check"></i><b>4.4.1</b> Tips for modular workflows</a></li>
+<li class="chapter" data-level="4.4.2" data-path="4-4-using-functions-to-write-modular-code.html"><a href="4-4-using-functions-to-write-modular-code.html#more-complex-workflow"><i class="fa fa-check"></i><b>4.4.2</b> More complex workflow</a></li>
+<li class="chapter" data-level="4.4.3" data-path="4-4-using-functions-to-write-modular-code.html"><a href="4-4-using-functions-to-write-modular-code.html#apply-is-a-popular-tool"><i class="fa fa-check"></i><b>4.4.3</b> Apply is a popular tool</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="4-5-packages-are-chunks-of-code-and-sometimes-data.html"><a href="4-5-packages-are-chunks-of-code-and-sometimes-data.html"><i class="fa fa-check"></i><b>4.5</b> Packages are chunks of code (and sometimes data)</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="4-5-packages-are-chunks-of-code-and-sometimes-data.html"><a href="4-5-packages-are-chunks-of-code-and-sometimes-data.html#cran-is-the-canonical-r-package-resource"><i class="fa fa-check"></i><b>4.5.1</b> CRAN is the canonical R package resource</a></li>
+<li class="chapter" data-level="4.5.2" data-path="4-5-packages-are-chunks-of-code-and-sometimes-data.html"><a href="4-5-packages-are-chunks-of-code-and-sometimes-data.html#github-is-a-common-place-for-sharing-code-in-development"><i class="fa fa-check"></i><b>4.5.2</b> github is a common place for sharing code in development</a></li>
+<li class="chapter" data-level="4.5.3" data-path="4-5-packages-are-chunks-of-code-and-sometimes-data.html"><a href="4-5-packages-are-chunks-of-code-and-sometimes-data.html#bioconductor-is-a-great-place-for-bio-related-packages"><i class="fa fa-check"></i><b>4.5.3</b> Bioconductor is a great place for bio-related packages 😬</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="4-6-finding-more-help-and-documentation.html"><a href="4-6-finding-more-help-and-documentation.html"><i class="fa fa-check"></i><b>4.6</b> Finding more help and documentation</a></li>
+<li class="chapter" data-level="4.7" data-path="4-7-reproducibile-sharing-more-rmarkdown-and.html"><a href="4-7-reproducibile-sharing-more-rmarkdown-and.html"><i class="fa fa-check"></i><b>4.7</b> Reproducibile sharing - more <code>rmarkdown</code> and</a><ul>
+<li class="chapter" data-level="4.7.1" data-path="4-7-reproducibile-sharing-more-rmarkdown-and.html"><a href="4-7-reproducibile-sharing-more-rmarkdown-and.html#rmarkdown-package"><i class="fa fa-check"></i><b>4.7.1</b> rmarkdown package</a></li>
+<li><a href="4-7-reproducibile-sharing-more-rmarkdown-and.html#section"></a></li>
+<li class="chapter" data-level="4.7.2" data-path="4-7-reproducibile-sharing-more-rmarkdown-and.html"><a href="4-7-reproducibile-sharing-more-rmarkdown-and.html#sharing-with-others"><i class="fa fa-check"></i><b>4.7.2</b> Sharing with others</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="4-8-reproducibility-and-sharing.html"><a href="4-8-reproducibility-and-sharing.html"><i class="fa fa-check"></i><b>4.8</b> Reproducibility and sharing</a></li>
+<li class="chapter" data-level="4.9" data-path="4-9-troubleshooting-getting-help-dissecting-problems.html"><a href="4-9-troubleshooting-getting-help-dissecting-problems.html"><i class="fa fa-check"></i><b>4.9</b> Troubleshooting, getting help, dissecting problems</a><ul>
+<li class="chapter" data-level="4.9.1" data-path="4-9-troubleshooting-getting-help-dissecting-problems.html"><a href="4-9-troubleshooting-getting-help-dissecting-problems.html#places-to-look-for-help"><i class="fa fa-check"></i><b>4.9.1</b> Places to look for help</a></li>
+<li class="chapter" data-level="4.9.2" data-path="4-9-troubleshooting-getting-help-dissecting-problems.html"><a href="4-9-troubleshooting-getting-help-dissecting-problems.html#minimum-reproducible-example"><i class="fa fa-check"></i><b>4.9.2</b> Minimum reproducible example</a></li>
+</ul></li>
+<li class="chapter" data-level="4.10" data-path="4-10-conclusion-other-concepts.html"><a href="4-10-conclusion-other-concepts.html"><i class="fa fa-check"></i><b>4.10</b> Conclusion, other concepts</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="5-appendix.html"><a href="5-appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a><ul>
+<li class="chapter" data-level="5.1" data-path="5-1-additional-tutorials.html"><a href="5-1-additional-tutorials.html"><i class="fa fa-check"></i><b>5.1</b> Additional tutorials</a><ul>
+<li class="chapter" data-level="5.1.1" data-path="5-1-additional-tutorials.html"><a href="5-1-additional-tutorials.html#sub-sub-section"><i class="fa fa-check"></i><b>5.1.1</b> sub sub section</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="5-2-more-challenges.html"><a href="5-2-more-challenges.html"><i class="fa fa-check"></i><b>5.2</b> More challenges</a></li>
+<li class="chapter" data-level="5.3" data-path="5-3-figures-ideas.html"><a href="5-3-figures-ideas.html"><i class="fa fa-check"></i><b>5.3</b> Figures ideas</a></li>
+<li class="chapter" data-level="5.4" data-path="5-4-rmd-example-of-code-chunk.html"><a href="5-4-rmd-example-of-code-chunk.html"><i class="fa fa-check"></i><b>5.4</b> Rmd example of code chunk</a></li>
+<li class="chapter" data-level="5.5" data-path="5-5-more-example-rmds.html"><a href="5-5-more-example-rmds.html"><i class="fa fa-check"></i><b>5.5</b> More example Rmds</a></li>
+<li class="chapter" data-level="5.6" data-path="5-6-how-to-edit-this-document.html"><a href="5-6-how-to-edit-this-document.html"><i class="fa fa-check"></i><b>5.6</b> How to edit this document</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="5-6-how-to-edit-this-document.html"><a href="5-6-how-to-edit-this-document.html#setup"><i class="fa fa-check"></i><b>5.6.1</b> Setup</a></li>
+<li class="chapter" data-level="5.6.2" data-path="5-6-how-to-edit-this-document.html"><a href="5-6-how-to-edit-this-document.html#editwork-on-it"><i class="fa fa-check"></i><b>5.6.2</b> Edit/work on it</a></li>
+<li class="chapter" data-level="5.6.3" data-path="5-6-how-to-edit-this-document.html"><a href="5-6-how-to-edit-this-document.html#publishing-onto-the-main-page-so-its-hosted-at-the-url"><i class="fa fa-check"></i><b>5.6.3</b> Publishing onto the main page, so it’s hosted at the URL</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="5-7-more-links.html"><a href="5-7-more-links.html"><i class="fa fa-check"></i><b>5.7</b> More links</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">DLL 2021, R section</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="reading-and-processing-data" class="section level2">
+<h2><span class="header-section-number">3.1</span> Reading and processing data</h2>
+<p>find a file-reading function, know of a few
+use read.csv to read a file and save it as a variable, and tune some arguments</p>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" title="1">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb147-2" title="2"><span class="kw">head</span>(irisz)</a></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Location
+## 1          5.1         3.5          1.4         0.2  setosa    Korea
+## 2          4.9           3          1.4         0.2  setosa    China
+## 3          4.7         3.2          1.3         0.2  setosa    Korea
+## 4          4.6         3.1          1.5         0.2  setosa    China
+## 5            5         3.6          1.4         0.2  setosa    China
+## 6          5.4                      1.7         0.4  setosa   Canada</code></pre>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" title="1"><span class="kw">head</span>(irisz<span class="op">$</span>Species)</a></code></pre></div>
+<pre><code>## [1] setosa setosa setosa setosa setosa setosa
+## Levels:  setosa versicolor virginica</code></pre>
+<p>Settings for read.csv</p>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" title="1">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb151-2" title="2"><span class="kw">head</span>(irisz<span class="op">$</span>Species)</a></code></pre></div>
+<pre><code>## [1] setosa setosa setosa setosa setosa setosa
+## Levels:  setosa versicolor virginica</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1"><span class="kw">head</span>(irisz<span class="op">$</span>Location)</a></code></pre></div>
+<pre><code>## [1] Korea  China  Korea  China  China  Canada
+## Levels:  Canada China Japan Korea Russia USA</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" title="1">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>, <span class="dt">col.names =</span> <span class="kw">c</span>(<span class="st">&quot;sep_len&quot;</span>, <span class="st">&quot;sep_wid&quot;</span>, <span class="st">&quot;pet_len&quot;</span>, <span class="st">&quot;pet_wid&quot;</span>, <span class="st">&quot;species&quot;</span>, <span class="st">&quot;loc&quot;</span>))</a>
+<a class="sourceLine" id="cb155-2" title="2"><span class="kw">head</span>(irisz)</a></code></pre></div>
+<pre><code>##   sep_len sep_wid pet_len pet_wid species    loc
+## 1     5.1     3.5     1.4     0.2  setosa  Korea
+## 2     4.9       3     1.4     0.2  setosa  China
+## 3     4.7     3.2     1.3     0.2  setosa  Korea
+## 4     4.6     3.1     1.5     0.2  setosa  China
+## 5       5     3.6     1.4     0.2  setosa  China
+## 6     5.4             1.7     0.4  setosa Canada</code></pre>
+<p>important to preview data and look for issues, and have some strategies/functions to do this</p>
+<p>Examining Data</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" title="1"><span class="kw">str</span>(irisz)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  6 variables:
+##  $ sep_len: Factor w/ 36 levels &quot; &quot;,&quot;4.3&quot;,&quot;4.4&quot;,..: 10 8 6 5 9 13 5 9 3 8 ...
+##  $ sep_wid: Factor w/ 27 levels &quot;&quot;,&quot; &quot;,&quot;0.35&quot;,..: 18 13 15 14 19 2 17 17 12 14 ...
+##  $ pet_len: Factor w/ 46 levels &quot;&quot;,&quot; &quot;,&quot;1&quot;,&quot;1.1&quot;,..: 7 7 6 8 7 10 7 8 7 8 ...
+##  $ pet_wid: Factor w/ 25 levels &quot;&quot;,&quot;0.1&quot;,&quot;0.2&quot;,..: 3 3 3 3 3 5 4 3 3 2 ...
+##  $ species: Factor w/ 4 levels &quot;&quot;,&quot;setosa&quot;,&quot;versicolor&quot;,..: 2 2 2 2 2 2 2 1 2 2 ...
+##  $ loc    : Factor w/ 7 levels &quot;&quot;,&quot;Canada&quot;,&quot;China&quot;,..: 5 3 5 3 3 2 3 3 6 4 ...</code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" title="1"><span class="kw">summary</span>(irisz)</a></code></pre></div>
+<pre><code>##     sep_len       sep_wid      pet_len      pet_wid         species  
+##  5      :  9   3      :26   1.4    :13   0.2    :29             : 2  
+##  5.1    :  9   2.8    :14   1.5    :13   1.3    :13   setosa    :49  
+##  6.3    :  9   3.2    :13   4.5    : 8   1.5    :12   versicolor:50  
+##  5.7    :  8   3.4    :12   5.1    : 8   1.8    :12   virginica :49  
+##  6.7    :  8   3.1    :11   1.3    : 7   1.4    : 8                  
+##  5.5    :  7   2.7    : 9   1.6    : 6   0.3    : 7                  
+##  (Other):100   (Other):65   (Other):95   (Other):69                  
+##      loc    
+##        :14  
+##  Canada:35  
+##  China : 6  
+##  Japan :11  
+##  Korea :10  
+##  Russia:11  
+##  USA   :63</code></pre>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" title="1"><span class="kw">unique</span>(irisz<span class="op">$</span>sep_len)</a></code></pre></div>
+<pre><code>##  [1] 5.1 4.9 4.7 4.6 5   5.4 4.4 4.8 4.3 5.8 5.7 5.2 5.5 4.5 n/a 5.3 7   6.4 6.9
+## [20] 6.5 6.3 6.6 5.9 6   6.1 5.6 6.7 6.2 6.8 7.1 7.6     7.2 7.7 7.4 7.9
+## 36 Levels:   4.3 4.4 4.5 4.6 4.7 4.8 4.9 5 5.1 5.2 5.3 5.4 5.5 5.6 5.7 ... n/a</code></pre>
+<p>what NAs are, some strategies to deal with these</p>
+<p>Handling Missing Data</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" title="1">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>, <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;n/a&quot;</span>), <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb163-2" title="2"><span class="kw">head</span>(irisz)</a></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Location
+## 1          5.1         3.5          1.4         0.2  setosa    Korea
+## 2          4.9         3.0          1.4         0.2  setosa    China
+## 3          4.7         3.2          1.3         0.2  setosa    Korea
+## 4          4.6         3.1          1.5         0.2  setosa    China
+## 5          5.0         3.6          1.4         0.2  setosa    China
+## 6          5.4          NA          1.7         0.4  setosa   Canada</code></pre>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" title="1"><span class="kw">str</span>(irisz)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    150 obs. of  6 variables:
+##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
+##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 NA 3.4 3.4 2.9 3.1 ...
+##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
+##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
+##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 NA 1 1 ...
+##  $ Location    : Factor w/ 6 levels &quot;Canada&quot;,&quot;China&quot;,..: 4 2 4 2 2 1 2 2 5 3 ...</code></pre>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" title="1"><span class="kw">summary</span>(irisz)</a></code></pre></div>
+<pre><code>##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width    
+##  Min.   :4.300   Min.   :0.350   Min.   :1.000   Min.   : 0.100  
+##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.550   1st Qu.: 0.300  
+##  Median :5.800   Median :3.000   Median :4.300   Median : 1.300  
+##  Mean   :5.839   Mean   :3.028   Mean   :3.752   Mean   : 1.331  
+##  3rd Qu.:6.400   3rd Qu.:3.300   3rd Qu.:5.100   3rd Qu.: 1.800  
+##  Max.   :7.900   Max.   :4.400   Max.   :6.900   Max.   :23.000  
+##  NA&#39;s   :2       NA&#39;s   :3       NA&#39;s   :3       NA&#39;s   :2       
+##        Species     Location 
+##  setosa    :49   Canada:35  
+##  versicolor:50   China : 6  
+##  virginica :49   Japan :11  
+##  NA&#39;s      : 2   Korea :10  
+##                  Russia:11  
+##                  USA   :63  
+##                  NA&#39;s  :14</code></pre>
+<p>Looking for anamolous data</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" title="1"><span class="kw">hist</span>(irisz<span class="op">$</span>Sepal.Length)</a></code></pre></div>
+<p><img src="410-process-data_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" title="1"><span class="kw">hist</span>(irisz<span class="op">$</span>Sepal.Width)</a></code></pre></div>
+<p><img src="410-process-data_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" title="1"><span class="kw">hist</span>(irisz<span class="op">$</span>Petal.Length)</a></code></pre></div>
+<p><img src="410-process-data_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" title="1"><span class="kw">hist</span>(irisz<span class="op">$</span>Petal.Width)</a></code></pre></div>
+<p><img src="410-process-data_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
+<p>how to filter entries in a data.frame</p>
+<p>how to cast/transform value Types
+how to scale/normalize values</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb173-1" title="1"><span class="kw">head</span>(irisz<span class="op">$</span>Sepal.Length)</a></code></pre></div>
+<pre><code>## [1] 5.1 4.9 4.7 4.6 5.0 5.4</code></pre>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb175-1" title="1">?scale</a></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" title="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb176-2" title="2"><span class="kw">scale</span>(x)</a></code></pre></div>
+<pre><code>##             [,1]
+##  [1,] -1.4863011
+##  [2,] -1.1560120
+##  [3,] -0.8257228
+##  [4,] -0.4954337
+##  [5,] -0.1651446
+##  [6,]  0.1651446
+##  [7,]  0.4954337
+##  [8,]  0.8257228
+##  [9,]  1.1560120
+## [10,]  1.4863011
+## attr(,&quot;scaled:center&quot;)
+## [1] 5.5
+## attr(,&quot;scaled:scale&quot;)
+## [1] 3.02765</code></pre>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" title="1"><span class="kw">scale</span>(x, <span class="dt">center =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<pre><code>##            [,1]
+##  [1,] 0.1528942
+##  [2,] 0.3057883
+##  [3,] 0.4586825
+##  [4,] 0.6115766
+##  [5,] 0.7644708
+##  [6,] 0.9173649
+##  [7,] 1.0702591
+##  [8,] 1.2231533
+##  [9,] 1.3760474
+## [10,] 1.5289416
+## attr(,&quot;scaled:scale&quot;)
+## [1] 6.540472</code></pre>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1"><span class="kw">scale</span>(x, <span class="dt">scale =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<pre><code>##       [,1]
+##  [1,] -4.5
+##  [2,] -3.5
+##  [3,] -2.5
+##  [4,] -1.5
+##  [5,] -0.5
+##  [6,]  0.5
+##  [7,]  1.5
+##  [8,]  2.5
+##  [9,]  3.5
+## [10,]  4.5
+## attr(,&quot;scaled:center&quot;)
+## [1] 5.5</code></pre>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" title="1"><span class="kw">head</span>(<span class="kw">scale</span>(irisz<span class="op">$</span>Sepal.Length))</a></code></pre></div>
+<pre><code>##            [,1]
+## [1,] -0.8992245
+## [2,] -1.1425248
+## [3,] -1.3858250
+## [4,] -1.5074751
+## [5,] -1.0208747
+## [6,] -0.5342742</code></pre>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" title="1"><span class="kw">library</span>(scales)</a>
+<a class="sourceLine" id="cb184-2" title="2"><span class="kw">rescale</span>(x)        </a></code></pre></div>
+<pre><code>##  [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667
+##  [8] 0.7777778 0.8888889 1.0000000</code></pre>
+
+</div>
+<p style="margin-top:10em;text-align:center;font-size:small;">
+    <a href="https://github.com/darachm/dll-r/blob/main/LICENSE.md">
+        Licensed Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+    </a>
+</p>
+<p style="text-align:center;font-size:small;">
+    <a href="https://github.com/rstudio/bookdown" target="blank">
+        Website typeset with bookdown
+    </a>
+</p>
+
+<script> 
+// This is to look through, everything that's a floating lone double dash,
+// delete it. This is left over for stuff that's trying to be pauses for
+// the slides
+var listz = document.getElementsByTagName("p");
+for (var i=0; i < listz.length; i++) { 
+    if (listz[i].innerText === "–") { listz[i].innerText = "" } 
+} 
+</script>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="3-day-4-tidyverse-and-visualizations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="3-2-using-tidyverse.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/darachm/dll-r/edit/main/410-process-data.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["DLL 2021 R syllabus site.html"],
+"toc": {
+"collapse": "subsection"
+},
+"highlight": "zenburn"
+});
+});
+</script>
+
+</body>
+
+</html>

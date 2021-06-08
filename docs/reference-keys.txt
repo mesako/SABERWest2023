@@ -55,8 +55,11 @@ more-complex-workflow
 apply-is-a-popular-tool
 packages-are-chunks-of-code-and-sometimes-data
 cran-is-the-canonical-r-package-resource
-github-is-a-common-place-for-sharing-code-in-development
+using-packages-without-library-ing-them
+github-is-a-common-place-for-sharing-packges-in-development
+lets-install-a-package-off-of-github.
 bioconductor-is-a-great-place-for-bio-related-packages
+what-packages-do-you-have-already
 finding-more-help-and-documentation
 reproducibile-sharing---more-rmarkdown-and
 rmarkdown-package
