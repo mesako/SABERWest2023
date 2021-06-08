@@ -17,6 +17,8 @@ First, let's review the last two days.
 - Can you share it with someone and they follow
   along?
 
+---
+
 Our goals are to learn how to:
 
 - read lots of files, and different kinds of delimited files
@@ -27,3 +29,4 @@ Our goals are to learn how to:
 - design steps/chunks of work as modular functions to make adaptable workflows
 - more fun tricks in generating Rmarkdown reports
 
+---
