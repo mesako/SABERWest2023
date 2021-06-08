@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Appendix | DLL 2021, R section</title>
+  <title>4.4 Using functions to write modular code | DLL 2021, R section</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Appendix | DLL 2021, R section" />
+  <meta property="og:title" content="4.4 Using functions to write modular code | DLL 2021, R section" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Appendix | DLL 2021, R section" />
+  <meta name="twitter:title" content="4.4 Using functions to write modular code | DLL 2021, R section" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -34,8 +34,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="conclusion-other-concepts.html"/>
-<link rel="next" href="additional-tutorials.html"/>
+<link rel="prev" href="functions-redux-why-theyre-so-great.html"/>
+<link rel="next" href="packages-are-chunks-of-code-and-sometimes-data.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -253,9 +253,153 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="appendix" class="section level1">
-<h1><span class="header-section-number">5</span> Appendix</h1>
-<p>Useful bits</p>
+<div id="using-functions-to-write-modular-code" class="section level2">
+<h2><span class="header-section-number">4.4</span> Using functions to write modular code</h2>
+<p>How might you carry out the workflow from the previous work to
+calculate protein sequence lengths?</p>
+<div class="incremental">
+<p>One way is to flatten out all the tasks,
+and to script each individual task each time.
+This requires the author, user, and reader to understand a lot of complexity.</p>
+<div class="mermaid">
+graph TD
+    classDef default line-height:10px;
+    classDef three line-height:10px,fill:yellow;
+    you[analyst] --> B[finding files] &    C[making a vector] &    D[looping] &    E[reading files] &    F[getting protein seq] &    G[calculting and saving nchar] &    H[plotting nchar]
+    B:::three;
+    C:::three;
+    D:::three;
+    E:::three;
+    F:::three;
+    G:::three;
+    H:::three;
+</div>
+<p>Another way to approach this is to cluster them into a hierarchy of modules.</p>
+<div class="mermaid">
+graph TD
+    classDef default line-height:10px;
+    classDef one  line-height:10px,fill:pink;
+    classDef two line-height:10px,fill:cyan;
+    classDef three line-height:10px,fill:yellow;
+    you2[analyst] --> find & read & plot;
+    find:::one --> B;
+    B[finding files]:::three;
+    read:::one --> looping & reading;
+    looping:::two --> C & D;
+    C[making a vector]:::three;
+    D[looping]:::three;
+    reading[reading and calc]:::two --> E & F & G;
+    E[reading files]:::three;
+    F[getting protein seq]:::three;
+    G[calculting and saving nchar]:::three;
+    plot:::one --> H;
+    H[plotting nchar]:::three;
+</div>
+<p>In this organization, the analyst can operate at levels of
+<span style="color:magenta">steps</span>,
+<span style="color:cyan">modules</span>, and
+<span style="color:gold">specific instructions</span>,
+depending on what is needed.</p>
+</div>
+<hr />
+<p>Organizing your workflows into composable modules lets you extend these to
+un-ancipiated complexity. You could imaging using these steps or modules:</p>
+<div class="mermaid">
+graph LR
+    classDef default line-height:12px;
+    vp[read viral proteins] --> cl[calculate lengths] --> hist[histogram]
+</div>
+<p>in new ways by composing the elements together, to analyze a different source
+of proteins, with a new analysis, with similar plots:</p>
+<div class="mermaid">
+graph LR
+    classDef default line-height:12px;
+    vp[read viral proteins] --> cl[calculate lengths] --> hist[histogram]
+    hp[read human proteins] --> cl --> boxplot[boxplot]
+    vp --> cgc[calculate GC%] --> gchist[histogram]
+    hp --> cgc --> gcboxplot[boxplot]
+</div>
+<hr />
+<div id="tips-for-modular-workflows" class="section level3">
+<h3><span class="header-section-number">4.4.1</span> Tips for modular workflows</h3>
+<ul>
+<li><p>Try to not “hardcode” things - if it’s a number, consider if it can be a
+<em>parameter</em> that is “passed in” as an argument.</p></li>
+<li><p>Group repeated code functions - some folks say you should never repeat
+code (but do what works for you!).</p></li>
+<li><p>Try to read inputs and outputs as general, flexible formats -
+strings of filenames, vectors of values</p></li>
+<li><p>Write a comment at the top of the function that says what it’s doing
+and what to expect, generally comment things.</p></li>
+</ul>
+<p>Consider, the <code>list.files()</code> and <code>hist()</code> functions are already built this way!
+How about a <code>ggplot2</code> style boxplot?</p>
+<hr />
+<div id="lets-write-a-plotting-modulefunction" class="section level4">
+<h4><span class="header-section-number">4.4.1.1</span> Let’s write a plotting module/function</h4>
+<p>Write a function that makes a ggplot2 boxplot for some numbers.</p>
+<p>What should the function take, what should it do?</p>
+<p>What is “some numbers”?</p>
+<p>What should it return?</p>
+<pre><code>wrap it in `print(ggplot code)` or return the ggplot object as
+a variable</code></pre>
+<hr />
+</div>
+</div>
+<div id="more-complex-workflow" class="section level3">
+<h3><span class="header-section-number">4.4.2</span> More complex workflow</h3>
+<p>Let’s write a simulation of viral evolution.</p>
+<p>(could be a bad idea, considering….)</p>
+<p>More examples/exercise</p>
+<p>show a simulation of something…. genetic drift of a virus replicating?</p>
+<p>lineage G1312F</p>
+<p>exercise - wrap the entire analysis as a function</p>
+<p>talk about ease of calling</p>
+<p>ease of tweaking this</p>
+<p>exercise - break into subfunctions, generate and plot</p>
+<p>ease of changing models</p>
+<hr />
+</div>
+<div id="apply-is-a-popular-tool" class="section level3">
+<h3><span class="header-section-number">4.4.3</span> Apply is a popular tool</h3>
+<p>Apply is another common way of doing something over and over.
+It is a very compact way to take pieces of a list, vector, dataframe, or matrix
+and put them into a function. There are:</p>
+<ul>
+<li><code>apply</code> - for 2D objects</li>
+<li><code>lapply</code> - for lists and vectors</li>
+<li><code>sapply</code> - is <code>lapply</code> but with simplified returns</li>
+<li><code>mapply</code> - is for combinations of multiple variables</li>
+<li><code>replicate</code> - calls a function multiple times</li>
+</ul>
+<p>Some people <em>strongly</em> prefer coding this way. Here is an example:</p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1">list_of_protein_files &lt;-<span class="st"> </span><span class="kw">lapply</span>(</a>
+<a class="sourceLine" id="cb341-2" data-line-number="2">        <span class="kw">list.files</span>(<span class="st">&quot;data/viral_structural_proteins/&quot;</span>,<span class="dt">full.names=</span>T),</a>
+<a class="sourceLine" id="cb341-3" data-line-number="3">        read.delim,</a>
+<a class="sourceLine" id="cb341-4" data-line-number="4">        <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F)</a></code></pre></div>
+<p>These “apply” some “FUN” to some input variables, by taking each element or
+slices of elements from input variables and putting them in as arguments
+to the function being applied. They return odd things, often lists (<code>unlist()</code>).</p>
+<hr />
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+    startOnLoad: false, // don't render initially, instead....
+    logLevel: 3, // for debugging
+});
+function initMermaid(s) { 
+  var diagrams = document.querySelectorAll('.mermaid');
+  var i;
+  for(i=0;i<diagrams.length;i++){
+    if(diagrams[i].offsetWidth>0){
+      mermaid.init(undefined, diagrams[i]);
+    }
+  }
+}
+initMermaid();
+</script>
+
+</div>
 </div>
 <p style="margin-top:10em;text-align:center;font-size:small;">
     <a href="https://github.com/darachm/dll-r/blob/main/LICENSE.md">
@@ -282,8 +426,8 @@ for (var i=0; i < listz.length; i++) {
           </div>
         </div>
       </div>
-<a href="conclusion-other-concepts.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="additional-tutorials.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="functions-redux-why-theyre-so-great.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="packages-are-chunks-of-code-and-sometimes-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -315,7 +459,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/darachm/dll-r/edit/main/900-appendix.Rmd",
+"link": "https://github.com/darachm/dll-r/edit/main/530-modular-functions.Rmd",
 "text": "Edit"
 },
 "history": {
