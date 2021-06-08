@@ -1,3 +1,7 @@
+---
+title: "Day 5 - building workflows"
+---
+
 # Day 5 - building workflows
 
 Today we're going to learn about applying these R 
@@ -30,3 +34,8 @@ Our goals are to learn how to:
 - more fun tricks in generating Rmarkdown reports
 
 ---
+
+
+
+
+

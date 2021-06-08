@@ -1,22 +1,39 @@
-## Using code many times - loops
+## Using loops to read many files in
 
-You will want to do the same thing multiple
-times - automation is great. Let's code up a
-simple little analysis - we'll calculate the
-length (number of amino acids) in a viral
-structural protein sequence.
+Let's work through an analysis of the size of "structural" viral proteins.
+We've done some of the work for you already, and would recommend that you
+always document where the data came from and how it was retrieved/processed:
+
+> The NCBI Identital Protein Groups database was queried for "structural"
+> with "Division" restricted to "Viruses" and "Source database" restricted
+> to "UniProtKB/Swiss-Prot". 243 results were retrieved as FASTA files and 
+> converted using BASH commands into separate tab-delimited files.
+^[One crucial aspect missing is the actual BASH commands used. I did not
+    save them as a script, and I *should* go back, save them in a script,
+    and re-run that to make sure I get the same result!]
 
 These files are in the `data/viral_structural_proteins` folder,
 are tab-delimited three fields, and look like this:
 
     Q8V433.1 Membrane protein       Bovine respiratory coronavirus (strain 98TXSF-110-LUN)  MSSVTTPAPVYTWTA...
 
+How do you inspect these files?
+What BASH tools do you use?
 
 ---
 
-Let's read one in.
+### Reading in one file
+
+Let's read one of them into R.
+
+The records are "delimited" by tabs, so tab-separated.
 We'll need to use `read.delim`, specify a tab separator, and ignore the lack
-of a header.
+of a header. How do we do this? Look up `?read.delim`.
+
+```{=html}
+<div class="incremental">
+```
+
 
 ```{r,calculate_one,cache=T}
 viral_protein_data <- read.delim("data/viral_structural_proteins/viral_proteins_100.tsv",
@@ -27,14 +44,24 @@ viral_protein_data
 - How do we find the column names?
 - What are two ways to access the protein sequence?
 - How do we calculate the number of characters in this sequence?
+    Try searching with "??`number of characters`"
 
-<!-- ??"number of characters" -->
-
-Code it up!
+```{=html}
+</div>
+```
 
 ---
 
+
 ### Doing things multiple times
+
+
+You will want to do the same thing multiple
+times - automation is great. Let's code up a
+simple little analysis - we'll calculate the
+length (number of amino acids) in a viral
+structural protein sequence.
+---
 
 Let's do this for all the proteins.
 The simplest way of doing this is to copy and
