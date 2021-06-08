@@ -173,10 +173,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a><ul>
 <li class="chapter" data-level="3.4.1" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.4.1</b> Getting started with a ggplot</a></li>
 <li class="chapter" data-level="3.4.2" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#changing-plot-aesthetics"><i class="fa fa-check"></i><b>3.4.2</b> Changing plot aesthetics</a></li>
-<li class="chapter" data-level="3.4.3" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#exploring-other-plots"><i class="fa fa-check"></i><b>3.4.3</b> Exploring other plots</a></li>
-<li class="chapter" data-level="3.4.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#using-categorical-data"><i class="fa fa-check"></i><b>3.4.4</b> Using categorical data</a></li>
-<li class="chapter" data-level="3.4.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>3.4.5</b> Visualizing between groups</a></li>
-<li class="chapter" data-level="3.4.6" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#generating-heatmaps"><i class="fa fa-check"></i><b>3.4.6</b> Generating heatmaps</a></li>
+<li class="chapter" data-level="3.4.3" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#exploring-simple-plots"><i class="fa fa-check"></i><b>3.4.3</b> Exploring simple plots</a></li>
+<li class="chapter" data-level="3.4.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>3.4.4</b> Visualizing between groups</a></li>
+<li class="chapter" data-level="3.4.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#generating-heatmaps"><i class="fa fa-check"></i><b>3.4.5</b> Generating heatmaps</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html"><i class="fa fa-check"></i><b>3.5</b> Making scientific figures</a><ul>
 <li class="chapter" data-level="3.5.1" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.5.1</b> Plotting error bars</a></li>
@@ -280,11 +279,11 @@ already installed.
 Call <code>library()</code> function, with an argument of the library name,
 as a string.</p>
 <p>Try loading this one:</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" title="1"><span class="kw">library</span>(<span class="st">&quot;stringdist&quot;</span>)</a>
-<a class="sourceLine" id="cb340-2" title="2"><span class="kw">library</span>(stringdist)</a></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" title="1"><span class="kw">library</span>(<span class="st">&quot;stringdist&quot;</span>)</a>
+<a class="sourceLine" id="cb336-2" title="2"><span class="kw">library</span>(stringdist)</a></code></pre></div>
 <p>Don’t have it? You can look for packages by using a search engine, or finding
 suggestions in the documentation, papers. Once you have a package name, use</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;stringdist&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;stringdist&quot;</span>)</a></code></pre></div>
 <p>to install it. You may need to select a “mirror”. This is just where you
 are downloading from, usually just go with “0-Cloud”
 <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
@@ -303,10 +302,10 @@ what’s called your library,</p>
 loading, you’ll just want one function.
 For example, this website is generated with one function, <code>render_book()</code>
 in the package <code>bookdown</code>. Instead of:</p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" title="1"><span class="kw">library</span>(bookdown)</a>
-<a class="sourceLine" id="cb342-2" title="2"><span class="kw">render_book</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" title="1"><span class="kw">library</span>(bookdown)</a>
+<a class="sourceLine" id="cb338-2" title="2"><span class="kw">render_book</span>()</a></code></pre></div>
 <p>I can save a line by just using <code>::</code></p>
-<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" title="1">bookdown<span class="op">::</span><span class="kw">render_book</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" title="1">bookdown<span class="op">::</span><span class="kw">render_book</span>()</a></code></pre></div>
 <p>This means I am looking in library <code>bookdown</code> for function <code>render_book</code>.
 The function is hidden again right afterwards, but it is useful if you just
 want to run one function from a library, once.</p>
@@ -316,7 +315,7 @@ want to run one function from a library, once.</p>
 <h3><span class="header-section-number">4.5.3</span> Github is a common place for sharing packges in development</h3>
 <p>Installing from github requires some different programming -
 and there’s libraries with functions for this.</p>
-<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" title="1"><span class="kw">library</span>(<span class="st">&quot;remotes&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" title="1"><span class="kw">library</span>(<span class="st">&quot;remotes&quot;</span>)</a></code></pre></div>
 <p>This used to be part of the <code>devtools</code> package, but the authors have been
 “uncoupling” these to make each package simple and composable.</p>
 <div id="lets-install-a-package-off-of-github." class="section level4">
@@ -324,7 +323,7 @@ and there’s libraries with functions for this.</p>
 <p>Here’s a cool <a href="https://github.com/ewenme/ghibli">Ghibli color palette</a>,
 so you can change sets of colors for your plots.
 Try installing it with:</p>
-<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" title="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ewenme/ghibli&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" title="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ewenme/ghibli&quot;</span>)</a></code></pre></div>
 <p>Then adapt one of your previous plots (that has colors) to use these new
 color palettes.</p>
 <p>Exercise - install a package from github and learn how to use it</p>
@@ -343,13 +342,13 @@ color palettes.</p>
 packages. It’s where a lot of bioinformatics software gets published.
 However, it has it’s own package system and thus package manager.
 You will have to install it … from CRAN. Like so:</p>
-<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</a></code></pre></div>
 <p>That installs a package with a function that then installs Bioconductor
 packages. It’s actually easy. Let’s give it a try by installing and
 using the <code>limma</code> package to analyze some gene expression data.</p>
 <p>If you’re recall from before, we can use <code>::</code> to avoid having to actually
 <code>library</code> the whole package:</p>
-<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" title="1">BiocManager<span class="op">::</span><span class="kw">install</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" title="1">BiocManager<span class="op">::</span><span class="kw">install</span>()</a></code></pre></div>
 <p><a href="">How to install Bioconductor</a></p>
 <p>Scholars will know how to install Bioconductor package from CRAN</p>
 <p>Scholars will know how to find and install packages from Bioconductor</p>

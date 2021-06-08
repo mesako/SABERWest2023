@@ -173,10 +173,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a><ul>
 <li class="chapter" data-level="3.4.1" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.4.1</b> Getting started with a ggplot</a></li>
 <li class="chapter" data-level="3.4.2" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#changing-plot-aesthetics"><i class="fa fa-check"></i><b>3.4.2</b> Changing plot aesthetics</a></li>
-<li class="chapter" data-level="3.4.3" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#exploring-other-plots"><i class="fa fa-check"></i><b>3.4.3</b> Exploring other plots</a></li>
-<li class="chapter" data-level="3.4.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#using-categorical-data"><i class="fa fa-check"></i><b>3.4.4</b> Using categorical data</a></li>
-<li class="chapter" data-level="3.4.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>3.4.5</b> Visualizing between groups</a></li>
-<li class="chapter" data-level="3.4.6" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#generating-heatmaps"><i class="fa fa-check"></i><b>3.4.6</b> Generating heatmaps</a></li>
+<li class="chapter" data-level="3.4.3" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#exploring-simple-plots"><i class="fa fa-check"></i><b>3.4.3</b> Exploring simple plots</a></li>
+<li class="chapter" data-level="3.4.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>3.4.4</b> Visualizing between groups</a></li>
+<li class="chapter" data-level="3.4.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#generating-heatmaps"><i class="fa fa-check"></i><b>3.4.5</b> Generating heatmaps</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html"><i class="fa fa-check"></i><b>3.5</b> Making scientific figures</a><ul>
 <li class="chapter" data-level="3.5.1" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.5.1</b> Plotting error bars</a></li>
@@ -286,9 +285,9 @@ x &lt;- 1:10
 y &lt;- 1:10
 plot(x,y)
 ```</code></pre>
-<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" title="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb351-2" title="2">y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb351-3" title="3"><span class="kw">plot</span>(x,y)</a></code></pre></div>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" title="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb347-2" title="2">y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb347-3" title="3"><span class="kw">plot</span>(x,y)</a></code></pre></div>
 <p><img src="560-rmarkdown-and-repro_files/figure-html/name_of_chunk-1.png" width="288" style="display: block; margin: auto 0 auto auto;" /></p>
 <p>It is possible to enable figure captions.</p>
 <p>video2 chunk options
@@ -353,7 +352,7 @@ into HTML, PDF, and/or slides.</p>
 <li>what packages you’re using</li>
 <li></li>
 </ul>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
 <pre><code>## ─ Session info ───────────────────────────────────────────────────────────────
 ##  setting  value                       
 ##  version  R version 3.6.3 (2020-02-29)

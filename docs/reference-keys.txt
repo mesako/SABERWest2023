@@ -29,8 +29,7 @@ using-tidyverse-1
 making-plots-with-ggplot2
 getting-started-with-a-ggplot
 changing-plot-aesthetics
-exploring-other-plots
-using-categorical-data
+exploring-simple-plots
 visualizing-between-groups
 generating-heatmaps
 making-scientific-figures

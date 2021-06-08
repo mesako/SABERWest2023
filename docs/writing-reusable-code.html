@@ -173,10 +173,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a><ul>
 <li class="chapter" data-level="3.4.1" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.4.1</b> Getting started with a ggplot</a></li>
 <li class="chapter" data-level="3.4.2" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#changing-plot-aesthetics"><i class="fa fa-check"></i><b>3.4.2</b> Changing plot aesthetics</a></li>
-<li class="chapter" data-level="3.4.3" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#exploring-other-plots"><i class="fa fa-check"></i><b>3.4.3</b> Exploring other plots</a></li>
-<li class="chapter" data-level="3.4.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#using-categorical-data"><i class="fa fa-check"></i><b>3.4.4</b> Using categorical data</a></li>
-<li class="chapter" data-level="3.4.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>3.4.5</b> Visualizing between groups</a></li>
-<li class="chapter" data-level="3.4.6" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#generating-heatmaps"><i class="fa fa-check"></i><b>3.4.6</b> Generating heatmaps</a></li>
+<li class="chapter" data-level="3.4.3" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#exploring-simple-plots"><i class="fa fa-check"></i><b>3.4.3</b> Exploring simple plots</a></li>
+<li class="chapter" data-level="3.4.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>3.4.4</b> Visualizing between groups</a></li>
+<li class="chapter" data-level="3.4.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#generating-heatmaps"><i class="fa fa-check"></i><b>3.4.5</b> Generating heatmaps</a></li>
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html"><i class="fa fa-check"></i><b>3.5</b> Making scientific figures</a><ul>
 <li class="chapter" data-level="3.5.1" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.5.1</b> Plotting error bars</a></li>
@@ -267,15 +266,15 @@ The experiment is counting barcoded lineages of yeast cells to estimate
 “PPIs” (protein-protein interactions)
 <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <p>Here’s an example of one style of writing R script:</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" title="1"><span class="co"># filter out bad barcode lineages ( &lt;= 2 time points counts &gt; 0, or maximum of each time point &lt;= 5 or total counts of a lineage &lt; 10)</span></a>
-<a class="sourceLine" id="cb322-2" title="2">bad_index =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">nrow</span>(DBC_known_counts))</a>
-<a class="sourceLine" id="cb322-3" title="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(bad_index)){</a>
-<a class="sourceLine" id="cb322-4" title="4">        counts =<span class="st"> </span><span class="kw">as.numeric</span>(DBC_known_counts[i, <span class="dv">4</span><span class="op">:</span><span class="dv">8</span>])</a>
-<a class="sourceLine" id="cb322-5" title="5">        <span class="cf">if</span> (<span class="kw">length</span>(<span class="kw">which</span>(counts <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)) <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span><span class="kw">max</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">|</span><span class="st"> </span><span class="kw">sum</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>){</a>
-<a class="sourceLine" id="cb322-6" title="6">                bad_index[i] =<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb322-7" title="7">        }</a>
-<a class="sourceLine" id="cb322-8" title="8">}</a>
-<a class="sourceLine" id="cb322-9" title="9"><span class="kw">length</span>(<span class="kw">which</span>(bad_index <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)) <span class="co"># 1447775</span></a></code></pre></div>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" title="1"><span class="co"># filter out bad barcode lineages ( &lt;= 2 time points counts &gt; 0, or maximum of each time point &lt;= 5 or total counts of a lineage &lt; 10)</span></a>
+<a class="sourceLine" id="cb318-2" title="2">bad_index =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">nrow</span>(DBC_known_counts))</a>
+<a class="sourceLine" id="cb318-3" title="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(bad_index)){</a>
+<a class="sourceLine" id="cb318-4" title="4">        counts =<span class="st"> </span><span class="kw">as.numeric</span>(DBC_known_counts[i, <span class="dv">4</span><span class="op">:</span><span class="dv">8</span>])</a>
+<a class="sourceLine" id="cb318-5" title="5">        <span class="cf">if</span> (<span class="kw">length</span>(<span class="kw">which</span>(counts <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)) <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span><span class="kw">max</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">|</span><span class="st"> </span><span class="kw">sum</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb318-6" title="6">                bad_index[i] =<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb318-7" title="7">        }</a>
+<a class="sourceLine" id="cb318-8" title="8">}</a>
+<a class="sourceLine" id="cb318-9" title="9"><span class="kw">length</span>(<span class="kw">which</span>(bad_index <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)) <span class="co"># 1447775</span></a></code></pre></div>
 <!-- exercise -->
 <ul>
 <li>What is going on here?</li>
@@ -285,16 +284,16 @@ The experiment is counting barcoded lineages of yeast cells to estimate
 </ul>
 <hr />
 <p>Here’s another example from the same author:</p>
-<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" title="1">H202_Output &lt;-<span class="st"> </span><span class="kw">PPI_calling_sigmoid</span>(</a>
-<a class="sourceLine" id="cb323-2" title="2">    <span class="dt">PPI_multiple=</span><span class="kw">dataFrameReader_T</span>(<span class="st">&quot;/Volumes/zmliu_02/PPiseq_03/H2O2/counts/PPI_multiple_p.values.csv&quot;</span>),</a>
-<a class="sourceLine" id="cb323-3" title="3">    <span class="dt">specific_PPV=</span><span class="kw">c</span>(<span class="kw">seq</span>(<span class="fl">0.5</span>,<span class="fl">0.58</span>,<span class="dt">by=</span><span class="fl">0.02</span>),<span class="kw">seq</span>(<span class="fl">0.6</span>,<span class="fl">0.8</span>,<span class="dt">by=</span><span class="fl">0.01</span>),<span class="kw">seq</span>(<span class="fl">0.82</span>,<span class="fl">0.9</span>,<span class="dt">by=</span><span class="fl">0.02</span>)),</a>
-<a class="sourceLine" id="cb323-4" title="4">    <span class="dt">Fitness=</span><span class="kw">fitness</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>),</a>
-<a class="sourceLine" id="cb323-5" title="5">    <span class="dt">p_value=</span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="fl">0.1</span>),</a>
-<a class="sourceLine" id="cb323-6" title="6">    <span class="dt">Neg_number_PPI=</span><span class="fl">6e4</span>,</a>
-<a class="sourceLine" id="cb323-7" title="7">    <span class="dt">Neg_ref_number=</span><span class="dv">50</span>, </a>
-<a class="sourceLine" id="cb323-8" title="8">    <span class="dt">p_threshold=</span><span class="op">-</span><span class="dv">4</span></a>
-<a class="sourceLine" id="cb323-9" title="9">    <span class="dt">p_loc=</span><span class="dv">6</span>, </a>
-<a class="sourceLine" id="cb323-10" title="10">)</a></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" title="1">H202_Output &lt;-<span class="st"> </span><span class="kw">PPI_calling_sigmoid</span>(</a>
+<a class="sourceLine" id="cb319-2" title="2">    <span class="dt">PPI_multiple=</span><span class="kw">dataFrameReader_T</span>(<span class="st">&quot;/Volumes/zmliu_02/PPiseq_03/H2O2/counts/PPI_multiple_p.values.csv&quot;</span>),</a>
+<a class="sourceLine" id="cb319-3" title="3">    <span class="dt">specific_PPV=</span><span class="kw">c</span>(<span class="kw">seq</span>(<span class="fl">0.5</span>,<span class="fl">0.58</span>,<span class="dt">by=</span><span class="fl">0.02</span>),<span class="kw">seq</span>(<span class="fl">0.6</span>,<span class="fl">0.8</span>,<span class="dt">by=</span><span class="fl">0.01</span>),<span class="kw">seq</span>(<span class="fl">0.82</span>,<span class="fl">0.9</span>,<span class="dt">by=</span><span class="fl">0.02</span>)),</a>
+<a class="sourceLine" id="cb319-4" title="4">    <span class="dt">Fitness=</span><span class="kw">fitness</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>),</a>
+<a class="sourceLine" id="cb319-5" title="5">    <span class="dt">p_value=</span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="fl">0.1</span>),</a>
+<a class="sourceLine" id="cb319-6" title="6">    <span class="dt">Neg_number_PPI=</span><span class="fl">6e4</span>,</a>
+<a class="sourceLine" id="cb319-7" title="7">    <span class="dt">Neg_ref_number=</span><span class="dv">50</span>, </a>
+<a class="sourceLine" id="cb319-8" title="8">    <span class="dt">p_threshold=</span><span class="op">-</span><span class="dv">4</span></a>
+<a class="sourceLine" id="cb319-9" title="9">    <span class="dt">p_loc=</span><span class="dv">6</span>, </a>
+<a class="sourceLine" id="cb319-10" title="10">)</a></code></pre></div>
 <!-- exercise -->
 <p>Same questions.</p>
 <hr />
