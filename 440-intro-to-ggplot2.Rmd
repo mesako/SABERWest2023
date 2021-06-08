@@ -2,7 +2,7 @@
 
 We will primarily be working in ggplot2 as it has the greatest degree of customization for visualization and offers many additional features over the basic plotting in R.
 
-```{r,ggplot2,message=FALSE}
+```{r,message = FALSE}
 library(ggplot2)
 library(tidyverse)
 ```

@@ -4,10 +4,6 @@
 find a file-reading function, know of a few
 use read.csv to read a file and save it as a variable, and tune some arguments
 
-```{r, eval=FALSE}
-library(tidyverse)
-```
-
 ```{r}
 irisz <- read.csv("data/iris.csv")
 head(irisz)

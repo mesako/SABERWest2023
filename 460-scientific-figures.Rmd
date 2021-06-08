@@ -4,7 +4,7 @@ Making plots can be a great way to develop an intuition for your dataset, though
 
 Uncertainty describes ideas such as: are the values between two groups different enough, that it is unlikely that the differences are due to chance? Is the correlation between these variables strong enough that one can predict the other, with some level of confidence? *How statistically significant are the patterns we see?*
 
-```{r,echo=FALSE,message=FALSE}
+```{r,include=FALSE}
 library(ggplot2)
 library(tidyverse)
 msleep2 <- msleep %>% mutate(brainwt_log = log(brainwt))

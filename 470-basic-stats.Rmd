@@ -8,8 +8,11 @@
 * Scholars will be able to calculate and plot confidence intervals
 
 
-```{r}
+```{r, include=FALSE}
 library(tidyverse)
+```
+
+```{r}
 head(msleep)
 ```
 
