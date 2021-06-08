@@ -19,6 +19,8 @@ output:
       highlight: zenburn
     includes:
       after_body: footer.html
+    #number_sections: false
+    split_by: section+number
 documentclass: book
 github-repo: darachm/dll-r
 description: "A living syllabus for the R section of DLL 2021, at Stanford"
