@@ -92,6 +92,13 @@ to work directly with your peers and us on focused tasks. We will also be
 there to help with confusing or challenging topics that you want to 
 discuss with someone live.
 
+Tips:
+
+- You can shrink the table of contents (left) by clicking the four lines icon
+    in the top menu.
+- You can click on footnotes ^[to read them, then go back by clicking the
+    arrow].
+
 
 ### Slack channel
 
