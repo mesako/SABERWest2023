@@ -77,10 +77,9 @@ ggplot(data = msleep3, mapping = aes(x = brainwt_log, y = bodywt_log)) +
 As you can see the density of points almost look like they fit a line. As brain weight increases then body weight increases, or vice versa. We can add a trendline to this plot with the `geom_smooth` function.
 
 ```{r, warning=FALSE}
-my.plot <- ggplot(msleep3, aes(x = brainwt_log, y = bodywt_log)) +
+ggplot(msleep3, aes(x = brainwt_log, y = bodywt_log)) +
   geom_point(alpha = 0.5) +
   geom_smooth()
-my.plot
 ```
 
 We can also do this with trendlines that summarize only certain subsets of the data, such as those that belong to a specific category. We will flip back to our `iris` dataset to look at how sepal length compares to sepal width between different species of iris. 

@@ -167,7 +167,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="day-4-tidyverse-and-visualizations.html"><a href="day-4-tidyverse-and-visualizations.html"><i class="fa fa-check"></i><b>3</b> Day 4 - tidyverse and visualizations</a><ul>
-<li class="chapter" data-level="3.1" data-path="day-4-tidyverse-and-visualizations.html"><a href="day-4-tidyverse-and-visualizations.html#reading-and-processing-data"><i class="fa fa-check"></i><b>3.1</b> Reading and processing data</a></li>
+<li class="chapter" data-level="3.1" data-path="day-4-tidyverse-and-visualizations.html"><a href="day-4-tidyverse-and-visualizations.html#reading-and-processing-data"><i class="fa fa-check"></i><b>3.1</b> Reading and processing data</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="day-4-tidyverse-and-visualizations.html"><a href="day-4-tidyverse-and-visualizations.html#loading-a-file-into-r"><i class="fa fa-check"></i><b>3.1.1</b> Loading a file into R</a></li>
+<li class="chapter" data-level="3.1.2" data-path="day-4-tidyverse-and-visualizations.html"><a href="day-4-tidyverse-and-visualizations.html#handling-issues-in-data"><i class="fa fa-check"></i><b>3.1.2</b> Handling issues in data</a></li>
+</ul></li>
 <li class="chapter" data-level="3.2" data-path="day-4-tidyverse-and-visualizations.html"><a href="day-4-tidyverse-and-visualizations.html#using-tidyverse"><i class="fa fa-check"></i><b>3.2</b> Using tidyverse</a></li>
 <li class="chapter" data-level="3.3" data-path="day-4-tidyverse-and-visualizations.html"><a href="day-4-tidyverse-and-visualizations.html#using-tidyverse-1"><i class="fa fa-check"></i><b>3.3</b> Using tidyverse</a></li>
 <li class="chapter" data-level="3.4" data-path="day-4-tidyverse-and-visualizations.html"><a href="day-4-tidyverse-and-visualizations.html#making-plots-with-ggplot2"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a><ul>
@@ -265,10 +268,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <div id="reading-and-processing-data" class="section level2">
 <h2><span class="header-section-number">3.1</span> Reading and processing data</h2>
-<p>find a file-reading function, know of a few
-use read.csv to read a file and save it as a variable, and tune some arguments</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>)</a>
-<a class="sourceLine" id="cb143-2" data-line-number="2"><span class="kw">head</span>(irisz)</a></code></pre></div>
+<p>So far, we have largely used data that was already provided to us in base R or through the <code>tidyverse</code> packages. In reality, you will be working with data that comes from a file containing measurements collected by a researcher.</p>
+<div id="loading-a-file-into-r" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Loading a file into R</h3>
+<p>There are multiple file types that can be read into R. The most common one is the csv file extension, though txt files also work. You can read in Excel files using additional packages such as the <code>readxl</code> library.</p>
+<p>Let’s practice reading in data using the <code>read.csv</code> function.</p>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" data-line-number="1">?read.csv</a></code></pre></div>
+<p>The repository for this site has a folder called <code>data</code> that contains a file called <code>iris.csv</code>, which is simply the original <code>iris</code> dataset with some modifications. We read in this data and save it to a variable named <code>irisz</code>.</p>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb144-2" data-line-number="2"><span class="kw">head</span>(irisz)</a></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Location
 ## 1          5.1         3.5          1.4         0.2  setosa    Korea
 ## 2          4.9           3          1.4         0.2  setosa    China
@@ -276,18 +284,24 @@ use read.csv to read a file and save it as a variable, and tune some arguments</
 ## 4          4.6         3.1          1.5         0.2  setosa    China
 ## 5            5         3.6          1.4         0.2  setosa    China
 ## 6          5.4                      1.7         0.4  setosa   Canada</code></pre>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb145-1" data-line-number="1"><span class="kw">head</span>(irisz<span class="op">$</span>Species)</a></code></pre></div>
+<p>You can already see there are some differences compared to the original <code>iris</code> dataset, such as missing data and an additional column of information. You can see there is also a difference in how certain columns are handled.</p>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1"><span class="kw">head</span>(iris<span class="op">$</span>Species)</a></code></pre></div>
+<pre><code>## [1] setosa setosa setosa setosa setosa setosa
+## Levels: setosa versicolor virginica</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1"><span class="kw">head</span>(irisz<span class="op">$</span>Species)</a></code></pre></div>
 <pre><code>## [1] &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot;</code></pre>
-<p>Settings for read.csv</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb147-1" data-line-number="1">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb147-2" data-line-number="2"><span class="kw">head</span>(irisz<span class="op">$</span>Species)</a></code></pre></div>
+<p>For example, here it is clear that our data we read from a csv file is not treating species as categorical information. We can toggle a setting called <code>stringsAsFactors</code> that will turn these character string inputs into factors when the file is loaded into R.</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>, <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb150-2" data-line-number="2"><span class="kw">head</span>(irisz<span class="op">$</span>Species)</a></code></pre></div>
 <pre><code>## [1] setosa setosa setosa setosa setosa setosa
 ## Levels:  setosa versicolor virginica</code></pre>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb149-1" data-line-number="1"><span class="kw">head</span>(irisz<span class="op">$</span>Location)</a></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" data-line-number="1"><span class="kw">head</span>(irisz<span class="op">$</span>Location)</a></code></pre></div>
 <pre><code>## [1] Korea  China  Korea  China  China  Canada
 ## Levels:  Canada China Japan Korea Russia USA</code></pre>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb151-1" data-line-number="1">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>, <span class="dt">col.names =</span> <span class="kw">c</span>(<span class="st">&quot;sep_len&quot;</span>, <span class="st">&quot;sep_wid&quot;</span>, <span class="st">&quot;pet_len&quot;</span>, <span class="st">&quot;pet_wid&quot;</span>, <span class="st">&quot;species&quot;</span>, <span class="st">&quot;loc&quot;</span>))</a>
-<a class="sourceLine" id="cb151-2" data-line-number="2"><span class="kw">head</span>(irisz)</a></code></pre></div>
+<p>If we did not want to reload our data from a file, we can also transform columns (i.e. vectors) in our dataframe to be different types. For example, we could use <code>irisz$Species &lt;- as.factor(irisz$Species)</code> to turn it into a factor after it has already been loaded. There are similar functions like <code>as.numeric</code>, <code>as.character</code>, and <code>as.logical</code> that you may use to transform data types. Be aware though that certain conversions may lead to issues and loss of data!</p>
+<p>Now both of these columns are being treated as categorical data. There are other settings we can change, such as providing different names for the columns.</p>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" data-line-number="1">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>, <span class="dt">col.names =</span> <span class="kw">c</span>(<span class="st">&quot;sep_len&quot;</span>, <span class="st">&quot;sep_wid&quot;</span>, <span class="st">&quot;pet_len&quot;</span>, <span class="st">&quot;pet_wid&quot;</span>, <span class="st">&quot;species&quot;</span>, <span class="st">&quot;loc&quot;</span>))</a>
+<a class="sourceLine" id="cb154-2" data-line-number="2"><span class="kw">head</span>(irisz)</a></code></pre></div>
 <pre><code>##   sep_len sep_wid pet_len pet_wid species    loc
 ## 1     5.1     3.5     1.4     0.2  setosa  Korea
 ## 2     4.9       3     1.4     0.2  setosa  China
@@ -295,9 +309,11 @@ use read.csv to read a file and save it as a variable, and tune some arguments</
 ## 4     4.6     3.1     1.5     0.2  setosa  China
 ## 5       5     3.6     1.4     0.2  setosa  China
 ## 6     5.4             1.7     0.4  setosa Canada</code></pre>
-<p>important to preview data and look for issues, and have some strategies/functions to do this</p>
-<p>Examining Data</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" data-line-number="1"><span class="kw">str</span>(irisz)</a></code></pre></div>
+</div>
+<div id="handling-issues-in-data" class="section level3">
+<h3><span class="header-section-number">3.1.2</span> Handling issues in data</h3>
+<p>Now that we have loaded in the data, we should preview it and look for any possible issues. You never know what can go wrong in the data pipeline: data can be recorded incorrectly or corrupted at any point in the process.</p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb156-1" data-line-number="1"><span class="kw">str</span>(irisz)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    150 obs. of  6 variables:
 ##  $ sep_len: chr  &quot;5.1&quot; &quot;4.9&quot; &quot;4.7&quot; &quot;4.6&quot; ...
 ##  $ sep_wid: chr  &quot;3.5&quot; &quot;3&quot; &quot;3.2&quot; &quot;3.1&quot; ...
@@ -305,7 +321,7 @@ use read.csv to read a file and save it as a variable, and tune some arguments</
 ##  $ pet_wid: chr  &quot;0.2&quot; &quot;0.2&quot; &quot;0.2&quot; &quot;0.2&quot; ...
 ##  $ species: chr  &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; &quot;setosa&quot; ...
 ##  $ loc    : chr  &quot;Korea&quot; &quot;China&quot; &quot;Korea&quot; &quot;China&quot; ...</code></pre>
-<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb155-1" data-line-number="1"><span class="kw">summary</span>(irisz)</a></code></pre></div>
+<div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb158-1" data-line-number="1"><span class="kw">summary</span>(irisz)</a></code></pre></div>
 <pre><code>##    sep_len            sep_wid            pet_len            pet_wid         
 ##  Length:150         Length:150         Length:150         Length:150        
 ##  Class :character   Class :character   Class :character   Class :character  
@@ -314,22 +330,15 @@ use read.csv to read a file and save it as a variable, and tune some arguments</
 ##  Length:150         Length:150        
 ##  Class :character   Class :character  
 ##  Mode  :character   Mode  :character</code></pre>
-<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb157-1" data-line-number="1"><span class="kw">unique</span>(irisz<span class="op">$</span>sep_len)</a></code></pre></div>
+<p>One immediate issue you can spot here is that all variables are being treated as character strings. We would expect that sepal length/width and petal length/width would be numeric variables. To inspect what might be happening, we can look at the unique elements in one of these columns using the <code>unique</code> function.</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb160-1" data-line-number="1"><span class="kw">unique</span>(irisz<span class="op">$</span>sep_len)</a></code></pre></div>
 <pre><code>##  [1] &quot;5.1&quot; &quot;4.9&quot; &quot;4.7&quot; &quot;4.6&quot; &quot;5&quot;   &quot;5.4&quot; &quot;4.4&quot; &quot;4.8&quot; &quot;4.3&quot; &quot;5.8&quot; &quot;5.7&quot; &quot;5.2&quot;
 ## [13] &quot;5.5&quot; &quot;4.5&quot; &quot;n/a&quot; &quot;5.3&quot; &quot;7&quot;   &quot;6.4&quot; &quot;6.9&quot; &quot;6.5&quot; &quot;6.3&quot; &quot;6.6&quot; &quot;5.9&quot; &quot;6&quot;  
 ## [25] &quot;6.1&quot; &quot;5.6&quot; &quot;6.7&quot; &quot;6.2&quot; &quot;6.8&quot; &quot;7.1&quot; &quot;7.6&quot; &quot; &quot;   &quot;7.2&quot; &quot;7.7&quot; &quot;7.4&quot; &quot;7.9&quot;</code></pre>
-<p>what NAs are, some strategies to deal with these</p>
-<p>Handling Missing Data</p>
-<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" data-line-number="1">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>, <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;n/a&quot;</span>), <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb159-2" data-line-number="2"><span class="kw">head</span>(irisz)</a></code></pre></div>
-<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Location
-## 1          5.1         3.5          1.4         0.2  setosa    Korea
-## 2          4.9         3.0          1.4         0.2  setosa    China
-## 3          4.7         3.2          1.3         0.2  setosa    Korea
-## 4          4.6         3.1          1.5         0.2  setosa    China
-## 5          5.0         3.6          1.4         0.2  setosa    China
-## 6          5.4          NA          1.7         0.4  setosa   Canada</code></pre>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb161-1" data-line-number="1"><span class="kw">str</span>(irisz)</a></code></pre></div>
+<p>Looking at this, we can find the culprit for why these values are treated as a string. There are some entries that are simply a blank space <code>&quot;&quot;</code> and there are missing data encoded as <code>&quot;n/a&quot;</code> in this dataset.</p>
+<p>The <code>read.csv</code> function has a nice way to deal with this, specifically the argument <code>na.strings</code> that takes options for elements that might be present in the loaded data that should be treated as an <code>NA</code>.</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" data-line-number="1">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>, <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;n/a&quot;</span>), <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb162-2" data-line-number="2"><span class="kw">str</span>(irisz)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    150 obs. of  6 variables:
 ##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
 ##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 NA 3.4 3.4 2.9 3.1 ...
@@ -337,7 +346,7 @@ use read.csv to read a file and save it as a variable, and tune some arguments</
 ##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
 ##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 NA 1 1 ...
 ##  $ Location    : Factor w/ 6 levels &quot;Canada&quot;,&quot;China&quot;,..: 4 2 4 2 2 1 2 2 5 3 ...</code></pre>
-<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb163-1" data-line-number="1"><span class="kw">summary</span>(irisz)</a></code></pre></div>
+<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" data-line-number="1"><span class="kw">summary</span>(irisz)</a></code></pre></div>
 <pre><code>##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width    
 ##  Min.   :4.300   Min.   :0.350   Min.   :1.000   Min.   : 0.100  
 ##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.550   1st Qu.: 0.300  
@@ -354,23 +363,36 @@ use read.csv to read a file and save it as a variable, and tune some arguments</
 ##                  Russia:11  
 ##                  USA   :63  
 ##                  NA&#39;s  :14</code></pre>
-<p>Looking for anamolous data</p>
-<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb165-1" data-line-number="1"><span class="kw">hist</span>(irisz<span class="op">$</span>Sepal.Length)</a></code></pre></div>
+<p>Now we can see that the first columns are being properly treated as numeric vectors.</p>
+<p>Our next step would be to double-check our data for anything that looks anamolous. Let’s first take a look at the distributions of our numerical data using the base R <code>hist</code> function, which plots a simple histogram.</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1"><span class="kw">hist</span>(irisz<span class="op">$</span>Sepal.Length)</a></code></pre></div>
 <p><img src="410-process-data_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" data-line-number="1"><span class="kw">hist</span>(irisz<span class="op">$</span>Sepal.Width)</a></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1"><span class="kw">hist</span>(irisz<span class="op">$</span>Sepal.Width)</a></code></pre></div>
 <p><img src="410-process-data_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb167-1" data-line-number="1"><span class="kw">hist</span>(irisz<span class="op">$</span>Petal.Length)</a></code></pre></div>
+<p>From these figures, we can spot that there is one very low value for sepal width that we may want to investigate.</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1"><span class="kw">hist</span>(irisz<span class="op">$</span>Petal.Length)</a></code></pre></div>
 <p><img src="410-process-data_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" data-line-number="1"><span class="kw">hist</span>(irisz<span class="op">$</span>Petal.Width)</a></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1"><span class="kw">hist</span>(irisz<span class="op">$</span>Petal.Width)</a></code></pre></div>
 <p><img src="410-process-data_files/figure-html/unnamed-chunk-10-2.png" width="672" /></p>
-<p>how to filter entries in a data.frame</p>
-<p>how to cast/transform value Types
-how to scale/normalize values</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb169-1" data-line-number="1"><span class="kw">head</span>(irisz<span class="op">$</span>Sepal.Length)</a></code></pre></div>
-<pre><code>## [1] 5.1 4.9 4.7 4.6 5.0 5.4</code></pre>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb171-1" data-line-number="1">?scale</a></code></pre></div>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb172-2" data-line-number="2"><span class="kw">scale</span>(x)</a></code></pre></div>
+<p>From these figures, we see there is a very high value for petal width that we may want to investigate.</p>
+<p>It is possible that these values somehow got changed or corrupted during the recording process. We can filter out these anomalous pieces of data using conditional logic that we learned about when indexing and subsetting into a vector. Let’s start by filtering out rows that have a petal width more than 5.</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" data-line-number="1"><span class="kw">dim</span>(irisz)</a></code></pre></div>
+<pre><code>## [1] 150   6</code></pre>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" data-line-number="1">irisz &lt;-<span class="st"> </span>irisz[irisz<span class="op">$</span>Petal.Width <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span>, ]</a>
+<a class="sourceLine" id="cb172-2" data-line-number="2"><span class="kw">dim</span>(irisz)</a></code></pre></div>
+<pre><code>## [1] 149   6</code></pre>
+<p>Note that we used the statement <code>irisz$Petal.Width &lt; 5</code> that evaluates as <code>TRUE</code> or <code>FALSE</code> for every row. We then indexed into the <code>irisz</code> dataframe using brackets <code>[]</code> and selected all rows that evaluate as <code>TRUE</code>. This led to one row being removed. We can repeat this with the anamolous value for sepal width.</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1"><span class="kw">dim</span>(irisz)</a></code></pre></div>
+<pre><code>## [1] 149   6</code></pre>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1">irisz &lt;-<span class="st"> </span>irisz[irisz<span class="op">$</span>Sepal.Width <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>, ]</a>
+<a class="sourceLine" id="cb176-2" data-line-number="2"><span class="kw">dim</span>(irisz)</a></code></pre></div>
+<pre><code>## [1] 148   6</code></pre>
+<p>Now that we have removed observations that looked strange by eye inspection, we may have only some final pre-processing steps to do.</p>
+<p>Depending on what downstream analysis we want to conduct, we may want to standardize or normalize our numeric values. R comes with an existing <code>scale</code> function that we can use to standardize between values with different ranges and orders of magnitude.</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1">?scale</a></code></pre></div>
+<p>The <code>scale</code> function will by default scale and center a numeric vector, but you can choose to do only one of these steps using argument settings.</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb179-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb179-2" data-line-number="2"><span class="kw">scale</span>(x)</a></code></pre></div>
 <pre><code>##             [,1]
 ##  [1,] -1.4863011
 ##  [2,] -1.1560120
@@ -386,7 +408,7 @@ how to scale/normalize values</p>
 ## [1] 5.5
 ## attr(,&quot;scaled:scale&quot;)
 ## [1] 3.02765</code></pre>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb174-1" data-line-number="1"><span class="kw">scale</span>(x, <span class="dt">center =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb181-1" data-line-number="1"><span class="kw">scale</span>(x, <span class="dt">center =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>##            [,1]
 ##  [1,] 0.1528942
 ##  [2,] 0.3057883
@@ -400,7 +422,7 @@ how to scale/normalize values</p>
 ## [10,] 1.5289416
 ## attr(,&quot;scaled:scale&quot;)
 ## [1] 6.540472</code></pre>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb176-1" data-line-number="1"><span class="kw">scale</span>(x, <span class="dt">scale =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1"><span class="kw">scale</span>(x, <span class="dt">scale =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>##       [,1]
 ##  [1,] -4.5
 ##  [2,] -3.5
@@ -414,19 +436,25 @@ how to scale/normalize values</p>
 ## [10,]  4.5
 ## attr(,&quot;scaled:center&quot;)
 ## [1] 5.5</code></pre>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb178-1" data-line-number="1"><span class="kw">head</span>(<span class="kw">scale</span>(irisz<span class="op">$</span>Sepal.Length))</a></code></pre></div>
-<pre><code>##            [,1]
-## [1,] -0.8992245
-## [2,] -1.1425248
-## [3,] -1.3858250
-## [4,] -1.5074751
-## [5,] -1.0208747
-## [6,] -0.5342742</code></pre>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" data-line-number="1"><span class="kw">library</span>(scales)</a>
-<a class="sourceLine" id="cb180-2" data-line-number="2"><span class="kw">rescale</span>(x)        </a></code></pre></div>
+<p>We can scale the columns in our dataset and create a more standardized range of values for each column.</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1"><span class="co"># before scaling</span></a>
+<a class="sourceLine" id="cb185-2" data-line-number="2"><span class="kw">hist</span>(irisz<span class="op">$</span>Sepal.Length)</a></code></pre></div>
+<p><img src="410-process-data_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" data-line-number="1"><span class="kw">hist</span>(irisz<span class="op">$</span>Petal.Width)</a></code></pre></div>
+<p><img src="410-process-data_files/figure-html/unnamed-chunk-15-2.png" width="672" /></p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1"><span class="co"># after scaling</span></a>
+<a class="sourceLine" id="cb187-2" data-line-number="2"><span class="kw">hist</span>(<span class="kw">scale</span>(irisz<span class="op">$</span>Sepal.Length))</a></code></pre></div>
+<p><img src="410-process-data_files/figure-html/unnamed-chunk-15-3.png" width="672" /></p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1"><span class="kw">hist</span>(<span class="kw">scale</span>(irisz<span class="op">$</span>Petal.Width))</a></code></pre></div>
+<p><img src="410-process-data_files/figure-html/unnamed-chunk-15-4.png" width="672" /></p>
+<p>The shapes of our distributions for these measurements is not fundamentally different, but if you look along the x-axis, you will notice that the values (especially the highest and lowest) are more similar between these two columns after they are both scaled.</p>
+<p>You may also consider rescaling values or normalizing them to all be between 0 and 1. There is a function for this called <code>rescale</code> that comes with the <code>scales</code> library.</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" data-line-number="1"><span class="kw">library</span>(scales)</a>
+<a class="sourceLine" id="cb189-2" data-line-number="2"><span class="kw">rescale</span>(x)        </a></code></pre></div>
 <pre><code>##  [1] 0.0000000 0.1111111 0.2222222 0.3333333 0.4444444 0.5555556 0.6666667
 ##  [8] 0.7777778 0.8888889 1.0000000</code></pre>
 
+</div>
 </div>
 <div id="using-tidyverse" class="section level2">
 <h2><span class="header-section-number">3.2</span> Using tidyverse</h2>
@@ -441,7 +469,7 @@ how to scale/normalize values</p>
 <li>Scholars understand what group_by is doing</li>
 <li>Scholars can use group_by to summarise variables</li>
 </ul>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb182-1" data-line-number="1"><span class="co"># ?</span></a></code></pre></div>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" data-line-number="1"><span class="co"># ?</span></a></code></pre></div>
 
 </div>
 <div id="using-tidyverse-1" class="section level2">
@@ -457,20 +485,20 @@ how to scale/normalize values</p>
 <li>Scholars understand what group_by is doing</li>
 <li>Scholars can use group_by to summarise variables</li>
 </ul>
-<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb183-1" data-line-number="1"><span class="co"># ?</span></a></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1"><span class="co"># ?</span></a></code></pre></div>
 
 </div>
 <div id="making-plots-with-ggplot2" class="section level2">
 <h2><span class="header-section-number">3.4</span> Making plots with ggplot2</h2>
 <p>We will primarily be working in ggplot2 as it has the greatest degree of customization for visualization and offers many additional features over the basic plotting in R.</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb184-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb184-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb193-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
 <div id="getting-started-with-a-ggplot" class="section level3">
 <h3><span class="header-section-number">3.4.1</span> Getting started with a ggplot</h3>
 <p>Most ggplot calls to create a figure take the following form (you can read more using <code>help(ggplot)</code>):</p>
 <p><code>ggplot(data = &lt;DATA&gt;, mapping = aes(&lt;MAPPINGS&gt;)) + &lt;GEOM_FUNCTION&gt;()</code></p>
 <p>We will practice using our mammalian sleep dataset. You can look up more info about this dataset using the <code>help</code> function and the dataset name, <code>msleep</code>.</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb185-1" data-line-number="1"><span class="kw">head</span>(msleep)</a></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1"><span class="kw">head</span>(msleep)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
@@ -493,19 +521,19 @@ how to scale/normalize values</p>
 </ul>
 <p>To add a geom to the plot use the <code>+</code> operator. To plot using two continuous variables, we will use <code>geom_point()</code> first. To save your work-in-progress, you can assign the plot to a variable.</p>
 <p>First we establish our coordinate system.</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" data-line-number="1">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt, <span class="dt">y =</span> sleep_rem))</a></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt, <span class="dt">y =</span> sleep_rem))</a></code></pre></div>
 <p>We can now draw the plot as a scatterplot with points to represent each mammal’s measurements from the <code>msleep</code> dataset.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" data-line-number="1">my.plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" data-line-number="1">my.plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 <p>You might notice that all of the points are squished against the y-axis since many of the mammals in this dataset have low brain weights.</p>
-<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" data-line-number="1"><span class="kw">summary</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" data-line-number="1"><span class="kw">summary</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ## 0.00014 0.00290 0.01240 0.28158 0.12550 5.71200      27</code></pre>
 <p>As you can see with the <code>summary</code> function, the minimum and median values are very low, but there are a few mammals with high <code>brainwt</code> as you can see by the much larger maximum value in this vector.</p>
 <p>To make more useful plots, we can transform this value using log-scaling. While we will have to note that the new values do not exactly match the real-world measurements anymore, patterns we see (i.e. something that correlates with higher brain weights) will still hold true.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb192-1" data-line-number="1">msleep2 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">brainwt_log =</span> <span class="kw">log</span>(brainwt))</a>
-<a class="sourceLine" id="cb192-2" data-line-number="2"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1">msleep2 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">brainwt_log =</span> <span class="kw">log</span>(brainwt))</a>
+<a class="sourceLine" id="cb201-2" data-line-number="2"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Here we use the <code>mutate</code> function to make a new variable called <code>brainwt_log</code> in our dataset (technically a new dataset copy that we have saved as <code>msleep2</code>). Plotting this variable as our x variable (i.e. independent variable), makes it easier to look for patterns.</p>
@@ -515,24 +543,24 @@ how to scale/normalize values</p>
 <h3><span class="header-section-number">3.4.2</span> Changing plot aesthetics</h3>
 <p>We can modify the appearance of the plot in two ways: either uniformly changing the appearance or having the appearance vary depending on information present in our data.</p>
 <p>Let’s explore how to modify our plots uniformly. We can change aspects of the points we plot such as transparency (“alpha”) and color by supplying them as arguments in the <code>geom_point</code> function.</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb194-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb194-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb203-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>Here we have made the plots semi-transparent and colored blue. You can try varying these values (e.g. change blue to a different color). You can also supply other arguments such as <code>shape</code> to use something other than a dot.</p>
 <p>However, it is also possible to scale the color of the points by some variable present in the data. This approach means we can create a scatterplot that conveys more than just two variables’ worth of information (x-axis and y-axis) by having the color reflect a third variable.</p>
 <p>To do this, we specify the <code>color</code> inside the aesthetic mapping <code>aes</code> within the initial <code>ggplot</code> function. Same as how we told R to use a specific column by name for <code>x</code> or <code>y</code> coordinates, we specify which column to use for <code>color</code>.</p>
-<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb196-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem, <span class="dt">color =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb196-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem, <span class="dt">color =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb205-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>This plot conveys not only the relationship between <code>brainwt_log</code> and <code>sleep_rem</code>, but each plot representing a different mammal now conveys what the feeding behavior of that mammal is.</p>
 <p>When generating visualizations, it is important to annotate the figure with meaningful labels on the axes to make them accessible for the viewer. For that, we can use the <code>labs</code> function.</p>
-<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb198-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem, <span class="dt">color =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb198-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb198-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Brain Weight (log)&quot;</span>, </a>
-<a class="sourceLine" id="cb198-4" data-line-number="4">       <span class="dt">y =</span> <span class="st">&quot;Duration of REM Sleep&quot;</span>,</a>
-<a class="sourceLine" id="cb198-5" data-line-number="5">       <span class="dt">color =</span> <span class="st">&quot;Feeding Behavior&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem, <span class="dt">color =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb207-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb207-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Brain Weight (log)&quot;</span>, </a>
+<a class="sourceLine" id="cb207-4" data-line-number="4">       <span class="dt">y =</span> <span class="st">&quot;Duration of REM Sleep&quot;</span>,</a>
+<a class="sourceLine" id="cb207-5" data-line-number="5">       <span class="dt">color =</span> <span class="st">&quot;Feeding Behavior&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <hr />
@@ -543,12 +571,12 @@ how to scale/normalize values</p>
 <p>Scatterplots are a great way to look at two quantitative (numerical) values at the same time to observe patterns (i.e. correlations) between the variables or to identify interesting outliers.</p>
 <p>However, other plots may be more useful to look at differing numbers of variables (i.e. one quantitative variable) or different types of variables (i.e. qualitative or categorical data). Here, we discuss two types of single variable plots that look at either a quantitative variable (histogram) or a categorical variable (barplot).</p>
 <p>We can create histograms in ggplot2 that are more aesthetically pleasing than the default <code>hist</code> function. This shows the distribution of one quantitative variable.</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1"><span class="kw">ggplot</span>(msleep, <span class="kw">aes</span>(<span class="dt">x =</span> sleep_total)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb200-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1"><span class="kw">ggplot</span>(msleep, <span class="kw">aes</span>(<span class="dt">x =</span> sleep_total)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb209-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>)</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>We can look at how many individuals in the dataset fall into each category, such as how many mammals have each kind of feeding behavior.</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb201-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb210-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>()</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <p>As you can see where we map the aesthetic, we only tell the <code>ggplot</code> function to refer to a single column in our dataset for our x-axis.</p>
 <hr />
@@ -557,17 +585,17 @@ how to scale/normalize values</p>
 <h3><span class="header-section-number">3.4.4</span> Visualizing between groups</h3>
 <p>Let’s return to <code>iris</code> dataset to explore how we can visualize differences between groups/categories. These groups are often represented in our data as a factor.</p>
 <p>We can look at how the distributions of <code>Sepal.Length</code> differ depending on which species each iris belongs to. One plot that can do this easily is the <code>geom_boxplot</code> function.</p>
-<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb202-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> iris, <span class="kw">aes</span>(<span class="dt">x =</span> Species, <span class="dt">y =</span> Sepal.Length)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb202-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> iris, <span class="kw">aes</span>(<span class="dt">x =</span> Species, <span class="dt">y =</span> Sepal.Length)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb211-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <p>By adding a different parameter to <code>fill</code> in the <code>aes</code> we define throgh the <code>ggplot</code> function, we can separate out histograms according to different groupings. Here, we use <code>Species</code> to determine the color of the fill.</p>
-<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1"><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">fill =</span> Species)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb203-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" data-line-number="1"><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">fill =</span> Species)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb212-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>)</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>While we can sort of see the trends on this plot, it may be helpful to separate out each histogram for each individual species. There is an easy way to do this in <code>ggplot2</code> using facetting or the <code>facet_wrap</code> function. This function splits the figure into separate panel where the data has been filtered by the category (i.e. <code>Species</code>).</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" data-line-number="1"><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">fill =</span> Species)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb204-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb204-3" data-line-number="3"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>Species)</a></code></pre></div>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1"><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">fill =</span> Species)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb213-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb213-3" data-line-number="3"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>Species)</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
 <p>This matches what we already saw in the boxplot, showing that there are different sepal lengths depending on which iris species we look at. We will explore in the next section how we know if these differences are significant.</p>
 <hr />
@@ -577,8 +605,8 @@ how to scale/normalize values</p>
 <p>Heatmaps are a useful way to show the values of multiple samples across many measurements. You can visualize a heatmap by thinking of your dataframe, this tabular data, if it had each cell colorcoded based on how high or low the value is.</p>
 <p>The base R <code>heatmap</code> function meets many needs while the ggplot2 equivalent (<code>geom_tile</code>) can be confusing so we will recommend that you not use ggplot2 for heatmaps.</p>
 <p>Let’s go back to <code>msleep</code> dataset to visualize trends between the different measurements taken on each mammal. We will first create a simplified dataset from <code>msleep</code> where we take the log value of both <code>brainwt</code> and <code>bodywt</code>.</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1">temp.data &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">log</span>(msleep<span class="op">$</span>brainwt), <span class="kw">log</span>(msleep<span class="op">$</span>bodywt))</a>
-<a class="sourceLine" id="cb205-2" data-line-number="2"><span class="kw">head</span>(temp.data)</a></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1">temp.data &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">log</span>(msleep<span class="op">$</span>brainwt), <span class="kw">log</span>(msleep<span class="op">$</span>bodywt))</a>
+<a class="sourceLine" id="cb214-2" data-line-number="2"><span class="kw">head</span>(temp.data)</a></code></pre></div>
 <pre><code>##            [,1]       [,2]
 ## [1,]         NA  3.9120230
 ## [2,] -4.1669153 -0.7339692
@@ -587,16 +615,16 @@ how to scale/normalize values</p>
 ## [5,] -0.8603831  6.3969297
 ## [6,]         NA  1.3480731</code></pre>
 <p>Next, we feed these numeric values into the <code>heatmap</code> function along with some arguments that specify settings for displaying the figure. We use <code>labCol</code> to specify how to label these columns and <code>cexCol</code> to control the text size of these labels. We set <code>labRow</code> to be the names of each species from the msleep dataset.</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1"><span class="kw">heatmap</span>(temp.data, <span class="dt">labRow =</span> msleep<span class="op">$</span>name, <span class="dt">labCol =</span> <span class="kw">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>), <span class="dt">cexCol =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1"><span class="kw">heatmap</span>(temp.data, <span class="dt">labRow =</span> msleep<span class="op">$</span>name, <span class="dt">labCol =</span> <span class="kw">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>), <span class="dt">cexCol =</span> <span class="dv">1</span>)</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 <p>This first heatmap will look strange because it colors each box by its magnitude, but body weight of a mammal is always greater than its brain weight. We want to scale within each column so that the depth of the color reflects whether the mammal has a high brain weight or high body weight <strong>relative to the other mammals</strong>.</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" data-line-number="1"><span class="kw">heatmap</span>(temp.data, <span class="dt">scale =</span> <span class="st">&quot;col&quot;</span>, <span class="dt">labRow =</span> msleep<span class="op">$</span>name, <span class="dt">labCol =</span> <span class="kw">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>), <span class="dt">cexCol =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1"><span class="kw">heatmap</span>(temp.data, <span class="dt">scale =</span> <span class="st">&quot;col&quot;</span>, <span class="dt">labRow =</span> msleep<span class="op">$</span>name, <span class="dt">labCol =</span> <span class="kw">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>), <span class="dt">cexCol =</span> <span class="dv">1</span>)</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>Using the <code>scale</code> argument which we set to <code>&quot;col&quot;</code>, now the color of the columns is more meaningful. For example, it makes sense that the measurements taken on an Asian elephant are much higher than those from a mole rat, so the color of those cells is deeper.</p>
 <p>Let’s add some more data to our heatmap visualization.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1">temp.data2 &lt;-<span class="st"> </span><span class="kw">cbind</span>(temp.data, msleep<span class="op">$</span>sleep_total, msleep<span class="op">$</span>sleep_rem)</a>
-<a class="sourceLine" id="cb209-2" data-line-number="2"><span class="kw">heatmap</span>(temp.data2, <span class="dt">scale =</span> <span class="st">&quot;col&quot;</span>, <span class="dt">labRow =</span> msleep<span class="op">$</span>name,</a>
-<a class="sourceLine" id="cb209-3" data-line-number="3">        <span class="dt">labCol =</span> <span class="kw">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>, <span class="st">&quot;total_sleep&quot;</span>, <span class="st">&quot;rem_sleep&quot;</span>), <span class="dt">cexCol =</span> <span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1">temp.data2 &lt;-<span class="st"> </span><span class="kw">cbind</span>(temp.data, msleep<span class="op">$</span>sleep_total, msleep<span class="op">$</span>sleep_rem)</a>
+<a class="sourceLine" id="cb218-2" data-line-number="2"><span class="kw">heatmap</span>(temp.data2, <span class="dt">scale =</span> <span class="st">&quot;col&quot;</span>, <span class="dt">labRow =</span> msleep<span class="op">$</span>name,</a>
+<a class="sourceLine" id="cb218-3" data-line-number="3">        <span class="dt">labCol =</span> <span class="kw">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>, <span class="st">&quot;total_sleep&quot;</span>, <span class="st">&quot;rem_sleep&quot;</span>), <span class="dt">cexCol =</span> <span class="dv">1</span>)</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
 <p>You may have noticed the weird diagrams along the top and left hand side of this heatmap. These strange line diagrams are trees that show how our samples cluster together. Mammals that have similar patterns of values across these four measurements are placed near each other in the diagram.</p>
 
@@ -609,16 +637,16 @@ how to scale/normalize values</p>
 <div id="plotting-error-bars" class="section level3">
 <h3><span class="header-section-number">3.5.1</span> Plotting error bars</h3>
 <p>When we compare measurements taken from two samples (i.e. two groups), we might want to see if the two groups have very different values for that specific measurement. If we have multiple observations within each group, we can take a summary statistic such as the mean or median and plot those against each other.</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> awake)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb210-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">fun =</span> <span class="st">&quot;mean&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> awake)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb219-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">fun =</span> <span class="st">&quot;mean&quot;</span>)</a></code></pre></div>
 <p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 <p>For example, here we have asked our <code>geom_bar</code> function to plot a summary, specifically the mean of each group, instead of plotting <code>identity</code> which usually means the value as is. Looking at this figure, we can’t guess if the groups are significantly different without an idea of the uncertainty in our measurements through something like error bars.</p>
 <p>Here is the convention for plotting error bars in ggplot2, as you can see it is just another kind of geom that we can add to our plot:</p>
 <p><code>ggplot(data = &lt;SUMMARY DATA&gt;, mapping = aes(&lt;SUMMARY MAPPINGS&gt;) + geom_bar(stat = &quot;identity&quot;) + geom_errorbar(aes(&lt;ERROR MAPPINGS&gt;))</code></p>
 <p>This method is straightforward, but you need to have pre-calculated the summary statistic for each group and the amount of error (i.e. standard error) from your data. That “aggregated” dataframe becomes the data that you provide to ggplot, instead of the original dataset.</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1">feeding.data &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(vore) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb211-2" data-line-number="2"><span class="st">  </span><span class="kw">summarize</span>(<span class="kw">mean_se</span>(awake))</a>
-<a class="sourceLine" id="cb211-3" data-line-number="3">feeding.data</a></code></pre></div>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1">feeding.data &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(vore) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb220-2" data-line-number="2"><span class="st">  </span><span class="kw">summarize</span>(<span class="kw">mean_se</span>(awake))</a>
+<a class="sourceLine" id="cb220-3" data-line-number="3">feeding.data</a></code></pre></div>
 <pre><code>## # A tibble: 5 x 4
 ##   vore        y  ymin  ymax
 ##   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -628,17 +656,17 @@ how to scale/normalize values</p>
 ## 4 omni    13.1  12.4   13.7
 ## 5 &lt;NA&gt;    13.8  12.7   14.9</code></pre>
 <p>What does <code>mean_se</code> do? We can check.</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1">?mean_se</a></code></pre></div>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1">?mean_se</a></code></pre></div>
 <p>This function returns three values, <code>y</code>, <code>ymin</code>, and <code>ymax</code> which correspond to the mean, the mean minus one standard error, and the mean plus one standard error. The mean value will be the height of each bar on the barplot, while <code>ymin</code> corresponds to the bottom of the error bar and <code>ymax</code> to the top of the error bar.</p>
 <p>Let’s first plot the height of the bars using this new <code>feeding.data</code> dataset and mapping <code>y</code> to our new <code>y</code> column generated from the <code>mean_se</code> function. Here we create the same plot as before from this aggregated dataset, just showing the mean value in each group.</p>
-<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(feeding.data, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb214-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</a>
-<a class="sourceLine" id="cb214-3" data-line-number="3">my.plot</a></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(feeding.data, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb223-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</a>
+<a class="sourceLine" id="cb223-3" data-line-number="3">my.plot</a></code></pre></div>
 <p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <p>Now we add the error bars, mapping the <code>ymin</code> and <code>ymax</code> values to the arguments that happen to have the same name in the <code>geom_errorbar</code> function. We add in the <code>width</code> setting just for aesthetics.</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">my.plot &lt;-<span class="st"> </span>my.plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax),</a>
-<a class="sourceLine" id="cb215-2" data-line-number="2">                                   <span class="dt">width =</span> <span class="fl">0.2</span>)</a>
-<a class="sourceLine" id="cb215-3" data-line-number="3">my.plot</a></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1">my.plot &lt;-<span class="st"> </span>my.plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax),</a>
+<a class="sourceLine" id="cb224-2" data-line-number="2">                                   <span class="dt">width =</span> <span class="fl">0.2</span>)</a>
+<a class="sourceLine" id="cb224-3" data-line-number="3">my.plot</a></code></pre></div>
 <p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>Now it is more clear that insectivores have significantly less time awake compared to other kinds of mammals.</p>
 <hr />
@@ -647,30 +675,29 @@ how to scale/normalize values</p>
 <h3><span class="header-section-number">3.5.2</span> Showing trends in data</h3>
 <p>Lots of these different figures summarize or aggregate the data. We may want to display the data with the individual points, but still show the overall trend across the data. Some good plots that do this are <code>geom_density_2d</code> which provides a contour plot.</p>
 <p>Let’s check out the trend in our <code>msleep</code> data between body weight and brain weight. We will create a new column where we take the log value of body weight, like we did with brain weight.</p>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1">msleep3 &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">bodywt_log =</span> <span class="kw">log</span>(bodywt))</a>
-<a class="sourceLine" id="cb216-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep3, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb216-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_density_2d</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb216-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">msleep3 &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">bodywt_log =</span> <span class="kw">log</span>(bodywt))</a>
+<a class="sourceLine" id="cb225-2" data-line-number="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep3, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb225-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_density_2d</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb225-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 <p>As you can see the density of points almost look like they fit a line. As brain weight increases then body weight increases, or vice versa. We can add a trendline to this plot with the <code>geom_smooth</code> function.</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(msleep3, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb217-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb217-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>()</a>
-<a class="sourceLine" id="cb217-4" data-line-number="4">my.plot</a></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1"><span class="kw">ggplot</span>(msleep3, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb226-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb226-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>()</a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <p>We can also do this with trendlines that summarize only certain subsets of the data, such as those that belong to a specific category. We will flip back to our <code>iris</code> dataset to look at how sepal length compares to sepal width between different species of iris.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Sepal.Width)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb219-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb219-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Species)) </a></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Sepal.Width)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb228-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb228-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Species)) </a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 <p>We create a seaprate trendline for each by specifiying the <code>aes</code> with color mapping to <code>Species</code> within the <code>geom_smooth</code> function.</p>
 <p>The above plot may make it hard to see the data that is contributing to each trend line. Using <code>facet_wrap</code> again, we can split the figure into separate panel where the data has been filtered by the category (i.e. species).</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Sepal.Width)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb221-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb221-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Species)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb221-4" data-line-number="4"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>Species)</a></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Sepal.Width)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb230-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb230-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Species)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb230-4" data-line-number="4"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>Species)</a></code></pre></div>
 <pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
 <p><img src="450-scientific-figures_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 <p>Now it is clear that there is a positive correlation (as one goes up, the other goes up) in each species of iris, but some species have a sharper upward trend than others.</p>
@@ -680,31 +707,26 @@ how to scale/normalize values</p>
 <h3><span class="header-section-number">3.5.3</span> Saving figures locally</h3>
 <p>As you produce analysis in your research, you may want to create high-quality images of your figures to then use in presentations or publications. There are two easy ways to save images as an individual file on your computer,</p>
 <p>The first method uses <code>ggsave</code> to save the most recent ggplot figure you generated.</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb223-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
-<a class="sourceLine" id="cb223-3" data-line-number="3"><span class="kw">ggsave</span>(<span class="st">&quot;plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb232-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
+<a class="sourceLine" id="cb232-3" data-line-number="3"><span class="kw">ggsave</span>(<span class="st">&quot;plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
 <p>This function will save the figure just produced by this code wherever your directory is currently. You can check your current directory with <code>getwd()</code> and change with <code>setwd(&lt;FOLDER NAME&gt;)</code>. You can also provide a precise file path in the new file name.</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1"><span class="kw">ggsave</span>(<span class="st">&quot;~/Downloads/plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1"><span class="kw">ggsave</span>(<span class="st">&quot;~/Downloads/plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
 <p>Here is an alternative method for saving your figures:</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1"><span class="kw">pdf</span>(<span class="st">&quot;plot.pdf&quot;</span>) <span class="co"># creates the file</span></a>
-<a class="sourceLine" id="cb225-2" data-line-number="2"><span class="co"># png() also works if you want a different file format</span></a>
-<a class="sourceLine" id="cb225-3" data-line-number="3"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb225-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
-<a class="sourceLine" id="cb225-5" data-line-number="5"><span class="kw">dev.off</span>() <span class="co"># finishes editing the file</span></a></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1"><span class="kw">pdf</span>(<span class="st">&quot;plot.pdf&quot;</span>) <span class="co"># creates the file</span></a>
+<a class="sourceLine" id="cb234-2" data-line-number="2"><span class="co"># png() also works if you want a different file format</span></a>
+<a class="sourceLine" id="cb234-3" data-line-number="3"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb234-4" data-line-number="4"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
+<a class="sourceLine" id="cb234-5" data-line-number="5"><span class="kw">dev.off</span>() <span class="co"># finishes editing the file</span></a></code></pre></div>
 <p>Any changes to the figure that are contained between the initial creation of the figure (i.e. the <code>pdf</code> command) and the <code>dev.off</code> command will be included in the final saved image. However, the figure is being printed directly to the file it is writing and won’t appear elsewhere.</p>
 
 </div>
 </div>
 <div id="applying-basic-stats" class="section level2">
 <h2><span class="header-section-number">3.6</span> Applying basic stats</h2>
-<ul>
-<li>Objective 4.x: Scholars will have a sense for how to implement more advanced statistical tests in R</li>
-<li>Scholars will be able to identify and use correlation functions, use different kinds of correlation, know how to deal with NAs</li>
-<li>Scholars will be able to identify and use linear regression lm() using both raw variable and formulaic interfaces</li>
-<li>Scholars will be able to plot error bars</li>
-<li>Scholars will be able to calculate and plot confidence intervals</li>
-</ul>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1"><span class="kw">head</span>(msleep)</a></code></pre></div>
+<p>Scholars will have a sense for how to implement more advanced statistical tests in R</p>
+<p>?</p>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1"><span class="kw">head</span>(msleep)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
 ##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
 ##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
@@ -715,27 +737,33 @@ how to scale/normalize values</p>
 ## 5 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
 ## 6 Three-… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
 ## # … with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1"><span class="kw">median</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p>basic stats
+describe quantitative variables</p>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" data-line-number="1"><span class="kw">median</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 0.0124</code></pre>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1"><span class="kw">mean</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" data-line-number="1"><span class="kw">mean</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 0.2815814</code></pre>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1"><span class="kw">sd</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1"><span class="kw">sd</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 0.9764137</code></pre>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1"><span class="kw">var</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1"><span class="kw">var</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 0.9533837</code></pre>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1"><span class="kw">median</span>(msleep<span class="op">$</span>bodywt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p>?</p>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1"><span class="kw">median</span>(msleep<span class="op">$</span>bodywt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 1.67</code></pre>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1"><span class="kw">mean</span>(msleep<span class="op">$</span>bodywt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1"><span class="kw">mean</span>(msleep<span class="op">$</span>bodywt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 166.1363</code></pre>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1"><span class="kw">sd</span>(msleep<span class="op">$</span>bodywt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1"><span class="kw">sd</span>(msleep<span class="op">$</span>bodywt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 786.8397</code></pre>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" data-line-number="1"><span class="kw">var</span>(msleep<span class="op">$</span>bodywt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1"><span class="kw">var</span>(msleep<span class="op">$</span>bodywt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 619116.8</code></pre>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" data-line-number="1"><span class="kw">hist</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
+<p>?</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1"><span class="kw">hist</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
 <p><img src="460-basic-stats_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1"><span class="kw">cor</span>(msleep<span class="op">$</span>brainwt, msleep<span class="op">$</span>bodywt)</a></code></pre></div>
+<p>?</p>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" data-line-number="1"><span class="kw">cor</span>(msleep<span class="op">$</span>brainwt, msleep<span class="op">$</span>bodywt)</a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" data-line-number="1"><span class="kw">summary</span>(msleep)</a></code></pre></div>
+<p>know how to deal with NAs</p>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" data-line-number="1"><span class="kw">summary</span>(msleep)</a></code></pre></div>
 <pre><code>##      name              genus               vore              order          
 ##  Length:83          Length:83          Length:83          Length:83         
 ##  Class :character   Class :character   Class :character   Class :character  
@@ -760,14 +788,23 @@ how to scale/normalize values</p>
 ##  3rd Qu.:16.15   3rd Qu.:0.12550   3rd Qu.:  41.750  
 ##  Max.   :22.10   Max.   :5.71200   Max.   :6654.000  
 ##                  NA&#39;s   :27</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" data-line-number="1">msleep2 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>(brainwt)</a>
-<a class="sourceLine" id="cb249-2" data-line-number="2"><span class="kw">dim</span>(msleep)</a></code></pre></div>
+<p>?</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" data-line-number="1">msleep2 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>(brainwt)</a>
+<a class="sourceLine" id="cb258-2" data-line-number="2"><span class="kw">dim</span>(msleep)</a></code></pre></div>
 <pre><code>## [1] 83 11</code></pre>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" data-line-number="1"><span class="kw">dim</span>(msleep2)</a></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" data-line-number="1"><span class="kw">dim</span>(msleep2)</a></code></pre></div>
 <pre><code>## [1] 56 11</code></pre>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" data-line-number="1"><span class="kw">cor</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt)</a></code></pre></div>
+<p>calculate confidence intervals</p>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1"><span class="co">#?</span></a></code></pre></div>
+<p>calculate t-test</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1"><span class="co">#?</span></a></code></pre></div>
+<p>calculate ANOVA</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" data-line-number="1"><span class="co">#?</span></a></code></pre></div>
+<p>identify and use correlation functions
+use different kinds of correlation</p>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1"><span class="kw">cor</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt)</a></code></pre></div>
 <pre><code>## [1] 0.9337822</code></pre>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" data-line-number="1"><span class="kw">library</span>(Hmisc)</a></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" data-line-number="1"><span class="kw">library</span>(Hmisc)</a></code></pre></div>
 <pre><code>## Loading required package: lattice</code></pre>
 <pre><code>## Loading required package: survival</code></pre>
 <pre><code>## Loading required package: Formula</code></pre>
@@ -779,7 +816,7 @@ how to scale/normalize values</p>
 <pre><code>## The following objects are masked from &#39;package:base&#39;:
 ## 
 ##     format.pval, units</code></pre>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" data-line-number="1"><span class="kw">rcorr</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt, <span class="dt">type =</span> <span class="st">&quot;pearson&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" data-line-number="1"><span class="kw">rcorr</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt, <span class="dt">type =</span> <span class="st">&quot;pearson&quot;</span>)</a></code></pre></div>
 <pre><code>##      x    y
 ## x 1.00 0.93
 ## y 0.93 1.00
@@ -791,7 +828,7 @@ how to scale/normalize values</p>
 ##   x  y 
 ## x     0
 ## y  0</code></pre>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" data-line-number="1"><span class="kw">rcorr</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt, <span class="dt">type =</span> <span class="st">&quot;spearman&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" data-line-number="1"><span class="kw">rcorr</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt, <span class="dt">type =</span> <span class="st">&quot;spearman&quot;</span>)</a></code></pre></div>
 <pre><code>##      x    y
 ## x 1.00 0.96
 ## y 0.96 1.00
@@ -803,8 +840,9 @@ how to scale/normalize values</p>
 ##   x  y 
 ## x     0
 ## y  0</code></pre>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" data-line-number="1">my.mod &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> brainwt <span class="op">~</span><span class="st"> </span>bodywt, <span class="dt">data =</span> msleep2)</a>
-<a class="sourceLine" id="cb266-2" data-line-number="2"><span class="kw">summary</span>(my.mod)</a></code></pre></div>
+<p>identify and use linear regression lm() using both raw variable and formulaic interfaces</p>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1">my.mod &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> brainwt <span class="op">~</span><span class="st"> </span>bodywt, <span class="dt">data =</span> msleep2)</a>
+<a class="sourceLine" id="cb278-2" data-line-number="2"><span class="kw">summary</span>(my.mod)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = brainwt ~ bodywt, data = msleep2)
@@ -823,8 +861,8 @@ how to scale/normalize values</p>
 ## Residual standard error: 0.3526 on 54 degrees of freedom
 ## Multiple R-squared:  0.8719, Adjusted R-squared:  0.8696 
 ## F-statistic: 367.7 on 1 and 54 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" data-line-number="1">my.mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> sleep_total <span class="op">~</span><span class="st"> </span>bodywt <span class="op">+</span><span class="st"> </span>brainwt, <span class="dt">data =</span> msleep2)</a>
-<a class="sourceLine" id="cb268-2" data-line-number="2"><span class="kw">summary</span>(my.mod2)</a></code></pre></div>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" data-line-number="1">my.mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> sleep_total <span class="op">~</span><span class="st"> </span>bodywt <span class="op">+</span><span class="st"> </span>brainwt, <span class="dt">data =</span> msleep2)</a>
+<a class="sourceLine" id="cb280-2" data-line-number="2"><span class="kw">summary</span>(my.mod2)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = sleep_total ~ bodywt + brainwt, data = msleep2)
@@ -844,8 +882,8 @@ how to scale/normalize values</p>
 ## Residual standard error: 4.193 on 53 degrees of freedom
 ## Multiple R-squared:  0.1337, Adjusted R-squared:  0.101 
 ## F-statistic: 4.088 on 2 and 53 DF,  p-value: 0.02232</code></pre>
-<div class="sourceCode" id="cb270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb270-1" data-line-number="1">my.mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> sleep_total <span class="op">~</span><span class="st"> </span>bodywt <span class="op">+</span><span class="st"> </span>brainwt, <span class="dt">data =</span> msleep2)</a>
-<a class="sourceLine" id="cb270-2" data-line-number="2"><span class="kw">summary</span>(my.mod2)</a></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1">my.mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> sleep_total <span class="op">~</span><span class="st"> </span>bodywt <span class="op">+</span><span class="st"> </span>brainwt, <span class="dt">data =</span> msleep2)</a>
+<a class="sourceLine" id="cb282-2" data-line-number="2"><span class="kw">summary</span>(my.mod2)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = sleep_total ~ bodywt + brainwt, data = msleep2)

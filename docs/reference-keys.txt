@@ -24,6 +24,8 @@ building-and-modifying-dataframes
 handling-datatypes-in-dataframes
 day-4---tidyverse-and-visualizations
 reading-and-processing-data
+loading-a-file-into-r
+handling-issues-in-data
 using-tidyverse
 using-tidyverse-1
 making-plots-with-ggplot2

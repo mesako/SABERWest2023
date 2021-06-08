@@ -1,19 +1,32 @@
 ## Reading and processing data
 
+So far, we have largely used data that was already provided to us in base R or through the `tidyverse` packages. In reality, you will be working with data that comes from a file containing measurements collected by a researcher.
 
-find a file-reading function, know of a few
-use read.csv to read a file and save it as a variable, and tune some arguments
+### Loading a file into R
+
+There are multiple file types that can be read into R. The most common one is the csv file extension, though txt files also work. You can read in Excel files using additional packages such as the `readxl` library.
+
+Let's practice reading in data using the `read.csv` function.
+
+```{r, eval=FALSE}
+?read.csv
+```
+
+The repository for this site has a folder called `data` that contains a file called `iris.csv`, which is simply the original `iris` dataset with some modifications. We read in this data and save it to a variable named `irisz`.
 
 ```{r}
 irisz <- read.csv("data/iris.csv")
 head(irisz)
 ```
 
+You can already see there are some differences compared to the original `iris` dataset, such as missing data and an additional column of information. You can see there is also a difference in how certain columns are handled.
+
 ```{r}
+head(iris$Species)
 head(irisz$Species)
 ```
 
-Settings for read.csv
+For example, here it is clear that our data we read from a csv file is not treating species as categorical information. We can toggle a setting called `stringsAsFactors` that will turn these character string inputs into factors when the file is loaded into R.
 
 ```{r}
 irisz <- read.csv("data/iris.csv", stringsAsFactors = TRUE)
@@ -21,63 +34,83 @@ head(irisz$Species)
 head(irisz$Location)
 ```
 
+If we did not want to reload our data from a file, we can also transform columns (i.e. vectors) in our dataframe to be different types. For example, we could use `irisz$Species <- as.factor(irisz$Species)` to turn it into a factor after it has already been loaded. There are similar functions like `as.numeric`, `as.character`, and `as.logical` that you may use to transform data types. Be aware though that certain conversions may lead to issues and loss of data!
+
+Now both of these columns are being treated as categorical data. There are other settings we can change, such as providing different names for the columns.
+
 ```{r}
 irisz <- read.csv("data/iris.csv", col.names = c("sep_len", "sep_wid", "pet_len", "pet_wid", "species", "loc"))
 head(irisz)
 ```
 
-important to preview data and look for issues, and have some strategies/functions to do this
+### Handling issues in data
 
-Examining Data
+Now that we have loaded in the data, we should preview it and look for any possible issues. You never know what can go wrong in the data pipeline: data can be recorded incorrectly or corrupted at any point in the process.
 
 ```{r}
 str(irisz)
 summary(irisz)
 ```
+
+One immediate issue you can spot here is that all variables are being treated as character strings. We would expect that sepal length/width and petal length/width would be numeric variables. To inspect what might be happening, we can look at the unique elements in one of these columns using the `unique` function.
 
 ```{r}
 unique(irisz$sep_len)
 ```
 
-what NAs are, some strategies to deal with these
+Looking at this, we can find the culprit for why these values are treated as a string. There are some entries that are simply a blank space `""` and there are missing data encoded as `"n/a"` in this dataset.
 
-Handling Missing Data
+The `read.csv` function has a nice way to deal with this, specifically the argument `na.strings` that takes options for elements that might be present in the loaded data that should be treated as an `NA`.
 
 ```{r}
 irisz <- read.csv("data/iris.csv", na.strings = c("", "n/a"), stringsAsFactors = TRUE)
-head(irisz)
-```
-
-```{r}
 str(irisz)
 summary(irisz)
 ```
 
-Looking for anamolous data
+Now we can see that the first columns are being properly treated as numeric vectors.
+
+Our next step would be to double-check our data for anything that looks anamolous. Let's first take a look at the distributions of our numerical data using the base R `hist` function, which plots a simple histogram. 
 
 ```{r}
 hist(irisz$Sepal.Length)
 hist(irisz$Sepal.Width)
 ```
 
+From these figures, we can spot that there is one very low value for sepal width that we may want to investigate.
+
 ```{r}
 hist(irisz$Petal.Length)
 hist(irisz$Petal.Width)
 ```
 
-how to filter entries in a data.frame
+From these figures, we see there is a very high value for petal width that we may want to investigate.
 
-
-how to cast/transform value Types
-how to scale/normalize values
+It is possible that these values somehow got changed or corrupted during the recording process. We can filter out these anomalous pieces of data using conditional logic that we learned about when indexing and subsetting into a vector. Let's start by filtering out rows that have a petal width more than 5.
 
 ```{r}
-head(irisz$Sepal.Length)
+dim(irisz)
+irisz <- irisz[irisz$Petal.Width < 5, ]
+dim(irisz)
 ```
+
+Note that we used the statement `irisz$Petal.Width < 5` that evaluates as `TRUE` or `FALSE` for every row. We then indexed into the `irisz` dataframe using brackets `[]` and selected all rows that evaluate as `TRUE`. This led to one row being removed. We can repeat this with the anamolous value for sepal width.
+
+```{r}
+dim(irisz)
+irisz <- irisz[irisz$Sepal.Width > 1, ]
+dim(irisz)
+```
+
+Now that we have removed observations that looked strange by eye inspection, we may have only some final pre-processing steps to do.
+
+Depending on what downstream analysis we want to conduct, we may want to standardize or normalize our numeric values. R comes with an existing `scale` function that we can use to standardize between values with different ranges and orders of magnitude.
 
 ```{r, eval = FALSE}
 ?scale
 ```
+
+The `scale` function will by default scale and center a numeric vector, but you can choose to do only one of these steps using argument settings. 
 
 ```{r}
 x <- 1:10
@@ -86,12 +119,23 @@ scale(x, center = FALSE)
 scale(x, scale = FALSE)
 ```
 
+We can scale the columns in our dataset and create a more standardized range of values for each column.
+
 ```{r}
-head(scale(irisz$Sepal.Length))
+# before scaling
+hist(irisz$Sepal.Length)
+hist(irisz$Petal.Width)
+
+# after scaling
+hist(scale(irisz$Sepal.Length))
+hist(scale(irisz$Petal.Width))
 ```
+
+The shapes of our distributions for these measurements is not fundamentally different, but if you look along the x-axis, you will notice that the values (especially the highest and lowest) are more similar between these two columns after they are both scaled.
+
+You may also consider rescaling values or normalizing them to all be between 0 and 1. There is a function for this called `rescale` that comes with the `scales` library.
 
 ```{r}
 library(scales)
 rescale(x)        
 ```
-
