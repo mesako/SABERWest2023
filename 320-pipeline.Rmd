@@ -1,4 +1,4 @@
-## Data exploration pipelines
+## Using Rmds
 
 Approach: an Rmd tutorial with a simple dataset in R. This is meant to be a motivation for what one can do in R, not necessarily understanding syntax of every function/operation used
 

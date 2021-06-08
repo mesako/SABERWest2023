@@ -99,3 +99,35 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_smooth(aes(color = Species)) +
   facet_wrap( ~ Species)
 ```
+
+------
+
+### Saving figures locally
+
+As you produce analysis in your research, you may want to create high-quality images of your figures to then use in presentations or publications. There are two easy ways to save images as an individual file on your computer,
+
+The first method uses `ggsave` to save the most recent ggplot figure you generated.
+
+```{r, eval=FALSE}
+ggplot(msleep2, aes(x = brainwt_log, y = sleep_rem)) + geom_point() +
+  geom_smooth(method = "lm")
+ggsave("plot.png", width = 5, height = 5)
+```
+
+This function will save wherever your directory is currently. Check with `getwd()` and change with `setwd(folder name)`. You can also provide a precise file path in the new file name.
+
+```{r, eval=FALSE}
+ggsave("~/Downloads/plot.png", width = 5, height = 5)
+```
+
+Here is an alternative method for saving your figures:
+
+```{r, eval=FALSE, warning=FALSE}
+pdf("plot.pdf") # creates the file
+# png() also works if you want a different file format
+ggplot(msleep2, aes(x = brainwt_log, y = sleep_rem)) + geom_point() +
+  geom_smooth(method = "lm")
+dev.off() # finishes editing the file
+```
+
+Any changes to the figure that are contained between the initial creation of the figure (i.e. the `pdf` command) and the `dev.off` command will be included in the final saved image. However, the figure is being printed directly to the file it is writing and won't appear elsewhere.

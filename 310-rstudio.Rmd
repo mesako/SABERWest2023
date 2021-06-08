@@ -1,18 +1,8 @@
-## Rstudio, and basics
+## Navigating Rstudio
 
 Rstudio
 
-```{r,assignment_operators_1}
-1
+```{r}
 x <- 1
-x = 1
-x <- 1
+x
 ```
-
-"Scoping"
-^[Scoping is a computer science term for where a variable is define, globally,
-    locally, and how locally. Here's [a site with more info](https://bookdown.org/rdpeng/rprogdatascience/scoping-rules-of-r.html)
-    ]
-is a term that you can _really_ get into, but for now, 
-just use `<-` 
-^[You can also go the other way, like `1 -> x`, but *nobody* does that]

@@ -1,22 +1,13 @@
 ## Making plots with ggplot2
 
-**Learning Goals:**
-
-* List the roles of data, aesthetics, and geoms in ggplot functions.
-* Choose the correct aesthetics and alter the geom parameters for a scatter plot, histogram, or box plot.
-* Layer multiple geometries in a single plot.
-* Customize plot scales, titles, subtitles, themes, fonts, layout, and orientation.
-* Apply a facet to a plot.
-* Save a ggplot to a file.
-
-### Getting started with a ggplot
+We will primarily be working in ggplot2 as it has the greatest degree of customization for visualization and offers many additional features over the basic plotting in R.
 
 ```{r,ggplot2,message=FALSE}
 library(ggplot2)
 library(tidyverse)
 ```
 
-We will primarily be working in ggplot2 as it has the greatest degree of customization for visualization and offers many additional features over the basic plotting in R.
+### Getting started with a ggplot
 
 Most ggplot calls to create a figure take the following form (you can read more using `help(ggplot)`):
 

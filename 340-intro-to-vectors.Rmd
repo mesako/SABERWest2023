@@ -185,7 +185,7 @@ Here is an additional example using the `signif` function, which returns your nu
 ?signif
 ```
 
-Here we can specify one significant figure to get only the tens digit.
+Here we can specify one significant figure to get only the tens digit (or the hundreds digit if there is a value over 100).
 
 ```{r}
 signif(all.heart.rates, digits = 1)

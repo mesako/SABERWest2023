@@ -6,8 +6,8 @@ this-syllabus-and-videos
 slack-channel
 workshop-expectations
 day-3---intoduction-to-r
-rstudio-and-basics
-data-exploration-pipelines
+navigating-rstudio
+using-rmds
 getting-started-in-r
 getting-help-in-r
 using-variables-and-data-types
@@ -22,7 +22,7 @@ indexing-and-subsetting-dataframes
 exploring-dataframes
 building-and-modifying-dataframes
 handling-datatypes-in-dataframes
-day-4---tidyverse-and-plots-and-such
+day-4---tidyverse-and-visualizations
 reading-and-processing-data
 using-tidyverse
 using-tidyverse-1

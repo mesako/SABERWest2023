@@ -1,3 +1,14 @@
-# Day 4 - tidyverse and plots and such
+# Day 4 - tidyverse and visualizations
 
-Today we're going ot look at tidyverse and reading files and plots and such
+**Learning Goals:**
+
+By the end of today's session, students will be able to: 
+
+* Read in and process data starting from a local saved file
+* Transform, scale, filter, and convert values within a dataset
+* Descibe the roles of data, aesthetics, and geoms in ggplot functions.
+* Choose the correct aesthetics and alter the geom parameters for a scatter plot, histogram, or box plot.
+* Layer multiple geometries in a single plot.
+* Customize plot scales, titles, subtitles, themes, fonts, layout, and orientation.
+* Apply a facet to a plot.
+* Save a ggplot to a file.
