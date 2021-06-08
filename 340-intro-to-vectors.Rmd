@@ -1,6 +1,6 @@
 ## Working with vectors
 
-You can create vectors (an ordered list of elements) by combining elements with the `c` function.
+Remember that you can create vectors (an ordered list of elements) by combining elements with the `c` function.
 
 Let us pretend that we measured and recorded the resting heart rates of several patients.
 

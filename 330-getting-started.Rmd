@@ -1,14 +1,6 @@
 ## Getting started in R
 
-**Learning Goals:**
-
-* Apply internet searches, help functions, and documentation to learn to use the appropriate functions. 
-* Assign and manipulate variables within the current environment/session in R.
-* Create, modify, and access into a vector (an ordered grouping of elements).
-* Create, modify, and access into a dataframe (an ordered two-dimensional grouping of elements with rows and columns).
-
-
-Goal is to be able to interact with datasets like iris
+Let's get started programming in R! Our goal is to be able to interact with datasets like the built-in `iris` dataset in R. By the end of today, we aim to be able to pull out information from this dataset and modify it using R programming.
 
 ```{r}
 head(iris, n = 10)
@@ -31,16 +23,26 @@ You can look up what functions do using either a question mark `?` or the `help`
 help(rm)
 ```
 
+You can try running the following command to look up variables that load in with base R or packages that we will use. For example, you can use the `help` function to read more details about the `iris` dataset.
+
+```{r, eval=FALSE}
+?iris
+```
+
 ------
 
 ### Using variables and data types
 
-You can assign variables using the `=` or `<-` operators. I will use the `<-` operator exclusively going forward.
+Variables are a short-hand name or label that stores a piece of data. We can save information into variables and then call them by name (invoke the variable) to use that information when needed.
+
+You can assign variables using the `=` or `<-` operators. We will use the `<-` operator exclusively going forward.
 
 ```{r}
 save.num <- 7
 save.num
 ```
+
+Here I have chosen the name `save.num` but you can give it a different name. Note that variable names must with a letter and cannot contain special characters.
 
 Variables are mutable: you can overwrite the saved value of a variable with another value.
 
@@ -49,51 +51,81 @@ save.num <- 10
 save.num
 ```
 
-Variables can be saved as other values such as character strings or boolean values (`TRUE` or `FALSE`).
+You can see that `save.num` does not remember the value 7 anymore and instead returns 10. Variables can be saved as other values such as character strings or boolean values (`TRUE` or `FALSE`). These are examples of other datatypes in R.
 
 ```{r}
 save.string <- "hello"
 save.bool <- TRUE
 ```
 
-You can check what variables you have assigned in your current working environment.
+You can check what variables you have assigned in your current working environment using the `ls` function. Try running `?ls` to learn more about this function!
 
 ```{r}
 ls()
 ```
 
-You can also remove saved variables.
+You can also remove saved variables using the `rm` function.
 
 ```{r}
 rm(save.num)
 ls()
 ```
 
+You will notice that our session no longer remembers `save.num`. If you tried to call `save.num` after it was removed, you would get an error message in R.
+
 ### Using functions
+
+We have already shared several functions with you, including the `help` function, the `ls` function, and the `rm` function. Even the command `sessionInfo` is an example of a function in R!
+
+Functions can be recognized by a string (letters) followed by parentheses `()`. Functions may take information inside the parentheses that are called arguments.
+
+```{r, eval = FALSE}
+?help
+```
+
+When you look at documentation for the `help` function, you will notice that there are many things you can provide inside the parentheses. The documentation section called "Arguments" describes one necessary input for `help` called `topic` that must be provided inside the parentheses.
+
+Arguments are often named and described in the documentation. When you provide an argument to a function, you can provide it by name explicitly or just let R figure it out based on the order you give it.
+
+```{r, eval = FALSE}
+help(topic = iris)
+help(iris)
+```
+
+In the second line, we provide only one input `iris` and R assumes that we intend for `topic = iris` as the argument.
+
+One function we will use often is the `c` function which can be used to create a vector or ordered collection of pieces of information. 
 
 ```{r, eval = FALSE}
 ?c
 ```
 
-arguments
-... arguments
+If you look up the documentation for the `c` function, you will notice that it accepts `...` arguments. This can be confusing but it often means that it accepts multiple arguments, more than can be named or described. 
 
-arguments as input
+This makes sense for the `c` function because it will accept as many inputs as you give it, the number does not need to be consistent.
 
 ```{r}
 save.data <- c(1, 4, 6, 2, 3, 8, NA)
 ```
 
+Functions generally take the arguments in the parentheses as an input and then produce some output. A clear example of this is using the `mean` function.
+
 ```{r, eval = FALSE}
 ?mean
 ```
+
+As implied, the `mean` function will take a grouping of numbers and return the mean or the average.
 
 ```{r}
 mean(save.data)
 ```
 
-arguments as settings
+However, here we ran into an issue because one of the elements in our initial vector `save.data` is `NA`. `NA` means "not available" or in other words the data is missing. This is not the same as being zero. So R is not sure how to calculate the mean since that last element is essentially a question mark.
+
+We can make use of an additional argument that the `mean` function takes, namely the `na.rm` argument. This argument functions more like a setting, where you can provide a flag (i.e. `TRUE` or `FALSE`) or a distinct option (e.g. `top`, `bottom`, `left`, or `right`) that modifies how it produces the output. This argument has a default that is shown in the "Usage" section of the documentation. We are going to change that setting.
 
 ```{r}
 mean(save.data, na.rm = TRUE)
 ```
+
+Now you can see that R runs the function and decides to leave out or ignore the `NA` value and is able to return an average based on the other values in `save.data`.

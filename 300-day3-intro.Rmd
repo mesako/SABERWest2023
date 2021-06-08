@@ -1,4 +1,13 @@
 # Day 3 - intoduction to R
 
-- Rstudio
-- etc
+**Learning Goals:**
+
+By the end of today's session, students will be able to: 
+
+* Navigate the RStudio environment and move between the different panels.
+* Open, save, and run an RMD (R Markdown) file within RStudio.
+* Apply internet searches, help functions, and documentation to learn to use the appropriate functions. 
+* Assign and manipulate variables within the current environment/session in R.
+* Create, modify, and access into a vector (an ordered grouping of elements).
+* Create, modify, and access into a dataframe (an ordered two-dimensional grouping of elements with rows and columns).
+* Apply existing functions to accomplish a specific task in R. 
