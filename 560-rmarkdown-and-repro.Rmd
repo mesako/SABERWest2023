@@ -1,4 +1,4 @@
-## Reproducibile sharing - more `rmarkdown` and 
+## More `rmarkdown` for reproducibile sharing
 
 How are you saving your notes for this class?
 <!-- rmd you better be... -->
@@ -140,7 +140,7 @@ all sorts of automated stuff you can do
 
 
 
-## Reproducibility and sharing
+### Reproducibility and sharing
 
 think about this
 

@@ -1,4 +1,4 @@
-## Using loops to read many files in
+## Loops to read many files
 
 Let's work through an analysis of the size of "structural" viral proteins.
 We've done some of the work for you already, and would recommend that you
@@ -77,7 +77,6 @@ times - automation is great. Let's code up a
 simple little analysis - we'll calculate the
 length (number of amino acids) in a viral
 structural protein sequence.
----
 
 Let's do this for all the proteins.
 The simplest way of doing this is to copy and
@@ -329,4 +328,6 @@ summary(lengthz)
 ```
 
 ---
+
+
 

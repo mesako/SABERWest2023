@@ -10,7 +10,7 @@
 
 -->
 
-## Functions redux - why they're so great
+## Functions as modular steps
 
 Functions are handy.
 For example, let's calculate the standard error of a sample of values:
@@ -103,7 +103,7 @@ sez(rpois(1e3,3))
 
 ---
 
-## Using functions to write modular code
+### Using functions to write modular code
 
 How might you carry out the workflow from the previous work to
 calculate protein sequence lengths?
