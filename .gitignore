@@ -8,3 +8,5 @@ rsconnect
 *.md
 *.rds
 .DS_Store
+*_files
+*_cache
