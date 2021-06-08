@@ -1,5 +1,6 @@
 ## Using tidyverse
 
+### Goals to be reworked alongside content
 * When it comes to manipulating data frames (creating new columns, filtering, etc.) - tidyverse is your friend!
 * Scholars will understand the complex socio-technical context of tidyverse, ie that it's not base R but oh boy it's popular and well supported by a company - but not base R
 * Scholars know that tidyverse/dplyr takes a more database-like approach to moving data tables around
@@ -11,7 +12,68 @@
 * Scholars can use group_by to summarise variables
 
 
+### Welcome to the tidyverse! 
+
+[Tidyverse](https://www.tidyverse.org) is a suite of R packages that are very useful for data science, when we need to manipulate data frames and visualize data. The most important packages in tidyverse for our workshop will be [dplyr](https://dplyr.tidyverse.org) and [ggplot2](https://ggplot2.tidyverse.org). It builds on the base R functions and data types we've studied so far. It just provides a different design framework for working with data in R. A main difference is that instead of calling functions around an object, we will "pipe" objects into functions, and can easily string functions together in this way. 
+
+For example, if you have a data frame, `df`, instead of peaking at it with `head(df)`, you can pipe it into `head()` like this: `df %>% head()`. This might seem like more work for this specific operation, but when you need to run a bunch of functions on a data frame, it becomes much TIDIER! 
+
+Without worrying about the syntax, check out this more complex example. We have a dataframe, `df`,  with measumerments of flowers. We're interested in filtering the data for flower sizes over 10cm, then creating a new variable that is the size in mm, then finding the average size of a type of flower.
+
+```
+df %>%
+  filter(size_cm < 10) %>%
+  mutate(size_mm = size_cm * 10) %>%
+  group_by(flower_type) %>%
+  summarize(mean_size = mean(value_millions)) %>%
+  ungroup()
+```
+
+In addition to piping with `%>%`, the tidyverse has many handy functions to manipulate data frames. The ones shown above allow us to:
+
+- Filter data using `filter()`
+- Create new variables with `mutate()`
+- Group variables with `group_by()`
+- Create a new variable over a group using `summarize()`
+
+
+### Let's get started with Tidyverse
+
 ```{r}
-# ?
+
+# Download tidyverse
+# Remember we only have to install once
+install.packages("tidyverse")
+
+# Load the tidyverse library
+library(tidyverse)
+
+```
+
+
+### Try tidyverse on the dataset we loaded in the previous section
+
+```{r}
+
+# Load the dataset and peak at it with the head() function
+irisz <- read.csv("data/iris.csv")
+
+head(irisz)
+
+# Now try it with tidyverse piping
+
+df %>% 
+  head()
+
+# Let's pipe the data frame into a summary() function
+# to get summary statistics
+
+# In base R, we would do 
+# summary(df)
+
+# In tidyverse we do it this way:
+
+df %>%
+  summary()
 ```
 
