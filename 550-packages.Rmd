@@ -9,44 +9,111 @@ it is very easy for others to get and use your code
 
 Packages are 
 [said to be easy to make](https://ourcodingclub.github.io/tutorials/writing-r-package/),
-but they're very easy to use.
+[from scratch](https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/).
+There's more [comprehensive instruction here](https://r-pkgs.org/).
+Personally, the author has never had cause to make one, but I can report that
+they're very easy to use!
 
 ---
 
 ### CRAN is the canonical R package resource
 
-[CRAN]()
+The Comprehensive R Archive Netowrk 
+[CRAN](https://cran.r-project.org/web/packages/)
+is an integral part of the R environment.
+This is a global and free resource for storing and distributing code
+as R packages - well documented and designed chunks of code.
 
-historical context
+You can install packages using the RStudio IDE, but it's most important
+to know how to do it in R - what's happening just under the hood.
+
+Use `library` to load packages. 
+You should be able to load a package you've
+already installed. 
+Call `library()` function, with an argument of the library name,
+as a string.
+
+Try loading this one:
 
 ```{r,eval=F}
 library("stringdist")
+library(stringdist)
 ```
 
-Call `library()` function, with an argument of the library name,
-as a string.
+Don't have it? You can look for packages by using a search engine, or finding
+suggestions in the documentation, papers. Once you have a package name, use
+
+```{r,eval=F}
+install.packages("stringdist")
+```
+
+to install it. You may need to select a "mirror". This is just where you
+are downloading from, usually just go with "0-Cloud"
+^[I have no idea where this is, never heard of that country!].
+
+What did this do? 
+It retrieves and downloads the package's code and documentation to
+what's called your library, 
+
 
 - get the stringdist library, use it
 - get a new viz layer, use it
 
 ---
 
-### github is a common place for sharing code in development
+### Using packages without `library()`-ing them
+
+Some packages you don't really want to have to go through the trouble of
+loading, you'll just want one function. 
+For example, this website is generated with one function, `render_book()`
+in the package `bookdown`. Instead of:
+
+```{r,eval=F}
+library(bookdown)
+render_book()
+```
+
+I can save a line by just using `::`
+
+```{r,eval=F}
+bookdown::render_book()
+```
+
+This means I am looking in library `bookdown` for function `render_book`.
+The function is hidden again right afterwards, but it is useful if you just
+want to run one function from a library, once.
+
+
+---
+
+### Github is a common place for sharing packges in development
 
 Installing from github requires some different programming -
 and there's libraries with functions for this.
 
 ```{r,eval=F}
-library("devtools")
+library("remotes")
 ```
 
-or `remotes`?
+This used to be part of the `devtools` package, but the authors have been
+"uncoupling" these to make each package simple and composable.
 
-exercise - pull a package off github... ? maybe some sort of viz again?
+#### Let's install a package off of github.
+
+Here's a cool [Ghibli color palette](https://github.com/ewenme/ghibli),
+so you can change sets of colors for your plots.
+Try installing it with:
+
+```{r,eval=F}
+remotes::install_github("ewenme/ghibli")
+```
+
+Then adapt one of your previous plots (that has colors) to use these new
+color palettes.
+
 
 Exercise - install a package from github and learn how to use it
 
-- [Ghibli color palette](https://github.com/ewenme/ghibli)
 - [Sports field plotting](https://github.com/rossdrucker/sportyR)
 - [Ridgeplots in ggplot2](https://github.com/wilkelab/ggridges)
 
@@ -59,11 +126,42 @@ problems with this - security, eh
 
 ### Bioconductor is a great place for bio-related packages 😬 
 
+Bioconductor is a giant repository of just scientific, well bio-focused,
+packages. It's where a lot of bioinformatics software gets published.
+However, it has it's own package system and thus package manager.
+You will have to install it ... from CRAN. Like so:
+
+```{r,eval=F}
+install.packages("BiocManager")
+```
+
+That installs a package with a function that then installs Bioconductor
+packages. It's actually easy. Let's give it a try by installing and
+using the `limma` package to analyze some gene expression data.
+
+If you're recall from before, we can use `::` to avoid having to actually
+`library` the whole package:
+
+```{r,eval=F}
+BiocManager::install()
+```
+
+
+
 [How to install Bioconductor]()
 
 Scholars will know how to install Bioconductor package from CRAN
 
 Scholars will know how to find and install packages from Bioconductor
+
+---
+
+As demo, install DESeq2 and start to work through a tutorial with one of
+their datasets.
+
+---
+
+## What packages do you have already? 
 
 explore the namespace for a package, ie ?packagename:: and TAB or ?packagename::
 
