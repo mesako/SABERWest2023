@@ -39,15 +39,17 @@ In addition to piping with `%>%`, the tidyverse has many handy functions to mani
 
 ### Let's get started with Tidyverse
 
-```{r}
+Download tidyverse
+Remember we only have to install once
 
-# Download tidyverse
-# Remember we only have to install once
+```{r,showing_to_install_but_not_gonna_re_install_for_every_typsetting,eval=F}
 install.packages("tidyverse")
+```
 
-# Load the tidyverse library
+Load the tidyverse library
+
+```{r,loadtidy,cache=T}
 library(tidyverse)
-
 ```
 
 
@@ -62,6 +64,9 @@ head(irisz)
 
 # Now try it with tidyverse piping
 
+library(tidyverse)
+
+df <- irisz
 df %>% 
   head()
 
