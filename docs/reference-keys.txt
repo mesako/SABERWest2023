@@ -32,6 +32,7 @@ changing-plot-aesthetics
 exploring-other-plots
 using-categorical-data
 visualizing-between-groups
+generating-heatmaps
 making-scientific-figures
 plotting-error-bars
 showing-trends-in-data
