@@ -28,7 +28,23 @@ Let's read one of them into R.
 
 The records are "delimited" by tabs, so tab-separated.
 We'll need to use `read.delim`, specify a tab separator, and ignore the lack
-of a header. How do we do this? Look up `?read.delim`.
+of a header. How do we do this? 
+
+#### Review of looking up documentation
+
+You can look up the documentation for any named function or package by using
+the `?function` syntax.
+
+Sometimes, you need to use extra backticks to make it work, like "?`+`"
+
+If you don't know what you're looking for, you can search with `??`.
+Extra backticks don't hurt, and help when you have spaces in the query.
+
+---
+
+#### Back to the file-reading
+
+What does `?read.delim` say to do?
 
 ```{=html}
 <div class="incremental">
