@@ -8,7 +8,7 @@ There are multiple file types that can be read into R. The most common one is th
 
 Let's practice reading in data using the `read.csv` function.
 
-```{r,demo_csv eval=FALSE}
+```{r,eval=FALSE}
 ?read.csv
 ```
 
