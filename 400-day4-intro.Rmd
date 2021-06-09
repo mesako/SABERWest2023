@@ -16,6 +16,9 @@ By the end of today's session, students will be able to:
 **Preparing for Today:**
 Please make sure you have completed all readings and activities from Section 2: Day 3 - introduction to R. You will also have some time at the start of the day to do the first sections 3.1-3.3.
 
+Before you start reading through Section 3 for today or taking part in synchronous activities, download and [open today's worksheet](https://github.com/darachm/dll-r/blob/main/worksheets/dll-r_Day4_Lab.Rmd). On this Github page, please right-click the button that says "Raw" and click "Save Link As..." to get a local copy of this Rmd file on your computer and open it in Rstudio.
+
+
 **Today's Schedule:**
 
 |   Start Time  |   End Time  |   Activity    |          Description          |
