@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.5 More rmarkdown for reproducibile sharing | DLL 2021, R section</title>
+  <title>4.6 More rmarkdown for reproducibile sharing | DLL 2021, R section</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.5 More rmarkdown for reproducibile sharing | DLL 2021, R section" />
+  <meta property="og:title" content="4.6 More rmarkdown for reproducibile sharing | DLL 2021, R section" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.5 More rmarkdown for reproducibile sharing | DLL 2021, R section" />
+  <meta name="twitter:title" content="4.6 More rmarkdown for reproducibile sharing | DLL 2021, R section" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -34,8 +34,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="packages-install-and-use.html"/>
-<link rel="next" href="troubleshooting-getting-help-dissecting-problems.html"/>
+<link rel="prev" href="writing-reusable-code.html"/>
+<link rel="next" href="conclusion.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -74,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -197,19 +197,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6.4" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#producing-linear-models"><i class="fa fa-check"></i><b>3.6.4</b> Producing linear models</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows</a><ul>
-<li class="chapter" data-level="4.0.1" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html#what-is-a-workflow"><i class="fa fa-check"></i><b>4.0.1</b> What is a workflow?</a></li>
+<li class="chapter" data-level="4" data-path="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><a href="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows, using packages, writing (re)usable code, sharing analyses</a><ul>
+<li class="chapter" data-level="4.0.1" data-path="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><a href="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html#what-is-a-workflow"><i class="fa fa-check"></i><b>4.0.1</b> What is a workflow?</a></li>
 <li class="chapter" data-level="4.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html"><i class="fa fa-check"></i><b>4.1</b> Analyzing viral protein sequences</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#reading-in-tab-delimited-file"><i class="fa fa-check"></i><b>4.1.1</b> Reading in tab-delimited file</a></li>
 <li class="chapter" data-level="4.1.2" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#loops---doing-a-similar-task-multiple-times"><i class="fa fa-check"></i><b>4.1.2</b> Loops - doing a similar task multiple times</a></li>
-<li class="chapter" data-level="4.1.3" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#using-functions-to-write-modular-code"><i class="fa fa-check"></i><b>4.1.3</b> Using functions to write modular code</a></li>
-<li class="chapter" data-level="4.1.4" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#tips-for-modular-workflows"><i class="fa fa-check"></i><b>4.1.4</b> Tips for modular workflows</a></li>
-<li class="chapter" data-level="4.1.5" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#more-complex-workflow"><i class="fa fa-check"></i><b>4.1.5</b> More complex workflow</a></li>
-<li class="chapter" data-level="4.1.6" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#apply-is-a-popular-tool"><i class="fa fa-check"></i><b>4.1.6</b> Apply is a popular tool</a></li>
+<li class="chapter" data-level="4.1.3" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#extending-the-workflow"><i class="fa fa-check"></i><b>4.1.3</b> Extending the workflow</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html"><i class="fa fa-check"></i><b>4.2</b> Functions as modular steps</a></li>
-<li class="chapter" data-level="4.3" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html"><i class="fa fa-check"></i><b>4.3</b> Writing (re)usable code</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#style-guides-can-be-inspiring"><i class="fa fa-check"></i><b>4.3.1</b> Style guides can be inspiring</a></li>
+<li class="chapter" data-level="4.2" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html"><i class="fa fa-check"></i><b>4.2</b> Troubleshooting, getting help, dissecting problems</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html#places-to-look-for-help"><i class="fa fa-check"></i><b>4.2.1</b> Places to look for help</a></li>
+<li class="chapter" data-level="4.2.2" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html#minimum-reproducible-example"><i class="fa fa-check"></i><b>4.2.2</b> Minimum reproducible example</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html"><i class="fa fa-check"></i><b>4.3</b> Functions as modular steps</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html#tips-for-modular-workflows"><i class="fa fa-check"></i><b>4.3.1</b> Tips for modular workflows</a></li>
+<li class="chapter" data-level="4.3.2" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html#apply-is-a-popular-tool"><i class="fa fa-check"></i><b>4.3.2</b> Apply is a popular tool</a></li>
 </ul></li>
 <li class="chapter" data-level="4.4" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html"><i class="fa fa-check"></i><b>4.4</b> Packages - install and use</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#cran-is-the-canonical-r-package-resource"><i class="fa fa-check"></i><b>4.4.1</b> CRAN is the canonical R package resource</a></li>
@@ -219,15 +220,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4.5" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#what-packages-do-you-have-already"><i class="fa fa-check"></i><b>4.4.5</b> What packages do you have already?</a></li>
 <li class="chapter" data-level="4.4.6" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#finding-more-help-and-documentation"><i class="fa fa-check"></i><b>4.4.6</b> Finding more help and documentation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html"><i class="fa fa-check"></i><b>4.5</b> More <code>rmarkdown</code> for reproducibile sharing</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#rmarkdown-package"><i class="fa fa-check"></i><b>4.5.1</b> rmarkdown package</a></li>
-<li><a href="more-rmarkdown-for-reproducibile-sharing.html#section"></a></li>
-<li class="chapter" data-level="4.5.2" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#sharing-with-others"><i class="fa fa-check"></i><b>4.5.2</b> Sharing with others</a></li>
-<li class="chapter" data-level="4.5.3" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#reproducibility-and-sharing"><i class="fa fa-check"></i><b>4.5.3</b> Reproducibility and sharing</a></li>
+<li class="chapter" data-level="4.5" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html"><i class="fa fa-check"></i><b>4.5</b> Writing (re)usable code</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#examples"><i class="fa fa-check"></i><b>4.5.1</b> Examples</a></li>
+<li class="chapter" data-level="4.5.2" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#style-guides-can-be-inspiring"><i class="fa fa-check"></i><b>4.5.2</b> Style guides can be inspiring</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html"><i class="fa fa-check"></i><b>4.6</b> Troubleshooting, getting help, dissecting problems</a><ul>
-<li class="chapter" data-level="4.6.1" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html#places-to-look-for-help"><i class="fa fa-check"></i><b>4.6.1</b> Places to look for help</a></li>
-<li class="chapter" data-level="4.6.2" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html#minimum-reproducible-example"><i class="fa fa-check"></i><b>4.6.2</b> Minimum reproducible example</a></li>
+<li class="chapter" data-level="4.6" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html"><i class="fa fa-check"></i><b>4.6</b> More <code>rmarkdown</code> for reproducibile sharing</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#rmarkdown-package"><i class="fa fa-check"></i><b>4.6.1</b> rmarkdown package</a></li>
+<li><a href="more-rmarkdown-for-reproducibile-sharing.html#section"></a></li>
+<li class="chapter" data-level="4.6.2" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#sharing-with-others"><i class="fa fa-check"></i><b>4.6.2</b> Sharing with others</a></li>
+<li class="chapter" data-level="4.6.3" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#reproducibility-and-sharing"><i class="fa fa-check"></i><b>4.6.3</b> Reproducibility and sharing</a></li>
 </ul></li>
 <li class="chapter" data-level="4.7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>4.7</b> Conclusion</a></li>
 </ul></li>
@@ -264,15 +265,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="more-rmarkdown-for-reproducibile-sharing" class="section level2">
-<h2><span class="header-section-number">4.5</span> More <code>rmarkdown</code> for reproducibile sharing</h2>
+<h2><span class="header-section-number">4.6</span> More <code>rmarkdown</code> for reproducibile sharing</h2>
 <p>How are you saving your notes for this class?
 <!-- rmd you better be... --></p>
 <p>How do you usually save notes/code/instructions?</p>
 <p>How do you share this with others?</p>
 <div id="rmarkdown-package" class="section level3 tabset">
-<h3><span class="header-section-number">4.5.1</span> rmarkdown package</h3>
+<h3><span class="header-section-number">4.6.1</span> rmarkdown package</h3>
 <div id="background" class="section level4">
-<h4><span class="header-section-number">4.5.1.1</span> Background</h4>
+<h4><span class="header-section-number">4.6.1.1</span> Background</h4>
 <p>The <code>rmarkdown</code> package was created by
 <a href="https://www.rstudio.com/speakers/yihui-xie/">Yihui Xie</a>,
 extending from previous work and ideas in
@@ -290,7 +291,7 @@ how I’ve used it, how you could use it
 --></p>
 </div>
 <div id="chunk-options" class="section level4">
-<h4><span class="header-section-number">4.5.1.2</span> Chunk options</h4>
+<h4><span class="header-section-number">4.6.1.2</span> Chunk options</h4>
 <p>You can set chunk-level options in an Rmd, for
 each code chunk. Such as:</p>
 <pre><code>```{r, name_of_chunk, cache=T, fig.width=3, fig.height=2, error=F, warning=F, fig.align=&quot;right&quot;}
@@ -298,9 +299,9 @@ x &lt;- 1:10
 y &lt;- 1:10
 plot(x,y)
 ```</code></pre>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb367-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb367-2" data-line-number="2">y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
-<a class="sourceLine" id="cb367-3" data-line-number="3"><span class="kw">plot</span>(x,y)</a></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb373-1" title="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb373-2" title="2">y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">10</span></a>
+<a class="sourceLine" id="cb373-3" title="3"><span class="kw">plot</span>(x,y)</a></code></pre></div>
 <p><img src="560-rmarkdown-and-repro_files/figure-html/name_of_chunk-1.png" width="288" style="display: block; margin: auto 0 auto auto;" /></p>
 <p>It is possible to enable figure captions.</p>
 <p>video2 chunk options
@@ -312,7 +313,7 @@ fig.align=”right”
 --></p>
 </div>
 <div id="document-options" class="section level4">
-<h4><span class="header-section-number">4.5.1.3</span> Document options</h4>
+<h4><span class="header-section-number">4.6.1.3</span> Document options</h4>
 <p>You can set document-level options to. To do this,
 you create what’s called a
 <a href="yaml.org">YAML</a> header, like so:</p>
@@ -338,7 +339,7 @@ format …. slides !
 --></p>
 </div>
 <div id="how-it-works-sort-of" class="section level4">
-<h4><span class="header-section-number">4.5.1.4</span> How it works, sort of…</h4>
+<h4><span class="header-section-number">4.6.1.4</span> How it works, sort of…</h4>
 <p>video4 how it does what it’s doing
 <!--what it’s doing behind the scenes - a diagram ( on paper )
 code gets pulled out and run, top to bottom
@@ -357,7 +358,7 @@ into HTML, PDF, and/or slides.</p>
 <h3></h3>
 </div>
 <div id="sharing-with-others" class="section level3">
-<h3><span class="header-section-number">4.5.2</span> Sharing with others</h3>
+<h3><span class="header-section-number">4.6.2</span> Sharing with others</h3>
 <p>What does someone need to re-run your analyses?</p>
 <!-- R, Rstudio, packages, scripts -->
 <ul>
@@ -365,13 +366,12 @@ into HTML, PDF, and/or slides.</p>
 <li>what packages you’re using</li>
 <li></li>
 </ul>
-<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" data-line-number="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
-<pre><code>## Error in get(genname, envir = envir) : object &#39;testthat_print&#39; not found</code></pre>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" title="1">devtools<span class="op">::</span><span class="kw">session_info</span>()</a></code></pre></div>
 <pre><code>## ─ Session info ───────────────────────────────────────────────────────────────
 ##  setting  value                       
-##  version  R version 4.0.2 (2020-06-22)
-##  os       macOS  10.16                
-##  system   x86_64, darwin17.0          
+##  version  R version 3.6.3 (2020-02-29)
+##  os       Ubuntu 20.04.2 LTS          
+##  system   x86_64, linux-gnu           
 ##  ui       X11                         
 ##  language (EN)                        
 ##  collate  en_US.UTF-8                 
@@ -380,47 +380,47 @@ into HTML, PDF, and/or slides.</p>
 ##  date     2021-06-04                  
 ## 
 ## ─ Packages ───────────────────────────────────────────────────────────────────
-##  package     * version    date       lib source                            
-##  assertthat    0.2.1      2019-03-21 [2] CRAN (R 4.0.0)                    
-##  bookdown      0.22       2021-04-22 [1] CRAN (R 4.0.2)                    
-##  callr         3.7.0      2021-04-20 [1] CRAN (R 4.0.2)                    
-##  cli           2.5.0      2021-04-26 [1] CRAN (R 4.0.2)                    
-##  codetools     0.2-16     2018-12-24 [2] CRAN (R 4.0.2)                    
-##  crayon        1.4.1      2021-02-08 [1] CRAN (R 4.0.2)                    
-##  desc          1.2.0      2018-05-01 [2] CRAN (R 4.0.0)                    
-##  devtools      2.3.2      2020-09-18 [1] CRAN (R 4.0.2)                    
-##  digest        0.6.27     2020-10-24 [1] CRAN (R 4.0.2)                    
-##  ellipsis      0.3.2      2021-04-29 [1] CRAN (R 4.0.2)                    
-##  evaluate      0.14       2019-05-28 [2] CRAN (R 4.0.0)                    
-##  fs            1.5.0      2020-07-31 [1] CRAN (R 4.0.2)                    
-##  glue          1.4.2      2020-08-27 [1] CRAN (R 4.0.2)                    
-##  htmltools     0.5.1.9000 2021-01-26 [1] Github (rstudio/htmltools@e7f0393)
-##  knitr         1.30       2020-09-22 [1] CRAN (R 4.0.2)                    
-##  lifecycle     1.0.0      2021-02-15 [1] CRAN (R 4.0.2)                    
-##  magrittr      2.0.1      2020-11-17 [1] CRAN (R 4.0.2)                    
-##  memoise       1.1.0      2017-04-21 [1] CRAN (R 4.0.2)                    
-##  pkgbuild      1.1.0      2020-07-13 [1] CRAN (R 4.0.2)                    
-##  pkgload       1.1.0      2020-05-29 [2] CRAN (R 4.0.0)                    
-##  prettyunits   1.1.1      2020-01-24 [2] CRAN (R 4.0.0)                    
-##  processx      3.5.2      2021-04-30 [1] CRAN (R 4.0.2)                    
-##  ps            1.3.3      2020-05-08 [2] CRAN (R 4.0.0)                    
-##  purrr         0.3.4      2020-04-17 [2] CRAN (R 4.0.0)                    
-##  R6            2.5.0      2020-10-28 [1] CRAN (R 4.0.2)                    
-##  remotes       2.2.0      2020-07-21 [1] CRAN (R 4.0.2)                    
-##  rlang         0.4.10     2020-12-30 [1] CRAN (R 4.0.2)                    
-##  rmarkdown     2.6        2020-12-14 [1] CRAN (R 4.0.2)                    
-##  rprojroot     2.0.2      2020-11-15 [1] CRAN (R 4.0.2)                    
-##  sessioninfo   1.1.1      2018-11-05 [1] CRAN (R 4.0.2)                    
-##  stringi       1.5.3      2020-09-09 [1] CRAN (R 4.0.2)                    
-##  stringr       1.4.0      2019-02-10 [2] CRAN (R 4.0.0)                    
-##  testthat      2.3.2      2020-03-02 [2] CRAN (R 4.0.0)                    
-##  usethis       2.0.0      2020-12-10 [1] CRAN (R 4.0.2)                    
-##  withr         2.4.1      2021-01-26 [1] CRAN (R 4.0.2)                    
-##  xfun          0.23       2021-05-15 [1] CRAN (R 4.0.2)                    
-##  yaml          2.2.1      2020-02-01 [2] CRAN (R 4.0.0)                    
+##  package     * version date       lib source        
+##  assertthat    0.2.1   2019-03-21 [1] CRAN (R 3.6.3)
+##  bookdown      0.22    2021-04-22 [1] CRAN (R 3.6.3)
+##  callr         3.5.1   2020-10-13 [1] CRAN (R 3.6.3)
+##  cli           2.2.0   2020-11-20 [1] CRAN (R 3.6.3)
+##  crayon        1.3.4   2017-09-16 [1] CRAN (R 3.6.3)
+##  desc          1.2.0   2018-05-01 [1] CRAN (R 3.6.3)
+##  devtools      2.2.2   2020-02-17 [3] CRAN (R 3.6.3)
+##  digest        0.6.27  2020-10-24 [1] CRAN (R 3.6.3)
+##  ellipsis      0.3.1   2020-05-15 [1] CRAN (R 3.6.3)
+##  evaluate      0.14    2019-05-28 [1] CRAN (R 3.6.3)
+##  fansi         0.4.1   2020-01-08 [1] CRAN (R 3.6.3)
+##  fs            1.5.0   2020-07-31 [1] CRAN (R 3.6.3)
+##  glue          1.4.2   2020-08-27 [1] CRAN (R 3.6.3)
+##  htmltools     0.5.0   2020-06-16 [1] CRAN (R 3.6.3)
+##  knitr         1.30    2020-09-22 [1] CRAN (R 3.6.3)
+##  magrittr      2.0.1   2020-11-17 [1] CRAN (R 3.6.3)
+##  memoise       1.1.0   2017-04-21 [3] CRAN (R 3.5.0)
+##  pkgbuild      1.2.0   2020-12-15 [1] CRAN (R 3.6.3)
+##  pkgload       1.1.0   2020-05-29 [1] CRAN (R 3.6.3)
+##  prettyunits   1.1.1   2020-01-24 [1] CRAN (R 3.6.3)
+##  processx      3.4.5   2020-11-30 [1] CRAN (R 3.6.3)
+##  ps            1.5.0   2020-12-05 [1] CRAN (R 3.6.3)
+##  R6            2.5.0   2020-10-28 [1] CRAN (R 3.6.3)
+##  remotes       2.1.1   2020-02-15 [3] CRAN (R 3.6.2)
+##  rlang         0.4.9   2020-11-26 [1] CRAN (R 3.6.3)
+##  rmarkdown     2.8     2021-05-07 [1] CRAN (R 3.6.3)
+##  rprojroot     2.0.2   2020-11-15 [1] CRAN (R 3.6.3)
+##  sessioninfo   1.1.1   2018-11-05 [3] CRAN (R 3.5.1)
+##  stringi       1.5.3   2020-09-09 [1] CRAN (R 3.6.3)
+##  stringr       1.4.0   2019-02-10 [1] CRAN (R 3.6.3)
+##  testthat      3.0.1   2020-12-17 [1] CRAN (R 3.6.3)
+##  usethis       1.5.1   2019-07-04 [3] CRAN (R 3.6.2)
+##  withr         2.3.0   2020-09-22 [1] CRAN (R 3.6.3)
+##  xfun          0.23    2021-05-15 [1] CRAN (R 3.6.3)
+##  yaml          2.2.1   2020-02-01 [1] CRAN (R 3.6.3)
 ## 
-## [1] /Users/melissako/Library/R/4.0/library
-## [2] /Library/Frameworks/R.framework/Versions/4.0/Resources/library</code></pre>
+## [1] /home/zed/R/x86_64-pc-linux-gnu-library/3.6
+## [2] /usr/local/lib/R/site-library
+## [3] /usr/lib/R/site-library
+## [4] /usr/lib/R/library</code></pre>
 <p>why the hell we want others to use our code?
 Well I’ll tell you why - the general intellect</p>
 <p>think about this</p>
@@ -429,7 +429,7 @@ Well I’ll tell you why - the general intellect</p>
 <p>all sorts of automated stuff you can do</p>
 </div>
 <div id="reproducibility-and-sharing" class="section level3">
-<h3><span class="header-section-number">4.5.3</span> Reproducibility and sharing</h3>
+<h3><span class="header-section-number">4.6.3</span> Reproducibility and sharing</h3>
 <p>think about this</p>
 <p>think about the next person coming along, or yourself in 3 months</p>
 <p>links on syllabus for more info</p>
@@ -462,8 +462,8 @@ for (var i=0; i < listz.length; i++) {
           </div>
         </div>
       </div>
-<a href="packages-install-and-use.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="troubleshooting-getting-help-dissecting-problems.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="writing-reusable-code.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="conclusion.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

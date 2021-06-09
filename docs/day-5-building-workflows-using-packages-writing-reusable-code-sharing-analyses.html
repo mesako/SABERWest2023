@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.5 Making scientific figures | DLL 2021, R section</title>
+  <title>4 Day 5 - building workflows, using packages, writing (re)usable code, sharing analyses | DLL 2021, R section</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.5 Making scientific figures | DLL 2021, R section" />
+  <meta property="og:title" content="4 Day 5 - building workflows, using packages, writing (re)usable code, sharing analyses | DLL 2021, R section" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.5 Making scientific figures | DLL 2021, R section" />
+  <meta name="twitter:title" content="4 Day 5 - building workflows, using packages, writing (re)usable code, sharing analyses | DLL 2021, R section" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -34,8 +34,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="making-plots-with-ggplot2.html"/>
-<link rel="next" href="applying-basic-stats.html"/>
+<link rel="prev" href="applying-basic-stats.html"/>
+<link rel="next" href="analyzing-viral-protein-sequences.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -264,96 +264,145 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="making-scientific-figures" class="section level2">
-<h2><span class="header-section-number">3.5</span> Making scientific figures</h2>
-<p>Making plots can be a great way to develop an intuition for your dataset, though to derive and communicate scientific insights, we need to have an idea of the uncertainty in our interpretations.</p>
-<p>Uncertainty describes ideas such as: are the values between two groups different enough, that it is unlikely that the differences are due to chance? Is the correlation between these variables strong enough that one can predict the other, with some level of confidence? <strong>How statistically significant are the patterns we see?</strong></p>
-<div id="plotting-error-bars" class="section level3">
-<h3><span class="header-section-number">3.5.1</span> Plotting error bars</h3>
-<p>When we compare measurements taken from two samples (i.e. two groups), we might want to see if the two groups have very different values for that specific measurement. If we have multiple observations within each group, we can take a summary statistic such as the mean or median and plot those against each other.</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" title="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> awake)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb239-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;summary&quot;</span>, <span class="dt">fun =</span> <span class="st">&quot;mean&quot;</span>)</a></code></pre></div>
-<p><img src="450-scientific-figures_files/figure-html/scifig2-1.png" width="672" /></p>
-<p>For example, here we have asked our <code>geom_bar</code> function to plot a summary, specifically the mean of each group, instead of plotting <code>identity</code> which usually means the value as is. Looking at this figure, we can’t guess if the groups are significantly different without an idea of the uncertainty in our measurements through something like error bars.</p>
-<p>Here is the convention for plotting error bars in ggplot2, as you can see it is just another kind of geom that we can add to our plot:</p>
-<p><code>ggplot(data = &lt;SUMMARY DATA&gt;, mapping = aes(&lt;SUMMARY MAPPINGS&gt;) + geom_bar(stat = "identity") + geom_errorbar(aes(&lt;ERROR MAPPINGS&gt;))</code></p>
-<p>This method is straightforward, but you need to have pre-calculated the summary statistic for each group and the amount of error (i.e. standard error) from your data. That “aggregated” dataframe becomes the data that you provide to ggplot, instead of the original dataset.</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" title="1">feeding.data &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(vore) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb240-2" title="2"><span class="st">  </span><span class="kw">summarize</span>(<span class="kw">mean_se</span>(awake))</a></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" title="1">feeding.data</a></code></pre></div>
-<pre><code>## # A tibble: 5 x 4
-##   vore        y  ymin  ymax
-##   &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-## 1 carni   13.6  12.6   14.7
-## 2 herbi   14.5  13.6   15.4
-## 3 insecti  9.06  6.41  11.7
-## 4 omni    13.1  12.4   13.7
-## 5 &lt;NA&gt;    13.8  12.7   14.9</code></pre>
-<p>What does <code>mean_se</code> do? We can check.</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb244-1" title="1">?mean_se</a></code></pre></div>
-<p>This function returns three values, <code>y</code>, <code>ymin</code>, and <code>ymax</code> which correspond to the mean, the mean minus one standard error, and the mean plus one standard error. The mean value will be the height of each bar on the barplot, while <code>ymin</code> corresponds to the bottom of the error bar and <code>ymax</code> to the top of the error bar.</p>
-<p>Let’s first plot the height of the bars using this new <code>feeding.data</code> dataset and mapping <code>y</code> to our new <code>y</code> column generated from the <code>mean_se</code> function. Here we create the same plot as before from this aggregated dataset, just showing the mean value in each group.</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" title="1">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(feeding.data, <span class="kw">aes</span>(<span class="dt">x =</span> vore, <span class="dt">y =</span> y)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb245-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat =</span> <span class="st">&quot;identity&quot;</span>)</a>
-<a class="sourceLine" id="cb245-3" title="3">my.plot</a></code></pre></div>
-<p><img src="450-scientific-figures_files/figure-html/scifig5-1.png" width="672" /></p>
-<p>Now we add the error bars, mapping the <code>ymin</code> and <code>ymax</code> values to the arguments that happen to have the same name in the <code>geom_errorbar</code> function. We add in the <code>width</code> setting just for aesthetics.</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" title="1">my.plot &lt;-<span class="st"> </span>my.plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin =</span> ymin, <span class="dt">ymax =</span> ymax),</a>
-<a class="sourceLine" id="cb246-2" title="2">                                   <span class="dt">width =</span> <span class="fl">0.2</span>)</a>
-<a class="sourceLine" id="cb246-3" title="3">my.plot</a></code></pre></div>
-<p><img src="450-scientific-figures_files/figure-html/scifig6-1.png" width="672" /></p>
-<p>Now it is more clear that insectivores have significantly less time awake compared to other kinds of mammals.</p>
+<div id="day-5---building-workflows-using-packages-writing-reusable-code-sharing-analyses" class="section level1">
+<h1><span class="header-section-number">4</span> Day 5 - building workflows, using packages, writing (re)usable code, sharing analyses</h1>
+<p>Today we’re going to learn about applying these R
+skills to
+repeat, reproduce, extend, and share your analyses.</p>
+<p>First, let’s review the last two days.</p>
+<!-- exercise -->
+<ul>
+<li>What have we done?</li>
+<li>How do we do it many times?</li>
+<li>Crack open your code - can you use it again?</li>
+<li>Can you adapt it to modify your question,
+feed in new data, and modify the
+scientifically-important bits easily?</li>
+<li>Can you share it with someone and they follow
+along?</li>
+</ul>
 <hr />
-</div>
-<div id="showing-trends-in-data" class="section level3">
-<h3><span class="header-section-number">3.5.2</span> Showing trends in data</h3>
-<p>Lots of these different figures summarize or aggregate the data. We may want to display the data with the individual points, but still show the overall trend across the data. Some good plots that do this are <code>geom_density_2d</code> which provides a contour plot.</p>
-<p>Let’s check out the trend in our <code>msleep</code> data between body weight and brain weight. We will create a new column where we take the log value of body weight, like we did with brain weight.</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" title="1">msleep3 &lt;-<span class="st"> </span>msleep2 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">bodywt_log =</span> <span class="kw">log</span>(bodywt))</a>
-<a class="sourceLine" id="cb247-2" title="2"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep3, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb247-3" title="3"><span class="st">  </span><span class="kw">geom_density_2d</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb247-4" title="4"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<p><img src="450-scientific-figures_files/figure-html/scifig7-1.png" width="672" /></p>
-<p>As you can see the density of points almost look like they fit a line. As brain weight increases then body weight increases, or vice versa. We can add a trendline to this plot with the <code>geom_smooth</code> function.</p>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" title="1"><span class="kw">ggplot</span>(msleep3, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> bodywt_log)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb248-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb248-3" title="3"><span class="st">  </span><span class="kw">geom_smooth</span>()</a></code></pre></div>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="450-scientific-figures_files/figure-html/scifig8-1.png" width="672" /></p>
-<p>We can also do this with trendlines that summarize only certain subsets of the data, such as those that belong to a specific category. We will flip back to our <code>iris</code> dataset to look at how sepal length compares to sepal width between different species of iris.</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Sepal.Width)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb250-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb250-3" title="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Species)) </a></code></pre></div>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="450-scientific-figures_files/figure-html/scifig9-1.png" width="672" /></p>
-<p>We create a seaprate trendline for each by specifiying the <code>aes</code> with color mapping to <code>Species</code> within the <code>geom_smooth</code> function.</p>
-<p>The above plot may make it hard to see the data that is contributing to each trend line. Using <code>facet_wrap</code> again, we can split the figure into separate panel where the data has been filtered by the category (i.e. species).</p>
-<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> iris, <span class="dt">mapping =</span> <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">y =</span> Sepal.Width)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb252-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb252-3" title="3"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="kw">aes</span>(<span class="dt">color =</span> Species)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb252-4" title="4"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>Species)</a></code></pre></div>
-<pre><code>## `geom_smooth()` using method = &#39;loess&#39; and formula &#39;y ~ x&#39;</code></pre>
-<p><img src="450-scientific-figures_files/figure-html/scifig10-1.png" width="672" /></p>
-<p>Now it is clear that there is a positive correlation (as one goes up, the other goes up) in each species of iris, but some species have a sharper upward trend than others.</p>
+<p>Our goals are to learn how to:</p>
+<ul>
+<li>read lots of files, and different kinds of delimited files</li>
+<li>use loops to do similar steps for many inputs</li>
+<li>obtain and use packages to user other people’s work</li>
+<li>how to get more help and documentation</li>
+<li>write code, and design workflows, while thinking about future readers/users</li>
+<li>design steps/chunks of work as modular functions to make adaptable workflows</li>
+<li>more fun tricks in generating Rmarkdown reports</li>
+</ul>
 <hr />
-</div>
-<div id="saving-figures-locally" class="section level3">
-<h3><span class="header-section-number">3.5.3</span> Saving figures locally</h3>
-<p>As you produce analysis in your research, you may want to create high-quality images of your figures to then use in presentations or publications. There are two easy ways to save images as an individual file on your computer,</p>
-<p>The first method uses <code>ggsave</code> to save the most recent ggplot figure you generated.</p>
-<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" title="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb254-2" title="2"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
-<a class="sourceLine" id="cb254-3" title="3"><span class="kw">ggsave</span>(<span class="st">&quot;plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
-<p>This function will save the figure just produced by this code wherever your directory is currently. You can check your current directory with <code>getwd()</code> and change with <code>setwd(&lt;FOLDER NAME&gt;)</code>. You can also provide a precise file path in the new file name.</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" title="1"><span class="kw">ggsave</span>(<span class="st">&quot;~/Downloads/plot.png&quot;</span>, <span class="dt">width =</span> <span class="dv">5</span>, <span class="dt">height =</span> <span class="dv">5</span>)</a></code></pre></div>
-<p>Here is an alternative method for saving your figures:</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" title="1"><span class="kw">pdf</span>(<span class="st">&quot;plot.pdf&quot;</span>) <span class="co"># creates the file</span></a>
-<a class="sourceLine" id="cb256-2" title="2"><span class="co"># png() also works if you want a different file format</span></a>
-<a class="sourceLine" id="cb256-3" title="3"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb256-4" title="4"><span class="st">  </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a>
-<a class="sourceLine" id="cb256-5" title="5"><span class="kw">dev.off</span>() <span class="co"># finishes editing the file</span></a></code></pre></div>
-<p>Any changes to the figure that are contained between the initial creation of the figure (i.e. the <code>pdf</code> command) and the <code>dev.off</code> command will be included in the final saved image. However, the figure is being printed directly to the file it is writing and won’t appear elsewhere.</p>
+<p><strong>Preparing for Today:</strong>
+Please make sure you have completed all readings and activities from
+Section 3: Day 4 - tidyverse and visualizations. You will also have some time
+at the start of the day to do the first sections 4.1-4.3.</p>
+<p>Before you start reading through Section 4 for today or taking part in synchronous activities, download and <a href="https://github.com/darachm/dll-r/blob/main/worksheets/dll-r_Day5_Lab.Rmd">open today’s worksheet</a>. On this Github page, please right-click the button that says “Raw” and click “Save Link As…” to get a local copy of this Rmd file on your computer and open it in Rstudio.</p>
+<p><strong>Today’s Schedule:</strong></p>
+<table>
+<colgroup>
+<col width="19%" />
+<col width="16%" />
+<col width="19%" />
+<col width="43%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Start Time</th>
+<th>End Time</th>
+<th>Activity</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10:00 AM PDT</td>
+<td>10:15 AM PDT</td>
+<td>Synchronous - lecture</td>
+<td>Review workflows (4.1)</td>
+</tr>
+<tr class="even">
+<td>10:15 AM PDT</td>
+<td>10:45 AM PDT</td>
+<td>Asynchronous - video etc</td>
+<td>Build an analysis of protein sequences</td>
+</tr>
+<tr class="odd">
+<td>10:45 AM PDT</td>
+<td>11:30 AM PDT</td>
+<td>Synchronous - group</td>
+<td>Extending the analysis to look for motifs … and what else? string data?</td>
+</tr>
+<tr class="even">
+<td>11:30 AM PDT</td>
+<td>12:00 PM PDT</td>
+<td>Synchronous - discussion</td>
+<td>Demo/discuss some places to find help (group notes of good places to find help, how people look for R help)</td>
+</tr>
+<tr class="odd">
+<td>12:00 PM PDT</td>
+<td>12:30 PM PDT</td>
+<td>Break</td>
+<td>Take a computer break!</td>
+</tr>
+<tr class="even">
+<td>12:30 PM PDT</td>
+<td>12:45 PM PDT</td>
+<td>Synchronous - lecture</td>
+<td>Modular functions</td>
+</tr>
+<tr class="odd">
+<td>12:45 PM PDT</td>
+<td>1:15 PM PDT</td>
+<td>Asynchronous - video etc</td>
+<td>Packages - install stuff</td>
+</tr>
+<tr class="even">
+<td>1:15 PM PDT</td>
+<td>1:45 PM PDT</td>
+<td>Snychronous - group</td>
+<td>Do a Bioconductor tutorial</td>
+</tr>
+<tr class="odd">
+<td>1:45 PM PDT</td>
+<td>2:15 PM PDT</td>
+<td>Break</td>
+<td>Take a computer break!</td>
+</tr>
+<tr class="even">
+<td>2:15 PM PDT</td>
+<td>2:45 PM PDT</td>
+<td>Synchronous - discussion</td>
+<td>Writing (re)usable code</td>
+</tr>
+<tr class="odd">
+<td>2:45 PM PDT</td>
+<td>3:30 PM PDT</td>
+<td>Synchronous - group</td>
+<td>Compile a bunch of rmarkdown reports, catch up</td>
+</tr>
+</tbody>
+</table>
+
+<div id="what-is-a-workflow" class="section level3">
+<h3><span class="header-section-number">4.0.1</span> What is a workflow?</h3>
+<p>What does it take to do an analysis?</p>
+<p>When you embark on some project, it’s helpful (but not necessary) to plan
+where you are going.
+It’s best to setup and keep track of factors like:</p>
+<ul>
+<li>What data am I analyzing? What format is it in, and is that going to change?
+Will there be a lot more of this data that I want to process in the future?</li>
+<li>What kind of analyses do I want to do? What major steps do I have in my
+process? <em>What work from others can I re-use and build upon?</em></li>
+<li>What do I want to generate? What is the desired outcome, and for whom is
+this intended?</li>
+</ul>
+<p>In the author’s experience, bioinformatic workflows often involve reading in
+big (or many) flat files, processing the data into a useful form, sometimes
+using extra packages to analyze the data, then generating plots and statistical
+summaries of what you found - usually in an Rmarkdown-generated report.</p>
+<hr />
 
 </div>
 </div>
@@ -382,8 +431,8 @@ for (var i=0; i < listz.length; i++) {
           </div>
         </div>
       </div>
-<a href="making-plots-with-ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="applying-basic-stats.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="applying-basic-stats.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analyzing-viral-protein-sequences.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -415,7 +464,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/darachm/dll-r/edit/main/450-scientific-figures.Rmd",
+"link": "https://github.com/darachm/dll-r/edit/main/500-day5-intro.Rmd",
 "text": "Edit"
 },
 "history": {
