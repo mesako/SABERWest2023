@@ -1,0 +1,239 @@
+---
+title: "Worksheet for Day 3 - introduction to R"
+author: "YOUR NAME HERE"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Instructions for this Worksheet
+
+Please be sure to write in your code or response underneath each prompt. Be sure that the code is able to execute completely and that the result you expect is shown in the resulting html file.
+
+------
+
+#### Section 2.1: Navigating Rstudio
+
+------
+
+#### Section 2.2: Using Rmds
+
+------
+
+#### Section 2.3: Getting started in R
+
+##### Section 2.3.1: Getting help in R
+
+**Task:** use the `help` function to look up another function that you have seen used before, or Google for popular functions in R. This function shows results if you use it within a .R file or within the console as the documentation appears in one panel of RStudio. Which function did you look up?
+
+```{r}
+?rm
+help(rm)
+```
+
+*Your response here*
+
+##### Section 2.3.2: Using variables and datatypes
+
+**Task:** try assigning multiple other variables below. See what types of data works to save and what variable names are acceptable in R. Discuss your findings with a programming buddy.
+
+```{r}
+save.string <- "hello"
+save.bool <- TRUE
+
+# Your code here
+```
+
+**Task:** check that you can only remove one or two of the new variables you created, but that you can see the other ones still retained when you call the `ls` function.
+
+```{r}
+# Your code here
+```
+
+##### Section 2.3.3: Using functions
+
+**Task:** ???
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+#### Synchronous Activities
+
+**If you reach this point during the asynchronous session, please stop and wait until the synchronous session starts.**
+
+**Task:** ???
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+
+------
+
+#### Section 2.4: Working with vectors
+
+##### Section 2.4.1: Building vectors
+
+**Task:** try making a vector that contains elements of different data types (character strings like "this" or numeric values like 12).
+
+```{r}
+# Your code here
+```
+
+**Task:** figure out what happens when you try to add two vectors containing numeric values that are of different lengths (i.e. one vector contains three numbers, the other vector contains five numbers).
+
+```{r}
+# Your code here
+```
+
+**Task:** make a vector that contains only odd numbers between 9 and 35.
+
+```{r}
+# Your code here
+```
+
+**Task:** make a vector that contains five of each number between 3 and 6.
+
+```{r}
+# Your code here
+```
+
+##### Section 2.4.2: Indexing and subsetting vectors
+
+**Task:** index into the vector `all.heart.rates` and access only ever other number contained in that vector.
+
+```{r}
+# Your code here
+```
+
+**Task:** index into the vector `letters` and access only the last ten letters.
+
+```{r}
+# Your code here
+```
+
+##### Section 2.4.3: Using logic and logicals
+
+**Task:** check what happens when you check that a vector of numeric values is less than or greater than a certain number. What might you be able to do with this information?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task:** pretend that fruits are on sale 20% off. Figure out the new prices. Then calculate how much it would cost for someone to buy three apples, one pineapple, and two pears. Check your work with a programming buddy and compare the strategies you used.
+
+```{r}
+# Your code here
+```
+
+##### Section 2.4.4: Modifying vectors
+
+**Task:** ???
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+#### Section 2.5: Working with dataframes
+
+##### Section 2.5.1: Indexing and subsetting dataframes
+
+**Task:** check what arguments the `matrix` function takes.
+
+```{r}
+# Your code here
+```
+
+**Task:** try to access into the `A` matrix and only pull out the values 6, 7, and 8.
+
+```{r}
+# Your code here
+```
+
+**Task:** try to create a matrix that contains both character strings (like "apple") and numeric values (like 26). Check what the matrix looks like. What has happened?
+
+```{r}
+# Your code here
+```
+
+##### Section 2.5.2: Exploring dataframes
+
+**Task:** investigate what the `dim` function does when you provide it with a matrix.
+
+```{r}
+# Your code here
+```
+
+**Task:** access only specific columns of the `cats` dataframe using either the index or the name of the dataframe column.
+
+```{r}
+# Your code here
+```
+
+**Task:** use the diagnostic functions (e.g. `dim`) on the entire `cats` dataframe as well as check the type/class of individual rows or columns of this dataframe.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+##### Section 2.5.3: Building and modifying dataframes
+
+**Task:** try to add a new cat (a new row of values) to the `cats` dataframe using the `rbind` function. What happens? Share with your programming buddy.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+##### Section 2.5.4: Handling datatypes in dataframes
+
+**Task:** check the typeof or class of this column that contains the coat colors.
+
+```{r}
+# Your code here
+```
+
+**Task:** overwrite the first column of the `cats` dataframe with the first column converted to a character vector (instead of a factor). Check if you are now able to add new cat measurements with the `rbind` function and if you still get the same error.
+
+```{r}
+# Your code here
+```
+
+**Task:** test some of these same manipulations on the `gapminder` dataset!
+
+```{r}
+# Your code here
+```
+
+------
+
+#### Synchronous Activities
+
+**If you reach this point during the asynchronous session, please stop and wait until the synchronous session starts.**
+
+**Task:** ???
+
+```{r}
+# Your code here
+```
+
+*Your response here*

@@ -26,4 +26,4 @@ Please read through all parts of Section 1: Workshop Introduction.
 | 12:45 PM PDT  | 1:30 PM PDT | Asynchronous  | Work through sections 2.4-2.5 |
 | 1:30 PM PDT   | 2:30 PM PDT | Synchronous   | Peer coding exercises on Zoom |
 | 2:30 PM PDT   | 3:00 PM PDT | Snack Break   | Take a computer break!        |
-| 3:00 PM PDT   | 3:30 PM PDT | Asynchronous  | Wrap-up session on Zoom       |
+| 3:00 PM PDT   | 3:30 PM PDT | Synchronous   | Wrap-up session on Zoom       |

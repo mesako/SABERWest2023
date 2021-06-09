@@ -1,0 +1,29 @@
+---
+title: "Worksheet for Day 5 - building workflows"
+author: "YOUR NAME HERE"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Instructions for this Worksheet
+
+Please be sure to write in your code or response underneath each prompt. Be sure that the code is able to execute completely and that the result you expect is shown in the resulting html file.
+
+------
+
+#### Section 4.2: Loops to read many files
+
+##### Section 4.2.1: Reading in one file
+
+**Task:** ???
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+

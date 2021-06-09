@@ -1,0 +1,206 @@
+---
+title: "Worksheet for Day 4 - tidyverse and visualizations"
+author: "YOUR NAME HERE"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Instructions for this Worksheet
+
+Please be sure to write in your code or response underneath each prompt. Be sure that the code is able to execute completely and that the result you expect is shown in the resulting html file.
+
+------
+
+#### Section 3.1: Reading and processing data
+
+##### Section 3.1.1: Loading a file into R
+
+**Task:** ?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+##### Section 3.1.2: Handling issues in data
+
+**Task:** ?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+#### Section 3.2: Using tidyverse
+
+------
+
+#### Section 3.3: Using tidyverse
+
+------
+
+#### Synchronous Activities
+
+**If you reach this point during the asynchronous session, please stop and wait until the synchronous session starts.**
+
+**Task:** ???
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+#### Section 3.4: Making plots with ggplot2
+
+##### Section 3.4.1: Getting started with a ggplot
+
+**Task:** ?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+##### Section 3.4.2: Changing plot aesthetics
+
+**Task:** ?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+##### Section 3.4.3: Exploring simple plots
+
+**Task:** ?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+##### Section 3.4.4: Visualizing between groups
+
+**Task:** ?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+##### Section 3.4.5: Generating heatmaps
+
+**Task:** ?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+#### Section 3.5: Making scientific figures
+
+##### Section 3.5.1: Plotting error bars
+
+**Task:** ?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+##### Section 3.5.2: Showing trends in data
+
+**Task:** ?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+##### Section 3.5.3: Saving figures locally
+
+**Task:** ?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+#### Synchronous Activities
+
+**If you reach this point during the asynchronous session, please stop and wait until the synchronous session starts.**
+
+**Task:** ???
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+#### Section 3.6: Applying basic stats
+
+##### Section 3.6.1: Describing quantitative variables
+
+**Task:** ?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+##### Section 3.6.2: Finding differences in data
+
+**Task:** ?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+##### Section 3.6.3: Identifying correlations
+
+**Task:** ?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+##### Section 3.6.4: Producing linear models
+
+**Task:** ?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
