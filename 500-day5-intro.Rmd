@@ -33,14 +33,19 @@ Our goals are to learn how to:
 - design steps/chunks of work as modular functions to make adaptable workflows
 - more fun tricks in generating Rmarkdown reports
 
+---
+
 **Preparing for Today:**
-Please make sure you have completed all readings and activities from Section 3: Day 4 - tidyverse and visualizations. You will also have some time at the start of the day to do the first sections 4.1-4.3.
+Please make sure you have completed all readings and activities from 
+Section 3: Day 4 - tidyverse and visualizations. You will also have some time 
+at the start of the day to do the first sections 4.1-4.3.
 
 **Today's Schedule:**
 
 |   Start Time  |   End Time  |   Activity    |          Description          |
 | ------------- | ----------- | ------------- | ----------------------------- |
-| 10:00 AM PDT  | 10:45 AM PDT| Asynchronous  | Work through sections 4.1-4.3 |
+| 10:00 AM PDT  | 10:15 AM PDT| Synchronous   | Review workflows (4.1)        |
+| 10:15 AM PDT  | 10:45 AM PDT| Asynchronous  | Work through sections 4.2-4.3 |
 | 10:45 AM PDT  | 11:30 AM PDT| Synchronous   | Peer coding exercises on Zoom |
 | 11:30 AM PDT  | 12:15 PM PDT| Asynchronous  | Work through sections 4.4     |
 | 12:15 PM PDT  | 12:45 PM PDT| Lunch Break   | Take a computer break!        |

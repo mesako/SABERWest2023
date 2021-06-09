@@ -1,4 +1,5 @@
-## What is a workflow?
+
+### What is a workflow?
 
 What does it take to do an analysis?
 
