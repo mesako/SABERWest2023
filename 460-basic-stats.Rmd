@@ -123,10 +123,10 @@ We can see that the correlation is 0.93, a value very close to 1. This suggests 
 There are multiple types of correlations. The `cor` function uses a Pearson correlation by default and can use different methods like Spearman. Let's explore the difference between these correlations by looking at the relationship between the log value of brain weight and length of sleep cycle
 
 ```{r,stats13a,cache=TRUE}
-msleep2 <- msleep %>% 
+msleep3 <- msleep %>% 
   mutate(brainwt_log = log(brainwt)) %>% 
   drop_na(brainwt_log, sleep_cycle)
-ggplot(msleep2, aes(x = brainwt_log, y = sleep_cycle)) + 
+ggplot(msleep3, aes(x = brainwt_log, y = sleep_cycle)) + 
   geom_point() + geom_smooth(method = "lm")
 ```
 
@@ -143,19 +143,23 @@ Pearson correlations are higher when the data fits to a straight line like a tre
 
 ### Producing linear models
 
-identify and use linear regression lm() using both raw variable and formulaic interfaces
+You may be interested in studying the relationship between one or more variables and some outcome that you care about. To determine if this set of one or more variables are strong predictors of an outcome (some quantitative variable), you can fit a linear model to this data using the `lm` function.
+
+Here we train a linear model to try to predict brain weight from body weight in the `msleep` dataset.
+
+Linear models are established with a formula with the format of `outcome ~ predictor` where we are trying to determine if the predictor is able to help us accurately estimate an outcome.
 
 ```{r,stats14,cache=TRUE}
 my.mod <- lm(formula = brainwt ~ bodywt, data = msleep2)
 summary(my.mod)
 ```
 
+In the summary of the results of this modeling, we see that `bodywt` is a significant predictor of `brainwt` in the `msleep` dataset. We can provide more predictors into our formula in the format: `outcome ~ predictor1 + predictor2 + ...`.
+
 ```{r,stats15,cache=TRUE}
 my.mod2 <- lm(formula = sleep_total ~ bodywt + brainwt, data = msleep2)
 summary(my.mod2)
 ```
 
-```{r,stats16,cache=TRUE}
-my.mod2 <- lm(formula = sleep_total ~ bodywt + brainwt, data = msleep2)
-summary(my.mod2)
-```
+These results suggest that neither `bodywt` nor `brainwt` are significant predictors of `sleep_total`. That means that the value of either of those measurements does not give us information that helps us guess the total sleep duration for a mammal accurately.
+
