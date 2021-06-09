@@ -1,0 +1,156 @@
+
+<!--
+
+```{=html}
+<div class="incremental">
+```
+```{=html}
+</div>
+```
+
+-->
+
+## Functions as modular steps
+
+The beauty and danger of any programming project is that there are many ways
+to organize equivalent functionality.
+While liberating, unorganized variety in your code is more difficult for 
+to read and help you with, and is more difficult for future you to read
+and re-use.
+
+One way to clearly organize code is to use a "functional" approach.
+This approach uses functions, as you learned a bit about on Wednesday,
+to organize your code into "code blocks".
+You "call" this function by giving it "arguments", and the function will
+return "return values".
+
+This approach allows you to focus your attention on making (and testing that) 
+a function does one thing, and does it well.
+Then later you can use these larger pieces in novel combinations to flexibly
+adapt to new requirements in your analysis workflows.
+
+For example, in one of the workshop's author's recent papers, 
+they defined a function that 
+[wrote out multiple ggplot formats](https://github.com/sashaflevy/PPiSeq/blob/646dbe151e7b6044e762fff1cf36b185dffe3bdc/subtree/scripts/homodimer_report.Rmd#L53)
+at once so that 
+[they wouldn't](https://github.com/sashaflevy/PPiSeq/blob/646dbe151e7b6044e762fff1cf36b185dffe3bdc/subtree/scripts/homodimer_report.Rmd#L188)
+[have to](https://github.com/sashaflevy/PPiSeq/blob/646dbe151e7b6044e762fff1cf36b185dffe3bdc/subtree/scripts/homodimer_report.Rmd#L255)
+[re-type that](https://github.com/sashaflevy/PPiSeq/blob/646dbe151e7b6044e762fff1cf36b185dffe3bdc/subtree/scripts/homodimer_report.Rmd#L311)
+[code ever](https://github.com/sashaflevy/PPiSeq/blob/646dbe151e7b6044e762fff1cf36b185dffe3bdc/subtree/scripts/homodimer_report.Rmd#L328)
+[again](https://github.com/sashaflevy/PPiSeq/blob/646dbe151e7b6044e762fff1cf36b185dffe3bdc/subtree/scripts/homodimer_report.Rmd#L373).
+
+---
+
+Functions are handy.
+For example, let's calculate the standard error of a sample of values:
+
+```{=html}
+<div class="incremental">
+```
+```{r,stderr_fail,error=T}
+values <- c(4,3,2,2,5,3,6,2,2,4)
+stderr(values)
+```
+```{=html}
+</div>
+```
+
+```{=html}
+<div class="incremental">
+```
+
+Er ... what? What does `stderr()` do?
+
+Use the help functionality of `?` to figure out what the `stderr()` function
+is built for, and if there are any other functions that calculate the
+standard error of the mean.
+
+```{=html}
+</div>
+```
+
+---
+
+It would appear that functionality is not built into base R.
+Perhaps they assume that everyone will write their own standard error function?
+
+Let's write one.
+
+How do you calculate the standard error of the mean of a sample?
+^[I always forget and look at wikipedia...]
+Does that look familiar from your stats classes?
+
+Let's code it up. I recommend you first develop the code in your functions
+by playing with it interactively:
+
+```{=html}
+<div class="incremental">
+```
+```{r,stderr_calc,cache=T}
+sd(values)/sqrt(length(values))
+```
+
+To use this multiple times, we could just copy and paste it into each script
+or workflow we want to use it in. However, this leaves lots of complexity 
+for the future user to have to handle.
+
+For example, we can copy and paste a new variable name into the code:
+
+```{r,stderr_calc_2,cache=T}
+values2 <- c(10,30,20)
+sd(values2)/sqrt(length(values))
+```
+
+This can lead to errors in writing, small incorrect parts.
+In the above example, I purposefully neglected to change the second `values`
+to `values2`. Did you catch that easily, or did you have to look for it?
+
+Additionally, how do we save it, document it, and share it?
+
+Copy and pasting from a file is okay, but it takes up a lot more work/space.
+We could email around a file of code chunks, or share on a website.
+
+How do we make sure it works?
+
+This is hard to do with copy-paste code chunks. Changing the chunk to work
+on a new input can be an opportunity for introducing errors, typos.
+
+```{=html}
+</div>
+```
+
+---
+
+#### Write it as a function!
+
+This would make a useful function.
+
+- What are the parameters? Are any defaults set?
+- How does it calculate with the parameters?
+- What does it return?
+
+Once it is a function, it can be copy and pasted, 
+or `source()`'d from a `.R` file.
+As you develop it, you can test that it works and change inputs easily.
+Later, you could change the function to fix bugs, and you don't have to then
+fix all the places you copied it to - it's fixing the code _inside_ 
+the function. 
+
+```{=html}
+<div class="incremental">
+```
+```{r,stderr_test,cache=T}
+sez <- function(x) {sd(x)/sqrt(length(x))}
+sez(values)
+
+sez(rnorm(10))
+sez(rnorm(100))
+sez(rpois(1e3,3))
+```
+```{=html}
+</div>
+```
+
+---
+
+
