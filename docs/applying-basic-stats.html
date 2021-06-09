@@ -359,8 +359,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## sample estimates:
 ## mean of x mean of y 
 ##   9.06000  13.86056</code></pre>
-<p>These results show a p-value of</p>
-<p>calculate ANOVA</p>
+<p>These results show a p-value of 0.07, which is not the usual level of significance that most scientists accept (p-value &lt; 0.05).</p>
+<p>However, there are numerous feeding behaviors besides insectivore and we may be interested in comparing the multiple categories against each other. We can use ANOVA (analysis of variance) to see how our quantitative variable is affected by the different kinds of feeding behavior.</p>
 <div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" data-line-number="1">anova.msleep &lt;-<span class="st"> </span><span class="kw">aov</span>(awake <span class="op">~</span><span class="st"> </span>vore, <span class="dt">data =</span> msleep)</a>
 <a class="sourceLine" id="cb272-2" data-line-number="2"><span class="kw">summary</span>(anova.msleep)</a></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)  
@@ -369,69 +369,52 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 7 observations deleted due to missingness</code></pre>
+<p>The p-value of 0.09 suggests that there may not be a strongly significant difference in the average time spent awake between these groups.</p>
 <hr />
 </div>
 <div id="identifying-correlations" class="section level3">
 <h3><span class="header-section-number">3.6.3</span> Identifying correlations</h3>
+<p>When we are examining the relationship between two quantitative variables, we might be interested in whether they correlate with one another. A positive correlation between x and y means that as x increases so does y. A negative correlation between x and y means that as x increases, y decreases. We can use the base R <code>cor</code> function to calculate the correlation between two numeric vectors.</p>
 <div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" data-line-number="1"><span class="kw">cor</span>(msleep<span class="op">$</span>brainwt, msleep<span class="op">$</span>bodywt)</a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<p>know how to deal with NAs</p>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" data-line-number="1"><span class="kw">summary</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
+<p>Notice that we get <code>NA</code> instead of an actual numeric value. Unfortunately there is not an easy setting to have the <code>cor</code> function ignore any <code>NA</code> values. Thus, we need to temporarily remove these values. Let’s first find them with the <code>summary</code> function.</p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" data-line-number="1"><span class="kw">summary</span>(msleep<span class="op">$</span>bodywt)</a></code></pre></div>
+<pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+##    0.005    0.174    1.670  166.136   41.750 6654.000</code></pre>
+<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1"><span class="kw">summary</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ## 0.00014 0.00290 0.01240 0.28158 0.12550 5.71200      27</code></pre>
-<p>?</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1">msleep2 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>(brainwt)</a>
-<a class="sourceLine" id="cb278-2" data-line-number="2"><span class="kw">dim</span>(msleep)</a></code></pre></div>
+<p>There are no <code>NA</code> values in the <code>bodywt</code> column, but there are 27 <code>NA</code> values in the <code>brainwt</code> column. Let’s remove those using a helpful function in tidyverse and save the more complete dataset as <code>msleep2</code>.</p>
+<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" data-line-number="1">msleep2 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>(brainwt)</a>
+<a class="sourceLine" id="cb280-2" data-line-number="2"><span class="kw">dim</span>(msleep)</a></code></pre></div>
 <pre><code>## [1] 83 11</code></pre>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" data-line-number="1"><span class="kw">dim</span>(msleep2)</a></code></pre></div>
+<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1"><span class="kw">dim</span>(msleep2)</a></code></pre></div>
 <pre><code>## [1] 56 11</code></pre>
-<p>identify and use correlation functions
-use different kinds of correlation</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1"><span class="kw">cor</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt)</a></code></pre></div>
+<p>You can see that we dropped 27 rows, corresponding to the mammals for whom brain weight was not measured or available. Now we can try to use the <code>cor</code> function.</p>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" data-line-number="1"><span class="kw">cor</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt)</a></code></pre></div>
 <pre><code>## [1] 0.9337822</code></pre>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" data-line-number="1"><span class="kw">library</span>(Hmisc)</a></code></pre></div>
-<pre><code>## Loading required package: lattice</code></pre>
-<pre><code>## Loading required package: survival</code></pre>
-<pre><code>## Loading required package: Formula</code></pre>
-<pre><code>## 
-## Attaching package: &#39;Hmisc&#39;</code></pre>
-<pre><code>## The following objects are masked from &#39;package:dplyr&#39;:
-## 
-##     src, summarize</code></pre>
-<pre><code>## The following objects are masked from &#39;package:base&#39;:
-## 
-##     format.pval, units</code></pre>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb291-1" data-line-number="1"><span class="kw">rcorr</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt, <span class="dt">type =</span> <span class="st">&quot;pearson&quot;</span>)</a></code></pre></div>
-<pre><code>##      x    y
-## x 1.00 0.93
-## y 0.93 1.00
-## 
-## n= 56 
-## 
-## 
-## P
-##   x  y 
-## x     0
-## y  0</code></pre>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb293-1" data-line-number="1"><span class="kw">rcorr</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt, <span class="dt">type =</span> <span class="st">&quot;spearman&quot;</span>)</a></code></pre></div>
-<pre><code>##      x    y
-## x 1.00 0.96
-## y 0.96 1.00
-## 
-## n= 56 
-## 
-## 
-## P
-##   x  y 
-## x     0
-## y  0</code></pre>
+<p>We can see that the correlation is 0.93, a value very close to 1. This suggests that these variabilities are almost perfectly correlated with each other, which we saw when we plotted these two variables against each other in the prior section.</p>
+<p>There are multiple types of correlations. The <code>cor</code> function uses a Pearson correlation by default and can use different methods like Spearman. Let’s explore the difference between these correlations by looking at the relationship between the log value of brain weight and length of sleep cycle</p>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1">msleep2 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb286-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">brainwt_log =</span> <span class="kw">log</span>(brainwt)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb286-3" data-line-number="3"><span class="st">  </span><span class="kw">drop_na</span>(brainwt_log, sleep_cycle)</a>
+<a class="sourceLine" id="cb286-4" data-line-number="4"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_cycle)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb286-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="460-basic-stats_files/figure-html/stats13a-1.png" width="672" /></p>
+<p>When we plot these variables against each other, including a fitted linear trend line, we can see that there is a relationship between these variables. However, the points do not quite fit a straight line if we look at the edges and center of this fitted line. This will reflect in our calculation of two different correlations.</p>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" data-line-number="1"><span class="kw">cor</span>(msleep2<span class="op">$</span>brainwt_log, msleep2<span class="op">$</span>sleep_cycle, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] 0.8331014</code></pre>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" data-line-number="1"><span class="kw">cor</span>(msleep2<span class="op">$</span>brainwt_log, msleep2<span class="op">$</span>sleep_cycle, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</a></code></pre></div>
+<pre><code>## [1] 0.8726893</code></pre>
+<p>Pearson correlations are higher when the data fits to a straight line like a trend line. However, Spearman correlations do not require a single slope: as long as one value goes up and the other goes up, these values are considered highly correlated.</p>
 <hr />
 </div>
 <div id="producing-linear-models" class="section level3">
 <h3><span class="header-section-number">3.6.4</span> Producing linear models</h3>
 <p>identify and use linear regression lm() using both raw variable and formulaic interfaces</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb295-1" data-line-number="1">my.mod &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> brainwt <span class="op">~</span><span class="st"> </span>bodywt, <span class="dt">data =</span> msleep2)</a>
-<a class="sourceLine" id="cb295-2" data-line-number="2"><span class="kw">summary</span>(my.mod)</a></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" data-line-number="1">my.mod &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> brainwt <span class="op">~</span><span class="st"> </span>bodywt, <span class="dt">data =</span> msleep2)</a>
+<a class="sourceLine" id="cb292-2" data-line-number="2"><span class="kw">summary</span>(my.mod)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = brainwt ~ bodywt, data = msleep2)
@@ -450,8 +433,8 @@ use different kinds of correlation</p>
 ## Residual standard error: 0.3526 on 54 degrees of freedom
 ## Multiple R-squared:  0.8719, Adjusted R-squared:  0.8696 
 ## F-statistic: 367.7 on 1 and 54 DF,  p-value: &lt; 2.2e-16</code></pre>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb297-1" data-line-number="1">my.mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> sleep_total <span class="op">~</span><span class="st"> </span>bodywt <span class="op">+</span><span class="st"> </span>brainwt, <span class="dt">data =</span> msleep2)</a>
-<a class="sourceLine" id="cb297-2" data-line-number="2"><span class="kw">summary</span>(my.mod2)</a></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" data-line-number="1">my.mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> sleep_total <span class="op">~</span><span class="st"> </span>bodywt <span class="op">+</span><span class="st"> </span>brainwt, <span class="dt">data =</span> msleep2)</a>
+<a class="sourceLine" id="cb294-2" data-line-number="2"><span class="kw">summary</span>(my.mod2)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = sleep_total ~ bodywt + brainwt, data = msleep2)
@@ -471,8 +454,8 @@ use different kinds of correlation</p>
 ## Residual standard error: 4.193 on 53 degrees of freedom
 ## Multiple R-squared:  0.1337, Adjusted R-squared:  0.101 
 ## F-statistic: 4.088 on 2 and 53 DF,  p-value: 0.02232</code></pre>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" data-line-number="1">my.mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> sleep_total <span class="op">~</span><span class="st"> </span>bodywt <span class="op">+</span><span class="st"> </span>brainwt, <span class="dt">data =</span> msleep2)</a>
-<a class="sourceLine" id="cb299-2" data-line-number="2"><span class="kw">summary</span>(my.mod2)</a></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" data-line-number="1">my.mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> sleep_total <span class="op">~</span><span class="st"> </span>bodywt <span class="op">+</span><span class="st"> </span>brainwt, <span class="dt">data =</span> msleep2)</a>
+<a class="sourceLine" id="cb296-2" data-line-number="2"><span class="kw">summary</span>(my.mod2)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = sleep_total ~ bodywt + brainwt, data = msleep2)

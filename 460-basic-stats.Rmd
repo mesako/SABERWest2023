@@ -1,6 +1,6 @@
 ## Applying basic stats
 
-```{r, include=FALSE}
+```{r, stats0, cache = TRUE, include=FALSE}
 library(tidyverse)
 ```
 
@@ -76,30 +76,35 @@ head(other.mammals)
 t.test(insectivores, other.mammals, alternative = "less")
 ```
 
-These results show a p-value of 
+These results show a p-value of 0.07, which is not the usual level of significance that most scientists accept (p-value < 0.05).
 
-calculate ANOVA
+However, there are numerous feeding behaviors besides insectivore and we may be interested in comparing the multiple categories against each other. We can use ANOVA (analysis of variance) to see how our quantitative variable is affected by the different kinds of feeding behavior.
 
 ```{r,stats8,cache=TRUE}
 anova.msleep <- aov(awake ~ vore, data = msleep)
 summary(anova.msleep)
 ```
 
+The p-value of 0.09 suggests that there may not be a strongly significant difference in the average time spent awake between these groups.
+
 ------
 
 ### Identifying correlations
+
+When we are examining the relationship between two quantitative variables, we might be interested in whether they correlate with one another. A positive correlation between x and y means that as x increases so does y. A negative correlation between x and y means that as x increases, y decreases. We can use the base R `cor` function to calculate the correlation between two numeric vectors.
 
 ```{r,stats9,cache=TRUE}
 cor(msleep$brainwt, msleep$bodywt)
 ```
 
-know how to deal with NAs
+Notice that we get `NA` instead of an actual numeric value. Unfortunately there is not an easy setting to have the `cor` function ignore any `NA` values. Thus, we need to temporarily remove these values. Let's first find them with the `summary` function.
 
 ```{r,stats10,cache=TRUE}
+summary(msleep$bodywt)
 summary(msleep$brainwt)
 ```
 
-?
+There are no `NA` values in the `bodywt` column, but there are 27 `NA` values in the `brainwt` column. Let's remove those using a helpful function in tidyverse and save the more complete dataset as `msleep2`.
 
 ```{r,stats11,cache=TRUE}
 msleep2 <- msleep %>% drop_na(brainwt)
@@ -107,18 +112,32 @@ dim(msleep)
 dim(msleep2)
 ```
 
-identify and use correlation functions
-use different kinds of correlation
+You can see that we dropped 27 rows, corresponding to the mammals for whom brain weight was not measured or available. Now we can try to use the `cor` function.
 
 ```{r,stats12,cache=TRUE}
 cor(msleep2$brainwt, msleep2$bodywt)
 ```
 
-```{r,stats13,cache=TRUE}
-library(Hmisc)
-rcorr(msleep2$brainwt, msleep2$bodywt, type = "pearson")
-rcorr(msleep2$brainwt, msleep2$bodywt, type = "spearman")
+We can see that the correlation is 0.93, a value very close to 1. This suggests that these variabilities are almost perfectly correlated with each other, which we saw when we plotted these two variables against each other in the prior section.
+
+There are multiple types of correlations. The `cor` function uses a Pearson correlation by default and can use different methods like Spearman. Let's explore the difference between these correlations by looking at the relationship between the log value of brain weight and length of sleep cycle
+
+```{r,stats13a,cache=TRUE}
+msleep2 <- msleep %>% 
+  mutate(brainwt_log = log(brainwt)) %>% 
+  drop_na(brainwt_log, sleep_cycle)
+ggplot(msleep2, aes(x = brainwt_log, y = sleep_cycle)) + 
+  geom_point() + geom_smooth(method = "lm")
 ```
+
+When we plot these variables against each other, including a fitted linear trend line, we can see that there is a relationship between these variables. However, the points do not quite fit a straight line if we look at the edges and center of this fitted line. This will reflect in our calculation of two different correlations.
+
+```{r,stats13b,cache=TRUE}
+cor(msleep2$brainwt_log, msleep2$sleep_cycle, method = "pearson")
+cor(msleep2$brainwt_log, msleep2$sleep_cycle, method = "spearman")
+```
+
+Pearson correlations are higher when the data fits to a straight line like a trend line. However, Spearman correlations do not require a single slope: as long as one value goes up and the other goes up, these values are considered highly correlated.
 
 ------
 
