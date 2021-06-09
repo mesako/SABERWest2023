@@ -143,18 +143,24 @@ for (i in list.files(path="data/viral_structural_proteins",
 }
 ```
 
-And yep, we have 
+And yep, we have lengths of protein sequences.
+
+...
+
+What now?
 
 ---
 
 #### Storing values from a loop
 
-How do we store this value?
+How do we store these values for later analysis?
 
 In other languages, "append". But R is not built that way. It'll work,
 but it's very inefficient. The "R-way" to store values from a loop
 is to define a vector of the right length, 
 then put each element in it.
+
+Here's some example vectors that we can create.
 
 ```{r,vector_of_size,cache=T}
 vector("character",10)
@@ -168,19 +174,21 @@ Okay, but how do we access each position to save the value?
 We need to turn out list of files into indicies.
 We'll save it first so we can count how many there are.
 
-`seq_along` is handy function, otherwise use something like
-`seq(1,length(x))`.
+`seq_along` is handy function to create a number sequence along a vector, 
+otherwise use something like `seq(1,length(x))`.
 
 ```{r,loop_save_and_index,cache=T}
 first_five <- list.files(path="data/viral_structural_proteins")[1:5]
+
 for (i in seq_along(first_five) ) {
-  print(first_five[i])
+    print(i)
+    print(first_five[i])
 }
 ```
 
 ---
 
-Putting these together, we can save a vector of file names:
+Putting these together, we can create and save a vector of file names:
 
 ```{r,loop_save_and_index_filenames,cache=T}
 first_five <- list.files(path="data/viral_structural_proteins")[1:5]
@@ -235,9 +243,15 @@ How do we go about visualizing/analyzing this?
 hist(lengthz)
 ```
 
-er what...?
+er what...? Debug! What is `lengthz`?
 
-Numeric....
+```{r,debug_lengthz,cache=T}
+str(lengthz)
+```
+
+Character? Let's try numeric instead...
+
+---
 
 ```{r,loop_to_calc_lengths_all_fixed,cache=T,error=T}
 first_five <- list.files(path="data/viral_structural_proteins",
@@ -253,11 +267,15 @@ for (i in seq_along(first_five) ) {
 
 ---
 
+Base R histogram
+
 ```{r,base_viz_protein_lengths_fix,cache=T,error=T}
 hist(lengthz,breaks=50)
 ```
 
 ---
+
+More fancy ggplot
 
 ```{r,ggplot_viz_protein_lengths,cache=T,error=T}
 library(ggplot2)
@@ -268,5 +286,12 @@ summary(lengthz)
 ```
 
 ---
+
+And that's about how long the viral structural proteins in this database
+tend to be.
+
+- How do we extend this analysis to add more files?
+- How do we calculate new properties about the sequences?
+- How do we store that?
 
 
