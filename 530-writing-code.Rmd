@@ -8,7 +8,7 @@ and modify the scientifically-important bits easily?
 
 ---
 
-#### Examples
+### Examples
 
 Let's look at two chunks of code from 
 [a paper](https://github.com/sashaflevy/PPiSeq) (lightly edited).
@@ -42,16 +42,22 @@ length(which(bad_index == 1)) # 1447775
 Here's another example from the same author:
 
 ```{r,example2,eval=F}
-H202_Output <- PPI_calling_sigmoid(
-    PPI_multiple=dataFrameReader_T("/Volumes/zmliu_02/PPiseq_03/H2O2/counts/PPI_multiple_p.values.csv"),
-    specific_PPV=c(seq(0.5,0.58,by=0.02),seq(0.6,0.8,by=0.01),seq(0.82,0.9,by=0.02)),
-    Fitness=fitness(0,1,0.01),
-    p_value=seq(-4,0,0.1),
-    Neg_number_PPI=6e4,
-    Neg_ref_number=50, 
-    p_threshold=-4
-    p_loc=6, 
-)
+Random_reference <- function(PPI_multiple, all_PPI_filtered, size, sampling_number){
+  PPI_PPiseq = PPI_multiple[,1]
+  RRS_size= 0
+  RRS= character(length=0)
+  while (RRS_size < size) {
+    yeast_PPI_random= all_PPI_filtered[sample(1: length(all_PPI_filtered), sampling_number, replace=F)]
+    RRS= unique(c(RRS, yeast_PPI_random))
+    RRS_overlap= intersect(RRS, PPI_PPiseq)
+    RRS_size= length(RRS_overlap)
+  } 
+  RRS_duplicate_marked = mark_duplicates_fast(RRS_overlap)
+  return (RRS_duplicate_marked[,1])
+}
+
+# ... and later ...
+Random_reference(PPI_multiple, all_PPI_filtered, number_PPI, sample_number)
 ```
 
 <!-- exercise -->
@@ -70,14 +76,15 @@ What's a lot of effort to do?
 
 ### Style guides can be inspiring
 
+What's your coding style going to be?
+
 - [tidyverse style guide](https://style.tidyverse.org/)
 - [google-specific changes](https://google.github.io/styleguide/Rguide.html)
 - [Jean Fan's](https://jef.works/R-style-guide/)
 - search for "R style guide"
 
-What style should you use?
+Be inconsistently consistent! Do what works!
 
-Be inconsistently consistent!
 Balance for yourself:
 
 - How easy is it to write?
@@ -86,15 +93,15 @@ Balance for yourself:
 - How similar is it to what everyone else is doing (a very good thing)?
 
 But most importantly, use what folks around you are using.
-Be lazy, imitate others!
+Be lazy and copy others!
 
 ---
 
 <!-- exercise -->
 
 - How would you describe your code writing style?
-- How do you name things?
+- How do you name variables, functions?
 - How good are your comments?
-- What ideas would you like to incorporate?
+- Are there any ideas here you would like to incorporate?
 
 ---

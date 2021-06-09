@@ -1,23 +1,21 @@
 
+### Extending the workflow
 
-### Using functions to write modular code
+How do you think about/plan the workflow we've built?
 
-How might you carry out the workflow from the previous work to
-calculate protein sequence lengths?
+One way is to flatten out all the tasks, 
+and to script each individual task every time it is done.
+This requires the author, user, and reader to understand a lot of complexity.
 
 ```{=html}
 <div class="incremental">
 ```
 
-One way is to flatten out all the tasks, 
-and to script each individual task each time.
-This requires the author, user, and reader to understand a lot of complexity.
-
 ```{=html}
 <div class="mermaid">
 graph TD
-    classDef default line-height:10px;
-    classDef three line-height:10px,fill:yellow;
+    classDef default line-height:12px;
+    classDef three line-height:12px,fill:yellow;
     you[analyst] --> B[finding files] &    C[making a vector] &    D[looping] &    E[reading files] &    F[getting protein seq] &    G[calculting and saving nchar] &    H[plotting nchar]
     B:::three;
     C:::three;
@@ -34,10 +32,10 @@ Another way to approach this is to cluster them into a hierarchy of modules.
 ```{=html}
 <div class="mermaid">
 graph TD
-    classDef default line-height:10px;
-    classDef one  line-height:10px,fill:pink;
-    classDef two line-height:10px,fill:cyan;
-    classDef three line-height:10px,fill:yellow;
+    classDef default line-height:12px;
+    classDef one  line-height:12px,fill:pink;
+    classDef two line-height:12px,fill:cyan;
+    classDef three line-height:12px,fill:yellow;
     you2[analyst] --> find & read & plot;
     find:::one --> B;
     B[finding files]:::three;
@@ -86,99 +84,54 @@ graph LR
     classDef default line-height:12px;
     vp[read viral proteins] --> cl[calculate lengths] --> hist[histogram]
     hp[read human proteins] --> cl --> boxplot[boxplot]
-    vp --> cgc[calculate GC%] --> gchist[histogram]
-    hp --> cgc --> gcboxplot[boxplot]
+    vp --> cmotif[find a particular motif] --> motifhist[histogram]
+    hp --> cmotif --> motifboxplot[boxplot]
 </div>
 ```
 
----
+Where maybe these are how the inputs/outputs are defined:
 
-### Tips for modular workflows
-
-- Try to not "hardcode" things - if it's a number, consider if it can be a
-    *parameter* that is "passed in" as an argument.
-
-- Group repeated code functions - some folks say you should never repeat
-    code (but do what works for you!).
-
-- Try to read inputs and outputs as general, flexible formats -
-    strings of filenames, vectors of values
-
-- Write a comment at the top of the function that says what it's doing
-    and what to expect, generally comment things.
-
-Consider, the `list.files()` and `hist()` functions are already built this way!
-How about a `ggplot2` style boxplot?
+    reading_proteins:
+        input: directory path of proteins to read
+        output: protein sequences
+    calculating lengths:
+        input: protein sequences
+        output: numeric vector, of lengths
+    finding a motif:
+        input: protein sequences
+        output: numeric vector, of presence/absence
 
 ---
 
-#### Let's write a plotting module/function
+#### Looking for a smoking motif...
 
-Write a function that makes a ggplot2 boxplot for some numbers.
+Some folks believe the insertion of an amino-acid sequence of `PRRA`, relative
+to other related coronaviruses, is very rare and a clear sign of engineering.
+I don't know hardly anything about furin-cleavage sites or viral evolution,
+but we can use the tools we have to look for this sequence in the files.
 
-What should the function take, what should it do?
+Let's do that^[
+    ...since we're just demonstrating R coding and not representing ourselves as 
+    being familiar enough with the field to properly interpret these results.
+    I have no idea what occurance of this would mean or not mean, or are we
+    doing any sort of statistics or comparisons to null expectations.]:
 
-What is "some numbers"?
+1. Figure out how to search for "PRRA" in a character string of a protein
+    sequence.
 
-What should it return?
+    - try using `grepl`, like so: `grepl("PRRA",protein_sequence)`
+        where `protein_sequence` is the variable containing the
+        protein sequence (similar to what you put into `nchar` before!).
 
-[NOTE]: calling ggplot inside a function may not print, you may have to
-    wrap it in `print(ggplot code)` or return the ggplot object as
-    a variable
+2. Modify your `for` loop to now look for this motif instead of calculating
+    number of characters. 
+    Save the values in a "numeric" vector.
+    ^[Why not logical, since these are logical results? It makes the `hist()`
+        step slightly easier.]
 
----
-
-### More complex workflow
-
-Let's write a simulation of viral evolution.
-
-(could be a bad idea, considering....)
-
-More examples/exercise
-
-show a simulation of something…. genetic drift of a virus replicating?
-
-lineage G1312F
-
-exercise - wrap the entire analysis as a function
-
-talk about ease of calling
-
-ease of tweaking this
-
-exercise - break into subfunctions, generate and plot
-
-ease of changing models
+3. Plot the results. How often do you find this motif in this dataset?
 
 ---
-
-### Apply is a popular tool
-
-Apply is another common way of doing something over and over.
-It is a very compact way to take pieces of a list, vector, dataframe, or matrix
-and put them into a function. There are:
-
-- `apply` - for 2D objects
-- `lapply` - for lists and vectors
-- `sapply` - is `lapply` but with simplified returns
-- `mapply` - is for combinations of multiple variables
-- `replicate` - calls a function multiple times
-
-Some people *strongly* prefer coding this way. Here is an example:
-
-```{r,example_apply,cache=T}
-list_of_protein_files <- lapply(
-        list.files("data/viral_structural_proteins/",full.names=T),
-        read.delim,
-        sep="\t",header=F)
-```
-
-These "apply" some "FUN" to some input variables, by taking each element or
-slices of elements from input variables and putting them in as arguments
-to the function being applied. They return odd things, often lists (`unlist()`).
-
----
-
 
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>
