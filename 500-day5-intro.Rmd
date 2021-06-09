@@ -40,6 +40,8 @@ Please make sure you have completed all readings and activities from
 Section 3: Day 4 - tidyverse and visualizations. You will also have some time 
 at the start of the day to do the first sections 4.1-4.3.
 
+Before you start reading through Section 4 for today or taking part in synchronous activities, download and [open today's worksheet](https://github.com/darachm/dll-r/blob/main/worksheets/dll-r_Day5_Lab.Rmd). On this Github page, please right-click the button that says "Raw" and click "Save Link As..." to get a local copy of this Rmd file on your computer and open it in Rstudio.
+
 **Today's Schedule:**
 
 |   Start Time  |   End Time  |   Activity    |          Description          |

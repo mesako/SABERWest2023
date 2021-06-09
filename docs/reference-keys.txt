@@ -56,7 +56,7 @@ back-to-the-file-reading
 loops---doing-a-similar-task-multiple-times
 what-are-loops
 storing-values-from-a-loop
-extending-the-workflow
+using-functions-to-write-modular-code
 tips-for-modular-workflows
 lets-write-a-plotting-modulefunction
 more-complex-workflow

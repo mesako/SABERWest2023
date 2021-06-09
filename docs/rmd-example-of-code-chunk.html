@@ -74,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -202,7 +202,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html"><i class="fa fa-check"></i><b>4.1</b> Analyzing viral protein sequences</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#reading-in-tab-delimited-file"><i class="fa fa-check"></i><b>4.1.1</b> Reading in tab-delimited file</a></li>
 <li class="chapter" data-level="4.1.2" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#loops---doing-a-similar-task-multiple-times"><i class="fa fa-check"></i><b>4.1.2</b> Loops - doing a similar task multiple times</a></li>
-<li class="chapter" data-level="4.1.3" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#extending-the-workflow"><i class="fa fa-check"></i><b>4.1.3</b> Extending the workflow</a></li>
+<li class="chapter" data-level="4.1.3" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#using-functions-to-write-modular-code"><i class="fa fa-check"></i><b>4.1.3</b> Using functions to write modular code</a></li>
 <li class="chapter" data-level="4.1.4" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#tips-for-modular-workflows"><i class="fa fa-check"></i><b>4.1.4</b> Tips for modular workflows</a></li>
 <li class="chapter" data-level="4.1.5" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#more-complex-workflow"><i class="fa fa-check"></i><b>4.1.5</b> More complex workflow</a></li>
 <li class="chapter" data-level="4.1.6" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#apply-is-a-popular-tool"><i class="fa fa-check"></i><b>4.1.6</b> Apply is a popular tool</a></li>
@@ -265,10 +265,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="rmd-example-of-code-chunk" class="section level2">
 <h2><span class="header-section-number">5.4</span> Rmd example of code chunk</h2>
-<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb379-1" title="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
-<a class="sourceLine" id="cb379-2" title="2">  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</a>
-<a class="sourceLine" id="cb379-3" title="3">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb379-4" title="4">)</a></code></pre></div>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb373-1" data-line-number="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
+<a class="sourceLine" id="cb373-2" data-line-number="2">  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</a>
+<a class="sourceLine" id="cb373-3" data-line-number="3">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb373-4" data-line-number="4">)</a></code></pre></div>
 <table>
 <caption><span id="tab:nice-tab-appendix">Table 5.1: </span>Here is a nice table!</caption>
 <thead>

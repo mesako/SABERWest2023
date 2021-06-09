@@ -15,6 +15,8 @@ By the end of today's session, students will be able to:
 **Preparing for Today:**
 Please read through all parts of Section 1: Workshop Introduction.
 
+Before you start reading through Section 2 for today or taking part in synchronous activities, download and [open today's worksheet](https://github.com/darachm/dll-r/blob/main/worksheets/dll-r_Day3_Lab.Rmd). On this Github page, please right-click the button that says "Raw" and click "Save Link As..." to get a local copy of this Rmd file on your computer and open it in Rstudio.
+
 **Today's Schedule:**
 
 |   Start Time  |   End Time  |   Activity    |          Description          |
