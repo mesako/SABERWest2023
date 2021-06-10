@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.1 Analyzing viral protein sequences | DLL 2021, R section</title>
+  <title>4.1 Analyzing viral protein sequences | Day 5 - workflows and packages</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.1 Analyzing viral protein sequences | DLL 2021, R section" />
+  <meta property="og:title" content="4.1 Analyzing viral protein sequences | Day 5 - workflows and packages" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.1 Analyzing viral protein sequences | DLL 2021, R section" />
+  <meta name="twitter:title" content="4.1 Analyzing viral protein sequences | Day 5 - workflows and packages" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -36,6 +36,7 @@
   
 <link rel="prev" href="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"/>
 <link rel="next" href="troubleshooting-getting-help-dissecting-problems.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -58,25 +59,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -85,9 +87,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -137,82 +139,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">DLL 2021 R workshops</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Workshop Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Workshop Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="workshop-goals.html"><a href="workshop-goals.html"><i class="fa fa-check"></i><b>1.1</b> Workshop goals</a></li>
-<li class="chapter" data-level="1.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html"><i class="fa fa-check"></i><b>1.2</b> Structure and resources</a><ul>
+<li class="chapter" data-level="1.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html"><i class="fa fa-check"></i><b>1.2</b> Structure and resources</a>
+<ul>
 <li class="chapter" data-level="1.2.1" data-path="structure-and-resources.html"><a href="structure-and-resources.html#this-syllabus-and-videos"><i class="fa fa-check"></i><b>1.2.1</b> This syllabus and videos</a></li>
 <li class="chapter" data-level="1.2.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html#slack-channel"><i class="fa fa-check"></i><b>1.2.2</b> Slack channel</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="workshop-expectations.html"><a href="workshop-expectations.html"><i class="fa fa-check"></i><b>1.3</b> Workshop expectations</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Day 3 - intoduction to R</a><ul>
+<li class="chapter" data-level="2" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Day 3 - intoduction to R</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="navigating-rstudio.html"><a href="navigating-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Navigating Rstudio</a></li>
 <li class="chapter" data-level="2.2" data-path="using-rmds.html"><a href="using-rmds.html"><i class="fa fa-check"></i><b>2.2</b> Using Rmds</a></li>
-<li class="chapter" data-level="2.3" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html"><i class="fa fa-check"></i><b>2.3</b> Getting started in R</a><ul>
+<li class="chapter" data-level="2.3" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html"><i class="fa fa-check"></i><b>2.3</b> Getting started in R</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html#getting-help-in-r"><i class="fa fa-check"></i><b>2.3.1</b> Getting help in R</a></li>
 <li class="chapter" data-level="2.3.2" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html#using-variables-and-data-types"><i class="fa fa-check"></i><b>2.3.2</b> Using variables and data types</a></li>
 <li class="chapter" data-level="2.3.3" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html#using-functions"><i class="fa fa-check"></i><b>2.3.3</b> Using functions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="working-with-vectors.html"><a href="working-with-vectors.html"><i class="fa fa-check"></i><b>2.4</b> Working with vectors</a><ul>
+<li class="chapter" data-level="2.4" data-path="working-with-vectors.html"><a href="working-with-vectors.html"><i class="fa fa-check"></i><b>2.4</b> Working with vectors</a>
+<ul>
 <li class="chapter" data-level="2.4.1" data-path="working-with-vectors.html"><a href="working-with-vectors.html#building-vectors"><i class="fa fa-check"></i><b>2.4.1</b> Building vectors</a></li>
 <li class="chapter" data-level="2.4.2" data-path="working-with-vectors.html"><a href="working-with-vectors.html#indexing-and-subsetting-vectors"><i class="fa fa-check"></i><b>2.4.2</b> Indexing and subsetting vectors</a></li>
 <li class="chapter" data-level="2.4.3" data-path="working-with-vectors.html"><a href="working-with-vectors.html#using-logic-and-logicals"><i class="fa fa-check"></i><b>2.4.3</b> Using logic and logicals</a></li>
 <li class="chapter" data-level="2.4.4" data-path="working-with-vectors.html"><a href="working-with-vectors.html#modifying-vectors"><i class="fa fa-check"></i><b>2.4.4</b> Modifying vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html"><i class="fa fa-check"></i><b>2.5</b> Working with dataframes</a><ul>
+<li class="chapter" data-level="2.5" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html"><i class="fa fa-check"></i><b>2.5</b> Working with dataframes</a>
+<ul>
 <li class="chapter" data-level="2.5.1" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html#indexing-and-subsetting-dataframes"><i class="fa fa-check"></i><b>2.5.1</b> Indexing and subsetting dataframes</a></li>
 <li class="chapter" data-level="2.5.2" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html#exploring-dataframes"><i class="fa fa-check"></i><b>2.5.2</b> Exploring dataframes</a></li>
 <li class="chapter" data-level="2.5.3" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html#building-and-modifying-dataframes"><i class="fa fa-check"></i><b>2.5.3</b> Building and modifying dataframes</a></li>
 <li class="chapter" data-level="2.5.4" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html#handling-datatypes-in-dataframes"><i class="fa fa-check"></i><b>2.5.4</b> Handling datatypes in dataframes</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="day-4-tidyverse-and-visualizations.html"><a href="day-4-tidyverse-and-visualizations.html"><i class="fa fa-check"></i><b>3</b> Day 4 - tidyverse and visualizations</a><ul>
-<li class="chapter" data-level="3.1" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html"><i class="fa fa-check"></i><b>3.1</b> Reading and processing data</a><ul>
+<li class="chapter" data-level="3" data-path="day-4-tidyverse-and-visualizations.html"><a href="day-4-tidyverse-and-visualizations.html"><i class="fa fa-check"></i><b>3</b> Day 4 - tidyverse and visualizations</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html"><i class="fa fa-check"></i><b>3.1</b> Reading and processing data</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html#loading-a-file-into-r"><i class="fa fa-check"></i><b>3.1.1</b> Loading a file into R</a></li>
 <li class="chapter" data-level="3.1.2" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html#handling-issues-in-data"><i class="fa fa-check"></i><b>3.1.2</b> Handling issues in data</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="using-tidyverse.html"><a href="using-tidyverse.html"><i class="fa fa-check"></i><b>3.2</b> Using tidyverse</a><ul>
+<li class="chapter" data-level="3.2" data-path="using-tidyverse.html"><a href="using-tidyverse.html"><i class="fa fa-check"></i><b>3.2</b> Using tidyverse</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="using-tidyverse.html"><a href="using-tidyverse.html#goals-to-be-reworked-alongside-content"><i class="fa fa-check"></i><b>3.2.1</b> Goals to be reworked alongside content</a></li>
 <li class="chapter" data-level="3.2.2" data-path="using-tidyverse.html"><a href="using-tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>3.2.2</b> Welcome to the tidyverse!</a></li>
 <li class="chapter" data-level="3.2.3" data-path="using-tidyverse.html"><a href="using-tidyverse.html#lets-get-started-with-tidyverse"><i class="fa fa-check"></i><b>3.2.3</b> Let’s get started with Tidyverse</a></li>
 <li class="chapter" data-level="3.2.4" data-path="using-tidyverse.html"><a href="using-tidyverse.html#try-tidyverse-on-the-dataset-we-loaded-in-the-previous-section"><i class="fa fa-check"></i><b>3.2.4</b> Try tidyverse on the dataset we loaded in the previous section</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="using-tidyverse-1.html"><a href="using-tidyverse-1.html"><i class="fa fa-check"></i><b>3.3</b> Using tidyverse</a></li>
-<li class="chapter" data-level="3.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a><ul>
+<li class="chapter" data-level="3.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a>
+<ul>
 <li class="chapter" data-level="3.4.1" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.4.1</b> Getting started with a ggplot</a></li>
 <li class="chapter" data-level="3.4.2" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#changing-plot-aesthetics"><i class="fa fa-check"></i><b>3.4.2</b> Changing plot aesthetics</a></li>
 <li class="chapter" data-level="3.4.3" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#exploring-simple-plots"><i class="fa fa-check"></i><b>3.4.3</b> Exploring simple plots</a></li>
 <li class="chapter" data-level="3.4.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>3.4.4</b> Visualizing between groups</a></li>
 <li class="chapter" data-level="3.4.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#generating-heatmaps"><i class="fa fa-check"></i><b>3.4.5</b> Generating heatmaps</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html"><i class="fa fa-check"></i><b>3.5</b> Making scientific figures</a><ul>
+<li class="chapter" data-level="3.5" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html"><i class="fa fa-check"></i><b>3.5</b> Making scientific figures</a>
+<ul>
 <li class="chapter" data-level="3.5.1" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.5.1</b> Plotting error bars</a></li>
 <li class="chapter" data-level="3.5.2" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#showing-trends-in-data"><i class="fa fa-check"></i><b>3.5.2</b> Showing trends in data</a></li>
 <li class="chapter" data-level="3.5.3" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#saving-figures-locally"><i class="fa fa-check"></i><b>3.5.3</b> Saving figures locally</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html"><i class="fa fa-check"></i><b>3.6</b> Applying basic stats</a><ul>
-<li class="chapter" data-level="3.6.1" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#describing-quantitative-variables"><i class="fa fa-check"></i><b>3.6.1</b> Describing quantitative variables</a></li>
-<li class="chapter" data-level="3.6.2" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#finding-differences-in-data"><i class="fa fa-check"></i><b>3.6.2</b> Finding differences in data</a></li>
-<li class="chapter" data-level="3.6.3" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#identifying-correlations"><i class="fa fa-check"></i><b>3.6.3</b> Identifying correlations</a></li>
-<li class="chapter" data-level="3.6.4" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#producing-linear-models"><i class="fa fa-check"></i><b>3.6.4</b> Producing linear models</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><a href="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows, using packages, writing (re)usable code, sharing analyses</a><ul>
+<li class="chapter" data-level="4" data-path="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><a href="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows, using packages, writing (re)usable code, sharing analyses</a>
+<ul>
 <li class="chapter" data-level="4.0.1" data-path="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><a href="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html#what-is-a-workflow"><i class="fa fa-check"></i><b>4.0.1</b> What is a workflow?</a></li>
-<li class="chapter" data-level="4.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html"><i class="fa fa-check"></i><b>4.1</b> Analyzing viral protein sequences</a><ul>
+<li class="chapter" data-level="4.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html"><i class="fa fa-check"></i><b>4.1</b> Analyzing viral protein sequences</a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#reading-in-tab-delimited-file"><i class="fa fa-check"></i><b>4.1.1</b> Reading in tab-delimited file</a></li>
 <li class="chapter" data-level="4.1.2" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#loops---doing-a-similar-task-multiple-times"><i class="fa fa-check"></i><b>4.1.2</b> Loops - doing a similar task multiple times</a></li>
 <li class="chapter" data-level="4.1.3" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#extending-the-workflow"><i class="fa fa-check"></i><b>4.1.3</b> Extending the workflow</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html"><i class="fa fa-check"></i><b>4.2</b> Troubleshooting, getting help, dissecting problems</a><ul>
+<li class="chapter" data-level="4.2" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html"><i class="fa fa-check"></i><b>4.2</b> Troubleshooting, getting help, dissecting problems</a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html#places-to-look-for-help"><i class="fa fa-check"></i><b>4.2.1</b> Places to look for help</a></li>
 <li class="chapter" data-level="4.2.2" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html#minimum-reproducible-example"><i class="fa fa-check"></i><b>4.2.2</b> Minimum reproducible example</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html"><i class="fa fa-check"></i><b>4.3</b> Functions as modular steps</a><ul>
+<li class="chapter" data-level="4.3" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html"><i class="fa fa-check"></i><b>4.3</b> Functions as modular steps</a>
+<ul>
 <li class="chapter" data-level="4.3.1" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html#tips-for-modular-workflows"><i class="fa fa-check"></i><b>4.3.1</b> Tips for modular workflows</a></li>
 <li class="chapter" data-level="4.3.2" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html#apply-is-a-popular-tool"><i class="fa fa-check"></i><b>4.3.2</b> Apply is a popular tool</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html"><i class="fa fa-check"></i><b>4.4</b> Packages - install and use</a><ul>
+<li class="chapter" data-level="4.4" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html"><i class="fa fa-check"></i><b>4.4</b> Packages - install and use</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#cran-is-the-canonical-r-package-resource"><i class="fa fa-check"></i><b>4.4.1</b> CRAN is the canonical R package resource</a></li>
 <li class="chapter" data-level="4.4.2" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#using-packages-without-library-ing-them"><i class="fa fa-check"></i><b>4.4.2</b> Using packages without <code>library()</code>-ing them</a></li>
 <li class="chapter" data-level="4.4.3" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#github-is-a-common-place-for-sharing-packges-in-development"><i class="fa fa-check"></i><b>4.4.3</b> Github is a common place for sharing packges in development</a></li>
@@ -220,11 +232,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4.5" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#what-packages-do-you-have-already"><i class="fa fa-check"></i><b>4.4.5</b> What packages do you have already?</a></li>
 <li class="chapter" data-level="4.4.6" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#finding-more-help-and-documentation"><i class="fa fa-check"></i><b>4.4.6</b> Finding more help and documentation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html"><i class="fa fa-check"></i><b>4.5</b> Writing (re)usable code</a><ul>
+<li class="chapter" data-level="4.5" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html"><i class="fa fa-check"></i><b>4.5</b> Writing (re)usable code</a>
+<ul>
 <li class="chapter" data-level="4.5.1" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#examples"><i class="fa fa-check"></i><b>4.5.1</b> Examples</a></li>
 <li class="chapter" data-level="4.5.2" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#style-guides-can-be-inspiring"><i class="fa fa-check"></i><b>4.5.2</b> Style guides can be inspiring</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html"><i class="fa fa-check"></i><b>4.6</b> More <code>rmarkdown</code> for reproducibile sharing</a><ul>
+<li class="chapter" data-level="4.6" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html"><i class="fa fa-check"></i><b>4.6</b> More <code>rmarkdown</code> for reproducibile sharing</a>
+<ul>
 <li class="chapter" data-level="4.6.1" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#rmarkdown-package"><i class="fa fa-check"></i><b>4.6.1</b> rmarkdown package</a></li>
 <li><a href="more-rmarkdown-for-reproducibile-sharing.html#section"></a></li>
 <li class="chapter" data-level="4.6.2" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#sharing-with-others"><i class="fa fa-check"></i><b>4.6.2</b> Sharing with others</a></li>
@@ -232,15 +246,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>4.7</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a><ul>
-<li class="chapter" data-level="5.1" data-path="additional-tutorials.html"><a href="additional-tutorials.html"><i class="fa fa-check"></i><b>5.1</b> Additional tutorials</a><ul>
+<li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="additional-tutorials.html"><a href="additional-tutorials.html"><i class="fa fa-check"></i><b>5.1</b> Additional tutorials</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="additional-tutorials.html"><a href="additional-tutorials.html#sub-sub-section"><i class="fa fa-check"></i><b>5.1.1</b> sub sub section</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="more-challenges.html"><a href="more-challenges.html"><i class="fa fa-check"></i><b>5.2</b> More challenges</a></li>
 <li class="chapter" data-level="5.3" data-path="figures-ideas.html"><a href="figures-ideas.html"><i class="fa fa-check"></i><b>5.3</b> Figures ideas</a></li>
 <li class="chapter" data-level="5.4" data-path="rmd-example-of-code-chunk.html"><a href="rmd-example-of-code-chunk.html"><i class="fa fa-check"></i><b>5.4</b> Rmd example of code chunk</a></li>
 <li class="chapter" data-level="5.5" data-path="more-example-rmds.html"><a href="more-example-rmds.html"><i class="fa fa-check"></i><b>5.5</b> More example Rmds</a></li>
-<li class="chapter" data-level="5.6" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html"><i class="fa fa-check"></i><b>5.6</b> How to edit this document</a><ul>
+<li class="chapter" data-level="5.6" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html"><i class="fa fa-check"></i><b>5.6</b> How to edit this document</a>
+<ul>
 <li class="chapter" data-level="5.6.1" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html#setup"><i class="fa fa-check"></i><b>5.6.1</b> Setup</a></li>
 <li class="chapter" data-level="5.6.2" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html#editwork-on-it"><i class="fa fa-check"></i><b>5.6.2</b> Edit/work on it</a></li>
 <li class="chapter" data-level="5.6.3" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html#publishing-onto-the-main-page-so-its-hosted-at-the-url"><i class="fa fa-check"></i><b>5.6.3</b> Publishing onto the main page, so it’s hosted at the URL</a></li>
@@ -256,7 +273,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">DLL 2021, R section</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Day 5 - workflows and packages</a>
           </h1>
         </div>
 
@@ -264,7 +281,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="analyzing-viral-protein-sequences" class="section level2">
+<div id="analyzing-viral-protein-sequences" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Analyzing viral protein sequences</h2>
 <p>Let’s work through an analysis of the size of some structural viral proteins.
 We’ve done some of the work for you already, and would recommend that you
@@ -282,12 +299,12 @@ are tab-delimited three fields, and look like this:</p>
 <p>How do you inspect these files?
 What bash tools do you use?</p>
 <hr />
-<div id="reading-in-tab-delimited-file" class="section level3">
+<div id="reading-in-tab-delimited-file" class="section level3" number="4.1.1">
 <h3><span class="header-section-number">4.1.1</span> Reading in tab-delimited file</h3>
 <p>Let’s read one of them into R.</p>
 <p>The records are “delimited” by tabs, so each field is tab-separated.
 We’ll need to use the <code>read.delim</code> function and specify a tab separator.</p>
-<div id="review-of-looking-up-documentation" class="section level4">
+<div id="review-of-looking-up-documentation" class="section level4" number="4.1.1.1">
 <h4><span class="header-section-number">4.1.1.1</span> Review of looking up documentation</h4>
 <p>You can look up the documentation for any named function or package by using
 the <code>?function</code> syntax.</p>
@@ -300,7 +317,7 @@ If you are using the R console, you can use <code>/</code> to open a search bar 
 enter-key to search for it.</p>
 <hr />
 </div>
-<div id="back-to-the-file-reading" class="section level4">
+<div id="back-to-the-file-reading" class="section level4" number="4.1.1.2">
 <h4><span class="header-section-number">4.1.1.2</span> Back to the file-reading…</h4>
 <p>What does <code>?read.delim</code> say it does?
 How do you set the delimiter/separator as a tab?
@@ -309,9 +326,9 @@ How do you set the delimiter/separator as a tab?
 ( This would where the first line of the file has the name of each column )
 Do we want to set this to <code>TRUE</code> or <code>FALSE</code> ?)</p>
 <div class="incremental">
-<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" title="1">viral_protein_data &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;data/viral_structural_proteins/viral_proteins_100.tsv&quot;</span>,</a>
-<a class="sourceLine" id="cb303-2" title="2">    <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F)</a>
-<a class="sourceLine" id="cb303-3" title="3">viral_protein_data</a></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="analyzing-viral-protein-sequences.html#cb252-1" aria-hidden="true" tabindex="-1"></a>viral_protein_data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;data/viral_structural_proteins/viral_proteins_100.tsv&quot;</span>,</span>
+<span id="cb252-2"><a href="analyzing-viral-protein-sequences.html#cb252-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>,<span class="at">header=</span>F)</span>
+<span id="cb252-3"><a href="analyzing-viral-protein-sequences.html#cb252-3" aria-hidden="true" tabindex="-1"></a>viral_protein_data</span></code></pre></div>
 <pre><code>##                           V1
 ## 1 Q8V433.1 Membrane protein 
 ##                                                       V2
@@ -332,19 +349,19 @@ How do we tell R to treat these strings as they are, and not convert to factors?
 
 </div>
 </div>
-<div id="loops---doing-a-similar-task-multiple-times" class="section level3">
+<div id="loops---doing-a-similar-task-multiple-times" class="section level3" number="4.1.2">
 <h3><span class="header-section-number">4.1.2</span> Loops - doing a similar task multiple times</h3>
 <p>You will want to repeat this analysis for multiple file.
 This automation is great, really useful for scaling your analyses.</p>
 <p>Let’s do this for all the proteins.
 The simplest way of doing this is to copy and paste it, and change the filename.</p>
-<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" title="1">viral_protein_data &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;data/viral_structural_proteins/viral_proteins_002.tsv&quot;</span>,</a>
-<a class="sourceLine" id="cb305-2" title="2">      <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F, <span class="dt">as.is=</span>T)</a>
-<a class="sourceLine" id="cb305-3" title="3"><span class="kw">nchar</span>(viral_protein_data<span class="op">$</span>V3[[<span class="dv">1</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb254-1"><a href="analyzing-viral-protein-sequences.html#cb254-1" aria-hidden="true" tabindex="-1"></a>viral_protein_data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;data/viral_structural_proteins/viral_proteins_002.tsv&quot;</span>,</span>
+<span id="cb254-2"><a href="analyzing-viral-protein-sequences.html#cb254-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>,<span class="at">header=</span>F, <span class="at">as.is=</span>T)</span>
+<span id="cb254-3"><a href="analyzing-viral-protein-sequences.html#cb254-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(viral_protein_data<span class="sc">$</span>V3[[<span class="dv">1</span>]])</span></code></pre></div>
 <pre><code>## [1] 177</code></pre>
-<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" title="1">viral_protein_data &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;data/viral_structural_proteins/viral_proteins_003.tsv&quot;</span>,</a>
-<a class="sourceLine" id="cb307-2" title="2">      <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F, <span class="dt">as.is=</span>T)</a>
-<a class="sourceLine" id="cb307-3" title="3"><span class="kw">nchar</span>(viral_protein_data[<span class="dv">1</span>,<span class="st">&quot;V3&quot;</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb256-1"><a href="analyzing-viral-protein-sequences.html#cb256-1" aria-hidden="true" tabindex="-1"></a>viral_protein_data <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="st">&quot;data/viral_structural_proteins/viral_proteins_003.tsv&quot;</span>,</span>
+<span id="cb256-2"><a href="analyzing-viral-protein-sequences.html#cb256-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>,<span class="at">header=</span>F, <span class="at">as.is=</span>T)</span>
+<span id="cb256-3"><a href="analyzing-viral-protein-sequences.html#cb256-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nchar</span>(viral_protein_data[<span class="dv">1</span>,<span class="st">&quot;V3&quot;</span>])</span></code></pre></div>
 <pre><code>## [1] 137</code></pre>
 <p>Go ahead and do this for all 242 proteins</p>
 <hr />
@@ -353,7 +370,7 @@ The simplest way of doing this is to copy and paste it, and change the filename.
 If we ever have more files, we have to copy and paste more. If we ever want
 to change an argument for all of them, we have to do each one.</p>
 <p>Instead, we can work with a list of all the files available:</p>
-<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb309-1" title="1"><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="analyzing-viral-protein-sequences.html#cb258-1" aria-hidden="true" tabindex="-1"></a><span class="fu">list.files</span>(<span class="at">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;viral_proteins_000.tsv&quot; &quot;viral_proteins_001.tsv&quot; &quot;viral_proteins_002.tsv&quot;
 ## [4] &quot;viral_proteins_003.tsv&quot; &quot;viral_proteins_004.tsv&quot;</code></pre>
 <p>Note that I put a <code>[1:5]</code> to limit it to the first 5.
@@ -363,7 +380,7 @@ through development, then scale it up to the entirety.</p>
 <p>Now how do you calculate the number of characters for each protein?</p>
 <p>How do we do this for every file listed … ?</p>
 <hr />
-<div id="what-are-loops" class="section level4">
+<div id="what-are-loops" class="section level4" number="4.1.2.1">
 <h4><span class="header-section-number">4.1.2.1</span> What are loops?</h4>
 <!-- video -->
 <p>Loops are for running a “code block” as many times
@@ -390,9 +407,9 @@ be interpreted as literally what you type, and not
 any special characters. Like <code>?`+`</code>, or <code>?`?`</code></p>
 <hr />
 <p>Here’s an example loop:</p>
-<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" title="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>) {</a>
-<a class="sourceLine" id="cb312-2" title="2">  <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb312-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="analyzing-viral-protein-sequences.html#cb261-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>) {</span>
+<span id="cb261-2"><a href="analyzing-viral-protein-sequences.html#cb261-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb261-3"><a href="analyzing-viral-protein-sequences.html#cb261-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2
 ## [1] 3
@@ -411,9 +428,9 @@ which is set to a value of 1, 2, 3, or 4 for each loop</p></li>
 <p>How do we loop through and print each file name?</p>
 <p>What are the (1) code block and (2) loop condition ?</p>
 <div class="incremental">
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" title="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] ) {</a>
-<a class="sourceLine" id="cb314-2" title="2">  <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb314-3" title="3">}</a></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="analyzing-viral-protein-sequences.html#cb263-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">list.files</span>(<span class="at">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>] ) {</span>
+<span id="cb263-2"><a href="analyzing-viral-protein-sequences.html#cb263-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb263-3"><a href="analyzing-viral-protein-sequences.html#cb263-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;viral_proteins_000.tsv&quot;
 ## [1] &quot;viral_proteins_001.tsv&quot;
 ## [1] &quot;viral_proteins_002.tsv&quot;
@@ -422,10 +439,10 @@ which is set to a value of 1, 2, 3, or 4 for each loop</p></li>
 <p>How do we modify this to calculate the protein length?
 I add a line where we use <code>nchar</code>, but <code>i</code> is the filename instead of me
 typing it in there.</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" title="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] ) {</a>
-<a class="sourceLine" id="cb316-2" title="2">  <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb316-3" title="3">  <span class="kw">print</span>(<span class="kw">nchar</span>(<span class="kw">read.delim</span>(i)<span class="op">$</span>V3[[<span class="dv">1</span>]]))</a>
-<a class="sourceLine" id="cb316-4" title="4">}</a></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="analyzing-viral-protein-sequences.html#cb265-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">list.files</span>(<span class="at">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>] ) {</span>
+<span id="cb265-2"><a href="analyzing-viral-protein-sequences.html#cb265-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(i)</span>
+<span id="cb265-3"><a href="analyzing-viral-protein-sequences.html#cb265-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">nchar</span>(<span class="fu">read.delim</span>(i)<span class="sc">$</span>V3[[<span class="dv">1</span>]]))</span>
+<span id="cb265-4"><a href="analyzing-viral-protein-sequences.html#cb265-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] &quot;viral_proteins_000.tsv&quot;</code></pre>
 <pre><code>## Warning in file(file, &quot;rt&quot;): cannot open file &#39;viral_proteins_000.tsv&#39;: No such
 ## file or directory</code></pre>
@@ -437,10 +454,10 @@ Look up the <code>list.files</code> documentation, and find how to get it to ret
 the full name of the file.</p>
 <hr />
 <p>Next, this should work…</p>
-<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" title="1"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
-<a class="sourceLine" id="cb320-2" title="2">                     <span class="dt">full.names=</span>T)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>] ) {</a>
-<a class="sourceLine" id="cb320-3" title="3">  <span class="kw">print</span>(<span class="kw">nchar</span>(<span class="kw">read.delim</span>(i,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F,<span class="dt">as.is=</span>T)<span class="op">$</span>V3[[<span class="dv">1</span>]]))</a>
-<a class="sourceLine" id="cb320-4" title="4">}</a></code></pre></div>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb269-1"><a href="analyzing-viral-protein-sequences.html#cb269-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">list.files</span>(<span class="at">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</span>
+<span id="cb269-2"><a href="analyzing-viral-protein-sequences.html#cb269-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">full.names=</span>T)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>] ) {</span>
+<span id="cb269-3"><a href="analyzing-viral-protein-sequences.html#cb269-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">nchar</span>(<span class="fu">read.delim</span>(i,<span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>,<span class="at">header=</span>F,<span class="at">as.is=</span>T)<span class="sc">$</span>V3[[<span class="dv">1</span>]]))</span>
+<span id="cb269-4"><a href="analyzing-viral-protein-sequences.html#cb269-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 1248
 ## [1] 1254
 ## [1] 177
@@ -451,7 +468,7 @@ the full name of the file.</p>
 <p>What now?</p>
 <hr />
 </div>
-<div id="storing-values-from-a-loop" class="section level4">
+<div id="storing-values-from-a-loop" class="section level4" number="4.1.2.2">
 <h4><span class="header-section-number">4.1.2.2</span> Storing values from a loop</h4>
 <p>How do we store these values for later analysis?</p>
 <p>In other languages, “append”. But R is not built that way. It’ll work,
@@ -459,11 +476,11 @@ but it’s very inefficient. The “R-way” to store values from a loop
 is to define a vector of the right length,
 then put each element in it.</p>
 <p>Here’s some example vectors that we can create.</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" title="1"><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb271-1"><a href="analyzing-viral-protein-sequences.html#cb271-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="dv">10</span>)</span></code></pre></div>
 <pre><code>##  [1] &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
-<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" title="1"><span class="kw">vector</span>(<span class="dt">mode=</span><span class="st">&quot;numeric&quot;</span>,<span class="dt">length=</span><span class="dv">5</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb273-1"><a href="analyzing-viral-protein-sequences.html#cb273-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vector</span>(<span class="at">mode=</span><span class="st">&quot;numeric&quot;</span>,<span class="at">length=</span><span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## [1] 0 0 0 0 0</code></pre>
-<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" title="1"><span class="kw">vector</span>(<span class="st">&quot;logical&quot;</span>,<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb275"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb275-1"><a href="analyzing-viral-protein-sequences.html#cb275-1" aria-hidden="true" tabindex="-1"></a><span class="fu">vector</span>(<span class="st">&quot;logical&quot;</span>,<span class="dv">2</span>)</span></code></pre></div>
 <pre><code>## [1] FALSE FALSE</code></pre>
 <hr />
 <p>Okay, but how do we access each position to save the value?
@@ -471,12 +488,12 @@ We need to turn out list of files into indicies.
 We’ll save it first so we can count how many there are.</p>
 <p><code>seq_along</code> is handy function to create a number sequence along a vector,
 otherwise use something like <code>seq(1,length(x))</code>.</p>
-<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb328-1" title="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb328-2" title="2"></a>
-<a class="sourceLine" id="cb328-3" title="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
-<a class="sourceLine" id="cb328-4" title="4">    <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb328-5" title="5">    <span class="kw">print</span>(first_five[i])</a>
-<a class="sourceLine" id="cb328-6" title="6">}</a></code></pre></div>
+<div class="sourceCode" id="cb277"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb277-1"><a href="analyzing-viral-protein-sequences.html#cb277-1" aria-hidden="true" tabindex="-1"></a>first_five <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb277-2"><a href="analyzing-viral-protein-sequences.html#cb277-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb277-3"><a href="analyzing-viral-protein-sequences.html#cb277-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(first_five) ) {</span>
+<span id="cb277-4"><a href="analyzing-viral-protein-sequences.html#cb277-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(i)</span>
+<span id="cb277-5"><a href="analyzing-viral-protein-sequences.html#cb277-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(first_five[i])</span>
+<span id="cb277-6"><a href="analyzing-viral-protein-sequences.html#cb277-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] &quot;viral_proteins_000.tsv&quot;
 ## [1] 2
@@ -489,72 +506,72 @@ otherwise use something like <code>seq(1,length(x))</code>.</p>
 ## [1] &quot;viral_proteins_004.tsv&quot;</code></pre>
 <hr />
 <p>Putting these together, we can create and save a vector of file names:</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" title="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb330-2" title="2">filenamez &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
-<a class="sourceLine" id="cb330-3" title="3"></a>
-<a class="sourceLine" id="cb330-4" title="4"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
-<a class="sourceLine" id="cb330-5" title="5">  filenamez[i] &lt;-<span class="st"> </span>first_five[i]</a>
-<a class="sourceLine" id="cb330-6" title="6">}</a>
-<a class="sourceLine" id="cb330-7" title="7"></a>
-<a class="sourceLine" id="cb330-8" title="8">filenamez</a></code></pre></div>
+<div class="sourceCode" id="cb279"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb279-1"><a href="analyzing-viral-protein-sequences.html#cb279-1" aria-hidden="true" tabindex="-1"></a>first_five <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb279-2"><a href="analyzing-viral-protein-sequences.html#cb279-2" aria-hidden="true" tabindex="-1"></a>filenamez <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="fu">length</span>(first_five))</span>
+<span id="cb279-3"><a href="analyzing-viral-protein-sequences.html#cb279-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb279-4"><a href="analyzing-viral-protein-sequences.html#cb279-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(first_five) ) {</span>
+<span id="cb279-5"><a href="analyzing-viral-protein-sequences.html#cb279-5" aria-hidden="true" tabindex="-1"></a>  filenamez[i] <span class="ot">&lt;-</span> first_five[i]</span>
+<span id="cb279-6"><a href="analyzing-viral-protein-sequences.html#cb279-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb279-7"><a href="analyzing-viral-protein-sequences.html#cb279-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb279-8"><a href="analyzing-viral-protein-sequences.html#cb279-8" aria-hidden="true" tabindex="-1"></a>filenamez</span></code></pre></div>
 <pre><code>## [1] &quot;viral_proteins_000.tsv&quot; &quot;viral_proteins_001.tsv&quot; &quot;viral_proteins_002.tsv&quot;
 ## [4] &quot;viral_proteins_003.tsv&quot; &quot;viral_proteins_004.tsv&quot;</code></pre>
 <hr />
 <p>And finally calculate the length of each protein:</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" title="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
-<a class="sourceLine" id="cb332-2" title="2">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb332-3" title="3">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
-<a class="sourceLine" id="cb332-4" title="4"></a>
-<a class="sourceLine" id="cb332-5" title="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
-<a class="sourceLine" id="cb332-6" title="6">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( <span class="kw">read.delim</span>(first_five[i],</a>
-<a class="sourceLine" id="cb332-7" title="7">      <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb332-8" title="8">    )</a>
-<a class="sourceLine" id="cb332-9" title="9">}</a>
-<a class="sourceLine" id="cb332-10" title="10"></a>
-<a class="sourceLine" id="cb332-11" title="11">lengthz</a></code></pre></div>
+<div class="sourceCode" id="cb281"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb281-1"><a href="analyzing-viral-protein-sequences.html#cb281-1" aria-hidden="true" tabindex="-1"></a>first_five <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</span>
+<span id="cb281-2"><a href="analyzing-viral-protein-sequences.html#cb281-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">full.names=</span>T, <span class="at">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)[<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>]</span>
+<span id="cb281-3"><a href="analyzing-viral-protein-sequences.html#cb281-3" aria-hidden="true" tabindex="-1"></a>lengthz <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="fu">length</span>(first_five))</span>
+<span id="cb281-4"><a href="analyzing-viral-protein-sequences.html#cb281-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb281-5"><a href="analyzing-viral-protein-sequences.html#cb281-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(first_five) ) {</span>
+<span id="cb281-6"><a href="analyzing-viral-protein-sequences.html#cb281-6" aria-hidden="true" tabindex="-1"></a>  lengthz[i] <span class="ot">&lt;-</span> <span class="fu">nchar</span>( <span class="fu">read.delim</span>(first_five[i],</span>
+<span id="cb281-7"><a href="analyzing-viral-protein-sequences.html#cb281-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">header=</span>F,<span class="at">as.is=</span>T,<span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)<span class="sc">$</span>V3[[<span class="dv">1</span>]]</span>
+<span id="cb281-8"><a href="analyzing-viral-protein-sequences.html#cb281-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb281-9"><a href="analyzing-viral-protein-sequences.html#cb281-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb281-10"><a href="analyzing-viral-protein-sequences.html#cb281-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb281-11"><a href="analyzing-viral-protein-sequences.html#cb281-11" aria-hidden="true" tabindex="-1"></a>lengthz</span></code></pre></div>
 <pre><code>## [1] &quot;1248&quot; &quot;1254&quot; &quot;177&quot;  &quot;137&quot;  &quot;117&quot;</code></pre>
 <hr />
 <p>Now we can take off the <code>[1:5]</code> limiter, and do the whole set:</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" title="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
-<a class="sourceLine" id="cb334-2" title="2">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)</a>
-<a class="sourceLine" id="cb334-3" title="3">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
-<a class="sourceLine" id="cb334-4" title="4"></a>
-<a class="sourceLine" id="cb334-5" title="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
-<a class="sourceLine" id="cb334-6" title="6">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( <span class="kw">read.delim</span>(first_five[i],</a>
-<a class="sourceLine" id="cb334-7" title="7">      <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb334-8" title="8">    )</a>
-<a class="sourceLine" id="cb334-9" title="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb283"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb283-1"><a href="analyzing-viral-protein-sequences.html#cb283-1" aria-hidden="true" tabindex="-1"></a>first_five <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</span>
+<span id="cb283-2"><a href="analyzing-viral-protein-sequences.html#cb283-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">full.names=</span>T, <span class="at">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)</span>
+<span id="cb283-3"><a href="analyzing-viral-protein-sequences.html#cb283-3" aria-hidden="true" tabindex="-1"></a>lengthz <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="fu">length</span>(first_five))</span>
+<span id="cb283-4"><a href="analyzing-viral-protein-sequences.html#cb283-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb283-5"><a href="analyzing-viral-protein-sequences.html#cb283-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(first_five) ) {</span>
+<span id="cb283-6"><a href="analyzing-viral-protein-sequences.html#cb283-6" aria-hidden="true" tabindex="-1"></a>  lengthz[i] <span class="ot">&lt;-</span> <span class="fu">nchar</span>( <span class="fu">read.delim</span>(first_five[i],</span>
+<span id="cb283-7"><a href="analyzing-viral-protein-sequences.html#cb283-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">header=</span>F,<span class="at">as.is=</span>T,<span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)<span class="sc">$</span>V3[[<span class="dv">1</span>]]</span>
+<span id="cb283-8"><a href="analyzing-viral-protein-sequences.html#cb283-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb283-9"><a href="analyzing-viral-protein-sequences.html#cb283-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <hr />
 <p>How do we go about visualizing/analyzing this?</p>
-<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" title="1"><span class="kw">hist</span>(lengthz)</a></code></pre></div>
+<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="analyzing-viral-protein-sequences.html#cb284-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lengthz)</span></code></pre></div>
 <pre><code>## Error in hist.default(lengthz): &#39;x&#39; must be numeric</code></pre>
 <p>er what…? Debug! What is <code>lengthz</code>?</p>
-<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" title="1"><span class="kw">str</span>(lengthz)</a></code></pre></div>
-<pre><code>##  chr [1:244] &quot;1248&quot; &quot;1254&quot; &quot;177&quot; &quot;137&quot; &quot;117&quot; &quot;117&quot; &quot;858&quot; &quot;1242&quot; &quot;1255&quot; ...</code></pre>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="analyzing-viral-protein-sequences.html#cb286-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(lengthz)</span></code></pre></div>
+<pre><code>##  chr [1:243] &quot;1248&quot; &quot;1254&quot; &quot;177&quot; &quot;137&quot; &quot;117&quot; &quot;117&quot; &quot;858&quot; &quot;1242&quot; &quot;1255&quot; ...</code></pre>
 <p>Character? Let’s try numeric instead…</p>
 <hr />
-<div class="sourceCode" id="cb339"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb339-1" title="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
-<a class="sourceLine" id="cb339-2" title="2">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)</a>
-<a class="sourceLine" id="cb339-3" title="3">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;numeric&quot;</span>,<span class="kw">length</span>(first_five))</a>
-<a class="sourceLine" id="cb339-4" title="4"></a>
-<a class="sourceLine" id="cb339-5" title="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
-<a class="sourceLine" id="cb339-6" title="6">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( <span class="kw">read.delim</span>(first_five[i],</a>
-<a class="sourceLine" id="cb339-7" title="7">      <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb339-8" title="8">    )</a>
-<a class="sourceLine" id="cb339-9" title="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="analyzing-viral-protein-sequences.html#cb288-1" aria-hidden="true" tabindex="-1"></a>first_five <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="at">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</span>
+<span id="cb288-2"><a href="analyzing-viral-protein-sequences.html#cb288-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">full.names=</span>T, <span class="at">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)</span>
+<span id="cb288-3"><a href="analyzing-viral-protein-sequences.html#cb288-3" aria-hidden="true" tabindex="-1"></a>lengthz <span class="ot">&lt;-</span> <span class="fu">vector</span>(<span class="st">&quot;numeric&quot;</span>,<span class="fu">length</span>(first_five))</span>
+<span id="cb288-4"><a href="analyzing-viral-protein-sequences.html#cb288-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb288-5"><a href="analyzing-viral-protein-sequences.html#cb288-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(first_five) ) {</span>
+<span id="cb288-6"><a href="analyzing-viral-protein-sequences.html#cb288-6" aria-hidden="true" tabindex="-1"></a>  lengthz[i] <span class="ot">&lt;-</span> <span class="fu">nchar</span>( <span class="fu">read.delim</span>(first_five[i],</span>
+<span id="cb288-7"><a href="analyzing-viral-protein-sequences.html#cb288-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">header=</span>F,<span class="at">as.is=</span>T,<span class="at">sep=</span><span class="st">&quot;</span><span class="sc">\t</span><span class="st">&quot;</span>)<span class="sc">$</span>V3[[<span class="dv">1</span>]]</span>
+<span id="cb288-8"><a href="analyzing-viral-protein-sequences.html#cb288-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb288-9"><a href="analyzing-viral-protein-sequences.html#cb288-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <hr />
 <p>Base R histogram</p>
-<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" title="1"><span class="kw">hist</span>(lengthz,<span class="dt">breaks=</span><span class="dv">50</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb289"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb289-1"><a href="analyzing-viral-protein-sequences.html#cb289-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(lengthz,<span class="at">breaks=</span><span class="dv">50</span>)</span></code></pre></div>
 <p><img src="515-loops_files/figure-html/base_viz_protein_lengths_fix-1.png" width="672" /></p>
 <hr />
 <p>More fancy ggplot</p>
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" title="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb341-2" title="2"><span class="kw">ggplot</span>( <span class="kw">data.frame</span>(<span class="dt">length=</span>lengthz) )<span class="op">+</span><span class="kw">theme_classic</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb341-3" title="3"><span class="st">  </span><span class="kw">aes</span>(<span class="dt">x=</span>length)<span class="op">+</span><span class="kw">geom_histogram</span>(<span class="dt">bins=</span><span class="dv">50</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="analyzing-viral-protein-sequences.html#cb290-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb290-2"><a href="analyzing-viral-protein-sequences.html#cb290-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>( <span class="fu">data.frame</span>(<span class="at">length=</span>lengthz) )<span class="sc">+</span><span class="fu">theme_classic</span>()<span class="sc">+</span></span>
+<span id="cb290-3"><a href="analyzing-viral-protein-sequences.html#cb290-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x=</span>length)<span class="sc">+</span><span class="fu">geom_histogram</span>(<span class="at">bins=</span><span class="dv">50</span>)</span></code></pre></div>
 <p><img src="515-loops_files/figure-html/ggplot_viz_protein_lengths-1.png" width="672" /></p>
-<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" title="1"><span class="kw">summary</span>(lengthz)</a></code></pre></div>
+<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="analyzing-viral-protein-sequences.html#cb291-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lengthz)</span></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-##     0.0   230.0   626.0   726.3  1088.5  3390.0</code></pre>
+##     1.0   231.5   646.0   729.2  1089.0  3390.0</code></pre>
 <hr />
 <p>And that’s about how long the viral structural proteins in this database
 tend to be.</p>
@@ -566,7 +583,7 @@ tend to be.</p>
 
 </div>
 </div>
-<div id="extending-the-workflow" class="section level3">
+<div id="extending-the-workflow" class="section level3" number="4.1.3">
 <h3><span class="header-section-number">4.1.3</span> Extending the workflow</h3>
 <p>How do you think about/plan the workflow we’ve built?</p>
 <p>One way is to flatten out all the tasks,
@@ -642,7 +659,7 @@ finding a motif:
     input: protein sequences
     output: numeric vector, of presence/absence</code></pre>
 <hr />
-<div id="looking-for-a-smoking-motif" class="section level4">
+<div id="looking-for-a-smoking-motif" class="section level4" number="4.1.3.1">
 <h4><span class="header-section-number">4.1.3.1</span> Looking for a smoking motif…</h4>
 <p>Some folks believe the insertion of an amino-acid sequence of <code>PRRA</code>, relative
 to other related coronaviruses, is very rare and a clear sign of engineering.
@@ -690,16 +707,16 @@ initMermaid();
 <ol start="3">
 <li id="fn3"><p>One crucial aspect missing is the actual bash commands used. I did not
 save them as a script, and I <em>should</em> go back, save them in a script,
-and re-run that to make sure I get the same result!<a href="analyzing-viral-protein-sequences.html#fnref3" class="footnote-back">↩</a></p></li>
+and re-run that to make sure I get the same result!<a href="analyzing-viral-protein-sequences.html#fnref3" class="footnote-back">↩︎</a></p></li>
 <li id="fn4"><p>Often this is typed into computers and scripts as ", as the tab key
-will often not put a TAB character into where you’re typing.<a href="analyzing-viral-protein-sequences.html#fnref4" class="footnote-back">↩</a></p></li>
+will often not put a TAB character into where you’re typing.<a href="analyzing-viral-protein-sequences.html#fnref4" class="footnote-back">↩︎</a></p></li>
 <li id="fn5"><p>
 …since we’re just demonstrating R coding and not representing ourselves as
 being familiar enough with the field to properly interpret these results.
 I have no idea what occurance of this would mean or not mean, or are we
-doing any sort of statistics or comparisons to null expectations.<a href="analyzing-viral-protein-sequences.html#fnref5" class="footnote-back">↩</a></p></li>
+doing any sort of statistics or comparisons to null expectations.<a href="analyzing-viral-protein-sequences.html#fnref5" class="footnote-back">↩︎</a></p></li>
 <li id="fn6"><p>Why not logical, since these are logical results? It makes the <code>hist()</code>
-step slightly easier.<a href="analyzing-viral-protein-sequences.html#fnref6" class="footnote-back">↩</a></p></li>
+step slightly easier.<a href="analyzing-viral-protein-sequences.html#fnref6" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 <p style="margin-top:10em;text-align:center;font-size:small;">
