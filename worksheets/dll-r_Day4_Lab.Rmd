@@ -19,7 +19,7 @@ Please be sure to write in your code or response underneath each prompt. Be sure
 
 ##### Section 3.1.1: Loading a file into R
 
-**Task:** ?
+**Task:** 
 
 ```{r}
 # Your code here
@@ -379,20 +379,52 @@ library(ggplot2)
 
 ##### Section 3.6.3: Identifying correlations
 
-**Task:** ?
+**Task:** Pick two quantitative variables in the `msleep` dataset or the `iris` dataset. Check that whether either of these columns have `NA` values. If needed, make a new tabular dataset where you remove the `NA` values, using functions like `drop_na`.
+
+```{r}
+# Your code here
+```
+
+**Task:** Using your dataset, create a scatterplot with a fitted trend line. Describe the plot and whether you observe a correlation between these two variables.
 
 ```{r}
 # Your code here
 ```
 
 *Your response here*
+
+**Task:** Using your dataset, calculate both the Pearson or Spearman correlation using the `cor` function. Interpret these correlation values. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
 
 ##### Section 3.6.4: Producing linear models
 
-**Task:** ?
+**Task:** Train a linear model using the `lm` function to predict one quantitative variable using another in the `iris` dataset. Look at the summary of this model and interpret the results.
 
 ```{r}
 # Your code here
 ```
 
 *Your response here*
+
+**Task:** Train a linear model using the `lm` function to predict one quantitative variable using multiple quantitative variables in the `iris` dataset. Look at the summary of this model and interpret the results.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task:** For a challenge, train a linear model using the `lm` function to predict one quantitative variable using multiple variables including the `Species` column in the `iris` dataset. Look at the summary of this model and interpret the results.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
