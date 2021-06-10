@@ -65,23 +65,52 @@ Please be sure to write in your code or response underneath each prompt. Be sure
 
 ##### Section 3.4.1: Getting started with a ggplot
 
-**Task:** ?
+**Task:** Starting from the `msleep` dataset, pick two quantitative variables with which to create a scatterplot. Save this plot as a variable and then display this figure. Describe any patterns or outliers you see in this plot.
+
+```{r}
+library(ggplot2)
+# Your code here
+```
+
+*Your response here*
+
+**Task:** Starting from the `msleep` dataset, pick at least one quantitative variable to scale or transform. Make this new vector into a column in your dataset named `msleep2`. You may need to use the `mutate` function.
+
+```{r}
+# Your code here
+```
+
+**Task:** Starting from this `msleep2` dataset, use your new column and one other quantitative variable to create a scatterplot. Save this plot as a variable and then display this figure. Describe any patterns or outliers you see in this plot.
 
 ```{r}
 # Your code here
 ```
 
 *Your response here*
+
 
 ##### Section 3.4.2: Changing plot aesthetics
 
-**Task:** ?
+**Task:** Working from the code you used to generate one of these scatterplots, create a new scatterplot where you uniformly change the shape, color, and/or size of the points.
+
+```{r}
+# Your code here
+```
+
+**Task:** Working from the code you used to generate one of these scatterplots, change the labels on this plot.
+
+```{r}
+# Your code here
+```
+
+**Task:** Working from the code you used to generate one of these scatterplots, create a new scatterplot where you have the color dictated by a quantitative variable in the `msleep` or `msleep2` dataset. Describe any patterns or outliers you see in this plot.
 
 ```{r}
 # Your code here
 ```
 
 *Your response here*
+
 
 ##### Section 3.4.3: Exploring simple plots
 

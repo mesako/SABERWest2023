@@ -27,18 +27,20 @@ Please be sure to write in your code or response underneath each prompt. Be sure
 
 ##### Section 2.3.1: Getting help in R
 
-**Task:** use the `help` function to look up another function that you have seen used before, or Google for popular functions in R. This function shows results if you use it within a .R file or within the console as the documentation appears in one panel of RStudio. Which function did you look up?
+**Task:** Use the `help` function to look up another function that you have seen used before, or Google popular functions in R. The `help` function will cause documentation to appear in a side panel of RStudio when it is run within the Rmd code chunk. Which function did you look up? What arguments does it take and what does it output?
 
 ```{r}
 ?rm
 help(rm)
+
+# Your code here
 ```
 
 *Your response here*
 
 ##### Section 2.3.2: Using variables and datatypes
 
-**Task:** try assigning multiple other variables below. See what types of data works to save and what variable names are acceptable in R. Discuss your findings with a programming buddy.
+**Task:** Try assigning multiple other variables below. See what types of data you can save and what variable names are acceptable in R. Note when you get a warning or error message.
 
 ```{r}
 save.string <- "hello"
@@ -47,15 +49,34 @@ save.bool <- TRUE
 # Your code here
 ```
 
-**Task:** check that you can only remove one or two of the new variables you created, but that you can see the other ones still retained when you call the `ls` function.
+*Your response here*
+
+**Task:** Check that you can only remove one or two of the new variables you created, but that you can see the other ones still retained when you call the `ls` function.
 
 ```{r}
 # Your code here
 ```
 
+
 ##### Section 2.3.3: Using functions
 
-**Task:** ???
+**Task:** Pick one of the following functions to look into: `which`, `sum`, `sort`, `paste`, or `sample`. Research this function to identify its arguments and outputs. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task:** For the function you picked, practice successfully using this function below without errors.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task:** For a challenge, look into a more complicated function to use such as one of the following: `write.csv`, `apply`, `set.seed`, or `detach`.
 
 ```{r}
 # Your code here
@@ -84,47 +105,7 @@ save.bool <- TRUE
 
 ##### Section 2.4.1: Building vectors
 
-**Task:** try making a vector that contains elements of different data types (character strings like "this" or numeric values like 12).
-
-```{r}
-# Your code here
-```
-
-**Task:** figure out what happens when you try to add two vectors containing numeric values that are of different lengths (i.e. one vector contains three numbers, the other vector contains five numbers).
-
-```{r}
-# Your code here
-```
-
-**Task:** make a vector that contains only odd numbers between 9 and 35.
-
-```{r}
-# Your code here
-```
-
-**Task:** make a vector that contains five of each number between 3 and 6.
-
-```{r}
-# Your code here
-```
-
-##### Section 2.4.2: Indexing and subsetting vectors
-
-**Task:** index into the vector `all.heart.rates` and access only ever other number contained in that vector.
-
-```{r}
-# Your code here
-```
-
-**Task:** index into the vector `letters` and access only the last ten letters.
-
-```{r}
-# Your code here
-```
-
-##### Section 2.4.3: Using logic and logicals
-
-**Task:** check what happens when you check that a vector of numeric values is less than or greater than a certain number. What might you be able to do with this information?
+**Task:** Try making a vector that contains elements of different data types (character strings like "this" or numeric values like 12). Describe what happens in each of these cases.
 
 ```{r}
 # Your code here
@@ -132,13 +113,116 @@ save.bool <- TRUE
 
 *Your response here*
 
-**Task:** pretend that fruits are on sale 20% off. Figure out the new prices. Then calculate how much it would cost for someone to buy three apples, one pineapple, and two pears. Check your work with a programming buddy and compare the strategies you used.
+**Task:** Make several vectors of varying number of elements and save them to variables. Practice combining these vectors together using the `c` function.
+
+```{r}
+# Your code here
+```
+
+**Task:** Make a vector that contains only odd numbers between 9 and 35. You may need to check what the `:` operator, `seq`, or `rep` functions do.
+
+```{r}
+# Your code here
+```
+
+**Task:** Make a vector that contains five of each number between 3 and 6. You may need to check what the `:` operator, `seq`, or `rep` functions do.
+
+```{r}
+# Your code here
+```
+
+
+##### Section 2.4.2: Indexing and subsetting vectors
+
+**Task:** Remove the last element in the vector `all.heart.rates` and save the result in a new variable.
+
+```{r}
+heart.rates <- c(78, 68, 95, 82, 69, 63, 86, 74, 64, 62)
+more.heart.rates <- c(86, 79, 64, 74, 80)
+all.heart.rates <- c(heart.rates, more.heart.rates)
+# Your code here
+```
+
+**Task:** Index into the vector `all.heart.rates` and access only the last three elements contained in that vector.
+
+```{r}
+# Your code here
+```
+
+**Task:** Index into the vector `all.heart.rates` and access only every other number contained in that vector. You may need to check what the `:` operator, `seq`, or `rep` functions do.
+
+```{r}
+# Your code here
+```
+
+##### Section 2.4.3: Using logic and logicals
+
+**Task:** Describe what happens when you apply the `sum` function to the vector `check.flags` used below. Based on what the `sum` function does, what do you think is happening? 
+
+```{r}
+check.flags <- c(TRUE, FALSE, TRUE, FALSE, FALSE, TRUE, TRUE)
+# Your code here
+```
+
+*Your response here*
+
+**Task:** Check whether any elements in the vector `all.heart.rates` are greater than 90.
+
+```{r}
+# Your code here
+```
+
+**Task:** Calculate how many elements in the `all.heart.rates` vector are less than 70.
+
+```{r}
+# Your code here
+```
+
+**Task:** Index into the vector `all.heart.rates` and access only the elements that are less than 70.
+
+```{r}
+# Your code here
+```
+
+**Task:** Index into the vector `all.heart.rates` and access only the elements that are less than the average heart rate in this sample. You may want to check what the `mean` function.
+
+```{r}
+# Your code here
+```
+
+
+**Task:** For a challenge, index into the vector `all.heart.rates` and access only the elements that are less than 85 **or** greater than 90.
 
 ```{r}
 # Your code here
 ```
 
 ##### Section 2.4.4: Modifying vectors
+
+**Task:** Figure out what happens when you try to add two vectors containing numeric values that are of different lengths (i.e. one vector contains three numbers, the other vector contains five numbers).
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+
+**Task:** ???
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task:** ???
+
+```{r}
+# Your code here
+```
+
+*Your response here*
 
 **Task:** ???
 
@@ -154,19 +238,19 @@ save.bool <- TRUE
 
 ##### Section 2.5.1: Indexing and subsetting dataframes
 
-**Task:** check what arguments the `matrix` function takes.
+**Task:** Check what arguments the `matrix` function takes.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** try to access into the `A` matrix and only pull out the values 6, 7, and 8.
+**Task:** Access into the `A` matrix and only pull out the values 6, 7, and 8.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** try to create a matrix that contains both character strings (like "apple") and numeric values (like 26). Check what the matrix looks like. What has happened?
+**Task:** Create a matrix that contains both character strings (like "apple") and numeric values (like 26). Check what the matrix looks like. What has happened?
 
 ```{r}
 # Your code here
@@ -174,19 +258,19 @@ save.bool <- TRUE
 
 ##### Section 2.5.2: Exploring dataframes
 
-**Task:** investigate what the `dim` function does when you provide it with a matrix.
+**Task:** Investigate what the `dim` function does when you provide it with a matrix.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** access only specific columns of the `cats` dataframe using either the index or the name of the dataframe column.
+**Task:** Access only specific columns of the `cats` dataframe using either the index or the name of the dataframe column.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** use the diagnostic functions (e.g. `dim`) on the entire `cats` dataframe as well as check the type/class of individual rows or columns of this dataframe.
+**Task:** Use the diagnostic functions (e.g. `dim`) on the entire `cats` dataframe as well as check the type/class of individual rows or columns of this dataframe.
 
 ```{r}
 # Your code here
@@ -196,7 +280,7 @@ save.bool <- TRUE
 
 ##### Section 2.5.3: Building and modifying dataframes
 
-**Task:** try to add a new cat (a new row of values) to the `cats` dataframe using the `rbind` function. What happens? Share with your programming buddy.
+**Task:** Add a new cat (a new row of values) to the `cats` dataframe using the `rbind` function. What happens? Share with your programming buddy.
 
 ```{r}
 # Your code here
@@ -206,19 +290,19 @@ save.bool <- TRUE
 
 ##### Section 2.5.4: Handling datatypes in dataframes
 
-**Task:** check the typeof or class of this column that contains the coat colors.
+**Task:** Check the typeof or class of this column that contains the coat colors.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** overwrite the first column of the `cats` dataframe with the first column converted to a character vector (instead of a factor). Check if you are now able to add new cat measurements with the `rbind` function and if you still get the same error.
+**Task:** Overwrite the first column of the `cats` dataframe with the first column converted to a character vector (instead of a factor). Check if you are now able to add new cat measurements with the `rbind` function and if you still get the same error.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** test some of these same manipulations on the `gapminder` dataset!
+**Task:** Test some of these same manipulations on the `gapminder` dataset!
 
 ```{r}
 # Your code here
