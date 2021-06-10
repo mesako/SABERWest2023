@@ -114,7 +114,24 @@ library(ggplot2)
 
 ##### Section 3.4.3: Exploring simple plots
 
-**Task:** ?
+**Task:** Create a new histogram looking at a different quantitative variable either in the `msleep` dataset or the `iris` dataset. Describe the distribution that you see: what is the range of values? Is there one peak or more than one peak? What appears to be the center/average?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+
+**Task:** For your histogram, try changing the value of `bins` in the `geom_histogram` function. How does this change your plot and how you might interpret the distribution?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task:** Create a new barplot looking at the counts of a categorical variable within either the `msleep` or `iris` dataset. Describe the numbers of samples that you see.
 
 ```{r}
 # Your code here
@@ -124,7 +141,7 @@ library(ggplot2)
 
 ##### Section 3.4.4: Visualizing between groups
 
-**Task:** ?
+**Task:** Create a different boxplot for either the `iris` dataset or the `msleep` dataset, by using either a different categorical variable or a different quantiative variable (or both!). Describe what differences you see, if any, between the groups.
 
 ```{r}
 # Your code here
@@ -132,9 +149,51 @@ library(ggplot2)
 
 *Your response here*
 
+**Task:** Create an analogous histogram with faceting to display the differences between the same groups along the same quantiative variable, just using a different kind of plot. Which plot would you use between these two, and why?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+
 ##### Section 3.4.5: Generating heatmaps
 
-**Task:** ?
+**Task:** Create a new tabular dataset from the `iris` dataset where you extract just two of the quantatitive variables. Save this new dataset to a variable.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task:** Using this new dataset with just two columns, create a basic heatmap. Remember to provide the names of the columns using the `labCol` argument for the `heatmap` function. What patterns/outliers do you observe, if any, in this heatmap?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task:** For this same heatmap, change the `scale` parameter in the `heatmap` function to either `"row"` or `"col"` and observe the differences. What do you notice? You may want to look into the function using `?heatmap` to check what the argument does.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task:** For this same heatmap, add the `Species` data from the original `iris` dataset to the heatmap using the `labRow` argument in this function. What patterns if any do you now notice?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+
+**Task:** For a challenge, you can try adding more quantitative variables from `iris` to your numeric dataset and replotting the heatmap. Share any observations on how this changes your final heatmap.
 
 ```{r}
 # Your code here
@@ -148,13 +207,36 @@ library(ggplot2)
 
 ##### Section 3.5.1: Plotting error bars
 
-**Task:** ?
+**Task:** Choose either a different categorical variable or a different quantitative variable in the `msleep` dataset with which to generate a new summary dataframe. This dataframe will contain the average, lower bound, and upper bound measurement within each group. You will want to use the `group_by`, `summarize`, and `mean_se` functions.
+
+```{r}
+# Your code here
+```
+
+**Task:** With your new summary dataframe, create a barplot that shows the average measurement in each categorical group. What differences do you see if any between the groups?
 
 ```{r}
 # Your code here
 ```
 
 *Your response here*
+
+**Task:** For the barplot you just generated, add the errorbars. How does this change your interpretation in the last task, if at all?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task:** For a challenge, repeat these last few steps with the `iris` dataset to show differences in any quantitative variable between the `Species` in this data. Describe your findings.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
 
 ##### Section 3.5.2: Showing trends in data
 
