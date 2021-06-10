@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.4 Packages - install and use | DLL 2021, R section</title>
+  <title>4.4 Packages - install and use | Day 5 - workflows and packages</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.4 Packages - install and use | DLL 2021, R section" />
+  <meta property="og:title" content="4.4 Packages - install and use | Day 5 - workflows and packages" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.4 Packages - install and use | DLL 2021, R section" />
+  <meta name="twitter:title" content="4.4 Packages - install and use | Day 5 - workflows and packages" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -36,6 +36,7 @@
   
 <link rel="prev" href="functions-as-modular-steps.html"/>
 <link rel="next" href="writing-reusable-code.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -58,25 +59,26 @@
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -85,9 +87,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -137,82 +139,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">DLL 2021 R workshops</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Workshop Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Workshop Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="workshop-goals.html"><a href="workshop-goals.html"><i class="fa fa-check"></i><b>1.1</b> Workshop goals</a></li>
-<li class="chapter" data-level="1.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html"><i class="fa fa-check"></i><b>1.2</b> Structure and resources</a><ul>
+<li class="chapter" data-level="1.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html"><i class="fa fa-check"></i><b>1.2</b> Structure and resources</a>
+<ul>
 <li class="chapter" data-level="1.2.1" data-path="structure-and-resources.html"><a href="structure-and-resources.html#this-syllabus-and-videos"><i class="fa fa-check"></i><b>1.2.1</b> This syllabus and videos</a></li>
 <li class="chapter" data-level="1.2.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html#slack-channel"><i class="fa fa-check"></i><b>1.2.2</b> Slack channel</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="workshop-expectations.html"><a href="workshop-expectations.html"><i class="fa fa-check"></i><b>1.3</b> Workshop expectations</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Day 3 - intoduction to R</a><ul>
+<li class="chapter" data-level="2" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Day 3 - intoduction to R</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="navigating-rstudio.html"><a href="navigating-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Navigating Rstudio</a></li>
 <li class="chapter" data-level="2.2" data-path="using-rmds.html"><a href="using-rmds.html"><i class="fa fa-check"></i><b>2.2</b> Using Rmds</a></li>
-<li class="chapter" data-level="2.3" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html"><i class="fa fa-check"></i><b>2.3</b> Getting started in R</a><ul>
+<li class="chapter" data-level="2.3" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html"><i class="fa fa-check"></i><b>2.3</b> Getting started in R</a>
+<ul>
 <li class="chapter" data-level="2.3.1" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html#getting-help-in-r"><i class="fa fa-check"></i><b>2.3.1</b> Getting help in R</a></li>
 <li class="chapter" data-level="2.3.2" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html#using-variables-and-data-types"><i class="fa fa-check"></i><b>2.3.2</b> Using variables and data types</a></li>
 <li class="chapter" data-level="2.3.3" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html#using-functions"><i class="fa fa-check"></i><b>2.3.3</b> Using functions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="working-with-vectors.html"><a href="working-with-vectors.html"><i class="fa fa-check"></i><b>2.4</b> Working with vectors</a><ul>
+<li class="chapter" data-level="2.4" data-path="working-with-vectors.html"><a href="working-with-vectors.html"><i class="fa fa-check"></i><b>2.4</b> Working with vectors</a>
+<ul>
 <li class="chapter" data-level="2.4.1" data-path="working-with-vectors.html"><a href="working-with-vectors.html#building-vectors"><i class="fa fa-check"></i><b>2.4.1</b> Building vectors</a></li>
 <li class="chapter" data-level="2.4.2" data-path="working-with-vectors.html"><a href="working-with-vectors.html#indexing-and-subsetting-vectors"><i class="fa fa-check"></i><b>2.4.2</b> Indexing and subsetting vectors</a></li>
 <li class="chapter" data-level="2.4.3" data-path="working-with-vectors.html"><a href="working-with-vectors.html#using-logic-and-logicals"><i class="fa fa-check"></i><b>2.4.3</b> Using logic and logicals</a></li>
 <li class="chapter" data-level="2.4.4" data-path="working-with-vectors.html"><a href="working-with-vectors.html#modifying-vectors"><i class="fa fa-check"></i><b>2.4.4</b> Modifying vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html"><i class="fa fa-check"></i><b>2.5</b> Working with dataframes</a><ul>
+<li class="chapter" data-level="2.5" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html"><i class="fa fa-check"></i><b>2.5</b> Working with dataframes</a>
+<ul>
 <li class="chapter" data-level="2.5.1" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html#indexing-and-subsetting-dataframes"><i class="fa fa-check"></i><b>2.5.1</b> Indexing and subsetting dataframes</a></li>
 <li class="chapter" data-level="2.5.2" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html#exploring-dataframes"><i class="fa fa-check"></i><b>2.5.2</b> Exploring dataframes</a></li>
 <li class="chapter" data-level="2.5.3" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html#building-and-modifying-dataframes"><i class="fa fa-check"></i><b>2.5.3</b> Building and modifying dataframes</a></li>
 <li class="chapter" data-level="2.5.4" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html#handling-datatypes-in-dataframes"><i class="fa fa-check"></i><b>2.5.4</b> Handling datatypes in dataframes</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="day-4-tidyverse-and-visualizations.html"><a href="day-4-tidyverse-and-visualizations.html"><i class="fa fa-check"></i><b>3</b> Day 4 - tidyverse and visualizations</a><ul>
-<li class="chapter" data-level="3.1" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html"><i class="fa fa-check"></i><b>3.1</b> Reading and processing data</a><ul>
+<li class="chapter" data-level="3" data-path="day-4-tidyverse-and-visualizations.html"><a href="day-4-tidyverse-and-visualizations.html"><i class="fa fa-check"></i><b>3</b> Day 4 - tidyverse and visualizations</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html"><i class="fa fa-check"></i><b>3.1</b> Reading and processing data</a>
+<ul>
 <li class="chapter" data-level="3.1.1" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html#loading-a-file-into-r"><i class="fa fa-check"></i><b>3.1.1</b> Loading a file into R</a></li>
 <li class="chapter" data-level="3.1.2" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html#handling-issues-in-data"><i class="fa fa-check"></i><b>3.1.2</b> Handling issues in data</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="using-tidyverse.html"><a href="using-tidyverse.html"><i class="fa fa-check"></i><b>3.2</b> Using tidyverse</a><ul>
+<li class="chapter" data-level="3.2" data-path="using-tidyverse.html"><a href="using-tidyverse.html"><i class="fa fa-check"></i><b>3.2</b> Using tidyverse</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="using-tidyverse.html"><a href="using-tidyverse.html#goals-to-be-reworked-alongside-content"><i class="fa fa-check"></i><b>3.2.1</b> Goals to be reworked alongside content</a></li>
 <li class="chapter" data-level="3.2.2" data-path="using-tidyverse.html"><a href="using-tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>3.2.2</b> Welcome to the tidyverse!</a></li>
 <li class="chapter" data-level="3.2.3" data-path="using-tidyverse.html"><a href="using-tidyverse.html#lets-get-started-with-tidyverse"><i class="fa fa-check"></i><b>3.2.3</b> Let’s get started with Tidyverse</a></li>
 <li class="chapter" data-level="3.2.4" data-path="using-tidyverse.html"><a href="using-tidyverse.html#try-tidyverse-on-the-dataset-we-loaded-in-the-previous-section"><i class="fa fa-check"></i><b>3.2.4</b> Try tidyverse on the dataset we loaded in the previous section</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="using-tidyverse-1.html"><a href="using-tidyverse-1.html"><i class="fa fa-check"></i><b>3.3</b> Using tidyverse</a></li>
-<li class="chapter" data-level="3.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a><ul>
+<li class="chapter" data-level="3.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a>
+<ul>
 <li class="chapter" data-level="3.4.1" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.4.1</b> Getting started with a ggplot</a></li>
 <li class="chapter" data-level="3.4.2" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#changing-plot-aesthetics"><i class="fa fa-check"></i><b>3.4.2</b> Changing plot aesthetics</a></li>
 <li class="chapter" data-level="3.4.3" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#exploring-simple-plots"><i class="fa fa-check"></i><b>3.4.3</b> Exploring simple plots</a></li>
 <li class="chapter" data-level="3.4.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>3.4.4</b> Visualizing between groups</a></li>
 <li class="chapter" data-level="3.4.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#generating-heatmaps"><i class="fa fa-check"></i><b>3.4.5</b> Generating heatmaps</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html"><i class="fa fa-check"></i><b>3.5</b> Making scientific figures</a><ul>
+<li class="chapter" data-level="3.5" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html"><i class="fa fa-check"></i><b>3.5</b> Making scientific figures</a>
+<ul>
 <li class="chapter" data-level="3.5.1" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.5.1</b> Plotting error bars</a></li>
 <li class="chapter" data-level="3.5.2" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#showing-trends-in-data"><i class="fa fa-check"></i><b>3.5.2</b> Showing trends in data</a></li>
 <li class="chapter" data-level="3.5.3" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#saving-figures-locally"><i class="fa fa-check"></i><b>3.5.3</b> Saving figures locally</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html"><i class="fa fa-check"></i><b>3.6</b> Applying basic stats</a><ul>
+<li class="chapter" data-level="3.6" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html"><i class="fa fa-check"></i><b>3.6</b> Applying basic stats</a>
+<ul>
 <li class="chapter" data-level="3.6.1" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#describing-quantitative-variables"><i class="fa fa-check"></i><b>3.6.1</b> Describing quantitative variables</a></li>
 <li class="chapter" data-level="3.6.2" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#finding-differences-in-data"><i class="fa fa-check"></i><b>3.6.2</b> Finding differences in data</a></li>
 <li class="chapter" data-level="3.6.3" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#identifying-correlations"><i class="fa fa-check"></i><b>3.6.3</b> Identifying correlations</a></li>
 <li class="chapter" data-level="3.6.4" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#producing-linear-models"><i class="fa fa-check"></i><b>3.6.4</b> Producing linear models</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><a href="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows, using packages, writing (re)usable code, sharing analyses</a><ul>
+<li class="chapter" data-level="4" data-path="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><a href="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows, using packages, writing (re)usable code, sharing analyses</a>
+<ul>
 <li class="chapter" data-level="4.0.1" data-path="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><a href="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html#what-is-a-workflow"><i class="fa fa-check"></i><b>4.0.1</b> What is a workflow?</a></li>
-<li class="chapter" data-level="4.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html"><i class="fa fa-check"></i><b>4.1</b> Analyzing viral protein sequences</a><ul>
+<li class="chapter" data-level="4.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html"><i class="fa fa-check"></i><b>4.1</b> Analyzing viral protein sequences</a>
+<ul>
 <li class="chapter" data-level="4.1.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#reading-in-tab-delimited-file"><i class="fa fa-check"></i><b>4.1.1</b> Reading in tab-delimited file</a></li>
 <li class="chapter" data-level="4.1.2" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#loops---doing-a-similar-task-multiple-times"><i class="fa fa-check"></i><b>4.1.2</b> Loops - doing a similar task multiple times</a></li>
 <li class="chapter" data-level="4.1.3" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#extending-the-workflow"><i class="fa fa-check"></i><b>4.1.3</b> Extending the workflow</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html"><i class="fa fa-check"></i><b>4.2</b> Troubleshooting, getting help, dissecting problems</a><ul>
+<li class="chapter" data-level="4.2" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html"><i class="fa fa-check"></i><b>4.2</b> Troubleshooting, getting help, dissecting problems</a>
+<ul>
 <li class="chapter" data-level="4.2.1" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html#places-to-look-for-help"><i class="fa fa-check"></i><b>4.2.1</b> Places to look for help</a></li>
 <li class="chapter" data-level="4.2.2" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html#minimum-reproducible-example"><i class="fa fa-check"></i><b>4.2.2</b> Minimum reproducible example</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html"><i class="fa fa-check"></i><b>4.3</b> Functions as modular steps</a><ul>
+<li class="chapter" data-level="4.3" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html"><i class="fa fa-check"></i><b>4.3</b> Functions as modular steps</a>
+<ul>
 <li class="chapter" data-level="4.3.1" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html#tips-for-modular-workflows"><i class="fa fa-check"></i><b>4.3.1</b> Tips for modular workflows</a></li>
 <li class="chapter" data-level="4.3.2" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html#apply-is-a-popular-tool"><i class="fa fa-check"></i><b>4.3.2</b> Apply is a popular tool</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html"><i class="fa fa-check"></i><b>4.4</b> Packages - install and use</a><ul>
+<li class="chapter" data-level="4.4" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html"><i class="fa fa-check"></i><b>4.4</b> Packages - install and use</a>
+<ul>
 <li class="chapter" data-level="4.4.1" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#cran-is-the-canonical-r-package-resource"><i class="fa fa-check"></i><b>4.4.1</b> CRAN is the canonical R package resource</a></li>
 <li class="chapter" data-level="4.4.2" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#using-packages-without-library-ing-them"><i class="fa fa-check"></i><b>4.4.2</b> Using packages without <code>library()</code>-ing them</a></li>
 <li class="chapter" data-level="4.4.3" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#github-is-a-common-place-for-sharing-packges-in-development"><i class="fa fa-check"></i><b>4.4.3</b> Github is a common place for sharing packges in development</a></li>
@@ -220,11 +239,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4.5" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#what-packages-do-you-have-already"><i class="fa fa-check"></i><b>4.4.5</b> What packages do you have already?</a></li>
 <li class="chapter" data-level="4.4.6" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#finding-more-help-and-documentation"><i class="fa fa-check"></i><b>4.4.6</b> Finding more help and documentation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html"><i class="fa fa-check"></i><b>4.5</b> Writing (re)usable code</a><ul>
+<li class="chapter" data-level="4.5" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html"><i class="fa fa-check"></i><b>4.5</b> Writing (re)usable code</a>
+<ul>
 <li class="chapter" data-level="4.5.1" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#examples"><i class="fa fa-check"></i><b>4.5.1</b> Examples</a></li>
 <li class="chapter" data-level="4.5.2" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#style-guides-can-be-inspiring"><i class="fa fa-check"></i><b>4.5.2</b> Style guides can be inspiring</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html"><i class="fa fa-check"></i><b>4.6</b> More <code>rmarkdown</code> for reproducibile sharing</a><ul>
+<li class="chapter" data-level="4.6" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html"><i class="fa fa-check"></i><b>4.6</b> More <code>rmarkdown</code> for reproducibile sharing</a>
+<ul>
 <li class="chapter" data-level="4.6.1" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#rmarkdown-package"><i class="fa fa-check"></i><b>4.6.1</b> rmarkdown package</a></li>
 <li><a href="more-rmarkdown-for-reproducibile-sharing.html#section"></a></li>
 <li class="chapter" data-level="4.6.2" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#sharing-with-others"><i class="fa fa-check"></i><b>4.6.2</b> Sharing with others</a></li>
@@ -232,15 +253,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>4.7</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a><ul>
-<li class="chapter" data-level="5.1" data-path="additional-tutorials.html"><a href="additional-tutorials.html"><i class="fa fa-check"></i><b>5.1</b> Additional tutorials</a><ul>
+<li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="additional-tutorials.html"><a href="additional-tutorials.html"><i class="fa fa-check"></i><b>5.1</b> Additional tutorials</a>
+<ul>
 <li class="chapter" data-level="5.1.1" data-path="additional-tutorials.html"><a href="additional-tutorials.html#sub-sub-section"><i class="fa fa-check"></i><b>5.1.1</b> sub sub section</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="more-challenges.html"><a href="more-challenges.html"><i class="fa fa-check"></i><b>5.2</b> More challenges</a></li>
 <li class="chapter" data-level="5.3" data-path="figures-ideas.html"><a href="figures-ideas.html"><i class="fa fa-check"></i><b>5.3</b> Figures ideas</a></li>
 <li class="chapter" data-level="5.4" data-path="rmd-example-of-code-chunk.html"><a href="rmd-example-of-code-chunk.html"><i class="fa fa-check"></i><b>5.4</b> Rmd example of code chunk</a></li>
 <li class="chapter" data-level="5.5" data-path="more-example-rmds.html"><a href="more-example-rmds.html"><i class="fa fa-check"></i><b>5.5</b> More example Rmds</a></li>
-<li class="chapter" data-level="5.6" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html"><i class="fa fa-check"></i><b>5.6</b> How to edit this document</a><ul>
+<li class="chapter" data-level="5.6" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html"><i class="fa fa-check"></i><b>5.6</b> How to edit this document</a>
+<ul>
 <li class="chapter" data-level="5.6.1" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html#setup"><i class="fa fa-check"></i><b>5.6.1</b> Setup</a></li>
 <li class="chapter" data-level="5.6.2" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html#editwork-on-it"><i class="fa fa-check"></i><b>5.6.2</b> Edit/work on it</a></li>
 <li class="chapter" data-level="5.6.3" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html#publishing-onto-the-main-page-so-its-hosted-at-the-url"><i class="fa fa-check"></i><b>5.6.3</b> Publishing onto the main page, so it’s hosted at the URL</a></li>
@@ -256,7 +280,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">DLL 2021, R section</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Day 5 - workflows and packages</a>
           </h1>
         </div>
 
@@ -264,7 +288,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="packages---install-and-use" class="section level2">
+<div id="packages---install-and-use" class="section level2" number="4.4">
 <h2><span class="header-section-number">4.4</span> Packages - install and use</h2>
 <p>Let’s take a look at your code from the last few days.
 How would you share this with the other people in the course?</p>
@@ -278,7 +302,7 @@ There’s more <a href="https://r-pkgs.org/">comprehensive instruction here</a>.
 Personally, the author has never had cause to make one, but I can report that
 they’re very easy to use!</p>
 <hr />
-<div id="cran-is-the-canonical-r-package-resource" class="section level3">
+<div id="cran-is-the-canonical-r-package-resource" class="section level3" number="4.4.1">
 <h3><span class="header-section-number">4.4.1</span> CRAN is the canonical R package resource</h3>
 <p>The Comprehensive R Archive Netowrk
 <a href="https://cran.r-project.org/web/packages/">CRAN</a>
@@ -293,11 +317,11 @@ already installed.
 Call <code>library()</code> function, with an argument of the library name,
 as a string.</p>
 <p>Try loading this one:</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" title="1"><span class="kw">library</span>(<span class="st">&quot;stringdist&quot;</span>)</a>
-<a class="sourceLine" id="cb360-2" title="2"><span class="kw">library</span>(stringdist)</a></code></pre></div>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="packages-install-and-use.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;stringdist&quot;</span>)</span>
+<span id="cb354-2"><a href="packages-install-and-use.html#cb354-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringdist)</span></code></pre></div>
 <p>Don’t have it? You can look for packages by using a search engine, or finding
 suggestions in the documentation, papers. Once you have a package name, use</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb361-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;stringdist&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="packages-install-and-use.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;stringdist&quot;</span>)</span></code></pre></div>
 <p>to install it. You may need to select a “mirror”. This is just where you
 are downloading from, usually just go with “0-Cloud”
 <a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>.</p>
@@ -310,34 +334,34 @@ what’s called your library,</p>
 </ul>
 <hr />
 </div>
-<div id="using-packages-without-library-ing-them" class="section level3">
+<div id="using-packages-without-library-ing-them" class="section level3" number="4.4.2">
 <h3><span class="header-section-number">4.4.2</span> Using packages without <code>library()</code>-ing them</h3>
 <p>Some packages you don’t really want to have to go through the trouble of
 loading, you’ll just want one function.
 For example, this website is generated with one function, <code>render_book()</code>
 in the package <code>bookdown</code>. Instead of:</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" title="1"><span class="kw">library</span>(bookdown)</a>
-<a class="sourceLine" id="cb362-2" title="2"><span class="kw">render_book</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="packages-install-and-use.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bookdown)</span>
+<span id="cb356-2"><a href="packages-install-and-use.html#cb356-2" aria-hidden="true" tabindex="-1"></a><span class="fu">render_book</span>()</span></code></pre></div>
 <p>I can save a line by just using <code>::</code></p>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb363-1" title="1">bookdown<span class="op">::</span><span class="kw">render_book</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="packages-install-and-use.html#cb357-1" aria-hidden="true" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">render_book</span>()</span></code></pre></div>
 <p>This means I am looking in library <code>bookdown</code> for function <code>render_book</code>.
 The function is hidden again right afterwards, but it is useful if you just
 want to run one function from a library, once.</p>
 <hr />
 </div>
-<div id="github-is-a-common-place-for-sharing-packges-in-development" class="section level3">
+<div id="github-is-a-common-place-for-sharing-packges-in-development" class="section level3" number="4.4.3">
 <h3><span class="header-section-number">4.4.3</span> Github is a common place for sharing packges in development</h3>
 <p>Installing from github requires some different programming -
 and there’s libraries with functions for this.</p>
-<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" title="1"><span class="kw">library</span>(<span class="st">&quot;remotes&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="packages-install-and-use.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;remotes&quot;</span>)</span></code></pre></div>
 <p>This used to be part of the <code>devtools</code> package, but the authors have been
 “uncoupling” these to make each package simple and composable.</p>
-<div id="lets-install-a-package-off-of-github." class="section level4">
+<div id="lets-install-a-package-off-of-github." class="section level4" number="4.4.3.1">
 <h4><span class="header-section-number">4.4.3.1</span> Let’s install a package off of github.</h4>
 <p>Here’s a cool <a href="https://github.com/ewenme/ghibli">Ghibli color palette</a>,
 so you can change sets of colors for your plots.
 Try installing it with:</p>
-<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" title="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ewenme/ghibli&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="packages-install-and-use.html#cb359-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ewenme/ghibli&quot;</span>)</span></code></pre></div>
 <p>Then adapt one of your previous plots (that has colors) to use these new
 color palettes.</p>
 <p>Exercise - install a package from github and learn how to use it</p>
@@ -350,19 +374,19 @@ color palettes.</p>
 <hr />
 </div>
 </div>
-<div id="bioconductor-is-a-great-place-for-bio-related-packages" class="section level3">
+<div id="bioconductor-is-a-great-place-for-bio-related-packages" class="section level3" number="4.4.4">
 <h3><span class="header-section-number">4.4.4</span> Bioconductor is a great place for bio-related packages 😬</h3>
 <p>Bioconductor is a giant repository of just scientific, well bio-focused,
 packages. It’s where a lot of bioinformatics software gets published.
 However, it has it’s own package system and thus package manager.
 You will have to install it … from CRAN. Like so:</p>
-<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="packages-install-and-use.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</span></code></pre></div>
 <p>That installs a package with a function that then installs Bioconductor
 packages. It’s actually easy. Let’s give it a try by installing and
 using the <code>limma</code> package to analyze some gene expression data.</p>
 <p>If you’re recall from before, we can use <code>::</code> to avoid having to actually
 <code>library</code> the whole package:</p>
-<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb367-1" title="1">BiocManager<span class="op">::</span><span class="kw">install</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="packages-install-and-use.html#cb361-1" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>()</span></code></pre></div>
 <p><a href="">How to install Bioconductor</a></p>
 <p>Scholars will know how to install Bioconductor package from CRAN</p>
 <p>Scholars will know how to find and install packages from Bioconductor</p>
@@ -371,17 +395,17 @@ using the <code>limma</code> package to analyze some gene expression data.</p>
 their datasets.</p>
 <hr />
 </div>
-<div id="what-packages-do-you-have-already" class="section level3">
+<div id="what-packages-do-you-have-already" class="section level3" number="4.4.5">
 <h3><span class="header-section-number">4.4.5</span> What packages do you have already?</h3>
 <p>explore the namespace for a package, ie ?packagename:: and TAB or ?packagename::</p>
 <p>how to print out all the packages you have loaded</p>
 <hr />
 </div>
-<div id="finding-more-help-and-documentation" class="section level3">
+<div id="finding-more-help-and-documentation" class="section level3" number="4.4.6">
 <h3><span class="header-section-number">4.4.6</span> Finding more help and documentation</h3>
 <p>Need a problem</p>
-<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" title="1">?geom_line</a></code></pre></div>
-<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb369-1" title="1">?stringdist</a></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="packages-install-and-use.html#cb362-1" aria-hidden="true" tabindex="-1"></a>?geom_line</span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="packages-install-and-use.html#cb363-1" aria-hidden="true" tabindex="-1"></a>?stringdist</span></code></pre></div>
 <p>Objective X.X: Scholars will know how to get official docs ( ? ) and how to skim/read these</p>
 <p>Objective X.X: Scholars will see how easy it is to use a search engine to try and find other answers</p>
 <p>Objective X.X: Scholars will understand the intention of the Slack being a learning community, or something (set expectations about this)</p>
@@ -395,7 +419,7 @@ their datasets.</p>
 <div class="footnotes">
 <hr />
 <ol start="8">
-<li id="fn8"><p>I have no idea where this is, never heard of that country!<a href="packages-install-and-use.html#fnref8" class="footnote-back">↩</a></p></li>
+<li id="fn8"><p>I have no idea where this is, never heard of that country!<a href="packages-install-and-use.html#fnref8" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 <p style="margin-top:10em;text-align:center;font-size:small;">
