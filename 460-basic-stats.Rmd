@@ -133,8 +133,8 @@ ggplot(msleep3, aes(x = brainwt_log, y = sleep_cycle)) +
 When we plot these variables against each other, including a fitted linear trend line, we can see that there is a relationship between these variables. However, the points do not quite fit a straight line if we look at the edges and center of this fitted line. This will reflect in our calculation of two different correlations.
 
 ```{r,stats13b,cache=TRUE}
-cor(msleep2$brainwt_log, msleep2$sleep_cycle, method = "pearson")
-cor(msleep2$brainwt_log, msleep2$sleep_cycle, method = "spearman")
+cor(msleep3$brainwt_log, msleep3$sleep_cycle, method = "pearson")
+cor(msleep3$brainwt_log, msleep3$sleep_cycle, method = "spearman")
 ```
 
 Pearson correlations are higher when the data fits to a straight line like a trend line. However, Spearman correlations do not require a single slope: as long as one value goes up and the other goes up, these values are considered highly correlated.
