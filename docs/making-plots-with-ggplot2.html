@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.4 Making plots with ggplot2 | Day 5 - workflows and packages</title>
+  <title>3.4 Making plots with ggplot2 | DLL 2021, R section</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.4 Making plots with ggplot2 | Day 5 - workflows and packages" />
+  <meta property="og:title" content="3.4 Making plots with ggplot2 | DLL 2021, R section" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.4 Making plots with ggplot2 | Day 5 - workflows and packages" />
+  <meta name="twitter:title" content="3.4 Making plots with ggplot2 | DLL 2021, R section" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -36,7 +36,6 @@
   
 <link rel="prev" href="using-tidyverse-1.html"/>
 <link rel="next" href="making-scientific-figures.html"/>
-<script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -59,26 +58,25 @@
 
 
 <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
+    border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -87,9 +85,9 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  {  }
 @media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+a.sourceLine::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -139,92 +137,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">DLL 2021 R workshops</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Workshop Introduction</a>
-<ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Workshop Introduction</a><ul>
 <li class="chapter" data-level="1.1" data-path="workshop-goals.html"><a href="workshop-goals.html"><i class="fa fa-check"></i><b>1.1</b> Workshop goals</a></li>
-<li class="chapter" data-level="1.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html"><i class="fa fa-check"></i><b>1.2</b> Structure and resources</a>
-<ul>
+<li class="chapter" data-level="1.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html"><i class="fa fa-check"></i><b>1.2</b> Structure and resources</a><ul>
 <li class="chapter" data-level="1.2.1" data-path="structure-and-resources.html"><a href="structure-and-resources.html#this-syllabus-and-videos"><i class="fa fa-check"></i><b>1.2.1</b> This syllabus and videos</a></li>
 <li class="chapter" data-level="1.2.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html#slack-channel"><i class="fa fa-check"></i><b>1.2.2</b> Slack channel</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="workshop-expectations.html"><a href="workshop-expectations.html"><i class="fa fa-check"></i><b>1.3</b> Workshop expectations</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Day 3 - intoduction to R</a>
-<ul>
+<li class="chapter" data-level="2" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Day 3 - intoduction to R</a><ul>
 <li class="chapter" data-level="2.1" data-path="navigating-rstudio.html"><a href="navigating-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Navigating Rstudio</a></li>
 <li class="chapter" data-level="2.2" data-path="using-rmds.html"><a href="using-rmds.html"><i class="fa fa-check"></i><b>2.2</b> Using Rmds</a></li>
-<li class="chapter" data-level="2.3" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html"><i class="fa fa-check"></i><b>2.3</b> Getting started in R</a>
-<ul>
+<li class="chapter" data-level="2.3" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html"><i class="fa fa-check"></i><b>2.3</b> Getting started in R</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html#getting-help-in-r"><i class="fa fa-check"></i><b>2.3.1</b> Getting help in R</a></li>
 <li class="chapter" data-level="2.3.2" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html#using-variables-and-data-types"><i class="fa fa-check"></i><b>2.3.2</b> Using variables and data types</a></li>
 <li class="chapter" data-level="2.3.3" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html#using-functions"><i class="fa fa-check"></i><b>2.3.3</b> Using functions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="working-with-vectors.html"><a href="working-with-vectors.html"><i class="fa fa-check"></i><b>2.4</b> Working with vectors</a>
-<ul>
+<li class="chapter" data-level="2.4" data-path="working-with-vectors.html"><a href="working-with-vectors.html"><i class="fa fa-check"></i><b>2.4</b> Working with vectors</a><ul>
 <li class="chapter" data-level="2.4.1" data-path="working-with-vectors.html"><a href="working-with-vectors.html#building-vectors"><i class="fa fa-check"></i><b>2.4.1</b> Building vectors</a></li>
 <li class="chapter" data-level="2.4.2" data-path="working-with-vectors.html"><a href="working-with-vectors.html#indexing-and-subsetting-vectors"><i class="fa fa-check"></i><b>2.4.2</b> Indexing and subsetting vectors</a></li>
 <li class="chapter" data-level="2.4.3" data-path="working-with-vectors.html"><a href="working-with-vectors.html#using-logic-and-logicals"><i class="fa fa-check"></i><b>2.4.3</b> Using logic and logicals</a></li>
 <li class="chapter" data-level="2.4.4" data-path="working-with-vectors.html"><a href="working-with-vectors.html#modifying-vectors"><i class="fa fa-check"></i><b>2.4.4</b> Modifying vectors</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html"><i class="fa fa-check"></i><b>2.5</b> Working with dataframes</a>
-<ul>
+<li class="chapter" data-level="2.5" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html"><i class="fa fa-check"></i><b>2.5</b> Working with dataframes</a><ul>
 <li class="chapter" data-level="2.5.1" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html#indexing-and-subsetting-dataframes"><i class="fa fa-check"></i><b>2.5.1</b> Indexing and subsetting dataframes</a></li>
 <li class="chapter" data-level="2.5.2" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html#exploring-dataframes"><i class="fa fa-check"></i><b>2.5.2</b> Exploring dataframes</a></li>
 <li class="chapter" data-level="2.5.3" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html#building-and-modifying-dataframes"><i class="fa fa-check"></i><b>2.5.3</b> Building and modifying dataframes</a></li>
 <li class="chapter" data-level="2.5.4" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html#handling-datatypes-in-dataframes"><i class="fa fa-check"></i><b>2.5.4</b> Handling datatypes in dataframes</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="day-4-tidyverse-and-visualizations.html"><a href="day-4-tidyverse-and-visualizations.html"><i class="fa fa-check"></i><b>3</b> Day 4 - tidyverse and visualizations</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html"><i class="fa fa-check"></i><b>3.1</b> Reading and processing data</a>
-<ul>
+<li class="chapter" data-level="3" data-path="day-4-tidyverse-and-visualizations.html"><a href="day-4-tidyverse-and-visualizations.html"><i class="fa fa-check"></i><b>3</b> Day 4 - tidyverse and visualizations</a><ul>
+<li class="chapter" data-level="3.1" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html"><i class="fa fa-check"></i><b>3.1</b> Reading and processing data</a><ul>
 <li class="chapter" data-level="3.1.1" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html#loading-a-file-into-r"><i class="fa fa-check"></i><b>3.1.1</b> Loading a file into R</a></li>
 <li class="chapter" data-level="3.1.2" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html#handling-issues-in-data"><i class="fa fa-check"></i><b>3.1.2</b> Handling issues in data</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="using-tidyverse.html"><a href="using-tidyverse.html"><i class="fa fa-check"></i><b>3.2</b> Using tidyverse</a>
-<ul>
+<li class="chapter" data-level="3.2" data-path="using-tidyverse.html"><a href="using-tidyverse.html"><i class="fa fa-check"></i><b>3.2</b> Using tidyverse</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="using-tidyverse.html"><a href="using-tidyverse.html#goals-to-be-reworked-alongside-content"><i class="fa fa-check"></i><b>3.2.1</b> Goals to be reworked alongside content</a></li>
 <li class="chapter" data-level="3.2.2" data-path="using-tidyverse.html"><a href="using-tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>3.2.2</b> Welcome to the tidyverse!</a></li>
 <li class="chapter" data-level="3.2.3" data-path="using-tidyverse.html"><a href="using-tidyverse.html#lets-get-started-with-tidyverse"><i class="fa fa-check"></i><b>3.2.3</b> Let’s get started with Tidyverse</a></li>
 <li class="chapter" data-level="3.2.4" data-path="using-tidyverse.html"><a href="using-tidyverse.html#try-tidyverse-on-the-dataset-we-loaded-in-the-previous-section"><i class="fa fa-check"></i><b>3.2.4</b> Try tidyverse on the dataset we loaded in the previous section</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="using-tidyverse-1.html"><a href="using-tidyverse-1.html"><i class="fa fa-check"></i><b>3.3</b> Using tidyverse</a></li>
-<li class="chapter" data-level="3.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a>
-<ul>
+<li class="chapter" data-level="3.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a><ul>
 <li class="chapter" data-level="3.4.1" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.4.1</b> Getting started with a ggplot</a></li>
 <li class="chapter" data-level="3.4.2" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#changing-plot-aesthetics"><i class="fa fa-check"></i><b>3.4.2</b> Changing plot aesthetics</a></li>
 <li class="chapter" data-level="3.4.3" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#exploring-simple-plots"><i class="fa fa-check"></i><b>3.4.3</b> Exploring simple plots</a></li>
 <li class="chapter" data-level="3.4.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>3.4.4</b> Visualizing between groups</a></li>
 <li class="chapter" data-level="3.4.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#generating-heatmaps"><i class="fa fa-check"></i><b>3.4.5</b> Generating heatmaps</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html"><i class="fa fa-check"></i><b>3.5</b> Making scientific figures</a>
-<ul>
+<li class="chapter" data-level="3.5" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html"><i class="fa fa-check"></i><b>3.5</b> Making scientific figures</a><ul>
 <li class="chapter" data-level="3.5.1" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.5.1</b> Plotting error bars</a></li>
 <li class="chapter" data-level="3.5.2" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#showing-trends-in-data"><i class="fa fa-check"></i><b>3.5.2</b> Showing trends in data</a></li>
 <li class="chapter" data-level="3.5.3" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#saving-figures-locally"><i class="fa fa-check"></i><b>3.5.3</b> Saving figures locally</a></li>
 </ul></li>
+<li class="chapter" data-level="3.6" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html"><i class="fa fa-check"></i><b>3.6</b> Applying basic stats</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#describing-quantitative-variables"><i class="fa fa-check"></i><b>3.6.1</b> Describing quantitative variables</a></li>
+<li class="chapter" data-level="3.6.2" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#finding-differences-in-data"><i class="fa fa-check"></i><b>3.6.2</b> Finding differences in data</a></li>
+<li class="chapter" data-level="3.6.3" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#identifying-correlations"><i class="fa fa-check"></i><b>3.6.3</b> Identifying correlations</a></li>
+<li class="chapter" data-level="3.6.4" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#producing-linear-models"><i class="fa fa-check"></i><b>3.6.4</b> Producing linear models</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><a href="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows, using packages, writing (re)usable code, sharing analyses</a>
-<ul>
+</ul></li>
+<li class="chapter" data-level="4" data-path="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><a href="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows, using packages, writing (re)usable code, sharing analyses</a><ul>
 <li class="chapter" data-level="4.0.1" data-path="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><a href="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html#what-is-a-workflow"><i class="fa fa-check"></i><b>4.0.1</b> What is a workflow?</a></li>
-<li class="chapter" data-level="4.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html"><i class="fa fa-check"></i><b>4.1</b> Analyzing viral protein sequences</a>
-<ul>
+<li class="chapter" data-level="4.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html"><i class="fa fa-check"></i><b>4.1</b> Analyzing viral protein sequences</a><ul>
 <li class="chapter" data-level="4.1.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#reading-in-tab-delimited-file"><i class="fa fa-check"></i><b>4.1.1</b> Reading in tab-delimited file</a></li>
 <li class="chapter" data-level="4.1.2" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#loops---doing-a-similar-task-multiple-times"><i class="fa fa-check"></i><b>4.1.2</b> Loops - doing a similar task multiple times</a></li>
 <li class="chapter" data-level="4.1.3" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#extending-the-workflow"><i class="fa fa-check"></i><b>4.1.3</b> Extending the workflow</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html"><i class="fa fa-check"></i><b>4.2</b> Troubleshooting, getting help, dissecting problems</a>
-<ul>
+<li class="chapter" data-level="4.2" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html"><i class="fa fa-check"></i><b>4.2</b> Troubleshooting, getting help, dissecting problems</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html#places-to-look-for-help"><i class="fa fa-check"></i><b>4.2.1</b> Places to look for help</a></li>
 <li class="chapter" data-level="4.2.2" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html#minimum-reproducible-example"><i class="fa fa-check"></i><b>4.2.2</b> Minimum reproducible example</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html"><i class="fa fa-check"></i><b>4.3</b> Functions as modular steps</a>
-<ul>
+<li class="chapter" data-level="4.3" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html"><i class="fa fa-check"></i><b>4.3</b> Functions as modular steps</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html#tips-for-modular-workflows"><i class="fa fa-check"></i><b>4.3.1</b> Tips for modular workflows</a></li>
 <li class="chapter" data-level="4.3.2" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html#apply-is-a-popular-tool"><i class="fa fa-check"></i><b>4.3.2</b> Apply is a popular tool</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html"><i class="fa fa-check"></i><b>4.4</b> Packages - install and use</a>
-<ul>
+<li class="chapter" data-level="4.4" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html"><i class="fa fa-check"></i><b>4.4</b> Packages - install and use</a><ul>
 <li class="chapter" data-level="4.4.1" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#cran-is-the-canonical-r-package-resource"><i class="fa fa-check"></i><b>4.4.1</b> CRAN is the canonical R package resource</a></li>
 <li class="chapter" data-level="4.4.2" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#using-packages-without-library-ing-them"><i class="fa fa-check"></i><b>4.4.2</b> Using packages without <code>library()</code>-ing them</a></li>
 <li class="chapter" data-level="4.4.3" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#github-is-a-common-place-for-sharing-packges-in-development"><i class="fa fa-check"></i><b>4.4.3</b> Github is a common place for sharing packges in development</a></li>
@@ -232,13 +220,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4.5" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#what-packages-do-you-have-already"><i class="fa fa-check"></i><b>4.4.5</b> What packages do you have already?</a></li>
 <li class="chapter" data-level="4.4.6" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#finding-more-help-and-documentation"><i class="fa fa-check"></i><b>4.4.6</b> Finding more help and documentation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html"><i class="fa fa-check"></i><b>4.5</b> Writing (re)usable code</a>
-<ul>
+<li class="chapter" data-level="4.5" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html"><i class="fa fa-check"></i><b>4.5</b> Writing (re)usable code</a><ul>
 <li class="chapter" data-level="4.5.1" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#examples"><i class="fa fa-check"></i><b>4.5.1</b> Examples</a></li>
 <li class="chapter" data-level="4.5.2" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#style-guides-can-be-inspiring"><i class="fa fa-check"></i><b>4.5.2</b> Style guides can be inspiring</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html"><i class="fa fa-check"></i><b>4.6</b> More <code>rmarkdown</code> for reproducibile sharing</a>
-<ul>
+<li class="chapter" data-level="4.6" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html"><i class="fa fa-check"></i><b>4.6</b> More <code>rmarkdown</code> for reproducibile sharing</a><ul>
 <li class="chapter" data-level="4.6.1" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#rmarkdown-package"><i class="fa fa-check"></i><b>4.6.1</b> rmarkdown package</a></li>
 <li><a href="more-rmarkdown-for-reproducibile-sharing.html#section"></a></li>
 <li class="chapter" data-level="4.6.2" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#sharing-with-others"><i class="fa fa-check"></i><b>4.6.2</b> Sharing with others</a></li>
@@ -246,18 +232,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.7" data-path="conclusion.html"><a href="conclusion.html"><i class="fa fa-check"></i><b>4.7</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="additional-tutorials.html"><a href="additional-tutorials.html"><i class="fa fa-check"></i><b>5.1</b> Additional tutorials</a>
-<ul>
+<li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a><ul>
+<li class="chapter" data-level="5.1" data-path="additional-tutorials.html"><a href="additional-tutorials.html"><i class="fa fa-check"></i><b>5.1</b> Additional tutorials</a><ul>
 <li class="chapter" data-level="5.1.1" data-path="additional-tutorials.html"><a href="additional-tutorials.html#sub-sub-section"><i class="fa fa-check"></i><b>5.1.1</b> sub sub section</a></li>
 </ul></li>
 <li class="chapter" data-level="5.2" data-path="more-challenges.html"><a href="more-challenges.html"><i class="fa fa-check"></i><b>5.2</b> More challenges</a></li>
 <li class="chapter" data-level="5.3" data-path="figures-ideas.html"><a href="figures-ideas.html"><i class="fa fa-check"></i><b>5.3</b> Figures ideas</a></li>
 <li class="chapter" data-level="5.4" data-path="rmd-example-of-code-chunk.html"><a href="rmd-example-of-code-chunk.html"><i class="fa fa-check"></i><b>5.4</b> Rmd example of code chunk</a></li>
 <li class="chapter" data-level="5.5" data-path="more-example-rmds.html"><a href="more-example-rmds.html"><i class="fa fa-check"></i><b>5.5</b> More example Rmds</a></li>
-<li class="chapter" data-level="5.6" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html"><i class="fa fa-check"></i><b>5.6</b> How to edit this document</a>
-<ul>
+<li class="chapter" data-level="5.6" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html"><i class="fa fa-check"></i><b>5.6</b> How to edit this document</a><ul>
 <li class="chapter" data-level="5.6.1" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html#setup"><i class="fa fa-check"></i><b>5.6.1</b> Setup</a></li>
 <li class="chapter" data-level="5.6.2" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html#editwork-on-it"><i class="fa fa-check"></i><b>5.6.2</b> Edit/work on it</a></li>
 <li class="chapter" data-level="5.6.3" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html#publishing-onto-the-main-page-so-its-hosted-at-the-url"><i class="fa fa-check"></i><b>5.6.3</b> Publishing onto the main page, so it’s hosted at the URL</a></li>
@@ -273,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Day 5 - workflows and packages</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">DLL 2021, R section</a>
           </h1>
         </div>
 
@@ -281,26 +264,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="making-plots-with-ggplot2" class="section level2" number="3.4">
+<div id="making-plots-with-ggplot2" class="section level2">
 <h2><span class="header-section-number">3.4</span> Making plots with ggplot2</h2>
 <p>We will primarily be working in ggplot2 as it has the greatest degree of customization for visualization and offers many additional features over the basic plotting in R.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb209-1"><a href="making-plots-with-ggplot2.html#cb209-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb209-2"><a href="making-plots-with-ggplot2.html#cb209-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
-<div id="getting-started-with-a-ggplot" class="section level3" number="3.4.1">
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" title="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb213-2" title="2"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div id="getting-started-with-a-ggplot" class="section level3">
 <h3><span class="header-section-number">3.4.1</span> Getting started with a ggplot</h3>
 <p>Most ggplot calls to create a figure take the following form (you can read more using <code>help(ggplot)</code>):</p>
 <p><code>ggplot(data = &lt;DATA&gt;, mapping = aes(&lt;MAPPINGS&gt;)) + &lt;GEOM_FUNCTION&gt;()</code></p>
 <p>We will practice using our mammalian sleep dataset. You can look up more info about this dataset using the <code>help</code> function and the dataset name, <code>msleep</code>.</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="making-plots-with-ggplot2.html#cb210-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(msleep)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" title="1"><span class="kw">head</span>(msleep)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
-##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-## 1 Cheetah Acin… carni Carn… lc                  12.1      NA        NA      11.9
-## 2 Owl mo… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
-## 3 Mounta… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
-## 4 Greate… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
-## 5 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
-## 6 Three-… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
+##   name  genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+## 1 Chee… Acin… carni Carn… lc                  12.1      NA        NA      11.9
+## 2 Owl … Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
+## 3 Moun… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
+## 4 Grea… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
+## 5 Cow   Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+## 6 Thre… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
 ## # … with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
 <p>You will first use the <code>ggplot()</code> function and bind the plot to a specific data frame using the data argument.</p>
 <p><code>ggplot(data = msleep)</code></p>
@@ -314,92 +297,92 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>To add a geom to the plot use the <code>+</code> operator. To plot using two continuous variables, we will use <code>geom_point()</code> first. To save your work-in-progress, you can assign the plot to a variable.</p>
 <p>First we establish our coordinate system.</p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="making-plots-with-ggplot2.html#cb212-1" aria-hidden="true" tabindex="-1"></a>my.plot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> msleep, <span class="fu">aes</span>(<span class="at">x =</span> brainwt, <span class="at">y =</span> sleep_rem))</span></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" title="1">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt, <span class="dt">y =</span> sleep_rem))</a></code></pre></div>
 <p>We can now draw the plot as a scatterplot with points to represent each mammal’s measurements from the <code>msleep</code> dataset.</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb213-1"><a href="making-plots-with-ggplot2.html#cb213-1" aria-hidden="true" tabindex="-1"></a>my.plot <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" title="1">my.plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="440-intro-to-ggplot2_files/figure-html/ggplot4-1.png" width="672" /></p>
 <p>You might notice that all of the points are squished against the y-axis since many of the mammals in this dataset have low brain weights.</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb215-1"><a href="making-plots-with-ggplot2.html#cb215-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(msleep<span class="sc">$</span>brainwt)</span></code></pre></div>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" title="1"><span class="kw">summary</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ## 0.00014 0.00290 0.01240 0.28158 0.12550 5.71200      27</code></pre>
 <p>As you can see with the <code>summary</code> function, the minimum and median values are very low, but there are a few mammals with high <code>brainwt</code> as you can see by the much larger maximum value in this vector.</p>
 <p>To make more useful plots, we can transform this value using log-scaling. While we will have to note that the new values do not exactly match the real-world measurements anymore, patterns we see (i.e. something that correlates with higher brain weights) will still hold true.</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="making-plots-with-ggplot2.html#cb217-1" aria-hidden="true" tabindex="-1"></a>msleep2 <span class="ot">&lt;-</span> msleep <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">brainwt_log =</span> <span class="fu">log</span>(brainwt))</span>
-<span id="cb217-2"><a href="making-plots-with-ggplot2.html#cb217-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(msleep2, <span class="fu">aes</span>(<span class="at">x =</span> brainwt_log, <span class="at">y =</span> sleep_rem)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" title="1">msleep2 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">brainwt_log =</span> <span class="kw">log</span>(brainwt))</a>
+<a class="sourceLine" id="cb221-2" title="2"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="440-intro-to-ggplot2_files/figure-html/ggplot6-1.png" width="672" /></p>
 <p>Here we use the <code>mutate</code> function to make a new variable called <code>brainwt_log</code> in our dataset (technically a new dataset copy that we have saved as <code>msleep2</code>). Plotting this variable as our x variable (i.e. independent variable), makes it easier to look for patterns.</p>
 <hr />
 </div>
-<div id="changing-plot-aesthetics" class="section level3" number="3.4.2">
+<div id="changing-plot-aesthetics" class="section level3">
 <h3><span class="header-section-number">3.4.2</span> Changing plot aesthetics</h3>
 <p>We can modify the appearance of the plot in two ways: either uniformly changing the appearance or having the appearance vary depending on information present in our data.</p>
 <p>Let’s explore how to modify our plots uniformly. We can change aspects of the points we plot such as transparency (“alpha”) and color by supplying them as arguments in the <code>geom_point</code> function.</p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb219-1"><a href="making-plots-with-ggplot2.html#cb219-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> msleep2, <span class="fu">aes</span>(<span class="at">x =</span> brainwt_log, <span class="at">y =</span> sleep_rem)) <span class="sc">+</span></span>
-<span id="cb219-2"><a href="making-plots-with-ggplot2.html#cb219-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb223-2" title="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="440-intro-to-ggplot2_files/figure-html/ggplot7-1.png" width="672" /></p>
 <p>Here we have made the plots semi-transparent and colored blue. You can try varying these values (e.g. change blue to a different color). You can also supply other arguments such as <code>shape</code> to use something other than a dot.</p>
 <p>However, it is also possible to scale the color of the points by some variable present in the data. This approach means we can create a scatterplot that conveys more than just two variables’ worth of information (x-axis and y-axis) by having the color reflect a third variable.</p>
 <p>To do this, we specify the <code>color</code> inside the aesthetic mapping <code>aes</code> within the initial <code>ggplot</code> function. Same as how we told R to use a specific column by name for <code>x</code> or <code>y</code> coordinates, we specify which column to use for <code>color</code>.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb221-1"><a href="making-plots-with-ggplot2.html#cb221-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(msleep2, <span class="fu">aes</span>(<span class="at">x =</span> brainwt_log, <span class="at">y =</span> sleep_rem, <span class="at">color =</span> vore)) <span class="sc">+</span> </span>
-<span id="cb221-2"><a href="making-plots-with-ggplot2.html#cb221-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" title="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem, <span class="dt">color =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb225-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="440-intro-to-ggplot2_files/figure-html/ggplot8-1.png" width="672" /></p>
 <p>This plot conveys not only the relationship between <code>brainwt_log</code> and <code>sleep_rem</code>, but each plot representing a different mammal now conveys what the feeding behavior of that mammal is.</p>
 <p>When generating visualizations, it is important to annotate the figure with meaningful labels on the axes to make them accessible for the viewer. For that, we can use the <code>labs</code> function.</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb223-1"><a href="making-plots-with-ggplot2.html#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(msleep2, <span class="fu">aes</span>(<span class="at">x =</span> brainwt_log, <span class="at">y =</span> sleep_rem, <span class="at">color =</span> vore)) <span class="sc">+</span> </span>
-<span id="cb223-2"><a href="making-plots-with-ggplot2.html#cb223-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb223-3"><a href="making-plots-with-ggplot2.html#cb223-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Brain Weight (log)&quot;</span>, </span>
-<span id="cb223-4"><a href="making-plots-with-ggplot2.html#cb223-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Duration of REM Sleep&quot;</span>,</span>
-<span id="cb223-5"><a href="making-plots-with-ggplot2.html#cb223-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Feeding Behavior&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" title="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem, <span class="dt">color =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-3" title="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Brain Weight (log)&quot;</span>, </a>
+<a class="sourceLine" id="cb227-4" title="4">       <span class="dt">y =</span> <span class="st">&quot;Duration of REM Sleep&quot;</span>,</a>
+<a class="sourceLine" id="cb227-5" title="5">       <span class="dt">color =</span> <span class="st">&quot;Feeding Behavior&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
 <p><img src="440-intro-to-ggplot2_files/figure-html/ggplot9-1.png" width="672" /></p>
 <hr />
 </div>
-<div id="exploring-simple-plots" class="section level3" number="3.4.3">
+<div id="exploring-simple-plots" class="section level3">
 <h3><span class="header-section-number">3.4.3</span> Exploring simple plots</h3>
 <p>Let’s consider how we make other plots besides a scatterplot.</p>
 <p>Scatterplots are a great way to look at two quantitative (numerical) values at the same time to observe patterns (i.e. correlations) between the variables or to identify interesting outliers.</p>
 <p>However, other plots may be more useful to look at differing numbers of variables (i.e. one quantitative variable) or different types of variables (i.e. qualitative or categorical data). Here, we discuss two types of single variable plots that look at either a quantitative variable (histogram) or a categorical variable (barplot).</p>
 <p>We can create histograms in ggplot2 that are more aesthetically pleasing than the default <code>hist</code> function. This shows the distribution of one quantitative variable.</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb225-1"><a href="making-plots-with-ggplot2.html#cb225-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(msleep, <span class="fu">aes</span>(<span class="at">x =</span> sleep_total)) <span class="sc">+</span></span>
-<span id="cb225-2"><a href="making-plots-with-ggplot2.html#cb225-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" title="1"><span class="kw">ggplot</span>(msleep, <span class="kw">aes</span>(<span class="dt">x =</span> sleep_total)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb229-2" title="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>)</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/ggplot10-1.png" width="672" /></p>
 <p>We can look at how many individuals in the dataset fall into each category, such as how many mammals have each kind of feeding behavior.</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="making-plots-with-ggplot2.html#cb226-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> msleep, <span class="fu">aes</span>(<span class="at">x =</span> vore)) <span class="sc">+</span> </span>
-<span id="cb226-2"><a href="making-plots-with-ggplot2.html#cb226-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb230-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>()</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/ggplot11-1.png" width="672" /></p>
 <p>As you can see where we map the aesthetic, we only tell the <code>ggplot</code> function to refer to a single column in our dataset for our x-axis.</p>
 <hr />
 </div>
-<div id="visualizing-between-groups" class="section level3" number="3.4.4">
+<div id="visualizing-between-groups" class="section level3">
 <h3><span class="header-section-number">3.4.4</span> Visualizing between groups</h3>
 <p>Let’s return to <code>iris</code> dataset to explore how we can visualize differences between groups/categories. These groups are often represented in our data as a factor.</p>
 <p>We can look at how the distributions of <code>Sepal.Length</code> differ depending on which species each iris belongs to. One plot that can do this easily is the <code>geom_boxplot</code> function.</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="making-plots-with-ggplot2.html#cb227-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> iris, <span class="fu">aes</span>(<span class="at">x =</span> Species, <span class="at">y =</span> Sepal.Length)) <span class="sc">+</span> </span>
-<span id="cb227-2"><a href="making-plots-with-ggplot2.html#cb227-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> iris, <span class="kw">aes</span>(<span class="dt">x =</span> Species, <span class="dt">y =</span> Sepal.Length)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb231-2" title="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/ggplot12-1.png" width="672" /></p>
 <p>By adding a different parameter to <code>fill</code> in the <code>aes</code> we define throgh the <code>ggplot</code> function, we can separate out histograms according to different groupings. Here, we use <code>Species</code> to determine the color of the fill.</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="making-plots-with-ggplot2.html#cb228-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">fill =</span> Species)) <span class="sc">+</span></span>
-<span id="cb228-2"><a href="making-plots-with-ggplot2.html#cb228-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" title="1"><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">fill =</span> Species)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb232-2" title="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>)</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/ggplot13-1.png" width="672" /></p>
 <p>While we can sort of see the trends on this plot, it may be helpful to separate out each histogram for each individual species. There is an easy way to do this in <code>ggplot2</code> using facetting or the <code>facet_wrap</code> function. This function splits the figure into separate panel where the data has been filtered by the category (i.e. <code>Species</code>).</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb229-1"><a href="making-plots-with-ggplot2.html#cb229-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris, <span class="fu">aes</span>(<span class="at">x =</span> Sepal.Length, <span class="at">fill =</span> Species)) <span class="sc">+</span></span>
-<span id="cb229-2"><a href="making-plots-with-ggplot2.html#cb229-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">10</span>) <span class="sc">+</span></span>
-<span id="cb229-3"><a href="making-plots-with-ggplot2.html#cb229-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>( <span class="sc">~</span> Species)</span></code></pre></div>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" title="1"><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">fill =</span> Species)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb233-2" title="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb233-3" title="3"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>Species)</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/ggplot14-1.png" width="672" /></p>
 <p>This matches what we already saw in the boxplot, showing that there are different sepal lengths depending on which iris species we look at. We will explore in the next section how we know if these differences are significant.</p>
 <hr />
 </div>
-<div id="generating-heatmaps" class="section level3" number="3.4.5">
+<div id="generating-heatmaps" class="section level3">
 <h3><span class="header-section-number">3.4.5</span> Generating heatmaps</h3>
 <p>Heatmaps are a useful way to show the values of multiple samples across many measurements. You can visualize a heatmap by thinking of your dataframe, this tabular data, if it had each cell colorcoded based on how high or low the value is.</p>
 <p>The base R <code>heatmap</code> function meets many needs while the ggplot2 equivalent (<code>geom_tile</code>) can be confusing so we will recommend that you not use ggplot2 for heatmaps.</p>
 <p>Let’s go back to <code>msleep</code> dataset to visualize trends between the different measurements taken on each mammal. We will first create a simplified dataset from <code>msleep</code> where we take the log value of both <code>brainwt</code> and <code>bodywt</code>.</p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="making-plots-with-ggplot2.html#cb230-1" aria-hidden="true" tabindex="-1"></a>temp.data <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="fu">log</span>(msleep<span class="sc">$</span>brainwt), <span class="fu">log</span>(msleep<span class="sc">$</span>bodywt))</span>
-<span id="cb230-2"><a href="making-plots-with-ggplot2.html#cb230-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(temp.data)</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" title="1">temp.data &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">log</span>(msleep<span class="op">$</span>brainwt), <span class="kw">log</span>(msleep<span class="op">$</span>bodywt))</a>
+<a class="sourceLine" id="cb234-2" title="2"><span class="kw">head</span>(temp.data)</a></code></pre></div>
 <pre><code>##            [,1]       [,2]
 ## [1,]         NA  3.9120230
 ## [2,] -4.1669153 -0.7339692
@@ -408,16 +391,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [5,] -0.8603831  6.3969297
 ## [6,]         NA  1.3480731</code></pre>
 <p>Next, we feed these numeric values into the <code>heatmap</code> function along with some arguments that specify settings for displaying the figure. We use <code>labCol</code> to specify how to label these columns and <code>cexCol</code> to control the text size of these labels. We set <code>labRow</code> to be the names of each species from the msleep dataset.</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="making-plots-with-ggplot2.html#cb232-1" aria-hidden="true" tabindex="-1"></a><span class="fu">heatmap</span>(temp.data, <span class="at">labRow =</span> msleep<span class="sc">$</span>name, <span class="at">labCol =</span> <span class="fu">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>), <span class="at">cexCol =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" title="1"><span class="kw">heatmap</span>(temp.data, <span class="dt">labRow =</span> msleep<span class="op">$</span>name, <span class="dt">labCol =</span> <span class="kw">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>), <span class="dt">cexCol =</span> <span class="dv">1</span>)</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/ggplot16-1.png" width="672" /></p>
 <p>This first heatmap will look strange because it colors each box by its magnitude, but body weight of a mammal is always greater than its brain weight. We want to scale within each column so that the depth of the color reflects whether the mammal has a high brain weight or high body weight <strong>relative to the other mammals</strong>.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="making-plots-with-ggplot2.html#cb233-1" aria-hidden="true" tabindex="-1"></a><span class="fu">heatmap</span>(temp.data, <span class="at">scale =</span> <span class="st">&quot;col&quot;</span>, <span class="at">labRow =</span> msleep<span class="sc">$</span>name, <span class="at">labCol =</span> <span class="fu">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>), <span class="at">cexCol =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" title="1"><span class="kw">heatmap</span>(temp.data, <span class="dt">scale =</span> <span class="st">&quot;col&quot;</span>, <span class="dt">labRow =</span> msleep<span class="op">$</span>name, <span class="dt">labCol =</span> <span class="kw">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>), <span class="dt">cexCol =</span> <span class="dv">1</span>)</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/ggplot17-1.png" width="672" /></p>
 <p>Using the <code>scale</code> argument which we set to <code>"col"</code>, now the color of the columns is more meaningful. For example, it makes sense that the measurements taken on an Asian elephant are much higher than those from a mole rat, so the color of those cells is deeper.</p>
 <p>Let’s add some more data to our heatmap visualization.</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="making-plots-with-ggplot2.html#cb234-1" aria-hidden="true" tabindex="-1"></a>temp.data2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(temp.data, msleep<span class="sc">$</span>sleep_total, msleep<span class="sc">$</span>sleep_rem)</span>
-<span id="cb234-2"><a href="making-plots-with-ggplot2.html#cb234-2" aria-hidden="true" tabindex="-1"></a><span class="fu">heatmap</span>(temp.data2, <span class="at">scale =</span> <span class="st">&quot;col&quot;</span>, <span class="at">labRow =</span> msleep<span class="sc">$</span>name,</span>
-<span id="cb234-3"><a href="making-plots-with-ggplot2.html#cb234-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">labCol =</span> <span class="fu">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>, <span class="st">&quot;total_sleep&quot;</span>, <span class="st">&quot;rem_sleep&quot;</span>), <span class="at">cexCol =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" title="1">temp.data2 &lt;-<span class="st"> </span><span class="kw">cbind</span>(temp.data, msleep<span class="op">$</span>sleep_total, msleep<span class="op">$</span>sleep_rem)</a>
+<a class="sourceLine" id="cb238-2" title="2"><span class="kw">heatmap</span>(temp.data2, <span class="dt">scale =</span> <span class="st">&quot;col&quot;</span>, <span class="dt">labRow =</span> msleep<span class="op">$</span>name,</a>
+<a class="sourceLine" id="cb238-3" title="3">        <span class="dt">labCol =</span> <span class="kw">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>, <span class="st">&quot;total_sleep&quot;</span>, <span class="st">&quot;rem_sleep&quot;</span>), <span class="dt">cexCol =</span> <span class="dv">1</span>)</a></code></pre></div>
 <p><img src="440-intro-to-ggplot2_files/figure-html/ggplot18-1.png" width="672" /></p>
 <p>You may have noticed the weird diagrams along the top and left hand side of this heatmap. These strange line diagrams are trees that show how our samples cluster together. Mammals that have similar patterns of values across these four measurements are placed near each other in the diagram.</p>
 
