@@ -240,23 +240,58 @@ library(ggplot2)
 
 ##### Section 3.5.2: Showing trends in data
 
-**Task:** ?
+**Task:** Create new a scatterplot using other quantitative variables in the `msleep` dataset and try fitting a trend line using the `geom_smooth` function. Describe your results.
 
 ```{r}
 # Your code here
 ```
 
 *Your response here*
+
+**Task:** Create new a scatterplot using other quantitative variables in the `iris` dataset and try fitting a trend line using the `geom_smooth` function. Describe your results.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task:** Use the `facet_wrap` function and the `color` aesthetic in `geom_smooth` to try plotting trends within each categorical group, either in the `iris` dataset or the `msleep` dataset. Describe the patterns you see, if any.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
 
 ##### Section 3.5.3: Saving figures locally
 
-**Task:** ?
+**Task:** Generate one figure that you would like to save to your computer. This could be a basic scatterplot, or you can challenge yourself to make something new and more complex! Save this `ggplot` to a variable.
 
 ```{r}
 # Your code here
 ```
 
-*Your response here*
+**Task:** Identify your current working directory. Determine where you want this figure file saved. Create a variable that has the character string with the precise file path and file name in it. For example, you may have a file path that looks like "/Users/username/Desktop/Research/SSRP" if you are on a Mac.
+
+```{r}
+# Your code here
+```
+
+**Task:** Call your variable to return your figure, and then use the `ggsave` function to save this image to your computer using the variable you just created that has the file path.
+
+```{r}
+# Your code here
+```
+
+**Task:** Initialize a file using either the `pdf` or `png` function and then call or `print` your saved figure. Make sure to call the `dev.off` function!
+
+```{r}
+# Your code here
+```
+
+**Task:** Check that all these figures have saved to your computer and open them. Make sure that they look like you would expect and the files are not corrupted.
 
 ------
 
@@ -278,23 +313,69 @@ library(ggplot2)
 
 ##### Section 3.6.1: Describing quantitative variables
 
-**Task:** ?
+**Task:** First create a histogram of a quantitative variable within either the `msleep` or `iris` dataset. You can choose to do this using the basic R `hist` function or apply your knowledge of using ggplot2.
+
+```{r}
+# Your code here
+```
+
+**Task:** Then calculate several measures to summarize the center, spread, and range of this quantitative variable. Does what you see in the histogram match these statistics you calculated? 
 
 ```{r}
 # Your code here
 ```
 
 *Your response here*
+
 
 ##### Section 3.6.2: Finding differences in data
 
-**Task:** ?
+**Task:** Use the `t.test` function on the quantitative variable that you investigated in the prior section. Look at the confidence interval describing the uncertainty around the mean. How does this align with the histogram you created?
 
 ```{r}
 # Your code here
 ```
 
 *Your response here*
+
+**Task:** Identify two different categorical groups present either in the `msleep` or `iris` data. Remember that you will be comparing the measureemnts of one group to the measurements of one other group. First create two new dataframes that contains the measurements of each group separately. You may want to use the `filter` and `select` functions.
+
+```{r}
+# Your code here
+```
+
+**Task:** Now look at the documentation for the `t.test` function. Which arguments does it take?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task:** Apply the `t.test` function to your two datasets. Interpret the results. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task:** Apply the `aov` function to the `iris` dataset to determine whether a given quantitative variable differs significantly based on the `Species`. Describe your interpretation of these results
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task:** Apply the `aov` function to the `msleep` dataset to determine whether a given quantitative variable differs significantly based on the `conservation` status. Describe your interpretation of these results
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
 
 ##### Section 3.6.3: Identifying correlations
 
