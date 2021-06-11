@@ -1,4 +1,4 @@
-## Introduction to R
+## Using RStudio
 
 Hi everyone, welcome to the R section of the data learning labs! What is R? R is a programming language. Other programming languages include Python, Java, C, and more. Different programming languages are better for different tasks. R is commonly used for data analysis and visualizations. Many people use a tool called RStudio, which we will over the next few days. RStudio allows you to write code in R, run that code, and more!
 
