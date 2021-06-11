@@ -70,11 +70,13 @@ looking-for-a-smoking-motif
 some-operations-on-strings
 base-r-tools
 stringr-and-the-tidyverse
+back-to-the-motifs
+conclusion
 getting-help---troubleshooting
 where-to-start-general-help
 debugging-specific-problems
 minimal-reproducible-examples
-conclusion
+conclusion-1
 functions-as-modular-steps
 write-it-as-a-function
 tips-for-modular-workflows
@@ -98,7 +100,7 @@ document-options
 how-it-works-sort-of
 sharing-with-others
 reproducibility-and-sharing
-conclusion-1
+conclusion-2
 appendix
 additional-tutorials
 sub-sub-section

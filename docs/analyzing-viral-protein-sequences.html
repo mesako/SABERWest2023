@@ -215,6 +215,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.1.2" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#loops---doing-a-similar-task-multiple-times"><i class="fa fa-check"></i><b>4.1.2</b> Loops - doing a similar task multiple times</a></li>
 <li class="chapter" data-level="4.1.3" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#extending-the-workflow"><i class="fa fa-check"></i><b>4.1.3</b> Extending the workflow</a></li>
 <li class="chapter" data-level="4.1.4" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#some-operations-on-strings"><i class="fa fa-check"></i><b>4.1.4</b> Some operations on strings</a></li>
+<li class="chapter" data-level="4.1.5" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#back-to-the-motifs"><i class="fa fa-check"></i><b>4.1.5</b> Back to the motifs</a></li>
+<li class="chapter" data-level="4.1.6" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#conclusion"><i class="fa fa-check"></i><b>4.1.6</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="4.2" data-path="getting-help-troubleshooting.html"><a href="getting-help-troubleshooting.html"><i class="fa fa-check"></i><b>4.2</b> Getting help - troubleshooting</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="getting-help-troubleshooting.html"><a href="getting-help-troubleshooting.html#where-to-start-general-help"><i class="fa fa-check"></i><b>4.2.1</b> Where to start? General help</a></li>
@@ -243,7 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.6.2" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#sharing-with-others"><i class="fa fa-check"></i><b>4.6.2</b> Sharing with others</a></li>
 <li class="chapter" data-level="4.6.3" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#reproducibility-and-sharing"><i class="fa fa-check"></i><b>4.6.3</b> Reproducibility and sharing</a></li>
 </ul></li>
-<li class="chapter" data-level="4.7" data-path="conclusion-1.html"><a href="conclusion-1.html"><i class="fa fa-check"></i><b>4.7</b> Conclusion</a></li>
+<li class="chapter" data-level="4.7" data-path="conclusion-2.html"><a href="conclusion-2.html"><i class="fa fa-check"></i><b>4.7</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a><ul>
 <li class="chapter" data-level="5.1" data-path="additional-tutorials.html"><a href="additional-tutorials.html"><i class="fa fa-check"></i><b>5.1</b> Additional tutorials</a><ul>
@@ -494,12 +496,14 @@ We need to turn out list of files into indicies.
 We’ll save it first so we can count how many there are.</p>
 <p><code>seq_along</code> is handy function to create a number sequence along a vector,
 otherwise use something like <code>seq(1,length(x))</code>.</p>
-<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" data-line-number="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb330-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb330-3" data-line-number="3"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
-<a class="sourceLine" id="cb330-4" data-line-number="4">    <span class="kw">print</span>(i)</a>
-<a class="sourceLine" id="cb330-5" data-line-number="5">    <span class="kw">print</span>(first_five[i])</a>
-<a class="sourceLine" id="cb330-6" data-line-number="6">}</a></code></pre></div>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" data-line-number="1"><span class="co"># listing files</span></a>
+<a class="sourceLine" id="cb330-2" data-line-number="2">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb330-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb330-4" data-line-number="4"><span class="co"># looping through files</span></a>
+<a class="sourceLine" id="cb330-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
+<a class="sourceLine" id="cb330-6" data-line-number="6">    <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb330-7" data-line-number="7">    <span class="kw">print</span>(first_five[i])</a>
+<a class="sourceLine" id="cb330-8" data-line-number="8">}</a></code></pre></div>
 <pre><code>## [1] 1
 ## [1] &quot;viral_proteins_000.tsv&quot;
 ## [1] 2
@@ -512,14 +516,17 @@ otherwise use something like <code>seq(1,length(x))</code>.</p>
 ## [1] &quot;viral_proteins_004.tsv&quot;</code></pre>
 <hr />
 <p>Putting these together, we can create and save a vector of file names:</p>
-<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" data-line-number="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb332-2" data-line-number="2">filenamez &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
-<a class="sourceLine" id="cb332-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb332-4" data-line-number="4"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
-<a class="sourceLine" id="cb332-5" data-line-number="5">  filenamez[i] &lt;-<span class="st"> </span>first_five[i]</a>
-<a class="sourceLine" id="cb332-6" data-line-number="6">}</a>
-<a class="sourceLine" id="cb332-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb332-8" data-line-number="8">filenamez</a></code></pre></div>
+<div class="sourceCode" id="cb332"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb332-1" data-line-number="1"><span class="co"># listing files</span></a>
+<a class="sourceLine" id="cb332-2" data-line-number="2">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb332-3" data-line-number="3"><span class="co"># initializing vectors</span></a>
+<a class="sourceLine" id="cb332-4" data-line-number="4">filenamez &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
+<a class="sourceLine" id="cb332-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb332-6" data-line-number="6"><span class="co"># looping through files</span></a>
+<a class="sourceLine" id="cb332-7" data-line-number="7"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
+<a class="sourceLine" id="cb332-8" data-line-number="8">  filenamez[i] &lt;-<span class="st"> </span>first_five[i]</a>
+<a class="sourceLine" id="cb332-9" data-line-number="9">}</a>
+<a class="sourceLine" id="cb332-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb332-11" data-line-number="11">filenamez</a></code></pre></div>
 <pre><code>## [1] &quot;viral_proteins_000.tsv&quot; &quot;viral_proteins_001.tsv&quot; &quot;viral_proteins_002.tsv&quot;
 ## [4] &quot;viral_proteins_003.tsv&quot; &quot;viral_proteins_004.tsv&quot;</code></pre>
 <hr />
@@ -530,29 +537,37 @@ A <code>viral_structural_proteins.fasta</code>?</p>
 And we’ll get back to the FASTA later…</p>
 <hr />
 <p>And finally calculate the length of each protein:</p>
-<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" data-line-number="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
-<a class="sourceLine" id="cb334-2" data-line-number="2">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
-<a class="sourceLine" id="cb334-3" data-line-number="3">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
-<a class="sourceLine" id="cb334-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb334-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
-<a class="sourceLine" id="cb334-6" data-line-number="6">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( <span class="kw">read.delim</span>(first_five[i],</a>
-<a class="sourceLine" id="cb334-7" data-line-number="7">      <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb334-8" data-line-number="8">    )</a>
-<a class="sourceLine" id="cb334-9" data-line-number="9">}</a>
-<a class="sourceLine" id="cb334-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb334-11" data-line-number="11">lengthz</a></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb334-1" data-line-number="1"><span class="co"># listing files</span></a>
+<a class="sourceLine" id="cb334-2" data-line-number="2">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
+<a class="sourceLine" id="cb334-3" data-line-number="3">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)[<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>]</a>
+<a class="sourceLine" id="cb334-4" data-line-number="4"><span class="co"># initializing vectors</span></a>
+<a class="sourceLine" id="cb334-5" data-line-number="5">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
+<a class="sourceLine" id="cb334-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb334-7" data-line-number="7"><span class="co"># looping through files</span></a>
+<a class="sourceLine" id="cb334-8" data-line-number="8"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
+<a class="sourceLine" id="cb334-9" data-line-number="9">  <span class="co"># calculating length and storing it</span></a>
+<a class="sourceLine" id="cb334-10" data-line-number="10">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( <span class="kw">read.delim</span>(first_five[i],</a>
+<a class="sourceLine" id="cb334-11" data-line-number="11">      <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb334-12" data-line-number="12">    )</a>
+<a class="sourceLine" id="cb334-13" data-line-number="13">}</a>
+<a class="sourceLine" id="cb334-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb334-15" data-line-number="15">lengthz</a></code></pre></div>
 <pre><code>## [1] &quot;1248&quot; &quot;1254&quot; &quot;177&quot;  &quot;137&quot;  &quot;117&quot;</code></pre>
 <hr />
 <p>Now we can take off the <code>[1:5]</code> limiter, and do the whole set:</p>
-<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" data-line-number="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
-<a class="sourceLine" id="cb336-2" data-line-number="2">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)</a>
-<a class="sourceLine" id="cb336-3" data-line-number="3">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
-<a class="sourceLine" id="cb336-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb336-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
-<a class="sourceLine" id="cb336-6" data-line-number="6">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( <span class="kw">read.delim</span>(first_five[i],</a>
-<a class="sourceLine" id="cb336-7" data-line-number="7">      <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb336-8" data-line-number="8">    )</a>
-<a class="sourceLine" id="cb336-9" data-line-number="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" data-line-number="1"><span class="co"># listing files</span></a>
+<a class="sourceLine" id="cb336-2" data-line-number="2">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
+<a class="sourceLine" id="cb336-3" data-line-number="3">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)</a>
+<a class="sourceLine" id="cb336-4" data-line-number="4"><span class="co"># initializing vectors</span></a>
+<a class="sourceLine" id="cb336-5" data-line-number="5">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;character&quot;</span>,<span class="kw">length</span>(first_five))</a>
+<a class="sourceLine" id="cb336-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb336-7" data-line-number="7"><span class="co"># looping through files</span></a>
+<a class="sourceLine" id="cb336-8" data-line-number="8"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
+<a class="sourceLine" id="cb336-9" data-line-number="9">  <span class="co"># calculating length and storing it</span></a>
+<a class="sourceLine" id="cb336-10" data-line-number="10">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( <span class="kw">read.delim</span>(first_five[i],</a>
+<a class="sourceLine" id="cb336-11" data-line-number="11">      <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb336-12" data-line-number="12">    )</a>
+<a class="sourceLine" id="cb336-13" data-line-number="13">}</a></code></pre></div>
 <hr />
 <p>How do we go about visualizing/analyzing this?</p>
 <div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" data-line-number="1"><span class="kw">hist</span>(lengthz)</a></code></pre></div>
@@ -562,15 +577,19 @@ And we’ll get back to the FASTA later…</p>
 <pre><code>##  chr [1:243] &quot;1248&quot; &quot;1254&quot; &quot;177&quot; &quot;137&quot; &quot;117&quot; &quot;117&quot; &quot;858&quot; &quot;1242&quot; &quot;1255&quot; ...</code></pre>
 <p>Character? Let’s try numeric instead…</p>
 <hr />
-<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
-<a class="sourceLine" id="cb341-2" data-line-number="2">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)</a>
-<a class="sourceLine" id="cb341-3" data-line-number="3">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;numeric&quot;</span>,<span class="kw">length</span>(first_five))</a>
-<a class="sourceLine" id="cb341-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb341-5" data-line-number="5"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
-<a class="sourceLine" id="cb341-6" data-line-number="6">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( <span class="kw">read.delim</span>(first_five[i],</a>
-<a class="sourceLine" id="cb341-7" data-line-number="7">      <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
-<a class="sourceLine" id="cb341-8" data-line-number="8">    )</a>
-<a class="sourceLine" id="cb341-9" data-line-number="9">}</a></code></pre></div>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" data-line-number="1"><span class="co"># listing files</span></a>
+<a class="sourceLine" id="cb341-2" data-line-number="2">first_five &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
+<a class="sourceLine" id="cb341-3" data-line-number="3">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)</a>
+<a class="sourceLine" id="cb341-4" data-line-number="4"><span class="co"># initializing vectors</span></a>
+<a class="sourceLine" id="cb341-5" data-line-number="5">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;numeric&quot;</span>,<span class="kw">length</span>(first_five))</a>
+<a class="sourceLine" id="cb341-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb341-7" data-line-number="7"><span class="co"># looping through files</span></a>
+<a class="sourceLine" id="cb341-8" data-line-number="8"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(first_five) ) {</a>
+<a class="sourceLine" id="cb341-9" data-line-number="9">  <span class="co"># calculating length and storing it</span></a>
+<a class="sourceLine" id="cb341-10" data-line-number="10">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( <span class="kw">read.delim</span>(first_five[i],</a>
+<a class="sourceLine" id="cb341-11" data-line-number="11">      <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb341-12" data-line-number="12">    )</a>
+<a class="sourceLine" id="cb341-13" data-line-number="13">}</a></code></pre></div>
 <hr />
 <p>Base R histogram</p>
 <div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" data-line-number="1"><span class="kw">hist</span>(lengthz,<span class="dt">breaks=</span><span class="dv">50</span>)</a></code></pre></div>
@@ -782,6 +801,135 @@ base R functions!</p>
 <a href="https://r4ds.had.co.nz/strings.html">Wickham’s R4DS book</a>.
 Especially for the special characters part</p>
 <hr />
+</div>
+</div>
+<div id="back-to-the-motifs" class="section level3">
+<h3><span class="header-section-number">4.1.5</span> Back to the motifs</h3>
+<p>Let’s go ahead and look for that sequence, “PRAR” in the structural proteins
+we’ve downloaded here. First, we make one example of that code.</p>
+<p>We can start with making a positive and negative control so we can debug
+this easily.</p>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" data-line-number="1">test_string_positive &lt;-<span class="st"> &quot;APQPRARCGPGP&quot;</span></a>
+<a class="sourceLine" id="cb364-2" data-line-number="2">test_string_negative &lt;-<span class="st"> &quot;AVASTMEMATEY&quot;</span></a>
+<a class="sourceLine" id="cb364-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb364-4" data-line-number="4"><span class="kw">grepl</span>(<span class="dt">pattern=</span><span class="st">&quot;PRAR&quot;</span>,<span class="dt">x=</span>test_string_positive)</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" data-line-number="1"><span class="kw">grepl</span>(<span class="dt">pattern=</span><span class="st">&quot;PRAR&quot;</span>,<span class="dt">x=</span>test_string_negative)</a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
+<p>Looks good.</p>
+<hr />
+<p>Now let’s modify our previous code to use this line, and store it into
+the appropriate position.</p>
+<p>How do we do this?</p>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" data-line-number="1"><span class="co"># listing files</span></a>
+<a class="sourceLine" id="cb368-2" data-line-number="2">all_files &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
+<a class="sourceLine" id="cb368-3" data-line-number="3">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)</a>
+<a class="sourceLine" id="cb368-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb368-5" data-line-number="5"><span class="co"># initializing vectors</span></a>
+<a class="sourceLine" id="cb368-6" data-line-number="6">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;numeric&quot;</span>,<span class="kw">length</span>(all_files))</a>
+<a class="sourceLine" id="cb368-7" data-line-number="7">motifz  &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;logical&quot;</span>,<span class="kw">length</span>(all_files))</a>
+<a class="sourceLine" id="cb368-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb368-9" data-line-number="9"><span class="co"># looping through files</span></a>
+<a class="sourceLine" id="cb368-10" data-line-number="10"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(all_files) ) {</a>
+<a class="sourceLine" id="cb368-11" data-line-number="11">  <span class="co"># calculating length and storing it</span></a>
+<a class="sourceLine" id="cb368-12" data-line-number="12">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( </a>
+<a class="sourceLine" id="cb368-13" data-line-number="13">        <span class="kw">read.delim</span>(all_files[i],</a>
+<a class="sourceLine" id="cb368-14" data-line-number="14">            <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb368-15" data-line-number="15">    )</a>
+<a class="sourceLine" id="cb368-16" data-line-number="16">  <span class="co"># looking for motif and storing it</span></a>
+<a class="sourceLine" id="cb368-17" data-line-number="17">  motifz[i]  &lt;-<span class="st"> </span><span class="kw">grepl</span>(<span class="dt">pattern=</span><span class="st">&quot;PRAR&quot;</span>,</a>
+<a class="sourceLine" id="cb368-18" data-line-number="18">        <span class="dt">x=</span><span class="kw">read.delim</span>(all_files[i],</a>
+<a class="sourceLine" id="cb368-19" data-line-number="19">            <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb368-20" data-line-number="20">    )</a>
+<a class="sourceLine" id="cb368-21" data-line-number="21">}</a></code></pre></div>
+<p>Wow! This seems like it’s a really rare motif. I wonder what this means,
+this may be a smoking gun, this has implic….</p>
+<hr />
+<p>Oh wait, that’s a typo. It’s “PRRA” not “PRAR”.</p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb369-1" data-line-number="1"><span class="co"># listing files</span></a>
+<a class="sourceLine" id="cb369-2" data-line-number="2">all_files &lt;-<span class="st"> </span><span class="kw">list.files</span>(<span class="dt">path=</span><span class="st">&quot;data/viral_structural_proteins&quot;</span>,</a>
+<a class="sourceLine" id="cb369-3" data-line-number="3">                         <span class="dt">full.names=</span>T, <span class="dt">pattern=</span><span class="st">&quot;.*tsv&quot;</span>)</a>
+<a class="sourceLine" id="cb369-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb369-5" data-line-number="5"><span class="co"># initializing vectors</span></a>
+<a class="sourceLine" id="cb369-6" data-line-number="6">lengthz &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;numeric&quot;</span>,<span class="kw">length</span>(all_files))</a>
+<a class="sourceLine" id="cb369-7" data-line-number="7">motifz  &lt;-<span class="st"> </span><span class="kw">vector</span>(<span class="st">&quot;logical&quot;</span>,<span class="kw">length</span>(all_files))</a>
+<a class="sourceLine" id="cb369-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb369-9" data-line-number="9"><span class="co"># looping through files</span></a>
+<a class="sourceLine" id="cb369-10" data-line-number="10"><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_along</span>(all_files) ) {</a>
+<a class="sourceLine" id="cb369-11" data-line-number="11">  <span class="co"># calculating length and storing it</span></a>
+<a class="sourceLine" id="cb369-12" data-line-number="12">  lengthz[i] &lt;-<span class="st"> </span><span class="kw">nchar</span>( </a>
+<a class="sourceLine" id="cb369-13" data-line-number="13">        <span class="kw">read.delim</span>(all_files[i],</a>
+<a class="sourceLine" id="cb369-14" data-line-number="14">            <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb369-15" data-line-number="15">    )</a>
+<a class="sourceLine" id="cb369-16" data-line-number="16">  <span class="co"># looking for motif and storing it</span></a>
+<a class="sourceLine" id="cb369-17" data-line-number="17">  motifz[i]  &lt;-<span class="st"> </span><span class="kw">grepl</span>(<span class="dt">pattern=</span><span class="st">&quot;PRRA&quot;</span>,</a>
+<a class="sourceLine" id="cb369-18" data-line-number="18">        <span class="dt">x=</span><span class="kw">read.delim</span>(all_files[i],</a>
+<a class="sourceLine" id="cb369-19" data-line-number="19">            <span class="dt">header=</span>F,<span class="dt">as.is=</span>T,<span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>)<span class="op">$</span>V3[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb369-20" data-line-number="20">    )</a>
+<a class="sourceLine" id="cb369-21" data-line-number="21">}</a></code></pre></div>
+<p>It actually pops up a few times. In what files?</p>
+<hr />
+<p>Since <code>motifz</code> is logical, we can use that to index the files vector:</p>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" data-line-number="1">all_files[motifz]</a></code></pre></div>
+<pre><code>##  [1] &quot;data/viral_structural_proteins/viral_proteins_016.tsv&quot;
+##  [2] &quot;data/viral_structural_proteins/viral_proteins_020.tsv&quot;
+##  [3] &quot;data/viral_structural_proteins/viral_proteins_075.tsv&quot;
+##  [4] &quot;data/viral_structural_proteins/viral_proteins_076.tsv&quot;
+##  [5] &quot;data/viral_structural_proteins/viral_proteins_080.tsv&quot;
+##  [6] &quot;data/viral_structural_proteins/viral_proteins_109.tsv&quot;
+##  [7] &quot;data/viral_structural_proteins/viral_proteins_118.tsv&quot;
+##  [8] &quot;data/viral_structural_proteins/viral_proteins_119.tsv&quot;
+##  [9] &quot;data/viral_structural_proteins/viral_proteins_191.tsv&quot;
+## [10] &quot;data/viral_structural_proteins/viral_proteins_196.tsv&quot;
+## [11] &quot;data/viral_structural_proteins/viral_proteins_197.tsv&quot;</code></pre>
+<p>Additional questions:</p>
+<ul>
+<li><p>In what viruses, what proteins does it pop up?
+How does that affect your interpretation?</p>
+<p>How do you use the skills from Day1/2 to look?</p></li>
+<li>Does it show up where you’d expect it to?
+What might that suggest about this dataset?</li>
+<li>How might we come up with a null model for this?
+How often would this occur? Under what assumptions?
+How do you test that?</li>
+<li><p>Your null model might depend on how often certain amino acids tend to
+occur. How might you write some R code to count up each occurance
+of each amino acid?</p>
+<p>Here’s a complex line of code that may be adaptable to this problem:</p>
+<pre><code>  table(
+      factor(
+          unlist(
+              strsplit(&quot;ACABA&quot;,split=&quot;&quot;)
+          ),
+          levels=c(&quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,&quot;E&quot;,&quot;F&quot;,&quot;G&quot;)
+      )
+  )</code></pre>
+<p><code>table</code> tabulates the occurances of a string/factor,
+<code>factor</code> with a <code>levels</code> argument can create “spaces” for unobserved
+letters/strings,
+<code>unlist</code> turns a list into not a list,
+<code>strsplit</code> breaks up a string into a vector of strings using a pattern
+that can also be &quot;&quot;.</p>
+<p>I wonder what would happen if these vectors were created for each
+protein, and then summed…</p></li>
+</ul>
+</div>
+<div id="conclusion" class="section level3">
+<h3><span class="header-section-number">4.1.6</span> Conclusion</h3>
+<ul>
+<li>You can use loops to organize repetitive tasks, such as working through a
+large list of files and reading them.</li>
+<li>You can analyze strings using functions like <code>nchar</code> or <code>grepl</code>.</li>
+<li>Modular design of workflows, using functions or just organized and
+commented code, can help you extend your analysis to handle new
+questions as they arise</li>
+</ul>
+<p><br/>
+<br/>
+<br/>
+<br/>
+<br/></p>
+<hr />
 <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script>
 mermaid.initialize({
@@ -800,7 +948,6 @@ function initMermaid(s) {
 initMermaid();
 </script>
 
-</div>
 </div>
 </div>
 <div class="footnotes">

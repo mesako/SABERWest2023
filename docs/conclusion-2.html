@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.4 Making plots with ggplot2 | DLL 2021, R section</title>
+  <title>4.7 Conclusion | DLL 2021, R section</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.4 Making plots with ggplot2 | DLL 2021, R section" />
+  <meta property="og:title" content="4.7 Conclusion | DLL 2021, R section" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.4 Making plots with ggplot2 | DLL 2021, R section" />
+  <meta name="twitter:title" content="4.7 Conclusion | DLL 2021, R section" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -34,8 +34,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="using-tidyverse-1.html"/>
-<link rel="next" href="making-scientific-figures.html"/>
+<link rel="prev" href="more-rmarkdown-for-reproducibile-sharing.html"/>
+<link rel="next" href="appendix.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -279,148 +279,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="making-plots-with-ggplot2" class="section level2">
-<h2><span class="header-section-number">3.4</span> Making plots with ggplot2</h2>
-<p>We will primarily be working in ggplot2 as it has the greatest degree of customization for visualization and offers many additional features over the basic plotting in R.</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb217-2" data-line-number="2"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<div id="getting-started-with-a-ggplot" class="section level3">
-<h3><span class="header-section-number">3.4.1</span> Getting started with a ggplot</h3>
-<p>Most ggplot calls to create a figure take the following form (you can read more using <code>help(ggplot)</code>):</p>
-<p><code>ggplot(data = &lt;DATA&gt;, mapping = aes(&lt;MAPPINGS&gt;)) + &lt;GEOM_FUNCTION&gt;()</code></p>
-<p>We will practice using our mammalian sleep dataset. You can look up more info about this dataset using the <code>help</code> function and the dataset name, <code>msleep</code>.</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1"><span class="kw">head</span>(msleep)</a></code></pre></div>
-<pre><code>## # A tibble: 6 x 11
-##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-## 1 Cheetah Acin… carni Carn… lc                  12.1      NA        NA      11.9
-## 2 Owl mo… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
-## 3 Mounta… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
-## 4 Greate… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
-## 5 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
-## 6 Three-… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
-## # … with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
-<p>You will first use the <code>ggplot()</code> function and bind the plot to a specific data frame using the data argument.</p>
-<p><code>ggplot(data = msleep)</code></p>
-<p>You will next need to define a mapping (using the aesthetic or <code>aes</code> function), by selecting the variables to be plotted and specifying how to present them in the graph, e.g. as x/y positions or characteristics such as size, shape, color, etc.</p>
-<p><code>ggplot(data = msleep, aes(x = brainwt, y = sleep_rem))</code></p>
-<p>You can then add “geoms” or graphical representations of the data in the plot (points, lines, bars). <code>ggplot2</code> offers many different geoms including:</p>
+<div id="conclusion-2" class="section level2">
+<h2><span class="header-section-number">4.7</span> Conclusion</h2>
+<p>Today we covered:</p>
 <ul>
-<li><code>geom_point()</code> for scatter plots, dot plots, etc.</li>
-<li><code>geom_boxplot()</code> for, well, boxplots!</li>
-<li><code>geom_line()</code> for trend lines, time series, etc.</li>
+<li>loops to repeat code</li>
+<li>aspects of nice (re)usable code</li>
+<li>writing code modularly with functions</li>
+<li>finding and using packages</li>
+<li>writing an Rmarkdown report</li>
+<li>finding help and tackling a complex problem</li>
 </ul>
-<p>To add a geom to the plot use the <code>+</code> operator. To plot using two continuous variables, we will use <code>geom_point()</code> first. To save your work-in-progress, you can assign the plot to a variable.</p>
-<p>First we establish our coordinate system.</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1">my.plot &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt, <span class="dt">y =</span> sleep_rem))</a></code></pre></div>
-<p>We can now draw the plot as a scatterplot with points to represent each mammal’s measurements from the <code>msleep</code> dataset.</p>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1">my.plot <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
-<p><img src="440-intro-to-ggplot2_files/figure-html/ggplot4-1.png" width="672" /></p>
-<p>You might notice that all of the points are squished against the y-axis since many of the mammals in this dataset have low brain weights.</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1"><span class="kw">summary</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
-<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
-## 0.00014 0.00290 0.01240 0.28158 0.12550 5.71200      27</code></pre>
-<p>As you can see with the <code>summary</code> function, the minimum and median values are very low, but there are a few mammals with high <code>brainwt</code> as you can see by the much larger maximum value in this vector.</p>
-<p>To make more useful plots, we can transform this value using log-scaling. While we will have to note that the new values do not exactly match the real-world measurements anymore, patterns we see (i.e. something that correlates with higher brain weights) will still hold true.</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">msleep2 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">mutate</span>(<span class="dt">brainwt_log =</span> <span class="kw">log</span>(brainwt))</a>
-<a class="sourceLine" id="cb225-2" data-line-number="2"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span><span class="st"> </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
-<p><img src="440-intro-to-ggplot2_files/figure-html/ggplot6-1.png" width="672" /></p>
-<p>Here we use the <code>mutate</code> function to make a new variable called <code>brainwt_log</code> in our dataset (technically a new dataset copy that we have saved as <code>msleep2</code>). Plotting this variable as our x variable (i.e. independent variable), makes it easier to look for patterns.</p>
-<hr />
-</div>
-<div id="changing-plot-aesthetics" class="section level3">
-<h3><span class="header-section-number">3.4.2</span> Changing plot aesthetics</h3>
-<p>We can modify the appearance of the plot in two ways: either uniformly changing the appearance or having the appearance vary depending on information present in our data.</p>
-<p>Let’s explore how to modify our plots uniformly. We can change aspects of the points we plot such as transparency (“alpha”) and color by supplying them as arguments in the <code>geom_point</code> function.</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb227-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_point</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>, <span class="dt">color =</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
-<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
-<p><img src="440-intro-to-ggplot2_files/figure-html/ggplot7-1.png" width="672" /></p>
-<p>Here we have made the plots semi-transparent and colored blue. You can try varying these values (e.g. change blue to a different color). You can also supply other arguments such as <code>shape</code> to use something other than a dot.</p>
-<p>However, it is also possible to scale the color of the points by some variable present in the data. This approach means we can create a scatterplot that conveys more than just two variables’ worth of information (x-axis and y-axis) by having the color reflect a third variable.</p>
-<p>To do this, we specify the <code>color</code> inside the aesthetic mapping <code>aes</code> within the initial <code>ggplot</code> function. Same as how we told R to use a specific column by name for <code>x</code> or <code>y</code> coordinates, we specify which column to use for <code>color</code>.</p>
-<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem, <span class="dt">color =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb229-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
-<p><img src="440-intro-to-ggplot2_files/figure-html/ggplot8-1.png" width="672" /></p>
-<p>This plot conveys not only the relationship between <code>brainwt_log</code> and <code>sleep_rem</code>, but each plot representing a different mammal now conveys what the feeding behavior of that mammal is.</p>
-<p>When generating visualizations, it is important to annotate the figure with meaningful labels on the axes to make them accessible for the viewer. For that, we can use the <code>labs</code> function.</p>
-<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" data-line-number="1"><span class="kw">ggplot</span>(msleep2, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_rem, <span class="dt">color =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb231-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb231-3" data-line-number="3"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">x =</span> <span class="st">&quot;Brain Weight (log)&quot;</span>, </a>
-<a class="sourceLine" id="cb231-4" data-line-number="4">       <span class="dt">y =</span> <span class="st">&quot;Duration of REM Sleep&quot;</span>,</a>
-<a class="sourceLine" id="cb231-5" data-line-number="5">       <span class="dt">color =</span> <span class="st">&quot;Feeding Behavior&quot;</span>)</a></code></pre></div>
-<pre><code>## Warning: Removed 35 rows containing missing values (geom_point).</code></pre>
-<p><img src="440-intro-to-ggplot2_files/figure-html/ggplot9-1.png" width="672" /></p>
-<hr />
-</div>
-<div id="exploring-simple-plots" class="section level3">
-<h3><span class="header-section-number">3.4.3</span> Exploring simple plots</h3>
-<p>Let’s consider how we make other plots besides a scatterplot.</p>
-<p>Scatterplots are a great way to look at two quantitative (numerical) values at the same time to observe patterns (i.e. correlations) between the variables or to identify interesting outliers.</p>
-<p>However, other plots may be more useful to look at differing numbers of variables (i.e. one quantitative variable) or different types of variables (i.e. qualitative or categorical data). Here, we discuss two types of single variable plots that look at either a quantitative variable (histogram) or a categorical variable (barplot).</p>
-<p>We can create histograms in ggplot2 that are more aesthetically pleasing than the default <code>hist</code> function. This shows the distribution of one quantitative variable.</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1"><span class="kw">ggplot</span>(msleep, <span class="kw">aes</span>(<span class="dt">x =</span> sleep_total)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb233-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>)</a></code></pre></div>
-<p><img src="440-intro-to-ggplot2_files/figure-html/ggplot10-1.png" width="672" /></p>
-<p>We can look at how many individuals in the dataset fall into each category, such as how many mammals have each kind of feeding behavior.</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> msleep, <span class="kw">aes</span>(<span class="dt">x =</span> vore)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb234-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_bar</span>()</a></code></pre></div>
-<p><img src="440-intro-to-ggplot2_files/figure-html/ggplot11-1.png" width="672" /></p>
-<p>As you can see where we map the aesthetic, we only tell the <code>ggplot</code> function to refer to a single column in our dataset for our x-axis.</p>
-<hr />
-</div>
-<div id="visualizing-between-groups" class="section level3">
-<h3><span class="header-section-number">3.4.4</span> Visualizing between groups</h3>
-<p>Let’s return to <code>iris</code> dataset to explore how we can visualize differences between groups/categories. These groups are often represented in our data as a factor.</p>
-<p>We can look at how the distributions of <code>Sepal.Length</code> differ depending on which species each iris belongs to. One plot that can do this easily is the <code>geom_boxplot</code> function.</p>
-<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> iris, <span class="kw">aes</span>(<span class="dt">x =</span> Species, <span class="dt">y =</span> Sepal.Length)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb235-2" data-line-number="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
-<p><img src="440-intro-to-ggplot2_files/figure-html/ggplot12-1.png" width="672" /></p>
-<p>By adding a different parameter to <code>fill</code> in the <code>aes</code> we define throgh the <code>ggplot</code> function, we can separate out histograms according to different groupings. Here, we use <code>Species</code> to determine the color of the fill.</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1"><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">fill =</span> Species)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb236-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>)</a></code></pre></div>
-<p><img src="440-intro-to-ggplot2_files/figure-html/ggplot13-1.png" width="672" /></p>
-<p>While we can sort of see the trends on this plot, it may be helpful to separate out each histogram for each individual species. There is an easy way to do this in <code>ggplot2</code> using facetting or the <code>facet_wrap</code> function. This function splits the figure into separate panel where the data has been filtered by the category (i.e. <code>Species</code>).</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" data-line-number="1"><span class="kw">ggplot</span>(iris, <span class="kw">aes</span>(<span class="dt">x =</span> Sepal.Length, <span class="dt">fill =</span> Species)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb237-2" data-line-number="2"><span class="st">    </span><span class="kw">geom_histogram</span>(<span class="dt">bins =</span> <span class="dv">10</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb237-3" data-line-number="3"><span class="st">  </span><span class="kw">facet_wrap</span>( <span class="op">~</span><span class="st"> </span>Species)</a></code></pre></div>
-<p><img src="440-intro-to-ggplot2_files/figure-html/ggplot14-1.png" width="672" /></p>
-<p>This matches what we already saw in the boxplot, showing that there are different sepal lengths depending on which iris species we look at. We will explore in the next section how we know if these differences are significant.</p>
-<hr />
-</div>
-<div id="generating-heatmaps" class="section level3">
-<h3><span class="header-section-number">3.4.5</span> Generating heatmaps</h3>
-<p>Heatmaps are a useful way to show the values of multiple samples across many measurements. You can visualize a heatmap by thinking of your dataframe, this tabular data, if it had each cell colorcoded based on how high or low the value is.</p>
-<p>The base R <code>heatmap</code> function meets many needs while the ggplot2 equivalent (<code>geom_tile</code>) can be confusing so we will recommend that you not use ggplot2 for heatmaps.</p>
-<p>Let’s go back to <code>msleep</code> dataset to visualize trends between the different measurements taken on each mammal. We will first create a simplified dataset from <code>msleep</code> where we take the log value of both <code>brainwt</code> and <code>bodywt</code>.</p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" data-line-number="1">temp.data &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="kw">log</span>(msleep<span class="op">$</span>brainwt), <span class="kw">log</span>(msleep<span class="op">$</span>bodywt))</a>
-<a class="sourceLine" id="cb238-2" data-line-number="2"><span class="kw">head</span>(temp.data)</a></code></pre></div>
-<pre><code>##            [,1]       [,2]
-## [1,]         NA  3.9120230
-## [2,] -4.1669153 -0.7339692
-## [3,]         NA  0.3001046
-## [4,] -8.1456296 -3.9633163
-## [5,] -0.8603831  6.3969297
-## [6,]         NA  1.3480731</code></pre>
-<p>Next, we feed these numeric values into the <code>heatmap</code> function along with some arguments that specify settings for displaying the figure. We use <code>labCol</code> to specify how to label these columns and <code>cexCol</code> to control the text size of these labels. We set <code>labRow</code> to be the names of each species from the msleep dataset.</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1"><span class="kw">heatmap</span>(temp.data, <span class="dt">labRow =</span> msleep<span class="op">$</span>name, <span class="dt">labCol =</span> <span class="kw">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>), <span class="dt">cexCol =</span> <span class="dv">1</span>)</a></code></pre></div>
-<p><img src="440-intro-to-ggplot2_files/figure-html/ggplot16-1.png" width="672" /></p>
-<p>This first heatmap will look strange because it colors each box by its magnitude, but body weight of a mammal is always greater than its brain weight. We want to scale within each column so that the depth of the color reflects whether the mammal has a high brain weight or high body weight <strong>relative to the other mammals</strong>.</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1"><span class="kw">heatmap</span>(temp.data, <span class="dt">scale =</span> <span class="st">&quot;col&quot;</span>, <span class="dt">labRow =</span> msleep<span class="op">$</span>name, <span class="dt">labCol =</span> <span class="kw">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>), <span class="dt">cexCol =</span> <span class="dv">1</span>)</a></code></pre></div>
-<p><img src="440-intro-to-ggplot2_files/figure-html/ggplot17-1.png" width="672" /></p>
-<p>Using the <code>scale</code> argument which we set to <code>&quot;col&quot;</code>, now the color of the columns is more meaningful. For example, it makes sense that the measurements taken on an Asian elephant are much higher than those from a mole rat, so the color of those cells is deeper.</p>
-<p>Let’s add some more data to our heatmap visualization.</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" data-line-number="1">temp.data2 &lt;-<span class="st"> </span><span class="kw">cbind</span>(temp.data, msleep<span class="op">$</span>sleep_total, msleep<span class="op">$</span>sleep_rem)</a>
-<a class="sourceLine" id="cb242-2" data-line-number="2"><span class="kw">heatmap</span>(temp.data2, <span class="dt">scale =</span> <span class="st">&quot;col&quot;</span>, <span class="dt">labRow =</span> msleep<span class="op">$</span>name,</a>
-<a class="sourceLine" id="cb242-3" data-line-number="3">        <span class="dt">labCol =</span> <span class="kw">c</span>(<span class="st">&quot;brainwt&quot;</span>, <span class="st">&quot;bodywt&quot;</span>, <span class="st">&quot;total_sleep&quot;</span>, <span class="st">&quot;rem_sleep&quot;</span>), <span class="dt">cexCol =</span> <span class="dv">1</span>)</a></code></pre></div>
-<p><img src="440-intro-to-ggplot2_files/figure-html/ggplot18-1.png" width="672" /></p>
-<p>You may have noticed the weird diagrams along the top and left hand side of this heatmap. These strange line diagrams are trees that show how our samples cluster together. Mammals that have similar patterns of values across these four measurements are placed near each other in the diagram.</p>
+<p>We hope you are better oriented and prepared to
+repeat your analyses to build a complete story,
+reproduce these larger analyses workflows,
+extend from your work to do more complicated
+workflows,
+and share your analyses with others in a
+well-organized but complete way.</p>
+<p>You can extend on these ideas. Here’s a couple of
+areas that might be useful:</p>
+<dl>
+<dt>Workflow / pipeline tools</dt>
+<dd><p>These are automation tools to smartly run
+different chunks of analyses. This is really
+handy when parts of your workflow take a
+long time, and you usually don’t want to be<br />
+re-running those, but you do want it to be
+able to run the whole thing automatically.</p>
+<p>You can use old-school shell-like tools such
+as “<a href="https://makefiletutorial.com/">Make/Makefiles</a>”,
+newfangled but complex tools
+like “Nextflow”
+or “snakemake”,
+or R-specific tooks like
+“<a href="https://books.ropensci.org/targets/walkthrough.html">targets</a>”.</p>
+</dd>
+</dl>
 
 </div>
-</div>
+<!-- </div> -->
 <p style="margin-top:10em;text-align:center;font-size:small;">
     <a href="https://github.com/darachm/dll-r/blob/main/LICENSE.md">
         Licensed Creative Commons Attribution-NonCommercial-ShareAlike 4.0
@@ -446,8 +344,8 @@ for (var i=0; i < listz.length; i++) {
           </div>
         </div>
       </div>
-<a href="using-tidyverse-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="making-scientific-figures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="more-rmarkdown-for-reproducibile-sharing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="appendix.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -479,7 +377,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/darachm/dll-r/edit/main/440-intro-to-ggplot2.Rmd",
+"link": "https://github.com/darachm/dll-r/edit/main/590-wrapup.Rmd",
 "text": "Edit"
 },
 "history": {

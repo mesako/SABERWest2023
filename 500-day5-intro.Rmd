@@ -46,16 +46,16 @@ Before you start reading through Section 4 for today or taking part in synchrono
 
 |   Start Time  |   End Time   |   Activity    |          Description          |   Facilitator   |
 | ------------- | -----------  | ------------- | ----------------------------- | --------------- |
-| 10:00 AM PDT  | 10:15 AM PDT | Synchronous - lecture  | Review workflows (4.1)        | Darach, Melissa, ???    |
+| 10:00 AM PDT  | 10:15 AM PDT | Synchronous - lecture  | Review workflows (4.1)        | Darach, Melissa, Samson, ???    |
 | 10:15 AM PDT  | 10:45 AM PDT | Asynchronous - video etc | Build an analysis of protein sequences | Support on Slack channel! |
-| 10:45 AM PDT  | 11:30 AM PDT | Synchronous - group  | Extending the analysis to look for motifs ... and what else? string data?  | Darach, Melissa, ???    |
-| 11:30 AM PDT  | 12:00 PM PDT | Synchronous - discussion  | Demo/discuss some places to find help (group notes of good places to find help, how people look for R help) | Darach, ???    |
+| 10:45 AM PDT  | 11:30 AM PDT | Synchronous - group  | Extending the analysis to look for motifs ... and what else? string data?  | Darach, Melissa, Samson, ???    |
+| 11:30 AM PDT  | 12:00 PM PDT | Synchronous - discussion  | Demo/discuss some places to find help (group notes of good places to find help, how people look for R help) | Darach, Samson, ???    |
 | 12:00 PM PDT  | 12:30 PM PDT | Break  | Take a computer break!        |       N/A       |
-| 12:30 PM PDT  | 12:45 PM PDT | Synchronous - lecture  | Modular functions | Darach, ???    |
+| 12:30 PM PDT  | 12:45 PM PDT | Synchronous - lecture  | Modular functions | Darach, Samson, ???    |
 | 12:45 PM PDT  | 1:15 PM PDT | Asynchronous - video etc  | Packages - install stuff | Support on Slack channel! |
-| 1:15 PM PDT  | 1:45 PM PDT | Synchronous - group  | Do a Bioconductor tutorial | Darach, ???    |
+| 1:15 PM PDT  | 1:45 PM PDT | Synchronous - group  | Do a Bioconductor tutorial | Darach, Samson, ???    |
 | 1:45 PM PDT   | 2:15 PM PDT | Break   |  Take a computer break!       |       N/A       |
-| 2:15 PM PDT   | 2:45 PM PDT | Synchronous - discussion  | Writing (re)usable code | Darach, ???    |
-| 2:45 PM PDT   | 3:30 PM PDT | Synchronous - group  | Compile a bunch of rmarkdown reports, catch up | Darach, ???    |
+| 2:15 PM PDT   | 2:45 PM PDT | Synchronous - discussion  | Writing (re)usable code | Darach, Samson, ???    |
+| 2:45 PM PDT   | 3:30 PM PDT | Synchronous - group  | Compile a bunch of rmarkdown reports, catch up | Darach, Samson, ???    |
 
 
