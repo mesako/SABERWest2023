@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.6 Applying basic stats | DLL 2021, R section</title>
+  <title>3.7 Applying basic stats | DLL 2021, R section</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.6 Applying basic stats | DLL 2021, R section" />
+  <meta property="og:title" content="3.7 Applying basic stats | DLL 2021, R section" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.6 Applying basic stats | DLL 2021, R section" />
+  <meta name="twitter:title" content="3.7 Applying basic stats | DLL 2021, R section" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -74,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -187,27 +187,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="using-tidyverse.html"><a href="using-tidyverse.html"><i class="fa fa-check"></i><b>3.2</b> Using tidyverse</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="using-tidyverse.html"><a href="using-tidyverse.html#goals-to-be-reworked-alongside-content"><i class="fa fa-check"></i><b>3.2.1</b> Goals to be reworked alongside content</a></li>
 <li class="chapter" data-level="3.2.2" data-path="using-tidyverse.html"><a href="using-tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>3.2.2</b> Welcome to the tidyverse!</a></li>
-<li class="chapter" data-level="3.2.3" data-path="using-tidyverse.html"><a href="using-tidyverse.html#lets-get-started-with-tidyverse"><i class="fa fa-check"></i><b>3.2.3</b> Let’s get started with Tidyverse</a></li>
-<li class="chapter" data-level="3.2.4" data-path="using-tidyverse.html"><a href="using-tidyverse.html#try-tidyverse-on-the-dataset-we-loaded-in-the-previous-section"><i class="fa fa-check"></i><b>3.2.4</b> Try tidyverse on the dataset we loaded in the previous section</a></li>
+<li class="chapter" data-level="3.2.3" data-path="using-tidyverse.html"><a href="using-tidyverse.html#lets-start-by-making-sure-tidyverse-is-installed"><i class="fa fa-check"></i><b>3.2.3</b> Let’s start by making sure Tidyverse is installed</a></li>
+<li class="chapter" data-level="3.2.4" data-path="using-tidyverse.html"><a href="using-tidyverse.html#try-tidyverse-on-the-iris-dataset-we-loaded-in-the-previous-section"><i class="fa fa-check"></i><b>3.2.4</b> Try tidyverse on the iris dataset we loaded in the previous section</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="using-tidyverse-1.html"><a href="using-tidyverse-1.html"><i class="fa fa-check"></i><b>3.3</b> Using tidyverse</a></li>
-<li class="chapter" data-level="3.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.4.1</b> Getting started with a ggplot</a></li>
-<li class="chapter" data-level="3.4.2" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#changing-plot-aesthetics"><i class="fa fa-check"></i><b>3.4.2</b> Changing plot aesthetics</a></li>
-<li class="chapter" data-level="3.4.3" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#exploring-simple-plots"><i class="fa fa-check"></i><b>3.4.3</b> Exploring simple plots</a></li>
-<li class="chapter" data-level="3.4.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>3.4.4</b> Visualizing between groups</a></li>
-<li class="chapter" data-level="3.4.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#generating-heatmaps"><i class="fa fa-check"></i><b>3.4.5</b> Generating heatmaps</a></li>
+<li class="chapter" data-level="3.3" data-path="essential-tidyverse-functions.html"><a href="essential-tidyverse-functions.html"><i class="fa fa-check"></i><b>3.3</b> Essential tidyverse functions</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="essential-tidyverse-functions.html"><a href="essential-tidyverse-functions.html#filtering-dataframes"><i class="fa fa-check"></i><b>3.3.1</b> Filtering dataframes</a></li>
+<li class="chapter" data-level="3.3.2" data-path="essential-tidyverse-functions.html"><a href="essential-tidyverse-functions.html#creating-new-variables"><i class="fa fa-check"></i><b>3.3.2</b> Creating new variables</a></li>
+<li class="chapter" data-level="3.3.3" data-path="essential-tidyverse-functions.html"><a href="essential-tidyverse-functions.html#summarizing-data"><i class="fa fa-check"></i><b>3.3.3</b> Summarizing data</a></li>
+<li class="chapter" data-level="3.3.4" data-path="essential-tidyverse-functions.html"><a href="essential-tidyverse-functions.html#updating-fields-based-on-a-condition"><i class="fa fa-check"></i><b>3.3.4</b> Updating fields based on a condition</a></li>
+<li class="chapter" data-level="3.3.5" data-path="essential-tidyverse-functions.html"><a href="essential-tidyverse-functions.html#reshaping-data-long-and-wide"><i class="fa fa-check"></i><b>3.3.5</b> Reshaping data: long and wide</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html"><i class="fa fa-check"></i><b>3.5</b> Making scientific figures</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.5.1</b> Plotting error bars</a></li>
-<li class="chapter" data-level="3.5.2" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#showing-trends-in-data"><i class="fa fa-check"></i><b>3.5.2</b> Showing trends in data</a></li>
-<li class="chapter" data-level="3.5.3" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#saving-figures-locally"><i class="fa fa-check"></i><b>3.5.3</b> Saving figures locally</a></li>
+<li class="chapter" data-level="3.4" data-path="using-tidyverse-1.html"><a href="using-tidyverse-1.html"><i class="fa fa-check"></i><b>3.4</b> Using tidyverse</a></li>
+<li class="chapter" data-level="3.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.5</b> Making plots with ggplot2</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.5.1</b> Getting started with a ggplot</a></li>
+<li class="chapter" data-level="3.5.2" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#changing-plot-aesthetics"><i class="fa fa-check"></i><b>3.5.2</b> Changing plot aesthetics</a></li>
+<li class="chapter" data-level="3.5.3" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#exploring-simple-plots"><i class="fa fa-check"></i><b>3.5.3</b> Exploring simple plots</a></li>
+<li class="chapter" data-level="3.5.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>3.5.4</b> Visualizing between groups</a></li>
+<li class="chapter" data-level="3.5.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#generating-heatmaps"><i class="fa fa-check"></i><b>3.5.5</b> Generating heatmaps</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html"><i class="fa fa-check"></i><b>3.6</b> Applying basic stats</a><ul>
-<li class="chapter" data-level="3.6.1" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#describing-quantitative-variables"><i class="fa fa-check"></i><b>3.6.1</b> Describing quantitative variables</a></li>
-<li class="chapter" data-level="3.6.2" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#finding-differences-in-data"><i class="fa fa-check"></i><b>3.6.2</b> Finding differences in data</a></li>
-<li class="chapter" data-level="3.6.3" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#identifying-correlations"><i class="fa fa-check"></i><b>3.6.3</b> Identifying correlations</a></li>
-<li class="chapter" data-level="3.6.4" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#producing-linear-models"><i class="fa fa-check"></i><b>3.6.4</b> Producing linear models</a></li>
+<li class="chapter" data-level="3.6" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html"><i class="fa fa-check"></i><b>3.6</b> Making scientific figures</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.6.1</b> Plotting error bars</a></li>
+<li class="chapter" data-level="3.6.2" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#showing-trends-in-data"><i class="fa fa-check"></i><b>3.6.2</b> Showing trends in data</a></li>
+<li class="chapter" data-level="3.6.3" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#saving-figures-locally"><i class="fa fa-check"></i><b>3.6.3</b> Saving figures locally</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html"><i class="fa fa-check"></i><b>3.7</b> Applying basic stats</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#describing-quantitative-variables"><i class="fa fa-check"></i><b>3.7.1</b> Describing quantitative variables</a></li>
+<li class="chapter" data-level="3.7.2" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#finding-differences-in-data"><i class="fa fa-check"></i><b>3.7.2</b> Finding differences in data</a></li>
+<li class="chapter" data-level="3.7.3" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#identifying-correlations"><i class="fa fa-check"></i><b>3.7.3</b> Identifying correlations</a></li>
+<li class="chapter" data-level="3.7.4" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#producing-linear-models"><i class="fa fa-check"></i><b>3.7.4</b> Producing linear models</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><a href="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows, using packages, writing (re)usable code, sharing analyses</a><ul>
@@ -282,49 +289,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="applying-basic-stats" class="section level2">
-<h2><span class="header-section-number">3.6</span> Applying basic stats</h2>
+<h2><span class="header-section-number">3.7</span> Applying basic stats</h2>
 <p>Following up on our analysis using visualizations, we will review different types of statistical tests that we can perform on data. We will again revisit the mammalian sleep dataset <code>msleep</code>.</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" data-line-number="1"><span class="kw">head</span>(msleep)</a></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" title="1"><span class="kw">head</span>(msleep)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 11
-##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
-## 1 Cheetah Acin… carni Carn… lc                  12.1      NA        NA      11.9
-## 2 Owl mo… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
-## 3 Mounta… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
-## 4 Greate… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
-## 5 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
-## 6 Three-… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
+##   name  genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+## 1 Chee… Acin… carni Carn… lc                  12.1      NA        NA      11.9
+## 2 Owl … Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
+## 3 Moun… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
+## 4 Grea… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
+## 5 Cow   Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+## 6 Thre… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
 ## # … with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;</code></pre>
 <hr />
 <div id="describing-quantitative-variables" class="section level3">
-<h3><span class="header-section-number">3.6.1</span> Describing quantitative variables</h3>
+<h3><span class="header-section-number">3.7.1</span> Describing quantitative variables</h3>
 <p>There are several ways to describe quantitative measurements. We might first look at the range of values using the <code>quantile</code> function, which returns the min, max, and median values as well as the 25th and 75th percentiles.</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" data-line-number="1"><span class="kw">quantile</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" title="1"><span class="kw">quantile</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>##      0%     25%     50%     75%    100% 
 ## 0.00014 0.00290 0.01240 0.12550 5.71200</code></pre>
 <p>Note that we are using the setting <code>na.rm = TRUE</code> as an argument to these functions so that it ignores <code>NA</code> values in the data.</p>
 <p>You can also directly isolate some of these values using the functions <code>min</code> or <code>max</code>. We might describe the center of our data, that is the mean or the median values using those respective function names.</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" data-line-number="1"><span class="kw">median</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" title="1"><span class="kw">median</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 0.0124</code></pre>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" data-line-number="1"><span class="kw">mean</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" title="1"><span class="kw">mean</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 0.2815814</code></pre>
 <p>We might also want to describe the spread in the data, such as the standard deviation or the interquartile range.</p>
-<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" data-line-number="1"><span class="kw">sd</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" title="1"><span class="kw">sd</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 0.9764137</code></pre>
-<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1"><span class="kw">IQR</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" title="1"><span class="kw">IQR</span>(msleep<span class="op">$</span>brainwt, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## [1] 0.1226</code></pre>
 <p>Visualizations are a great way to see this information in one picture. We have learned to create a fancier histogram, but the <code>hist</code> function always works for quick viewing.</p>
-<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1"><span class="kw">hist</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" title="1"><span class="kw">hist</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
 <p><img src="460-basic-stats_files/figure-html/stats5-1.png" width="672" /></p>
 <p>It is clear from this image that the data is skewed towards approaching 0 with a few high outliers.</p>
 <hr />
 </div>
 <div id="finding-differences-in-data" class="section level3">
-<h3><span class="header-section-number">3.6.2</span> Finding differences in data</h3>
+<h3><span class="header-section-number">3.7.2</span> Finding differences in data</h3>
 <p>For the following statistical tests, we want to determine if measurements of a quantitative variable taken on a certain group of samples are different from similar measurements taken from a different group of samples.</p>
 <p>To know if these differences are <strong>statistically significant</strong>, we need to be aware of the uncertainty in our data. Even if we have collect many observations, there is generally noisiness and error in those measurements. Thus, we have uncertainty if the mean value we calculate for a group is in fact the true mean.</p>
 <p>We can calculate a confidence interval to describe our guess for the mean in our data. That is, we can identify the mean based on our samples, but also provide an upper or lower bound for where the mean might be.</p>
-<div class="sourceCode" id="cb272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb272-1" data-line-number="1"><span class="kw">t.test</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" title="1"><span class="kw">t.test</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -338,10 +345,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 0.2815814</code></pre>
 <p>We use this <code>t.test</code> function because we assume that our data is normally distributed (which is not necessarily always the case) and it has a small sample size. You can see that while the mean for brain weight from this popular is 0.28, the range is fairly large (between 0.2 and 0.54) because of how big the variability is in the data.</p>
 <p>If we want to determine if two populations have a difference in their mean values that is statistically significant, we can calculate the t-test between two sets of observations. Let’s look at whether the average time spent awake by mammals who are insectivores is significantly less than those who are not.</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb274-1" data-line-number="1">insectivores &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb274-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(vore <span class="op">==</span><span class="st"> &quot;insecti&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb274-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(awake)</a>
-<a class="sourceLine" id="cb274-4" data-line-number="4"><span class="kw">head</span>(insectivores)</a></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb301-1" title="1">insectivores &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb301-2" title="2"><span class="st">  </span><span class="kw">filter</span>(vore <span class="op">==</span><span class="st"> &quot;insecti&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb301-3" title="3"><span class="st">  </span><span class="kw">select</span>(awake)</a>
+<a class="sourceLine" id="cb301-4" title="4"><span class="kw">head</span>(insectivores)</a></code></pre></div>
 <pre><code>## # A tibble: 5 x 1
 ##   awake
 ##   &lt;dbl&gt;
@@ -350,10 +357,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 3   5.9
 ## 4  15.6
 ## 5  15.4</code></pre>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" data-line-number="1">other.mammals &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb276-2" data-line-number="2"><span class="st">  </span><span class="kw">filter</span>(vore <span class="op">!=</span><span class="st"> &quot;insecti&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb276-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(awake)</a>
-<a class="sourceLine" id="cb276-4" data-line-number="4"><span class="kw">head</span>(other.mammals)</a></code></pre></div>
+<div class="sourceCode" id="cb303"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb303-1" title="1">other.mammals &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb303-2" title="2"><span class="st">  </span><span class="kw">filter</span>(vore <span class="op">!=</span><span class="st"> &quot;insecti&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb303-3" title="3"><span class="st">  </span><span class="kw">select</span>(awake)</a>
+<a class="sourceLine" id="cb303-4" title="4"><span class="kw">head</span>(other.mammals)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 1
 ##   awake
 ##   &lt;dbl&gt;
@@ -363,7 +370,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4   9.1
 ## 5  20  
 ## 6   9.6</code></pre>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb278-1" data-line-number="1"><span class="kw">t.test</span>(insectivores, other.mammals, <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" title="1"><span class="kw">t.test</span>(insectivores, other.mammals, <span class="dt">alternative =</span> <span class="st">&quot;less&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -377,8 +384,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   9.06000  13.86056</code></pre>
 <p>These results show a p-value of 0.07, which is not the usual level of significance that most scientists accept (p-value &lt; 0.05).</p>
 <p>However, there are numerous feeding behaviors besides insectivore and we may be interested in comparing the multiple categories against each other. We can use ANOVA (analysis of variance) to see how our quantitative variable is affected by the different kinds of feeding behavior.</p>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb280-1" data-line-number="1">anova.msleep &lt;-<span class="st"> </span><span class="kw">aov</span>(awake <span class="op">~</span><span class="st"> </span>vore, <span class="dt">data =</span> msleep)</a>
-<a class="sourceLine" id="cb280-2" data-line-number="2"><span class="kw">summary</span>(anova.msleep)</a></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" title="1">anova.msleep &lt;-<span class="st"> </span><span class="kw">aov</span>(awake <span class="op">~</span><span class="st"> </span>vore, <span class="dt">data =</span> msleep)</a>
+<a class="sourceLine" id="cb307-2" title="2"><span class="kw">summary</span>(anova.msleep)</a></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value Pr(&gt;F)  
 ## vore         3  133.7   44.58   2.234 0.0916 .
 ## Residuals   72 1437.0   19.96                 
@@ -389,90 +396,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr />
 </div>
 <div id="identifying-correlations" class="section level3">
-<h3><span class="header-section-number">3.6.3</span> Identifying correlations</h3>
+<h3><span class="header-section-number">3.7.3</span> Identifying correlations</h3>
 <p>When we are examining the relationship between two quantitative variables, we might be interested in whether they correlate with one another. A positive correlation between x and y means that as x increases so does y. A negative correlation between x and y means that as x increases, y decreases. We can use the base R <code>cor</code> function to calculate the correlation between two numeric vectors.</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb282-1" data-line-number="1"><span class="kw">cor</span>(msleep<span class="op">$</span>brainwt, msleep<span class="op">$</span>bodywt)</a></code></pre></div>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb309-1" title="1"><span class="kw">cor</span>(msleep<span class="op">$</span>brainwt, msleep<span class="op">$</span>bodywt)</a></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>Notice that we get <code>NA</code> instead of an actual numeric value. Unfortunately there is not an easy setting to have the <code>cor</code> function ignore any <code>NA</code> values. Thus, we need to temporarily remove these values. Let’s first find them with the <code>summary</code> function.</p>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb284-1" data-line-number="1"><span class="kw">summary</span>(msleep<span class="op">$</span>bodywt)</a></code></pre></div>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" title="1"><span class="kw">summary</span>(msleep<span class="op">$</span>bodywt)</a></code></pre></div>
 <pre><code>##     Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
 ##    0.005    0.174    1.670  166.136   41.750 6654.000</code></pre>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" data-line-number="1"><span class="kw">summary</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" title="1"><span class="kw">summary</span>(msleep<span class="op">$</span>brainwt)</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA&#39;s 
 ## 0.00014 0.00290 0.01240 0.28158 0.12550 5.71200      27</code></pre>
 <p>There are no <code>NA</code> values in the <code>bodywt</code> column, but there are 27 <code>NA</code> values in the <code>brainwt</code> column. Let’s remove those using a helpful function in tidyverse and save the more complete dataset as <code>msleep2</code>.</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb288-1" data-line-number="1">msleep2 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>(brainwt)</a>
-<a class="sourceLine" id="cb288-2" data-line-number="2"><span class="kw">dim</span>(msleep)</a></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" title="1">msleep2 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">drop_na</span>(brainwt)</a>
+<a class="sourceLine" id="cb315-2" title="2"><span class="kw">dim</span>(msleep)</a></code></pre></div>
 <pre><code>## [1] 83 11</code></pre>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb290-1" data-line-number="1"><span class="kw">dim</span>(msleep2)</a></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" title="1"><span class="kw">dim</span>(msleep2)</a></code></pre></div>
 <pre><code>## [1] 56 11</code></pre>
 <p>You can see that we dropped 27 rows, corresponding to the mammals for whom brain weight was not measured or available. Now we can try to use the <code>cor</code> function.</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb292-1" data-line-number="1"><span class="kw">cor</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt)</a></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" title="1"><span class="kw">cor</span>(msleep2<span class="op">$</span>brainwt, msleep2<span class="op">$</span>bodywt)</a></code></pre></div>
 <pre><code>## [1] 0.9337822</code></pre>
 <p>We can see that the correlation is 0.93, a value very close to 1. This suggests that these variabilities are almost perfectly correlated with each other, which we saw when we plotted these two variables against each other in the prior section.</p>
 <p>There are multiple types of correlations. The <code>cor</code> function uses a Pearson correlation by default and can use different methods like Spearman. Let’s explore the difference between these correlations by looking at the relationship between the log value of brain weight and length of sleep cycle</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb294-1" data-line-number="1">msleep3 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb294-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">brainwt_log =</span> <span class="kw">log</span>(brainwt)) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb294-3" data-line-number="3"><span class="st">  </span><span class="kw">drop_na</span>(brainwt_log, sleep_cycle)</a>
-<a class="sourceLine" id="cb294-4" data-line-number="4"><span class="kw">ggplot</span>(msleep3, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_cycle)) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb294-5" data-line-number="5"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb321-1" title="1">msleep3 &lt;-<span class="st"> </span>msleep <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb321-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">brainwt_log =</span> <span class="kw">log</span>(brainwt)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb321-3" title="3"><span class="st">  </span><span class="kw">drop_na</span>(brainwt_log, sleep_cycle)</a>
+<a class="sourceLine" id="cb321-4" title="4"><span class="kw">ggplot</span>(msleep3, <span class="kw">aes</span>(<span class="dt">x =</span> brainwt_log, <span class="dt">y =</span> sleep_cycle)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb321-5" title="5"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span><span class="kw">geom_smooth</span>(<span class="dt">method =</span> <span class="st">&quot;lm&quot;</span>)</a></code></pre></div>
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="460-basic-stats_files/figure-html/stats13a-1.png" width="672" /></p>
 <p>When we plot these variables against each other, including a fitted linear trend line, we can see that there is a relationship between these variables. However, the points do not quite fit a straight line if we look at the edges and center of this fitted line. This will reflect in our calculation of two different correlations.</p>
-<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb296-1" data-line-number="1"><span class="kw">cor</span>(msleep3<span class="op">$</span>brainwt_log, msleep3<span class="op">$</span>sleep_cycle, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" title="1"><span class="kw">cor</span>(msleep3<span class="op">$</span>brainwt_log, msleep3<span class="op">$</span>sleep_cycle, <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] 0.8331014</code></pre>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb298-1" data-line-number="1"><span class="kw">cor</span>(msleep3<span class="op">$</span>brainwt_log, msleep3<span class="op">$</span>sleep_cycle, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb325-1" title="1"><span class="kw">cor</span>(msleep3<span class="op">$</span>brainwt_log, msleep3<span class="op">$</span>sleep_cycle, <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] 0.8726893</code></pre>
 <p>Pearson correlations are higher when the data fits to a straight line like a trend line. However, Spearman correlations do not require a single slope: as long as one value goes up and the other goes up, these values are considered highly correlated.</p>
 <hr />
 </div>
 <div id="producing-linear-models" class="section level3">
-<h3><span class="header-section-number">3.6.4</span> Producing linear models</h3>
+<h3><span class="header-section-number">3.7.4</span> Producing linear models</h3>
 <p>You may be interested in studying the relationship between one or more variables and some outcome that you care about. To determine if this set of one or more variables are strong predictors of an outcome (some quantitative variable), you can fit a linear model to this data using the <code>lm</code> function.</p>
 <p>Here we train a linear model to try to predict brain weight from body weight in the <code>msleep</code> dataset.</p>
 <p>Linear models are established with a formula with the format of <code>outcome ~ predictor</code> where we are trying to determine if the predictor is able to help us accurately estimate an outcome.</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" data-line-number="1">my.mod &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> brainwt <span class="op">~</span><span class="st"> </span>bodywt, <span class="dt">data =</span> msleep2)</a>
-<a class="sourceLine" id="cb300-2" data-line-number="2"><span class="kw">summary</span>(my.mod)</a></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" title="1">my.mod &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> brainwt <span class="op">~</span><span class="st"> </span>bodywt, <span class="dt">data =</span> msleep2)</a>
+<a class="sourceLine" id="cb327-2" title="2"><span class="kw">summary</span>(my.mod)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = brainwt ~ bodywt, data = msleep2)
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -0.78804 -0.08422 -0.07634 -0.02839  2.06190 
+## -0.20686 -0.07565 -0.07184 -0.03565  1.18663 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 8.592e-02  4.821e-02   1.782   0.0804 .  
-## bodywt      9.639e-04  5.027e-05  19.176   &lt;2e-16 ***
+##              Estimate Std. Error t value Pr(&gt;|t|)   
+## (Intercept) 0.0761566  0.0479290   1.589  0.12330   
+## bodywt      0.0009228  0.0003162   2.919  0.00686 **
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 0.3526 on 54 degrees of freedom
-## Multiple R-squared:  0.8719, Adjusted R-squared:  0.8696 
-## F-statistic: 367.7 on 1 and 54 DF,  p-value: &lt; 2.2e-16</code></pre>
+## Residual standard error: 0.2459 on 28 degrees of freedom
+## Multiple R-squared:  0.2333, Adjusted R-squared:  0.2059 
+## F-statistic:  8.52 on 1 and 28 DF,  p-value: 0.006859</code></pre>
 <p>In the summary of the results of this modeling, we see that <code>bodywt</code> is a significant predictor of <code>brainwt</code> in the <code>msleep</code> dataset. We can provide more predictors into our formula in the format: <code>outcome ~ predictor1 + predictor2 + ...</code>.</p>
-<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" data-line-number="1">my.mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> sleep_total <span class="op">~</span><span class="st"> </span>bodywt <span class="op">+</span><span class="st"> </span>brainwt, <span class="dt">data =</span> msleep2)</a>
-<a class="sourceLine" id="cb302-2" data-line-number="2"><span class="kw">summary</span>(my.mod2)</a></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb329-1" title="1">my.mod2 &lt;-<span class="st"> </span><span class="kw">lm</span>(<span class="dt">formula =</span> sleep_total <span class="op">~</span><span class="st"> </span>bodywt <span class="op">+</span><span class="st"> </span>brainwt, <span class="dt">data =</span> msleep2)</a>
+<a class="sourceLine" id="cb329-2" title="2"><span class="kw">summary</span>(my.mod2)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = sleep_total ~ bodywt + brainwt, data = msleep2)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -7.4531 -2.2517 -0.2619  2.0531  9.2283 
+## -4.3940 -2.2591 -0.1205  1.3586  7.5917 
 ## 
 ## Coefficients:
-##               Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept) 10.6722485  0.5898643  18.093   &lt;2e-16 ***
-## bodywt       0.0007953  0.0016703   0.476    0.636    
-## brainwt     -2.3518943  1.6180072  -1.454    0.152    
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 12.309310   0.675518  18.222  &lt; 2e-16 ***
+## bodywt      -0.014261   0.004874  -2.926  0.00688 ** 
+## brainwt     -3.290750   2.551012  -1.290  0.20800    
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## 
-## Residual standard error: 4.193 on 53 degrees of freedom
-## Multiple R-squared:  0.1337, Adjusted R-squared:  0.101 
-## F-statistic: 4.088 on 2 and 53 DF,  p-value: 0.02232</code></pre>
+## Residual standard error: 3.319 on 27 degrees of freedom
+## Multiple R-squared:  0.4012, Adjusted R-squared:  0.3569 
+## F-statistic: 9.046 on 2 and 27 DF,  p-value: 0.0009843</code></pre>
 <p>These results suggest that neither <code>bodywt</code> nor <code>brainwt</code> are significant predictors of <code>sleep_total</code>. That means that the value of either of those measurements does not give us information that helps us guess the total sleep duration for a mammal accurately.</p>
 
 </div>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.3 Using tidyverse | DLL 2021, R section</title>
+  <title>3.4 Using tidyverse | DLL 2021, R section</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.3 Using tidyverse | DLL 2021, R section" />
+  <meta property="og:title" content="3.4 Using tidyverse | DLL 2021, R section" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.3 Using tidyverse | DLL 2021, R section" />
+  <meta name="twitter:title" content="3.4 Using tidyverse | DLL 2021, R section" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -34,7 +34,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="using-tidyverse.html"/>
+<link rel="prev" href="essential-tidyverse-functions.html"/>
 <link rel="next" href="making-plots-with-ggplot2.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -74,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -187,27 +187,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2" data-path="using-tidyverse.html"><a href="using-tidyverse.html"><i class="fa fa-check"></i><b>3.2</b> Using tidyverse</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="using-tidyverse.html"><a href="using-tidyverse.html#goals-to-be-reworked-alongside-content"><i class="fa fa-check"></i><b>3.2.1</b> Goals to be reworked alongside content</a></li>
 <li class="chapter" data-level="3.2.2" data-path="using-tidyverse.html"><a href="using-tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>3.2.2</b> Welcome to the tidyverse!</a></li>
-<li class="chapter" data-level="3.2.3" data-path="using-tidyverse.html"><a href="using-tidyverse.html#lets-get-started-with-tidyverse"><i class="fa fa-check"></i><b>3.2.3</b> Let’s get started with Tidyverse</a></li>
-<li class="chapter" data-level="3.2.4" data-path="using-tidyverse.html"><a href="using-tidyverse.html#try-tidyverse-on-the-dataset-we-loaded-in-the-previous-section"><i class="fa fa-check"></i><b>3.2.4</b> Try tidyverse on the dataset we loaded in the previous section</a></li>
+<li class="chapter" data-level="3.2.3" data-path="using-tidyverse.html"><a href="using-tidyverse.html#lets-start-by-making-sure-tidyverse-is-installed"><i class="fa fa-check"></i><b>3.2.3</b> Let’s start by making sure Tidyverse is installed</a></li>
+<li class="chapter" data-level="3.2.4" data-path="using-tidyverse.html"><a href="using-tidyverse.html#try-tidyverse-on-the-iris-dataset-we-loaded-in-the-previous-section"><i class="fa fa-check"></i><b>3.2.4</b> Try tidyverse on the iris dataset we loaded in the previous section</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="using-tidyverse-1.html"><a href="using-tidyverse-1.html"><i class="fa fa-check"></i><b>3.3</b> Using tidyverse</a></li>
-<li class="chapter" data-level="3.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.4.1</b> Getting started with a ggplot</a></li>
-<li class="chapter" data-level="3.4.2" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#changing-plot-aesthetics"><i class="fa fa-check"></i><b>3.4.2</b> Changing plot aesthetics</a></li>
-<li class="chapter" data-level="3.4.3" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#exploring-simple-plots"><i class="fa fa-check"></i><b>3.4.3</b> Exploring simple plots</a></li>
-<li class="chapter" data-level="3.4.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>3.4.4</b> Visualizing between groups</a></li>
-<li class="chapter" data-level="3.4.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#generating-heatmaps"><i class="fa fa-check"></i><b>3.4.5</b> Generating heatmaps</a></li>
+<li class="chapter" data-level="3.3" data-path="essential-tidyverse-functions.html"><a href="essential-tidyverse-functions.html"><i class="fa fa-check"></i><b>3.3</b> Essential tidyverse functions</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="essential-tidyverse-functions.html"><a href="essential-tidyverse-functions.html#filtering-dataframes"><i class="fa fa-check"></i><b>3.3.1</b> Filtering dataframes</a></li>
+<li class="chapter" data-level="3.3.2" data-path="essential-tidyverse-functions.html"><a href="essential-tidyverse-functions.html#creating-new-variables"><i class="fa fa-check"></i><b>3.3.2</b> Creating new variables</a></li>
+<li class="chapter" data-level="3.3.3" data-path="essential-tidyverse-functions.html"><a href="essential-tidyverse-functions.html#summarizing-data"><i class="fa fa-check"></i><b>3.3.3</b> Summarizing data</a></li>
+<li class="chapter" data-level="3.3.4" data-path="essential-tidyverse-functions.html"><a href="essential-tidyverse-functions.html#updating-fields-based-on-a-condition"><i class="fa fa-check"></i><b>3.3.4</b> Updating fields based on a condition</a></li>
+<li class="chapter" data-level="3.3.5" data-path="essential-tidyverse-functions.html"><a href="essential-tidyverse-functions.html#reshaping-data-long-and-wide"><i class="fa fa-check"></i><b>3.3.5</b> Reshaping data: long and wide</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html"><i class="fa fa-check"></i><b>3.5</b> Making scientific figures</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.5.1</b> Plotting error bars</a></li>
-<li class="chapter" data-level="3.5.2" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#showing-trends-in-data"><i class="fa fa-check"></i><b>3.5.2</b> Showing trends in data</a></li>
-<li class="chapter" data-level="3.5.3" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#saving-figures-locally"><i class="fa fa-check"></i><b>3.5.3</b> Saving figures locally</a></li>
+<li class="chapter" data-level="3.4" data-path="using-tidyverse-1.html"><a href="using-tidyverse-1.html"><i class="fa fa-check"></i><b>3.4</b> Using tidyverse</a></li>
+<li class="chapter" data-level="3.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.5</b> Making plots with ggplot2</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.5.1</b> Getting started with a ggplot</a></li>
+<li class="chapter" data-level="3.5.2" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#changing-plot-aesthetics"><i class="fa fa-check"></i><b>3.5.2</b> Changing plot aesthetics</a></li>
+<li class="chapter" data-level="3.5.3" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#exploring-simple-plots"><i class="fa fa-check"></i><b>3.5.3</b> Exploring simple plots</a></li>
+<li class="chapter" data-level="3.5.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>3.5.4</b> Visualizing between groups</a></li>
+<li class="chapter" data-level="3.5.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#generating-heatmaps"><i class="fa fa-check"></i><b>3.5.5</b> Generating heatmaps</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html"><i class="fa fa-check"></i><b>3.6</b> Applying basic stats</a><ul>
-<li class="chapter" data-level="3.6.1" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#describing-quantitative-variables"><i class="fa fa-check"></i><b>3.6.1</b> Describing quantitative variables</a></li>
-<li class="chapter" data-level="3.6.2" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#finding-differences-in-data"><i class="fa fa-check"></i><b>3.6.2</b> Finding differences in data</a></li>
-<li class="chapter" data-level="3.6.3" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#identifying-correlations"><i class="fa fa-check"></i><b>3.6.3</b> Identifying correlations</a></li>
-<li class="chapter" data-level="3.6.4" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#producing-linear-models"><i class="fa fa-check"></i><b>3.6.4</b> Producing linear models</a></li>
+<li class="chapter" data-level="3.6" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html"><i class="fa fa-check"></i><b>3.6</b> Making scientific figures</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.6.1</b> Plotting error bars</a></li>
+<li class="chapter" data-level="3.6.2" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#showing-trends-in-data"><i class="fa fa-check"></i><b>3.6.2</b> Showing trends in data</a></li>
+<li class="chapter" data-level="3.6.3" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#saving-figures-locally"><i class="fa fa-check"></i><b>3.6.3</b> Saving figures locally</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html"><i class="fa fa-check"></i><b>3.7</b> Applying basic stats</a><ul>
+<li class="chapter" data-level="3.7.1" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#describing-quantitative-variables"><i class="fa fa-check"></i><b>3.7.1</b> Describing quantitative variables</a></li>
+<li class="chapter" data-level="3.7.2" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#finding-differences-in-data"><i class="fa fa-check"></i><b>3.7.2</b> Finding differences in data</a></li>
+<li class="chapter" data-level="3.7.3" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#identifying-correlations"><i class="fa fa-check"></i><b>3.7.3</b> Identifying correlations</a></li>
+<li class="chapter" data-level="3.7.4" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#producing-linear-models"><i class="fa fa-check"></i><b>3.7.4</b> Producing linear models</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><a href="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows, using packages, writing (re)usable code, sharing analyses</a><ul>
@@ -282,7 +289,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="using-tidyverse-1" class="section level2">
-<h2><span class="header-section-number">3.3</span> Using tidyverse</h2>
+<h2><span class="header-section-number">3.4</span> Using tidyverse</h2>
 <ul>
 <li>When it comes to manipulating data frames (creating new columns, filtering, etc.) - tidyverse is your friend!</li>
 <li>Scholars will understand the complex socio-technical context of tidyverse, ie that it’s not base R but oh boy it’s popular and well supported by a company - but not base R</li>
@@ -294,7 +301,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Scholars understand what group_by is doing</li>
 <li>Scholars can use group_by to summarise variables</li>
 </ul>
-<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1"><span class="co"># ?</span></a></code></pre></div>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" title="1"><span class="co"># ?</span></a></code></pre></div>
 
 </div>
 <p style="margin-top:10em;text-align:center;font-size:small;">
@@ -322,7 +329,7 @@ for (var i=0; i < listz.length; i++) {
           </div>
         </div>
       </div>
-<a href="using-tidyverse.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="essential-tidyverse-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="making-plots-with-ggplot2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

@@ -1,3 +1,4 @@
+
 ## Using tidyverse
 
 ### Goals to be reworked alongside content
@@ -46,7 +47,7 @@ We have a dataframe, `df`,  with measumerments of flowers. We're interested in f
 2. Create a new single variable for size which combines length and width of the petal of a flower `size = petal.length * petal.width`
 3. Group measurements by location and calculate the mean and standard deviation of flower sizes in that location
 
-```{r,tidy2}
+```{r,tidy2,eval=F}
 df %>%
   filter(Species == "setosa") %>%
   mutate(Size = Petal.Length * Petal.Width) %>%
@@ -67,7 +68,7 @@ Notice how the `%>%` pipe is sending the output from before it to the output aft
 
 How would you perform the above operation in base R, without the `%>%`? Give it a try!
 
-```{r,tidy1}
+```{r,tidy1,eval=F}
 # Filter the data
 df_filtered <- df[Species == "setosa"]
 

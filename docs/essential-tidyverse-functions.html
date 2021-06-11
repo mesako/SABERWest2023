@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.5 More example Rmds | DLL 2021, R section</title>
+  <title>3.3 Essential tidyverse functions | DLL 2021, R section</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.5 More example Rmds | DLL 2021, R section" />
+  <meta property="og:title" content="3.3 Essential tidyverse functions | DLL 2021, R section" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.5 More example Rmds | DLL 2021, R section" />
+  <meta name="twitter:title" content="3.3 Essential tidyverse functions | DLL 2021, R section" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -34,8 +34,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="rmd-example-of-code-chunk.html"/>
-<link rel="next" href="how-to-edit-this-document.html"/>
+<link rel="prev" href="using-tidyverse.html"/>
+<link rel="next" href="using-tidyverse-1.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -288,12 +288,486 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="more-example-rmds" class="section level2">
-<h2><span class="header-section-number">5.5</span> More example Rmds</h2>
-<ul>
-<li><a href="extraRmds/worksheet.Rmd">extraRmds/worksheet.Rmd</a></li>
-</ul>
+<div id="essential-tidyverse-functions" class="section level2">
+<h2><span class="header-section-number">3.3</span> Essential tidyverse functions</h2>
+<p>Let’s start with the essential functions of <code>tidyverse</code>. All of these are from the sub-package <a href="https://dplyr.tidyverse.org">dplyr</a></p>
+<p><code>select()</code>: subset columns
+<code>filter()</code>: subset rows on conditions
+<code>arrange()</code>: sort results
+<code>mutate()</code>: create new columns by using information from other columns
+<code>group_by()</code> and <code>summarize()</code>: create summary statistics on grouped data
+<code>count()</code>: count discrete values</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" title="1"><span class="co"># Let&#39;s select just the location </span></a>
+<a class="sourceLine" id="cb217-2" title="2"><span class="kw">select</span>(irisz, Location)</a></code></pre></div>
+<pre><code>##     Location
+## 1      Korea
+## 2      China
+## 3      Korea
+## 4      China
+## 5      China
+## 6     Canada
+## 7      China
+## 8      China
+## 9     Russia
+## 10     Japan
+## 11    Russia
+## 12    Canada
+## 13     Korea
+## 14    Russia
+## 15    Canada
+## 16    Canada
+## 17     Korea
+## 18     Korea
+## 19     Japan
+## 20     Korea
+## 21    Russia
+## 22     Korea
+## 23     Japan
+## 24     Japan
+## 25    Russia
+## 26    Russia
+## 27     Japan
+## 28    Russia
+## 29     Japan
+## 30    Canada
+## 31    Canada
+## 32    Canada
+## 33    Russia
+## 34    Russia
+## 35    Russia
+## 36    Russia
+## 37     Korea
+## 38     Japan
+## 39     Korea
+## 40     Japan
+## 41     Japan
+## 42     Japan
+## 43     Japan
+## 44     Korea
+## 45     China
+## 46          
+## 47    Canada
+## 48    Canada
+## 49    Canada
+## 50    Canada
+## 51          
+## 52          
+## 53          
+## 54       USA
+## 55       USA
+## 56       USA
+## 57       USA
+## 58       USA
+## 59       USA
+## 60          
+## 61    Canada
+## 62    Canada
+## 63    Canada
+## 64    Canada
+## 65    Canada
+## 66    Canada
+## 67    Canada
+## 68    Canada
+## 69    Canada
+## 70    Canada
+## 71    Canada
+## 72    Canada
+## 73       USA
+## 74    Canada
+## 75    Canada
+## 76    Canada
+## 77    Canada
+## 78    Canada
+## 79          
+## 80       USA
+## 81    Canada
+## 82    Canada
+## 83    Canada
+## 84       USA
+## 85       USA
+## 86       USA
+## 87       USA
+## 88       USA
+## 89       USA
+## 90    Canada
+## 91       USA
+## 92       USA
+## 93       USA
+## 94       USA
+## 95       USA
+## 96       USA
+## 97    Canada
+## 98    Canada
+## 99    Canada
+## 100         
+## 101      USA
+## 102      USA
+## 103      USA
+## 104      USA
+## 105      USA
+## 106      USA
+## 107         
+## 108      USA
+## 109      USA
+## 110      USA
+## 111      USA
+## 112      USA
+## 113      USA
+## 114         
+## 115      USA
+## 116      USA
+## 117      USA
+## 118      USA
+## 119      USA
+## 120      USA
+## 121      USA
+## 122      USA
+## 123      USA
+## 124      USA
+## 125      USA
+## 126      USA
+## 127         
+## 128      USA
+## 129      USA
+## 130      USA
+## 131      USA
+## 132      USA
+## 133      USA
+## 134         
+## 135      USA
+## 136      USA
+## 137      USA
+## 138         
+## 139      USA
+## 140      USA
+## 141      USA
+## 142      USA
+## 143         
+## 144      USA
+## 145      USA
+## 146      USA
+## 147      USA
+## 148      USA
+## 149      USA
+## 150</code></pre>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" title="1"><span class="co"># Let&#39;s select both the Location and Species columns </span></a>
+<a class="sourceLine" id="cb219-2" title="2"><span class="co"># and see what unique combinations are present in the dataset</span></a>
+<a class="sourceLine" id="cb219-3" title="3"><span class="kw">unique</span>(<span class="kw">select</span>(irisz, <span class="kw">c</span>(Location, Species)))</a></code></pre></div>
+<pre><code>##     Location    Species
+## 1      Korea     setosa
+## 2      China     setosa
+## 6     Canada     setosa
+## 8      China           
+## 9     Russia     setosa
+## 10     Japan     setosa
+## 46               setosa
+## 51           versicolor
+## 54       USA versicolor
+## 61    Canada versicolor
+## 101      USA  virginica
+## 107           virginica
+## 143</code></pre>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" title="1"><span class="co"># We can also do this with the pipe</span></a>
+<a class="sourceLine" id="cb221-2" title="2">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb221-3" title="3"><span class="st">  </span><span class="kw">select</span>(Location, Species) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb221-4" title="4"><span class="st">  </span><span class="kw">unique</span>()</a></code></pre></div>
+<pre><code>##     Location    Species
+## 1      Korea     setosa
+## 2      China     setosa
+## 6     Canada     setosa
+## 8      China           
+## 9     Russia     setosa
+## 10     Japan     setosa
+## 46               setosa
+## 51           versicolor
+## 54       USA versicolor
+## 61    Canada versicolor
+## 101      USA  virginica
+## 107           virginica
+## 143</code></pre>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" title="1"><span class="co"># Note that select() subsets the dataframe to the specified columns</span></a>
+<a class="sourceLine" id="cb223-2" title="2"><span class="co"># The output is a dataframe, even if only one column is selected</span></a>
+<a class="sourceLine" id="cb223-3" title="3"></a>
+<a class="sourceLine" id="cb223-4" title="4"><span class="co"># What if we want to extract one column as a vector?</span></a>
+<a class="sourceLine" id="cb223-5" title="5"><span class="co"># For this we use pull() instead of select()</span></a>
+<a class="sourceLine" id="cb223-6" title="6"><span class="co"># pull() returns a vector</span></a>
+<a class="sourceLine" id="cb223-7" title="7"></a>
+<a class="sourceLine" id="cb223-8" title="8">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb223-9" title="9"><span class="st">  </span><span class="kw">pull</span>(Location) </a></code></pre></div>
+<pre><code>##   [1] Korea  China  Korea  China  China  Canada China  China  Russia Japan 
+##  [11] Russia Canada Korea  Russia Canada Canada Korea  Korea  Japan  Korea 
+##  [21] Russia Korea  Japan  Japan  Russia Russia Japan  Russia Japan  Canada
+##  [31] Canada Canada Russia Russia Russia Russia Korea  Japan  Korea  Japan 
+##  [41] Japan  Japan  Japan  Korea  China         Canada Canada Canada Canada
+##  [51]                      USA    USA    USA    USA    USA    USA          
+##  [61] Canada Canada Canada Canada Canada Canada Canada Canada Canada Canada
+##  [71] Canada Canada USA    Canada Canada Canada Canada Canada        USA   
+##  [81] Canada Canada Canada USA    USA    USA    USA    USA    USA    Canada
+##  [91] USA    USA    USA    USA    USA    USA    Canada Canada Canada       
+## [101] USA    USA    USA    USA    USA    USA           USA    USA    USA   
+## [111] USA    USA    USA           USA    USA    USA    USA    USA    USA   
+## [121] USA    USA    USA    USA    USA    USA           USA    USA    USA   
+## [131] USA    USA    USA           USA    USA    USA           USA    USA   
+## [141] USA    USA           USA    USA    USA    USA    USA    USA          
+## Levels:  Canada China Japan Korea Russia USA</code></pre>
+<div id="filtering-dataframes" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Filtering dataframes</h3>
+<p>The basics of filtering are the <code>filter()</code> function and boolean operators (<code>&gt;</code>, <code>&lt;</code>, <code>==</code>), learned in section xxx</p>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" title="1"><span class="co"># Filter for Petal.Length greater than x</span></a>
+<a class="sourceLine" id="cb225-2" title="2">x =<span class="st"> </span><span class="dv">7</span></a>
+<a class="sourceLine" id="cb225-3" title="3"></a>
+<a class="sourceLine" id="cb225-4" title="4">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb225-5" title="5"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">as.numeric</span>(Sepal.Length) <span class="op">&gt;</span><span class="st"> </span>x)</a></code></pre></div>
+<pre><code>##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species Location
+## 1            5.1         3.5          1.4         0.2     setosa    Korea
+## 2            4.9           3          1.4         0.2     setosa    China
+## 3              5         3.6          1.4         0.2     setosa    China
+## 4            5.4                      1.7         0.4     setosa   Canada
+## 5              5         3.4          1.5         0.2               China
+## 6            4.9         3.1          1.5         0.1     setosa    Japan
+## 7            5.4         3.7          1.5         0.2     setosa   Russia
+## 8            5.8           4          1.2         0.2     setosa   Canada
+## 9            5.7         4.4          1.5         0.4     setosa   Canada
+## 10           5.4         3.9          1.3         0.4     setosa    Korea
+## 11           5.1         3.5          1.4         0.3     setosa    Korea
+## 12           5.7         3.8          1.7         0.3     setosa    Japan
+## 13           5.1         3.8          1.5         0.3     setosa    Korea
+## 14           5.4         3.4          1.7         0.2     setosa   Russia
+## 15           5.1         3.7          1.5         0.4     setosa    Korea
+## 16           5.1         3.3          1.7         0.5     setosa    Japan
+## 17             5           3          1.6         0.2     setosa   Russia
+## 18             5         3.4          1.6         0.4     setosa    Japan
+## 19           5.2         3.5          1.5         0.2     setosa   Russia
+## 20           5.2         3.4          1.4         0.2     setosa    Japan
+## 21           5.4         3.4          1.5         0.4     setosa   Canada
+## 22           5.2         4.1          1.5         0.1     setosa   Russia
+## 23           5.5         4.2          1.4         0.2     setosa   Russia
+## 24           4.9         3.1          1.5         0.2     setosa   Russia
+## 25             5         3.2          1.2         0.2     setosa   Russia
+## 26           5.5        0.35          1.3         0.2     setosa    Korea
+## 27           4.9         3.6          1.4         0.1     setosa    Japan
+## 28           5.1         3.4          1.5         0.2     setosa    Japan
+## 29             5         3.5          1.3         0.3     setosa    Japan
+## 30           n/a         n/a          1.6         0.6     setosa    Korea
+## 31           5.1         3.8          1.9         0.4     setosa    China
+## 32           5.1         3.8          1.6         0.2     setosa   Canada
+## 33           5.3         3.7          1.5         0.2     setosa   Canada
+## 34             5         3.3          1.4         0.2     setosa   Canada
+## 35             7         3.2          4.7         1.4 versicolor         
+## 36           6.4         3.2          4.5         1.5 versicolor         
+## 37           6.9         3.1          4.9         1.5 versicolor         
+## 38           5.5         2.3            4         1.3 versicolor      USA
+## 39           6.5         2.8          4.6         1.5 versicolor      USA
+## 40           5.7         2.8          4.5         1.3 versicolor      USA
+## 41           6.3         3.3          4.7         1.6 versicolor      USA
+## 42           4.9         2.4          3.3           1 versicolor      USA
+## 43           6.6         2.9          4.6         1.3 versicolor      USA
+## 44           5.2         2.7          3.9         1.4 versicolor         
+## 45             5           2          3.5           1 versicolor   Canada
+## 46           5.9           3          4.2         1.5 versicolor   Canada
+## 47             6         2.2            4           1 versicolor   Canada
+## 48           6.1         2.9          4.7         1.4 versicolor   Canada
+## 49           5.6         2.9          3.6         1.3 versicolor   Canada
+## 50           6.7         3.1          4.4         1.4 versicolor   Canada
+## 51           5.6           3          4.5         1.5 versicolor   Canada
+## 52           5.8         2.7          4.1           1 versicolor   Canada
+## 53           6.2         2.2          4.5         1.5 versicolor   Canada
+## 54           5.6         2.5          3.9         1.1 versicolor   Canada
+## 55           5.9         3.2          4.8         1.8 versicolor   Canada
+## 56           6.1         2.8            4         1.3 versicolor   Canada
+## 57           6.3         2.5          4.9         1.5 versicolor      USA
+## 58           6.1         2.8          4.7         1.2 versicolor   Canada
+## 59           6.4         2.9          4.3         1.3 versicolor   Canada
+## 60           6.6           3          4.4         1.4 versicolor   Canada
+## 61           6.8         2.8          4.8         1.4 versicolor   Canada
+## 62           6.7           3            5         1.7 versicolor   Canada
+## 63             6         2.9          4.5         1.5 versicolor         
+## 64           5.7         2.6          3.5           1 versicolor      USA
+## 65           5.5         2.4          3.8         1.1 versicolor   Canada
+## 66           5.5         2.4          3.7           1 versicolor   Canada
+## 67           5.8         2.7          3.9         1.2 versicolor   Canada
+## 68             6         2.7          5.1             versicolor      USA
+## 69           5.4           3          4.5         1.5 versicolor      USA
+## 70             6         3.4          4.5         1.6 versicolor      USA
+## 71           6.7         3.1          4.7         1.5 versicolor      USA
+## 72           6.3         2.3          4.4         1.3 versicolor      USA
+## 73           5.6           3          4.1         1.3 versicolor      USA
+## 74           5.5         2.5            4         1.3 versicolor   Canada
+## 75           5.5         2.6          4.4         1.2 versicolor      USA
+## 76           6.1           3          4.6         1.4 versicolor      USA
+## 77           5.8         2.6            4         1.2 versicolor      USA
+## 78             5         2.3          3.3           1 versicolor      USA
+## 79           5.6         2.7          4.2         1.3 versicolor      USA
+## 80           5.7           3          4.2         1.2 versicolor      USA
+## 81           5.7                      4.2         1.3 versicolor   Canada
+## 82           6.2         2.9          4.3         1.3 versicolor   Canada
+## 83           5.1         2.5            3         1.1 versicolor   Canada
+## 84           5.7         2.8          4.1         1.3 versicolor         
+## 85           6.3         3.3            6         2.5  virginica      USA
+## 86           5.8         2.7          5.1         1.9  virginica      USA
+## 87           7.1           3          5.9         2.1  virginica      USA
+## 88           6.3         2.9          5.6         1.8  virginica      USA
+## 89           6.5           3          5.8         2.2  virginica      USA
+## 90           7.6           3          6.6         2.1  virginica      USA
+## 91           4.9         2.5          4.5         1.7  virginica         
+## 92           6.7         2.5          5.8         1.8  virginica      USA
+## 93           7.2         3.6          6.1         2.5  virginica      USA
+## 94           6.5         3.2          5.1           2  virginica      USA
+## 95           6.4         2.7          5.3         1.9  virginica      USA
+## 96           6.8           3          5.5         2.1  virginica      USA
+## 97           5.7         2.5            5           2  virginica         
+## 98           5.8         2.8          5.1         2.4  virginica      USA
+## 99           6.4         3.2                      2.3  virginica      USA
+## 100          6.5           3          5.5         1.8  virginica      USA
+## 101          7.7         3.8          6.7         2.2  virginica      USA
+## 102          7.7         2.6          6.9          23  virginica      USA
+## 103            6         2.2            5         1.5  virginica      USA
+## 104          6.9         3.2          5.7         2.3  virginica      USA
+## 105          5.6         2.8          4.9           2  virginica      USA
+## 106          7.7         2.8          6.7           2  virginica      USA
+## 107          6.3         2.7          4.9         1.8  virginica      USA
+## 108          6.7         3.3          5.7         2.1  virginica      USA
+## 109          7.2         3.2            6         1.8  virginica      USA
+## 110          6.2         2.8          4.8         1.8  virginica         
+## 111          6.1           3          4.9         1.8  virginica      USA
+## 112          6.4         2.8          5.6         2.1  virginica      USA
+## 113          7.2           3          5.8         1.6  virginica      USA
+## 114          7.4         2.8          6.1         1.9  virginica      USA
+## 115          7.9         3.8          6.4           2  virginica      USA
+## 116          6.4         2.8          5.6         2.2  virginica      USA
+## 117          6.3         2.8          5.1         1.5  virginica         
+## 118          6.1         2.6          5.6         1.4  virginica      USA
+## 119          7.7           3          6.1         2.3  virginica      USA
+## 120          6.3         3.4          5.6         2.4  virginica      USA
+## 121          6.4         3.1          5.5         1.8  virginica         
+## 122            6           3          4.8         1.8  virginica      USA
+## 123          6.9         3.1          5.4         2.1  virginica      USA
+## 124          6.7         3.1          5.6         2.4  virginica      USA
+## 125          6.9         3.1          5.1         2.3  virginica      USA
+## 126          5.8         2.7          5.1         1.9                    
+## 127          6.8         3.2          5.9         2.3  virginica      USA
+## 128          6.7         3.3          5.7         2.5  virginica      USA
+## 129          6.7           3          5.2         2.3  virginica      USA
+## 130          6.3         2.5            5         1.9  virginica      USA
+## 131          6.5           3          n/a         n/a  virginica      USA
+## 132          6.2         3.4          5.4         2.3  virginica      USA
+## 133          5.9           3          5.1         1.8  virginica</code></pre>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" title="1"><span class="co"># filter to get observations of setosa species from Korea</span></a>
+<a class="sourceLine" id="cb227-2" title="2">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb227-3" title="3"><span class="st">  </span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>,</a>
+<a class="sourceLine" id="cb227-4" title="4">         Location <span class="op">==</span><span class="st"> &quot;Korea&quot;</span>)</a></code></pre></div>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Location
+## 1           5.1         3.5          1.4         0.2  setosa    Korea
+## 2           4.7         3.2          1.3         0.2  setosa    Korea
+## 3           4.8           3          1.4         0.1  setosa    Korea
+## 4           5.4         3.9          1.3         0.4  setosa    Korea
+## 5           5.1         3.5          1.4         0.3  setosa    Korea
+## 6           5.1         3.8          1.5         0.3  setosa    Korea
+## 7           5.1         3.7          1.5         0.4  setosa    Korea
+## 8           5.5        0.35          1.3         0.2  setosa    Korea
+## 9           4.4           3          1.3         0.2  setosa    Korea
+## 10          n/a         n/a          1.6         0.6  setosa    Korea</code></pre>
+</div>
+<div id="creating-new-variables" class="section level3">
+<h3><span class="header-section-number">3.3.2</span> Creating new variables</h3>
+<p><to do ></p>
+</div>
+<div id="summarizing-data" class="section level3">
+<h3><span class="header-section-number">3.3.3</span> Summarizing data</h3>
+<p>Summarizing data is very important in data analysis. It allows you to get a big picture overview of a new dataset: type, range of values, etc. These are also types of summaries to think about including when in the exploratory stages: before running analyses on a dataset, create a summary of the dataset. Present this in during your update meetings during your summer project, and keep these summaries on hand in case you or others have questions about it throughout the course of your project.</p>
+<p>For summarizing data in tidyverse, let’s explore the functions <code>count()</code>, <code>group_by()</code>, <code>summarize()</code></p>
+<div class="sourceCode" id="cb229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb229-1" title="1"><span class="co"># Count the number of observations for each Location</span></a>
+<a class="sourceLine" id="cb229-2" title="2">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb229-3" title="3"><span class="st">  </span><span class="kw">count</span>(Location)</a></code></pre></div>
+<pre><code>##   Location  n
+## 1          14
+## 2   Canada 35
+## 3    China  6
+## 4    Japan 11
+## 5    Korea 10
+## 6   Russia 11
+## 7      USA 63</code></pre>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb231-1" title="1"><span class="co"># Count the number of observations for each unique combination</span></a>
+<a class="sourceLine" id="cb231-2" title="2"><span class="co"># of location and species</span></a>
+<a class="sourceLine" id="cb231-3" title="3"></a>
+<a class="sourceLine" id="cb231-4" title="4">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb231-5" title="5"><span class="st">  </span><span class="kw">count</span>(Location, Species)</a></code></pre></div>
+<pre><code>##    Location    Species  n
+## 1                       1
+## 2               setosa  1
+## 3           versicolor  6
+## 4            virginica  6
+## 5    Canada     setosa 11
+## 6    Canada versicolor 24
+## 7     China             1
+## 8     China     setosa  5
+## 9     Japan     setosa 11
+## 10    Korea     setosa 10
+## 11   Russia     setosa 11
+## 12      USA versicolor 20
+## 13      USA  virginica 43</code></pre>
+<p>What if we want to do more than just count the number of occurrences for a given group? Let’s calculate summary statistics like mean and standard deviation.
+<code>group_by</code> takes a variable and groups the data by that variable. Anything that happens after that is only calculated within the group variable. To turn off grouping, use <code>ungroup()</code>. It’s always good practice to <code>ungroup()</code> after you’re done grouping. Although it doesn’t matter if you won’t be doing any more operations on the dataset.</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" title="1"><span class="co"># Here&#39;s an example that produces a similar result </span></a>
+<a class="sourceLine" id="cb233-2" title="2"><span class="co"># as in the count() example above</span></a>
+<a class="sourceLine" id="cb233-3" title="3"></a>
+<a class="sourceLine" id="cb233-4" title="4">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb233-5" title="5"><span class="st">  </span><span class="kw">group_by</span>(Location) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb233-6" title="6"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb233-7" title="7"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 7 x 2
+##   Location     n
+##   &lt;fct&gt;    &lt;int&gt;
+## 1 &quot;&quot;          14
+## 2 &quot;Canada&quot;    35
+## 3 &quot;China&quot;      6
+## 4 &quot;Japan&quot;     11
+## 5 &quot;Korea&quot;     10
+## 6 &quot;Russia&quot;    11
+## 7 &quot;USA&quot;       63</code></pre>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" title="1"><span class="co"># Since mean() and sd() require numeric inputs,</span></a>
+<a class="sourceLine" id="cb236-2" title="2"><span class="co"># let&#39;s use mutate to change Petal.Length into a numeric data type</span></a>
+<a class="sourceLine" id="cb236-3" title="3"><span class="co"># We&#39;ll also tell mean() and sd() to ignore NAs in the calculation</span></a>
+<a class="sourceLine" id="cb236-4" title="4"></a>
+<a class="sourceLine" id="cb236-5" title="5">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb236-6" title="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Petal.Length =</span> <span class="kw">as.numeric</span>(Petal.Length)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb236-7" title="7"><span class="st">  </span><span class="kw">group_by</span>(Location) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb236-8" title="8"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb236-9" title="9">            <span class="kw">mean</span>(Petal.Length, <span class="dt">na.rm =</span> T),</a>
+<a class="sourceLine" id="cb236-10" title="10">            <span class="kw">sd</span>(Petal.Length, <span class="dt">na.rm =</span> T)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb236-11" title="11"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
+<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
+<pre><code>## # A tibble: 7 x 4
+##   Location     n `mean(Petal.Length, na.rm = T)` `sd(Petal.Length, na.rm = T)`
+##   &lt;fct&gt;    &lt;int&gt;                           &lt;dbl&gt;                         &lt;dbl&gt;
+## 1 &quot;&quot;          14                           25.1                           6.72
+## 2 &quot;Canada&quot;    35                           16.7                           7.42
+## 3 &quot;China&quot;      6                            8                             1.55
+## 4 &quot;Japan&quot;     11                            7.27                          2.05
+## 5 &quot;Korea&quot;     10                            7                             1.05
+## 6 &quot;Russia&quot;    11                            7.73                          2.00
+## 7 &quot;USA&quot;       63                           30.8                           8.83</code></pre>
+<p>Comprehension: Try calculating the min and max Petal Length for each Species. Use <code>group_by()</code>.</p>
+<p>We can also use base R functions with the tidyverse <code>%&gt;%</code> and/or functions</p>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" title="1"><span class="co"># How many of each location are there? Use the base R table() function</span></a>
+<a class="sourceLine" id="cb239-2" title="2"><span class="co"># Use the pull() function</span></a>
+<a class="sourceLine" id="cb239-3" title="3">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb239-4" title="4"><span class="st">  </span><span class="kw">pull</span>(Location) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb239-5" title="5"><span class="st">  </span><span class="kw">table</span>()</a></code></pre></div>
+<pre><code>## .
+##        Canada  China  Japan  Korea Russia    USA 
+##     14     35      6     11     10     11     63</code></pre>
+</div>
+<div id="updating-fields-based-on-a-condition" class="section level3">
+<h3><span class="header-section-number">3.3.4</span> Updating fields based on a condition</h3>
+</div>
+<div id="reshaping-data-long-and-wide" class="section level3">
+<h3><span class="header-section-number">3.3.5</span> Reshaping data: long and wide</h3>
+<p><code>gather()</code> and <code>spread()</code></p>
+<p>Advanced: <code>reshape()</code> (dcast package)</p>
 
+</div>
 </div>
 <p style="margin-top:10em;text-align:center;font-size:small;">
     <a href="https://github.com/darachm/dll-r/blob/main/LICENSE.md">
@@ -320,8 +794,8 @@ for (var i=0; i < listz.length; i++) {
           </div>
         </div>
       </div>
-<a href="rmd-example-of-code-chunk.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="how-to-edit-this-document.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="using-tidyverse.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="using-tidyverse-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -353,7 +827,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/darachm/dll-r/edit/main/905-extra-examples.Rmd",
+"link": "https://github.com/darachm/dll-r/edit/main/420-tidyverse-part1_v2.Rmd",
 "text": "Edit"
 },
 "history": {

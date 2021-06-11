@@ -53,10 +53,19 @@ are downloading from, usually just go with "0-Cloud"
 
 What did this do? 
 It retrieves and downloads the package's code and documentation to
-what's called your library, 
+what's called your library.
+That's a folder on your computer where the compiled versions of the packages
+are located, ready to be loaded when you want to use them.
 
+Try it out.
 
-- get the stringdist library, use it
+- Get the `stringdist` library, use it to: 
+
+    - compare the distance between strings "ATCGATCG" and "ATCGAACG"
+        using the methods "hamming" and "lv"
+    - compare the distance between strings "ATCGATCG" and "ATCGAATCGC"
+        using the methods "hamming" and "lv"
+
 - get a new viz layer, use it
 
 ---
@@ -166,6 +175,8 @@ their datasets.
 explore the namespace for a package, ie ?packagename:: and TAB or ?packagename::
 
 how to print out all the packages you have loaded
+
+`sessionInfo()`
 
 ---
 
