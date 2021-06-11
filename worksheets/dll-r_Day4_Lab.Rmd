@@ -29,13 +29,51 @@ Please be sure to write in your code or response underneath each prompt. Be sure
 
 ##### Section 3.1.2: Handling issues in data
 
-**Task:** ?
+**Task:** Working off the code provided below, investigate this dataset and look for any missing data in this dataset. Modify the `read.csv` function and its arguments to address this missing data.
+
+```{r}
+msleepz <- read.csv("https://github.com/darachm/dll-r/raw/main/data/msleep.csv")
+# Your code here
+```
+
+**Task:** Working from your fixed version of the `msleepz`, look for any anomalous data in the categorical variables. Identify and describe these issues. 
 
 ```{r}
 # Your code here
 ```
 
 *Your response here*
+
+**Task:** Looking at and modifying the code below, determine how you can fix typo "caat" in the vector `my.strings`.
+
+```{r}
+my.strings <- c("cat", "dog", "dog", "cat", "dog", "dogs", "caat", "dog", "dog")
+my.strings == "dogs"
+my.strings[my.strings == "dogs"] <- "dog"
+my.strings
+
+# Your code here
+```
+
+**Task:** Adapt the code from the last task to fix one of the anamolous pieces of data in a categorical column of the `msleepz` dataset.
+
+```{r}
+# Your code here
+```
+
+**Task:** Working from your fixed version of the `msleepz`, look for any anomalous data in the quantitative variables. Identify and describe these issues. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task:** Using logical statements and indexing into a dataframe, remove a column with anomalous data in a quantitative column of `msleepz`.
+
+```{r}
+# Your code here
+```
 
 ------
 
@@ -428,3 +466,16 @@ library(ggplot2)
 
 *Your response here*
 
+------
+
+#### Synchronous Activities
+
+**If you reach this point during the asynchronous session, please stop and wait until the synchronous session starts.**
+
+**Task:** ???
+
+```{r}
+# Your code here
+```
+
+*Your response here*
