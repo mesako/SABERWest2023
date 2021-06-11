@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-  <title>dllr-day5.knit</title>
+  <title>Day 5 - building workflows</title>
   <style type="text/css">
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -502,6 +502,12 @@ list-style-type: none;
 </script>
 </head>
 <body>
+<div class="slide titlepage">
+  <h1 class="title">Day 5 - building workflows</h1>
+  <p class="author">
+
+  </p>
+</div>
 <div id="day-5---building-workflows" class="slide section level1">
 <h1>Day 5 - building workflows</h1>
 <p>Today we’re going to learn about applying these R skills to repeat, reproduce, extend, and share your analyses.</p>
@@ -514,15 +520,60 @@ list-style-type: none;
 <li>Can you adapt it to modify your question, feed in new data, and modify the scientifically-important bits easily?</li>
 <li>Can you share it with someone and they follow along?</li>
 </ul>
-<!--chapter:end:500-day5-intro.Rmd-->
-<h2 id="using-code-many-times---loops">Using code many times - loops</h2>
-<p>You will want to do the same thing multiple times - automation is great. Let’s code up a simple little analysis - we’ll calculate the length (number of amino acids) in a viral structural protein sequence.</p>
-<p>These files are in the <code>data/viral_structural_proteins</code> folder, are tab-delimited three fields, and look like this:</p>
-<pre><code>Q8V433.1 Membrane protein       Bovine respiratory coronavirus (strain 98TXSF-110-LUN)  MSSVTTPAPVYTWTA...</code></pre>
 </div>
 <div class="slide section level1">
 
-<p>Let’s read one in. We’ll need to use <code>read.delim</code>, specify a tab separator, and ignore the lack of a header.</p>
+<p>Our goals are to learn how to:</p>
+<ul>
+<li>read lots of files, and different kinds of delimited files</li>
+<li>use loops to do similar steps for many inputs</li>
+<li>obtain and use packages to user other people’s work</li>
+<li>how to get more help and documentation</li>
+<li>write code, and design workflows, while thinking about future readers/users</li>
+<li>design steps/chunks of work as modular functions to make adaptable workflows</li>
+<li>more fun tricks in generating Rmarkdown reports</li>
+</ul>
+</div>
+<div class="slide section level1">
+
+<!--chapter:end:500-day5-intro.Rmd-->
+<h2 id="what-is-a-workflow">What is a workflow?</h2>
+<p>What does it take to do an analysis?</p>
+<p>When you embark on some project, it’s helpful (but not necessary) to plan where you are going. It’s best to setup and keep track of factors like:</p>
+<ul>
+<li>What data am I analyzing? What format is it in, and is that going to change? Will there be a lot more of this data that I want to process in the future?</li>
+<li>What kind of analyses do I want to do? What major steps do I have in my process? <em>What work from others can I re-use and build upon?</em></li>
+<li>What do I want to generate? What is the desired outcome, and for whom is this intended?</li>
+</ul>
+<p>In the author’s experience, bioinformatic workflows often involve reading in big (or many) flat files, processing the data into a useful form, sometimes using extra packages to analyze the data, then generating plots and statistical summaries of what you found - usually in an Rmarkdown-generated report.</p>
+</div>
+<div class="slide section level1">
+
+<!--chapter:end:505-workflows.Rmd-->
+<h2 id="loops-to-read-many-files">Loops to read many files</h2>
+<p>Let’s work through an analysis of the size of “structural” viral proteins. We’ve done some of the work for you already, and would recommend that you always document where the data came from and how it was retrieved/processed:</p>
+<blockquote>
+<p>The NCBI Identital Protein Groups database was queried for “structural” with “Division” restricted to “Viruses” and “Source database” restricted to “UniProtKB/Swiss-Prot”. 243 results were retrieved as FASTA files and converted using BASH commands into separate tab-delimited files. <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+</blockquote>
+<p>These files are in the <code>data/viral_structural_proteins</code> folder, are tab-delimited three fields, and look like this:</p>
+<pre><code>Q8V433.1 Membrane protein       Bovine respiratory coronavirus (strain 98TXSF-110-LUN)  MSSVTTPAPVYTWTA...</code></pre>
+<p>How do you inspect these files? What BASH tools do you use?</p>
+</div>
+<div class="slide section level1">
+
+<h3 id="reading-in-one-file">Reading in one file</h3>
+<p>Let’s read one of them into R.</p>
+<p>The records are “delimited” by tabs, so tab-separated. We’ll need to use <code>read.delim</code>, specify a tab separator, and ignore the lack of a header. How do we do this?</p>
+<h4 id="review-of-looking-up-documentation">Review of looking up documentation</h4>
+<p>You can look up the documentation for any named function or package by using the <code>?function</code> syntax.</p>
+<p>Sometimes, you need to use extra backticks to make it work, like “?<code>+</code>”</p>
+<p>If you don’t know what you’re looking for, you can search with <code>??</code>. Extra backticks don’t hurt, and help when you have spaces in the query.</p>
+</div>
+<div class="slide section level1">
+
+<h4 id="back-to-the-file-reading">Back to the file-reading</h4>
+<p>What does <code>?read.delim</code> say to do?</p>
+<div class="incremental">
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">viral_protein_data &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;data/viral_structural_proteins/viral_proteins_100.tsv&quot;</span>,</a>
 <a class="sourceLine" id="cb2-2" title="2">    <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F)</a>
 <a class="sourceLine" id="cb2-3" title="3">viral_protein_data</a></code></pre></div>
@@ -535,14 +586,14 @@ list-style-type: none;
 <ul>
 <li>How do we find the column names?</li>
 <li>What are two ways to access the protein sequence?</li>
-<li>How do we calculate the number of characters in this sequence?</li>
+<li>How do we calculate the number of characters in this sequence? Try searching with “??<code>number of characters</code>”</li>
 </ul>
-<!-- ??"number of characters" -->
-<p>Code it up!</p>
+</div>
 </div>
 <div class="slide section level1">
 
 <h3 id="doing-things-multiple-times">Doing things multiple times</h3>
+<p>You will want to do the same thing multiple times - automation is great. Let’s code up a simple little analysis - we’ll calculate the length (number of amino acids) in a viral structural protein sequence.</p>
 <p>Let’s do this for all the proteins. The simplest way of doing this is to copy and paste it.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">viral_protein_data &lt;-<span class="st"> </span><span class="kw">read.delim</span>(<span class="st">&quot;data/viral_structural_proteins/viral_proteins_002.tsv&quot;</span>,</a>
 <a class="sourceLine" id="cb4-2" title="2">      <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F, <span class="dt">as.is=</span>T)</a>
@@ -748,7 +799,7 @@ list-style-type: none;
 <div class="slide section level1">
 
 <h4 id="examples">Examples</h4>
-<p>Let’s look at two chunks of code from <a href="https://github.com/sashaflevy/PPiSeq">a paper</a> (lightly edited). The experiment is counting barcoded lineages of yeast cells to estimate “PPIs” (protein-protein interactions) <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<p>Let’s look at two chunks of code from <a href="https://github.com/sashaflevy/PPiSeq">a paper</a> (lightly edited). The experiment is counting barcoded lineages of yeast cells to estimate “PPIs” (protein-protein interactions) <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <p>Here’s an example of one style of writing R script:</p>
 <div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="co"># filter out bad barcode lineages ( &lt;= 2 time points counts &gt; 0, or maximum of each time point &lt;= 5 or total counts of a lineage &lt; 10)</span></a>
 <a class="sourceLine" id="cb41-2" title="2">bad_index =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">nrow</span>(DBC_known_counts))</a>
@@ -831,7 +882,7 @@ list-style-type: none;
 ```
 
 -->
-<h2 id="functions-redux---why-theyre-so-great">Functions redux - why they’re so great</h2>
+<h2 id="functions-as-modular-steps">Functions as modular steps</h2>
 <p>Functions are handy. For example, let’s calculate the standard error of a sample of values:</p>
 <div class="incremental">
 <div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1">values &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>)</a>
@@ -879,7 +930,7 @@ list-style-type: none;
 </div>
 <div class="slide section level1">
 
-<h2 id="using-functions-to-write-modular-code">Using functions to write modular code</h2>
+<h3 id="using-functions-to-write-modular-code">Using functions to write modular code</h3>
 <p>How might you carry out the workflow from the previous work to calculate protein sequence lengths?</p>
 <div class="incremental">
 <p>One way is to flatten out all the tasks, and to script each individual task each time. This requires the author, user, and reader to understand a lot of complexity.</p>
@@ -1042,7 +1093,7 @@ function initMermaid(s) {
 initMermaid();
 </script>
 <!--chapter:end:530-modular-functions.Rmd-->
-<h2 id="packages-are-chunks-of-code-and-sometimes-data">Packages are chunks of code (and sometimes data)</h2>
+<h2 id="packages---install-and-use">Packages - install and use</h2>
 <p>Let’s take a look at your code from the last few days. How would you share this with the other people in the course?</p>
 <p>R, like other languages, is built on a package system - if you wrap up your code in particular expected ways and put it in particular expected places, it is very easy for others to get and use your code</p>
 <p>Packages are <a href="https://ourcodingclub.github.io/tutorials/writing-r-package/">said to be easy to make</a>, <a href="https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">from scratch</a>. There’s more <a href="https://r-pkgs.org/">comprehensive instruction here</a>. Personally, the author has never had cause to make one, but I can report that they’re very easy to use!</p>
@@ -1058,7 +1109,7 @@ initMermaid();
 <a class="sourceLine" id="cb59-2" title="2"><span class="kw">library</span>(stringdist)</a></code></pre></div>
 <p>Don’t have it? You can look for packages by using a search engine, or finding suggestions in the documentation, papers. Once you have a package name, use</p>
 <div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;stringdist&quot;</span>)</a></code></pre></div>
-<p>to install it. You may need to select a “mirror”. This is just where you are downloading from, usually just go with “0-Cloud” <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>.</p>
+<p>to install it. You may need to select a “mirror”. This is just where you are downloading from, usually just go with “0-Cloud” <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>.</p>
 <p>What did this do? It retrieves and downloads the package’s code and documentation to what’s called your library,</p>
 <ul>
 <li>get the stringdist library, use it</li>
@@ -1111,13 +1162,13 @@ initMermaid();
 </div>
 <div class="slide section level1">
 
-<h2 id="what-packages-do-you-have-already">What packages do you have already?</h2>
+<h3 id="what-packages-do-you-have-already">What packages do you have already?</h3>
 <p>explore the namespace for a package, ie ?packagename:: and TAB or ?packagename::</p>
 <p>how to print out all the packages you have loaded</p>
 </div>
 <div class="slide section level1">
 
-<h2 id="finding-more-help-and-documentation">Finding more help and documentation</h2>
+<h3 id="finding-more-help-and-documentation">Finding more help and documentation</h3>
 <p>Need a problem</p>
 <div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">?geom_line</a></code></pre></div>
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1">?stringdist</a></code></pre></div>
@@ -1131,7 +1182,7 @@ initMermaid();
 <div class="slide section level1">
 
 <!--chapter:end:550-packages.Rmd-->
-<h2 id="reproducibile-sharing---more-rmarkdown-and">Reproducibile sharing - more <code>rmarkdown</code> and</h2>
+<h2 id="more-rmarkdown-for-reproducibile-sharing">More <code>rmarkdown</code> for reproducibile sharing</h2>
 <p>How are you saving your notes for this class? <!-- rmd you better be... --></p>
 <p>How do you usually save notes/code/instructions?</p>
 <p>How do you share this with others?</p>
@@ -1260,7 +1311,7 @@ code gets pulled out and run, top to bottom
 <p>think about the next person coming along, or yourself in 3 months</p>
 <p>links on syllabus for more info</p>
 <p>all sorts of automated stuff you can do</p>
-<h2 id="reproducibility-and-sharing">Reproducibility and sharing</h2>
+<h3 id="reproducibility-and-sharing">Reproducibility and sharing</h3>
 <p>think about this</p>
 <p>think about the next person coming along, or yourself in 3 months</p>
 <p>links on syllabus for more info</p>
@@ -1293,7 +1344,7 @@ show an error, simplify it by making MRE
 ### Exercise - debug one of the following Rmds
 -->
 <!--chapter:end:580-troubleshooting.Rmd-->
-<h2 id="conclusion-other-concepts">Conclusion, other concepts</h2>
+<h2 id="conclusion">Conclusion</h2>
 <p>Today we covered:</p>
 <ul>
 <li>loops to repeat code</li>
@@ -1317,8 +1368,9 @@ re-running those, but you do want it to be able to run the whole thing automatic
 <div class="footnotes slide">
 <hr />
 <ol>
-<li id="fn1"><p>Ask Darach if you want details, or <a href="doi.org/10.7554/eLife.62365">read the paper</a><a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>I have no idea where this is, never heard of that country!<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>One crucial aspect missing is the actual BASH commands used. I did not save them as a script, and I <em>should</em> go back, save them in a script, and re-run that to make sure I get the same result!<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>Ask Darach if you want details, or <a href="doi.org/10.7554/eLife.62365">read the paper</a><a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>I have no idea where this is, never heard of that country!<a href="#fnref3" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 

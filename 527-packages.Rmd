@@ -1,4 +1,4 @@
-## Packages are chunks of code (and sometimes data)
+## Packages - install and use
 
 Let’s take a look at your code from the last few days. 
 How would you share this with the other people in the course?
@@ -161,7 +161,7 @@ their datasets.
 
 ---
 
-## What packages do you have already? 
+### What packages do you have already? 
 
 explore the namespace for a package, ie ?packagename:: and TAB or ?packagename::
 
@@ -169,7 +169,7 @@ how to print out all the packages you have loaded
 
 ---
 
-## Finding more help and documentation
+### Finding more help and documentation
 
 Need a problem
 

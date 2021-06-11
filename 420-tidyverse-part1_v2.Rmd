@@ -67,6 +67,7 @@ Notice how the `%>%` pipe is sending the output from before it to the output aft
 
 How would you perform the above operation in base R, without the `%>%`? Give it a try!
 
+<<<<<<< HEAD
 ```
 # Filter the data
 df_filtered <- df[Species == "setosa"]
@@ -92,10 +93,19 @@ Feeling motivated to accelerate data cleaning and analysis using the tidyverse?
 
 
 ```{r}
+=======
+Download tidyverse
+Remember we only have to install once
 
-# Load the tidyverse library
+```{r,showing_to_install_but_not_gonna_re_install_for_every_typsetting,eval=F}
+install.packages("tidyverse")
+```
+>>>>>>> 9f302410d0ed4a79fceee03c22358a9168296ea8
+
+Load the tidyverse library
+
+```{r,loadtidy,cache=T}
 library(tidyverse)
-
 ```
 
 If loading the library returns an error message saying it's not installed, then go to the [SSRP Pre-installation guide](https://tinyurl.com/ssrpsoftwareguide) and follow the instructions for installing tidyverse
@@ -111,7 +121,14 @@ head(irisz)
 
 # Now try it with tidyverse piping
 
+<<<<<<< HEAD
 irisz %>% 
+=======
+library(tidyverse)
+
+df <- irisz
+df %>% 
+>>>>>>> 9f302410d0ed4a79fceee03c22358a9168296ea8
   head()
 
 # Let's pipe the data frame into a summary() function

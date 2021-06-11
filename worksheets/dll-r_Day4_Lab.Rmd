@@ -1,0 +1,677 @@
+---
+title: "Worksheet for Day 4 - tidyverse and visualizations"
+author: "YOUR NAME HERE"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This worksheet was created by [mesako](https://github.com/mesako/) and Margaret with a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License](https://github.com/darachm/dll-r/blob/main/LICENSE.md).
+
+#### Instructions for this Worksheet
+
+Write your code and/or your response underneath each task prompt. To render your worksheet, click on the Knit button in Rstudio. Be sure that your code is able to execute completely and that the result you expect is shown in the resulting html file.
+
+------
+
+#### Section 3.1: Reading and processing data
+
+##### Section 3.1.1: Loading a file into R
+
+**Task A:** Create a CSV file on your computer by opening up either Excel or a text editor (Notepad, TextEdit). You can either fill in multiple cells of your Excel sheet, or you can spam strings/numbers separated by commas in the text editor. Save your work with the .csv file extension.
+
+Locate this file on your computer and then read this file into R using the `read.csv` function.
+
+```{r}
+# Your code here
+```
+
+**Task B:** You can also use the `read.csv` function to read a file online. Look at the documentation for this function and then load in the file provided below.
+
+```{r}
+my.file <- "https://github.com/darachm/dll-r/raw/main/data/iris.csv"
+# Your code here
+```
+
+------
+
+##### Section 3.1.2: Handling issues in data
+
+**Task A:** Working off the code provided below, investigate this dataset and look for any missing data in this dataset. Modify the `read.csv` function and its arguments to address this missing data.
+
+```{r}
+msleepz <- read.csv("https://github.com/darachm/dll-r/raw/main/data/msleep.csv")
+# Your code here
+```
+
+**Task B:** Working from your fixed version of the `msleepz`, look for any anomalous data in the categorical variables. Identify and describe these issues. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task C:** Looking at and modifying the code below, determine how you can fix typo "caat" in the vector `my.strings`.
+
+```{r}
+my.strings <- c("cat", "dog", "dog", "cat", "dog", "dogs", "caat", "dog", "dog")
+my.strings == "dogs"
+my.strings[my.strings == "dogs"] <- "dog"
+my.strings
+
+# Your code here
+```
+
+**Task D:** Adapt the code from the last task to fix one of the anamolous pieces of data in a categorical column of the `msleepz` dataset.
+
+```{r}
+# Your code here
+```
+
+**Task E:** Working from your fixed version of the `msleepz`, look for any anomalous data in the quantitative variables. Identify and describe these issues. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task F:** Using logical statements and indexing into a dataframe, remove a column with anomalous data in a quantitative column of `msleepz`.
+
+```{r}
+# Your code here
+```
+
+------
+
+#### Section 3.2: Using tidyverse
+
+------
+
+#### Section 3.3: Using tidyverse
+
+------
+
+#### Synchronous Activities
+
+**If you reach this point during the asynchronous session, please stop and wait until the synchronous session starts.**
+
+**Task:** ???
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+#### Section 3.4: Making plots with ggplot2
+
+##### Section 3.4.1: Getting started with a ggplot
+
+**Task A:** Starting from the `msleep` dataset, pick two quantitative variables with which to create a scatterplot. Save this plot as a variable and then display this figure. Describe any patterns or outliers you see in this plot.
+
+```{r}
+library(ggplot2)
+# Your code here
+```
+
+*Your response here*
+
+**Task B:** Starting from the `msleep` dataset, pick at least one quantitative variable to scale or transform. Make this new vector into a column in your dataset named `msleep2`. You may need to use the `mutate` function.
+
+```{r}
+# Your code here
+```
+
+**Task C:** Starting from this `msleep2` dataset, use your new column and one other quantitative variable to create a scatterplot. Save this plot as a variable and then display this figure. Describe any patterns or outliers you see in this plot.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+##### Section 3.4.2: Changing plot aesthetics
+
+**Task A:** Working from the code you used to generate one of these scatterplots, create a new scatterplot where you uniformly change the shape, color, and/or size of the points.
+
+```{r}
+# Your code here
+```
+
+**Task B:** Working from the code you used to generate one of these scatterplots, change the labels on this plot.
+
+```{r}
+# Your code here
+```
+
+**Task C:** Working from the code you used to generate one of these scatterplots, create a new scatterplot where you have the color dictated by a quantitative variable in the `msleep` or `msleep2` dataset. Describe any patterns or outliers you see in this plot.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+##### Section 3.4.3: Exploring simple plots
+
+**Task A:** Create a new histogram looking at a different quantitative variable either in the `msleep` dataset or the `iris` dataset. Describe the distribution that you see: what is the range of values? Is there one peak or more than one peak? What appears to be the center/average?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+
+**Task B:** For your histogram, try changing the value of `bins` in the `geom_histogram` function. How does this change your plot and how you might interpret the distribution?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task C:** Create a new barplot looking at the counts of a categorical variable within either the `msleep` or `iris` dataset. Describe the numbers of samples that you see.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+##### Section 3.4.4: Visualizing between groups
+
+**Task A:** Create a different boxplot for either the `iris` dataset or the `msleep` dataset, by using either a different categorical variable or a different quantiative variable (or both!). Describe what differences you see, if any, between the groups.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task B:** Create an analogous histogram with faceting to display the differences between the same groups along the same quantiative variable, just using a different kind of plot. Which plot would you use between these two, and why?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+##### Section 3.4.5: Generating heatmaps
+
+**Task A:** Create a new tabular dataset from the `iris` dataset where you extract just two of the quantatitive variables. Save this new dataset to a variable.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task B:** Using this new dataset with just two columns, create a basic heatmap. Remember to provide the names of the columns using the `labCol` argument for the `heatmap` function. What patterns/outliers do you observe, if any, in this heatmap?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task C:** For this same heatmap, change the `scale` parameter in the `heatmap` function to either `"row"` or `"col"` and observe the differences. What do you notice? You may want to look into the function using `?heatmap` to check what the argument does.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task D:** For this same heatmap, add the `Species` data from the original `iris` dataset to the heatmap using the `labRow` argument in this function. What patterns if any do you now notice?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task E:** For a challenge, you can try adding more quantitative variables from `iris` to your numeric dataset and replotting the heatmap. Share any observations on how this changes your final heatmap.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+#### Section 3.5: Making scientific figures
+
+##### Section 3.5.1: Plotting error bars
+
+**Task A:** Choose either a different categorical variable or a different quantitative variable in the `msleep` dataset with which to generate a new summary dataframe. This dataframe will contain the average, lower bound, and upper bound measurement within each group. You will want to use the `group_by`, `summarize`, and `mean_se` functions.
+
+```{r}
+# Your code here
+```
+
+**Task B:** With your new summary dataframe, create a barplot that shows the average measurement in each categorical group. What differences do you see if any between the groups?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task C:** For the barplot you just generated, add the errorbars. How does this change your interpretation in the last task, if at all?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task D:** For a challenge, repeat these last few steps with the `iris` dataset to show differences in any quantitative variable between the `Species` in this data. Describe your findings.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+##### Section 3.5.2: Showing trends in data
+
+**Task A:** Create new a scatterplot using other quantitative variables in the `msleep` dataset and try fitting a trend line using the `geom_smooth` function. Describe your results.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task B:** Create new a scatterplot using other quantitative variables in the `iris` dataset and try fitting a trend line using the `geom_smooth` function. Describe your results.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task C:** Use the `facet_wrap` function and the `color` aesthetic in `geom_smooth` to try plotting trends within each categorical group, either in the `iris` dataset or the `msleep` dataset. Describe the patterns you see, if any.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+##### Section 3.5.3: Saving figures locally
+
+**Task A:** Generate one figure that you would like to save to your computer. This could be a basic scatterplot, or you can challenge yourself to make something new and more complex! Save this `ggplot` to a variable.
+
+```{r}
+# Your code here
+```
+
+**Task B:** Identify your current working directory. Determine where you want this figure file saved. Create a variable that has the character string with the precise file path and file name in it. For example, you may have a file path that looks like "/Users/username/Desktop/Research/SSRP" if you are on a Mac.
+
+```{r}
+# Your code here
+```
+
+**Task C:** Call your variable to return your figure, and then use the `ggsave` function to save this image to your computer using the variable you just created that has the file path.
+
+```{r}
+# Your code here
+```
+
+**Task D:** Initialize a file using either the `pdf` or `png` function and then call or `print` your saved figure. Make sure to call the `dev.off` function!
+
+```{r}
+# Your code here
+```
+
+**Task E:** Check that all these figures have saved to your computer and open them. Make sure that they look like you would expect and the files are not corrupted.
+
+------
+
+#### Synchronous Activities
+
+**If you reach this point during the asynchronous session, please stop and wait until the synchronous session starts.**
+
+For these activities, you will want to pick one of the following datasets to work on in your group: `midwest`, `diamonds`, `storms`, `infert`, and `esoph`. You may want to spend a minute or so to investigate these datasets using the `?` or `help` function.
+
+During this synchronous session, you will be randomly put into groups with your peers and encouraged to work through the following tasks. You can go in order or start with whichever task interests you the most!
+
+------
+
+**Getting Started: Exploring Your Data** 
+
+Use R functions to investigate and then describe your dataset. How many samples are there and how many parameters are measured in each sample? What is the range of values in the data?
+
+Be sure to identify quantitative and qualitative/categorical variables in your dataset. If it seems like there are not any, you may need to create them by either converting an existing column (i.e. `as.factor`) or by binning/processing a column that is there.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+Create a simple histogram looking at only one quantitative variable across your entire chosen dataset. Interpret this figure. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+Create a simple scatterplot looking at only one quantitative variable vs. another across your entire chosen dataset. Interpret this figure. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+Create a barplot looking at the counts of a qualitative or categorical variable across your entire chosen dataset. Interpret this figure. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+**More Practice: Making Comparisons in Your Data**
+
+Pick a categorical variable in your dataset on which you can make comparisons. Create a boxplot for a chosen quantitative variable from your chosen dataset. Interpret this figure. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+Create a scatterplot or histogram from your chosen dataset where you change an aesthetic based on this categorical variable. Interpret this figure. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+Pick at least two quantitative variables from your chosen dataset. Make a heatmap using these variables. Interpret this figure. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+**Seeking Challenge: Making Publishable Figures** 
+
+Following up on the work you did in the previous section, try to look for strong correlations (i.e. indicated by a trend line) or statistically significant differences between groups within your dataset. Describe your findings.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+With this figure, modify its aesthetics such as its labels and presentation to make it polished. Then save a local version of this image to your computer. Test that you can open this image.
+
+```{r}
+# Your code here
+```
+
+
+------
+
+#### Section 3.6: Applying basic stats
+
+##### Section 3.6.1: Describing quantitative variables
+
+**Task A:** First create a histogram of a quantitative variable within either the `msleep` or `iris` dataset. You can choose to do this using the basic R `hist` function or apply your knowledge of using ggplot2.
+
+```{r}
+# Your code here
+```
+
+**Task B:** Then calculate several measures to summarize the center, spread, and range of this quantitative variable. Does what you see in the histogram match these statistics you calculated? 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+##### Section 3.6.2: Finding differences in data
+
+**Task A:** Use the `t.test` function on the quantitative variable that you investigated in the prior section. Look at the confidence interval describing the uncertainty around the mean. How does this align with the histogram you created?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task B:** Identify two different categorical groups present either in the `msleep` or `iris` data. Remember that you will be comparing the measureemnts of one group to the measurements of one other group. First create two new dataframes that contains the measurements of each group separately. You may want to use the `filter` and `select` functions.
+
+```{r}
+# Your code here
+```
+
+**Task C:** Now look at the documentation for the `t.test` function. Which arguments does it take?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task D:** Apply the `t.test` function to your two datasets. Interpret the results. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task E:** Apply the `aov` function to the `iris` dataset to determine whether a given quantitative variable differs significantly based on the `Species`. Describe your interpretation of these results
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task F:** Apply the `aov` function to the `msleep` dataset to determine whether a given quantitative variable differs significantly based on the `conservation` status. Describe your interpretation of these results
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+##### Section 3.6.3: Identifying correlations
+
+**Task A:** Pick two quantitative variables in the `msleep` dataset or the `iris` dataset. Check that whether either of these columns have `NA` values. If needed, make a new tabular dataset where you remove the `NA` values, using functions like `drop_na`.
+
+```{r}
+# Your code here
+```
+
+**Task B:** Using your dataset, create a scatterplot with a fitted trend line. Describe the plot and whether you observe a correlation between these two variables.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task C:** Using your dataset, calculate both the Pearson or Spearman correlation using the `cor` function. Interpret these correlation values. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+##### Section 3.6.4: Producing linear models
+
+**Task A:** Train a linear model using the `lm` function to predict one quantitative variable using another in the `iris` dataset. Look at the summary of this model and interpret the results.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task B:** Train a linear model using the `lm` function to predict one quantitative variable using multiple quantitative variables in the `iris` dataset. Look at the summary of this model and interpret the results.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Task C:** For a challenge, train a linear model using the `lm` function to predict one quantitative variable using multiple variables including the `Species` column in the `iris` dataset. Look at the summary of this model and interpret the results.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+------
+
+#### Synchronous Activities
+
+**If you reach this point during the asynchronous session, please stop and wait until the synchronous session starts.**
+
+During this synchronous session, you will have the option to pick which of the following options you would like to work on with your peers.
+
+The differences between these groups/options will be the dataset that you choose to apply statistics to: `midwest`, `diamonds`, or `infert`. You can either work on the same dataset as before or look into a new dataset!
+
+------
+
+**Option 1: `midwest` Dataset** 
+
+Using R functions, learn more about your dataset if you have not already. Describe several research questions that come to mind as you look at what is present in the data.
+
+If you are struggling to come up with a research question, or want to pursue a new one after you finish, scroll down!
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+Pick one research question to pursue. Based what you learned in this last section, describe some statistical approaches that may help you answer this question.
+
+*Your response here*
+
+Conduct the necessary statistical tests to draw any conclusions for this research question.
+
+```{r}
+# Your code here
+```
+
+*Possible Research Questions:*
+
+1. Is there a statistically significant difference in poverty rates between different states? What about a difference in percent college educated or professional?
+
+2. Is there a statistically significant difference in any of these numerical measures between metro areas and non-metro areas?
+
+3. Does one of the demographic features strongly correlate with percent educated? What about percent in poverty?
+
+4. Do the measurements of the population demographics predict the level of poverty?
+
+------
+
+**Option 2: `diamonds` Dataset**
+
+Using R functions, learn more about your dataset if you have not already. Describe several research questions that come to mind as you look at what is present in the data.
+
+If you are struggling to come up with a research question, or want to pursue a new one after you finish, scroll down!
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+Pick one research question to pursue. Based what you learned in this last section, describe some statistical approaches that may help you answer this question.
+
+*Your response here*
+
+Conduct the necessary statistical tests to draw any conclusions for this research question.
+
+```{r}
+# Your code here
+```
+
+*Possible Research Questions:*
+
+1. Is there a statistically significant difference in cost between groups with different cuts? What about a difference between groups with different colors?
+
+2. Does price strongly correlate with clarity? What about carat?
+
+3. Do the measurements of the diamond (x, y, z) predict the price of the diamond?
+
+------
+
+**Option 3: `infert` Dataset** 
+
+Using R functions, learn more about your dataset if you have not already. Describe several research questions that come to mind as you look at what is present in the data.
+
+If you are struggling to come up with a research question, or want to pursue a new one after you finish, scroll down!
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+Pick one research question to pursue. Based what you learned in this last section, describe some statistical approaches that may help you answer this question.
+
+*Your response here*
+
+Conduct the necessary statistical tests to draw any conclusions for this research question.
+
+```{r}
+# Your code here
+```
+
+*Possible Research Questions:*
+
+1. Is there a statistically significant difference in parity between groups with different levels of education? What about a difference in abortions of either type?
+
+2. Does age strongly correlate with parity? What about abortions of either type?
+
+3. Does the number of prior induced abortions predict the number of prior spontaneous abortions?
+

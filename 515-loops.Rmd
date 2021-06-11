@@ -1,87 +1,10 @@
-## Using loops to read many files in
+### Loops - doing a similar task multiple times
 
-Let's work through an analysis of the size of "structural" viral proteins.
-We've done some of the work for you already, and would recommend that you
-always document where the data came from and how it was retrieved/processed:
-
-> The NCBI Identital Protein Groups database was queried for "structural"
-> with "Division" restricted to "Viruses" and "Source database" restricted
-> to "UniProtKB/Swiss-Prot". 243 results were retrieved as FASTA files and 
-> converted using BASH commands into separate tab-delimited files.
-^[One crucial aspect missing is the actual BASH commands used. I did not
-    save them as a script, and I *should* go back, save them in a script,
-    and re-run that to make sure I get the same result!]
-
-These files are in the `data/viral_structural_proteins` folder,
-are tab-delimited three fields, and look like this:
-
-    Q8V433.1 Membrane protein       Bovine respiratory coronavirus (strain 98TXSF-110-LUN)  MSSVTTPAPVYTWTA...
-
-How do you inspect these files?
-What BASH tools do you use?
-
----
-
-### Reading in one file
-
-Let's read one of them into R.
-
-The records are "delimited" by tabs, so tab-separated.
-We'll need to use `read.delim`, specify a tab separator, and ignore the lack
-of a header. How do we do this? 
-
-#### Review of looking up documentation
-
-You can look up the documentation for any named function or package by using
-the `?function` syntax.
-
-Sometimes, you need to use extra backticks to make it work, like "?`+`"
-
-If you don't know what you're looking for, you can search with `??`.
-Extra backticks don't hurt, and help when you have spaces in the query.
-
----
-
-#### Back to the file-reading
-
-What does `?read.delim` say to do?
-
-```{=html}
-<div class="incremental">
-```
-
-
-```{r,calculate_one,cache=T}
-viral_protein_data <- read.delim("data/viral_structural_proteins/viral_proteins_100.tsv",
-    sep="\t",header=F)
-viral_protein_data
-```
-
-- How do we find the column names?
-- What are two ways to access the protein sequence?
-- How do we calculate the number of characters in this sequence?
-    Try searching with "??`number of characters`"
-
-```{=html}
-</div>
-```
-
----
-
-
-### Doing things multiple times
-
-
-You will want to do the same thing multiple
-times - automation is great. Let's code up a
-simple little analysis - we'll calculate the
-length (number of amino acids) in a viral
-structural protein sequence.
----
+You will want to repeat this analysis for multiple file.
+This automation is great, really useful for scaling your analyses. 
 
 Let's do this for all the proteins.
-The simplest way of doing this is to copy and
-paste it.
+The simplest way of doing this is to copy and paste it, and change the filename.
 
 ```{r,copy_paste_rep,cache=T}
 viral_protein_data <- read.delim("data/viral_structural_proteins/viral_proteins_002.tsv",
@@ -98,7 +21,11 @@ Go ahead and do this for all 242 proteins
 
 ... just kidding.
 
-Try this to, well, list files:
+This is a lot of work, and each time we do this we can introduce errors.
+If we ever have more files, we have to copy and paste more. If we ever want
+to change an argument for all of them, we have to do each one.
+
+Instead, we can work with a list of all the files available:
 
 ```{r,list_files,cache=T}
 list.files(path="data/viral_structural_proteins")[1:5]
@@ -115,7 +42,7 @@ How do we do this for every file listed ... ?
 
 ---
 
-### Loops
+#### What are loops?
 
 <!-- video -->
 
@@ -130,18 +57,21 @@ as the "condition" determines.
             with <- "multiple lines" 
         }
 
+    The code just runs. Yep. It's that simple.
+
 - A "condition" is an expression of code that
     can either evaluate to either `TRUE` or `FALSE`, or 
     set a variable for each time running the code block.
+    This is often just before the code block, in `()` parentheses.
 
-The most common form of this is a `for` loop.
+The most common form of these kind of "control statements" is a `for` loop.
 Other "control statements" or "flow control statements" are
 `while`, `repeat`, and `if`.
 
-Let's look up what they do, with "?`for`"
+Let's look up what they do, with `` ?`for` ``
 Note the back ticks! These are a trick in R to make anything
 be interpreted as literally what you type, and not
-any special characters. Like "?`+`", or "?`?`"
+any special characters. Like `` ?`+` ``, or `` ?`?` ``
 
 ---
 
@@ -183,6 +113,8 @@ for (i in list.files(path="data/viral_structural_proteins")[1:5] ) {
 ```
 
 How do we modify this to calculate the protein length?
+I add a line where we use `nchar`, but `i` is the filename instead of me
+typing it in there.
 
 ```{r,loop_and_calculate_errors,cache=T,error=T}
 for (i in list.files(path="data/viral_structural_proteins")[1:5] ) {
@@ -195,9 +127,14 @@ for (i in list.files(path="data/viral_structural_proteins")[1:5] ) {
 </div>
 ```
 
+Error! It is looking for a file `viral_proteins_000.tsv`, but it is looking
+in _this directory_. It is actually in `data/viral_structural_proteins`.
+Look up the `list.files` documentation, and find how to get it to return
+the full name of the file.
+ 
 ---
 
-Debugging...
+Next, this should work...
 
 ```{r,loop_and_calculate,cache=T}
 for (i in list.files(path="data/viral_structural_proteins",
@@ -206,16 +143,24 @@ for (i in list.files(path="data/viral_structural_proteins",
 }
 ```
 
+And yep, we have lengths of protein sequences.
+
+...
+
+What now?
+
 ---
 
 #### Storing values from a loop
 
-How do we store this value?
+How do we store these values for later analysis?
 
 In other languages, "append". But R is not built that way. It'll work,
 but it's very inefficient. The "R-way" to store values from a loop
 is to define a vector of the right length, 
 then put each element in it.
+
+Here's some example vectors that we can create.
 
 ```{r,vector_of_size,cache=T}
 vector("character",10)
@@ -229,24 +174,31 @@ Okay, but how do we access each position to save the value?
 We need to turn out list of files into indicies.
 We'll save it first so we can count how many there are.
 
-`seq_along` is handy function, otherwise use something like
-`seq(1,length(x))`.
+`seq_along` is handy function to create a number sequence along a vector, 
+otherwise use something like `seq(1,length(x))`.
 
 ```{r,loop_save_and_index,cache=T}
+# listing files
 first_five <- list.files(path="data/viral_structural_proteins")[1:5]
+
+# looping through files
 for (i in seq_along(first_five) ) {
-  print(first_five[i])
+    print(i)
+    print(first_five[i])
 }
 ```
 
 ---
 
-Putting these together, we can save a vector of file names:
+Putting these together, we can create and save a vector of file names:
 
 ```{r,loop_save_and_index_filenames,cache=T}
+# listing files
 first_five <- list.files(path="data/viral_structural_proteins")[1:5]
+# initializing vectors
 filenamez <- vector("character",length(first_five))
 
+# looping through files
 for (i in seq_along(first_five) ) {
   filenamez[i] <- first_five[i]
 }
@@ -256,14 +208,27 @@ filenamez
 
 ---
 
+However... there's some other files in there, isn't there?
+A `viral_structural_proteins.fasta`?
+
+Let's ignore that from the `list.files` call by using the argument
+`pattern=".*.tsv"` argument.
+And we'll get back to the FASTA later...
+
+---
+
 And finally calculate the length of each protein:
 
 ```{r,loop_to_calc_lengths_work,cache=T,error=T}
+# listing files
 first_five <- list.files(path="data/viral_structural_proteins",
                          full.names=T, pattern=".*tsv")[1:5]
+# initializing vectors
 lengthz <- vector("character",length(first_five))
 
+# looping through files
 for (i in seq_along(first_five) ) {
+  # calculating length and storing it
   lengthz[i] <- nchar( read.delim(first_five[i],
       header=F,as.is=T,sep="\t")$V3[[1]]
     )
@@ -277,11 +242,15 @@ lengthz
 Now we can take off the `[1:5]` limiter, and do the whole set:
 
 ```{r,loop_to_calc_lengths_all,cache=T,error=T}
+# listing files
 first_five <- list.files(path="data/viral_structural_proteins",
                          full.names=T, pattern=".*tsv")
+# initializing vectors
 lengthz <- vector("character",length(first_five))
 
+# looping through files
 for (i in seq_along(first_five) ) {
+  # calculating length and storing it
   lengthz[i] <- nchar( read.delim(first_five[i],
       header=F,as.is=T,sep="\t")$V3[[1]]
     )
@@ -296,29 +265,44 @@ How do we go about visualizing/analyzing this?
 hist(lengthz)
 ```
 
-er what...?
+er what...? Debug! What is `lengthz`?
 
-Numeric....
+```{r,debug_lengthz,cache=T}
+str(lengthz)
+```
+
+Character? Let's try numeric instead...
+
+---
 
 ```{r,loop_to_calc_lengths_all_fixed,cache=T,error=T}
+# listing files
 first_five <- list.files(path="data/viral_structural_proteins",
                          full.names=T, pattern=".*tsv")
+# initializing vectors
 lengthz <- vector("numeric",length(first_five))
 
+# looping through files
 for (i in seq_along(first_five) ) {
+  # calculating length and storing it
   lengthz[i] <- nchar( read.delim(first_five[i],
       header=F,as.is=T,sep="\t")$V3[[1]]
     )
 }
+
 ```
 
 ---
+
+Base R histogram
 
 ```{r,base_viz_protein_lengths_fix,cache=T,error=T}
 hist(lengthz,breaks=50)
 ```
 
 ---
+
+More fancy ggplot
 
 ```{r,ggplot_viz_protein_lengths,cache=T,error=T}
 library(ggplot2)
@@ -329,4 +313,12 @@ summary(lengthz)
 ```
 
 ---
+
+And that's about how long the viral structural proteins in this database
+tend to be.
+
+- How do we extend this analysis to add more files?
+- How do we calculate new properties about the sequences?
+- How do we store that?
+
 

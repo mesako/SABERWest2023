@@ -2,7 +2,7 @@
 
 Let's get started programming in R! Our goal is to be able to interact with datasets like the built-in `iris` dataset in R. By the end of today, we aim to be able to pull out information from this dataset and modify it using R programming.
 
-```{r}
+```{r,start1, cache=TRUE}
 head(iris, n = 10)
 ```
 
@@ -12,20 +12,20 @@ head(iris, n = 10)
 
 If you run into any error while using R, it is a great idea to look up your error message in Google and read through forum posts on StackOverflow. You may find it also helps to know more about your session info such as the version of R you are using, and what packages you have currently loaded.
 
-```{r, eval=FALSE}
+```{r,start2, cache=TRUE}
 sessionInfo()
 ```
 
 You can look up what functions do using either a question mark `?` or the `help` function.
 
-```{r, eval=FALSE}
+```{r,start3, cache=TRUE, eval=FALSE}
 ?rm
 help(rm)
 ```
 
 You can try running the following command to look up variables that load in with base R or packages that we will use. For example, you can use the `help` function to read more details about the `iris` dataset.
 
-```{r, eval=FALSE}
+```{r,start4, cache=TRUE, eval=FALSE}
 ?iris
 ```
 
@@ -37,7 +37,7 @@ Variables are a short-hand name or label that stores a piece of data. We can sav
 
 You can assign variables using the `=` or `<-` operators. We will use the `<-` operator exclusively going forward.
 
-```{r}
+```{r,start5, cache=TRUE}
 save.num <- 7
 save.num
 ```
@@ -46,27 +46,27 @@ Here I have chosen the name `save.num` but you can give it a different name. Not
 
 Variables are mutable: you can overwrite the saved value of a variable with another value.
 
-```{r}
+```{r,start6, cache=TRUE}
 save.num <- 10
 save.num
 ```
 
 You can see that `save.num` does not remember the value 7 anymore and instead returns 10. Variables can be saved as other values such as character strings or boolean values (`TRUE` or `FALSE`). These are examples of other datatypes in R.
 
-```{r}
+```{r,start7, cache=TRUE}
 save.string <- "hello"
 save.bool <- TRUE
 ```
 
 You can check what variables you have assigned in your current working environment using the `ls` function. Try running `?ls` to learn more about this function!
 
-```{r}
+```{r,start8, cache=TRUE}
 ls()
 ```
 
 You can also remove saved variables using the `rm` function.
 
-```{r}
+```{r,start9, cache=TRUE}
 rm(save.num)
 ls()
 ```
@@ -79,7 +79,7 @@ We have already shared several functions with you, including the `help` function
 
 Functions can be recognized by a string (letters) followed by parentheses `()`. Functions may take information inside the parentheses that are called arguments.
 
-```{r, eval = FALSE}
+```{r, start10, cache=TRUE, eval = FALSE}
 ?help
 ```
 
@@ -87,7 +87,7 @@ When you look at documentation for the `help` function, you will notice that the
 
 Arguments are often named and described in the documentation. When you provide an argument to a function, you can provide it by name explicitly or just let R figure it out based on the order you give it.
 
-```{r, eval = FALSE}
+```{r,start11, cache=TRUE, eval = FALSE}
 help(topic = iris)
 help(iris)
 ```
@@ -96,7 +96,7 @@ In the second line, we provide only one input `iris` and R assumes that we inten
 
 One function we will use often is the `c` function which can be used to create a vector or ordered collection of pieces of information. 
 
-```{r, eval = FALSE}
+```{r, start12, cache = TRUE, eval = FALSE}
 ?c
 ```
 
@@ -104,19 +104,19 @@ If you look up the documentation for the `c` function, you will notice that it a
 
 This makes sense for the `c` function because it will accept as many inputs as you give it, the number does not need to be consistent.
 
-```{r}
+```{r,start13, cache=TRUE}
 save.data <- c(1, 4, 6, 2, 3, 8, NA)
 ```
 
 Functions generally take the arguments in the parentheses as an input and then produce some output. A clear example of this is using the `mean` function.
 
-```{r, eval = FALSE}
+```{r, start14, cache=TRUE, eval = FALSE}
 ?mean
 ```
 
 As implied, the `mean` function will take a grouping of numbers and return the mean or the average.
 
-```{r}
+```{r,start15, cache=TRUE}
 mean(save.data)
 ```
 
@@ -124,7 +124,7 @@ However, here we ran into an issue because one of the elements in our initial ve
 
 We can make use of an additional argument that the `mean` function takes, namely the `na.rm` argument. This argument functions more like a setting, where you can provide a flag (i.e. `TRUE` or `FALSE`) or a distinct option (e.g. `top`, `bottom`, `left`, or `right`) that modifies how it produces the output. This argument has a default that is shown in the "Usage" section of the documentation. We are going to change that setting.
 
-```{r}
+```{r,start16, cache=TRUE}
 mean(save.data, na.rm = TRUE)
 ```
 

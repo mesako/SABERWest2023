@@ -6,7 +6,7 @@ A dataframe has data is stored in a tabular format with the rows generally refer
 
 We work with a dataframe instead of a matrix (another datatype in R) because dataframes can tolerate different datatypes in the same table. As seen below, a matrix will easily accept data all of the same datatype, but do unexpected things when you provide multiple datatypes.
 
-```{r}
+```{r, dataframe1, cache=TRUE}
 matrix1 <- matrix(data = c(1, 2, 3, 4, 5, 6, 7, 8, 9),
                     nrow = 3, ncol = 3)
 matrix1
@@ -21,13 +21,13 @@ While we are working mainly with dataframes, tibbles will pop up as we work in *
 
 We will first explore the built-in `iris` dataset. If you look up its documentation, you will notice that it is described as a dataframe and does contain both numeric values and character strings for the names of species.
 
-```{r,eval=FALSE}
+```{r, dataframe2, cache=TRUE, eval=FALSE}
 ?iris
 ```
 
 For the sake of this exercise, we will assign a new variable called `iris.temp` that is a shorter version of the original dataset. The `head` function returns just the first few rows and here we use an argument to request the first 10.
 
-```{r}
+```{r, dataframe3, cache=TRUE}
 iris.temp <- head(iris, n = 10)
 iris.temp
 ```
@@ -36,27 +36,27 @@ iris.temp
 
 You can index into a dataframe and pull out one or more cells within the dataframe. Note that we are providing two coordinates to explain which row (the first number before the comma) and which column (the second number after the comma) to find the exact element (or cell in the table).
 
-```{r}
+```{r, dataframe4, cache=TRUE}
 iris.temp[1, 3]
 ```
 
 You can pull out multiple elements at a time, specifying which row and column they reside in.
 
-```{r}
+```{r, dataframe5, cache=TRUE}
 iris.temp[c(1, 2), c(2, 3)] # gives us the 2nd and 3rd columns of the 1st and 2nd rows
 iris.temp[1:3, 3:5] # gives us the 3rd through 5th columns of the 1st through 3rd rows
 ```
 
 If you provide the row and not the column, or vice versa, by default R will pull out all of the available columns and rows respectively.
 
-```{r}
+```{r, dataframe6, cache=TRUE}
 iris.temp[1:2, ] # pulls out the first two rows and all columns
 iris.temp[, 1:2] # pulls out the first two columns and all rows
 ```
 
 It's possible to also remove elements in a dataframe using the negative sign.
 
-```{r}
+```{r, dataframe7, cache=TRUE}
 iris.temp2 <- iris.temp[-c(1, 3), ] # removes the first and third rows
 head(iris.temp)
 head(iris.temp2)
@@ -70,14 +70,14 @@ When you are first presented with a dataframe, for example data that was collect
 
 The `dim` function, short for dimensions, returns the number of rows and columns.
 
-```{r}
+```{r, dataframe8, cache=TRUE}
 dim(iris)
 dim(iris.temp)
 ```
 
 This shows you that `iris.temp` is in fact just the first 10 rows of `iris`. You can use the following functions: `str` for structure, `colnames` for column names, and `summary` to investigate aspects of a given dataset.
 
-```{r}
+```{r, dataframe9, cache=TRUE}
 colnames(iris)
 str(iris)
 summary(iris)
@@ -89,7 +89,7 @@ The `summary` function tries to tell us more info about each column. For numeric
 
 We can try to look at the beginning of a specific column in this dataset to get a better understanding for it. Dataframes that have names for their columns allow you to index into the columns specifically by name using the `$` operator as shown below.
 
-```{r}
+```{r, dataframe10, cache=TRUE}
 head(iris$Species)
 ```
 
@@ -99,7 +99,7 @@ Remember the `head` function lets us preview a longer set of data, either showin
 
 We can also generate our own dataframes from vectors that we put together into a table. Revisiting our heart rate measurement example, let's build a dataframe of patient data.
 
-```{r}
+```{r, dataframe11, cache=TRUE}
 patient.data <- data.frame(name = c("oakley", "rashmi", "kiran"),
                            heart_rate = c(78, 68, 95),
                            disease_status = c(FALSE, FALSE, TRUE))
@@ -108,21 +108,21 @@ patient.data
 
 We can inspect the dataframe we have created using the same functions.
 
-```{r}
+```{r, dataframe12, cache=TRUE}
 str(patient.data)
 summary(patient.data)
 ```
 
 You can add new rows and columns using the `rbind` and `cbind` functions. Let's pretend that we had collected additional information about our patients, such as their self-reported gender. We can add this as a new column (`cbind` short for bind column).
 
-```{r}
+```{r, dataframe13, cache=TRUE}
 patient.data <- cbind(patient.data, gender = c("M", "F", NA))
 patient.data
 ```
 
 You can merge two dataframes together using the `rbind` function assuming that their columns match up correctly. Let's pretend that we had another day at the clinic and collected additional patient measurements. 
 
-```{r}
+```{r, dataframe14, cache=TRUE}
 more.patients <- data.frame(name = c("eun", "sasha", "mattie"),
                             heart_rate = c(86, 79, 64),
                             disease_status = c(TRUE, TRUE, FALSE),
@@ -132,14 +132,14 @@ more.patients
 
 Let's use `rbind`, short for binding rows, to add these additional rows to the bottom of our first dataframe `patient.data`.
 
-```{r}
+```{r, dataframe15, cache=TRUE}
 all.patients <- rbind(patient.data, more.patients)
 all.patients
 ```
 
 You can also remove rows and columns using the trick with a negative index.
 
-```{r}
+```{r, dataframe16, cache=TRUE}
 patient.data[, -1] # removes first column
 patient.data[-1, ] # removes first row
 ```
@@ -158,7 +158,7 @@ We briefly discussed factors as categorical variables. Let's pretend that for ou
 
 To do this, we can coerce data into a different datatype using functions like `as.function`.
 
-```{r}
+```{r, dataframe17, cache=TRUE}
 head(all.patients$gender)
 all.patients$gender <- as.factor(all.patients$gender)
 head(all.patients$gender)
@@ -166,7 +166,7 @@ head(all.patients$gender)
 
 This vector of factors shows which category each element belongs to, and then summarizes what the possible categories are down at the bottom where it prints the `Levels` of this factor. This can cause issues if we introduce data that does not match these categories. Let's try adding a new patient's data.
 
-```{r}
+```{r, dataframe18, cache=TRUE}
 all.patients <- rbind(all.patients, 
                       c(name = "lupe",
                         heart_rate = 72,
@@ -177,13 +177,13 @@ all.patients
 
 What has happened with this new addition? If you tried to add a new patient to the dataframe that had a gender that wasn't already represented in the data, chances are you had a warning and that gender was turned to `NA`.
 
-```{r}
+```{r, dataframe19, cache=TRUE}
 all.patients$gender
 ```
 
 Once a factor is created, it doesn't let you easily add new categories that were not in the original set. We will not get issues though if we add a new patient whose gender is represented as one of the levels in our gender factor.
 
-```{r}
+```{r, dataframe20, cache=TRUE}
 all.patients <- rbind(all.patients, 
                       c(name = "chihiro", 
                         heart_rate = 101, 
@@ -194,7 +194,7 @@ all.patients$gender
 
 So how do we fix this? The easiest way around this is to treat the column as characters instead of as factors.
 
-```{r}
+```{r, dataframe21, cache=TRUE}
 all.patients$gender <- as.character(all.patients$gender)
 all.patients <- rbind(all.patients, 
                       c(name = "ayodele", 

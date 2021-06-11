@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.2 Writing (re)usable code | DLL 2021, R section</title>
+  <title>4.5 Writing (re)usable code | DLL 2021, R section</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.2 Writing (re)usable code | DLL 2021, R section" />
+  <meta property="og:title" content="4.5 Writing (re)usable code | DLL 2021, R section" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.2 Writing (re)usable code | DLL 2021, R section" />
+  <meta name="twitter:title" content="4.5 Writing (re)usable code | DLL 2021, R section" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -34,8 +34,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="using-code-many-times-loops.html"/>
-<link rel="next" href="functions-redux-why-theyre-so-great.html"/>
+<link rel="prev" href="packages-install-and-use.html"/>
+<link rel="next" href="more-rmarkdown-for-reproducibile-sharing.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -146,8 +146,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.3" data-path="workshop-expectations.html"><a href="workshop-expectations.html"><i class="fa fa-check"></i><b>1.3</b> Workshop expectations</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Day 3 - intoduction to R</a><ul>
-<li class="chapter" data-level="2.1" data-path="navigating-rstudio.html"><a href="navigating-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Navigating Rstudio</a></li>
-<li class="chapter" data-level="2.2" data-path="using-rmds.html"><a href="using-rmds.html"><i class="fa fa-check"></i><b>2.2</b> Using Rmds</a></li>
+<li class="chapter" data-level="2.1" data-path="using-rstudio.html"><a href="using-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Using RStudio</a><ul>
+<li class="chapter" data-level="2.1.1" data-path="using-rstudio.html"><a href="using-rstudio.html#r-scripts-in-rstudio"><i class="fa fa-check"></i><b>2.1.1</b> R Scripts in RStudio</a></li>
+<li class="chapter" data-level="2.1.2" data-path="using-rstudio.html"><a href="using-rstudio.html#console-and-terminal"><i class="fa fa-check"></i><b>2.1.2</b> Console and Terminal</a></li>
+<li class="chapter" data-level="2.1.3" data-path="using-rstudio.html"><a href="using-rstudio.html#environment-and-history"><i class="fa fa-check"></i><b>2.1.3</b> Environment and History</a></li>
+<li class="chapter" data-level="2.1.4" data-path="using-rstudio.html"><a href="using-rstudio.html#files-plots-and-packages"><i class="fa fa-check"></i><b>2.1.4</b> Files, Plots, and Packages</a></li>
+<li class="chapter" data-level="2.1.5" data-path="using-rstudio.html"><a href="using-rstudio.html#putting-it-all-together"><i class="fa fa-check"></i><b>2.1.5</b> Putting It All Together</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="using-rmds.html"><a href="using-rmds.html"><i class="fa fa-check"></i><b>2.2</b> Using Rmds</a><ul>
+<li class="chapter" data-level="2.2.1" data-path="using-rmds.html"><a href="using-rmds.html#basic-structure"><i class="fa fa-check"></i><b>2.2.1</b> Basic Structure</a></li>
+<li class="chapter" data-level="2.2.2" data-path="using-rmds.html"><a href="using-rmds.html#overview-of-markdown"><i class="fa fa-check"></i><b>2.2.2</b> Overview of Markdown</a></li>
+<li class="chapter" data-level="2.2.3" data-path="using-rmds.html"><a href="using-rmds.html#overview-of-how-to-write-an-r-chunk"><i class="fa fa-check"></i><b>2.2.3</b> Overview of how to write an R chunk</a></li>
+<li class="chapter" data-level="2.2.4" data-path="using-rmds.html"><a href="using-rmds.html#final-thoughts"><i class="fa fa-check"></i><b>2.2.4</b> Final Thoughts</a></li>
+</ul></li>
 <li class="chapter" data-level="2.3" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html"><i class="fa fa-check"></i><b>2.3</b> Getting started in R</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html#getting-help-in-r"><i class="fa fa-check"></i><b>2.3.1</b> Getting help in R</a></li>
 <li class="chapter" data-level="2.3.2" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html#using-variables-and-data-types"><i class="fa fa-check"></i><b>2.3.2</b> Using variables and data types</a></li>
@@ -171,7 +182,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.1" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html#loading-a-file-into-r"><i class="fa fa-check"></i><b>3.1.1</b> Loading a file into R</a></li>
 <li class="chapter" data-level="3.1.2" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html#handling-issues-in-data"><i class="fa fa-check"></i><b>3.1.2</b> Handling issues in data</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="using-tidyverse.html"><a href="using-tidyverse.html"><i class="fa fa-check"></i><b>3.2</b> Using tidyverse</a></li>
+<li class="chapter" data-level="3.2" data-path="using-tidyverse.html"><a href="using-tidyverse.html"><i class="fa fa-check"></i><b>3.2</b> Using tidyverse</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="using-tidyverse.html"><a href="using-tidyverse.html#goals-to-be-reworked-alongside-content"><i class="fa fa-check"></i><b>3.2.1</b> Goals to be reworked alongside content</a></li>
+<li class="chapter" data-level="3.2.2" data-path="using-tidyverse.html"><a href="using-tidyverse.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>3.2.2</b> Welcome to the tidyverse!</a></li>
+<li class="chapter" data-level="3.2.3" data-path="using-tidyverse.html"><a href="using-tidyverse.html#lets-get-started-with-tidyverse"><i class="fa fa-check"></i><b>3.2.3</b> Let’s get started with Tidyverse</a></li>
+<li class="chapter" data-level="3.2.4" data-path="using-tidyverse.html"><a href="using-tidyverse.html#try-tidyverse-on-the-dataset-we-loaded-in-the-previous-section"><i class="fa fa-check"></i><b>3.2.4</b> Try tidyverse on the dataset we loaded in the previous section</a></li>
+</ul></li>
 <li class="chapter" data-level="3.3" data-path="using-tidyverse-1.html"><a href="using-tidyverse-1.html"><i class="fa fa-check"></i><b>3.3</b> Using tidyverse</a></li>
 <li class="chapter" data-level="3.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a><ul>
 <li class="chapter" data-level="3.4.1" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.4.1</b> Getting started with a ggplot</a></li>
@@ -192,39 +208,44 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.6.4" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#producing-linear-models"><i class="fa fa-check"></i><b>3.6.4</b> Producing linear models</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="day-5-building-workflows.html"><a href="day-5-building-workflows.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows</a><ul>
-<li class="chapter" data-level="4.1" data-path="using-code-many-times-loops.html"><a href="using-code-many-times-loops.html"><i class="fa fa-check"></i><b>4.1</b> Using code many times - loops</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="using-code-many-times-loops.html"><a href="using-code-many-times-loops.html#doing-things-multiple-times"><i class="fa fa-check"></i><b>4.1.1</b> Doing things multiple times</a></li>
-<li class="chapter" data-level="4.1.2" data-path="using-code-many-times-loops.html"><a href="using-code-many-times-loops.html#loops"><i class="fa fa-check"></i><b>4.1.2</b> Loops</a></li>
+<li class="chapter" data-level="4" data-path="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><a href="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><i class="fa fa-check"></i><b>4</b> Day 5 - building workflows, using packages, writing (re)usable code, sharing analyses</a><ul>
+<li class="chapter" data-level="4.0.1" data-path="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html"><a href="day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html#what-is-a-workflow"><i class="fa fa-check"></i><b>4.0.1</b> What is a workflow?</a></li>
+<li class="chapter" data-level="4.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html"><i class="fa fa-check"></i><b>4.1</b> Analyzing viral protein sequences</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#reading-in-tab-delimited-file"><i class="fa fa-check"></i><b>4.1.1</b> Reading in tab-delimited file</a></li>
+<li class="chapter" data-level="4.1.2" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#loops---doing-a-similar-task-multiple-times"><i class="fa fa-check"></i><b>4.1.2</b> Loops - doing a similar task multiple times</a></li>
+<li class="chapter" data-level="4.1.3" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#extending-the-workflow"><i class="fa fa-check"></i><b>4.1.3</b> Extending the workflow</a></li>
+<li class="chapter" data-level="4.1.4" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#some-operations-on-strings"><i class="fa fa-check"></i><b>4.1.4</b> Some operations on strings</a></li>
+<li class="chapter" data-level="4.1.5" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#back-to-the-motifs"><i class="fa fa-check"></i><b>4.1.5</b> Back to the motifs</a></li>
+<li class="chapter" data-level="4.1.6" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#conclusion"><i class="fa fa-check"></i><b>4.1.6</b> Conclusion</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html"><i class="fa fa-check"></i><b>4.2</b> Writing (re)usable code</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#style-guides-can-be-inspiring"><i class="fa fa-check"></i><b>4.2.1</b> Style guides can be inspiring</a></li>
+<li class="chapter" data-level="4.2" data-path="getting-help-troubleshooting.html"><a href="getting-help-troubleshooting.html"><i class="fa fa-check"></i><b>4.2</b> Getting help - troubleshooting</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="getting-help-troubleshooting.html"><a href="getting-help-troubleshooting.html#where-to-start-general-help"><i class="fa fa-check"></i><b>4.2.1</b> Where to start? General help</a></li>
+<li class="chapter" data-level="4.2.2" data-path="getting-help-troubleshooting.html"><a href="getting-help-troubleshooting.html#debugging-specific-problems"><i class="fa fa-check"></i><b>4.2.2</b> Debugging specific problems</a></li>
+<li class="chapter" data-level="4.2.3" data-path="getting-help-troubleshooting.html"><a href="getting-help-troubleshooting.html#minimal-reproducible-examples"><i class="fa fa-check"></i><b>4.2.3</b> Minimal reproducible examples</a></li>
 </ul></li>
-<li class="chapter" data-level="4.3" data-path="functions-redux-why-theyre-so-great.html"><a href="functions-redux-why-theyre-so-great.html"><i class="fa fa-check"></i><b>4.3</b> Functions redux - why they’re so great</a></li>
-<li class="chapter" data-level="4.4" data-path="using-functions-to-write-modular-code.html"><a href="using-functions-to-write-modular-code.html"><i class="fa fa-check"></i><b>4.4</b> Using functions to write modular code</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="using-functions-to-write-modular-code.html"><a href="using-functions-to-write-modular-code.html#tips-for-modular-workflows"><i class="fa fa-check"></i><b>4.4.1</b> Tips for modular workflows</a></li>
-<li class="chapter" data-level="4.4.2" data-path="using-functions-to-write-modular-code.html"><a href="using-functions-to-write-modular-code.html#more-complex-workflow"><i class="fa fa-check"></i><b>4.4.2</b> More complex workflow</a></li>
-<li class="chapter" data-level="4.4.3" data-path="using-functions-to-write-modular-code.html"><a href="using-functions-to-write-modular-code.html#apply-is-a-popular-tool"><i class="fa fa-check"></i><b>4.4.3</b> Apply is a popular tool</a></li>
+<li class="chapter" data-level="4.3" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html"><i class="fa fa-check"></i><b>4.3</b> Functions as modular steps</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html#tips-for-modular-workflows"><i class="fa fa-check"></i><b>4.3.1</b> Tips for modular workflows</a></li>
+<li class="chapter" data-level="4.3.2" data-path="functions-as-modular-steps.html"><a href="functions-as-modular-steps.html#apply-is-a-popular-tool"><i class="fa fa-check"></i><b>4.3.2</b> Apply is a popular tool</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="packages-are-chunks-of-code-and-sometimes-data.html"><a href="packages-are-chunks-of-code-and-sometimes-data.html"><i class="fa fa-check"></i><b>4.5</b> Packages are chunks of code (and sometimes data)</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="packages-are-chunks-of-code-and-sometimes-data.html"><a href="packages-are-chunks-of-code-and-sometimes-data.html#cran-is-the-canonical-r-package-resource"><i class="fa fa-check"></i><b>4.5.1</b> CRAN is the canonical R package resource</a></li>
-<li class="chapter" data-level="4.5.2" data-path="packages-are-chunks-of-code-and-sometimes-data.html"><a href="packages-are-chunks-of-code-and-sometimes-data.html#using-packages-without-library-ing-them"><i class="fa fa-check"></i><b>4.5.2</b> Using packages without <code>library()</code>-ing them</a></li>
-<li class="chapter" data-level="4.5.3" data-path="packages-are-chunks-of-code-and-sometimes-data.html"><a href="packages-are-chunks-of-code-and-sometimes-data.html#github-is-a-common-place-for-sharing-packges-in-development"><i class="fa fa-check"></i><b>4.5.3</b> Github is a common place for sharing packges in development</a></li>
-<li class="chapter" data-level="4.5.4" data-path="packages-are-chunks-of-code-and-sometimes-data.html"><a href="packages-are-chunks-of-code-and-sometimes-data.html#bioconductor-is-a-great-place-for-bio-related-packages"><i class="fa fa-check"></i><b>4.5.4</b> Bioconductor is a great place for bio-related packages 😬</a></li>
+<li class="chapter" data-level="4.4" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html"><i class="fa fa-check"></i><b>4.4</b> Packages - install and use</a><ul>
+<li class="chapter" data-level="4.4.1" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#cran-is-the-canonical-r-package-resource"><i class="fa fa-check"></i><b>4.4.1</b> CRAN is the canonical R package resource</a></li>
+<li class="chapter" data-level="4.4.2" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#using-packages-without-library-ing-them"><i class="fa fa-check"></i><b>4.4.2</b> Using packages without <code>library()</code>-ing them</a></li>
+<li class="chapter" data-level="4.4.3" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#github-is-a-common-place-for-sharing-packges-in-development"><i class="fa fa-check"></i><b>4.4.3</b> Github is a common place for sharing packges in development</a></li>
+<li class="chapter" data-level="4.4.4" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#bioconductor-is-a-great-place-for-bio-related-packages"><i class="fa fa-check"></i><b>4.4.4</b> Bioconductor is a great place for bio-related packages 😬</a></li>
+<li class="chapter" data-level="4.4.5" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#what-packages-do-you-have-already"><i class="fa fa-check"></i><b>4.4.5</b> What packages do you have already?</a></li>
+<li class="chapter" data-level="4.4.6" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#finding-more-help-and-documentation"><i class="fa fa-check"></i><b>4.4.6</b> Finding more help and documentation</a></li>
 </ul></li>
-<li class="chapter" data-level="4.6" data-path="what-packages-do-you-have-already.html"><a href="what-packages-do-you-have-already.html"><i class="fa fa-check"></i><b>4.6</b> What packages do you have already?</a></li>
-<li class="chapter" data-level="4.7" data-path="finding-more-help-and-documentation.html"><a href="finding-more-help-and-documentation.html"><i class="fa fa-check"></i><b>4.7</b> Finding more help and documentation</a></li>
-<li class="chapter" data-level="4.8" data-path="reproducibile-sharing-more-rmarkdown-and.html"><a href="reproducibile-sharing-more-rmarkdown-and.html"><i class="fa fa-check"></i><b>4.8</b> Reproducibile sharing - more <code>rmarkdown</code> and</a><ul>
-<li class="chapter" data-level="4.8.1" data-path="reproducibile-sharing-more-rmarkdown-and.html"><a href="reproducibile-sharing-more-rmarkdown-and.html#rmarkdown-package"><i class="fa fa-check"></i><b>4.8.1</b> rmarkdown package</a></li>
-<li><a href="reproducibile-sharing-more-rmarkdown-and.html#section"></a></li>
-<li class="chapter" data-level="4.8.2" data-path="reproducibile-sharing-more-rmarkdown-and.html"><a href="reproducibile-sharing-more-rmarkdown-and.html#sharing-with-others"><i class="fa fa-check"></i><b>4.8.2</b> Sharing with others</a></li>
+<li class="chapter" data-level="4.5" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html"><i class="fa fa-check"></i><b>4.5</b> Writing (re)usable code</a><ul>
+<li class="chapter" data-level="4.5.1" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#examples"><i class="fa fa-check"></i><b>4.5.1</b> Examples</a></li>
+<li class="chapter" data-level="4.5.2" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#style-guides-can-be-inspiring"><i class="fa fa-check"></i><b>4.5.2</b> Style guides can be inspiring</a></li>
 </ul></li>
-<li class="chapter" data-level="4.9" data-path="reproducibility-and-sharing.html"><a href="reproducibility-and-sharing.html"><i class="fa fa-check"></i><b>4.9</b> Reproducibility and sharing</a></li>
-<li class="chapter" data-level="4.10" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html"><i class="fa fa-check"></i><b>4.10</b> Troubleshooting, getting help, dissecting problems</a><ul>
-<li class="chapter" data-level="4.10.1" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html#places-to-look-for-help"><i class="fa fa-check"></i><b>4.10.1</b> Places to look for help</a></li>
-<li class="chapter" data-level="4.10.2" data-path="troubleshooting-getting-help-dissecting-problems.html"><a href="troubleshooting-getting-help-dissecting-problems.html#minimum-reproducible-example"><i class="fa fa-check"></i><b>4.10.2</b> Minimum reproducible example</a></li>
+<li class="chapter" data-level="4.6" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html"><i class="fa fa-check"></i><b>4.6</b> More <code>rmarkdown</code> for reproducibile sharing</a><ul>
+<li class="chapter" data-level="4.6.1" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#rmarkdown-package"><i class="fa fa-check"></i><b>4.6.1</b> rmarkdown package</a></li>
+<li><a href="more-rmarkdown-for-reproducibile-sharing.html#section"></a></li>
+<li class="chapter" data-level="4.6.2" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#sharing-with-others"><i class="fa fa-check"></i><b>4.6.2</b> Sharing with others</a></li>
+<li class="chapter" data-level="4.6.3" data-path="more-rmarkdown-for-reproducibile-sharing.html"><a href="more-rmarkdown-for-reproducibile-sharing.html#reproducibility-and-sharing"><i class="fa fa-check"></i><b>4.6.3</b> Reproducibility and sharing</a></li>
 </ul></li>
-<li class="chapter" data-level="4.11" data-path="conclusion-other-concepts.html"><a href="conclusion-other-concepts.html"><i class="fa fa-check"></i><b>4.11</b> Conclusion, other concepts</a></li>
+<li class="chapter" data-level="4.7" data-path="conclusion-2.html"><a href="conclusion-2.html"><i class="fa fa-check"></i><b>4.7</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a><ul>
 <li class="chapter" data-level="5.1" data-path="additional-tutorials.html"><a href="additional-tutorials.html"><i class="fa fa-check"></i><b>5.1</b> Additional tutorials</a><ul>
@@ -259,30 +280,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="writing-reusable-code" class="section level2">
-<h2><span class="header-section-number">4.2</span> Writing (re)usable code</h2>
+<h2><span class="header-section-number">4.5</span> Writing (re)usable code</h2>
 <ul>
 <li><p>Crack open your code - can you use it again?</p></li>
 <li><p>Can you adapt it to modify your question, feed in new data,
 and modify the scientifically-important bits easily?</p></li>
 </ul>
 <hr />
-<div id="examples" class="section level4">
-<h4><span class="header-section-number">4.2.0.1</span> Examples</h4>
+<div id="examples" class="section level3">
+<h3><span class="header-section-number">4.5.1</span> Examples</h3>
 <p>Let’s look at two chunks of code from
 <a href="https://github.com/sashaflevy/PPiSeq">a paper</a> (lightly edited).
 The experiment is counting barcoded lineages of yeast cells to estimate
 “PPIs” (protein-protein interactions)
-<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
+<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a></p>
 <p>Here’s an example of one style of writing R script:</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb321-1" data-line-number="1"><span class="co"># filter out bad barcode lineages ( &lt;= 2 time points counts &gt; 0, or maximum of each time point &lt;= 5 or total counts of a lineage &lt; 10)</span></a>
-<a class="sourceLine" id="cb321-2" data-line-number="2">bad_index =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">nrow</span>(DBC_known_counts))</a>
-<a class="sourceLine" id="cb321-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(bad_index)){</a>
-<a class="sourceLine" id="cb321-4" data-line-number="4">        counts =<span class="st"> </span><span class="kw">as.numeric</span>(DBC_known_counts[i, <span class="dv">4</span><span class="op">:</span><span class="dv">8</span>])</a>
-<a class="sourceLine" id="cb321-5" data-line-number="5">        <span class="cf">if</span> (<span class="kw">length</span>(<span class="kw">which</span>(counts <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)) <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span><span class="kw">max</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">|</span><span class="st"> </span><span class="kw">sum</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>){</a>
-<a class="sourceLine" id="cb321-6" data-line-number="6">                bad_index[i] =<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb321-7" data-line-number="7">        }</a>
-<a class="sourceLine" id="cb321-8" data-line-number="8">}</a>
-<a class="sourceLine" id="cb321-9" data-line-number="9"><span class="kw">length</span>(<span class="kw">which</span>(bad_index <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)) <span class="co"># 1447775</span></a></code></pre></div>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb398-1" data-line-number="1"><span class="co"># filter out bad barcode lineages ( &lt;= 2 time points counts &gt; 0, or maximum of each time point &lt;= 5 or total counts of a lineage &lt; 10)</span></a>
+<a class="sourceLine" id="cb398-2" data-line-number="2">bad_index =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">nrow</span>(DBC_known_counts))</a>
+<a class="sourceLine" id="cb398-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(bad_index)){</a>
+<a class="sourceLine" id="cb398-4" data-line-number="4">        counts =<span class="st"> </span><span class="kw">as.numeric</span>(DBC_known_counts[i, <span class="dv">4</span><span class="op">:</span><span class="dv">8</span>])</a>
+<a class="sourceLine" id="cb398-5" data-line-number="5">        <span class="cf">if</span> (<span class="kw">length</span>(<span class="kw">which</span>(counts <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)) <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span><span class="kw">max</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">|</span><span class="st"> </span><span class="kw">sum</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb398-6" data-line-number="6">                bad_index[i] =<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb398-7" data-line-number="7">        }</a>
+<a class="sourceLine" id="cb398-8" data-line-number="8">}</a>
+<a class="sourceLine" id="cb398-9" data-line-number="9"><span class="kw">length</span>(<span class="kw">which</span>(bad_index <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)) <span class="co"># 1447775</span></a></code></pre></div>
 <!-- exercise -->
 <ul>
 <li>What is going on here?</li>
@@ -292,16 +313,22 @@ The experiment is counting barcoded lineages of yeast cells to estimate
 </ul>
 <hr />
 <p>Here’s another example from the same author:</p>
-<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" data-line-number="1">H202_Output &lt;-<span class="st"> </span><span class="kw">PPI_calling_sigmoid</span>(</a>
-<a class="sourceLine" id="cb322-2" data-line-number="2">    <span class="dt">PPI_multiple=</span><span class="kw">dataFrameReader_T</span>(<span class="st">&quot;/Volumes/zmliu_02/PPiseq_03/H2O2/counts/PPI_multiple_p.values.csv&quot;</span>),</a>
-<a class="sourceLine" id="cb322-3" data-line-number="3">    <span class="dt">specific_PPV=</span><span class="kw">c</span>(<span class="kw">seq</span>(<span class="fl">0.5</span>,<span class="fl">0.58</span>,<span class="dt">by=</span><span class="fl">0.02</span>),<span class="kw">seq</span>(<span class="fl">0.6</span>,<span class="fl">0.8</span>,<span class="dt">by=</span><span class="fl">0.01</span>),<span class="kw">seq</span>(<span class="fl">0.82</span>,<span class="fl">0.9</span>,<span class="dt">by=</span><span class="fl">0.02</span>)),</a>
-<a class="sourceLine" id="cb322-4" data-line-number="4">    <span class="dt">Fitness=</span><span class="kw">fitness</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="fl">0.01</span>),</a>
-<a class="sourceLine" id="cb322-5" data-line-number="5">    <span class="dt">p_value=</span><span class="kw">seq</span>(<span class="op">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="fl">0.1</span>),</a>
-<a class="sourceLine" id="cb322-6" data-line-number="6">    <span class="dt">Neg_number_PPI=</span><span class="fl">6e4</span>,</a>
-<a class="sourceLine" id="cb322-7" data-line-number="7">    <span class="dt">Neg_ref_number=</span><span class="dv">50</span>, </a>
-<a class="sourceLine" id="cb322-8" data-line-number="8">    <span class="dt">p_threshold=</span><span class="op">-</span><span class="dv">4</span></a>
-<a class="sourceLine" id="cb322-9" data-line-number="9">    <span class="dt">p_loc=</span><span class="dv">6</span>, </a>
-<a class="sourceLine" id="cb322-10" data-line-number="10">)</a></code></pre></div>
+<div class="sourceCode" id="cb399"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb399-1" data-line-number="1">Random_reference &lt;-<span class="st"> </span><span class="cf">function</span>(PPI_multiple, all_PPI_filtered, size, sampling_number){</a>
+<a class="sourceLine" id="cb399-2" data-line-number="2">  PPI_PPiseq =<span class="st"> </span>PPI_multiple[,<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb399-3" data-line-number="3">  RRS_size=<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb399-4" data-line-number="4">  RRS=<span class="st"> </span><span class="kw">character</span>(<span class="dt">length=</span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb399-5" data-line-number="5">  <span class="cf">while</span> (RRS_size <span class="op">&lt;</span><span class="st"> </span>size) {</a>
+<a class="sourceLine" id="cb399-6" data-line-number="6">    yeast_PPI_random=<span class="st"> </span>all_PPI_filtered[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="st"> </span><span class="kw">length</span>(all_PPI_filtered), sampling_number, <span class="dt">replace=</span>F)]</a>
+<a class="sourceLine" id="cb399-7" data-line-number="7">    RRS=<span class="st"> </span><span class="kw">unique</span>(<span class="kw">c</span>(RRS, yeast_PPI_random))</a>
+<a class="sourceLine" id="cb399-8" data-line-number="8">    RRS_overlap=<span class="st"> </span><span class="kw">intersect</span>(RRS, PPI_PPiseq)</a>
+<a class="sourceLine" id="cb399-9" data-line-number="9">    RRS_size=<span class="st"> </span><span class="kw">length</span>(RRS_overlap)</a>
+<a class="sourceLine" id="cb399-10" data-line-number="10">  } </a>
+<a class="sourceLine" id="cb399-11" data-line-number="11">  RRS_duplicate_marked =<span class="st"> </span><span class="kw">mark_duplicates_fast</span>(RRS_overlap)</a>
+<a class="sourceLine" id="cb399-12" data-line-number="12">  <span class="kw">return</span> (RRS_duplicate_marked[,<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb399-13" data-line-number="13">}</a>
+<a class="sourceLine" id="cb399-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb399-15" data-line-number="15"><span class="co"># ... and later ...</span></a>
+<a class="sourceLine" id="cb399-16" data-line-number="16"><span class="kw">Random_reference</span>(PPI_multiple, all_PPI_filtered, number_PPI, sample_number)</a></code></pre></div>
 <!-- exercise -->
 <p>Same questions.</p>
 <hr />
@@ -311,16 +338,16 @@ The experiment is counting barcoded lineages of yeast cells to estimate
 <hr />
 </div>
 <div id="style-guides-can-be-inspiring" class="section level3">
-<h3><span class="header-section-number">4.2.1</span> Style guides can be inspiring</h3>
+<h3><span class="header-section-number">4.5.2</span> Style guides can be inspiring</h3>
+<p>What’s your coding style going to be?</p>
 <ul>
 <li><a href="https://style.tidyverse.org/">tidyverse style guide</a></li>
 <li><a href="https://google.github.io/styleguide/Rguide.html">google-specific changes</a></li>
 <li><a href="https://jef.works/R-style-guide/">Jean Fan’s</a></li>
 <li>search for “R style guide”</li>
 </ul>
-<p>What style should you use?</p>
-<p>Be inconsistently consistent!
-Balance for yourself:</p>
+<p>Be inconsistently consistent! Do what works!</p>
+<p>Balance for yourself:</p>
 <ul>
 <li>How easy is it to write?</li>
 <li>How easy is it for you to read?</li>
@@ -328,33 +355,23 @@ Balance for yourself:</p>
 <li>How similar is it to what everyone else is doing (a very good thing)?</li>
 </ul>
 <p>But most importantly, use what folks around you are using.
-Be lazy, imitate others!</p>
+Be lazy and copy others!</p>
 <hr />
 <!-- exercise -->
 <ul>
 <li>How would you describe your code writing style?</li>
-<li>How do you name things?</li>
+<li>How do you name variables, functions?</li>
 <li>How good are your comments?</li>
-<li>What ideas would you like to incorporate?</li>
+<li>Are there any ideas here you would like to incorporate?</li>
 </ul>
 <hr />
 
-<!--
-
-```{=html}
-<div class="incremental">
-```
-```{=html}
-</div>
-```
-
--->
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="2">
-<li id="fn2"><p>Ask Darach if you want details, or <a href="doi.org/10.7554/eLife.62365">read the paper</a><a href="writing-reusable-code.html#fnref2" class="footnote-back">↩</a></p></li>
+<ol start="10">
+<li id="fn10"><p>Ask Darach if you want details, or <a href="doi.org/10.7554/eLife.62365">read the paper</a><a href="writing-reusable-code.html#fnref10" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <p style="margin-top:10em;text-align:center;font-size:small;">
@@ -382,8 +399,8 @@ for (var i=0; i < listz.length; i++) {
           </div>
         </div>
       </div>
-<a href="using-code-many-times-loops.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="functions-redux-why-theyre-so-great.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="packages-install-and-use.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="more-rmarkdown-for-reproducibile-sharing.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -415,7 +432,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/darachm/dll-r/edit/main/520-writing-code.Rmd",
+"link": "https://github.com/darachm/dll-r/edit/main/530-writing-code.Rmd",
 "text": "Edit"
 },
 "history": {

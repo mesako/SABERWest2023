@@ -2,7 +2,7 @@
 
 We will primarily be working in ggplot2 as it has the greatest degree of customization for visualization and offers many additional features over the basic plotting in R.
 
-```{r,message = FALSE}
+```{r, ggplot1, message = FALSE}
 library(ggplot2)
 library(tidyverse)
 ```
@@ -15,7 +15,7 @@ Most ggplot calls to create a figure take the following form (you can read more 
 
 We will practice using our mammalian sleep dataset. You can look up more info about this dataset using the `help` function and the dataset name, `msleep`.
 
-```{r}
+```{r, ggplot2, cache = TRUE}
 head(msleep)
 ```
 
@@ -37,19 +37,19 @@ To add a geom to the plot use the `+` operator. To plot using two continuous var
 
 First we establish our coordinate system.
 
-```{r}
+```{r, ggplot3, cache = TRUE}
 my.plot <- ggplot(data = msleep, aes(x = brainwt, y = sleep_rem))
 ```
 
 We can now draw the plot as a scatterplot with points to represent each mammal's measurements from the `msleep` dataset.
 
-```{r}
+```{r, ggplot4, cache = TRUE}
 my.plot + geom_point()
 ```
 
 You might notice that all of the points are squished against the y-axis since many of the mammals in this dataset have low brain weights.
 
-```{r}
+```{r, ggplot5, cache = TRUE}
 summary(msleep$brainwt)
 ```
 
@@ -57,7 +57,7 @@ As you can see with the `summary` function, the minimum and median values are ve
 
 To make more useful plots, we can transform this value using log-scaling. While we will have to note that the new values do not exactly match the real-world measurements anymore, patterns we see (i.e. something that correlates with higher brain weights) will still hold true.
 
-```{r}
+```{r, ggplot6, cache = TRUE}
 msleep2 <- msleep %>% mutate(brainwt_log = log(brainwt))
 ggplot(msleep2, aes(x = brainwt_log, y = sleep_rem)) + geom_point()
 ```
@@ -72,7 +72,7 @@ We can modify the appearance of the plot in two ways: either uniformly changing 
 
 Let's explore how to modify our plots uniformly. We can change aspects of the points we plot such as transparency ("alpha") and color by supplying them as arguments in the `geom_point` function.
 
-```{r}
+```{r, ggplot7, cache = TRUE}
 ggplot(data = msleep2, aes(x = brainwt_log, y = sleep_rem)) +
     geom_point(alpha = 0.5, color = "blue")
 ```
@@ -84,7 +84,7 @@ However, it is also possible to scale the color of the points by some variable p
 
 To do this, we specify the `color` inside the aesthetic mapping `aes` within the initial `ggplot` function. Same as how we told R to use a specific column by name for `x` or `y` coordinates, we specify which column to use for `color`.
 
-```{r}
+```{r, ggplot8, cache = TRUE}
 ggplot(msleep2, aes(x = brainwt_log, y = sleep_rem, color = vore)) + 
   geom_point()
 ```
@@ -93,7 +93,7 @@ This plot conveys not only the relationship between `brainwt_log` and `sleep_rem
 
 When generating visualizations, it is important to annotate the figure with meaningful labels on the axes to make them accessible for the viewer. For that, we can use the `labs` function.
 
-```{r}
+```{r, ggplot9, cache = TRUE}
 ggplot(msleep2, aes(x = brainwt_log, y = sleep_rem, color = vore)) + 
   geom_point() + 
   labs(x = "Brain Weight (log)", 
@@ -113,14 +113,14 @@ However, other plots may be more useful to look at differing numbers of variable
 
 We can create histograms in ggplot2 that are more aesthetically pleasing than the default `hist` function. This shows the distribution of one quantitative variable.
 
-```{r}
+```{r, ggplot10, cache = TRUE}
 ggplot(msleep, aes(x = sleep_total)) +
     geom_histogram(bins = 10)
 ```
 
 We can look at how many individuals in the dataset fall into each category, such as how many mammals have each kind of feeding behavior.
 
-```{r}
+```{r, ggplot11, cache = TRUE}
 ggplot(data = msleep, aes(x = vore)) + 
   geom_bar()
 ```
@@ -135,21 +135,21 @@ Let's return to `iris` dataset to explore how we can visualize differences betwe
 
 We can look at how the distributions of `Sepal.Length` differ depending on which species each iris belongs to. One plot that can do this easily is the `geom_boxplot` function.
 
-```{r}
+```{r, ggplot12, cache = TRUE}
 ggplot(data = iris, aes(x = Species, y = Sepal.Length)) + 
   geom_boxplot()
 ```
 
 By adding a different parameter to `fill` in the `aes` we define throgh the `ggplot` function, we can separate out histograms according to different groupings. Here, we use `Species` to determine the color of the fill.
 
-```{r}
+```{r, ggplot13, cache = TRUE}
 ggplot(iris, aes(x = Sepal.Length, fill = Species)) +
     geom_histogram(bins = 10)
 ```
 
 While we can sort of see the trends on this plot, it may be helpful to separate out each histogram for each individual species. There is an easy way to do this in `ggplot2` using facetting or the `facet_wrap` function. This function splits the figure into separate panel where the data has been filtered by the category (i.e. `Species`).
 
-```{r}
+```{r, ggplot14, cache = TRUE}
 ggplot(iris, aes(x = Sepal.Length, fill = Species)) +
     geom_histogram(bins = 10) +
   facet_wrap( ~ Species)
@@ -167,20 +167,20 @@ The base R `heatmap` function meets many needs while the ggplot2 equivalent (`ge
 
 Let's go back to `msleep` dataset to visualize trends between the different measurements taken on each mammal. We will first create a simplified dataset from `msleep` where we take the log value of both `brainwt` and `bodywt`.
 
-```{r}
+```{r, ggplot15, cache = TRUE}
 temp.data <- cbind(log(msleep$brainwt), log(msleep$bodywt))
 head(temp.data)
 ```
 
 Next, we feed these numeric values into the `heatmap` function along with some arguments that specify settings for displaying the figure. We use `labCol` to specify how to label these columns and `cexCol` to control the text size of these labels. We set `labRow` to be the names of each species from the msleep dataset.
 
-```{r}
+```{r, ggplot16, cache = TRUE}
 heatmap(temp.data, labRow = msleep$name, labCol = c("brainwt", "bodywt"), cexCol = 1)
 ```
 
 This first heatmap will look strange because it colors each box by its magnitude, but body weight of a mammal is always greater than its brain weight. We want to scale within each column so that the depth of the color reflects whether the mammal has a high brain weight or high body weight **relative to the other mammals**.
 
-```{r}
+```{r, ggplot17, cache = TRUE}
 heatmap(temp.data, scale = "col", labRow = msleep$name, labCol = c("brainwt", "bodywt"), cexCol = 1)
 ```
 
@@ -188,7 +188,7 @@ Using the `scale` argument which we set to `"col"`, now the color of the columns
 
 Let's add some more data to our heatmap visualization.
 
-```{r}
+```{r, ggplot18, cache = TRUE}
 temp.data2 <- cbind(temp.data, msleep$sleep_total, msleep$sleep_rem)
 heatmap(temp.data2, scale = "col", labRow = msleep$name,
         labCol = c("brainwt", "bodywt", "total_sleep", "rem_sleep"), cexCol = 1)

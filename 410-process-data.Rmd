@@ -8,27 +8,28 @@ There are multiple file types that can be read into R. The most common one is th
 
 Let's practice reading in data using the `read.csv` function.
 
-```{r, eval=FALSE}
+```{r,process1, cache = TRUE, eval=FALSE}
 ?read.csv
 ```
 
 The repository for this site has a folder called `data` that contains a file called `iris.csv`, which is simply the original `iris` dataset with some modifications. We read in this data and save it to a variable named `irisz`.
 
-```{r}
+```{r,read_irisz,cache=T}
 irisz <- read.csv("data/iris.csv")
 head(irisz)
 ```
 
 You can already see there are some differences compared to the original `iris` dataset, such as missing data and an additional column of information. You can see there is also a difference in how certain columns are handled.
 
-```{r}
+```{r,head_irisz,cache=T}
 head(iris$Species)
 head(irisz$Species)
 ```
 
 For example, here it is clear that our data we read from a csv file is not treating species as categorical information. We can toggle a setting called `stringsAsFactors` that will turn these character string inputs into factors when the file is loaded into R.
 
-```{r}
+
+```{r,irisz_factors,cache=T}
 irisz <- read.csv("data/iris.csv", stringsAsFactors = TRUE)
 head(irisz$Species)
 head(irisz$Location)
@@ -38,7 +39,7 @@ If we did not want to reload our data from a file, we can also transform columns
 
 Now both of these columns are being treated as categorical data. There are other settings we can change, such as providing different names for the columns.
 
-```{r}
+```{r,irisiz_colnames,cache=T}
 irisz <- read.csv("data/iris.csv", col.names = c("sep_len", "sep_wid", "pet_len", "pet_wid", "species", "loc"))
 head(irisz)
 ```
@@ -47,14 +48,14 @@ head(irisz)
 
 Now that we have loaded in the data, we should preview it and look for any possible issues. You never know what can go wrong in the data pipeline: data can be recorded incorrectly or corrupted at any point in the process.
 
-```{r}
+```{r,str_irisz,cache=T}
 str(irisz)
 summary(irisz)
 ```
 
 One immediate issue you can spot here is that all variables are being treated as character strings. We would expect that sepal length/width and petal length/width would be numeric variables. To inspect what might be happening, we can look at the unique elements in one of these columns using the `unique` function.
 
-```{r}
+```{r,irisz_uniqvalz,cache=T}
 unique(irisz$sep_len)
 ```
 
@@ -62,7 +63,7 @@ Looking at this, we can find the culprit for why these values are treated as a s
 
 The `read.csv` function has a nice way to deal with this, specifically the argument `na.strings` that takes options for elements that might be present in the loaded data that should be treated as an `NA`.
 
-```{r}
+```{r,irisz_nafilters,cache=T}
 irisz <- read.csv("data/iris.csv", na.strings = c("", "n/a"), stringsAsFactors = TRUE)
 str(irisz)
 summary(irisz)
@@ -72,14 +73,14 @@ Now we can see that the first columns are being properly treated as numeric vect
 
 Our next step would be to double-check our data for anything that looks anamolous. Let's first take a look at the distributions of our numerical data using the base R `hist` function, which plots a simple histogram. 
 
-```{r}
+```{r,irisz_hist_sepal,cache=T}
 hist(irisz$Sepal.Length)
 hist(irisz$Sepal.Width)
 ```
 
 From these figures, we can spot that there is one very low value for sepal width that we may want to investigate.
 
-```{r}
+```{r,irisz_hist,cache=T}
 hist(irisz$Petal.Length)
 hist(irisz$Petal.Width)
 ```
@@ -88,7 +89,7 @@ From these figures, we see there is a very high value for petal width that we ma
 
 It is possible that these values somehow got changed or corrupted during the recording process. We can filter out these anomalous pieces of data using conditional logic that we learned about when indexing and subsetting into a vector. Let's start by filtering out rows that have a petal width more than 5.
 
-```{r}
+```{r,irisz_filter,cache=T}
 dim(irisz)
 irisz <- irisz[irisz$Petal.Width < 5, ]
 dim(irisz)
@@ -96,7 +97,7 @@ dim(irisz)
 
 Note that we used the statement `irisz$Petal.Width < 5` that evaluates as `TRUE` or `FALSE` for every row. We then indexed into the `irisz` dataframe using brackets `[]` and selected all rows that evaluate as `TRUE`. This led to one row being removed. We can repeat this with the anamolous value for sepal width.
 
-```{r}
+```{r,irisz_dim,cache=T}
 dim(irisz)
 irisz <- irisz[irisz$Sepal.Width > 1, ]
 dim(irisz)
@@ -112,7 +113,7 @@ Depending on what downstream analysis we want to conduct, we may want to standar
 
 The `scale` function will by default scale and center a numeric vector, but you can choose to do only one of these steps using argument settings. 
 
-```{r}
+```{r,scale_first,cache=T}
 x <- 1:10
 scale(x)
 scale(x, center = FALSE)
@@ -121,7 +122,7 @@ scale(x, scale = FALSE)
 
 We can scale the columns in our dataset and create a more standardized range of values for each column.
 
-```{r}
+```{r,before_after_scale,cache=T}
 # before scaling
 hist(irisz$Sepal.Length)
 hist(irisz$Petal.Width)
@@ -135,7 +136,7 @@ The shapes of our distributions for these measurements is not fundamentally diff
 
 You may also consider rescaling values or normalizing them to all be between 0 and 1. There is a function for this called `rescale` that comes with the `scales` library.
 
-```{r}
+```{r,library_scales,cache=T}
 library(scales)
 rescale(x)        
 ```

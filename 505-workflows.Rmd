@@ -1,4 +1,5 @@
-## What is a workflow?
+
+### What is a workflow?
 
 What does it take to do an analysis?
 
@@ -18,8 +19,8 @@ big (or many) flat files, processing the data into a useful form, sometimes
 using extra packages to analyze the data, then generating plots and statistical
 summaries of what you found - usually in an Rmarkdown-generated report.
 
+So let's start building up some skills!
+
 ---
-
-
 
 

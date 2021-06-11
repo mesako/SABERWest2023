@@ -1,0 +1,99 @@
+## Analyzing viral protein sequences
+
+Let's start with a project.
+
+Viral structural proteins are dramatically more important to the general
+public than they were 2 years ago - and under much more public attention. 
+Let's take a cursory look at some of these.
+
+What kind of data are we using for this?
+We'll retrieve some determined protein sequences from NCBI databases.
+We've already done that work for you already. Here's a short writeup of
+what we did, amd we would recommend that you
+always document where the data came from and how it was retrieved/processed:
+
+> The NCBI Identital Protein Groups database was queried for "structural"
+> with "Division" restricted to "Viruses" and "Source database" restricted
+> to "UniProtKB/Swiss-Prot". 243 results were retrieved as FASTA files and 
+> converted using bash commands into separate tab-delimited files.
+^[One crucial aspect missing is the actual bash commands used. I did not
+    save them as a script, and I *should* go back, save them in a script,
+    and re-run that to make sure I get the same result!]
+
+What format are these in?
+These files are in the `data/viral_structural_proteins` folder,
+they end in `.tsv`, are tab-delimited three fields, and look like this:
+
+    Q8V433.1 Membrane protein       Bovine respiratory coronavirus (strain 98TXSF-110-LUN)  MSSVTTPAPVYTWTA...
+
+This is not a standard format, because I'd like to tell y'all about
+reading tab-delimited files.
+^[The formats you're likely going to have to deal with are CSV, TSV,
+    FASTQ, FASTA, SAM - at least. ]
+
+How do you inspect these files?
+What bash tools do you use to look at these?
+
+---
+
+### Reading in tab-delimited file
+
+Let's read one of them into R.
+
+The records are "delimited" by tabs, so each field is tab-separated.
+We'll need to use the `read.delim` function and specify a tab separator.
+
+#### Review of looking up documentation
+
+You can look up the documentation for any named function or package by using
+the `?function` syntax.
+
+Sometimes, you need to use extra backticks to make it work, like `` ?`+` ``
+
+If you don't know what you're looking for, you can search with `??`.
+Extra backticks don't hurt, and are necessary when you have spaces in the 
+query.
+
+Once the documentation is open, you can search for text.
+If you are using the R console, you can use `/` to open a search bar and 
+enter-key to search for it.
+
+---
+
+#### Back to the file-reading...
+
+What does `?read.delim` say it does?
+How do you set the delimiter/separator as a tab?
+^[Often this is typed into computers and scripts as "\t", as the tab key 
+    will often not put a TAB character into where you're typing.]
+
+Is the function expecting there to be a file "header"?
+( This would where the first line of the file has the name of each column )
+Do we want to set this to `TRUE` or `FALSE` ?)
+
+```{=html}
+<div class="incremental">
+```
+
+```{r,calculate_one,cache=T}
+viral_protein_data <- read.delim("data/viral_structural_proteins/viral_proteins_100.tsv",
+    sep="\t",header=F)
+viral_protein_data
+```
+
+- What is `viral_protein_data`? What kind of variable?
+- How do we find the column names?
+- What are two ways to access the protein sequence?
+- How do we calculate the number of characters in this protein sequence?
+    ( Try searching with "??`number of characters`" )
+
+What type is the `V3` column? What should it be?
+How do we tell R to treat these strings as they are, and not convert to factors?
+
+```{=html}
+</div>
+```
+
+---
+
+

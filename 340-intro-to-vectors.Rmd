@@ -10,7 +10,7 @@ Remember that you can create vectors (an ordered list of elements) by combining 
 
 Let us pretend that we measured and recorded the resting heart rates of several patients. We will create these vectors and assign them to some variables.
 
-```{r}
+```{r, vectors1, cache=TRUE}
 heart.rates <- c(78, 68, 95, 82, 69, 63, 86, 74, 64, 62)
 more.heart.rates <- c(86, 79, 64, 74, 80)
 heart.rates
@@ -19,21 +19,21 @@ more.heart.rates
 
 We have used the `c` function to combine several individual elements that we typed out, but you can combine vectors together to make an even bigger vector.
 
-```{r}
+```{r, vectors2, cache=TRUE}
 all.heart.rates <- c(heart.rates, more.heart.rates)
 all.heart.rates
 ```
 
 Vectors can contain different datatypes besides numbers. We can also provide several character strings in a vector, like the names of our patients.
 
-```{r}
+```{r, vectors3, cache=TRUE}
 patient.names <- c("oakley", "rashmi", "kiran",
                    "eun", "sasha", "mattie")
 ```
 
 However, note that vectors cannot handle multiple different datatypes at once. If you try to provide a vector with multiple datatypes:
 
-```{r}
+```{r, vectors4, cache=TRUE}
 mixed.data <- c("oakley", 18, TRUE, "eun", NA, 50)
 mixed.data
 ```
@@ -42,20 +42,20 @@ You can see this displays these elements enclosed in quotes, to indicate that R 
 
 There are several helpful functions and an operator that can speed up your ability to generate vectors. The `:` operator quickly creates a numeric vector for a range of values.
 
-```{r}
+```{r, vectors5, cache=TRUE}
 1:4
 ```
 
 The `seq` function can help you quickly create numeric vectors. The `rep` function can be used to build either numeric or character string vectors.  Reading the documentation will tell you which arguments these functions take.
 
-```{r,eval=FALSE}
+```{r, vectors6, cache=TRUE, eval=FALSE}
 ?seq
 ?rep
 ```
 
 Here are examples of how they can be used:
 
-```{r}
+```{r, vectors7, cache=TRUE}
 z <- seq(0, 100, by = 20)
 z
 z <- rep("A", times = 5)
@@ -70,21 +70,21 @@ Indexing is a way to access into a vector (or a matrix or a data frame) and pull
 
 There are multiple ways to index into a vector, one of the easiest ways is to pull out an element based on its order/position in the grouping (its index). We use `[]` immediately after the name of the grouping (in this case a vector) to access into it.
 
-```{r}
+```{r, vectors8, cache=TRUE}
 all.heart.rates[2] # pull out second heart rate measurement
 patient.names[3] # pull out third patient name
 ```
 
 You can also pull out several elements at a time. To do this, you provide a vector of numeric values within the parentheses.
 
-```{r}
+```{r, vectors9, cache=TRUE}
 patient.names[2:3] # pull out 2nd and 3rd patient name
 patient.names[c(1, 3)] # pull out 1st and 3rd patient name
 ```
 
 You can remove elements of a vector by using the same syntax of indexing, but instead put a negative sign in front of the index number.
 
-```{r}
+```{r, vectors10, cache=TRUE}
 patient.names[-1]
 ```
 
@@ -98,7 +98,7 @@ You can also access elements in a vector that meet certain criteria using what w
 
 Let's explore what it looks like to evaluate a statement.
 
-```{r}
+```{r, vectors11, cache=TRUE}
 save.num <- 7
 save.num < 8
 save.num > 8
@@ -112,19 +112,19 @@ We can do the same thing with vectors, and it will be performed in a *vectorized
 
 For example, we can evaluate each heart rate in our original vector to see whether or not the value is less than 80.
 
-```{r}
+```{r, vectors12, cache=TRUE}
 all.heart.rates < 80
 ```
 
 This series of flags with `TRUE` and `FALSE` can be used to access into a vector and will only return the elements where there is a `TRUE`.
 
-```{r}
+```{r, vectors13, cache=TRUE}
 all.heart.rates[all.heart.rates < 80]
 ```
 
 In the context of bigger data analysis, we can use conditional logic to make choices between executing different sets of code. You can pair these conditional statements with an `if`/`else` statement that breaks up the code and only executes parts of the code where conditions are met.
 
-```{r}
+```{r, vectors14, cache=TRUE}
 test.num <- 30
 
 if (test.num < 10) {
@@ -144,7 +144,7 @@ Let's look into how we change an existing vector. We can save data into a vector
 
 We can investigate an unknown vector using several functions, like the `length` function. As the name implies, it returns how many elements your vector contains.
 
-```{r}
+```{r, vectors15, cache=TRUE}
 x <- c(1, 3, 2)
 y <- c(5, 4, 6)
 length(x)
@@ -153,7 +153,7 @@ length(y)
 
 Let's try modifying the values in an existing vector. Note that when you try to add values to a vector, it can be done in a pairwise manner or uniformly across the entire vector. Let's see what it looks like when we have pairwise addition of two vectors of the same length.
 
-```{r}
+```{r, vectors16, cache=TRUE}
 x + y
 ```
 
@@ -161,19 +161,19 @@ Here, you can see that the first element of `x` is added to the first element of
 
 You can perform mathematical operations on an entire numeric vector all at once. Here we take the vector of our heart rate data and add 1 to it, which  will add 1 to each individual element in the entire vector.
 
-```{r}
+```{r, vectors17, cache=TRUE}
 all.heart.rates + 1
 ```
 
 This is another example of a vectorized operation, where we perform a step automatically to all items in a collection of items (e.g. a vector). This works with operators like `+` or `-`, but also with certain functions.
 
-```{r,eval=FALSE}
+```{r, vectors18, cache=TRUE, eval=FALSE}
 ?log
 ```
 
 For example, the `log` function calculates the log value of a number. If you provide it with a vector, it will do that calculation for each element, returning a vector of the same length.
 
-```{r}
+```{r, vectors19, cache=TRUE}
 log(all.heart.rates)
 ```
 
@@ -181,13 +181,13 @@ This demonstrates how one can quickly transform or scale values in a dataset. Fo
 
 Here is an additional example using the `signif` function, which returns your numeric values with the number of significant digits that you specify.
 
-```{r,eval=FALSE}
+```{r, vectors20, cache=TRUE, eval=FALSE}
 ?signif
 ```
 
 Here we can specify one significant figure to get only the tens digit (or the hundreds digit if there is a value over 100).
 
-```{r}
+```{r, vectors21, cache=TRUE}
 signif(all.heart.rates, digits = 1)
 ```
 

@@ -4,7 +4,7 @@ Making plots can be a great way to develop an intuition for your dataset, though
 
 Uncertainty describes ideas such as: are the values between two groups different enough, that it is unlikely that the differences are due to chance? Is the correlation between these variables strong enough that one can predict the other, with some level of confidence? **How statistically significant are the patterns we see?**
 
-```{r,include=FALSE}
+```{r, scifig1, cache = TRUE, include=FALSE}
 library(ggplot2)
 library(tidyverse)
 msleep2 <- msleep %>% mutate(brainwt_log = log(brainwt))
@@ -14,7 +14,7 @@ msleep2 <- msleep %>% mutate(brainwt_log = log(brainwt))
 
 When we compare measurements taken from two samples (i.e. two groups), we might want to see if the two groups have very different values for that specific measurement. If we have multiple observations within each group, we can take a summary statistic such as the mean or median and plot those against each other.
 
-```{r}
+```{r, scifig2, cache = TRUE}
 ggplot(msleep2, aes(x = vore, y = awake)) + 
   geom_bar(stat = "summary", fun = "mean")
 ```
@@ -27,7 +27,7 @@ Here is the convention for plotting error bars in ggplot2, as you can see it is 
 
 This method is straightforward, but you need to have pre-calculated the summary statistic for each group and the amount of error (i.e. standard error) from your data. That "aggregated" dataframe becomes the data that you provide to ggplot, instead of the original dataset. 
 
-```{r}
+```{r, scifig3, cache = TRUE}
 feeding.data <- msleep2 %>% group_by(vore) %>% 
   summarize(mean_se(awake))
 feeding.data
@@ -35,7 +35,7 @@ feeding.data
 
 What does `mean_se` do? We can check.
 
-```{r, eval=FALSE}
+```{r, scifig4, cache = TRUE, eval=FALSE}
 ?mean_se
 ```
 
@@ -43,7 +43,7 @@ This function returns three values, `y`, `ymin`, and `ymax` which correspond to 
 
 Let's first plot the height of the bars using this new `feeding.data` dataset and mapping `y` to our new `y` column generated from the `mean_se` function. Here we create the same plot as before from this aggregated dataset, just showing the mean value in each group.
 
-```{r}
+```{r, scifig5, cache = TRUE}
 my.plot <- ggplot(feeding.data, aes(x = vore, y = y)) + 
   geom_bar(stat = "identity")
 my.plot
@@ -51,7 +51,7 @@ my.plot
 
 Now we add the error bars, mapping the `ymin` and `ymax` values to the arguments that happen to have the same name in the `geom_errorbar` function. We add in the `width` setting just for aesthetics.
 
-```{r}
+```{r, scifig6, cache = TRUE}
 my.plot <- my.plot + geom_errorbar(aes(ymin = ymin, ymax = ymax),
                                    width = 0.2)
 my.plot
@@ -67,7 +67,7 @@ Lots of these different figures summarize or aggregate the data. We may want to 
 
 Let's check out the trend in our `msleep` data between body weight and brain weight. We will create a new column where we take the log value of body weight, like we did with brain weight.
 
-```{r, warning=FALSE}
+```{r, scifig7, cache = TRUE, warning=FALSE}
 msleep3 <- msleep2 %>% mutate(bodywt_log = log(bodywt))
 ggplot(data = msleep3, mapping = aes(x = brainwt_log, y = bodywt_log)) +
   geom_density_2d() +
@@ -76,7 +76,7 @@ ggplot(data = msleep3, mapping = aes(x = brainwt_log, y = bodywt_log)) +
 
 As you can see the density of points almost look like they fit a line. As brain weight increases then body weight increases, or vice versa. We can add a trendline to this plot with the `geom_smooth` function.
 
-```{r, warning=FALSE}
+```{r, scifig8, cache = TRUE, warning = FALSE}
 ggplot(msleep3, aes(x = brainwt_log, y = bodywt_log)) +
   geom_point(alpha = 0.5) +
   geom_smooth()
@@ -84,7 +84,7 @@ ggplot(msleep3, aes(x = brainwt_log, y = bodywt_log)) +
 
 We can also do this with trendlines that summarize only certain subsets of the data, such as those that belong to a specific category. We will flip back to our `iris` dataset to look at how sepal length compares to sepal width between different species of iris. 
 
-```{r, warning=FALSE}
+```{r, scifig9, cache = TRUE, warning=FALSE}
 ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) + 
   geom_point() +
   geom_smooth(aes(color = Species)) 
@@ -94,7 +94,7 @@ We create a seaprate trendline for each by specifiying the `aes` with color mapp
 
 The above plot may make it hard to see the data that is contributing to each trend line. Using `facet_wrap` again, we can split the figure into separate panel where the data has been filtered by the category (i.e. species).
 
-```{r, warning=FALSE}
+```{r, scifig10, cache = TRUE, warning= FALSE}
 ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
   geom_point() +
   geom_smooth(aes(color = Species)) +
@@ -111,7 +111,7 @@ As you produce analysis in your research, you may want to create high-quality im
 
 The first method uses `ggsave` to save the most recent ggplot figure you generated.
 
-```{r, eval=FALSE}
+```{r, scifig11, cache = TRUE, eval=FALSE}
 ggplot(msleep2, aes(x = brainwt_log, y = sleep_rem)) + geom_point() +
   geom_smooth(method = "lm")
 ggsave("plot.png", width = 5, height = 5)
@@ -119,13 +119,13 @@ ggsave("plot.png", width = 5, height = 5)
 
 This function will save the figure just produced by this code wherever your directory is currently. You can check your current directory with `getwd()` and change with `setwd(<FOLDER NAME>)`. You can also provide a precise file path in the new file name.
 
-```{r, eval=FALSE}
+```{r, scifig12, cache = TRUE, eval=FALSE}
 ggsave("~/Downloads/plot.png", width = 5, height = 5)
 ```
 
 Here is an alternative method for saving your figures:
 
-```{r, eval=FALSE, warning=FALSE}
+```{r, scifig13, cache = TRUE, eval=FALSE, warning=FALSE}
 pdf("plot.pdf") # creates the file
 # png() also works if you want a different file format
 ggplot(msleep2, aes(x = brainwt_log, y = sleep_rem)) + geom_point() +
