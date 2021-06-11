@@ -2,8 +2,10 @@ tab:nice-tab-appendix
 workshop-introduction
 workshop-goals
 structure-and-resources
+workshop-schedule
 this-syllabus-and-videos
 slack-channel
+synchronous-sessions
 workshop-expectations
 day-3---intoduction-to-r
 using-rstudio
