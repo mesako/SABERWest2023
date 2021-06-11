@@ -13,6 +13,10 @@ environment-and-history
 files-plots-and-packages
 putting-it-all-together
 using-rmds
+basic-structure
+overview-of-markdown
+overview-of-how-to-write-an-r-chunk
+final-thoughts
 getting-started-in-r
 getting-help-in-r
 using-variables-and-data-types
