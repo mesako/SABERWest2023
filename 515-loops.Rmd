@@ -178,8 +178,10 @@ We'll save it first so we can count how many there are.
 otherwise use something like `seq(1,length(x))`.
 
 ```{r,loop_save_and_index,cache=T}
+# listing files
 first_five <- list.files(path="data/viral_structural_proteins")[1:5]
 
+# looping through files
 for (i in seq_along(first_five) ) {
     print(i)
     print(first_five[i])
@@ -191,9 +193,12 @@ for (i in seq_along(first_five) ) {
 Putting these together, we can create and save a vector of file names:
 
 ```{r,loop_save_and_index_filenames,cache=T}
+# listing files
 first_five <- list.files(path="data/viral_structural_proteins")[1:5]
+# initializing vectors
 filenamez <- vector("character",length(first_five))
 
+# looping through files
 for (i in seq_along(first_five) ) {
   filenamez[i] <- first_five[i]
 }
@@ -215,11 +220,15 @@ And we'll get back to the FASTA later...
 And finally calculate the length of each protein:
 
 ```{r,loop_to_calc_lengths_work,cache=T,error=T}
+# listing files
 first_five <- list.files(path="data/viral_structural_proteins",
                          full.names=T, pattern=".*tsv")[1:5]
+# initializing vectors
 lengthz <- vector("character",length(first_five))
 
+# looping through files
 for (i in seq_along(first_five) ) {
+  # calculating length and storing it
   lengthz[i] <- nchar( read.delim(first_five[i],
       header=F,as.is=T,sep="\t")$V3[[1]]
     )
@@ -233,11 +242,15 @@ lengthz
 Now we can take off the `[1:5]` limiter, and do the whole set:
 
 ```{r,loop_to_calc_lengths_all,cache=T,error=T}
+# listing files
 first_five <- list.files(path="data/viral_structural_proteins",
                          full.names=T, pattern=".*tsv")
+# initializing vectors
 lengthz <- vector("character",length(first_five))
 
+# looping through files
 for (i in seq_along(first_five) ) {
+  # calculating length and storing it
   lengthz[i] <- nchar( read.delim(first_five[i],
       header=F,as.is=T,sep="\t")$V3[[1]]
     )
@@ -263,15 +276,20 @@ Character? Let's try numeric instead...
 ---
 
 ```{r,loop_to_calc_lengths_all_fixed,cache=T,error=T}
+# listing files
 first_five <- list.files(path="data/viral_structural_proteins",
                          full.names=T, pattern=".*tsv")
+# initializing vectors
 lengthz <- vector("numeric",length(first_five))
 
+# looping through files
 for (i in seq_along(first_five) ) {
+  # calculating length and storing it
   lengthz[i] <- nchar( read.delim(first_five[i],
       header=F,as.is=T,sep="\t")$V3[[1]]
     )
 }
+
 ```
 
 ---

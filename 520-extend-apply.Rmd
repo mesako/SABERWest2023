@@ -251,20 +251,31 @@ grepl(pattern="PRAR",x=test_string_negative)
 ```
 
 Looks good.
+
+---
+
 Now let's modify our previous code to use this line, and store it into
 the appropriate position.
 
+How do we do this? 
+
 ```{r,loop_for_doing_both_typo,cache=T,error=T}
+# listing files
 all_files <- list.files(path="data/viral_structural_proteins",
                          full.names=T, pattern=".*tsv")
+
+# initializing vectors
 lengthz <- vector("numeric",length(all_files))
 motifz  <- vector("logical",length(all_files))
 
+# looping through files
 for (i in seq_along(all_files) ) {
+  # calculating length and storing it
   lengthz[i] <- nchar( 
         read.delim(all_files[i],
             header=F,as.is=T,sep="\t")$V3[[1]]
     )
+  # looking for motif and storing it
   motifz[i]  <- grepl(pattern="PRAR",
         x=read.delim(all_files[i],
             header=F,as.is=T,sep="\t")$V3[[1]]
@@ -277,19 +288,25 @@ this may be a smoking gun, this has implic....
 
 ---
 
-Oh wait, that's a typo.
+Oh wait, that's a typo. It's "PRRA" not "PRAR".
 
 ```{r,loop_for_doing_both,cache=T,error=T}
+# listing files
 all_files <- list.files(path="data/viral_structural_proteins",
                          full.names=T, pattern=".*tsv")
+
+# initializing vectors
 lengthz <- vector("numeric",length(all_files))
 motifz  <- vector("logical",length(all_files))
 
+# looping through files
 for (i in seq_along(all_files) ) {
+  # calculating length and storing it
   lengthz[i] <- nchar( 
         read.delim(all_files[i],
             header=F,as.is=T,sep="\t")$V3[[1]]
     )
+  # looking for motif and storing it
   motifz[i]  <- grepl(pattern="PRRA",
         x=read.delim(all_files[i],
             header=F,as.is=T,sep="\t")$V3[[1]]
@@ -298,6 +315,9 @@ for (i in seq_along(all_files) ) {
 ```
 
 It actually pops up a few times. In what files?
+
+---
+
 Since `motifz` is logical, we can use that to index the files vector:
 
 ```{r,which_files,cache=T}
@@ -308,6 +328,9 @@ Additional questions:
 
 - In what viruses, what proteins does it pop up?
     How does that affect your interpretation?
+
+    How do you use the skills from Day1/2 to look?
+    
 - Does it show up where you'd expect it to?
     What might that suggest about this dataset?
 - How might we come up with a null model for this? 
@@ -327,6 +350,32 @@ Additional questions:
                 levels=c("A","B","C","D","E","F","G")
             )
         )
+
+    `table` tabulates the occurances of a string/factor,
+    `factor` with a `levels` argument can create "spaces" for unobserved
+    letters/strings,
+    `unlist` turns a list into not a list,
+    `strsplit` breaks up a string into a vector of strings using a pattern
+    that can also be "".
+
+    I wonder what would happen if these vectors were created for each
+    protein, and then summed... 
+
+
+### Conclusion
+
+- You can use loops to organize repetitive tasks, such as working through a
+    large list of files and reading them.
+- You can analyze strings using functions like `nchar` or `grepl`.
+- Modular design of workflows, using functions or just organized and 
+    commented code, can help you extend your analysis to handle new
+    questions as they arise
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 ---
 
