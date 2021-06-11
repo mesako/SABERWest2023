@@ -1,3 +1,5 @@
 ## More links
 
 - [Claus Wilke's dataviz bookdown](https://clauswilke.com/dataviz/)
+- [Computational Genomics with R](https://compgenomr.github.io/book/)
+- [UC Davis bioinformatics trainings](https://ucdavis-bioinformatics-training.github.io/)
