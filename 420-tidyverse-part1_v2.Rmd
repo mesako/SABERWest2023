@@ -46,7 +46,7 @@ We have a dataframe, `df`,  with measumerments of flowers. We're interested in f
 2. Create a new single variable for size which combines length and width of the petal of a flower `size = petal.length * petal.width`
 3. Group measurements by location and calculate the mean and standard deviation of flower sizes in that location
 
-```
+```{r,tidy2}
 df %>%
   filter(Species == "setosa") %>%
   mutate(Size = Petal.Length * Petal.Width) %>%
@@ -67,8 +67,7 @@ Notice how the `%>%` pipe is sending the output from before it to the output aft
 
 How would you perform the above operation in base R, without the `%>%`? Give it a try!
 
-<<<<<<< HEAD
-```
+```{r,tidy1}
 # Filter the data
 df_filtered <- df[Species == "setosa"]
 
@@ -91,16 +90,12 @@ Feeling motivated to accelerate data cleaning and analysis using the tidyverse?
 
 ### Let's start by making sure Tidyverse is installed
 
-
-```{r}
-=======
 Download tidyverse
 Remember we only have to install once
 
 ```{r,showing_to_install_but_not_gonna_re_install_for_every_typsetting,eval=F}
 install.packages("tidyverse")
 ```
->>>>>>> 9f302410d0ed4a79fceee03c22358a9168296ea8
 
 Load the tidyverse library
 
@@ -121,15 +116,11 @@ head(irisz)
 
 # Now try it with tidyverse piping
 
-<<<<<<< HEAD
-irisz %>% 
-=======
-library(tidyverse)
+# irisz %>% 
+# library(tidyverse)
 
 df <- irisz
-df %>% 
->>>>>>> 9f302410d0ed4a79fceee03c22358a9168296ea8
-  head()
+df %>% head()
 
 # Let's pipe the data frame into a summary() function
 # to get summary statistics
@@ -225,7 +216,6 @@ irisz %>%
          Location == "Korea")
 
 ```
-
 
 
 ### Creating new variables
