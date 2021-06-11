@@ -337,7 +337,26 @@ library(ggplot2)
 
 **If you reach this point during the asynchronous session, please stop and wait until the synchronous session starts.**
 
-**Task:** ???
+**Getting Started: ?** 
+Describe 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**More Practice: ?** 
+???
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Seeking Challenge: ?** 
+???
 
 ```{r}
 # Your code here
@@ -472,7 +491,26 @@ library(ggplot2)
 
 **If you reach this point during the asynchronous session, please stop and wait until the synchronous session starts.**
 
-**Task:** ???
+**Option 1: ?** 
+?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Option 2: ?** 
+?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+**Option 3: ?** 
+?
 
 ```{r}
 # Your code here

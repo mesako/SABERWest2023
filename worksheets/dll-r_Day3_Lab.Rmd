@@ -90,7 +90,99 @@ save.bool <- TRUE
 
 **If you reach this point during the asynchronous session, please stop and wait until the synchronous session starts.**
 
-**Task:** ???
+For these activities, you will need the SSRP scholar dataset that we generated and collected this morning (link TBA). 
+
+During this synchronous session, you will have the option to pick which of the following options you would like to work on with your peers.
+
+**Option 1: Examining Datatypes** 
+Examine our SSRP scholar dataset. Discuss with your group:
+
+What kinds of datatypes are represented here?
+*Your response here*
+
+Can some of these pieces of data be represented with multiple datatypes?
+*Your response here*
+
+How could you convert each type of data into a different datatype? Describe whether more info would be needed or if some info would be lost.
+*Your response here*
+
+What are the advantages and disadvantages of representing information using a character string?
+*Your response here*
+
+What are the advantages and disadvantages of representing information using a numeric value?
+*Your response here*
+
+What are the advantages and disadvantages of representing information using a boolean value?
+*Your response here*
+
+Brainstorm what kinds of plots you would produce with each of the datatypes you have learned about in R.
+*Your response here*
+
+
+**Option 2: Identifying Datatypes and Saving Variables** 
+There are multiple functions that can diagnose what datatype you are working with: `is.factor`, `is.numeric`, `is.character`, and `is.logical`.
+
+In the space below, investigate our SSRP scholar dataset. What datatypes are present here in each column? Did they match your expectations or not? Describe your findings.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+Practice saving this data or parts of this data under other variable names. Identify the datatype of these variables with the above functions.
+
+```{r}
+# Your code here
+```
+
+Check all of the new variables that you have created. Practice removing some of these new variables that you have created.
+
+```{r}
+# Your code here
+```
+
+There are multiple functions that can convert one datatype to another: `as.factor`, `as.numeric`, `as.character`, and `as.logical`.
+
+Practice converting some of your variables to a different datatype and make a note of what happens.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+
+**Option 3: Applying Functions to Our Data** 
+For each of the following functions: `which`, `sum`, `sort`, `paste`, or `sample`, research this function if you are not already familiar with it.
+
+Identify its arguments and outputs. We recommend looking at the sections for Usage, Arguments, and Examples.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+For each of the following functions: `which`, `sum`, `sort`, `paste`, or `sample`, practice using these functions with our SSRP scholar dataset. Identify which parts of our dataset may serve as inputs for these functions and try to apply them without errors.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+For each of the following functions: `write.csv`, `apply`, `set.seed`, or `detach`, research this function if you are not already familiar with it.
+
+Identify its arguments and outputs. We recommend looking at the sections for Usage, Arguments, and Examples.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+For each of the following functions: `write.csv`, `apply`, `set.seed`, or `detach`, practice using these functions with our SSRP scholar dataset. Identify which parts of our dataset may serve as inputs for these functions and try to apply them without errors.
 
 ```{r}
 # Your code here
@@ -287,7 +379,6 @@ library(ggplot2)
 
 *Your response here*
 
-
 **Task:** Investigate the counts of categorical variables in the `msleep` dataset. Describe your findings.
 
 ```{r}
@@ -358,10 +449,92 @@ msleep.small <- msleep[1:7, c("name", "vore", "sleep_total", "brainwt")]
 
 **If you reach this point during the asynchronous session, please stop and wait until the synchronous session starts.**
 
-**Task:** ???
+For these activities, you will need the SSRP scholar dataset that we generated and collected this morning (link TBA). 
+
+During this synchronous session, you will be randomly put into groups with your peers and encouraged to work through the following tasks. You can go in order or start with whichever task interests you the most!
+
+**Getting Started: Exploring the SSRP Scholar Dataset** 
+Use various R functions to describe the SSRP dataset. How many different individuals are part of the dataset, and how many attributes about them are included?
 
 ```{r}
 # Your code here
 ```
 
 *Your response here*
+
+What are the range of options present in each column of this dataset? How many distinct options are there in each categorical variable? How many people fall in each group?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+What is the min or the max of different quantitative variables? What seems to be the most common number or average of these numeric values?
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+
+**More Practice: Modifying the SSRP Scholar Dataset** 
+Create a copy of the SSRP scholar dataset as a new variable. You will use this copy going forward to extract and modify elements in this dataframe.
+
+Pull out the specific row that contains your own data or that of other people in your group.
+
+```{r}
+# Your code here
+```
+
+Make a shortened version of your original dataframe that contains only some of the columns and some of the rows.
+
+```{r}
+# Your code here
+```
+
+Try overwriting the names of certain members of the SSRP scholar dataset with their nickname.
+
+```{r}
+# Your code here
+```
+
+Try to uniformly change all measurements in a quantitative column (e.g. add or subtract some amount) in the SSRP scholars dataset.
+
+```{r}
+# Your code here
+```
+
+Convert one of the columns to a different datatype and overwrite the old column in your dataframe.
+
+```{r}
+# Your code here
+```
+
+
+
+**Seeking Challenge: Adding to and Saving the SSRP Scholar Dataset** 
+Add a new column to this dataset. Ask the members of your group to supply their actual answer for this column, and fill everyone else's cells with `NA` values.
+
+```{r}
+# Your code here
+```
+
+Interact with one of the teaching leads for this course and ask them their information so you can add them as a row in your dataset.
+
+```{r}
+# Your code here
+```
+
+Use the `write.csv` function to save your modified dataframe as a local file on your computer. Be sure to check what arguments this function takes using the `help` function.
+
+```{r}
+# Your code here
+```
+
+Practice reading in the file you just created using the `read.csv` function.
+
+```{r}
+# Your code here
+```
