@@ -231,6 +231,102 @@ For much much more about strings, check out
 [Wickham's R4DS book](https://r4ds.had.co.nz/strings.html).
 Especially for the special characters part
 
+---
+
+### Back to the motifs
+
+Let's go ahead and look for that sequence, "PRAR" in the structural proteins
+we've downloaded here. First, we make one example of that code.
+
+We can start with making a positive and negative control so we can debug
+this easily.
+
+
+```{r,prra_looking_for,cache=T}
+test_string_positive <- "APQPRARCGPGP"
+test_string_negative <- "AVASTMEMATEY"
+
+grepl(pattern="PRAR",x=test_string_positive)
+grepl(pattern="PRAR",x=test_string_negative)
+```
+
+Looks good.
+Now let's modify our previous code to use this line, and store it into
+the appropriate position.
+
+```{r,loop_for_doing_both_typo,cache=T,error=T}
+all_files <- list.files(path="data/viral_structural_proteins",
+                         full.names=T, pattern=".*tsv")
+lengthz <- vector("numeric",length(all_files))
+motifz  <- vector("logical",length(all_files))
+
+for (i in seq_along(all_files) ) {
+  lengthz[i] <- nchar( 
+        read.delim(all_files[i],
+            header=F,as.is=T,sep="\t")$V3[[1]]
+    )
+  motifz[i]  <- grepl(pattern="PRAR",
+        x=read.delim(all_files[i],
+            header=F,as.is=T,sep="\t")$V3[[1]]
+    )
+}
+```
+
+Wow! This seems like it's a really rare motif. I wonder what this means,
+this may be a smoking gun, this has implic....
+
+---
+
+Oh wait, that's a typo.
+
+```{r,loop_for_doing_both,cache=T,error=T}
+all_files <- list.files(path="data/viral_structural_proteins",
+                         full.names=T, pattern=".*tsv")
+lengthz <- vector("numeric",length(all_files))
+motifz  <- vector("logical",length(all_files))
+
+for (i in seq_along(all_files) ) {
+  lengthz[i] <- nchar( 
+        read.delim(all_files[i],
+            header=F,as.is=T,sep="\t")$V3[[1]]
+    )
+  motifz[i]  <- grepl(pattern="PRRA",
+        x=read.delim(all_files[i],
+            header=F,as.is=T,sep="\t")$V3[[1]]
+    )
+}
+```
+
+It actually pops up a few times. In what files?
+Since `motifz` is logical, we can use that to index the files vector:
+
+```{r,which_files,cache=T}
+all_files[motifz]
+```
+
+Additional questions:
+
+- In what viruses, what proteins does it pop up?
+    How does that affect your interpretation?
+- Does it show up where you'd expect it to?
+    What might that suggest about this dataset?
+- How might we come up with a null model for this? 
+    How often would this occur? Under what assumptions? 
+    How do you test that?
+- Your null model might depend on how often certain amino acids tend to
+    occur. How might you write some R code to count up each occurance
+    of each amino acid?
+
+    Here's a complex line of code that may be adaptable to this problem:
+
+        table(
+            factor(
+                unlist(
+                    strsplit("ACABA",split="")
+                ),
+                levels=c("A","B","C","D","E","F","G")
+            )
+        )
 
 ---
 
