@@ -1,7 +1,15 @@
 ## Analyzing viral protein sequences
 
-Let's work through an analysis of the size of some structural viral proteins.
-We've done some of the work for you already, and would recommend that you
+Let's start with a project.
+
+Viral structural proteins are dramatically more important to the general
+public than they were 2 years ago - and under much more public attention. 
+Let's take a cursory look at some of these.
+
+What kind of data are we using for this?
+We'll retrieve some determined protein sequences from NCBI databases.
+We've already done that work for you already. Here's a short writeup of
+what we did, amd we would recommend that you
 always document where the data came from and how it was retrieved/processed:
 
 > The NCBI Identital Protein Groups database was queried for "structural"
@@ -12,13 +20,19 @@ always document where the data came from and how it was retrieved/processed:
     save them as a script, and I *should* go back, save them in a script,
     and re-run that to make sure I get the same result!]
 
+What format are these in?
 These files are in the `data/viral_structural_proteins` folder,
-are tab-delimited three fields, and look like this:
+they end in `.tsv`, are tab-delimited three fields, and look like this:
 
     Q8V433.1 Membrane protein       Bovine respiratory coronavirus (strain 98TXSF-110-LUN)  MSSVTTPAPVYTWTA...
 
+This is not a standard format, because I'd like to tell y'all about
+reading tab-delimited files.
+^[The formats you're likely going to have to deal with are CSV, TSV,
+    FASTQ, FASTA, SAM - at least. ]
+
 How do you inspect these files?
-What bash tools do you use?
+What bash tools do you use to look at these?
 
 ---
 
@@ -67,7 +81,7 @@ viral_protein_data <- read.delim("data/viral_structural_proteins/viral_proteins_
 viral_protein_data
 ```
 
-- What is `viral_protein_data`?
+- What is `viral_protein_data`? What kind of variable?
 - How do we find the column names?
 - What are two ways to access the protein sequence?
 - How do we calculate the number of characters in this protein sequence?

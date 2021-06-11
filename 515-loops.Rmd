@@ -203,6 +203,15 @@ filenamez
 
 ---
 
+However... there's some other files in there, isn't there?
+A `viral_structural_proteins.fasta`?
+
+Let's ignore that from the `list.files` call by using the argument
+`pattern=".*.tsv"` argument.
+And we'll get back to the FASTA later...
+
+---
+
 And finally calculate the length of each protein:
 
 ```{r,loop_to_calc_lengths_work,cache=T,error=T}
