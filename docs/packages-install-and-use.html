@@ -151,7 +151,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Day 3 - intoduction to R</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="navigating-rstudio.html"><a href="navigating-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Navigating Rstudio</a></li>
+<li class="chapter" data-level="2.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>2.1</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#r-scripts-in-rstudio"><i class="fa fa-check"></i><b>2.1.1</b> R Scripts in RStudio</a></li>
+<li class="chapter" data-level="2.1.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#console-and-terminal"><i class="fa fa-check"></i><b>2.1.2</b> Console and Terminal</a></li>
+<li class="chapter" data-level="2.1.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#environment-and-history"><i class="fa fa-check"></i><b>2.1.3</b> Environment and History</a></li>
+<li class="chapter" data-level="2.1.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#files-plots-and-packages"><i class="fa fa-check"></i><b>2.1.4</b> Files, Plots, and Packages</a></li>
+<li class="chapter" data-level="2.1.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#putting-it-all-together"><i class="fa fa-check"></i><b>2.1.5</b> Putting It All Together</a></li>
+</ul></li>
 <li class="chapter" data-level="2.2" data-path="using-rmds.html"><a href="using-rmds.html"><i class="fa fa-check"></i><b>2.2</b> Using Rmds</a></li>
 <li class="chapter" data-level="2.3" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html"><i class="fa fa-check"></i><b>2.3</b> Getting started in R</a>
 <ul>
@@ -317,11 +324,11 @@ already installed.
 Call <code>library()</code> function, with an argument of the library name,
 as a string.</p>
 <p>Try loading this one:</p>
-<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb354-1"><a href="packages-install-and-use.html#cb354-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;stringdist&quot;</span>)</span>
-<span id="cb354-2"><a href="packages-install-and-use.html#cb354-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringdist)</span></code></pre></div>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="packages-install-and-use.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;stringdist&quot;</span>)</span>
+<span id="cb360-2"><a href="packages-install-and-use.html#cb360-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringdist)</span></code></pre></div>
 <p>Don’t have it? You can look for packages by using a search engine, or finding
 suggestions in the documentation, papers. Once you have a package name, use</p>
-<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb355-1"><a href="packages-install-and-use.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;stringdist&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="packages-install-and-use.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;stringdist&quot;</span>)</span></code></pre></div>
 <p>to install it. You may need to select a “mirror”. This is just where you
 are downloading from, usually just go with “0-Cloud”
 <a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>.</p>
@@ -340,10 +347,10 @@ what’s called your library,</p>
 loading, you’ll just want one function.
 For example, this website is generated with one function, <code>render_book()</code>
 in the package <code>bookdown</code>. Instead of:</p>
-<div class="sourceCode" id="cb356"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb356-1"><a href="packages-install-and-use.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bookdown)</span>
-<span id="cb356-2"><a href="packages-install-and-use.html#cb356-2" aria-hidden="true" tabindex="-1"></a><span class="fu">render_book</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="packages-install-and-use.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bookdown)</span>
+<span id="cb362-2"><a href="packages-install-and-use.html#cb362-2" aria-hidden="true" tabindex="-1"></a><span class="fu">render_book</span>()</span></code></pre></div>
 <p>I can save a line by just using <code>::</code></p>
-<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb357-1"><a href="packages-install-and-use.html#cb357-1" aria-hidden="true" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">render_book</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="packages-install-and-use.html#cb363-1" aria-hidden="true" tabindex="-1"></a>bookdown<span class="sc">::</span><span class="fu">render_book</span>()</span></code></pre></div>
 <p>This means I am looking in library <code>bookdown</code> for function <code>render_book</code>.
 The function is hidden again right afterwards, but it is useful if you just
 want to run one function from a library, once.</p>
@@ -353,7 +360,7 @@ want to run one function from a library, once.</p>
 <h3><span class="header-section-number">4.4.3</span> Github is a common place for sharing packges in development</h3>
 <p>Installing from github requires some different programming -
 and there’s libraries with functions for this.</p>
-<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb358-1"><a href="packages-install-and-use.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;remotes&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb364-1"><a href="packages-install-and-use.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;remotes&quot;</span>)</span></code></pre></div>
 <p>This used to be part of the <code>devtools</code> package, but the authors have been
 “uncoupling” these to make each package simple and composable.</p>
 <div id="lets-install-a-package-off-of-github." class="section level4" number="4.4.3.1">
@@ -361,7 +368,7 @@ and there’s libraries with functions for this.</p>
 <p>Here’s a cool <a href="https://github.com/ewenme/ghibli">Ghibli color palette</a>,
 so you can change sets of colors for your plots.
 Try installing it with:</p>
-<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb359-1"><a href="packages-install-and-use.html#cb359-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ewenme/ghibli&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb365-1"><a href="packages-install-and-use.html#cb365-1" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;ewenme/ghibli&quot;</span>)</span></code></pre></div>
 <p>Then adapt one of your previous plots (that has colors) to use these new
 color palettes.</p>
 <p>Exercise - install a package from github and learn how to use it</p>
@@ -380,13 +387,13 @@ color palettes.</p>
 packages. It’s where a lot of bioinformatics software gets published.
 However, it has it’s own package system and thus package manager.
 You will have to install it … from CRAN. Like so:</p>
-<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb360-1"><a href="packages-install-and-use.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb366-1"><a href="packages-install-and-use.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</span></code></pre></div>
 <p>That installs a package with a function that then installs Bioconductor
 packages. It’s actually easy. Let’s give it a try by installing and
 using the <code>limma</code> package to analyze some gene expression data.</p>
 <p>If you’re recall from before, we can use <code>::</code> to avoid having to actually
 <code>library</code> the whole package:</p>
-<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb361-1"><a href="packages-install-and-use.html#cb361-1" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb367-1"><a href="packages-install-and-use.html#cb367-1" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>()</span></code></pre></div>
 <p><a href="">How to install Bioconductor</a></p>
 <p>Scholars will know how to install Bioconductor package from CRAN</p>
 <p>Scholars will know how to find and install packages from Bioconductor</p>
@@ -404,8 +411,8 @@ their datasets.</p>
 <div id="finding-more-help-and-documentation" class="section level3" number="4.4.6">
 <h3><span class="header-section-number">4.4.6</span> Finding more help and documentation</h3>
 <p>Need a problem</p>
-<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb362-1"><a href="packages-install-and-use.html#cb362-1" aria-hidden="true" tabindex="-1"></a>?geom_line</span></code></pre></div>
-<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb363-1"><a href="packages-install-and-use.html#cb363-1" aria-hidden="true" tabindex="-1"></a>?stringdist</span></code></pre></div>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb368-1"><a href="packages-install-and-use.html#cb368-1" aria-hidden="true" tabindex="-1"></a>?geom_line</span></code></pre></div>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb369-1"><a href="packages-install-and-use.html#cb369-1" aria-hidden="true" tabindex="-1"></a>?stringdist</span></code></pre></div>
 <p>Objective X.X: Scholars will know how to get official docs ( ? ) and how to skim/read these</p>
 <p>Objective X.X: Scholars will see how easy it is to use a search engine to try and find other answers</p>
 <p>Objective X.X: Scholars will understand the intention of the Slack being a learning community, or something (set expectations about this)</p>
