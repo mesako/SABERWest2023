@@ -337,8 +337,14 @@ library(ggplot2)
 
 **If you reach this point during the asynchronous session, please stop and wait until the synchronous session starts.**
 
-**Getting Started: ?** 
-Describe 
+For these activities, you will want to pick one of the following datasets to work on in your group: `midwest`, `diamonds`, `storms`, `infert`, and `esoph`. You may want to spend a minute or so to investigate these datasets using the `?` or `help` function.
+
+During this synchronous session, you will be randomly put into groups with your peers and encouraged to work through the following tasks. You can go in order or start with whichever task interests you the most!
+
+**Getting Started: Exploring Your Data** 
+Use R functions to investigate and then describe your dataset. How many samples are there and how many parameters are measured in each sample? What is the range of values in the data?
+
+Be sure to identify quantitative and qualitative/categorical variables in your dataset. If it seems like there are not any, you may need to create them by either converting an existing column (i.e. `as.factor`) or by binning/processing a column that is there.
 
 ```{r}
 # Your code here
@@ -346,8 +352,7 @@ Describe
 
 *Your response here*
 
-**More Practice: ?** 
-???
+Create a simple histogram looking at only one quantitative variable across your entire chosen dataset. Interpret this figure. 
 
 ```{r}
 # Your code here
@@ -355,14 +360,64 @@ Describe
 
 *Your response here*
 
-**Seeking Challenge: ?** 
-???
+Create a simple scatterplot looking at only one quantitative variable vs. another across your entire chosen dataset. Interpret this figure. 
 
 ```{r}
 # Your code here
 ```
 
 *Your response here*
+
+Create a barplot looking at the counts of a qualitative or categorical variable across your entire chosen dataset. Interpret this figure. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+
+**More Practice: Making Comparisons in Your Data** 
+Pick a categorical variable in your dataset on which you can make comparisons. Create a boxplot for a chosen quantitative variable from your chosen dataset. Interpret this figure. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+Create a scatterplot or histogram from your chosen dataset where you change an aesthetic based on this categorical variable. Interpret this figure. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+Pick at least two quantitative variables from your chosen dataset. Make a heatmap using these variables. Interpret this figure. 
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+
+**Seeking Challenge: Making Publishable Figures** 
+Following up on the work you did in the previous section, try to look for strong correlations (i.e. indicated by a trend line) or statistically significant differences between groups within your dataset. Describe your findings.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+With this figure, modify its aesthetics such as its labels and presentation to make it polished. Then save a local version of this image to your computer. Test that you can open this image.
+
+```{r}
+# Your code here
+```
+
 
 ------
 
@@ -491,8 +546,14 @@ Describe
 
 **If you reach this point during the asynchronous session, please stop and wait until the synchronous session starts.**
 
-**Option 1: ?** 
-?
+During this synchronous session, you will have the option to pick which of the following options you would like to work on with your peers.
+
+The differences between these groups/options will be the dataset that you choose to apply statistics to: `midwest`, `diamonds`, or `infert`. You can either work on the same dataset as before or look into a new dataset!
+
+**Option 1: `midwest` Dataset** 
+Using R functions, learn more about your dataset if you have not already. Describe several research questions that come to mind as you look at what is present in the data.
+
+If you are struggling to come up with a research question, or want to pursue a new one after you finish, scroll down!
 
 ```{r}
 # Your code here
@@ -500,8 +561,27 @@ Describe
 
 *Your response here*
 
-**Option 2: ?** 
-?
+Pick one research question to pursue. Based what you learned in this last section, describe some statistical approaches that may help you answer this question.
+
+*Your response here*
+
+Conduct the necessary statistical tests to draw any conclusions for this research question.
+
+```{r}
+# Your code here
+```
+
+*Possible Research Questions:*
+1. Is there a statistically significant difference in poverty rates between different states? What about a difference in percent college educated or professional?
+2. Is there a statistically significant difference in any of these numerical measures between metro areas and non-metro areas?
+3. Does one of the demographic features strongly correlate with percent educated? What about percent in poverty?
+4. Do the measurements of the population demographics predict the level of poverty?
+
+
+**Option 2: `diamonds` Dataset** 
+Using R functions, learn more about your dataset if you have not already. Describe several research questions that come to mind as you look at what is present in the data.
+
+If you are struggling to come up with a research question, or want to pursue a new one after you finish, scroll down!
 
 ```{r}
 # Your code here
@@ -509,11 +589,45 @@ Describe
 
 *Your response here*
 
-**Option 3: ?** 
-?
+Pick one research question to pursue. Based what you learned in this last section, describe some statistical approaches that may help you answer this question.
+
+*Your response here*
+
+Conduct the necessary statistical tests to draw any conclusions for this research question.
+
+```{r}
+# Your code here
+```
+
+*Possible Research Questions:*
+1. Is there a statistically significant difference in cost between groups with different cuts? What about a difference between groups with different colors?
+2. Does price strongly correlate with clarity? What about carat?
+3. Do the measurements of the diamond (x, y, z) predict the price of the diamond?
+
+
+**Option 3: `infert` Dataset** 
+Using R functions, learn more about your dataset if you have not already. Describe several research questions that come to mind as you look at what is present in the data.
+
+If you are struggling to come up with a research question, or want to pursue a new one after you finish, scroll down!
 
 ```{r}
 # Your code here
 ```
 
 *Your response here*
+
+Pick one research question to pursue. Based what you learned in this last section, describe some statistical approaches that may help you answer this question.
+
+*Your response here*
+
+Conduct the necessary statistical tests to draw any conclusions for this research question.
+
+```{r}
+# Your code here
+```
+
+*Possible Research Questions:*
+1. Is there a statistically significant difference in parity between groups with different levels of education? What about a difference in abortions of either type?
+2. Does age strongly correlate with parity? What about abortions of either type?
+3. Does the number of prior induced abortions predict the number of prior spontaneous abortions?
+
