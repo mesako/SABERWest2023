@@ -77,6 +77,18 @@ We aim for all participants to be able to:
 
 ## Structure and resources
 
+### Workshop schedule
+
+Each day will have a slightly different schedule, but you can expect a mix of synchronous
+and asynchronous work sessions, as well as two breaks in that day's workshop.
+
+Please visit each day's specific page for the exact schedule:
+
++ [Day 3 Schedule](https://darachm.github.io/dll-r/day-3-intoduction-to-r.html)
++ [Day 4 Schedule](https://darachm.github.io/dll-r/day-4-tidyverse-and-visualizations.html)
++ [Day 5 Schedule](https://darachm.github.io/dll-r/day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html)
+
+
 ### This syllabus and videos
 
 We developed this website/document for your reference, as a living textbook 
@@ -87,10 +99,7 @@ where appropriate on this site. These mini-lectures are intended to complement
 the text for those with different learning preferences.
 
 You will be expected to progress through this website during asynchronous 
-work time in this 3-day period. During synchronous meetings, you should plan 
-to work directly with your peers and us on focused tasks. We will also be 
-there to help with confusing or challenging topics that you want to 
-discuss with someone live.
+work time in this 3-day period. 
 
 Tips:
 
@@ -106,6 +115,17 @@ While you are working in asynchronous sessions, or if you just need help
 during the program, there is a Slack channel available where you can go for 
 ideas/help. The channel is called *#codingtroubleshooting* and should be 
 accessible to you on the SSRP Slack server.
+
+### Synchronous sessions
+
+During synchronous meetings, you should plan 
+to work directly with your peers and us on focused tasks. We will also be 
+there to help with confusing or challenging topics that you want to 
+discuss with someone live.
+
+During the schedule synchronous session (check each day's schedule for
+timing), you should log on to the provided Zoom link.
+
 
 ## Workshop expectations
 
