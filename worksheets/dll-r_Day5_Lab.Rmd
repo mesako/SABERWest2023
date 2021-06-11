@@ -9,9 +9,11 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+This worksheet was created by [darachm](https://github.com/darachm) and ? with a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License](https://github.com/darachm/dll-r/blob/main/LICENSE.md).
+
 #### Instructions for this Worksheet
 
-Please be sure to write in your code or response underneath each prompt. Be sure that the code is able to execute completely and that the result you expect is shown in the resulting html file.
+Write your code and/or your response underneath each task prompt. To render your worksheet, click on the Knit button in Rstudio. Be sure that your code is able to execute completely and that the result you expect is shown in the resulting html file.
 
 ------
 
@@ -19,7 +21,7 @@ Please be sure to write in your code or response underneath each prompt. Be sure
 
 ##### Section 4.2.1: Reading in one file
 
-**Task:** ???
+**Task A:** ???
 
 ```{r}
 # Your code here

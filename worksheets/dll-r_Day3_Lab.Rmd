@@ -9,9 +9,11 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+This worksheet was created by [mesako](https://github.com/mesako/) and Samson with a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License](https://github.com/darachm/dll-r/blob/main/LICENSE.md).
+
 #### Instructions for this Worksheet
 
-Please be sure to write in your code or response underneath each prompt. Be sure that the code is able to execute completely and that the result you expect is shown in the resulting html file.
+Write your code and/or your response underneath each task prompt. To render your worksheet, click on the Knit button in Rstudio. Be sure that your code is able to execute completely and that the result you expect is shown in the resulting html file.
 
 ------
 
@@ -27,7 +29,7 @@ Please be sure to write in your code or response underneath each prompt. Be sure
 
 ##### Section 2.3.1: Getting help in R
 
-**Task:** Use the `help` function to look up another function that you have seen used before, or Google popular functions in R. The `help` function will cause documentation to appear in a side panel of RStudio when it is run within the Rmd code chunk. Which function did you look up? What arguments does it take and what does it output?
+**Task A:** Use the `help` function to look up another function that you have seen used before, or Google popular functions in R. The `help` function will cause documentation to appear in a side panel of RStudio when it is run within the Rmd code chunk. Which function did you look up? What arguments does it take and what does it output?
 
 ```{r}
 ?rm
@@ -38,9 +40,11 @@ help(rm)
 
 *Your response here*
 
+------
+
 ##### Section 2.3.2: Using variables and datatypes
 
-**Task:** Try assigning multiple other variables below. See what types of data you can save and what variable names are acceptable in R. Note when you get a warning or error message.
+**Task A:** Try assigning multiple other variables below. See what types of data you can save and what variable names are acceptable in R. Note when you get a warning or error message.
 
 ```{r}
 save.string <- "hello"
@@ -51,16 +55,17 @@ save.bool <- TRUE
 
 *Your response here*
 
-**Task:** Check that you can only remove one or two of the new variables you created, but that you can see the other ones still retained when you call the `ls` function.
+**Task B:** Check that you can only remove one or two of the new variables you created, but that you can see the other ones still retained when you call the `ls` function.
 
 ```{r}
 # Your code here
 ```
 
+------
 
 ##### Section 2.3.3: Using functions
 
-**Task:** Pick one of the following functions to look into: `which`, `sum`, `sort`, `paste`, or `sample`. Research this function to identify its arguments and outputs. We recommend looking at the sections for Usage, Arguments, and Examples.
+**Task A:** Pick one of the following functions to look into: `which`, `sum`, `sort`, `paste`, or `sample`. Research this function to identify its arguments and outputs. We recommend looking at the sections for Usage, Arguments, and Examples.
 
 ```{r}
 # Your code here
@@ -68,7 +73,7 @@ save.bool <- TRUE
 
 *Your response here*
 
-**Task:** For the function you picked, practice successfully using this function below without errors.
+**Task B:** For the function you picked, practice successfully using this function below without errors.
 
 ```{r}
 # Your code here
@@ -76,7 +81,7 @@ save.bool <- TRUE
 
 *Your response here*
 
-**Task:** For a challenge, look into a more complicated function to use such as one of the following: `write.csv`, `apply`, `set.seed`, or `detach`.
+**Task C:** For a challenge, look into a more complicated function to use such as one of the following: `write.csv`, `apply`, `set.seed`, or `detach`.
 
 ```{r}
 # Your code here
@@ -94,7 +99,10 @@ For these activities, you will need the SSRP scholar dataset that we generated a
 
 During this synchronous session, you will have the option to pick which of the following options you would like to work on with your peers.
 
+------
+
 **Option 1: Examining Datatypes** 
+
 Examine our SSRP scholar dataset. Discuss with your group:
 
 What kinds of datatypes are represented here?
@@ -118,8 +126,10 @@ What are the advantages and disadvantages of representing information using a bo
 Brainstorm what kinds of plots you would produce with each of the datatypes you have learned about in R.
 *Your response here*
 
+------
 
-**Option 2: Identifying Datatypes and Saving Variables** 
+**Option 2: Identifying Datatypes and Saving Variables**
+
 There are multiple functions that can diagnose what datatype you are working with: `is.factor`, `is.numeric`, `is.character`, and `is.logical`.
 
 In the space below, investigate our SSRP scholar dataset. What datatypes are present here in each column? Did they match your expectations or not? Describe your findings.
@@ -152,8 +162,10 @@ Practice converting some of your variables to a different datatype and make a no
 
 *Your response here*
 
+------
 
 **Option 3: Applying Functions to Our Data** 
+
 For each of the following functions: `which`, `sum`, `sort`, `paste`, or `sample`, research this function if you are not already familiar with it.
 
 Identify its arguments and outputs. We recommend looking at the sections for Usage, Arguments, and Examples.
@@ -197,7 +209,7 @@ For each of the following functions: `write.csv`, `apply`, `set.seed`, or `detac
 
 ##### Section 2.4.1: Building vectors
 
-**Task:** Try making a vector that contains elements of different data types (character strings like "this" or numeric values like 12). Describe what happens in each of these cases.
+**Task A:** Try making a vector that contains elements of different data types (character strings like "this" or numeric values like 12). Describe what happens in each of these cases.
 
 ```{r}
 # Your code here
@@ -205,28 +217,29 @@ For each of the following functions: `write.csv`, `apply`, `set.seed`, or `detac
 
 *Your response here*
 
-**Task:** Make several vectors of varying number of elements and save them to variables. Practice combining these vectors together using the `c` function.
+**Task B:** Make several vectors of varying number of elements and save them to variables. Practice combining these vectors together using the `c` function.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Make a vector that contains only odd numbers between 9 and 35. You may need to check what the `:` operator, `seq`, or `rep` functions do.
+**Task C:** Make a vector that contains only odd numbers between 9 and 35. You may need to check what the `:` operator, `seq`, or `rep` functions do.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Make a vector that contains five of each number between 3 and 6. You may need to check what the `:` operator, `seq`, or `rep` functions do.
+**Task D:** Make a vector that contains five of each number between 3 and 6. You may need to check what the `:` operator, `seq`, or `rep` functions do.
 
 ```{r}
 # Your code here
 ```
 
+------
 
 ##### Section 2.4.2: Indexing and subsetting vectors
 
-**Task:** Remove the last element in the vector `all.heart.rates` and save the result in a new variable.
+**Task A:** Remove the last element in the vector `all.heart.rates` and save the result in a new variable.
 
 ```{r}
 heart.rates <- c(78, 68, 95, 82, 69, 63, 86, 74, 64, 62)
@@ -235,21 +248,23 @@ all.heart.rates <- c(heart.rates, more.heart.rates)
 # Your code here
 ```
 
-**Task:** Index into the vector `all.heart.rates` and access only the last three elements contained in that vector.
+**Task B:** Index into the vector `all.heart.rates` and access only the last three elements contained in that vector.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Index into the vector `all.heart.rates` and access only every other number contained in that vector. You may need to check what the `:` operator, `seq`, or `rep` functions do.
+**Task C:** Index into the vector `all.heart.rates` and access only every other number contained in that vector. You may need to check what the `:` operator, `seq`, or `rep` functions do.
 
 ```{r}
 # Your code here
 ```
+
+------
 
 ##### Section 2.4.3: Using logic and logicals
 
-**Task:** Describe what happens when you apply the `sum` function to the vector `check.flags` used below. Based on what the `sum` function does, what do you think is happening? 
+**Task A:** Describe what happens when you apply the `sum` function to the vector `check.flags` used below. Based on what the `sum` function does, what do you think is happening? 
 
 ```{r}
 check.flags <- c(TRUE, FALSE, TRUE, FALSE, FALSE, TRUE, TRUE)
@@ -258,57 +273,59 @@ check.flags <- c(TRUE, FALSE, TRUE, FALSE, FALSE, TRUE, TRUE)
 
 *Your response here*
 
-**Task:** Check whether any elements in the vector `all.heart.rates` are greater than 90.
+**Task B:** Check whether any elements in the vector `all.heart.rates` are greater than 90.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Calculate how many elements in the `all.heart.rates` vector are less than 70.
+**Task C:** Calculate how many elements in the `all.heart.rates` vector are less than 70.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Index into the vector `all.heart.rates` and access only the elements that are less than 70.
+**Task D:** Index into the vector `all.heart.rates` and access only the elements that are less than 70.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Index into the vector `all.heart.rates` and access only the elements that are less than the average heart rate in this sample. You may want to check what the `mean` function.
+**Task E:** Index into the vector `all.heart.rates` and access only the elements that are less than the average heart rate in this sample. You may want to check what the `mean` function.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** For a challenge, index into the vector `all.heart.rates` and access only the elements that are less than 85 **or** greater than 90.
+**Task F:** For a challenge, index into the vector `all.heart.rates` and access only the elements that are less than 85 **or** greater than 90.
 
 ```{r}
 # Your code here
 ```
+
+------
 
 ##### Section 2.4.4: Modifying vectors
 
-**Task:** Figure out what happens when you try to add two vectors containing numeric values that are of different lengths (i.e. one vector contains three numbers, the other vector contains five numbers).
+**Task A:** Figure out what happens when you try to add two vectors containing numeric values that are of different lengths (i.e. one vector contains three numbers, the other vector contains five numbers).
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Take the vector `all.heart.rates`, which expresses beats per minute (bpm), and create a new vector that expresses these numbers as beats per second.
+**Task B:** Take the vector `all.heart.rates`, which expresses beats per minute (bpm), and create a new vector that expresses these numbers as beats per second.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Assume that the vector `all.heart.rates` was collected with a device that only records about 90% of the beats. Multiply this vector to correct for this.
+**Task C:** Assume that the vector `all.heart.rates` was collected with a device that only records about 90% of the beats. Multiply this vector to correct for this.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Your new calculation of `all.heart.rates` likely does not have integer values. Calculate either the rounded or significant figure values to get rid of the fractions.
+**Task D:** Your new calculation of `all.heart.rates` likely does not have integer values. Calculate either the rounded or significant figure values to get rid of the fractions.
 
 ```{r}
 # Your code here
@@ -320,41 +337,42 @@ check.flags <- c(TRUE, FALSE, TRUE, FALSE, FALSE, TRUE, TRUE)
 
 ##### Section 2.5.1: Indexing and subsetting dataframes
 
-**Task:** Access into the `iris` dataframe and only pull out the first two rows of observations.
+**Task A:** Access into the `iris` dataframe and only pull out the first two rows of observations.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Access into the `iris` dataframe and only pull out the first column.
+**Task B:** Access into the `iris` dataframe and only pull out the first column.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Create a new dataframe called `iris2` that has the last two columns of the original dataframe removed. 
+**Task C:** Create a new dataframe called `iris2` that has the last two columns of the original dataframe removed. 
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Create a new dataframe called `iris3` that has the last row of the original dataframe removed. 
+**Task D:** Create a new dataframe called `iris3` that has the last row of the original dataframe removed. 
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Based on the code provided below, access into the `iris` dataframe and only pull out the columns that refer to petal measurements.
+**Task E:** Based on the code provided below, access into the `iris` dataframe and only pull out the columns that refer to petal measurements.
 
 ```{r}
 iris[, "Sepal.Length"]
 # Your code here
 ```
 
+------
 
 ##### Section 2.5.2: Exploring dataframes
 
-**Task:** Investigate the number of rows and columns in the `msleep` dataset that comes with the `ggplot2` library. Describe your findings.
+**Task A:** Investigate the number of rows and columns in the `msleep` dataset that comes with the `ggplot2` library. Describe your findings.
 
 ```{r}
 library(ggplot2)
@@ -363,7 +381,7 @@ library(ggplot2)
 
 *Your response here*
 
-**Task:** Investigate what the different columns are in the `msleep` dataset and what kinds of data they contain (i.e. which datatypes). Describe your findings.
+**Task B:** Investigate what the different columns are in the `msleep` dataset and what kinds of data they contain (i.e. which datatypes). Describe your findings.
 
 ```{r}
 # Your code here
@@ -371,7 +389,7 @@ library(ggplot2)
 
 *Your response here*
 
-**Task:** Investigate the range of quantitative variables in the `msleep` dataset. Describe your findings.
+**Task C:** Investigate the range of quantitative variables in the `msleep` dataset. Describe your findings.
 
 ```{r}
 # Your code here
@@ -379,7 +397,7 @@ library(ggplot2)
 
 *Your response here*
 
-**Task:** Investigate the counts of categorical variables in the `msleep` dataset. Describe your findings.
+**Task D:** Investigate the counts of categorical variables in the `msleep` dataset. Describe your findings.
 
 ```{r}
 # Your code here
@@ -387,39 +405,40 @@ library(ggplot2)
 
 *Your response here*
 
+------
 
 ##### Section 2.5.3: Building and modifying dataframes
 
-**Task:** Working off of the code below and the `msleep.small` dataframe, try to add a new column to this dataset. Feel free to make up the data without worrying about it being factual!
+**Task A:** Working off of the code below and the `msleep.small` dataframe, try to add a new column to this dataset. Feel free to make up the data without worrying about it being factual!
 
 ```{r}
 msleep.small <- msleep[1:7, c("name", "vore", "sleep_total", "brainwt")]
 # Your code here
 ```
 
-**Task:** Starting with the `msleep.small` dataframe, try to add a new row to this dataset. Feel free to make up the data without worrying about it being factual!
+**Task B:** Starting with the `msleep.small` dataframe, try to add a new row to this dataset. Feel free to make up the data without worrying about it being factual!
 
 ```{r}
 # Your code here
 ```
 
-
-**Task:** Adapting the code above used to make the `msleep.small` dataframe, try to add a new dataframe that pulls different rows than the first 7 in `msleep`. Save this dataframe as a different variable.
-
-```{r}
-# Your code here
-```
-
-**Task:** Working from the last task, merge the `msleep.small` dataframe and your new dataframe together.
+**Task C:** Adapting the code above used to make the `msleep.small` dataframe, try to add a new dataframe that pulls different rows than the first 7 in `msleep`. Save this dataframe as a different variable.
 
 ```{r}
 # Your code here
 ```
 
+**Task D:** Working from the last task, merge the `msleep.small` dataframe and your new dataframe together.
+
+```{r}
+# Your code here
+```
+
+------
 
 ##### Section 2.5.4: Handling datatypes in dataframes
 
-**Task:** Check the datatype of the `vore` column in the `msleep.small` dataframe that contains the feeding behavior of the mammals.
+**Task A:** Check the datatype of the `vore` column in the `msleep.small` dataframe that contains the feeding behavior of the mammals.
 
 ```{r}
 # Your code here
@@ -427,7 +446,7 @@ msleep.small <- msleep[1:7, c("name", "vore", "sleep_total", "brainwt")]
 
 *Your response here*
 
-**Task:** Convert the `vore` column in the `msleep.small` dataframe to a different datatype. Describe anything that may have changed.
+**Task B:** Convert the `vore` column in the `msleep.small` dataframe to a different datatype. Describe anything that may have changed.
 
 ```{r}
 # Your code here
@@ -435,7 +454,7 @@ msleep.small <- msleep[1:7, c("name", "vore", "sleep_total", "brainwt")]
 
 *Your response here*
 
-**Task:** Convert the `sleep_total` column in the `msleep.small` dataframe to a different datatype. Describe anything that may have changed.
+**Task C:** Convert the `sleep_total` column in the `msleep.small` dataframe to a different datatype. Describe anything that may have changed.
 
 ```{r}
 # Your code here
@@ -453,7 +472,10 @@ For these activities, you will need the SSRP scholar dataset that we generated a
 
 During this synchronous session, you will be randomly put into groups with your peers and encouraged to work through the following tasks. You can go in order or start with whichever task interests you the most!
 
-**Getting Started: Exploring the SSRP Scholar Dataset** 
+------
+
+**Getting Started: Exploring the SSRP Scholar Dataset**
+
 Use various R functions to describe the SSRP dataset. How many different individuals are part of the dataset, and how many attributes about them are included?
 
 ```{r}
@@ -478,8 +500,10 @@ What is the min or the max of different quantitative variables? What seems to be
 
 *Your response here*
 
+------
 
 **More Practice: Modifying the SSRP Scholar Dataset** 
+
 Create a copy of the SSRP scholar dataset as a new variable. You will use this copy going forward to extract and modify elements in this dataframe.
 
 Pull out the specific row that contains your own data or that of other people in your group.
@@ -512,9 +536,10 @@ Convert one of the columns to a different datatype and overwrite the old column 
 # Your code here
 ```
 
-
+------
 
 **Seeking Challenge: Adding to and Saving the SSRP Scholar Dataset** 
+
 Add a new column to this dataset. Ask the members of your group to supply their actual answer for this column, and fill everyone else's cells with `NA` values.
 
 ```{r}
