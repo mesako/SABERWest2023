@@ -60,7 +60,7 @@ save.bool <- TRUE
 
 ##### Section 2.3.3: Using functions
 
-**Task:** Pick one of the following functions to look into: `which`, `sum`, `sort`, `paste`, or `sample`. Research this function to identify its arguments and outputs. 
+**Task:** Pick one of the following functions to look into: `which`, `sum`, `sort`, `paste`, or `sample`. Research this function to identify its arguments and outputs. We recommend looking at the sections for Usage, Arguments, and Examples.
 
 ```{r}
 # Your code here
@@ -190,7 +190,6 @@ check.flags <- c(TRUE, FALSE, TRUE, FALSE, FALSE, TRUE, TRUE)
 # Your code here
 ```
 
-
 **Task:** For a challenge, index into the vector `all.heart.rates` and access only the elements that are less than 85 **or** greater than 90.
 
 ```{r}
@@ -205,32 +204,23 @@ check.flags <- c(TRUE, FALSE, TRUE, FALSE, FALSE, TRUE, TRUE)
 # Your code here
 ```
 
-*Your response here*
-
-
-**Task:** ???
+**Task:** Take the vector `all.heart.rates`, which expresses beats per minute (bpm), and create a new vector that expresses these numbers as beats per second.
 
 ```{r}
 # Your code here
 ```
 
-*Your response here*
-
-**Task:** ???
+**Task:** Assume that the vector `all.heart.rates` was collected with a device that only records about 90% of the beats. Multiply this vector to correct for this.
 
 ```{r}
 # Your code here
 ```
 
-*Your response here*
-
-**Task:** ???
+**Task:** Your new calculation of `all.heart.rates` likely does not have integer values. Calculate either the rounded or significant figure values to get rid of the fractions.
 
 ```{r}
 # Your code here
 ```
-
-*Your response here*
 
 ------
 
@@ -238,49 +228,107 @@ check.flags <- c(TRUE, FALSE, TRUE, FALSE, FALSE, TRUE, TRUE)
 
 ##### Section 2.5.1: Indexing and subsetting dataframes
 
-**Task:** Check what arguments the `matrix` function takes.
+**Task:** Access into the `iris` dataframe and only pull out the first two rows of observations.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Access into the `A` matrix and only pull out the values 6, 7, and 8.
+**Task:** Access into the `iris` dataframe and only pull out the first column.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Create a matrix that contains both character strings (like "apple") and numeric values (like 26). Check what the matrix looks like. What has happened?
+**Task:** Create a new dataframe called `iris2` that has the last two columns of the original dataframe removed. 
 
 ```{r}
 # Your code here
 ```
+
+**Task:** Create a new dataframe called `iris3` that has the last row of the original dataframe removed. 
+
+```{r}
+# Your code here
+```
+
+**Task:** Based on the code provided below, access into the `iris` dataframe and only pull out the columns that refer to petal measurements.
+
+```{r}
+iris[, "Sepal.Length"]
+# Your code here
+```
+
 
 ##### Section 2.5.2: Exploring dataframes
 
-**Task:** Investigate what the `dim` function does when you provide it with a matrix.
+**Task:** Investigate the number of rows and columns in the `msleep` dataset that comes with the `ggplot2` library. Describe your findings.
 
 ```{r}
+library(ggplot2)
 # Your code here
 ```
 
-**Task:** Access only specific columns of the `cats` dataframe using either the index or the name of the dataframe column.
+*Your response here*
 
-```{r}
-# Your code here
-```
-
-**Task:** Use the diagnostic functions (e.g. `dim`) on the entire `cats` dataframe as well as check the type/class of individual rows or columns of this dataframe.
+**Task:** Investigate what the different columns are in the `msleep` dataset and what kinds of data they contain (i.e. which datatypes). Describe your findings.
 
 ```{r}
 # Your code here
 ```
 
 *Your response here*
+
+**Task:** Investigate the range of quantitative variables in the `msleep` dataset. Describe your findings.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
+
+**Task:** Investigate the counts of categorical variables in the `msleep` dataset. Describe your findings.
+
+```{r}
+# Your code here
+```
+
+*Your response here*
+
 
 ##### Section 2.5.3: Building and modifying dataframes
 
-**Task:** Add a new cat (a new row of values) to the `cats` dataframe using the `rbind` function. What happens? Share with your programming buddy.
+**Task:** Working off of the code below and the `msleep.small` dataframe, try to add a new column to this dataset. Feel free to make up the data without worrying about it being factual!
+
+```{r}
+msleep.small <- msleep[1:7, c("name", "vore", "sleep_total", "brainwt")]
+# Your code here
+```
+
+**Task:** Starting with the `msleep.small` dataframe, try to add a new row to this dataset. Feel free to make up the data without worrying about it being factual!
+
+```{r}
+# Your code here
+```
+
+
+**Task:** Adapting the code above used to make the `msleep.small` dataframe, try to add a new dataframe that pulls different rows than the first 7 in `msleep`. Save this dataframe as a different variable.
+
+```{r}
+# Your code here
+```
+
+**Task:** Working from the last task, merge the `msleep.small` dataframe and your new dataframe together.
+
+```{r}
+# Your code here
+```
+
+
+##### Section 2.5.4: Handling datatypes in dataframes
+
+**Task:** Check the datatype of the `vore` column in the `msleep.small` dataframe that contains the feeding behavior of the mammals.
 
 ```{r}
 # Your code here
@@ -288,25 +336,21 @@ check.flags <- c(TRUE, FALSE, TRUE, FALSE, FALSE, TRUE, TRUE)
 
 *Your response here*
 
-##### Section 2.5.4: Handling datatypes in dataframes
-
-**Task:** Check the typeof or class of this column that contains the coat colors.
+**Task:** Convert the `vore` column in the `msleep.small` dataframe to a different datatype. Describe anything that may have changed.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Overwrite the first column of the `cats` dataframe with the first column converted to a character vector (instead of a factor). Check if you are now able to add new cat measurements with the `rbind` function and if you still get the same error.
+*Your response here*
+
+**Task:** Convert the `sleep_total` column in the `msleep.small` dataframe to a different datatype. Describe anything that may have changed.
 
 ```{r}
 # Your code here
 ```
 
-**Task:** Test some of these same manipulations on the `gapminder` dataset!
-
-```{r}
-# Your code here
-```
+*Your response here*
 
 ------
 
