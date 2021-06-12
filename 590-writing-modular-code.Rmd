@@ -8,116 +8,7 @@ and modify the scientifically-important bits easily?
 
 ---
 
-### Examples
-
-Let's look at two chunks of code from 
-[a paper](https://github.com/sashaflevy/PPiSeq) (lightly edited).
-The experiment is counting barcoded lineages of yeast cells to estimate
-"PPIs" (protein-protein interactions)
-^[Ask Darach if you want details, or [read the paper](doi.org/10.7554/eLife.62365)]
-
-Here's an example of one style of writing R script:
-
-```{r,example1,eval=F}
-# filter out bad barcode lineages ( <= 2 time points counts > 0, or maximum of each time point <= 5 or total counts of a lineage < 10)
-bad_index = rep(0, nrow(DBC_known_counts))
-for(i in 1:length(bad_index)){
-        counts = as.numeric(DBC_known_counts[i, 4:8])
-        if (length(which(counts != 0)) < 3 | max(counts) < 5 | sum(counts) < 10){
-                bad_index[i] = 1
-        }
-}
-length(which(bad_index == 1)) # 1447775
-```
-
-<!-- exercise -->
-
-- What is going on here?
-- How do you feed in new data?
-- How do you run this multiple times?
-- How do you change the logic?
-
----
-
-Here's another example from the same author:
-
-```{r,example2,eval=F}
-Random_reference <- function(PPI_multiple, all_PPI_filtered, size, sampling_number){
-  PPI_PPiseq = PPI_multiple[,1]
-  RRS_size= 0
-  RRS= character(length=0)
-  while (RRS_size < size) {
-    yeast_PPI_random= all_PPI_filtered[sample(1: length(all_PPI_filtered), sampling_number, replace=F)]
-    RRS= unique(c(RRS, yeast_PPI_random))
-    RRS_overlap= intersect(RRS, PPI_PPiseq)
-    RRS_size= length(RRS_overlap)
-  } 
-  RRS_duplicate_marked = mark_duplicates_fast(RRS_overlap)
-  return (RRS_duplicate_marked[,1])
-}
-
-# ... and later ...
-Random_reference(PPI_multiple, all_PPI_filtered, number_PPI, sample_number)
-```
-
-<!-- exercise -->
-
-Same questions.
-
----
-
-What are some differences?
-
-What's useful for you?
-
-What's a lot of effort to do?
-
----
-
-### Style guides can be inspiring
-
-What's your coding style going to be?
-
-- [tidyverse style guide](https://style.tidyverse.org/)
-- [google-specific changes](https://google.github.io/styleguide/Rguide.html)
-- [Jean Fan's](https://jef.works/R-style-guide/)
-- search for "R style guide"
-
-Be inconsistently consistent! Do what works!
-
-Balance for yourself:
-
-- How easy is it to write?
-- How easy is it for you to read?
-- How easy is it for others to read?
-- How similar is it to what everyone else is doing (a very good thing)?
-
-But most importantly, use what folks around you are using.
-Be lazy and copy others!
-
----
-
-<!-- exercise -->
-
-- How would you describe your code writing style?
-- How do you name variables, functions?
-- How good are your comments?
-- Are there any ideas here you would like to incorporate?
-
----
-
-<!--
-
-```{=html}
-<div class="incremental">
-```
-```{=html}
-</div>
-```
-
--->
-
-## Functions as modular steps
+### Functions as modular steps
 
 The beauty and danger of any programming project is that there are many ways
 to organize equivalent functionality.
@@ -317,6 +208,108 @@ These are similar to the `Map()` function and "map" functional programming
 in other languages.
 You don't need to program this way, but there are some advantages to this
 style if you'd like to learn.
+
+---
+
+
+
+---
+
+### Learn from examples
+
+Let's look at two chunks of code from 
+[a paper](https://github.com/sashaflevy/PPiSeq) (lightly edited).
+The experiment is counting barcoded lineages of yeast cells to estimate
+"PPIs" (protein-protein interactions)
+^[Ask Darach if you want details, or [read the paper](doi.org/10.7554/eLife.62365)]
+
+Here's an example of one style of writing R script:
+
+```{r,example1,eval=F}
+# filter out bad barcode lineages ( <= 2 time points counts > 0, or maximum of each time point <= 5 or total counts of a lineage < 10)
+bad_index = rep(0, nrow(DBC_known_counts))
+for(i in 1:length(bad_index)){
+        counts = as.numeric(DBC_known_counts[i, 4:8])
+        if (length(which(counts != 0)) < 3 | max(counts) < 5 | sum(counts) < 10){
+                bad_index[i] = 1
+        }
+}
+length(which(bad_index == 1)) # 1447775
+```
+
+<!-- exercise -->
+
+- What is going on here?
+- How do you feed in new data?
+- How do you run this multiple times?
+- How do you change the logic?
+
+---
+
+Here's another example from the same author:
+
+```{r,example2,eval=F}
+Random_reference <- function(PPI_multiple, all_PPI_filtered, size, sampling_number){
+  PPI_PPiseq = PPI_multiple[,1]
+  RRS_size= 0
+  RRS= character(length=0)
+  while (RRS_size < size) {
+    yeast_PPI_random= all_PPI_filtered[sample(1: length(all_PPI_filtered), sampling_number, replace=F)]
+    RRS= unique(c(RRS, yeast_PPI_random))
+    RRS_overlap= intersect(RRS, PPI_PPiseq)
+    RRS_size= length(RRS_overlap)
+  } 
+  RRS_duplicate_marked = mark_duplicates_fast(RRS_overlap)
+  return (RRS_duplicate_marked[,1])
+}
+
+# ... and later ...
+Random_reference(PPI_multiple, all_PPI_filtered, number_PPI, sample_number)
+```
+
+<!-- exercise -->
+
+Same questions.
+
+---
+
+What are some differences?
+
+What's useful for you?
+
+What's a lot of effort to do?
+
+---
+
+### Style guides can be inspiring
+
+What's your coding style going to be?
+
+- [tidyverse style guide](https://style.tidyverse.org/)
+- [google-specific changes](https://google.github.io/styleguide/Rguide.html)
+- [Jean Fan's](https://jef.works/R-style-guide/)
+- search for "R style guide"
+
+Be inconsistently consistent! Do what works!
+
+Balance for yourself:
+
+- How easy is it to write?
+- How easy is it for you to read?
+- How easy is it for others to read?
+- How similar is it to what everyone else is doing (a very good thing)?
+
+But most importantly, use what folks around you are using.
+Be lazy and copy others!
+
+---
+
+<!-- exercise -->
+
+- How would you describe your code writing style?
+- How do you name variables, functions?
+- How good are your comments?
+- Are there any ideas here you would like to incorporate?
 
 ---
 
