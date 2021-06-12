@@ -801,14 +801,81 @@ Additional questions:
     How does that affect your interpretation?
 
     How do you use the skills from Day1/2 to look?
-    
+
 - Does it show up where you'd expect it to?
     What might that suggest about this dataset?
+
 - How might we come up with a null model for this? 
     How often would this occur? Under what assumptions? 
     How do you test that?
 
-#### And in `tidyverse`
+---
+
+### Conclusion
+
+Write this up!
+Edit your rmarkdown file to use
+
+#### headers
+
+_italics_
+
+*bold statements*
+
+, reference previous figures, or make additional plots, or list
+out filenames to support your claim.
+Don't spend more than a few minutes, but get used to writing your
+notes down so you save them.
+
+- You can use loops to organize repetitive tasks, such as working through a
+    large list of files and reading them.
+- You can analyze strings using functions like `nchar` or `grepl`.
+- You can also use the `tidyverse` functions to process these, and to
+    compare and split strings.
+- Modular design of workflows, using functions or just organized and 
+    commented code, can help you extend your analysis to handle new
+    questions as they arise
+
+---
+
+#### Extra challenge - calculating codon freuencies
+
+Your null model might depend on how often certain amino acids tend to
+occur. How might you write some R code to count up each occurance
+of each amino acid?
+
+Here's a complex line of code that may be adaptable to this problem:
+
+    table(
+        factor(
+            unlist(
+                strsplit("ACABA",split="")
+            ),
+            levels=c("A","B","C","D","E","F","G")
+        )
+    )
+
+`table` tabulates the occurances of a string/factor,
+`factor` with a `levels` argument can create "spaces" for unobserved
+letters/strings,
+`unlist` turns a list into not a list,
+`strsplit` breaks up a string into a vector of strings using a pattern
+that can also be "".
+
+    I wonder what would happen if these vectors were created for each
+    protein, and then summed... 
+
+Can you figure out how to do this, how to calculate the amino acid frequencies
+across all the viral structural proteins?
+
+
+
+---
+
+
+### Extra extra....
+
+#### Demo: how to do this in `tidyverse`
 
 `tidyverse` is pretty neat at doing these things in simpler, more readable
 code. Here's how you might approach the above tasks in that paradigm:
@@ -896,48 +963,6 @@ tibble(
 ```
 
 _I_ think that's tidy.
-
-
-### Extra task
-
-Your null model might depend on how often certain amino acids tend to
-occur. How might you write some R code to count up each occurance
-of each amino acid?
-
-Here's a complex line of code that may be adaptable to this problem:
-
-    table(
-        factor(
-            unlist(
-                strsplit("ACABA",split="")
-            ),
-            levels=c("A","B","C","D","E","F","G")
-        )
-    )
-
-`table` tabulates the occurances of a string/factor,
-`factor` with a `levels` argument can create "spaces" for unobserved
-letters/strings,
-`unlist` turns a list into not a list,
-`strsplit` breaks up a string into a vector of strings using a pattern
-that can also be "".
-
-    I wonder what would happen if these vectors were created for each
-    protein, and then summed... 
-
-Can you figure out how to do this, how to calculate the amino acid frequencies
-across all the viral structural proteins?
-
-### Conclusion
-
-- You can use loops to organize repetitive tasks, such as working through a
-    large list of files and reading them.
-- You can analyze strings using functions like `nchar` or `grepl`.
-- You can also use the `tidyverse` functions to process these, and to
-    compare and split strings.
-- Modular design of workflows, using functions or just organized and 
-    commented code, can help you extend your analysis to handle new
-    questions as they arise
 
 ---
 
