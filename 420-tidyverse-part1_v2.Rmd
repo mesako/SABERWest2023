@@ -100,7 +100,7 @@ install.packages("tidyverse")
 
 Load the tidyverse library
 
-```{r,loadtidy,cache=T}
+```{r,loadtidy,cache=F}
 library(tidyverse)
 ```
 
