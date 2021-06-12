@@ -59,14 +59,47 @@ are located, ready to be loaded when you want to use them.
 
 Try it out.
 
-- Get the `stringdist` library, use it to: 
+#### stringdist
 
-    - compare the distance between strings "ATCGATCG" and "ATCGAACG"
+Get the `stringdist` library, use it to: 
+
+- compare the distance between strings "ATCGATCG" and "ATCGAACG"
         using the methods "hamming" and "lv"
-    - compare the distance between strings "ATCGATCG" and "ATCGAATCGC"
+- compare the distance between strings "ATCGATCG" and "ATCGAATCGC"
         using the methods "hamming" and "lv"
 
-- get a new viz layer, use it
+#### ggrepel
+
+Sometimes points are way to close, and you can't label them properly.
+For example, 
+
+```{r,iris_overplot_example,cache=T}
+library(tidyverse)
+
+set.seed(1234) # this is just to get the same results each time we run
+
+read_csv("data/iris.csv",col_types='nnnncc') %>%
+    slice_sample(n=20) %>%
+    ggplot()+
+    aes(x=Sepal.Length,y=Sepal.Width,col=Species,label=Species)+
+    geom_label()+
+    geom_point()
+```
+
+The `ggrepel` library, from CRAN, is a handy way to achieve this:
+
+```{r,iris_ggrepel,cache=T}
+library(ggrepel)
+
+set.seed(1234) # this is just to get the same results each time we run
+
+read_csv("data/iris.csv",col_types='nnnncc') %>%
+    slice_sample(n=20) %>%
+    ggplot()+
+    aes(x=Sepal.Length,y=Sepal.Width,col=Species,label=Species)+
+    geom_label_repel()+
+    geom_point()
+```
 
 ---
 
@@ -92,6 +125,15 @@ This means I am looking in library `bookdown` for function `render_book`.
 The function is hidden again right afterwards, but it is useful if you just
 want to run one function from a library, once.
 
+This is *super handy* when wanting to typeset (`render`) a `Rmd` file:
+
+```{r,eval=F}
+rmarkdown::render()
+```
+
+I *never* load the `rmarkdown` package, I just type the above. A lot.
+^[Or, I use the one-liner in bash of 
+    `Rscript -e 'rmarkdown::render("notebook.Rmd")'` ]
 
 ---
 
@@ -120,20 +162,47 @@ remotes::install_github("ewenme/ghibli")
 Then adapt one of your previous plots (that has colors) to use these new
 color palettes.
 
+#### Let's install another one, to check the previous
 
-Exercise - install a package from github and learn how to use it
+Colorblind folks can't distinguish between certain colors so well.
+Designing figures so that colorblind folks can readily distinguish the
+relevant differences is a *good idea*. It makes for a better figure, just
+like increasing the font size and cleaning up distracting artifacts.
+
+The `ghibli` package above has been claimed to be somewhat good for
+plotting for universal visibility. Is that true?
+
+Let's install this package to check:
+
+```{r,installcolorblindcheck,eval=F}
+remotes::install_github("nowosad/colorblindcheck",upgrade="never")
+```
+
+Then
+
+```{r,checkitout}
+library(ghibli)
+library(colorblindcheck)
+
+palette_check(ghibli_palettes$PonyoMedium,plot=T)
+```
+
+Check out your favorite palette with the function.
+
+Any bad, non distinguishable ones?
+
+Other packages on there:
 
 - [Sports field plotting](https://github.com/rossdrucker/sportyR)
 - [Ridgeplots in ggplot2](https://github.com/wilkelab/ggridges)
+- what else?
 
 
 <!-- remotes::install_github("wilkelab/ggridges" -->
 
-problems with this - security, eh
-
 ---
 
-### Bioconductor is a great place for bio-related packages 😬 
+### Bioconductor is a great place for bio-related packages
 
 Bioconductor is a giant repository of just scientific, well bio-focused,
 packages. It's where a lot of bioinformatics software gets published.
@@ -155,53 +224,57 @@ If you're recall from before, we can use `::` to avoid having to actually
 BiocManager::install()
 ```
 
+And so we can use this to install important packages like `DESeq2`.
 
+```{r,eval=F}
+BiocManager::install('DESeq2')
+```
 
-[How to install Bioconductor]()
-
-Scholars will know how to install Bioconductor package from CRAN
-
-Scholars will know how to find and install packages from Bioconductor
-
----
-
-As demo, install DESeq2 and start to work through a tutorial with one of
-their datasets.
-
----
+Hold off on installing this quite yet. It'd take a while.
+In Bioconductor, I always say to update 'none' (press 'n' when prompted).
 
 ### What packages do you have already? 
 
-explore the namespace for a package, ie ?packagename:: and TAB or ?packagename::
+You have a few. Here's a list:
 
-how to print out all the packages you have loaded
+```{r,listpkgs,eval=F}
+installed.packages()
+```
 
-`sessionInfo()`
+But which are loaded?
+
+```{r,listloadedpkgs,eval=F}
+sessionInfo()
+```
+
+The packages are in a directory, the location is stored in this:
+
+```{r,libpaths,eval=F}
+.libPaths()
+```
+
+I'm not running that one, as it'll be different for each user. 
 
 ---
 
-### Finding more help and documentation
+### Major problems with package installations
 
-Need a problem
+Somethings can go wrong. You'll want to pay attention to what is output
+from the installation attempt. Look for errors. Scroll up to find warnings
+and errors.
 
-```{r,eval=F}
-?geom_line
-```
+These can arise from multiple ways. Here's a few ideas:
 
-```{r,eval=F}
-?stringdist
-```
+- the package name you put in is misspelled
+- the package is in another repo (CRAN, Bioconductor, etc)
+- your internet is down (this is more of a Stanford WiFi problem)
+- your R package library directory is not writable (you don't have permission)
+- the package is not available for this version of R
+- the package relies on the system having programs or software or libraries
+    installed that are not installed (less of a problem with RStudio)
+- the package actually has a bug 
 
-Objective X.X: Scholars will know how to get official docs ( ? ) and how to skim/read these
-
-Objective X.X: Scholars will see how easy it is to use a search engine to try and find other answers
-
-Objective X.X: Scholars will understand the intention of the Slack being a learning community, or something (set expectations about this)
-
-Source up problems from the class?
-
-Demo a weird plot idea, search for how to do it on stack overflow?
-
-Maybe how to change the color of facet labels in a ggplot facet graph, that's a bit tricky and demonstrates why base R is important…
+Let's next talk about how to find help for problems.
 
 ---
+
