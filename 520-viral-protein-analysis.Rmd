@@ -1,6 +1,6 @@
 ## Analyzing viral protein sequences
 
-Let's start with a project.
+Let's practice with starting a project.
 
 Viral structural proteins are dramatically more important to the general
 public than they were 2 years ago - and under much more public attention. 
@@ -12,7 +12,7 @@ We've already done that work for you already. Here's a short writeup of
 what we did, amd we would recommend that you
 always document where the data came from and how it was retrieved/processed:
 
-> The NCBI Identital Protein Groups database was queried for "structural"
+> The NCBI Identical Protein Groups database was queried for "structural"
 > with "Division" restricted to "Viruses" and "Source database" restricted
 > to "UniProtKB/Swiss-Prot". 243 results were retrieved as FASTA files and 
 > converted using bash commands into separate tab-delimited files.
@@ -36,12 +36,24 @@ What bash tools do you use to look at these?
 
 ---
 
+Go ahead and set up your project folder.
+
+- make a `data` folder, and copy the `viral_structural_proteins` folder
+    into that
+- make a `scripts` directory, and start a new `Rmd` file in there
+- make a note in the `Rmd` about where the data came from
+- load any libraries you want to use
+
+---
+
 ### Reading in tab-delimited file
 
 Let's read one of them into R.
 
 The records are "delimited" by tabs, so each field is tab-separated.
 We'll need to use the `read.delim` function and specify a tab separator.
+
+---
 
 #### Review of looking up documentation
 
@@ -90,10 +102,859 @@ viral_protein_data
 What type is the `V3` column? What should it be?
 How do we tell R to treat these strings as they are, and not convert to factors?
 
+This is how you do it in base R. How do you do this in tidyverse?
+
 ```{=html}
 </div>
 ```
 
 ---
 
+### Loops - doing a similar task multiple times
 
+You will want to repeat this analysis for all the files.
+The simplest way of doing this is to copy and paste it, and change the filename.
+
+```{r,copy_paste_rep,cache=T}
+viral_protein_data <- read.delim("data/viral_structural_proteins/viral_proteins_002.tsv",
+      sep="\t",header=F, as.is=T)
+nchar(viral_protein_data$V3[[1]])
+viral_protein_data <- read.delim("data/viral_structural_proteins/viral_proteins_003.tsv",
+      sep="\t",header=F, as.is=T)
+nchar(viral_protein_data[1,"V3"])
+```
+
+Go ahead and do this for all 242 proteins 
+
+---
+
+... just kidding.
+
+This is a lot of work, and each time we do this we can introduce errors.
+If we ever have more files, we have to copy and paste more. If we ever want
+to change an argument for all of them, we have to do each one.
+
+Instead, we can work with a list of all the files available:
+
+```{r,list_files,cache=T}
+list.files(path="data/viral_structural_proteins")[1:5]
+```
+
+Note that I put a `[1:5]` to limit it to the first 5.
+You could also use `head()`. It's a good idea to work
+with a small subset of files while you are iterating
+through development, then scale it up to the entirety.
+
+But watch out...
+
+```{r,list_files_end,cache=T}
+tail(list.files(path="data/viral_structural_proteins"))
+```
+
+At the very end is another different file, a FASTA file.
+So let's use a `pattern`
+argument in `list.files` to specify what we want to list.
+And we'll get back to the FASTA later...
+
+
+```{r,list_files_end_pattern,cache=T}
+tail(list.files(path="data/viral_structural_proteins",pattern=".*tsv"))
+```
+
+`.*` stands for 0 or more (`*`) of anything (`.`). For more details,
+look up regular-expressions.
+
+---
+
+Now how do you calculate the number of characters for each protein?
+
+How do we do this for every file listed ... ?
+
+---
+
+#### What are loops?
+
+<!-- video -->
+
+Loops are for running a "code block" as many times
+as the "condition" determines.
+
+- A "code block" is either one line of code, or multiple
+    lines of code surrounded by curly brackets - {}
+
+        {
+            code <- "in a block" 
+            with <- "multiple lines" 
+        }
+
+    The code just runs. Yep. It's that simple.
+
+- A "condition" is an expression of code that
+    can either evaluate to either `TRUE` or `FALSE`, or 
+    set a variable for each time running the code block.
+    This is often just before the code block, in `()` parentheses.
+
+The most common form of these kind of "control statements" is a `for` loop.
+Other "control statements" or "flow control statements" are
+`while`, `repeat`, and `if`.
+
+Let's look up what they do, with `` ?`for` ``
+Note the back ticks! These are a trick in R to make anything
+be interpreted as literally what you type, and not
+any special characters. Like `` ?`+` ``, or `` ?`?` ``
+
+---
+
+Here's an example loop:
+
+```{r,loop_example_1,cache=T}
+for (i in 1:4) {
+  print(i)
+}
+```
+
+The pieces:
+
+- `(i in 1:4)` is what is being looped over - `1:4` is a vector of 
+  1 through 4 that is created, and it is put one at a time into `i` 
+  (a new variable). You need the parentheses.
+  
+- `{` and `}` denote the opening and closing brackets, specify the
+  "code block" that is run each time.
+  
+- inside this "code block" is `print(i)` - it prints the variable `i`,
+  which is set to a value of 1, 2, 3, or 4 for each loop
+
+[More about loops](http://swcarpentry.github.io/r-novice-inflammation/15-supp-loops-in-depth/index.html)
+
+---
+
+How do we loop through and print each file name?
+
+What are the (1) code block and (2) loop condition ?
+
+```{=html}
+<div class="incremental">
+```
+
+```{r,loop_through_files,cache=T}
+for (i in list.files(path="data/viral_structural_proteins",
+        pattern=".*tsv")[1:5] ) {
+  print(i)
+}
+```
+
+How do we modify this to calculate the protein length?
+I add a line where we use `nchar`, but `i` is the filename instead of me
+typing it in there.
+
+```{r,loop_and_calculate_errors,cache=T,error=T}
+for (i in list.files(path="data/viral_structural_proteins",
+        pattern=".*tsv")[1:5] ) {
+  print(i)
+  print(nchar(read.delim(i)$V3[[1]]))
+}
+```
+
+```{=html}
+</div>
+```
+
+Error! It is looking for a file `viral_proteins_000.tsv`, but it is looking
+in _this directory_. It is actually in `data/viral_structural_proteins`.
+Look up the `list.files` documentation, and find how to get it to return
+the full name of the file.
+ 
+---
+
+Next, this should work...
+
+```{r,loop_and_calculate,cache=T}
+for (i in list.files(path="data/viral_structural_proteins",
+        pattern=".*tsv",full.names=T)[1:5] ) {
+  print(nchar(read.delim(i,sep="\t",header=F,as.is=T)$V3[[1]]))
+}
+```
+
+And yep, we have lengths of protein sequences.
+
+---
+
+How do we go through the files backwards?
+
+How do we process every third file?
+
+How do we only process files that end in "5.tsv" ?
+
+---
+
+#### Storing values from a loop
+
+How do we store these values for later analysis?
+
+In other languages, "append". But R is not built that way. It'll work,
+but it's very inefficient. The "R-way" to store values from a loop
+is to define a vector of the right length, then put each element in it.
+
+Here's some example vectors that we can create.
+
+```{r,vector_of_size,cache=T}
+vector("character",10)
+vector(mode="numeric",length=5)
+vector("logical",2)
+```
+
+You can save these to a variable, and thus have a character vector,
+numeric vector, or logical vector, of different sizes.
+
+---
+
+Okay, but how do we access each position to save the value?
+We need to turn out list of files into indicies.
+We'll save it first so we can count how many there are.
+
+`seq_along` is handy function to create a number sequence along a vector, 
+otherwise use something like `seq(1,length(x))`.
+
+```{r,loop_save_and_index,cache=T}
+# listing files
+first_five <- list.files(path="data/viral_structural_proteins",pattern=".*tsv")[1:5]
+
+# looping through files
+for (i in seq_along(first_five) ) {
+    print(i)
+    print(first_five[i])
+}
+```
+
+---
+
+Putting these together, we can create and save a vector of file names:
+
+```{r,loop_save_and_index_filenames,cache=T}
+# listing files
+first_five <- list.files(path="data/viral_structural_proteins",pattern=".*tsv")[1:5]
+# initializing vectors
+filenamez <- vector("character",length(first_five))
+
+# looping through files
+for (i in seq_along(first_five) ) {
+  filenamez[i] <- first_five[i]
+}
+
+filenamez
+```
+
+
+---
+
+And finally calculate the length of each protein:
+
+```{r,loop_to_calc_lengths_work,cache=T,error=T}
+# listing files
+first_five <- list.files(path="data/viral_structural_proteins",
+                         full.names=T, pattern=".*tsv")[1:5]
+# initializing vectors
+lengthz <- vector("character",length(first_five))
+
+# looping through files
+for (i in seq_along(first_five) ) {
+  # calculating length and storing it
+  lengthz[i] <- nchar( read.delim(first_five[i],
+      header=F,as.is=T,sep="\t")$V3[[1]]
+    )
+}
+
+lengthz
+```
+
+---
+
+Now we can take off the `[1:5]` limiter, and do the whole set:
+
+```{r,loop_to_calc_lengths_all,cache=T,error=T}
+# listing files
+first_five <- list.files(path="data/viral_structural_proteins",
+                         full.names=T, pattern=".*tsv")
+# initializing vectors
+lengthz <- vector("character",length(first_five))
+
+# looping through files
+for (i in seq_along(first_five) ) {
+  # calculating length and storing it
+  lengthz[i] <- nchar( read.delim(first_five[i],
+      header=F,as.is=T,sep="\t")$V3[[1]]
+    )
+}
+```
+
+---
+
+How do we go about visualizing/analyzing this?
+
+```{r,base_viz_protein_lengths_error,cache=T,error=T}
+hist(lengthz)
+```
+
+er what...? Debug! What is `lengthz`?
+
+```{r,debug_lengthz,cache=T}
+str(lengthz)
+```
+
+Character? Let's try numeric instead...
+
+---
+
+```{r,loop_to_calc_lengths_all_fixed,cache=T,error=T}
+# listing files
+first_five <- list.files(path="data/viral_structural_proteins",
+                         full.names=T, pattern=".*tsv")
+# initializing vectors
+lengthz <- vector("numeric",length(first_five))
+
+# looping through files
+for (i in seq_along(first_five) ) {
+  # calculating length and storing it
+  lengthz[i] <- nchar( read.delim(first_five[i],
+      header=F,as.is=T,sep="\t")$V3[[1]]
+    )
+}
+
+```
+
+---
+
+Base R histogram
+
+```{r,base_viz_protein_lengths_fix,cache=T,error=T}
+hist(lengthz,breaks=50)
+```
+
+---
+
+More fancy ggplot
+
+```{r,ggplot_viz_protein_lengths,cache=T,error=T}
+library(ggplot2)
+ggplot( data.frame(length=lengthz) )+theme_classic()+
+  aes(x=length)+geom_histogram(bins=50)
+
+summary(lengthz)
+```
+
+---
+
+### Extending the workflow
+
+How do you think about/plan the workflow we've built?
+
+How is it organized?
+
+One way is to flatten out all the tasks, 
+and to script each individual task every time it is done.
+This requires the author, user, and reader to understand a lot of complexity.
+
+```{=html}
+<div class="incremental">
+```
+
+```{=html}
+<div class="mermaid">
+graph TD
+    classDef default line-height:12px;
+    classDef three line-height:12px,fill:yellow;
+    you[analyst] --> B[finding files] &    C[making a vector] &    D[looping] &    E[reading files] &    F[getting protein seq] &    G[calculting and saving nchar] &    H[plotting nchar]
+    B:::three;
+    C:::three;
+    D:::three;
+    E:::three;
+    F:::three;
+    G:::three;
+    H:::three;
+</div>
+```
+
+Another way to approach this is to cluster them into a hierarchy of modules.
+
+```{=html}
+<div class="mermaid">
+graph TD
+    classDef default line-height:12px;
+    classDef one  line-height:12px,fill:pink;
+    classDef two line-height:12px,fill:cyan;
+    classDef three line-height:12px,fill:yellow;
+    you2[analyst] --> find & read & plot;
+    find:::one --> B;
+    B[finding files]:::three;
+    read:::one --> looping & reading;
+    looping:::two --> C & D;
+    C[making a vector]:::three;
+    D[looping]:::three;
+    reading[reading and calc]:::two --> E & F & G;
+    E[reading files]:::three;
+    F[getting protein seq]:::three;
+    G[calculting and saving nchar]:::three;
+    plot:::one --> H;
+    H[plotting nchar]:::three;
+</div>
+```
+
+In this organization, the analyst can operate at levels of 
+<span style="color:magenta">steps</span>,
+<span style="color:cyan">modules</span>, and
+<span style="color:gold">specific instructions</span>,
+depending on what is needed.
+
+```{=html}
+</div>
+```
+
+---
+
+Organizing your workflows into composable modules lets you extend these to
+un-ancipiated complexity. You could imaging using these steps or modules:
+
+```{=html}
+<div class="mermaid">
+graph LR
+    classDef default line-height:12px;
+    vp[read viral proteins] --> cl[calculate lengths] --> hist[histogram]
+</div>
+```
+
+in new ways by composing the elements together, to analyze a different source
+of proteins, with a new analysis, with similar plots:
+
+```{=html}
+<div class="mermaid">
+graph LR
+    classDef default line-height:12px;
+    vp[read viral proteins] --> cl[calculate lengths] --> hist[histogram]
+    hp[read human proteins] --> cl --> boxplot[boxplot]
+    vp --> cmotif[find a particular motif] --> motifhist[histogram]
+    hp --> cmotif --> motifboxplot[boxplot]
+</div>
+```
+
+Where maybe these are how the inputs/outputs are defined:
+
+    reading_proteins:
+        input: directory path of proteins to read
+        output: protein sequences
+    calculating lengths:
+        input: protein sequences
+        output: numeric vector, of lengths
+    finding a motif:
+        input: protein sequences
+        output: numeric vector, of presence/absence
+
+---
+
+#### Looking for a smoking motif...
+
+Some folks believe the insertion of an amino-acid sequence of `PRRA`, relative
+to other related coronaviruses, is very rare and a clear sign of engineering
+in the SARS-CoV-2 genome.
+I don't know hardly anything about furin-cleavage sites or viral evolution,
+but since this is an introductory R class, 
+we can use the tools we have to look for this sequence in the files.
+
+Let's do that^[
+    ...since we're just demonstrating R coding and not representing ourselves as 
+    being familiar enough with the field to properly interpret these results.
+    I have no idea what occurance of this would mean or not mean, or are we
+    doing any sort of statistics or comparisons to null expectations.]
+How?
+
+---
+
+1. Figure out how to search for "PRRA" in a character string of a protein
+    sequence.
+
+    - try using `grepl`, like so: `grepl("PRRA",protein_sequence)`
+        where `protein_sequence` is the variable containing the
+        protein sequence (similar to what you put into `nchar` before!).
+
+2. Modify your `for` loop to now look for this motif instead of calculating
+    number of characters. 
+    Save the values in a "numeric" vector.
+    ^[Why not logical, since these are logical results? It makes the `hist()`
+        step slightly easier.]
+
+3. Plot the results. How often do you find this motif in this dataset?
+
+### Some operations on strings
+
+Character strings are a common type of data, and there's lots of ways to
+cut, dice, extract, and recognize elements to help your work.
+Here's some ideas:
+
+#### Base R tools
+
+Let's start with one of those above sentences.
+You can make a string by putting characters in between single or double quotes:
+
+```{r,examplestring,cache=T}
+stringz <- "Character strings are a common type of data, and there's lots of ways to"
+stringz
+is(stringz)
+str(stringz)
+```
+
+`grep` and `grepl` are good for searching for patterns (like `grep` in bash).
+The first returns position, the second returns `TRUE` or `FALSE`.
+What kind of value is that then?
+
+I only ever use `grepl` anymore. It searches for a `pattern` string
+in a character vector `x`.
+
+```{r,grepz,cache=T}
+grepl(pattern="common type",x=stringz)
+grepl("rare type",stringz)
+grepl(" [comn]* type",stringz)
+```
+
+You can use complex 
+[regular expressions](https://bookdown.org/rdpeng/rprogdatascience/regular-expressions.html)
+to specify more complex patterns.
+These can get 
+[really complex](https://r4ds.had.co.nz/strings.html#matching-patterns-with-regular-expressions)
+and [really powerful](https://cs.lmu.edu/~ray/notes/regex/).
+We're not going to explain these here, except just for the example below.
+
+Ask on Slack later if you'd like more help with something specific.
+
+Also of use is `sub` and `gsub`. 
+These substitute patterns with replacements, for the
+first occurrence (`sub`) or globally (`gsub`).
+These are really handy for modifying data-tables.
+
+For example, let's say you'd like to split up filenames by dates:
+
+```{r,subexample,cache=T}
+datar <- data.frame(stringsAsFactors=F,
+    filenames=c(
+        "210607_pilot_transformation_works.jpeg",
+        "210609_transformation_seems_to_work.jpeg",
+        "210610_failed_gel_images.jpeg"
+    )
+)
+datar$dates <- gsub(pattern="(\\d\\d\\d\\d\\d\\d)_(.*)\\.jpeg",
+        replacement="\\1",x=datar$filenames)
+datar$names <- gsub(pattern="(\\d\\d\\d\\d\\d\\d)_(.*)\\.jpeg",
+        replacement="\\2",x=datar$filenames)
+datar
+```
+
+The above uses regular expressions, where `\\d` is matching any digit, 
+`.*` matches anything, and `()` denote "groups" to "capture".
+In the "replacement", these "groups" are referred to by `\\1` or `\\2`.
+
+There are better (cleaner) ways of doing this...
+
+#### stringr and the tidyverse
+
+The `tidyverse` includes a package `stringr`. This cleans up some of these
+basic string operations, makes them more standardized, and gives them nice
+standardized names. It's worth using, but you should know about the other
+base R functions!
+
+```{r}
+library(stringr)
+```
+
+For example the above,
+
+```{r,subexample2,cache=T}
+datar <- data.frame(stringsAsFactors=F,
+    filenames=c(
+        "210607_pilot_transformation_works.jpeg",
+        "210609_transformation_seems_to_work.jpeg",
+        "210610_failed_gel_images.jpeg"
+    )
+)
+datar$dates <- str_extract(string=datar$filenames,pattern="\\d\\d\\d\\d\\d\\d_")
+datar
+```
+
+There are many options, type `str_` and then TAB.
+
+For much much more about strings, check out 
+[Wickham's R4DS book](https://r4ds.had.co.nz/strings.html).
+Especially for the special characters part
+
+Or even cleaner using `tidyverse` verbs:
+
+```{r,subexample3,cache=T}
+library(tidyverse)
+
+tibble(filenames=c(
+            "210607_pilot_transformation_works.jpeg",
+            "210609_transformation_seems_to_work.jpeg",
+            "210610_failed_gel_images.jpeg"
+        )
+    ) %>% 
+    separate(col=filenames,sep="_",into=c("date","rest"),extra="merge") %>%
+    separate(col=rest,sep="\\.",into=c("name","type")) 
+```
+
+I'd recommend you use the `tidyverse`-style manipulations - they're powerful.
+But you should be familiar with base R, to fix bugs.
+
+---
+
+### Back to the motifs
+
+Let's go ahead and look for that sequence, "PRAR" in the structural proteins
+we've downloaded here. First, we make one example of that code.
+
+We can start with making a positive and negative control so we can debug
+this easily.
+
+
+```{r,prra_looking_for,cache=T}
+test_string_positive <- "APQPRARCGPGP"
+test_string_negative <- "AVASTMEMATEY"
+
+grepl(pattern="PRAR",x=test_string_positive)
+grepl(pattern="PRAR",x=test_string_negative)
+```
+
+Looks good.
+
+---
+
+Now let's modify our previous code to use this line, and store it into
+the appropriate position.
+
+How do we do this? 
+
+```{r,loop_for_doing_both_typo,cache=T,error=T}
+# listing files
+all_files <- list.files(path="data/viral_structural_proteins",
+                         full.names=T, pattern=".*tsv")
+
+# initializing vectors
+lengthz <- vector("numeric",length(all_files))
+motifz  <- vector("logical",length(all_files))
+
+# looping through files
+for (i in seq_along(all_files) ) {
+  # calculating length and storing it
+  lengthz[i] <- nchar( 
+        read.delim(all_files[i],
+            header=F,as.is=T,sep="\t")$V3[[1]]
+    )
+  # looking for motif and storing it
+  motifz[i]  <- grepl(pattern="PRAR",
+        x=read.delim(all_files[i],
+            header=F,as.is=T,sep="\t")$V3[[1]]
+    )
+}
+```
+
+Wow! This seems like it's a really rare motif. I wonder what this means,
+this may be a smoking gun, this has implic....
+
+---
+
+Oh wait, that's a typo. It's "PRRA" not "PRAR".
+
+```{r,loop_for_doing_both,cache=T,error=T}
+# listing files
+all_files <- list.files(path="data/viral_structural_proteins",
+                         full.names=T, pattern=".*tsv")
+
+# initializing vectors
+lengthz <- vector("numeric",length(all_files))
+motifz  <- vector("logical",length(all_files))
+
+# looping through files
+for (i in seq_along(all_files) ) {
+  # calculating length and storing it
+  lengthz[i] <- nchar( 
+        read.delim(all_files[i],
+            header=F,as.is=T,sep="\t")$V3[[1]]
+    )
+  # looking for motif and storing it
+  motifz[i]  <- grepl(pattern="PRRA",
+        x=read.delim(all_files[i],
+            header=F,as.is=T,sep="\t")$V3[[1]]
+    )
+}
+```
+
+It actually pops up a few times. In what files?
+
+---
+
+Since `motifz` is logical, we can use that to index the files vector:
+
+```{r,which_files,cache=T}
+all_files[motifz]
+```
+
+Additional questions:
+
+- In what viruses, what proteins does it pop up?
+    How does that affect your interpretation?
+
+    How do you use the skills from Day1/2 to look?
+    
+- Does it show up where you'd expect it to?
+    What might that suggest about this dataset?
+- How might we come up with a null model for this? 
+    How often would this occur? Under what assumptions? 
+    How do you test that?
+
+#### And in `tidyverse`
+
+`tidyverse` is pretty neat at doing these things in simpler, more readable
+code. Here's how you might approach the above tasks in that paradigm:
+
+1st - list files, but set it in a tibble:
+
+```{r,tidy_show_listfiles,cache=T}
+tibble(
+    filenames=list.files(path="data/viral_structural_proteins",
+        full.names=T, pattern=".*tsv") 
+    )
+```
+
+2nd - pipe that into a `mutate` call, where you use `map` on filenames.
+
+`map` is like `lapply`. It takes whatever you have on the left, and puts
+it one by one into the function on the right, along with optional arguments
+that you list after it. Here, we set `col_names` to false, 
+analogous to `header` in `read.delim`.
+
+```{r,tidy_show_listfiles_tibbleopen,cache=T,warning=F,message=F}
+tibble(
+    filenames=list.files(path="data/viral_structural_proteins",
+        full.names=T, pattern=".*tsv") 
+    ) %>%
+    mutate(rawfiles=map(filenames,read_tsv,col_names=F)) 
+```
+
+3rd - we then `unnest` the rawfiles. This takes a column of tibbles and makes
+it magically just line up with the top level tibble.
+
+Now we'll also save it as variable `datar`.
+
+```{r,tidy_show_listfilesunnest,cache=T,warning=F,message=F}
+datar <- tibble(
+    filenames=list.files(path="data/viral_structural_proteins",
+        full.names=T, pattern=".*tsv") 
+    ) %>%
+    mutate(rawfiles=map(filenames,read_tsv,col_names=F)) %>%
+    unnest(rawfiles)
+```
+
+Then we can process on `datar`. Note the use of `mutate`, `map`, and
+wrapping `map` in unlist to just return the lengths instead of a list of
+lengths.
+
+```{r,tidy_show_listfilescalc,cache=T,warning=F,message=F}
+datar %>%
+    mutate(
+        protein_length=unlist(map(X3,nchar)),
+        prra_present=unlist(map(X3,grepl,pattern="PRRA")),
+    )
+```
+
+And then we can pipe it into a ggplot:
+
+```{r,tidy_show_listfilesplot,cache=T,warning=F,message=F}
+datar %>%
+    mutate(
+        protein_length=unlist(map(X3,nchar)),
+        prra_present=unlist(map(X3,grepl,pattern="PRRA")),
+    ) %>%
+    ggplot()+
+    aes(x=prra_present)+
+    geom_bar()
+```
+
+And the entire code:
+
+
+```{r,tidy_show_listfilestogether,cache=T,warning=F,message=F}
+tibble(
+    filenames=list.files(path="data/viral_structural_proteins",
+        full.names=T, pattern=".*tsv") 
+    ) %>%
+    mutate(rawfiles=map(filenames,read_tsv,col_names=F)) %>%
+    unnest(rawfiles) %>%
+    mutate(
+        protein_length=unlist(map(X3,nchar)),
+        prra_present=unlist(map(X3,grepl,pattern="PRRA")),
+    ) %>%
+    ggplot()+
+    aes(x=prra_present)+
+    geom_bar()
+```
+
+_I_ think that's tidy.
+
+
+### Extra task
+
+Your null model might depend on how often certain amino acids tend to
+occur. How might you write some R code to count up each occurance
+of each amino acid?
+
+Here's a complex line of code that may be adaptable to this problem:
+
+    table(
+        factor(
+            unlist(
+                strsplit("ACABA",split="")
+            ),
+            levels=c("A","B","C","D","E","F","G")
+        )
+    )
+
+`table` tabulates the occurances of a string/factor,
+`factor` with a `levels` argument can create "spaces" for unobserved
+letters/strings,
+`unlist` turns a list into not a list,
+`strsplit` breaks up a string into a vector of strings using a pattern
+that can also be "".
+
+    I wonder what would happen if these vectors were created for each
+    protein, and then summed... 
+
+Can you figure out how to do this, how to calculate the amino acid frequencies
+across all the viral structural proteins?
+
+### Conclusion
+
+- You can use loops to organize repetitive tasks, such as working through a
+    large list of files and reading them.
+- You can analyze strings using functions like `nchar` or `grepl`.
+- You can also use the `tidyverse` functions to process these, and to
+    compare and split strings.
+- Modular design of workflows, using functions or just organized and 
+    commented code, can help you extend your analysis to handle new
+    questions as they arise
+
+---
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+mermaid.initialize({
+    startOnLoad: false, // don't render initially, instead....
+    logLevel: 3, // for debugging
+});
+function initMermaid(s) { 
+  var diagrams = document.querySelectorAll('.mermaid');
+  var i;
+  for(i=0;i<diagrams.length;i++){
+    if(diagrams[i].offsetWidth>0){
+      mermaid.init(undefined, diagrams[i]);
+    }
+  }
+}
+initMermaid();
+</script>
