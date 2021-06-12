@@ -52,7 +52,10 @@ Never waste an error message, if you can afford the time to.
 Cherish the bugs, because these moments of surprise are like
 mutants - the strange and unexpected behavior, if appreciated, can reveal
 hidden processes.
-The process of gaining understanding will make you wiser and faster.
+The process of gaining understanding will make you wiser and faster
+^[Some bugs may be 
+["impossible"](https://jvns.ca/blog/2021/06/08/reasons-why-bugs-might-feel-impossible/),
+but these are rare.].
 
 If you can't find an easy answer, it is important to begin to approach the
 problem like you would a science problem.
@@ -110,6 +113,7 @@ There are several things to try:
         for bioinformatics.
 
     - You can also blast it out on twitter. People will probably help.
+
 
 ---
 
