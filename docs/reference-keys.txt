@@ -3,7 +3,7 @@ workshop-introduction
 workshop-goals
 structure-and-resources
 workshop-schedule
-this-syllabus-and-videos
+asynchronous-sessions
 slack-channel
 synchronous-sessions
 workshop-expectations

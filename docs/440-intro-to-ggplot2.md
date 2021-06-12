@@ -23,14 +23,14 @@ head(msleep)
 
 ```
 ## # A tibble: 6 x 11
-##   name  genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   <chr> <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Chee… Acin… carni Carn… lc                  12.1      NA        NA      11.9
-## 2 Owl … Aotus omni  Prim… <NA>                17         1.8      NA       7  
-## 3 Moun… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
-## 4 Grea… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
-## 5 Cow   Bos   herbi Arti… domesticated         4         0.7       0.667  20  
-## 6 Thre… Brad… herbi Pilo… <NA>                14.4       2.2       0.767   9.6
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
+## 1 Cheetah Acin… carni Carn… lc                  12.1      NA        NA      11.9
+## 2 Owl mo… Aotus omni  Prim… <NA>                17         1.8      NA       7  
+## 3 Mounta… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
+## 4 Greate… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
+## 5 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+## 6 Three-… Brad… herbi Pilo… <NA>                14.4       2.2       0.767   9.6
 ## # … with 2 more variables: brainwt <dbl>, bodywt <dbl>
 ```
 
@@ -57,7 +57,7 @@ First we establish our coordinate system.
 my.plot <- ggplot(data = msleep, aes(x = brainwt, y = sleep_rem))
 ```
 
-We can now draw the plot as a scatterplot with points to represent each mammal's measurements from the `msleep` dataset.
+We can now draw the plot as a scatterplot with points to represent each mammal's measurements from the `msleep` dataset (worksheet task 3.4.1A).
 
 
 ```r
@@ -98,7 +98,7 @@ ggplot(msleep2, aes(x = brainwt_log, y = sleep_rem)) + geom_point()
 
 <img src="440-intro-to-ggplot2_files/figure-html/ggplot6-1.png" width="672" />
 
-Here we use the `mutate` function to make a new variable called `brainwt_log` in our dataset (technically a new dataset copy that we have saved as `msleep2`). Plotting this variable as our x variable (i.e. independent variable), makes it easier to look for patterns.
+Here we use the `mutate` function to make a new variable called `brainwt_log` in our dataset (technically a new dataset copy that we have saved as `msleep2`). Plotting this variable as our x variable (i.e. independent variable), makes it easier to look for patterns (worksheet tasks 3.4.1B and 3.4.1C).
 
 ------
 
@@ -120,12 +120,11 @@ ggplot(data = msleep2, aes(x = brainwt_log, y = sleep_rem)) +
 
 <img src="440-intro-to-ggplot2_files/figure-html/ggplot7-1.png" width="672" />
 
-Here we have made the plots semi-transparent and colored blue. You can try varying these values (e.g. change blue to a different color). You can also supply other arguments such as `shape` to use something other than a dot.
-
+Here we have made the plots semi-transparent and colored blue. You can try varying these values (e.g. change blue to a different color). You can also supply other arguments such as `shape` to use something other than a dot (worksheet task 3.4.2A).
 
 However, it is also possible to scale the color of the points by some variable present in the data. This approach means we can create a scatterplot that conveys more than just two variables' worth of information (x-axis and y-axis) by having the color reflect a third variable.
 
-To do this, we specify the `color` inside the aesthetic mapping `aes` within the initial `ggplot` function. Same as how we told R to use a specific column by name for `x` or `y` coordinates, we specify which column to use for `color`.
+To do this, we specify the `color` inside the aesthetic mapping `aes` within the initial `ggplot` function. Same as how we told R to use a specific column by name for `x` or `y` coordinates, we specify which column to use for `color` (worksheet task 3.4.2B).
 
 
 ```r
@@ -141,7 +140,7 @@ ggplot(msleep2, aes(x = brainwt_log, y = sleep_rem, color = vore)) +
 
 This plot conveys not only the relationship between `brainwt_log` and `sleep_rem`, but each plot representing a different mammal now conveys what the feeding behavior of that mammal is.
 
-When generating visualizations, it is important to annotate the figure with meaningful labels on the axes to make them accessible for the viewer. For that, we can use the `labs` function.
+When generating visualizations, it is important to annotate the figure with meaningful labels on the axes to make them accessible for the viewer. For that, we can use the `labs` function (worksheet task 3.4.2C).
 
 
 ```r
@@ -168,7 +167,7 @@ Scatterplots are a great way to look at two quantitative (numerical) values at t
 
 However, other plots may be more useful to look at differing numbers of variables (i.e. one quantitative variable) or different types of variables (i.e. qualitative or categorical data). Here, we discuss two types of single variable plots that look at either a quantitative variable (histogram) or a categorical variable (barplot).
 
-We can create histograms in ggplot2 that are more aesthetically pleasing than the default `hist` function. This shows the distribution of one quantitative variable.
+We can create histograms in ggplot2 that are more aesthetically pleasing than the default `hist` function. This shows the distribution of one quantitative variable (worksheet tasks 3.4.3A and 3.4.3B).
 
 
 ```r
@@ -178,7 +177,7 @@ ggplot(msleep, aes(x = sleep_total)) +
 
 <img src="440-intro-to-ggplot2_files/figure-html/ggplot10-1.png" width="672" />
 
-We can look at how many individuals in the dataset fall into each category, such as how many mammals have each kind of feeding behavior.
+We can look at how many individuals in the dataset fall into each category, such as how many mammals have each kind of feeding behavior (worksheet task 3.4.3C).
 
 
 ```r
@@ -196,7 +195,7 @@ As you can see where we map the aesthetic, we only tell the `ggplot` function to
 
 Let's return to `iris` dataset to explore how we can visualize differences between groups/categories. These groups are often represented in our data as a factor.
 
-We can look at how the distributions of `Sepal.Length` differ depending on which species each iris belongs to. One plot that can do this easily is the `geom_boxplot` function.
+We can look at how the distributions of `Sepal.Length` differ depending on which species each iris belongs to. One plot that can do this easily is the `geom_boxplot` function (worksheet task 3.4.4A).
 
 
 ```r
@@ -216,7 +215,7 @@ ggplot(iris, aes(x = Sepal.Length, fill = Species)) +
 
 <img src="440-intro-to-ggplot2_files/figure-html/ggplot13-1.png" width="672" />
 
-While we can sort of see the trends on this plot, it may be helpful to separate out each histogram for each individual species. There is an easy way to do this in `ggplot2` using facetting or the `facet_wrap` function. This function splits the figure into separate panel where the data has been filtered by the category (i.e. `Species`).
+While we can sort of see the trends on this plot, it may be helpful to separate out each histogram for each individual species. There is an easy way to do this in `ggplot2` using facetting or the `facet_wrap` function. This function splits the figure into separate panel where the data has been filtered by the category (i.e. `Species`) (worksheet task 3.4.4B).
 
 
 ```r
@@ -237,7 +236,7 @@ Heatmaps are a useful way to show the values of multiple samples across many mea
 
 The base R `heatmap` function meets many needs while the ggplot2 equivalent (`geom_tile`) can be confusing so we will recommend that you not use ggplot2 for heatmaps.
 
-Let's go back to `msleep` dataset to visualize trends between the different measurements taken on each mammal. We will first create a simplified dataset from `msleep` where we take the log value of both `brainwt` and `bodywt`.
+Let's go back to `msleep` dataset to visualize trends between the different measurements taken on each mammal. We will first create a simplified dataset from `msleep` where we take the log value of both `brainwt` and `bodywt` (worksheet task 3.4.5A).
 
 
 ```r
@@ -255,7 +254,7 @@ head(temp.data)
 ## [6,]         NA  1.3480731
 ```
 
-Next, we feed these numeric values into the `heatmap` function along with some arguments that specify settings for displaying the figure. We use `labCol` to specify how to label these columns and `cexCol` to control the text size of these labels. We set `labRow` to be the names of each species from the msleep dataset.
+Next, we feed these numeric values into the `heatmap` function along with some arguments that specify settings for displaying the figure. We use `labCol` to specify how to label these columns and `cexCol` to control the text size of these labels. We set `labRow` to be the names of each species from the msleep dataset (worksheet task 3.4.5B).
 
 
 ```r
@@ -264,7 +263,7 @@ heatmap(temp.data, labRow = msleep$name, labCol = c("brainwt", "bodywt"), cexCol
 
 <img src="440-intro-to-ggplot2_files/figure-html/ggplot16-1.png" width="672" />
 
-This first heatmap will look strange because it colors each box by its magnitude, but body weight of a mammal is always greater than its brain weight. We want to scale within each column so that the depth of the color reflects whether the mammal has a high brain weight or high body weight **relative to the other mammals**.
+This first heatmap will look strange because it colors each box by its magnitude, but body weight of a mammal is always greater than its brain weight. We want to scale within each column so that the depth of the color reflects whether the mammal has a high brain weight or high body weight **relative to the other mammals** (worksheet task 3.4.5C).
 
 
 ```r
@@ -275,7 +274,7 @@ heatmap(temp.data, scale = "col", labRow = msleep$name, labCol = c("brainwt", "b
 
 Using the `scale` argument which we set to `"col"`, now the color of the columns is more meaningful. For example, it makes sense that the measurements taken on an Asian elephant are much higher than those from a mole rat, so the color of those cells is deeper.
 
-Let's add some more data to our heatmap visualization.
+Let's add some more data to our heatmap visualization (worksheet task 3.4.5D and 3.4.5E).
 
 
 ```r

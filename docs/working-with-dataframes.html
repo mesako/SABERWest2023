@@ -74,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -141,9 +141,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="workshop-goals.html"><a href="workshop-goals.html"><i class="fa fa-check"></i><b>1.1</b> Workshop goals</a></li>
 <li class="chapter" data-level="1.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html"><i class="fa fa-check"></i><b>1.2</b> Structure and resources</a><ul>
 <li class="chapter" data-level="1.2.1" data-path="structure-and-resources.html"><a href="structure-and-resources.html#workshop-schedule"><i class="fa fa-check"></i><b>1.2.1</b> Workshop schedule</a></li>
-<li class="chapter" data-level="1.2.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html#this-syllabus-and-videos"><i class="fa fa-check"></i><b>1.2.2</b> This syllabus and videos</a></li>
-<li class="chapter" data-level="1.2.3" data-path="structure-and-resources.html"><a href="structure-and-resources.html#slack-channel"><i class="fa fa-check"></i><b>1.2.3</b> Slack channel</a></li>
-<li class="chapter" data-level="1.2.4" data-path="structure-and-resources.html"><a href="structure-and-resources.html#synchronous-sessions"><i class="fa fa-check"></i><b>1.2.4</b> Synchronous sessions</a></li>
+<li class="chapter" data-level="1.2.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html#asynchronous-sessions"><i class="fa fa-check"></i><b>1.2.2</b> Asynchronous sessions</a></li>
+<li class="chapter" data-level="1.2.3" data-path="structure-and-resources.html"><a href="structure-and-resources.html#synchronous-sessions"><i class="fa fa-check"></i><b>1.2.3</b> Synchronous sessions</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="workshop-expectations.html"><a href="workshop-expectations.html"><i class="fa fa-check"></i><b>1.3</b> Workshop expectations</a></li>
 </ul></li>
@@ -291,16 +290,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We can now work our way from vectors to dataframes. The most common data format we will deal with in research is a dataframe format.</p>
 <p>A dataframe has data is stored in a tabular format with the rows generally referring to individual measurements (single patients, samples, cells, etc.) and the columns referring to parameters (genes, proteins, etc.) measured in each individual. Essentially a dataframe can be thought of a bunch of vectors lined up in columns or lined up in rows.</p>
 <p>We work with a dataframe instead of a matrix (another datatype in R) because dataframes can tolerate different datatypes in the same table. As seen below, a matrix will easily accept data all of the same datatype, but do unexpected things when you provide multiple datatypes.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" title="1">matrix1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>),</a>
-<a class="sourceLine" id="cb89-2" title="2">                    <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb89-3" title="3">matrix1</a></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb89-1" data-line-number="1">matrix1 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>),</a>
+<a class="sourceLine" id="cb89-2" data-line-number="2">                    <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb89-3" data-line-number="3">matrix1</a></code></pre></div>
 <pre><code>##      [,1] [,2] [,3]
 ## [1,]    1    4    7
 ## [2,]    2    5    8
 ## [3,]    3    6    9</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1">matrix2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="st">&quot;apple&quot;</span>, <span class="dv">3</span>, <span class="ot">TRUE</span>, <span class="st">&quot;cat&quot;</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="ot">NA</span>, <span class="ot">FALSE</span>),</a>
-<a class="sourceLine" id="cb91-2" title="2">                    <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb91-3" title="3">matrix2</a></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" data-line-number="1">matrix2 &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="st">&quot;apple&quot;</span>, <span class="dv">3</span>, <span class="ot">TRUE</span>, <span class="st">&quot;cat&quot;</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="ot">NA</span>, <span class="ot">FALSE</span>),</a>
+<a class="sourceLine" id="cb91-2" data-line-number="2">                    <span class="dt">nrow =</span> <span class="dv">3</span>, <span class="dt">ncol =</span> <span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb91-3" data-line-number="3">matrix2</a></code></pre></div>
 <pre><code>##      [,1]    [,2]   [,3]   
 ## [1,] &quot;1&quot;     &quot;TRUE&quot; &quot;7&quot;    
 ## [2,] &quot;apple&quot; &quot;cat&quot;  NA     
@@ -308,10 +307,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Now <code>matrix1</code> looks normal, but you may notice that <code>matrix2</code> has quotation marks around its elements, including the numbers and the <code>TRUE</code>/<code>FALSE</code> values. This means these elements are all being treated like character strings because we included elements like <code>apple</code> and R wants them to be one consistent type.</p>
 <p>While we are working mainly with dataframes, tibbles will pop up as we work in <em>tidyverse</em>. Tibbles are very similar to dataframes in their ability to handle different data types across their different columns. You can think of them as very similar entities.</p>
 <p>We will first explore the built-in <code>iris</code> dataset. If you look up its documentation, you will notice that it is described as a dataframe and does contain both numeric values and character strings for the names of species.</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" title="1">?iris</a></code></pre></div>
-<p>For the sake of this exercise, we will assign a new variable called <code>iris.temp</code> that is a shorter version of the original dataset. The <code>head</code> function returns just the first few rows and here we use an argument to request the first 10.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" title="1">iris.temp &lt;-<span class="st"> </span><span class="kw">head</span>(iris, <span class="dt">n =</span> <span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb94-2" title="2">iris.temp</a></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb93-1" data-line-number="1">?iris</a></code></pre></div>
+<p>For the sake of this exercise, we will assign a new variable called <code>iris.temp</code> that is a shorter version of the original dataset. The <code>head</code> function returns just the first few rows and here we use an argument to request the first 10 (worksheet task 2.5.1A).</p>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb94-1" data-line-number="1">iris.temp &lt;-<span class="st"> </span><span class="kw">head</span>(iris, <span class="dt">n =</span> <span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb94-2" data-line-number="2">iris.temp</a></code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1           5.1         3.5          1.4         0.2  setosa
 ## 2           4.9         3.0          1.4         0.2  setosa
@@ -325,25 +324,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10          4.9         3.1          1.5         0.1  setosa</code></pre>
 <div id="indexing-and-subsetting-dataframes" class="section level3">
 <h3><span class="header-section-number">2.5.1</span> Indexing and subsetting dataframes</h3>
-<p>You can index into a dataframe and pull out one or more cells within the dataframe. Note that we are providing two coordinates to explain which row (the first number before the comma) and which column (the second number after the comma) to find the exact element (or cell in the table).</p>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" title="1">iris.temp[<span class="dv">1</span>, <span class="dv">3</span>]</a></code></pre></div>
+<p>You can index into a dataframe and pull out one or more cells within the dataframe. Note that we are providing two coordinates to explain which row (the first number before the comma) and which column (the second number after the comma) to find the exact element (or cell in the table) (worksheet task 2.5.1B).</p>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb96-1" data-line-number="1">iris.temp[<span class="dv">1</span>, <span class="dv">3</span>]</a></code></pre></div>
 <pre><code>## [1] 1.4</code></pre>
 <p>You can pull out multiple elements at a time, specifying which row and column they reside in.</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" title="1">iris.temp[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)] <span class="co"># gives us the 2nd and 3rd columns of the 1st and 2nd rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb98-1" data-line-number="1">iris.temp[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">3</span>)] <span class="co"># gives us the 2nd and 3rd columns of the 1st and 2nd rows</span></a></code></pre></div>
 <pre><code>##   Sepal.Width Petal.Length
 ## 1         3.5          1.4
 ## 2         3.0          1.4</code></pre>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" title="1">iris.temp[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">5</span>] <span class="co"># gives us the 3rd through 5th columns of the 1st through 3rd rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb100-1" data-line-number="1">iris.temp[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dv">3</span><span class="op">:</span><span class="dv">5</span>] <span class="co"># gives us the 3rd through 5th columns of the 1st through 3rd rows</span></a></code></pre></div>
 <pre><code>##   Petal.Length Petal.Width Species
 ## 1          1.4         0.2  setosa
 ## 2          1.4         0.2  setosa
 ## 3          1.3         0.2  setosa</code></pre>
 <p>If you provide the row and not the column, or vice versa, by default R will pull out all of the available columns and rows respectively.</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" title="1">iris.temp[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ] <span class="co"># pulls out the first two rows and all columns</span></a></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb102-1" data-line-number="1">iris.temp[<span class="dv">1</span><span class="op">:</span><span class="dv">2</span>, ] <span class="co"># pulls out the first two rows and all columns</span></a></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa</code></pre>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" title="1">iris.temp[, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="co"># pulls out the first two columns and all rows</span></a></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb104-1" data-line-number="1">iris.temp[, <span class="dv">1</span><span class="op">:</span><span class="dv">2</span>] <span class="co"># pulls out the first two columns and all rows</span></a></code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width
 ## 1           5.1         3.5
 ## 2           4.9         3.0
@@ -355,9 +354,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 8           5.0         3.4
 ## 9           4.4         2.9
 ## 10          4.9         3.1</code></pre>
-<p>It’s possible to also remove elements in a dataframe using the negative sign.</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" title="1">iris.temp2 &lt;-<span class="st"> </span>iris.temp[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), ] <span class="co"># removes the first and third rows</span></a>
-<a class="sourceLine" id="cb106-2" title="2"><span class="kw">head</span>(iris.temp)</a></code></pre></div>
+<p>It’s possible to also remove elements in a dataframe using the negative sign (worksheet tasks 2.5.1C and 2.5.1D).</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb106-1" data-line-number="1">iris.temp2 &lt;-<span class="st"> </span>iris.temp[<span class="op">-</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), ] <span class="co"># removes the first and third rows</span></a>
+<a class="sourceLine" id="cb106-2" data-line-number="2"><span class="kw">head</span>(iris.temp)</a></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 1          5.1         3.5          1.4         0.2  setosa
 ## 2          4.9         3.0          1.4         0.2  setosa
@@ -365,7 +364,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4          4.6         3.1          1.5         0.2  setosa
 ## 5          5.0         3.6          1.4         0.2  setosa
 ## 6          5.4         3.9          1.7         0.4  setosa</code></pre>
-<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" title="1"><span class="kw">head</span>(iris.temp2)</a></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb108-1" data-line-number="1"><span class="kw">head</span>(iris.temp2)</a></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ## 2          4.9         3.0          1.4         0.2  setosa
 ## 4          4.6         3.1          1.5         0.2  setosa
@@ -373,27 +372,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6          5.4         3.9          1.7         0.4  setosa
 ## 7          4.6         3.4          1.4         0.3  setosa
 ## 8          5.0         3.4          1.5         0.2  setosa</code></pre>
-<p>We saved the shorter dataset into a new variable and when we preview <code>iris.temp</code> against <code>iris.temp2</code> you may be able to see the missing rows.</p>
+<p>We saved the shorter dataset into a new variable and when we preview <code>iris.temp</code> against <code>iris.temp2</code> you may be able to see the missing rows (worksheet task 2.5.1E).</p>
 </div>
 <div id="exploring-dataframes" class="section level3">
 <h3><span class="header-section-number">2.5.2</span> Exploring dataframes</h3>
 <p>When you are first presented with a dataframe, for example data that was collected in your research lab that you are tasked with analyzing, you will want to learn more about it. There are a few different functions you can use to investigate a dataframe, the size of it, and other aspects.</p>
-<p>The <code>dim</code> function, short for dimensions, returns the number of rows and columns.</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" title="1"><span class="kw">dim</span>(iris)</a></code></pre></div>
+<p>The <code>dim</code> function, short for dimensions, returns the number of rows and columns (worksheet task 2.5.2A).</p>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb110-1" data-line-number="1"><span class="kw">dim</span>(iris)</a></code></pre></div>
 <pre><code>## [1] 150   5</code></pre>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" title="1"><span class="kw">dim</span>(iris.temp)</a></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb112-1" data-line-number="1"><span class="kw">dim</span>(iris.temp)</a></code></pre></div>
 <pre><code>## [1] 10  5</code></pre>
-<p>This shows you that <code>iris.temp</code> is in fact just the first 10 rows of <code>iris</code>. You can use the following functions: <code>str</code> for structure, <code>colnames</code> for column names, and <code>summary</code> to investigate aspects of a given dataset.</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" title="1"><span class="kw">colnames</span>(iris)</a></code></pre></div>
+<p>This shows you that <code>iris.temp</code> is in fact just the first 10 rows of <code>iris</code>. You can use the following functions: <code>str</code> for structure, <code>colnames</code> for column names, and <code>summary</code> to investigate aspects of a given dataset (worksheet task 2.5.2B).</p>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb114-1" data-line-number="1"><span class="kw">colnames</span>(iris)</a></code></pre></div>
 <pre><code>## [1] &quot;Sepal.Length&quot; &quot;Sepal.Width&quot;  &quot;Petal.Length&quot; &quot;Petal.Width&quot;  &quot;Species&quot;</code></pre>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" title="1"><span class="kw">str</span>(iris)</a></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb116-1" data-line-number="1"><span class="kw">str</span>(iris)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    150 obs. of  5 variables:
 ##  $ Sepal.Length: num  5.1 4.9 4.7 4.6 5 5.4 4.6 5 4.4 4.9 ...
 ##  $ Sepal.Width : num  3.5 3 3.2 3.1 3.6 3.9 3.4 3.4 2.9 3.1 ...
 ##  $ Petal.Length: num  1.4 1.4 1.3 1.5 1.4 1.7 1.4 1.5 1.4 1.5 ...
 ##  $ Petal.Width : num  0.2 0.2 0.2 0.2 0.2 0.4 0.3 0.2 0.2 0.1 ...
 ##  $ Species     : Factor w/ 3 levels &quot;setosa&quot;,&quot;versicolor&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
-<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" title="1"><span class="kw">summary</span>(iris)</a></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb118-1" data-line-number="1"><span class="kw">summary</span>(iris)</a></code></pre></div>
 <pre><code>##   Sepal.Length    Sepal.Width     Petal.Length    Petal.Width   
 ##  Min.   :4.300   Min.   :2.000   Min.   :1.000   Min.   :0.100  
 ##  1st Qu.:5.100   1st Qu.:2.800   1st Qu.:1.600   1st Qu.:0.300  
@@ -409,9 +408,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##                 
 ## </code></pre>
 <p>The <code>str</code> function reveals that the <code>iris</code> dataframe contains different data types. Specifcally, it mostly contains columns of numbers as well as a column of factors or categorical data referring to which species the iris belonged to.</p>
-<p>The <code>summary</code> function tries to tell us more info about each column. For numerical data, it summarizes the min and max values, the quartiles, and the center values (e.g. median or mean). For categorical data like the <code>Species</code> column, this function shows how many rows belong to each category.</p>
+<p>The <code>summary</code> function tries to tell us more info about each column. For numerical data, it summarizes the min and max values, the quartiles, and the center values (e.g. median or mean). For categorical data like the <code>Species</code> column, this function shows how many rows belong to each category (worksheet tasks 2.5.2C and 2.5.3D).</p>
 <p>We can try to look at the beginning of a specific column in this dataset to get a better understanding for it. Dataframes that have names for their columns allow you to index into the columns specifically by name using the <code>$</code> operator as shown below.</p>
-<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" title="1"><span class="kw">head</span>(iris<span class="op">$</span>Species)</a></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb120-1" data-line-number="1"><span class="kw">head</span>(iris<span class="op">$</span>Species)</a></code></pre></div>
 <pre><code>## [1] setosa setosa setosa setosa setosa setosa
 ## Levels: setosa versicolor virginica</code></pre>
 <p>Remember the <code>head</code> function lets us preview a longer set of data, either showing the first few elements of a vector or the first few rows of a dataframe.</p>
@@ -419,48 +418,48 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="building-and-modifying-dataframes" class="section level3">
 <h3><span class="header-section-number">2.5.3</span> Building and modifying dataframes</h3>
 <p>We can also generate our own dataframes from vectors that we put together into a table. Revisiting our heart rate measurement example, let’s build a dataframe of patient data.</p>
-<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" title="1">patient.data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">name =</span> <span class="kw">c</span>(<span class="st">&quot;oakley&quot;</span>, <span class="st">&quot;rashmi&quot;</span>, <span class="st">&quot;kiran&quot;</span>),</a>
-<a class="sourceLine" id="cb122-2" title="2">                           <span class="dt">heart_rate =</span> <span class="kw">c</span>(<span class="dv">78</span>, <span class="dv">68</span>, <span class="dv">95</span>),</a>
-<a class="sourceLine" id="cb122-3" title="3">                           <span class="dt">disease_status =</span> <span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>))</a>
-<a class="sourceLine" id="cb122-4" title="4">patient.data</a></code></pre></div>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb122-1" data-line-number="1">patient.data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">name =</span> <span class="kw">c</span>(<span class="st">&quot;oakley&quot;</span>, <span class="st">&quot;rashmi&quot;</span>, <span class="st">&quot;kiran&quot;</span>),</a>
+<a class="sourceLine" id="cb122-2" data-line-number="2">                           <span class="dt">heart_rate =</span> <span class="kw">c</span>(<span class="dv">78</span>, <span class="dv">68</span>, <span class="dv">95</span>),</a>
+<a class="sourceLine" id="cb122-3" data-line-number="3">                           <span class="dt">disease_status =</span> <span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>))</a>
+<a class="sourceLine" id="cb122-4" data-line-number="4">patient.data</a></code></pre></div>
 <pre><code>##     name heart_rate disease_status
 ## 1 oakley         78          FALSE
 ## 2 rashmi         68          FALSE
 ## 3  kiran         95           TRUE</code></pre>
 <p>We can inspect the dataframe we have created using the same functions.</p>
-<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" title="1"><span class="kw">str</span>(patient.data)</a></code></pre></div>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb124-1" data-line-number="1"><span class="kw">str</span>(patient.data)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    3 obs. of  3 variables:
-##  $ name          : Factor w/ 3 levels &quot;kiran&quot;,&quot;oakley&quot;,..: 2 3 1
+##  $ name          : chr  &quot;oakley&quot; &quot;rashmi&quot; &quot;kiran&quot;
 ##  $ heart_rate    : num  78 68 95
 ##  $ disease_status: logi  FALSE FALSE TRUE</code></pre>
-<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" title="1"><span class="kw">summary</span>(patient.data)</a></code></pre></div>
-<pre><code>##      name     heart_rate    disease_status 
-##  kiran :1   Min.   :68.00   Mode :logical  
-##  oakley:1   1st Qu.:73.00   FALSE:2        
-##  rashmi:1   Median :78.00   TRUE :1        
-##             Mean   :80.33                  
-##             3rd Qu.:86.50                  
-##             Max.   :95.00</code></pre>
-<p>You can add new rows and columns using the <code>rbind</code> and <code>cbind</code> functions. Let’s pretend that we had collected additional information about our patients, such as their self-reported gender. We can add this as a new column (<code>cbind</code> short for bind column).</p>
-<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" title="1">patient.data &lt;-<span class="st"> </span><span class="kw">cbind</span>(patient.data, <span class="dt">gender =</span> <span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="ot">NA</span>))</a>
-<a class="sourceLine" id="cb128-2" title="2">patient.data</a></code></pre></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb126-1" data-line-number="1"><span class="kw">summary</span>(patient.data)</a></code></pre></div>
+<pre><code>##      name             heart_rate    disease_status 
+##  Length:3           Min.   :68.00   Mode :logical  
+##  Class :character   1st Qu.:73.00   FALSE:2        
+##  Mode  :character   Median :78.00   TRUE :1        
+##                     Mean   :80.33                  
+##                     3rd Qu.:86.50                  
+##                     Max.   :95.00</code></pre>
+<p>You can add new rows and columns using the <code>rbind</code> and <code>cbind</code> functions. Let’s pretend that we had collected additional information about our patients, such as their self-reported gender. We can add this as a new column (<code>cbind</code> short for bind column) (worksheet task 2.5.3A).</p>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb128-1" data-line-number="1">patient.data &lt;-<span class="st"> </span><span class="kw">cbind</span>(patient.data, <span class="dt">gender =</span> <span class="kw">c</span>(<span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>, <span class="ot">NA</span>))</a>
+<a class="sourceLine" id="cb128-2" data-line-number="2">patient.data</a></code></pre></div>
 <pre><code>##     name heart_rate disease_status gender
 ## 1 oakley         78          FALSE      M
 ## 2 rashmi         68          FALSE      F
 ## 3  kiran         95           TRUE   &lt;NA&gt;</code></pre>
-<p>You can merge two dataframes together using the <code>rbind</code> function assuming that their columns match up correctly. Let’s pretend that we had another day at the clinic and collected additional patient measurements.</p>
-<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" title="1">more.patients &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">name =</span> <span class="kw">c</span>(<span class="st">&quot;eun&quot;</span>, <span class="st">&quot;sasha&quot;</span>, <span class="st">&quot;mattie&quot;</span>),</a>
-<a class="sourceLine" id="cb130-2" title="2">                            <span class="dt">heart_rate =</span> <span class="kw">c</span>(<span class="dv">86</span>, <span class="dv">79</span>, <span class="dv">64</span>),</a>
-<a class="sourceLine" id="cb130-3" title="3">                            <span class="dt">disease_status =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>),</a>
-<a class="sourceLine" id="cb130-4" title="4">                            <span class="dt">gender =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>))</a>
-<a class="sourceLine" id="cb130-5" title="5">more.patients</a></code></pre></div>
+<p>You can merge two dataframes together using the <code>rbind</code> function assuming that their columns match up correctly. Let’s pretend that we had another day at the clinic and collected additional patient measurements (worksheet task 2.5.3B).</p>
+<div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb130-1" data-line-number="1">more.patients &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">name =</span> <span class="kw">c</span>(<span class="st">&quot;eun&quot;</span>, <span class="st">&quot;sasha&quot;</span>, <span class="st">&quot;mattie&quot;</span>),</a>
+<a class="sourceLine" id="cb130-2" data-line-number="2">                            <span class="dt">heart_rate =</span> <span class="kw">c</span>(<span class="dv">86</span>, <span class="dv">79</span>, <span class="dv">64</span>),</a>
+<a class="sourceLine" id="cb130-3" data-line-number="3">                            <span class="dt">disease_status =</span> <span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>),</a>
+<a class="sourceLine" id="cb130-4" data-line-number="4">                            <span class="dt">gender =</span> <span class="kw">c</span>(<span class="ot">NA</span>, <span class="st">&quot;M&quot;</span>, <span class="st">&quot;F&quot;</span>))</a>
+<a class="sourceLine" id="cb130-5" data-line-number="5">more.patients</a></code></pre></div>
 <pre><code>##     name heart_rate disease_status gender
 ## 1    eun         86           TRUE   &lt;NA&gt;
 ## 2  sasha         79           TRUE      M
 ## 3 mattie         64          FALSE      F</code></pre>
-<p>Let’s use <code>rbind</code>, short for binding rows, to add these additional rows to the bottom of our first dataframe <code>patient.data</code>.</p>
-<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" title="1">all.patients &lt;-<span class="st"> </span><span class="kw">rbind</span>(patient.data, more.patients)</a>
-<a class="sourceLine" id="cb132-2" title="2">all.patients</a></code></pre></div>
+<p>Let’s use <code>rbind</code>, short for binding rows, to add these additional rows to the bottom of our first dataframe <code>patient.data</code> (worksheet tasks 2.5.3C and 2.5.3D).</p>
+<div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb132-1" data-line-number="1">all.patients &lt;-<span class="st"> </span><span class="kw">rbind</span>(patient.data, more.patients)</a>
+<a class="sourceLine" id="cb132-2" data-line-number="2">all.patients</a></code></pre></div>
 <pre><code>##     name heart_rate disease_status gender
 ## 1 oakley         78          FALSE      M
 ## 2 rashmi         68          FALSE      F
@@ -469,12 +468,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5  sasha         79           TRUE      M
 ## 6 mattie         64          FALSE      F</code></pre>
 <p>You can also remove rows and columns using the trick with a negative index.</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" title="1">patient.data[, <span class="dv">-1</span>] <span class="co"># removes first column</span></a></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb134-1" data-line-number="1">patient.data[, <span class="dv">-1</span>] <span class="co"># removes first column</span></a></code></pre></div>
 <pre><code>##   heart_rate disease_status gender
 ## 1         78          FALSE      M
 ## 2         68          FALSE      F
 ## 3         95           TRUE   &lt;NA&gt;</code></pre>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" title="1">patient.data[<span class="op">-</span><span class="dv">1</span>, ] <span class="co"># removes first row</span></a></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb136-1" data-line-number="1">patient.data[<span class="op">-</span><span class="dv">1</span>, ] <span class="co"># removes first row</span></a></code></pre></div>
 <pre><code>##     name heart_rate disease_status gender
 ## 2 rashmi         68          FALSE      F
 ## 3  kiran         95           TRUE   &lt;NA&gt;</code></pre>
@@ -486,26 +485,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>However, you should take care that sometimes unexpected behavior may arise when a column in your dataframe is one datatype and you add data that is not compatible with that datatype.</p>
 <p>Remember that vectors can only contain one datatype at a time? Each column in the dataframe is essentially a vector.</p>
 <p>We briefly discussed factors as categorical variables. Let’s pretend that for our analysis we wanted to treat gender as a categorical variable. Factors are a special datatype that deals with categorical data and can be handy for certain manipulations or visualizations.</p>
-<p>To do this, we can coerce data into a different datatype using functions like <code>as.function</code>.</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" title="1"><span class="kw">head</span>(all.patients<span class="op">$</span>gender)</a></code></pre></div>
-<pre><code>## [1] M    F    &lt;NA&gt; &lt;NA&gt; M    F   
-## Levels: F M</code></pre>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" title="1">all.patients<span class="op">$</span>gender &lt;-<span class="st"> </span><span class="kw">as.factor</span>(all.patients<span class="op">$</span>gender)</a>
-<a class="sourceLine" id="cb140-2" title="2"><span class="kw">head</span>(all.patients<span class="op">$</span>gender)</a></code></pre></div>
+<p>To do this, we can coerce data into a different datatype using functions like <code>as.factor</code> (worksheet tasks 2.5.4A and 2.5.4B).</p>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb138-1" data-line-number="1"><span class="kw">head</span>(all.patients<span class="op">$</span>gender)</a></code></pre></div>
+<pre><code>## [1] &quot;M&quot; &quot;F&quot; NA  NA  &quot;M&quot; &quot;F&quot;</code></pre>
+<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb140-1" data-line-number="1">all.patients<span class="op">$</span>gender &lt;-<span class="st"> </span><span class="kw">as.factor</span>(all.patients<span class="op">$</span>gender)</a>
+<a class="sourceLine" id="cb140-2" data-line-number="2"><span class="kw">head</span>(all.patients<span class="op">$</span>gender)</a></code></pre></div>
 <pre><code>## [1] M    F    &lt;NA&gt; &lt;NA&gt; M    F   
 ## Levels: F M</code></pre>
 <p>This vector of factors shows which category each element belongs to, and then summarizes what the possible categories are down at the bottom where it prints the <code>Levels</code> of this factor. This can cause issues if we introduce data that does not match these categories. Let’s try adding a new patient’s data.</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1">all.patients &lt;-<span class="st"> </span><span class="kw">rbind</span>(all.patients, </a>
-<a class="sourceLine" id="cb142-2" title="2">                      <span class="kw">c</span>(<span class="dt">name =</span> <span class="st">&quot;lupe&quot;</span>,</a>
-<a class="sourceLine" id="cb142-3" title="3">                        <span class="dt">heart_rate =</span> <span class="dv">72</span>,</a>
-<a class="sourceLine" id="cb142-4" title="4">                        <span class="dt">disease_status =</span> <span class="ot">FALSE</span>,</a>
-<a class="sourceLine" id="cb142-5" title="5">                        <span class="dt">gender =</span> <span class="st">&quot;NB&quot;</span>))</a></code></pre></div>
-<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;lupe&quot;): invalid factor level, NA
-## generated
-
-## Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;lupe&quot;): invalid factor level, NA
+<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" data-line-number="1">all.patients &lt;-<span class="st"> </span><span class="kw">rbind</span>(all.patients, </a>
+<a class="sourceLine" id="cb142-2" data-line-number="2">                      <span class="kw">c</span>(<span class="dt">name =</span> <span class="st">&quot;lupe&quot;</span>,</a>
+<a class="sourceLine" id="cb142-3" data-line-number="3">                        <span class="dt">heart_rate =</span> <span class="dv">72</span>,</a>
+<a class="sourceLine" id="cb142-4" data-line-number="4">                        <span class="dt">disease_status =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb142-5" data-line-number="5">                        <span class="dt">gender =</span> <span class="st">&quot;NB&quot;</span>))</a></code></pre></div>
+<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;NB&quot;): invalid factor level, NA
 ## generated</code></pre>
-<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" title="1">all.patients</a></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb144-1" data-line-number="1">all.patients</a></code></pre></div>
 <pre><code>##     name heart_rate disease_status gender
 ## 1 oakley         78          FALSE      M
 ## 2 rashmi         68          FALSE      F
@@ -513,32 +508,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4    eun         86           TRUE   &lt;NA&gt;
 ## 5  sasha         79           TRUE      M
 ## 6 mattie         64          FALSE      F
-## 7   &lt;NA&gt;         72          FALSE   &lt;NA&gt;</code></pre>
+## 7   lupe         72          FALSE   &lt;NA&gt;</code></pre>
 <p>What has happened with this new addition? If you tried to add a new patient to the dataframe that had a gender that wasn’t already represented in the data, chances are you had a warning and that gender was turned to <code>NA</code>.</p>
-<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" title="1">all.patients<span class="op">$</span>gender</a></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb146-1" data-line-number="1">all.patients<span class="op">$</span>gender</a></code></pre></div>
 <pre><code>## [1] M    F    &lt;NA&gt; &lt;NA&gt; M    F    &lt;NA&gt;
 ## Levels: F M</code></pre>
 <p>Once a factor is created, it doesn’t let you easily add new categories that were not in the original set. We will not get issues though if we add a new patient whose gender is represented as one of the levels in our gender factor.</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" title="1">all.patients &lt;-<span class="st"> </span><span class="kw">rbind</span>(all.patients, </a>
-<a class="sourceLine" id="cb148-2" title="2">                      <span class="kw">c</span>(<span class="dt">name =</span> <span class="st">&quot;chihiro&quot;</span>, </a>
-<a class="sourceLine" id="cb148-3" title="3">                        <span class="dt">heart_rate =</span> <span class="dv">101</span>, </a>
-<a class="sourceLine" id="cb148-4" title="4">                        <span class="dt">disease_status =</span> <span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb148-5" title="5">                        <span class="dt">gender =</span> <span class="st">&quot;M&quot;</span>))</a></code></pre></div>
-<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;chihiro&quot;): invalid factor level,
-## NA generated</code></pre>
-<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" title="1">all.patients<span class="op">$</span>gender</a></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb148-1" data-line-number="1">all.patients &lt;-<span class="st"> </span><span class="kw">rbind</span>(all.patients, </a>
+<a class="sourceLine" id="cb148-2" data-line-number="2">                      <span class="kw">c</span>(<span class="dt">name =</span> <span class="st">&quot;chihiro&quot;</span>, </a>
+<a class="sourceLine" id="cb148-3" data-line-number="3">                        <span class="dt">heart_rate =</span> <span class="dv">101</span>, </a>
+<a class="sourceLine" id="cb148-4" data-line-number="4">                        <span class="dt">disease_status =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb148-5" data-line-number="5">                        <span class="dt">gender =</span> <span class="st">&quot;M&quot;</span>))</a>
+<a class="sourceLine" id="cb148-6" data-line-number="6">all.patients<span class="op">$</span>gender</a></code></pre></div>
 <pre><code>## [1] M    F    &lt;NA&gt; &lt;NA&gt; M    F    &lt;NA&gt; M   
 ## Levels: F M</code></pre>
-<p>So how do we fix this? The easiest way around this is to treat the column as characters instead of as factors.</p>
-<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb152-1" title="1">all.patients<span class="op">$</span>gender &lt;-<span class="st"> </span><span class="kw">as.character</span>(all.patients<span class="op">$</span>gender)</a>
-<a class="sourceLine" id="cb152-2" title="2">all.patients &lt;-<span class="st"> </span><span class="kw">rbind</span>(all.patients, </a>
-<a class="sourceLine" id="cb152-3" title="3">                      <span class="kw">c</span>(<span class="dt">name =</span> <span class="st">&quot;ayodele&quot;</span>, </a>
-<a class="sourceLine" id="cb152-4" title="4">                        <span class="dt">heart_rate =</span> <span class="dv">101</span>, </a>
-<a class="sourceLine" id="cb152-5" title="5">                        <span class="dt">disease_status =</span> <span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb152-6" title="6">                        <span class="dt">gender =</span> <span class="st">&quot;NB&quot;</span>))</a></code></pre></div>
-<pre><code>## Warning in `[&lt;-.factor`(`*tmp*`, ri, value = &quot;ayodele&quot;): invalid factor level,
-## NA generated</code></pre>
-<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb154-1" title="1">all.patients<span class="op">$</span>gender</a></code></pre></div>
+<p>So how do we fix this? The easiest way around this is to treat the column as characters instead of as factors (worksheet task 2.5.4C).</p>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb150-1" data-line-number="1">all.patients<span class="op">$</span>gender &lt;-<span class="st"> </span><span class="kw">as.character</span>(all.patients<span class="op">$</span>gender)</a>
+<a class="sourceLine" id="cb150-2" data-line-number="2">all.patients &lt;-<span class="st"> </span><span class="kw">rbind</span>(all.patients, </a>
+<a class="sourceLine" id="cb150-3" data-line-number="3">                      <span class="kw">c</span>(<span class="dt">name =</span> <span class="st">&quot;ayodele&quot;</span>, </a>
+<a class="sourceLine" id="cb150-4" data-line-number="4">                        <span class="dt">heart_rate =</span> <span class="dv">101</span>, </a>
+<a class="sourceLine" id="cb150-5" data-line-number="5">                        <span class="dt">disease_status =</span> <span class="ot">TRUE</span>, </a>
+<a class="sourceLine" id="cb150-6" data-line-number="6">                        <span class="dt">gender =</span> <span class="st">&quot;NB&quot;</span>))</a>
+<a class="sourceLine" id="cb150-7" data-line-number="7">all.patients<span class="op">$</span>gender</a></code></pre></div>
 <pre><code>## [1] &quot;M&quot;  &quot;F&quot;  NA   NA   &quot;M&quot;  &quot;F&quot;  NA   &quot;M&quot;  &quot;NB&quot;</code></pre>
 <p>There will be times that we want to treat certain columns in our data as a factor, but take care that you add compatible data to each column of your existing dataset.</p>
 

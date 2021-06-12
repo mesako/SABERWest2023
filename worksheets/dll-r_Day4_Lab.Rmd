@@ -147,19 +147,19 @@ library(ggplot2)
 # Your code here
 ```
 
-**Task B:** Working from the code you used to generate one of these scatterplots, change the labels on this plot.
-
-```{r}
-# Your code here
-```
-
-**Task C:** Working from the code you used to generate one of these scatterplots, create a new scatterplot where you have the color dictated by a quantitative variable in the `msleep` or `msleep2` dataset. Describe any patterns or outliers you see in this plot.
+**Task B:** Working from the code you used to generate one of these scatterplots, create a new scatterplot where you have the color dictated by a quantitative variable in the `msleep` or `msleep2` dataset. Describe any patterns or outliers you see in this plot.
 
 ```{r}
 # Your code here
 ```
 
 *Your response here*
+
+**Task C:** Working from the code you used to generate one of these scatterplots, change the labels on this plot.
+
+```{r}
+# Your code here
+```
 
 ------
 
@@ -172,7 +172,6 @@ library(ggplot2)
 ```
 
 *Your response here*
-
 
 **Task B:** For your histogram, try changing the value of `bins` in the `geom_histogram` function. How does this change your plot and how you might interpret the distribution?
 
@@ -497,7 +496,7 @@ With this figure, modify its aesthetics such as its labels and presentation to m
 
 *Your response here*
 
-**Task E:** Apply the `aov` function to the `iris` dataset to determine whether a given quantitative variable differs significantly based on the `Species`. Describe your interpretation of these results
+**Task E:** Apply the `aov` function to the `iris` dataset to determine whether a given quantitative variable differs significantly based on the `Species`. Describe your interpretation of these results.
 
 ```{r}
 # Your code here
@@ -505,7 +504,7 @@ With this figure, modify its aesthetics such as its labels and presentation to m
 
 *Your response here*
 
-**Task F:** Apply the `aov` function to the `msleep` dataset to determine whether a given quantitative variable differs significantly based on the `conservation` status. Describe your interpretation of these results
+**Task F:** Apply the `aov` function to the `msleep` dataset to determine whether a given quantitative variable differs significantly based on the `conservation` status. Describe your interpretation of these results.
 
 ```{r}
 # Your code here

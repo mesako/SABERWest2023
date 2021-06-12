@@ -11,14 +11,14 @@ head(msleep)
 
 ```
 ## # A tibble: 6 x 11
-##   name  genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   <chr> <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Chee… Acin… carni Carn… lc                  12.1      NA        NA      11.9
-## 2 Owl … Aotus omni  Prim… <NA>                17         1.8      NA       7  
-## 3 Moun… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
-## 4 Grea… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
-## 5 Cow   Bos   herbi Arti… domesticated         4         0.7       0.667  20  
-## 6 Thre… Brad… herbi Pilo… <NA>                14.4       2.2       0.767   9.6
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
+## 1 Cheetah Acin… carni Carn… lc                  12.1      NA        NA      11.9
+## 2 Owl mo… Aotus omni  Prim… <NA>                17         1.8      NA       7  
+## 3 Mounta… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
+## 4 Greate… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
+## 5 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+## 6 Three-… Brad… herbi Pilo… <NA>                14.4       2.2       0.767   9.6
 ## # … with 2 more variables: brainwt <dbl>, bodywt <dbl>
 ```
 
@@ -78,7 +78,7 @@ IQR(msleep$brainwt, na.rm = TRUE)
 ## [1] 0.1226
 ```
 
-Visualizations are a great way to see this information in one picture. We have learned to create a fancier histogram, but the `hist` function always works for quick viewing.
+Visualizations are a great way to see this information in one picture. We have learned to create a fancier histogram, but the `hist` function always works for quick viewing (worksheet tasks 3.6.1A and 3.6.1B).
 
 
 ```r
@@ -97,7 +97,7 @@ For the following statistical tests, we want to determine if measurements of a q
 
 To know if these differences are **statistically significant**, we need to be aware of the uncertainty in our data. Even if we have collect many observations, there is generally noisiness and error in those measurements. Thus, we have uncertainty if the mean value we calculate for a group is in fact the true mean.
 
-We can calculate a confidence interval to describe our guess for the mean in our data. That is, we can identify the mean based on our samples, but also provide an upper or lower bound for where the mean might be.
+We can calculate a confidence interval to describe our guess for the mean in our data. That is, we can identify the mean based on our samples, but also provide an upper or lower bound for where the mean might be (worksheet task 3.6.2A).
 
 
 ```r
@@ -120,13 +120,18 @@ t.test(msleep$brainwt)
 
 We use this `t.test` function because we assume that our data is normally distributed (which is not necessarily always the case) and it has a small sample size. You can see that while the mean for brain weight from this popular is 0.28, the range is fairly large (between 0.2 and 0.54) because of how big the variability is in the data.
 
-If we want to determine if two populations have a difference in their mean values that is statistically significant, we can calculate the t-test between two sets of observations. Let's look at whether the average time spent awake by mammals who are insectivores is significantly less than those who are not.
+If we want to determine if two populations have a difference in their mean values that is statistically significant, we can calculate the t-test between two sets of observations. Let's look at whether the average time spent awake by mammals who are insectivores is significantly less than those who are not (worksheet task 3.6.2B).
 
 
 ```r
 insectivores <- msleep %>% 
   filter(vore == "insecti") %>%
   select(awake)
+
+other.mammals <- msleep %>% 
+  filter(vore != "insecti") %>%
+  select(awake)
+
 head(insectivores)
 ```
 
@@ -142,9 +147,6 @@ head(insectivores)
 ```
 
 ```r
-other.mammals <- msleep %>% 
-  filter(vore != "insecti") %>%
-  select(awake)
 head(other.mammals)
 ```
 
@@ -159,6 +161,9 @@ head(other.mammals)
 ## 5  20  
 ## 6   9.6
 ```
+
+At first, we use tidyverse functions to isolate only the mammals that match the feeding behavior and select only the relevant column, before feeding this data into the `t.test` function (worksheet tasks 3.6.2C and 3.6.2D).
+
 
 ```r
 t.test(insectivores, other.mammals, alternative = "less")
@@ -180,7 +185,7 @@ t.test(insectivores, other.mammals, alternative = "less")
 
 These results show a p-value of 0.07, which is not the usual level of significance that most scientists accept (p-value < 0.05).
 
-However, there are numerous feeding behaviors besides insectivore and we may be interested in comparing the multiple categories against each other. We can use ANOVA (analysis of variance) to see how our quantitative variable is affected by the different kinds of feeding behavior.
+However, there are numerous feeding behaviors besides insectivore and we may be interested in comparing the multiple categories against each other. We can use ANOVA (analysis of variance) to see how our quantitative variable is affected by the different kinds of feeding behavior (worksheet tasks 3.6.2E and 3.6.2F).
 
 
 ```r
@@ -235,7 +240,7 @@ summary(msleep$brainwt)
 ## 0.00014 0.00290 0.01240 0.28158 0.12550 5.71200      27
 ```
 
-There are no `NA` values in the `bodywt` column, but there are 27 `NA` values in the `brainwt` column. Let's remove those using a helpful function in tidyverse and save the more complete dataset as `msleep2`.
+There are no `NA` values in the `bodywt` column, but there are 27 `NA` values in the `brainwt` column. Let's remove those using a helpful function in tidyverse and save the more complete dataset as `msleep2` (worksheet task 3.6.3A).
 
 
 ```r
@@ -268,7 +273,7 @@ cor(msleep2$brainwt, msleep2$bodywt)
 
 We can see that the correlation is 0.93, a value very close to 1. This suggests that these variabilities are almost perfectly correlated with each other, which we saw when we plotted these two variables against each other in the prior section.
 
-There are multiple types of correlations. The `cor` function uses a Pearson correlation by default and can use different methods like Spearman. Let's explore the difference between these correlations by looking at the relationship between the log value of brain weight and length of sleep cycle
+There are multiple types of correlations. The `cor` function uses a Pearson correlation by default and can use different methods like Spearman. Let's explore the difference between these correlations by looking at the relationship between the log value of brain weight and length of sleep cycle.
 
 
 ```r
@@ -285,7 +290,7 @@ ggplot(msleep3, aes(x = brainwt_log, y = sleep_cycle)) +
 
 <img src="460-basic-stats_files/figure-html/stats13a-1.png" width="672" />
 
-When we plot these variables against each other, including a fitted linear trend line, we can see that there is a relationship between these variables. However, the points do not quite fit a straight line if we look at the edges and center of this fitted line. This will reflect in our calculation of two different correlations.
+When we plot these variables against each other, including a fitted linear trend line, we can see that there is a relationship between these variables (worksheet task 3.6.3B). However, the points do not quite fit a straight line if we look at the edges and center of this fitted line. This will reflect in our calculation of two different correlations (worksheet task 3.6.3C).
 
 
 ```r
@@ -314,7 +319,7 @@ You may be interested in studying the relationship between one or more variables
 
 Here we train a linear model to try to predict brain weight from body weight in the `msleep` dataset.
 
-Linear models are established with a formula with the format of `outcome ~ predictor` where we are trying to determine if the predictor is able to help us accurately estimate an outcome.
+Linear models are established with a formula with the format of `outcome ~ predictor` where we are trying to determine if the predictor is able to help us accurately estimate an outcome (worksheet task 3.6.4A).
 
 
 ```r
@@ -329,21 +334,21 @@ summary(my.mod)
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -0.20686 -0.07565 -0.07184 -0.03565  1.18663 
+## -0.78804 -0.08422 -0.07634 -0.02839  2.06190 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(>|t|)   
-## (Intercept) 0.0761566  0.0479290   1.589  0.12330   
-## bodywt      0.0009228  0.0003162   2.919  0.00686 **
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 8.592e-02  4.821e-02   1.782   0.0804 .  
+## bodywt      9.639e-04  5.027e-05  19.176   <2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.2459 on 28 degrees of freedom
-## Multiple R-squared:  0.2333,	Adjusted R-squared:  0.2059 
-## F-statistic:  8.52 on 1 and 28 DF,  p-value: 0.006859
+## Residual standard error: 0.3526 on 54 degrees of freedom
+## Multiple R-squared:  0.8719,	Adjusted R-squared:  0.8696 
+## F-statistic: 367.7 on 1 and 54 DF,  p-value: < 2.2e-16
 ```
 
-In the summary of the results of this modeling, we see that `bodywt` is a significant predictor of `brainwt` in the `msleep` dataset. We can provide more predictors into our formula in the format: `outcome ~ predictor1 + predictor2 + ...`.
+In the summary of the results of this modeling, we see that `bodywt` is a significant predictor of `brainwt` in the `msleep` dataset. We can provide more predictors into our formula in the format: `outcome ~ predictor1 + predictor2 + ...` (worksheet tasks 3.6.4B and 3.6.4C).
 
 
 ```r
@@ -358,19 +363,19 @@ summary(my.mod2)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -4.3940 -2.2591 -0.1205  1.3586  7.5917 
+## -7.4531 -2.2517 -0.2619  2.0531  9.2283 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) 12.309310   0.675518  18.222  < 2e-16 ***
-## bodywt      -0.014261   0.004874  -2.926  0.00688 ** 
-## brainwt     -3.290750   2.551012  -1.290  0.20800    
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 10.6722485  0.5898643  18.093   <2e-16 ***
+## bodywt       0.0007953  0.0016703   0.476    0.636    
+## brainwt     -2.3518943  1.6180072  -1.454    0.152    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 3.319 on 27 degrees of freedom
-## Multiple R-squared:  0.4012,	Adjusted R-squared:  0.3569 
-## F-statistic: 9.046 on 2 and 27 DF,  p-value: 0.0009843
+## Residual standard error: 4.193 on 53 degrees of freedom
+## Multiple R-squared:  0.1337,	Adjusted R-squared:  0.101 
+## F-statistic: 4.088 on 2 and 53 DF,  p-value: 0.02232
 ```
 
 These results suggest that neither `bodywt` nor `brainwt` are significant predictors of `sleep_total`. That means that the value of either of those measurements does not give us information that helps us guess the total sleep duration for a mammal accurately.

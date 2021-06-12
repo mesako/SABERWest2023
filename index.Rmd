@@ -89,17 +89,21 @@ Please visit each day's specific page for the exact schedule:
 + [Day 5 Schedule](https://darachm.github.io/dll-r/day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html)
 
 
-### This syllabus and videos
+### Asynchronous sessions
 
-We developed this website/document for your reference, as a living textbook 
-and collection of "slides" and code snippets.
+Asynchronous here means self-paced learning that takes place off-Zoom.
+
+You will be expected to progress through this website during asynchronous 
+work time in this 3-day period. We developed this website/document for your reference,
+as a living textbook and collection of "slides" and code snippets.
 
 We have also made short teaching videos uploaded on Youtube that are embedded 
 where appropriate on this site. These mini-lectures are intended to complement 
 the text for those with different learning preferences.
 
-You will be expected to progress through this website during asynchronous 
-work time in this 3-day period. 
+As you go through this website during the asynchronous sessions, you should also complete
+the exercises provided in the accompanying worksheets. If you have questions and/or
+need help, you should reach out to us and your peers on Slack.
 
 Tips:
 
@@ -108,15 +112,16 @@ Tips:
 - You can click on footnotes ^[to read them, then go back by clicking the
     arrow].
 
-
-### Slack channel
+#### Slack channel
 
 While you are working in asynchronous sessions, or if you just need help 
-during the program, there is a Slack channel available where you can go for 
-ideas/help. The channel is called *#codingtroubleshooting* and should be 
+during the remainder of your program, there is a Slack channel available
+where you can go for ideas/help. The channel is called *#learn-R* and should be 
 accessible to you on the SSRP Slack server.
 
 ### Synchronous sessions
+
+Synchronous here means live, group learning that takes place on-Zoom.
 
 During synchronous meetings, you should plan 
 to work directly with your peers and us on focused tasks. We will also be 

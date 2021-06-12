@@ -36,7 +36,7 @@ sd(msleep$brainwt, na.rm = TRUE)
 IQR(msleep$brainwt, na.rm = TRUE)
 ```
 
-Visualizations are a great way to see this information in one picture. We have learned to create a fancier histogram, but the `hist` function always works for quick viewing.
+Visualizations are a great way to see this information in one picture. We have learned to create a fancier histogram, but the `hist` function always works for quick viewing (worksheet tasks 3.6.1A and 3.6.1B).
 
 ```{r,stats5,cache=TRUE}
 hist(msleep$brainwt)
@@ -52,7 +52,7 @@ For the following statistical tests, we want to determine if measurements of a q
 
 To know if these differences are **statistically significant**, we need to be aware of the uncertainty in our data. Even if we have collect many observations, there is generally noisiness and error in those measurements. Thus, we have uncertainty if the mean value we calculate for a group is in fact the true mean.
 
-We can calculate a confidence interval to describe our guess for the mean in our data. That is, we can identify the mean based on our samples, but also provide an upper or lower bound for where the mean might be.
+We can calculate a confidence interval to describe our guess for the mean in our data. That is, we can identify the mean based on our samples, but also provide an upper or lower bound for where the mean might be (worksheet task 3.6.2A).
 
 ```{r,stats6,cache=TRUE}
 t.test(msleep$brainwt)
@@ -60,25 +60,30 @@ t.test(msleep$brainwt)
 
 We use this `t.test` function because we assume that our data is normally distributed (which is not necessarily always the case) and it has a small sample size. You can see that while the mean for brain weight from this popular is 0.28, the range is fairly large (between 0.2 and 0.54) because of how big the variability is in the data.
 
-If we want to determine if two populations have a difference in their mean values that is statistically significant, we can calculate the t-test between two sets of observations. Let's look at whether the average time spent awake by mammals who are insectivores is significantly less than those who are not.
+If we want to determine if two populations have a difference in their mean values that is statistically significant, we can calculate the t-test between two sets of observations. Let's look at whether the average time spent awake by mammals who are insectivores is significantly less than those who are not (worksheet task 3.6.2B).
 
-```{r,stats7,cache=TRUE}
+```{r,stats7A,cache=TRUE}
 insectivores <- msleep %>% 
   filter(vore == "insecti") %>%
   select(awake)
-head(insectivores)
 
 other.mammals <- msleep %>% 
   filter(vore != "insecti") %>%
   select(awake)
-head(other.mammals)
 
+head(insectivores)
+head(other.mammals)
+```
+
+At first, we use tidyverse functions to isolate only the mammals that match the feeding behavior and select only the relevant column, before feeding this data into the `t.test` function (worksheet tasks 3.6.2C and 3.6.2D).
+
+```{r,stats7B,cache=TRUE}
 t.test(insectivores, other.mammals, alternative = "less")
 ```
 
 These results show a p-value of 0.07, which is not the usual level of significance that most scientists accept (p-value < 0.05).
 
-However, there are numerous feeding behaviors besides insectivore and we may be interested in comparing the multiple categories against each other. We can use ANOVA (analysis of variance) to see how our quantitative variable is affected by the different kinds of feeding behavior.
+However, there are numerous feeding behaviors besides insectivore and we may be interested in comparing the multiple categories against each other. We can use ANOVA (analysis of variance) to see how our quantitative variable is affected by the different kinds of feeding behavior (worksheet tasks 3.6.2E and 3.6.2F).
 
 ```{r,stats8,cache=TRUE}
 anova.msleep <- aov(awake ~ vore, data = msleep)
@@ -104,7 +109,7 @@ summary(msleep$bodywt)
 summary(msleep$brainwt)
 ```
 
-There are no `NA` values in the `bodywt` column, but there are 27 `NA` values in the `brainwt` column. Let's remove those using a helpful function in tidyverse and save the more complete dataset as `msleep2`.
+There are no `NA` values in the `bodywt` column, but there are 27 `NA` values in the `brainwt` column. Let's remove those using a helpful function in tidyverse and save the more complete dataset as `msleep2` (worksheet task 3.6.3A).
 
 ```{r,stats11,cache=TRUE}
 msleep2 <- msleep %>% drop_na(brainwt)
@@ -120,7 +125,7 @@ cor(msleep2$brainwt, msleep2$bodywt)
 
 We can see that the correlation is 0.93, a value very close to 1. This suggests that these variabilities are almost perfectly correlated with each other, which we saw when we plotted these two variables against each other in the prior section.
 
-There are multiple types of correlations. The `cor` function uses a Pearson correlation by default and can use different methods like Spearman. Let's explore the difference between these correlations by looking at the relationship between the log value of brain weight and length of sleep cycle
+There are multiple types of correlations. The `cor` function uses a Pearson correlation by default and can use different methods like Spearman. Let's explore the difference between these correlations by looking at the relationship between the log value of brain weight and length of sleep cycle.
 
 ```{r,stats13a,cache=TRUE}
 msleep3 <- msleep %>% 
@@ -130,7 +135,7 @@ ggplot(msleep3, aes(x = brainwt_log, y = sleep_cycle)) +
   geom_point() + geom_smooth(method = "lm")
 ```
 
-When we plot these variables against each other, including a fitted linear trend line, we can see that there is a relationship between these variables. However, the points do not quite fit a straight line if we look at the edges and center of this fitted line. This will reflect in our calculation of two different correlations.
+When we plot these variables against each other, including a fitted linear trend line, we can see that there is a relationship between these variables (worksheet task 3.6.3B). However, the points do not quite fit a straight line if we look at the edges and center of this fitted line. This will reflect in our calculation of two different correlations (worksheet task 3.6.3C).
 
 ```{r,stats13b,cache=TRUE}
 cor(msleep3$brainwt_log, msleep3$sleep_cycle, method = "pearson")
@@ -147,14 +152,14 @@ You may be interested in studying the relationship between one or more variables
 
 Here we train a linear model to try to predict brain weight from body weight in the `msleep` dataset.
 
-Linear models are established with a formula with the format of `outcome ~ predictor` where we are trying to determine if the predictor is able to help us accurately estimate an outcome.
+Linear models are established with a formula with the format of `outcome ~ predictor` where we are trying to determine if the predictor is able to help us accurately estimate an outcome (worksheet task 3.6.4A).
 
 ```{r,stats14,cache=TRUE}
 my.mod <- lm(formula = brainwt ~ bodywt, data = msleep2)
 summary(my.mod)
 ```
 
-In the summary of the results of this modeling, we see that `bodywt` is a significant predictor of `brainwt` in the `msleep` dataset. We can provide more predictors into our formula in the format: `outcome ~ predictor1 + predictor2 + ...`.
+In the summary of the results of this modeling, we see that `bodywt` is a significant predictor of `brainwt` in the `msleep` dataset. We can provide more predictors into our formula in the format: `outcome ~ predictor1 + predictor2 + ...` (worksheet tasks 3.6.4B and 3.6.4C).
 
 ```{r,stats15,cache=TRUE}
 my.mod2 <- lm(formula = sleep_total ~ bodywt + brainwt, data = msleep2)

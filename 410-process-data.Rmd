@@ -12,7 +12,7 @@ Let's practice reading in data using the `read.csv` function.
 ?read.csv
 ```
 
-The repository for this site has a folder called `data` that contains a file called `iris.csv`, which is simply the original `iris` dataset with some modifications. We read in this data and save it to a variable named `irisz`.
+The repository for this site has a folder called `data` that contains a file called `iris.csv`, which is simply the original `iris` dataset with some modifications. We read in this data and save it to a variable named `irisz` (worksheet task 3.1.1A).
 
 ```{r,read_irisz,cache=T}
 irisz <- read.csv("data/iris.csv")
@@ -37,7 +37,7 @@ head(irisz$Location)
 
 If we did not want to reload our data from a file, we can also transform columns (i.e. vectors) in our dataframe to be different types. For example, we could use `irisz$Species <- as.factor(irisz$Species)` to turn it into a factor after it has already been loaded. There are similar functions like `as.numeric`, `as.character`, and `as.logical` that you may use to transform data types. Be aware though that certain conversions may lead to issues and loss of data!
 
-Now both of these columns are being treated as categorical data. There are other settings we can change, such as providing different names for the columns.
+Now both of these columns are being treated as categorical data. There are other settings we can change, such as providing different names for the columns (worksheet task 3.1.1B).
 
 ```{r,irisiz_colnames,cache=T}
 irisz <- read.csv("data/iris.csv", col.names = c("sep_len", "sep_wid", "pet_len", "pet_wid", "species", "loc"))
@@ -61,7 +61,7 @@ unique(irisz$sep_len)
 
 Looking at this, we can find the culprit for why these values are treated as a string. There are some entries that are simply a blank space `""` and there are missing data encoded as `"n/a"` in this dataset.
 
-The `read.csv` function has a nice way to deal with this, specifically the argument `na.strings` that takes options for elements that might be present in the loaded data that should be treated as an `NA`.
+The `read.csv` function has a nice way to deal with this, specifically the argument `na.strings` that takes options for elements that might be present in the loaded data that should be treated as an `NA` (worksheet tasks 3.1.2A through worksheet task 3.1.2D).
 
 ```{r,irisz_nafilters,cache=T}
 irisz <- read.csv("data/iris.csv", na.strings = c("", "n/a"), stringsAsFactors = TRUE)
@@ -71,7 +71,7 @@ summary(irisz)
 
 Now we can see that the first columns are being properly treated as numeric vectors.
 
-Our next step would be to double-check our data for anything that looks anamolous. Let's first take a look at the distributions of our numerical data using the base R `hist` function, which plots a simple histogram. 
+Our next step would be to double-check our data for anything that looks anamolous. Let's first take a look at the distributions of our numerical data using the base R `hist` function, which plots a simple histogram (worksheet task 3.1.2E).  
 
 ```{r,irisz_hist_sepal,cache=T}
 hist(irisz$Sepal.Length)
@@ -95,7 +95,7 @@ irisz <- irisz[irisz$Petal.Width < 5, ]
 dim(irisz)
 ```
 
-Note that we used the statement `irisz$Petal.Width < 5` that evaluates as `TRUE` or `FALSE` for every row. We then indexed into the `irisz` dataframe using brackets `[]` and selected all rows that evaluate as `TRUE`. This led to one row being removed. We can repeat this with the anamolous value for sepal width.
+Note that we used the statement `irisz$Petal.Width < 5` that evaluates as `TRUE` or `FALSE` for every row. We then indexed into the `irisz` dataframe using brackets `[]` and selected all rows that evaluate as `TRUE`. This led to one row being removed. We can repeat this with the anamolous value for sepal width (worksheet task 3.1.2F).
 
 ```{r,irisz_dim,cache=T}
 dim(irisz)

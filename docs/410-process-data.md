@@ -13,7 +13,7 @@ Let's practice reading in data using the `read.csv` function.
 ?read.csv
 ```
 
-The repository for this site has a folder called `data` that contains a file called `iris.csv`, which is simply the original `iris` dataset with some modifications. We read in this data and save it to a variable named `irisz`.
+The repository for this site has a folder called `data` that contains a file called `iris.csv`, which is simply the original `iris` dataset with some modifications. We read in this data and save it to a variable named `irisz` (worksheet task 3.1.1A).
 
 
 ```r
@@ -48,8 +48,7 @@ head(irisz$Species)
 ```
 
 ```
-## [1] setosa setosa setosa setosa setosa setosa
-## Levels:  setosa versicolor virginica
+## [1] "setosa" "setosa" "setosa" "setosa" "setosa" "setosa"
 ```
 
 For example, here it is clear that our data we read from a csv file is not treating species as categorical information. We can toggle a setting called `stringsAsFactors` that will turn these character string inputs into factors when the file is loaded into R.
@@ -77,7 +76,7 @@ head(irisz$Location)
 
 If we did not want to reload our data from a file, we can also transform columns (i.e. vectors) in our dataframe to be different types. For example, we could use `irisz$Species <- as.factor(irisz$Species)` to turn it into a factor after it has already been loaded. There are similar functions like `as.numeric`, `as.character`, and `as.logical` that you may use to transform data types. Be aware though that certain conversions may lead to issues and loss of data!
 
-Now both of these columns are being treated as categorical data. There are other settings we can change, such as providing different names for the columns.
+Now both of these columns are being treated as categorical data. There are other settings we can change, such as providing different names for the columns (worksheet task 3.1.1B).
 
 
 ```r
@@ -106,12 +105,12 @@ str(irisz)
 
 ```
 ## 'data.frame':	150 obs. of  6 variables:
-##  $ sep_len: Factor w/ 36 levels " ","4.3","4.4",..: 10 8 6 5 9 13 5 9 3 8 ...
-##  $ sep_wid: Factor w/ 27 levels ""," ","0.35",..: 18 13 15 14 19 2 17 17 12 14 ...
-##  $ pet_len: Factor w/ 46 levels ""," ","1","1.1",..: 7 7 6 8 7 10 7 8 7 8 ...
-##  $ pet_wid: Factor w/ 25 levels "","0.1","0.2",..: 3 3 3 3 3 5 4 3 3 2 ...
-##  $ species: Factor w/ 4 levels "","setosa","versicolor",..: 2 2 2 2 2 2 2 1 2 2 ...
-##  $ loc    : Factor w/ 7 levels "","Canada","China",..: 5 3 5 3 3 2 3 3 6 4 ...
+##  $ sep_len: chr  "5.1" "4.9" "4.7" "4.6" ...
+##  $ sep_wid: chr  "3.5" "3" "3.2" "3.1" ...
+##  $ pet_len: chr  "1.4" "1.4" "1.3" "1.5" ...
+##  $ pet_wid: chr  "0.2" "0.2" "0.2" "0.2" ...
+##  $ species: chr  "setosa" "setosa" "setosa" "setosa" ...
+##  $ loc    : chr  "Korea" "China" "Korea" "China" ...
 ```
 
 ```r
@@ -119,22 +118,14 @@ summary(irisz)
 ```
 
 ```
-##     sep_len       sep_wid      pet_len      pet_wid         species  
-##  5      :  9   3      :26   1.4    :13   0.2    :29             : 2  
-##  5.1    :  9   2.8    :14   1.5    :13   1.3    :13   setosa    :49  
-##  6.3    :  9   3.2    :13   4.5    : 8   1.5    :12   versicolor:50  
-##  5.7    :  8   3.4    :12   5.1    : 8   1.8    :12   virginica :49  
-##  6.7    :  8   3.1    :11   1.3    : 7   1.4    : 8                  
-##  5.5    :  7   2.7    : 9   1.6    : 6   0.3    : 7                  
-##  (Other):100   (Other):65   (Other):95   (Other):69                  
-##      loc    
-##        :14  
-##  Canada:35  
-##  China : 6  
-##  Japan :11  
-##  Korea :10  
-##  Russia:11  
-##  USA   :63
+##    sep_len            sep_wid            pet_len            pet_wid         
+##  Length:150         Length:150         Length:150         Length:150        
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##    species              loc           
+##  Length:150         Length:150        
+##  Class :character   Class :character  
+##  Mode  :character   Mode  :character
 ```
 
 One immediate issue you can spot here is that all variables are being treated as character strings. We would expect that sepal length/width and petal length/width would be numeric variables. To inspect what might be happening, we can look at the unique elements in one of these columns using the `unique` function.
@@ -145,14 +136,14 @@ unique(irisz$sep_len)
 ```
 
 ```
-##  [1] 5.1 4.9 4.7 4.6 5   5.4 4.4 4.8 4.3 5.8 5.7 5.2 5.5 4.5 n/a 5.3 7   6.4 6.9
-## [20] 6.5 6.3 6.6 5.9 6   6.1 5.6 6.7 6.2 6.8 7.1 7.6     7.2 7.7 7.4 7.9
-## 36 Levels:   4.3 4.4 4.5 4.6 4.7 4.8 4.9 5 5.1 5.2 5.3 5.4 5.5 5.6 5.7 ... n/a
+##  [1] "5.1" "4.9" "4.7" "4.6" "5"   "5.4" "4.4" "4.8" "4.3" "5.8" "5.7" "5.2"
+## [13] "5.5" "4.5" "n/a" "5.3" "7"   "6.4" "6.9" "6.5" "6.3" "6.6" "5.9" "6"  
+## [25] "6.1" "5.6" "6.7" "6.2" "6.8" "7.1" "7.6" " "   "7.2" "7.7" "7.4" "7.9"
 ```
 
 Looking at this, we can find the culprit for why these values are treated as a string. There are some entries that are simply a blank space `""` and there are missing data encoded as `"n/a"` in this dataset.
 
-The `read.csv` function has a nice way to deal with this, specifically the argument `na.strings` that takes options for elements that might be present in the loaded data that should be treated as an `NA`.
+The `read.csv` function has a nice way to deal with this, specifically the argument `na.strings` that takes options for elements that might be present in the loaded data that should be treated as an `NA` (worksheet tasks 3.1.2A through worksheet task 3.1.2D).
 
 
 ```r
@@ -195,7 +186,7 @@ summary(irisz)
 
 Now we can see that the first columns are being properly treated as numeric vectors.
 
-Our next step would be to double-check our data for anything that looks anamolous. Let's first take a look at the distributions of our numerical data using the base R `hist` function, which plots a simple histogram. 
+Our next step would be to double-check our data for anything that looks anamolous. Let's first take a look at the distributions of our numerical data using the base R `hist` function, which plots a simple histogram (worksheet task 3.1.2E).  
 
 
 ```r
@@ -247,7 +238,7 @@ dim(irisz)
 ## [1] 149   6
 ```
 
-Note that we used the statement `irisz$Petal.Width < 5` that evaluates as `TRUE` or `FALSE` for every row. We then indexed into the `irisz` dataframe using brackets `[]` and selected all rows that evaluate as `TRUE`. This led to one row being removed. We can repeat this with the anamolous value for sepal width.
+Note that we used the statement `irisz$Petal.Width < 5` that evaluates as `TRUE` or `FALSE` for every row. We then indexed into the `irisz` dataframe using brackets `[]` and selected all rows that evaluate as `TRUE`. This led to one row being removed. We can repeat this with the anamolous value for sepal width (worksheet task 3.1.2F).
 
 
 ```r

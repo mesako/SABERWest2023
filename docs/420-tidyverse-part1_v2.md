@@ -108,18 +108,18 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ───────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
 ```
 
 ```
-## ✔ ggplot2 3.3.2     ✔ purrr   0.3.4
-## ✔ tibble  3.0.4     ✔ dplyr   1.0.2
-## ✔ tidyr   1.1.2     ✔ stringr 1.4.0
-## ✔ readr   1.4.0     ✔ forcats 0.5.0
+## ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
+## ✔ tibble  3.1.2     ✔ dplyr   1.0.6
+## ✔ tidyr   1.1.3     ✔ stringr 1.4.0
+## ✔ readr   1.4.0     ✔ forcats 0.5.1
 ```
 
 ```
-## ── Conflicts ──────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
@@ -180,22 +180,14 @@ irisz %>%
 ```
 
 ```
-##   Sepal.Length  Sepal.Width  Petal.Length  Petal.Width       Species  
-##  5      :  9   3      :26   1.4    :13    0.2    :29             : 2  
-##  5.1    :  9   2.8    :14   1.5    :13    1.3    :13   setosa    :49  
-##  6.3    :  9   3.2    :13   4.5    : 8    1.5    :12   versicolor:50  
-##  5.7    :  8   3.4    :12   5.1    : 8    1.8    :12   virginica :49  
-##  6.7    :  8   3.1    :11   1.3    : 7    1.4    : 8                  
-##  5.5    :  7   2.7    : 9   1.6    : 6    0.3    : 7                  
-##  (Other):100   (Other):65   (Other):95    (Other):69                  
-##    Location 
-##        :14  
-##  Canada:35  
-##  China : 6  
-##  Japan :11  
-##  Korea :10  
-##  Russia:11  
-##  USA   :63
+##  Sepal.Length       Sepal.Width        Petal.Length       Petal.Width       
+##  Length:150         Length:150         Length:150         Length:150        
+##  Class :character   Class :character   Class :character   Class :character  
+##  Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+##    Species            Location        
+##  Length:150         Length:150        
+##  Class :character   Class :character  
+##  Mode  :character   Mode  :character
 ```
 
 
@@ -220,19 +212,15 @@ irisz %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 6 x 3
 ##   Location Size.Mean Size.SD
-##   <fct>        <dbl>   <dbl>
-## 1 ""            28     NA   
-## 2 "Canada"      27.1   12.4 
-## 3 "China"       29.8   14.4 
-## 4 "Japan"       26.8   15.3 
-## 5 "Korea"       28.2   14.7 
-## 6 "Russia"      22.1    7.11
+##   <chr>        <dbl>   <dbl>
+## 1 ""           0.42  NA     
+## 2 "Canada"     0.394  0.164 
+## 3 "China"      0.408  0.205 
+## 4 "Japan"      0.374  0.219 
+## 5 "Korea"      0.415  0.238 
+## 6 "Russia"     0.273  0.0795
 ```
 
 
@@ -471,22 +459,25 @@ irisz %>%
 ```
 
 ```
-##   [1] Korea  China  Korea  China  China  Canada China  China  Russia Japan 
-##  [11] Russia Canada Korea  Russia Canada Canada Korea  Korea  Japan  Korea 
-##  [21] Russia Korea  Japan  Japan  Russia Russia Japan  Russia Japan  Canada
-##  [31] Canada Canada Russia Russia Russia Russia Korea  Japan  Korea  Japan 
-##  [41] Japan  Japan  Japan  Korea  China         Canada Canada Canada Canada
-##  [51]                      USA    USA    USA    USA    USA    USA          
-##  [61] Canada Canada Canada Canada Canada Canada Canada Canada Canada Canada
-##  [71] Canada Canada USA    Canada Canada Canada Canada Canada        USA   
-##  [81] Canada Canada Canada USA    USA    USA    USA    USA    USA    Canada
-##  [91] USA    USA    USA    USA    USA    USA    Canada Canada Canada       
-## [101] USA    USA    USA    USA    USA    USA           USA    USA    USA   
-## [111] USA    USA    USA           USA    USA    USA    USA    USA    USA   
-## [121] USA    USA    USA    USA    USA    USA           USA    USA    USA   
-## [131] USA    USA    USA           USA    USA    USA           USA    USA   
-## [141] USA    USA           USA    USA    USA    USA    USA    USA          
-## Levels:  Canada China Japan Korea Russia USA
+##   [1] "Korea"  "China"  "Korea"  "China"  "China"  "Canada" "China"  "China" 
+##   [9] "Russia" "Japan"  "Russia" "Canada" "Korea"  "Russia" "Canada" "Canada"
+##  [17] "Korea"  "Korea"  "Japan"  "Korea"  "Russia" "Korea"  "Japan"  "Japan" 
+##  [25] "Russia" "Russia" "Japan"  "Russia" "Japan"  "Canada" "Canada" "Canada"
+##  [33] "Russia" "Russia" "Russia" "Russia" "Korea"  "Japan"  "Korea"  "Japan" 
+##  [41] "Japan"  "Japan"  "Japan"  "Korea"  "China"  ""       "Canada" "Canada"
+##  [49] "Canada" "Canada" ""       ""       ""       "USA"    "USA"    "USA"   
+##  [57] "USA"    "USA"    "USA"    ""       "Canada" "Canada" "Canada" "Canada"
+##  [65] "Canada" "Canada" "Canada" "Canada" "Canada" "Canada" "Canada" "Canada"
+##  [73] "USA"    "Canada" "Canada" "Canada" "Canada" "Canada" ""       "USA"   
+##  [81] "Canada" "Canada" "Canada" "USA"    "USA"    "USA"    "USA"    "USA"   
+##  [89] "USA"    "Canada" "USA"    "USA"    "USA"    "USA"    "USA"    "USA"   
+##  [97] "Canada" "Canada" "Canada" ""       "USA"    "USA"    "USA"    "USA"   
+## [105] "USA"    "USA"    ""       "USA"    "USA"    "USA"    "USA"    "USA"   
+## [113] "USA"    ""       "USA"    "USA"    "USA"    "USA"    "USA"    "USA"   
+## [121] "USA"    "USA"    "USA"    "USA"    "USA"    "USA"    ""       "USA"   
+## [129] "USA"    "USA"    "USA"    "USA"    "USA"    ""       "USA"    "USA"   
+## [137] "USA"    ""       "USA"    "USA"    "USA"    "USA"    ""       "USA"   
+## [145] "USA"    "USA"    "USA"    "USA"    "USA"    ""
 ```
 
 ### Filtering dataframes
@@ -503,140 +494,22 @@ irisz %>%
 ```
 
 ```
-##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species Location
-## 1            5.1         3.5          1.4         0.2     setosa    Korea
-## 2            4.9           3          1.4         0.2     setosa    China
-## 3              5         3.6          1.4         0.2     setosa    China
-## 4            5.4                      1.7         0.4     setosa   Canada
-## 5              5         3.4          1.5         0.2               China
-## 6            4.9         3.1          1.5         0.1     setosa    Japan
-## 7            5.4         3.7          1.5         0.2     setosa   Russia
-## 8            5.8           4          1.2         0.2     setosa   Canada
-## 9            5.7         4.4          1.5         0.4     setosa   Canada
-## 10           5.4         3.9          1.3         0.4     setosa    Korea
-## 11           5.1         3.5          1.4         0.3     setosa    Korea
-## 12           5.7         3.8          1.7         0.3     setosa    Japan
-## 13           5.1         3.8          1.5         0.3     setosa    Korea
-## 14           5.4         3.4          1.7         0.2     setosa   Russia
-## 15           5.1         3.7          1.5         0.4     setosa    Korea
-## 16           5.1         3.3          1.7         0.5     setosa    Japan
-## 17             5           3          1.6         0.2     setosa   Russia
-## 18             5         3.4          1.6         0.4     setosa    Japan
-## 19           5.2         3.5          1.5         0.2     setosa   Russia
-## 20           5.2         3.4          1.4         0.2     setosa    Japan
-## 21           5.4         3.4          1.5         0.4     setosa   Canada
-## 22           5.2         4.1          1.5         0.1     setosa   Russia
-## 23           5.5         4.2          1.4         0.2     setosa   Russia
-## 24           4.9         3.1          1.5         0.2     setosa   Russia
-## 25             5         3.2          1.2         0.2     setosa   Russia
-## 26           5.5        0.35          1.3         0.2     setosa    Korea
-## 27           4.9         3.6          1.4         0.1     setosa    Japan
-## 28           5.1         3.4          1.5         0.2     setosa    Japan
-## 29             5         3.5          1.3         0.3     setosa    Japan
-## 30           n/a         n/a          1.6         0.6     setosa    Korea
-## 31           5.1         3.8          1.9         0.4     setosa    China
-## 32           5.1         3.8          1.6         0.2     setosa   Canada
-## 33           5.3         3.7          1.5         0.2     setosa   Canada
-## 34             5         3.3          1.4         0.2     setosa   Canada
-## 35             7         3.2          4.7         1.4 versicolor         
-## 36           6.4         3.2          4.5         1.5 versicolor         
-## 37           6.9         3.1          4.9         1.5 versicolor         
-## 38           5.5         2.3            4         1.3 versicolor      USA
-## 39           6.5         2.8          4.6         1.5 versicolor      USA
-## 40           5.7         2.8          4.5         1.3 versicolor      USA
-## 41           6.3         3.3          4.7         1.6 versicolor      USA
-## 42           4.9         2.4          3.3           1 versicolor      USA
-## 43           6.6         2.9          4.6         1.3 versicolor      USA
-## 44           5.2         2.7          3.9         1.4 versicolor         
-## 45             5           2          3.5           1 versicolor   Canada
-## 46           5.9           3          4.2         1.5 versicolor   Canada
-## 47             6         2.2            4           1 versicolor   Canada
-## 48           6.1         2.9          4.7         1.4 versicolor   Canada
-## 49           5.6         2.9          3.6         1.3 versicolor   Canada
-## 50           6.7         3.1          4.4         1.4 versicolor   Canada
-## 51           5.6           3          4.5         1.5 versicolor   Canada
-## 52           5.8         2.7          4.1           1 versicolor   Canada
-## 53           6.2         2.2          4.5         1.5 versicolor   Canada
-## 54           5.6         2.5          3.9         1.1 versicolor   Canada
-## 55           5.9         3.2          4.8         1.8 versicolor   Canada
-## 56           6.1         2.8            4         1.3 versicolor   Canada
-## 57           6.3         2.5          4.9         1.5 versicolor      USA
-## 58           6.1         2.8          4.7         1.2 versicolor   Canada
-## 59           6.4         2.9          4.3         1.3 versicolor   Canada
-## 60           6.6           3          4.4         1.4 versicolor   Canada
-## 61           6.8         2.8          4.8         1.4 versicolor   Canada
-## 62           6.7           3            5         1.7 versicolor   Canada
-## 63             6         2.9          4.5         1.5 versicolor         
-## 64           5.7         2.6          3.5           1 versicolor      USA
-## 65           5.5         2.4          3.8         1.1 versicolor   Canada
-## 66           5.5         2.4          3.7           1 versicolor   Canada
-## 67           5.8         2.7          3.9         1.2 versicolor   Canada
-## 68             6         2.7          5.1             versicolor      USA
-## 69           5.4           3          4.5         1.5 versicolor      USA
-## 70             6         3.4          4.5         1.6 versicolor      USA
-## 71           6.7         3.1          4.7         1.5 versicolor      USA
-## 72           6.3         2.3          4.4         1.3 versicolor      USA
-## 73           5.6           3          4.1         1.3 versicolor      USA
-## 74           5.5         2.5            4         1.3 versicolor   Canada
-## 75           5.5         2.6          4.4         1.2 versicolor      USA
-## 76           6.1           3          4.6         1.4 versicolor      USA
-## 77           5.8         2.6            4         1.2 versicolor      USA
-## 78             5         2.3          3.3           1 versicolor      USA
-## 79           5.6         2.7          4.2         1.3 versicolor      USA
-## 80           5.7           3          4.2         1.2 versicolor      USA
-## 81           5.7                      4.2         1.3 versicolor   Canada
-## 82           6.2         2.9          4.3         1.3 versicolor   Canada
-## 83           5.1         2.5            3         1.1 versicolor   Canada
-## 84           5.7         2.8          4.1         1.3 versicolor         
-## 85           6.3         3.3            6         2.5  virginica      USA
-## 86           5.8         2.7          5.1         1.9  virginica      USA
-## 87           7.1           3          5.9         2.1  virginica      USA
-## 88           6.3         2.9          5.6         1.8  virginica      USA
-## 89           6.5           3          5.8         2.2  virginica      USA
-## 90           7.6           3          6.6         2.1  virginica      USA
-## 91           4.9         2.5          4.5         1.7  virginica         
-## 92           6.7         2.5          5.8         1.8  virginica      USA
-## 93           7.2         3.6          6.1         2.5  virginica      USA
-## 94           6.5         3.2          5.1           2  virginica      USA
-## 95           6.4         2.7          5.3         1.9  virginica      USA
-## 96           6.8           3          5.5         2.1  virginica      USA
-## 97           5.7         2.5            5           2  virginica         
-## 98           5.8         2.8          5.1         2.4  virginica      USA
-## 99           6.4         3.2                      2.3  virginica      USA
-## 100          6.5           3          5.5         1.8  virginica      USA
-## 101          7.7         3.8          6.7         2.2  virginica      USA
-## 102          7.7         2.6          6.9          23  virginica      USA
-## 103            6         2.2            5         1.5  virginica      USA
-## 104          6.9         3.2          5.7         2.3  virginica      USA
-## 105          5.6         2.8          4.9           2  virginica      USA
-## 106          7.7         2.8          6.7           2  virginica      USA
-## 107          6.3         2.7          4.9         1.8  virginica      USA
-## 108          6.7         3.3          5.7         2.1  virginica      USA
-## 109          7.2         3.2            6         1.8  virginica      USA
-## 110          6.2         2.8          4.8         1.8  virginica         
-## 111          6.1           3          4.9         1.8  virginica      USA
-## 112          6.4         2.8          5.6         2.1  virginica      USA
-## 113          7.2           3          5.8         1.6  virginica      USA
-## 114          7.4         2.8          6.1         1.9  virginica      USA
-## 115          7.9         3.8          6.4           2  virginica      USA
-## 116          6.4         2.8          5.6         2.2  virginica      USA
-## 117          6.3         2.8          5.1         1.5  virginica         
-## 118          6.1         2.6          5.6         1.4  virginica      USA
-## 119          7.7           3          6.1         2.3  virginica      USA
-## 120          6.3         3.4          5.6         2.4  virginica      USA
-## 121          6.4         3.1          5.5         1.8  virginica         
-## 122            6           3          4.8         1.8  virginica      USA
-## 123          6.9         3.1          5.4         2.1  virginica      USA
-## 124          6.7         3.1          5.6         2.4  virginica      USA
-## 125          6.9         3.1          5.1         2.3  virginica      USA
-## 126          5.8         2.7          5.1         1.9                    
-## 127          6.8         3.2          5.9         2.3  virginica      USA
-## 128          6.7         3.3          5.7         2.5  virginica      USA
-## 129          6.7           3          5.2         2.3  virginica      USA
-## 130          6.3         2.5            5         1.9  virginica      USA
-## 131          6.5           3          n/a         n/a  virginica      USA
-## 132          6.2         3.4          5.4         2.3  virginica      USA
-## 133          5.9           3          5.1         1.8  virginica
+## Warning in mask$eval_all_filter(dots, env_filter): NAs introduced by coercion
+```
+
+```
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species Location
+## 1           7.1           3          5.9         2.1 virginica      USA
+## 2           7.6           3          6.6         2.1 virginica      USA
+## 3           7.2         3.6          6.1         2.5 virginica      USA
+## 4           7.7         3.8          6.7         2.2 virginica      USA
+## 5           7.7         2.6          6.9          23 virginica      USA
+## 6           7.7         2.8          6.7           2 virginica      USA
+## 7           7.2         3.2            6         1.8 virginica      USA
+## 8           7.2           3          5.8         1.6 virginica      USA
+## 9           7.4         2.8          6.1         1.9 virginica      USA
+## 10          7.9         3.8          6.4           2 virginica      USA
+## 11          7.7           3          6.1         2.3 virginica      USA
 ```
 
 ```r
@@ -731,13 +604,9 @@ irisz %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```
 ## # A tibble: 7 x 2
 ##   Location     n
-##   <fct>    <int>
+##   <chr>    <int>
 ## 1 ""          14
 ## 2 "Canada"    35
 ## 3 "China"      6
@@ -762,20 +631,20 @@ irisz %>%
 ```
 
 ```
-## `summarise()` ungrouping output (override with `.groups` argument)
+## Warning in mask$eval_all_mutate(quo): NAs introduced by coercion
 ```
 
 ```
 ## # A tibble: 7 x 4
 ##   Location     n `mean(Petal.Length, na.rm = T)` `sd(Petal.Length, na.rm = T)`
-##   <fct>    <int>                           <dbl>                         <dbl>
-## 1 ""          14                           25.1                           6.72
-## 2 "Canada"    35                           16.7                           7.42
-## 3 "China"      6                            8                             1.55
-## 4 "Japan"     11                            7.27                          2.05
-## 5 "Korea"     10                            7                             1.05
-## 6 "Russia"    11                            7.73                          2.00
-## 7 "USA"       63                           30.8                           8.83
+##   <chr>    <int>                           <dbl>                         <dbl>
+## 1 ""          14                            4.51                         0.990
+## 2 "Canada"    35                            3.39                         1.30 
+## 3 "China"      6                            1.52                         0.194
+## 4 "Japan"     11                            1.43                         0.205
+## 5 "Korea"     10                            1.4                          0.105
+## 6 "Russia"    11                            1.48                         0.218
+## 7 "USA"       63                            5.21                         0.826
 ```
 
 Comprehension: Try calculating the min and max Petal Length for each Species. Use `group_by()`.

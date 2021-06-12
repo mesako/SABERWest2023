@@ -23,7 +23,7 @@ You can look up what functions do using either a question mark `?` or the `help`
 help(rm)
 ```
 
-You can try running the following command to look up variables that load in with base R or packages that we will use. For example, you can use the `help` function to read more details about the `iris` dataset.
+You can try running the following command to look up variables that load in with base R or packages that we will use. For example, you can use the `help` function to read more details about the `iris` dataset (worksheet task 2.3.1A).
 
 ```{r,start4, cache=TRUE, eval=FALSE}
 ?iris
@@ -42,7 +42,7 @@ save.num <- 7
 save.num
 ```
 
-Here I have chosen the name `save.num` but you can give it a different name. Note that variable names must with a letter and cannot contain special characters.
+Here I have chosen the name `save.num` but you can give it a different name. Note that variable names must with a letter and cannot contain special characters (worksheet task 2.3.2A).
 
 Variables are mutable: you can overwrite the saved value of a variable with another value.
 
@@ -64,7 +64,7 @@ You can check what variables you have assigned in your current working environme
 ls()
 ```
 
-You can also remove saved variables using the `rm` function.
+You can also remove saved variables using the `rm` function (worksheet task 2.3.2B).
 
 ```{r,start9, cache=TRUE}
 rm(save.num)
@@ -108,7 +108,7 @@ This makes sense for the `c` function because it will accept as many inputs as y
 save.data <- c(1, 4, 6, 2, 3, 8, NA)
 ```
 
-Functions generally take the arguments in the parentheses as an input and then produce some output. A clear example of this is using the `mean` function.
+Functions generally take the arguments in the parentheses as an input and then produce some output (worksheet task 2.3.3A). A clear example of this is using the `mean` function.
 
 ```{r, start14, cache=TRUE, eval = FALSE}
 ?mean
@@ -122,10 +122,10 @@ mean(save.data)
 
 However, here we ran into an issue because one of the elements in our initial vector `save.data` is `NA`. `NA` means "not available" or in other words the data is missing. This is not the same as being zero. So R is not sure how to calculate the mean since that last element is essentially a question mark.
 
-We can make use of an additional argument that the `mean` function takes, namely the `na.rm` argument. This argument functions more like a setting, where you can provide a flag (i.e. `TRUE` or `FALSE`) or a distinct option (e.g. `top`, `bottom`, `left`, or `right`) that modifies how it produces the output. This argument has a default that is shown in the "Usage" section of the documentation. We are going to change that setting.
+We can make use of an additional argument that the `mean` function takes, namely the `na.rm` argument. This argument functions more like a setting, where you can provide a flag (i.e. `TRUE` or `FALSE`) or a distinct option (e.g. `top`, `bottom`, `left`, or `right`) that modifies how it produces the output. This argument has a default that is shown in the "Usage" section of the documentation. We are going to change that setting (worksheet task 2.3.3B).
 
 ```{r,start16, cache=TRUE}
 mean(save.data, na.rm = TRUE)
 ```
 
-Now you can see that R runs the function and decides to leave out or ignore the `NA` value and is able to return an average based on the other values in `save.data`.
+Now you can see that R runs the function and decides to leave out or ignore the `NA` value and is able to return an average based on the other values in `save.data` (worksheet task 2.3.3C).

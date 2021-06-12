@@ -74,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -141,9 +141,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.1" data-path="workshop-goals.html"><a href="workshop-goals.html"><i class="fa fa-check"></i><b>1.1</b> Workshop goals</a></li>
 <li class="chapter" data-level="1.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html"><i class="fa fa-check"></i><b>1.2</b> Structure and resources</a><ul>
 <li class="chapter" data-level="1.2.1" data-path="structure-and-resources.html"><a href="structure-and-resources.html#workshop-schedule"><i class="fa fa-check"></i><b>1.2.1</b> Workshop schedule</a></li>
-<li class="chapter" data-level="1.2.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html#this-syllabus-and-videos"><i class="fa fa-check"></i><b>1.2.2</b> This syllabus and videos</a></li>
-<li class="chapter" data-level="1.2.3" data-path="structure-and-resources.html"><a href="structure-and-resources.html#slack-channel"><i class="fa fa-check"></i><b>1.2.3</b> Slack channel</a></li>
-<li class="chapter" data-level="1.2.4" data-path="structure-and-resources.html"><a href="structure-and-resources.html#synchronous-sessions"><i class="fa fa-check"></i><b>1.2.4</b> Synchronous sessions</a></li>
+<li class="chapter" data-level="1.2.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html#asynchronous-sessions"><i class="fa fa-check"></i><b>1.2.2</b> Asynchronous sessions</a></li>
+<li class="chapter" data-level="1.2.3" data-path="structure-and-resources.html"><a href="structure-and-resources.html#synchronous-sessions"><i class="fa fa-check"></i><b>1.2.3</b> Synchronous sessions</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="workshop-expectations.html"><a href="workshop-expectations.html"><i class="fa fa-check"></i><b>1.3</b> Workshop expectations</a></li>
 </ul></li>
@@ -315,11 +314,11 @@ already installed.
 Call <code>library()</code> function, with an argument of the library name,
 as a string.</p>
 <p>Try loading this one:</p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb428-1" title="1"><span class="kw">library</span>(<span class="st">&quot;stringdist&quot;</span>)</a>
-<a class="sourceLine" id="cb428-2" title="2"><span class="kw">library</span>(stringdist)</a></code></pre></div>
+<div class="sourceCode" id="cb421"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb421-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;stringdist&quot;</span>)</a>
+<a class="sourceLine" id="cb421-2" data-line-number="2"><span class="kw">library</span>(stringdist)</a></code></pre></div>
 <p>Don’t have it? You can look for packages by using a search engine, or finding
 suggestions in the documentation, papers. Once you have a package name, use</p>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb429-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;stringdist&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb422-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;stringdist&quot;</span>)</a></code></pre></div>
 <p>to install it. You may need to select a “mirror”. This is just where you
 are downloading from, usually just go with “0-Cloud”
 <a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>.</p>
@@ -343,23 +342,23 @@ using the methods “hamming” and “lv”</li>
 <h4><span class="header-section-number">4.3.1.2</span> ggrepel</h4>
 <p>Sometimes points are way to close, and you can’t label them properly.
 For example,</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb430-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<pre><code>## ── Attaching packages ───────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
-<pre><code>## ✔ ggplot2 3.3.2     ✔ purrr   0.3.4
-## ✔ tibble  3.0.4     ✔ dplyr   1.0.2
-## ✔ tidyr   1.1.2     ✔ stringr 1.4.0
-## ✔ readr   1.4.0     ✔ forcats 0.5.0</code></pre>
-<pre><code>## ── Conflicts ──────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb423-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
+## ✔ tibble  3.1.2     ✔ dplyr   1.0.6
+## ✔ tidyr   1.1.3     ✔ stringr 1.4.0
+## ✔ readr   1.4.0     ✔ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb434-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>) <span class="co"># this is just to get the same results each time we run</span></a>
-<a class="sourceLine" id="cb434-2" title="2"></a>
-<a class="sourceLine" id="cb434-3" title="3"><span class="kw">read_csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>,<span class="dt">col_types=</span><span class="st">&#39;nnnncc&#39;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb434-4" title="4"><span class="st">    </span><span class="kw">slice_sample</span>(<span class="dt">n=</span><span class="dv">20</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb434-5" title="5"><span class="st">    </span><span class="kw">ggplot</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb434-6" title="6"><span class="st">    </span><span class="kw">aes</span>(<span class="dt">x=</span>Sepal.Length,<span class="dt">y=</span>Sepal.Width,<span class="dt">col=</span>Species,<span class="dt">label=</span>Species)<span class="op">+</span></a>
-<a class="sourceLine" id="cb434-7" title="7"><span class="st">    </span><span class="kw">geom_label</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb434-8" title="8"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb427"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb427-1" data-line-number="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>) <span class="co"># this is just to get the same results each time we run</span></a>
+<a class="sourceLine" id="cb427-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb427-3" data-line-number="3"><span class="kw">read_csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>,<span class="dt">col_types=</span><span class="st">&#39;nnnncc&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb427-4" data-line-number="4"><span class="st">    </span><span class="kw">slice_sample</span>(<span class="dt">n=</span><span class="dv">20</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb427-5" data-line-number="5"><span class="st">    </span><span class="kw">ggplot</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb427-6" data-line-number="6"><span class="st">    </span><span class="kw">aes</span>(<span class="dt">x=</span>Sepal.Length,<span class="dt">y=</span>Sepal.Width,<span class="dt">col=</span>Species,<span class="dt">label=</span>Species)<span class="op">+</span></a>
+<a class="sourceLine" id="cb427-7" data-line-number="7"><span class="st">    </span><span class="kw">geom_label</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb427-8" data-line-number="8"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <pre><code>## Warning: 4 parsing failures.
 ## row          col expected actual            file
 ##  44 Sepal.Length a number    n/a &#39;data/iris.csv&#39;
@@ -369,16 +368,16 @@ For example,</p>
 <pre><code>## Warning: Removed 1 rows containing missing values (geom_label).</code></pre>
 <p><img src="550-packages_files/figure-html/iris_overplot_example-1.png" width="672" /></p>
 <p>The <code>ggrepel</code> library, from CRAN, is a handy way to achieve this:</p>
-<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb437-1" title="1"><span class="kw">library</span>(ggrepel)</a>
-<a class="sourceLine" id="cb437-2" title="2"></a>
-<a class="sourceLine" id="cb437-3" title="3"><span class="kw">set.seed</span>(<span class="dv">1234</span>) <span class="co"># this is just to get the same results each time we run</span></a>
-<a class="sourceLine" id="cb437-4" title="4"></a>
-<a class="sourceLine" id="cb437-5" title="5"><span class="kw">read_csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>,<span class="dt">col_types=</span><span class="st">&#39;nnnncc&#39;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb437-6" title="6"><span class="st">    </span><span class="kw">slice_sample</span>(<span class="dt">n=</span><span class="dv">20</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb437-7" title="7"><span class="st">    </span><span class="kw">ggplot</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb437-8" title="8"><span class="st">    </span><span class="kw">aes</span>(<span class="dt">x=</span>Sepal.Length,<span class="dt">y=</span>Sepal.Width,<span class="dt">col=</span>Species,<span class="dt">label=</span>Species)<span class="op">+</span></a>
-<a class="sourceLine" id="cb437-9" title="9"><span class="st">    </span><span class="kw">geom_label_repel</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb437-10" title="10"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb430-1" data-line-number="1"><span class="kw">library</span>(ggrepel)</a>
+<a class="sourceLine" id="cb430-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb430-3" data-line-number="3"><span class="kw">set.seed</span>(<span class="dv">1234</span>) <span class="co"># this is just to get the same results each time we run</span></a>
+<a class="sourceLine" id="cb430-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb430-5" data-line-number="5"><span class="kw">read_csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>,<span class="dt">col_types=</span><span class="st">&#39;nnnncc&#39;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb430-6" data-line-number="6"><span class="st">    </span><span class="kw">slice_sample</span>(<span class="dt">n=</span><span class="dv">20</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb430-7" data-line-number="7"><span class="st">    </span><span class="kw">ggplot</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb430-8" data-line-number="8"><span class="st">    </span><span class="kw">aes</span>(<span class="dt">x=</span>Sepal.Length,<span class="dt">y=</span>Sepal.Width,<span class="dt">col=</span>Species,<span class="dt">label=</span>Species)<span class="op">+</span></a>
+<a class="sourceLine" id="cb430-9" data-line-number="9"><span class="st">    </span><span class="kw">geom_label_repel</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb430-10" data-line-number="10"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
 <pre><code>## Warning: 4 parsing failures.
 ## row          col expected actual            file
 ##  44 Sepal.Length a number    n/a &#39;data/iris.csv&#39;
@@ -396,15 +395,15 @@ For example,</p>
 loading, you’ll just want one function.
 For example, this website is generated with one function, <code>render_book()</code>
 in the package <code>bookdown</code>. Instead of:</p>
-<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb440-1" title="1"><span class="kw">library</span>(bookdown)</a>
-<a class="sourceLine" id="cb440-2" title="2"><span class="kw">render_book</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb433-1" data-line-number="1"><span class="kw">library</span>(bookdown)</a>
+<a class="sourceLine" id="cb433-2" data-line-number="2"><span class="kw">render_book</span>()</a></code></pre></div>
 <p>I can save a line by just using <code>::</code></p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb441-1" title="1">bookdown<span class="op">::</span><span class="kw">render_book</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb434-1" data-line-number="1">bookdown<span class="op">::</span><span class="kw">render_book</span>()</a></code></pre></div>
 <p>This means I am looking in library <code>bookdown</code> for function <code>render_book</code>.
 The function is hidden again right afterwards, but it is useful if you just
 want to run one function from a library, once.</p>
 <p>This is <em>super handy</em> when wanting to typeset (<code>render</code>) a <code>Rmd</code> file:</p>
-<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb442-1" title="1">rmarkdown<span class="op">::</span><span class="kw">render</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" data-line-number="1">rmarkdown<span class="op">::</span><span class="kw">render</span>()</a></code></pre></div>
 <p>I <em>never</em> load the <code>rmarkdown</code> package, I just type the above. A lot.
 <a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a></p>
 <hr />
@@ -413,7 +412,7 @@ want to run one function from a library, once.</p>
 <h3><span class="header-section-number">4.3.3</span> Github is a common place for sharing packges in development</h3>
 <p>Installing from github requires some different programming -
 and there’s libraries with functions for this.</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb443-1" title="1"><span class="kw">library</span>(<span class="st">&quot;remotes&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb436-1" data-line-number="1"><span class="kw">library</span>(<span class="st">&quot;remotes&quot;</span>)</a></code></pre></div>
 <p>This used to be part of the <code>devtools</code> package, but the authors have been
 “uncoupling” these to make each package simple and composable.</p>
 <div id="lets-install-a-package-off-of-github." class="section level4">
@@ -421,7 +420,7 @@ and there’s libraries with functions for this.</p>
 <p>Here’s a cool <a href="https://github.com/ewenme/ghibli">Ghibli color palette</a>,
 so you can change sets of colors for your plots.
 Try installing it with:</p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb444-1" title="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ewenme/ghibli&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb437-1" data-line-number="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ewenme/ghibli&quot;</span>)</a></code></pre></div>
 <p>Then adapt one of your previous plots (that has colors) to use these new
 color palettes.</p>
 </div>
@@ -434,12 +433,12 @@ like increasing the font size and cleaning up distracting artifacts.</p>
 <p>The <code>ghibli</code> package above has been claimed to be somewhat good for
 plotting for universal visibility. Is that true?</p>
 <p>Let’s install this package to check:</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb445-1" title="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;nowosad/colorblindcheck&quot;</span>,<span class="dt">upgrade=</span><span class="st">&quot;never&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb438-1" data-line-number="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;nowosad/colorblindcheck&quot;</span>,<span class="dt">upgrade=</span><span class="st">&quot;never&quot;</span>)</a></code></pre></div>
 <p>Then</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb446-1" title="1"><span class="kw">library</span>(ghibli)</a>
-<a class="sourceLine" id="cb446-2" title="2"><span class="kw">library</span>(colorblindcheck)</a>
-<a class="sourceLine" id="cb446-3" title="3"></a>
-<a class="sourceLine" id="cb446-4" title="4"><span class="kw">palette_check</span>(ghibli_palettes<span class="op">$</span>PonyoMedium,<span class="dt">plot=</span>T)</a></code></pre></div>
+<div class="sourceCode" id="cb439"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb439-1" data-line-number="1"><span class="kw">library</span>(ghibli)</a>
+<a class="sourceLine" id="cb439-2" data-line-number="2"><span class="kw">library</span>(colorblindcheck)</a>
+<a class="sourceLine" id="cb439-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb439-4" data-line-number="4"><span class="kw">palette_check</span>(ghibli_palettes<span class="op">$</span>PonyoMedium,<span class="dt">plot=</span>T)</a></code></pre></div>
 <p><img src="550-packages_files/figure-html/checkitout-1.png" width="672" /></p>
 <pre><code>##           name n tolerance ncp ndcp min_dist mean_dist max_dist
 ## 1       normal 7  9.939857  21   21 9.939857  36.11891 59.92427
@@ -464,26 +463,26 @@ plotting for universal visibility. Is that true?</p>
 packages. It’s where a lot of bioinformatics software gets published.
 However, it has it’s own package system and thus package manager.
 You will have to install it … from CRAN. Like so:</p>
-<div class="sourceCode" id="cb448"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb448-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb441-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</a></code></pre></div>
 <p>That installs a package with a function that then installs Bioconductor
 packages. It’s actually easy. Let’s give it a try by installing and
 using the <code>limma</code> package to analyze some gene expression data.</p>
 <p>If you’re recall from before, we can use <code>::</code> to avoid having to actually
 <code>library</code> the whole package:</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb449-1" title="1">BiocManager<span class="op">::</span><span class="kw">install</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb442-1" data-line-number="1">BiocManager<span class="op">::</span><span class="kw">install</span>()</a></code></pre></div>
 <p>And so we can use this to install important packages like <code>DESeq2</code>.</p>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb450-1" title="1">BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&#39;DESeq2&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb443-1" data-line-number="1">BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&#39;DESeq2&#39;</span>)</a></code></pre></div>
 <p>Hold off on installing this quite yet. It’d take a while.
 In Bioconductor, I always say to update ‘none’ (press ‘n’ when prompted).</p>
 </div>
 <div id="what-packages-do-you-have-already" class="section level3">
 <h3><span class="header-section-number">4.3.5</span> What packages do you have already?</h3>
 <p>You have a few. Here’s a list:</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" title="1"><span class="kw">installed.packages</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb444-1" data-line-number="1"><span class="kw">installed.packages</span>()</a></code></pre></div>
 <p>But which are loaded?</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb452-1" title="1"><span class="kw">sessionInfo</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb445-1" data-line-number="1"><span class="kw">sessionInfo</span>()</a></code></pre></div>
 <p>The packages are in a directory, the location is stored in this:</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" title="1"><span class="kw">.libPaths</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb446-1" data-line-number="1"><span class="kw">.libPaths</span>()</a></code></pre></div>
 <p>I’m not running that one, as it’ll be different for each user.</p>
 <hr />
 </div>
@@ -513,7 +512,7 @@ installed that are not installed (less of a problem with RStudio)</li>
 <ol start="9">
 <li id="fn9"><p>I have no idea where this is, never heard of that country!<a href="packages-install-and-use.html#fnref9" class="footnote-back">↩</a></p></li>
 <li id="fn10"><p>Or, I use the one-liner in bash of
-<code>Rscript -e 'rmarkdown::render("notebook.Rmd")'</code> <a href="packages-install-and-use.html#fnref10" class="footnote-back">↩</a></p></li>
+<code>Rscript -e 'rmarkdown::render(&quot;notebook.Rmd&quot;)'</code> <a href="packages-install-and-use.html#fnref10" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <p style="margin-top:10em;text-align:center;font-size:small;">

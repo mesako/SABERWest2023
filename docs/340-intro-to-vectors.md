@@ -8,7 +8,7 @@ Remember that you can create vectors (an ordered list of elements) by combining 
 
 ### Building vectors
 
-Let us pretend that we measured and recorded the resting heart rates of several patients. We will create these vectors and assign them to some variables.
+Let us pretend that we measured and recorded the resting heart rates of several patients. We will create these vectors and assign them to some variables (worksheet task 2.4.1A).
 
 
 ```r
@@ -29,7 +29,7 @@ more.heart.rates
 ## [1] 86 79 64 74 80
 ```
 
-We have used the `c` function to combine several individual elements that we typed out, but you can combine vectors together to make an even bigger vector.
+We have used the `c` function to combine several individual elements that we typed out, but you can combine vectors together to make an even bigger vector (worksheet task 2.4.1B).
 
 
 ```r
@@ -74,7 +74,7 @@ There are several helpful functions and an operator that can speed up your abili
 ## [1] 1 2 3 4
 ```
 
-The `seq` function can help you quickly create numeric vectors. The `rep` function can be used to build either numeric or character string vectors.  Reading the documentation will tell you which arguments these functions take.
+The `seq` function can help you quickly create numeric vectors. The `rep` function can be used to build either numeric or character string vectors.  Reading the documentation will tell you which arguments these functions take (worksheet tasks 2.4.1C and 2.4.1D).
 
 
 ```r
@@ -147,7 +147,7 @@ patient.names[c(1, 3)] # pull out 1st and 3rd patient name
 ## [1] "oakley" "kiran"
 ```
 
-You can remove elements of a vector by using the same syntax of indexing, but instead put a negative sign in front of the index number.
+You can remove elements of a vector by using the same syntax of indexing, but instead put a negative sign in front of the index number (worksheet tasks 2.4.2A through 2.4.2C).
 
 
 ```r
@@ -204,9 +204,9 @@ save.num == 8
 
 You can use the standard comparison operators like `>` or `<` to check greater than or less than. You can also use `==` to check for equality or `!=` to check that values are not equal.
 
-We can do the same thing with vectors, and it will be performed in a *vectorized* manner. That is, by default, R will evaluate each element in the vector to see if it meets the criteria.
+We can do the same thing with vectors, and it will be performed in a *vectorized* manner. That is, by default, R will evaluate each element in the vector to see if it meets the criteria (worksheet task 2.4.3A).
 
-For example, we can evaluate each heart rate in our original vector to see whether or not the value is less than 80.
+For example, we can evaluate each heart rate in our original vector to see whether or not the value is less than 80 (worksheet tasks 2.4.3B and 2.4.3C).
 
 
 ```r
@@ -218,7 +218,7 @@ all.heart.rates < 80
 ## [13]  TRUE  TRUE FALSE
 ```
 
-This series of flags with `TRUE` and `FALSE` can be used to access into a vector and will only return the elements where there is a `TRUE`.
+This series of flags with `TRUE` and `FALSE` can be used to access into a vector and will only return the elements where there is a `TRUE` (worksheet tasks 2.4.3D through 2.4.3F).
 
 
 ```r
@@ -286,9 +286,9 @@ x + y
 ## [1] 6 7 8
 ```
 
-Here, you can see that the first element of `x` is added to the first element of `y` to create a new value in the first element. The same happens with the second element and so forth.
+Here, you can see that the first element of `x` is added to the first element of `y` to create a new value in the first element. The same happens with the second element and so forth (worksheet task 2.4.4A).
 
-You can perform mathematical operations on an entire numeric vector all at once. Here we take the vector of our heart rate data and add 1 to it, which  will add 1 to each individual element in the entire vector.
+You can perform mathematical operations on an entire numeric vector all at once. Here we take the vector of our heart rate data and add 1 to it, which  will add 1 to each individual element in the entire vector (worksheet tasks 2.4.4B and 2.4.4C).
 
 
 ```r
@@ -320,7 +320,7 @@ log(all.heart.rates)
 
 This demonstrates how one can quickly transform or scale values in a dataset. For example, you might have taken the temperature of an experiment in Fahrenheit and using the power of vectorization, you can apply the same arithmetic steps to all of your measurements simultaneously to get the values in Celsius.
 
-Here is an additional example using the `signif` function, which returns your numeric values with the number of significant digits that you specify.
+Here is an additional example using the `signif` function, which returns your numeric values with the number of significant digits that you specify (worksheet task 2.4.4D).
 
 
 ```r

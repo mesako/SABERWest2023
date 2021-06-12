@@ -24,19 +24,12 @@ Here is the convention for plotting error bars in ggplot2, as you can see it is 
 
 `ggplot(data = <SUMMARY DATA>, mapping = aes(<SUMMARY MAPPINGS>) + geom_bar(stat = "identity") + geom_errorbar(aes(<ERROR MAPPINGS>))`
 
-This method is straightforward, but you need to have pre-calculated the summary statistic for each group and the amount of error (i.e. standard error) from your data. That "aggregated" dataframe becomes the data that you provide to ggplot, instead of the original dataset. 
+This method is straightforward, but you need to have pre-calculated the summary statistic for each group and the amount of error (i.e. standard error) from your data. That "aggregated" dataframe becomes the data that you provide to ggplot, instead of the original dataset (worksheet task 3.5.1A). 
 
 
 ```r
 feeding.data <- msleep2 %>% group_by(vore) %>% 
   summarize(mean_se(awake))
-```
-
-```
-## `summarise()` ungrouping output (override with `.groups` argument)
-```
-
-```r
 feeding.data
 ```
 
@@ -60,7 +53,7 @@ What does `mean_se` do? We can check.
 
 This function returns three values, `y`, `ymin`, and `ymax` which correspond to the mean, the mean minus one standard error, and the mean plus one standard error. The mean value will be the height of each bar on the barplot, while `ymin` corresponds to the bottom of the error bar and `ymax` to the top of the error bar.
 
-Let's first plot the height of the bars using this new `feeding.data` dataset and mapping `y` to our new `y` column generated from the `mean_se` function. Here we create the same plot as before from this aggregated dataset, just showing the mean value in each group.
+Let's first plot the height of the bars using this new `feeding.data` dataset and mapping `y` to our new `y` column generated from the `mean_se` function. Here we create the same plot as before from this aggregated dataset, just showing the mean value in each group (worksheet task 3.5.1B).
 
 
 ```r
@@ -71,7 +64,7 @@ my.plot
 
 <img src="450-scientific-figures_files/figure-html/scifig5-1.png" width="672" />
 
-Now we add the error bars, mapping the `ymin` and `ymax` values to the arguments that happen to have the same name in the `geom_errorbar` function. We add in the `width` setting just for aesthetics.
+Now we add the error bars, mapping the `ymin` and `ymax` values to the arguments that happen to have the same name in the `geom_errorbar` function. We add in the `width` setting just for aesthetics (worksheet tasks 3.5.1C and 3.5.1D).
 
 
 ```r
@@ -102,7 +95,7 @@ ggplot(data = msleep3, mapping = aes(x = brainwt_log, y = bodywt_log)) +
 
 <img src="450-scientific-figures_files/figure-html/scifig7-1.png" width="672" />
 
-As you can see the density of points almost look like they fit a line. As brain weight increases then body weight increases, or vice versa. We can add a trendline to this plot with the `geom_smooth` function.
+As you can see the density of points almost look like they fit a line. As brain weight increases then body weight increases, or vice versa. We can add a trendline to this plot with the `geom_smooth` function (worksheet tasks 3.5.2A and 3.5.2B).
 
 
 ```r
@@ -134,7 +127,7 @@ ggplot(data = iris, mapping = aes(x = Sepal.Length, y = Sepal.Width)) +
 
 We create a seaprate trendline for each by specifiying the `aes` with color mapping to `Species` within the `geom_smooth` function.
 
-The above plot may make it hard to see the data that is contributing to each trend line. Using `facet_wrap` again, we can split the figure into separate panel where the data has been filtered by the category (i.e. species).
+The above plot may make it hard to see the data that is contributing to each trend line. Using `facet_wrap` again, we can split the figure into separate panel where the data has been filtered by the category (i.e. species) (worksheet task 3.5.2C).
 
 
 ```r
@@ -156,9 +149,9 @@ Now it is clear that there is a positive correlation (as one goes up, the other 
 
 ### Saving figures locally
 
-As you produce analysis in your research, you may want to create high-quality images of your figures to then use in presentations or publications. There are two easy ways to save images as an individual file on your computer,
+As you produce analysis in your research, you may want to create high-quality images of your figures to then use in presentations or publications. There are two easy ways to save images as an individual file on your computer (worksheet tasks 3.5.3A and 3.5.3B),
 
-The first method uses `ggsave` to save the most recent ggplot figure you generated.
+The first method uses `ggsave` to save the most recent ggplot figure you generated (worksheet task 3.5.3C).
 
 
 ```r
@@ -185,4 +178,4 @@ ggplot(msleep2, aes(x = brainwt_log, y = sleep_rem)) + geom_point() +
 dev.off() # finishes editing the file
 ```
 
-Any changes to the figure that are contained between the initial creation of the figure (i.e. the `pdf` command) and the `dev.off` command will be included in the final saved image. However, the figure is being printed directly to the file it is writing and won't appear elsewhere.
+Any changes to the figure that are contained between the initial creation of the figure (i.e. the `pdf` command) and the `dev.off` command will be included in the final saved image (worksheet task 3.5.3D). However, the figure is being printed directly to the file it is writing and won't appear elsewhere (worksheet task 3.5.3E).

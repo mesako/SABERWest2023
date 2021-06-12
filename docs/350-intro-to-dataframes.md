@@ -44,7 +44,7 @@ We will first explore the built-in `iris` dataset. If you look up its documentat
 ?iris
 ```
 
-For the sake of this exercise, we will assign a new variable called `iris.temp` that is a shorter version of the original dataset. The `head` function returns just the first few rows and here we use an argument to request the first 10.
+For the sake of this exercise, we will assign a new variable called `iris.temp` that is a shorter version of the original dataset. The `head` function returns just the first few rows and here we use an argument to request the first 10 (worksheet task 2.5.1A).
 
 
 ```r
@@ -68,7 +68,7 @@ iris.temp
 
 ### Indexing and subsetting dataframes
 
-You can index into a dataframe and pull out one or more cells within the dataframe. Note that we are providing two coordinates to explain which row (the first number before the comma) and which column (the second number after the comma) to find the exact element (or cell in the table).
+You can index into a dataframe and pull out one or more cells within the dataframe. Note that we are providing two coordinates to explain which row (the first number before the comma) and which column (the second number after the comma) to find the exact element (or cell in the table) (worksheet task 2.5.1B).
 
 
 ```r
@@ -134,7 +134,7 @@ iris.temp[, 1:2] # pulls out the first two columns and all rows
 ## 10          4.9         3.1
 ```
 
-It's possible to also remove elements in a dataframe using the negative sign.
+It's possible to also remove elements in a dataframe using the negative sign (worksheet tasks 2.5.1C and 2.5.1D).
 
 
 ```r
@@ -166,13 +166,13 @@ head(iris.temp2)
 ## 8          5.0         3.4          1.5         0.2  setosa
 ```
 
-We saved the shorter dataset into a new variable and when we preview `iris.temp` against `iris.temp2` you may be able to see the missing rows.
+We saved the shorter dataset into a new variable and when we preview `iris.temp` against `iris.temp2` you may be able to see the missing rows (worksheet task 2.5.1E).
 
 ### Exploring dataframes
 
 When you are first presented with a dataframe, for example data that was collected in your research lab that you are tasked with analyzing, you will want to learn more about it. There are a few different functions you can use to investigate a dataframe, the size of it, and other aspects.
 
-The `dim` function, short for dimensions, returns the number of rows and columns.
+The `dim` function, short for dimensions, returns the number of rows and columns (worksheet task 2.5.2A).
 
 
 ```r
@@ -191,7 +191,7 @@ dim(iris.temp)
 ## [1] 10  5
 ```
 
-This shows you that `iris.temp` is in fact just the first 10 rows of `iris`. You can use the following functions: `str` for structure, `colnames` for column names, and `summary` to investigate aspects of a given dataset.
+This shows you that `iris.temp` is in fact just the first 10 rows of `iris`. You can use the following functions: `str` for structure, `colnames` for column names, and `summary` to investigate aspects of a given dataset (worksheet task 2.5.2B).
 
 
 ```r
@@ -238,7 +238,7 @@ summary(iris)
 
 The `str` function reveals that the `iris` dataframe contains different data types. Specifcally, it mostly contains columns of numbers as well as a column of factors or categorical data referring to which species the iris belonged to.
 
-The `summary` function tries to tell us more info about each column. For numerical data, it summarizes the min and max values, the quartiles, and the center values (e.g. median or mean). For categorical data like the `Species` column, this function shows how many rows belong to each category.
+The `summary` function tries to tell us more info about each column. For numerical data, it summarizes the min and max values, the quartiles, and the center values (e.g. median or mean). For categorical data like the `Species` column, this function shows how many rows belong to each category (worksheet tasks 2.5.2C and 2.5.3D).
 
 We can try to look at the beginning of a specific column in this dataset to get a better understanding for it. Dataframes that have names for their columns allow you to index into the columns specifically by name using the `$` operator as shown below.
 
@@ -282,7 +282,7 @@ str(patient.data)
 
 ```
 ## 'data.frame':	3 obs. of  3 variables:
-##  $ name          : Factor w/ 3 levels "kiran","oakley",..: 2 3 1
+##  $ name          : chr  "oakley" "rashmi" "kiran"
 ##  $ heart_rate    : num  78 68 95
 ##  $ disease_status: logi  FALSE FALSE TRUE
 ```
@@ -292,16 +292,16 @@ summary(patient.data)
 ```
 
 ```
-##      name     heart_rate    disease_status 
-##  kiran :1   Min.   :68.00   Mode :logical  
-##  oakley:1   1st Qu.:73.00   FALSE:2        
-##  rashmi:1   Median :78.00   TRUE :1        
-##             Mean   :80.33                  
-##             3rd Qu.:86.50                  
-##             Max.   :95.00
+##      name             heart_rate    disease_status 
+##  Length:3           Min.   :68.00   Mode :logical  
+##  Class :character   1st Qu.:73.00   FALSE:2        
+##  Mode  :character   Median :78.00   TRUE :1        
+##                     Mean   :80.33                  
+##                     3rd Qu.:86.50                  
+##                     Max.   :95.00
 ```
 
-You can add new rows and columns using the `rbind` and `cbind` functions. Let's pretend that we had collected additional information about our patients, such as their self-reported gender. We can add this as a new column (`cbind` short for bind column).
+You can add new rows and columns using the `rbind` and `cbind` functions. Let's pretend that we had collected additional information about our patients, such as their self-reported gender. We can add this as a new column (`cbind` short for bind column) (worksheet task 2.5.3A).
 
 
 ```r
@@ -316,7 +316,7 @@ patient.data
 ## 3  kiran         95           TRUE   <NA>
 ```
 
-You can merge two dataframes together using the `rbind` function assuming that their columns match up correctly. Let's pretend that we had another day at the clinic and collected additional patient measurements. 
+You can merge two dataframes together using the `rbind` function assuming that their columns match up correctly. Let's pretend that we had another day at the clinic and collected additional patient measurements (worksheet task 2.5.3B). 
 
 
 ```r
@@ -334,7 +334,7 @@ more.patients
 ## 3 mattie         64          FALSE      F
 ```
 
-Let's use `rbind`, short for binding rows, to add these additional rows to the bottom of our first dataframe `patient.data`.
+Let's use `rbind`, short for binding rows, to add these additional rows to the bottom of our first dataframe `patient.data` (worksheet tasks 2.5.3C and 2.5.3D).
 
 
 ```r
@@ -388,7 +388,7 @@ Remember that vectors can only contain one datatype at a time? Each column in th
 
 We briefly discussed factors as categorical variables. Let's pretend that for our analysis we wanted to treat gender as a categorical variable. Factors are a special datatype that deals with categorical data and can be handy for certain manipulations or visualizations.
 
-To do this, we can coerce data into a different datatype using functions like `as.function`.
+To do this, we can coerce data into a different datatype using functions like `as.factor` (worksheet tasks 2.5.4A and 2.5.4B).
 
 
 ```r
@@ -396,8 +396,7 @@ head(all.patients$gender)
 ```
 
 ```
-## [1] M    F    <NA> <NA> M    F   
-## Levels: F M
+## [1] "M" "F" NA  NA  "M" "F"
 ```
 
 ```r
@@ -422,10 +421,7 @@ all.patients <- rbind(all.patients,
 ```
 
 ```
-## Warning in `[<-.factor`(`*tmp*`, ri, value = "lupe"): invalid factor level, NA
-## generated
-
-## Warning in `[<-.factor`(`*tmp*`, ri, value = "lupe"): invalid factor level, NA
+## Warning in `[<-.factor`(`*tmp*`, ri, value = "NB"): invalid factor level, NA
 ## generated
 ```
 
@@ -441,7 +437,7 @@ all.patients
 ## 4    eun         86           TRUE   <NA>
 ## 5  sasha         79           TRUE      M
 ## 6 mattie         64          FALSE      F
-## 7   <NA>         72          FALSE   <NA>
+## 7   lupe         72          FALSE   <NA>
 ```
 
 What has happened with this new addition? If you tried to add a new patient to the dataframe that had a gender that wasn't already represented in the data, chances are you had a warning and that gender was turned to `NA`.
@@ -465,14 +461,6 @@ all.patients <- rbind(all.patients,
                         heart_rate = 101, 
                         disease_status = TRUE, 
                         gender = "M"))
-```
-
-```
-## Warning in `[<-.factor`(`*tmp*`, ri, value = "chihiro"): invalid factor level,
-## NA generated
-```
-
-```r
 all.patients$gender
 ```
 
@@ -481,7 +469,7 @@ all.patients$gender
 ## Levels: F M
 ```
 
-So how do we fix this? The easiest way around this is to treat the column as characters instead of as factors.
+So how do we fix this? The easiest way around this is to treat the column as characters instead of as factors (worksheet task 2.5.4C).
 
 
 ```r
@@ -491,14 +479,6 @@ all.patients <- rbind(all.patients,
                         heart_rate = 101, 
                         disease_status = TRUE, 
                         gender = "NB"))
-```
-
-```
-## Warning in `[<-.factor`(`*tmp*`, ri, value = "ayodele"): invalid factor level,
-## NA generated
-```
-
-```r
 all.patients$gender
 ```
 

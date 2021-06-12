@@ -25,7 +25,7 @@ We will first explore the built-in `iris` dataset. If you look up its documentat
 ?iris
 ```
 
-For the sake of this exercise, we will assign a new variable called `iris.temp` that is a shorter version of the original dataset. The `head` function returns just the first few rows and here we use an argument to request the first 10.
+For the sake of this exercise, we will assign a new variable called `iris.temp` that is a shorter version of the original dataset. The `head` function returns just the first few rows and here we use an argument to request the first 10 (worksheet task 2.5.1A).
 
 ```{r, dataframe3, cache=TRUE}
 iris.temp <- head(iris, n = 10)
@@ -34,7 +34,7 @@ iris.temp
 
 ### Indexing and subsetting dataframes
 
-You can index into a dataframe and pull out one or more cells within the dataframe. Note that we are providing two coordinates to explain which row (the first number before the comma) and which column (the second number after the comma) to find the exact element (or cell in the table).
+You can index into a dataframe and pull out one or more cells within the dataframe. Note that we are providing two coordinates to explain which row (the first number before the comma) and which column (the second number after the comma) to find the exact element (or cell in the table) (worksheet task 2.5.1B).
 
 ```{r, dataframe4, cache=TRUE}
 iris.temp[1, 3]
@@ -54,7 +54,7 @@ iris.temp[1:2, ] # pulls out the first two rows and all columns
 iris.temp[, 1:2] # pulls out the first two columns and all rows
 ```
 
-It's possible to also remove elements in a dataframe using the negative sign.
+It's possible to also remove elements in a dataframe using the negative sign (worksheet tasks 2.5.1C and 2.5.1D).
 
 ```{r, dataframe7, cache=TRUE}
 iris.temp2 <- iris.temp[-c(1, 3), ] # removes the first and third rows
@@ -62,20 +62,20 @@ head(iris.temp)
 head(iris.temp2)
 ```
 
-We saved the shorter dataset into a new variable and when we preview `iris.temp` against `iris.temp2` you may be able to see the missing rows.
+We saved the shorter dataset into a new variable and when we preview `iris.temp` against `iris.temp2` you may be able to see the missing rows (worksheet task 2.5.1E).
 
 ### Exploring dataframes
 
 When you are first presented with a dataframe, for example data that was collected in your research lab that you are tasked with analyzing, you will want to learn more about it. There are a few different functions you can use to investigate a dataframe, the size of it, and other aspects.
 
-The `dim` function, short for dimensions, returns the number of rows and columns.
+The `dim` function, short for dimensions, returns the number of rows and columns (worksheet task 2.5.2A).
 
 ```{r, dataframe8, cache=TRUE}
 dim(iris)
 dim(iris.temp)
 ```
 
-This shows you that `iris.temp` is in fact just the first 10 rows of `iris`. You can use the following functions: `str` for structure, `colnames` for column names, and `summary` to investigate aspects of a given dataset.
+This shows you that `iris.temp` is in fact just the first 10 rows of `iris`. You can use the following functions: `str` for structure, `colnames` for column names, and `summary` to investigate aspects of a given dataset (worksheet task 2.5.2B).
 
 ```{r, dataframe9, cache=TRUE}
 colnames(iris)
@@ -85,7 +85,7 @@ summary(iris)
 
 The `str` function reveals that the `iris` dataframe contains different data types. Specifcally, it mostly contains columns of numbers as well as a column of factors or categorical data referring to which species the iris belonged to.
 
-The `summary` function tries to tell us more info about each column. For numerical data, it summarizes the min and max values, the quartiles, and the center values (e.g. median or mean). For categorical data like the `Species` column, this function shows how many rows belong to each category.
+The `summary` function tries to tell us more info about each column. For numerical data, it summarizes the min and max values, the quartiles, and the center values (e.g. median or mean). For categorical data like the `Species` column, this function shows how many rows belong to each category (worksheet tasks 2.5.2C and 2.5.3D).
 
 We can try to look at the beginning of a specific column in this dataset to get a better understanding for it. Dataframes that have names for their columns allow you to index into the columns specifically by name using the `$` operator as shown below.
 
@@ -113,14 +113,14 @@ str(patient.data)
 summary(patient.data)
 ```
 
-You can add new rows and columns using the `rbind` and `cbind` functions. Let's pretend that we had collected additional information about our patients, such as their self-reported gender. We can add this as a new column (`cbind` short for bind column).
+You can add new rows and columns using the `rbind` and `cbind` functions. Let's pretend that we had collected additional information about our patients, such as their self-reported gender. We can add this as a new column (`cbind` short for bind column) (worksheet task 2.5.3A).
 
 ```{r, dataframe13, cache=TRUE}
 patient.data <- cbind(patient.data, gender = c("M", "F", NA))
 patient.data
 ```
 
-You can merge two dataframes together using the `rbind` function assuming that their columns match up correctly. Let's pretend that we had another day at the clinic and collected additional patient measurements. 
+You can merge two dataframes together using the `rbind` function assuming that their columns match up correctly. Let's pretend that we had another day at the clinic and collected additional patient measurements (worksheet task 2.5.3B). 
 
 ```{r, dataframe14, cache=TRUE}
 more.patients <- data.frame(name = c("eun", "sasha", "mattie"),
@@ -130,7 +130,7 @@ more.patients <- data.frame(name = c("eun", "sasha", "mattie"),
 more.patients
 ```
 
-Let's use `rbind`, short for binding rows, to add these additional rows to the bottom of our first dataframe `patient.data`.
+Let's use `rbind`, short for binding rows, to add these additional rows to the bottom of our first dataframe `patient.data` (worksheet tasks 2.5.3C and 2.5.3D).
 
 ```{r, dataframe15, cache=TRUE}
 all.patients <- rbind(patient.data, more.patients)
@@ -156,7 +156,7 @@ Remember that vectors can only contain one datatype at a time? Each column in th
 
 We briefly discussed factors as categorical variables. Let's pretend that for our analysis we wanted to treat gender as a categorical variable. Factors are a special datatype that deals with categorical data and can be handy for certain manipulations or visualizations.
 
-To do this, we can coerce data into a different datatype using functions like `as.function`.
+To do this, we can coerce data into a different datatype using functions like `as.factor` (worksheet tasks 2.5.4A and 2.5.4B).
 
 ```{r, dataframe17, cache=TRUE}
 head(all.patients$gender)
@@ -192,7 +192,7 @@ all.patients <- rbind(all.patients,
 all.patients$gender
 ```
 
-So how do we fix this? The easiest way around this is to treat the column as characters instead of as factors.
+So how do we fix this? The easiest way around this is to treat the column as characters instead of as factors (worksheet task 2.5.4C).
 
 ```{r, dataframe21, cache=TRUE}
 all.patients$gender <- as.character(all.patients$gender)
