@@ -25,16 +25,13 @@ First, let's review the last two days.
 
 Our goals are to learn how to:
 
-- organize work in a folder and rmarkdown file, 
-
-
+- organize work in a folder and rmarkdown files
 - read lots of files, and different kinds of delimited files
-- use loops to do similar steps for many inputs
+- modify our workflow to expand the analyses
 - obtain and use packages to user other people's work
-- how to get more help and documentation
+- figure out how to get more help and documentation
+- figure out how to start using code from online tutorials
 - write code, and design workflows, while thinking about future readers/users
-- design steps/chunks of work as modular functions to make adaptable workflows
-- more fun tricks in generating Rmarkdown reports
 
 ---
 
@@ -54,15 +51,17 @@ open it in Rstudio.
 
 | Start Time | End Time | Activity |   Description   | Facilitator |
 | ------------- | ----------- | ------------- | ----------------------------- | --------------- |
-| 10:00 AM PDT | 10:45 AM PDT | Synchronous - lecture, groups | Organizing workflows, more rmarkdown | Darach, Melissa, Samson, ??? |
-| 10:45 AM PDT | 11:15 AM PDT | Asynchronous - video, slack, etc | Project - analyze viral protein sequences | Support on Slack channel, zoom |
+| 10:00 AM PDT | 10:15 AM PDT | Synchronous - lecture, groups | Intro | Darach, Melissa, Samson, ??? |
+| 10:15 AM PDT | 10:45 AM PDT | Synchronous - lecture, groups | Organizing workflows, more rmarkdown | Darach, Melissa, Samson, ??? |
+| 10:45 AM PDT | 11:15 AM PDT | Asynchronous - video, slack, etc | Project - analyze viral protein sequences | Darach, ??? |
 | 11:15 AM PDT | 11:45 AM PDT | Synchronous - lecture, groups | Extending the analysis to look for motifs ... and what else? string data? | Darach, Melissa, Samson, ??? |
-| 11:45 AM PDT | 12:15 PM PDT | Asynchronous - video, slack, etc | Project - analyze viral protein sequences | Support on Slack channel, zoom |
+| 11:45 AM PDT | 12:15 PM PDT | Asynchronous - video, slack, etc | Project - analyze viral protein sequences | Darach, ??? |
 | 12:15 PM PDT | 12:45 PM PDT | Break | Take a computer break!  |  N/A  |
-| 12:45 PM PDT | 01:00 PM PDT | Synchronous - lecture | Packages - why and how | rarach, ??? |
-| 12:45 PM PDT | 01:45 PM PDT | Asynchronous - video, slack, etc | Packages - install stuff | Support on Slack channel! |
-| 01:45 PM PDT | 02:00 PM PDT | Synchronous - lecture, groups | Demo/discuss some places to find help (group notes of good places to find help, how people look for R help) | Darach, Samson, ??? |
-| 02:00 PM PDT | 02:45 PM PDT | Synchronous - group | Do a Bioconductor tutorial | Darach, Samson, ??? |
+| 12:45 PM PDT | 01:00 PM PDT | Synchronous - lecture | Packages - why and how | Darach, ??? |
+| 12:45 PM PDT | 01:15 PM PDT | Asynchronous - video, slack, etc | Packages - install stuff | Darach, ??? |
+| 01:15 PM PDT | 01:45 PM PDT | Synchronous - lecture, groups | Demo/discuss some places to find help (group notes yo) | Darach, Samson, ??? |
+| 01:45 PM PDT | 02:30 PM PDT | Synchronous - groups | Attempt ambitious tutorials | Darach, Samson, ??? |
+| 02:30 PM PDT | 02:45 PM PDT | Synchronous - lecture, groups | Writing nice code (if time) | Darach, Samson, ??? |
 | 02:45 PM PDT | 03:00 PM PDT | Synchronous - discussion | Wrapping up | Darach, Samson, ??? |
 
 <!-- -->
