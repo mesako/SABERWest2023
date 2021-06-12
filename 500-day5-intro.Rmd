@@ -55,23 +55,14 @@ open it in Rstudio.
 | Start Time | End Time | Activity |   Description   | Facilitator |
 | ------------- | ----------- | ------------- | ----------------------------- | --------------- |
 | 10:00 AM PDT | 10:45 AM PDT | Synchronous - lecture, groups | Organizing workflows, more rmarkdown | Darach, Melissa, Samson, ??? |
-<!-- -->
 | 10:45 AM PDT | 11:15 AM PDT | Asynchronous - video, slack, etc | Project - analyze viral protein sequences | Support on Slack channel, zoom |
-<!-- -->
 | 11:15 AM PDT | 11:45 AM PDT | Synchronous - lecture, groups | Extending the analysis to look for motifs ... and what else? string data? | Darach, Melissa, Samson, ??? |
-<!-- -->
 | 11:45 AM PDT | 12:15 PM PDT | Asynchronous - video, slack, etc | Project - analyze viral protein sequences | Support on Slack channel, zoom |
-<!-- -->
 | 12:15 PM PDT | 12:45 PM PDT | Break | Take a computer break!  |  N/A  |
-<!-- -->
 | 12:45 PM PDT | 01:00 PM PDT | Synchronous - lecture | Packages - why and how | rarach, ??? |
-<!-- -->
 | 12:45 PM PDT | 01:45 PM PDT | Asynchronous - video, slack, etc | Packages - install stuff | Support on Slack channel! |
-<!-- -->
 | 01:45 PM PDT | 02:00 PM PDT | Synchronous - lecture, groups | Demo/discuss some places to find help (group notes of good places to find help, how people look for R help) | Darach, Samson, ??? |
-<!-- -->
 | 02:00 PM PDT | 02:45 PM PDT | Synchronous - group | Do a Bioconductor tutorial | Darach, Samson, ??? |
-<!-- -->
 | 02:45 PM PDT | 03:00 PM PDT | Synchronous - discussion | Wrapping up | Darach, Samson, ??? |
 
 <!-- -->
