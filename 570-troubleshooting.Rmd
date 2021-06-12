@@ -146,7 +146,59 @@ To do this:
 
 ---
 
-#### Conclusion
+#### Some problems to work through in groups
+
+Let's split into groups, and work through some of these problems.
+These are designed to be somewhat challenging, having to use new functionality.
+They should be doable, even if you're just copy and pasting, but you've got
+to know what to copy and paste, in what order, and how to solve errors that
+come up.
+
+You should approach these problems as a group. Work together, make sure
+everyone is moving along nicely.
+If you're having trouble, ask for help from your peers.
+If you've got the prior background where you're already familiar with this,
+and are picking up on it quickly, then take the time to help your peers learn.
+Teaching is learning, and building a learning community has benefits for all
+participants.
+
+Science depends upon it.
+
+Take the time to discuss what each step is doing. Try to learn from the example
+code. Also, ask instructors for help explaining it!
+
+Multi-panel figures
+: Claus Wilke's [cowplot](https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html)
+    package is a great way to make multi-panel figures with ggplot.
+    Install it and use this to make a multi-panel figure exploring the
+    iris dataset from yesterday. Take the multiple kinds of plots, and
+    arrange them into whatever single figure looks good.
+
+SARS2 antibody escape data analysis
+: Starr et al Bloom used the Awesome Power Of Yeast Genetics to map
+    SARS-CoV-2 antibody escape probabilities early on in the pandemic.
+    Download the dataset [here](https://science.sciencemag.org/content/371/6531/850/tab-figures-data),
+    read it in, and analyze it.
+    Consider making a heatmap using `geom_tile`, and grouping/aggregating
+    the data by amino acid types, or antibodies added.
+
+Differential expression analysis with DESeq2
+: Love, Andres, and Huber's DESeq2 package is a well used and highly respected
+    package for doing differential expression of counts data, for RNAseq
+    (bulk and sc) or barseq or whatever, it's pretty handy.
+    Attempt to work through [the tutorial](https://www.bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#count-matrix-input), 
+    I recommend starting with the count data from the `pasilla` package.
+    The idea is that you're doing DE analysis on RNAseq from a Drosophila
+    RNAi knockdown of the pasilla gene, to see what that gene's expression 
+    affects expression of.
+    The tutorial is a bit tangled, so work as a team to follow and pick 
+    through it.
+
+
+Other ones? If you have an idea, propose it and maybe there's a group that
+wants to attempt it. Keep it to be things you can readily do in R.
+
+#### First conclusion
 
 Generally, approach these problems as you would a scientist.
 Treat them with respect and an open mind.
@@ -159,6 +211,3 @@ consider writing it up on a blog or site like StackOverflow!
 
 ---
 
-<!-- maybe not....
-### Exercise - debug one of the following Rmds
--->
