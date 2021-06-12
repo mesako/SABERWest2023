@@ -1,8 +1,8 @@
 ---
-title: "Day 5 - workflows and packages "
+title: "Day 5 - building workflows, loops, using packages, and finding help in new areas"
 ---
 
-# Day 5 - building workflows, using packages, writing (re)usable code, sharing analyses
+# Day 5 - building workflows, loops, using packages, and finding help in new areas
 
 Today we're going to learn about applying these R 
 skills to 
@@ -25,6 +25,9 @@ First, let's review the last two days.
 
 Our goals are to learn how to:
 
+- organize work in a folder and rmarkdown file, 
+
+
 - read lots of files, and different kinds of delimited files
 - use loops to do similar steps for many inputs
 - obtain and use packages to user other people's work
@@ -37,25 +40,39 @@ Our goals are to learn how to:
 
 **Preparing for Today:**
 Please make sure you have completed all readings and activities from 
-Section 3: Day 4 - tidyverse and visualizations. You will also have some time 
-at the start of the day to do the first sections 4.1-4.3.
+Section 3: Day 4 - tidyverse and visualizations. 
 
-Before you start reading through Section 4 for today or taking part in synchronous activities, download and [open today's worksheet](https://github.com/darachm/dll-r/blob/main/worksheets/dll-r_Day5_Lab.Rmd). On this Github page, please right-click the button that says "Raw" and click "Save Link As..." to get a local copy of this Rmd file on your computer and open it in Rstudio.
+Before you start reading through Section 4 for today or taking part in
+synchronous activities, download and [open today's
+worksheet](https://github.com/darachm/dll-r/blob/main/worksheets/dll-r_Day5_Lab.Rmd).
+On this Github page, please right-click the button that says "Raw" and click
+"Save Link As..." to get a local copy of this Rmd file on your computer and
+open it in Rstudio.
 
 **Today's Schedule:**
 
-|   Start Time  |   End Time   |   Activity    |          Description          |   Facilitator   |
-| ------------- | -----------  | ------------- | ----------------------------- | --------------- |
-| 10:00 AM PDT  | 10:15 AM PDT | Synchronous - lecture  | Review workflows (4.1)        | Darach, Melissa, Samson, ???    |
-| 10:15 AM PDT  | 10:45 AM PDT | Asynchronous - video etc | Build an analysis of protein sequences | Support on Slack channel! |
-| 10:45 AM PDT  | 11:30 AM PDT | Synchronous - group  | Extending the analysis to look for motifs ... and what else? string data?  | Darach, Melissa, Samson, ???    |
-| 11:30 AM PDT  | 12:00 PM PDT | Synchronous - discussion  | Demo/discuss some places to find help (group notes of good places to find help, how people look for R help) | Darach, Samson, ???    |
-| 12:00 PM PDT  | 12:30 PM PDT | Break  | Take a computer break!        |       N/A       |
-| 12:30 PM PDT  | 12:45 PM PDT | Synchronous - lecture  | Modular functions | Darach, Samson, ???    |
-| 12:45 PM PDT  | 1:15 PM PDT | Asynchronous - video etc  | Packages - install stuff | Support on Slack channel! |
-| 1:15 PM PDT  | 1:45 PM PDT | Synchronous - group  | Do a Bioconductor tutorial | Darach, Samson, ???    |
-| 1:45 PM PDT   | 2:15 PM PDT | Break   |  Take a computer break!       |       N/A       |
-| 2:15 PM PDT   | 2:45 PM PDT | Synchronous - discussion  | Writing (re)usable code | Darach, Samson, ???    |
-| 2:45 PM PDT   | 3:30 PM PDT | Synchronous - group  | Compile a bunch of rmarkdown reports, catch up | Darach, Samson, ???    |
 
+| Start Time | End Time | Activity |   Description   | Facilitator |
+| ------------- | ----------- | ------------- | ----------------------------- | --------------- |
+| 10:00 AM PDT | 10:45 AM PDT | Synchronous - lecture, groups | Organizing workflows, more rmarkdown | Darach, Melissa, Samson, ??? |
+<!-- -->
+| 10:45 AM PDT | 11:15 AM PDT | Asynchronous - video, slack, etc | Project - analyze viral protein sequences | Support on Slack channel, zoom |
+<!-- -->
+| 11:15 AM PDT | 11:45 AM PDT | Synchronous - lecture, groups | Extending the analysis to look for motifs ... and what else? string data? | Darach, Melissa, Samson, ??? |
+<!-- -->
+| 11:45 AM PDT | 12:15 PM PDT | Asynchronous - video, slack, etc | Project - analyze viral protein sequences | Support on Slack channel, zoom |
+<!-- -->
+| 12:15 PM PDT | 12:45 PM PDT | Break | Take a computer break!  |  N/A  |
+<!-- -->
+| 12:45 PM PDT | 01:00 PM PDT | Synchronous - lecture | Packages - why and how | rarach, ??? |
+<!-- -->
+| 12:45 PM PDT | 01:45 PM PDT | Asynchronous - video, slack, etc | Packages - install stuff | Support on Slack channel! |
+<!-- -->
+| 01:45 PM PDT | 02:00 PM PDT | Synchronous - lecture, groups | Demo/discuss some places to find help (group notes of good places to find help, how people look for R help) | Darach, Samson, ??? |
+<!-- -->
+| 02:00 PM PDT | 02:45 PM PDT | Synchronous - group | Do a Bioconductor tutorial | Darach, Samson, ??? |
+<!-- -->
+| 02:45 PM PDT | 03:00 PM PDT | Synchronous - discussion | Wrapping up | Darach, Samson, ??? |
+
+<!-- -->
 
