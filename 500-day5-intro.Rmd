@@ -12,6 +12,8 @@ First, let's review the last two days.
 
 <!-- exercise -->
 
+<!--are we trying to make students think about writing functions and clean code? I'm not sure that's clear if this is asynchronous reading-->
+
 - What have we done?
 - How do we do it many times?
 - Crack open your code - can you use it again?
@@ -53,12 +55,12 @@ open it in Rstudio.
 | ------------- | ----------- | ------------- | ----------------------------- | --------------- |
 | 10:00 AM PDT | 10:15 AM PDT | Synchronous - lecture, groups | Intro | Darach, Melissa, Samson, ??? |
 | 10:15 AM PDT | 10:45 AM PDT | Synchronous - lecture, groups | Organizing workflows, more rmarkdown | Darach, Melissa, Samson, ??? |
-| 10:45 AM PDT | 11:15 AM PDT | Asynchronous - video, slack, etc | Project - analyze viral protein sequences | Darach, ??? |
+| 10:45 AM PDT | 11:15 AM PDT | Asynchronous - video, slack, etc | Project - analyze viral protein sequences | Darach, Samson, ??? |
 | 11:15 AM PDT | 11:45 AM PDT | Synchronous - lecture, groups | Extending the analysis to look for motifs ... and what else? string data? | Darach, Melissa, Samson, ??? |
-| 11:45 AM PDT | 12:15 PM PDT | Asynchronous - video, slack, etc | Project - analyze viral protein sequences | Darach, ??? |
+| 11:45 AM PDT | 12:15 PM PDT | Asynchronous - video, slack, etc | Project - analyze viral protein sequences | Darach, Samson, ??? |
 | 12:15 PM PDT | 12:45 PM PDT | Break | Take a computer break!  |  N/A  |
-| 12:45 PM PDT | 01:00 PM PDT | Synchronous - lecture | Packages - why and how | Darach, ??? |
-| 12:45 PM PDT | 01:15 PM PDT | Asynchronous - video, slack, etc | Packages - install stuff | Darach, ??? |
+| 12:45 PM PDT | 01:00 PM PDT | Synchronous - lecture | Packages - why and how | Darach, Samson, ??? |
+| 12:45 PM PDT | 01:15 PM PDT | Asynchronous - video, slack, etc | Packages - install stuff | Darach, Samson, ??? |
 | 01:15 PM PDT | 01:45 PM PDT | Synchronous - lecture, groups | Demo/discuss some places to find help (group notes yo) | Darach, Samson, ??? |
 | 01:45 PM PDT | 02:30 PM PDT | Synchronous - groups | Attempt ambitious tutorials | Darach, Samson, ??? |
 | 02:30 PM PDT | 02:45 PM PDT | Synchronous - lecture, groups | Writing nice code (if time) | Darach, Samson, ??? |
