@@ -1,0 +1,388 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## Tidyverse Part 1/2: functions and pipes
+
+### Goals to be reworked alongside content
+
+* Socio-technical context of tidyverse, ie that it's not base R but oh boy it's popular and well supported by a company - but not base R
+* Tidyverse/dplyr takes a more database-like approach to moving data tables around
+* Identify and predict what a magrittr pipe does
+* Filter data tables, select and rename columns
+* Mutate columns
+* Pipe some stuff between functions, and write that out in a script
+* Melt and gather
+* Utilize group_by
+
+
+### Welcome to the tidyverse! 
+
+[Tidyverse](https://www.tidyverse.org) is a suite of R packages that are very useful for data science when we need to manipulate data frames and visualize data. The most important packages in tidyverse for our workshop will be [dplyr](https://dplyr.tidyverse.org) and [ggplot2](https://ggplot2.tidyverse.org). It builds on the base R functions and data types we've studied so far. It just provides a different design framework for working with data in R. The main two features of tidyverse are 1) a new suite of very useful functions and 2) the pipe `%>%` which will allow us to go send data from one function to the next without using intermediate steps or nesting functions together.
+
+#### Preview: new functions in tidyverse
+
+Let's say we have a dataframe, `df`, which has the name and age (in years) of everyone in a class. We want to create a new variable of age in months. In base R, we would do it this way:
+`df$age_months <- df$age_years * 12`
+
+In tidyverse, we can use the function `mutate()` to create a new variable. As with most tidyverse functions, `mutate()` takes the dataset as the first argument and the operation as the second. Here the operation is to create the new variable.
+
+`mutate(df, age_months = age_years * 12)`
+
+As you will see with more complex examples, these functions can make dataset operations more readable, especially when strung together with a pipe. 
+
+#### Preview: the pipe in tidyverse
+
+
+For example, recall the `head()` function used in the previous section. If you have a data frame, `df`, instead of peaking at it with `head(df)`, you can pipe it into the `head()` function like this: `df %>% head()`. This might seem like more work than just calling the function around the data frame object, but when you need to run a bunch of functions on a data frame, it becomes much TIDIER! 
+
+In the previous example, we could call the function using a pipe like so:
+
+`df %>% mutate(age_months = age_years * 12)`
+
+
+Feeling motivated to accelerate data cleaning and analysis using the tidyverse?
+
+
+### Let's start by making sure Tidyverse is installed
+
+Download tidyverse
+Remember we only have to install once
+
+```{r,showing_to_install_but_not_gonna_re_install_for_every_typsetting,eval=F}
+install.packages("tidyverse")
+```
+
+Load the tidyverse library
+
+```{r,loadtidy,cache=F}
+library(tidyverse)
+```
+
+If loading the library returns an error message saying it's not installed, then go to the [SSRP Pre-installation guide](https://tinyurl.com/ssrpsoftwareguide) and follow the instructions for installing tidyverse
+
+### The tidyverse pipe %>%
+
+The tidyverse pipe can be used with most base R functions and with all tidyverse-specific functions, which we'll learn more about soon. Although we'll focus on using tidyverse pipe and functions on data frames, the pipe can also be used on vectors and even scalars.
+
+
+##### Pipes with dataframes
+
+Let's read in the iris dataset used in the previous section. Peak at it with `head()` to check that the columns look intact.
+
+```{r t1_pipes}
+
+# Load the dataset and peak at it with the head() function
+irisz <- read.csv("data/iris.csv", 
+                  na.strings = c("", "n/a"), 
+                  stringsAsFactors = TRUE)
+
+head(irisz)
+
+```
+
+Now let's try using the pipe `%>%` to do this.
+
+```{r t1_pipes2, eval = F}
+
+irisz %>% head()
+
+```
+
+Try this out on your own with the `summary()` function. Do it with and without the pipe.
+
+Pretty simple right? 
+
+Notice how the `%>%` pipe is sending the output from before it to the function after it. This `%>%` is similar to the `|` we use on the command line to send data from one operation to the next: `sort data.txt | uniq -c` (sort a data file and count the number of unique lines)
+
+In the previous section, we learned how to read in a file with `read.csv()`, get unique values with `unique()`, and get the dimensions of a data frame with `dim()`. Let's try these operations using the pipe instead of performing them as separate operations.
+
+```{r t2_pipe3, eval = F}
+
+read.csv("data/iris.csv", 
+         na.strings = c("", "n/a"), 
+         stringsAsFactors = TRUE) %>%
+  unique() %>%
+  dim()
+
+```
+This little example just illustrates how to string together functions we already know by using the pipe `%>%`. There isn't a clear reason why we would want the unique rows only before checking the dimensions of the data frame...so don't over think that!
+
+##### Pipes with scalars
+
+To take the square root of a number `x` and round it to `y` digits, we would use the `sqrt()` and `round()` functions
+
+In base R we would do the following:
+Let: `x = 112; y = 2`
+In two steps (with an intermediate, z): `z <- sqrt(x); round(z, digits = y)`
+In one step: `round(sqrt(112), digit = 2)`
+
+Using the pipe, we can keep it streamlined into one step as above, but separate the functions so it's easier to read.
+`sqrt(x) %>% round(digits = y)`
+
+##### Pipes with vectors
+
+We can apply the same piping method to vectors also. Think about the vector that is the column `Sepal.Length` in the dataframe `irisz` which we have been using.
+Try this on your own! Use pipes to string together the following operations: starting with the vector `irisz$Sepal.Length`, sort it, make the values numeric, and make a histogram. These three functions were also introduced in the previous section.
+
+
+Hopefully by now you have a sense for how the pipe in tidyverse works and how it can work with functions we already know and can be applied to data frames, vectors, and scalars. Another big contribution tidyverse makes to the data science in R is the addition of new functions!
+
+### Essential tidyverse functions
+
+Let's start with the essential functions of `tidyverse`. All of these are from the sub-package [dplyr](https://dplyr.tidyverse.org)
+
+- `select()`: subset columns
+- `filter()`: subset rows on conditions
+- `arrange()`: sort results
+- `mutate()`: create new columns by using information from other columns
+- `group_by()` and `summarize()`: create summary statistics on grouped data
+- `count()`: count discrete values
+
+Reminder: if you ever want to know more about these functions, just use the help function - `?` followed by the function of interest. For example: `?select`
+
+#### Selecting, deleting, reordering columns
+
+In base R, if we wanted to select certain columns (e.g. column names c1, c2, c6, c7) from a dataframe, `df`, we would do something like this: `df[c("c1", "c2", "c6", "c7")]`. With tidyverse, we can use the `select(c1, c2, c6, c7)` function (from `dplyr`).
+
+To delete a column, just add a `-` before the column name inside of `select()`.
+
+Select can also be used to reorder columns. Just specify the order of columns in `select()`.
+
+Let's try selecting columns from the `irisz` dataset
+
+```{r select_dplyr, eval = F, cache = TRUE}
+
+# Let's select just the location 
+select(irisz, Location)
+
+# Remove the Location column
+select(irisz, -Location)
+
+# Let's select both the Location and Species columns 
+# and see what unique combinations are present in the dataset
+unique(select(irisz, c(Location, Species)))
+
+# Note that the order returned is the order specified in select()
+# Originally Location came after Species, but now they are reordered.
+
+# We can also do this with the pipe
+irisz %>%
+  select(Location, Species) %>%
+  unique()
+
+```
+
+Note that select() subsets the dataframe to the specified columns. The output is a dataframe, even if only one column is selected
+
+What if we want to extract one column as a vector? 
+In base R, we would use the `$` operation to select a single column as a vector. With tidyverse, we can use the `pull()` function (from `dplyr`). Notice that pull() will only accept a single column name and will return a vector
+
+```{r pull, eval = F}
+
+irisz %>%
+  pull(Location) 
+
+```
+
+#### Filtering dataframes
+
+The basics of filtering data frames in tidyverse are the `filter()` function and boolean operators (`>`, `<`, `==`) learned in section 2.4.3. 
+Let's try two examples:
+
+```{r filter_df, eval = F, cache = TRUE}
+
+# Filter for Petal.Length greater than x
+
+x = 7
+
+irisz %>%
+  filter(as.numeric(Sepal.Length) > x)
+
+# Filter to get observations of setosa species from Korea
+
+irisz %>%
+  filter(Species == "setosa",
+         Location == "Korea")
+
+```
+
+Try it on your own! We're interested in cases where the species `virginica` has an extremely wide, but short petal. Filter the `irisz` dataset to only include the species `virginica`, where the petal width is greater than the petal length. How many observations are there?
+
+#### Creating and renaming columns
+
+Creating columns in tidyverse is simple with the `mutate()` function.
+
+Let's say we wanted to create a new column for the `irisz` dataset which has the row number.
+
+In base R, we would do something like `irisz$row_number <- seq(1,nrow(irisz))`. Here, `seq()` creates a sequence of numbers from 1 to the number of rows in `irisz`.
+
+In tidyverse we can do it using the `mutate()` and `row_number()` functions. So it doesn't output the whole data frame, we'll pipe it directly into `head()`
+
+```{r, eval = F}
+
+irisz %>% 
+  mutate(row_number = row_number()) %>%
+  head()
+
+```
+See the row number column?
+
+Mutate can also be used to update a column without creating a new one.
+
+```{r}
+
+# Change sepal length to be 10x what it currently is
+
+irisz %>% 
+  mutate(Sepal.Length = 10*Sepal.Length ) %>%
+  head()
+
+
+```
+
+What if all the setosa measurements were actually supposed to be the virginica species?
+Let's use the `ifelse()` function which accepts a conditional test, value if true, value if false.
+
+```{r t2_ifelse}
+
+irisz %>% 
+  # If Species is setosa, change it to virginica, otherwise use the value in Species 
+  mutate(Species = ifelse(Species == "setosa", "virginica", Species )) %>%
+  head()
+
+
+```
+
+
+
+Try it on your own! 
+Come up with a single numeric measure of flower size (some combination of the measurments in the data frame). Create a new column for this new variable.
+
+
+Sometimes, we just need to rename an existing column. Use `rename()` to specify the new and old column names, `rename(new_name = old_name)`. Let's rename the location column to be "Country".
+```{r t2_rename, eval = F}
+
+irisz %>% 
+  rename(Country = Location)
+
+```
+
+
+Want to change row names into a column or a column into a row name? Check out `rownames_to_column()` and `column_to_rownames()`.
+
+#### Summarizing data
+
+
+Summarizing data is very important in data analysis. It allows you to get a big picture overview of a new dataset: type, range of values, etc. These are also types of summaries to think about including when in the exploratory stages or a project: before running analyses on a dataset, create a summary of the dataset. Present this during your update meetings for your summer project and keep these summaries on hand in case you or others have questions about the dataset throughout the course of your project.
+
+For summarizing data in tidyverse, let's explore the functions `count()`, `group_by()`, `summarize()`
+
+The function `count()` does what it sounds like - it counds the number of unique observations for the specified column(s)
+```{r t2_count, cache = TRUE}
+
+irisz %>%
+  count(Location)
+
+# Count the number of observations for each unique combination
+# of location and species
+
+irisz %>%
+  count(Location, Species)
+
+```
+
+Can you think of another (perhaps longer) way to count using other functions, such as select(), unique(), n(), pull(), or table()?
+
+What if we want to do more than just count the number of occurrences for a given group? Let's calculate summary statistics like mean and standard deviation.
+`group_by` takes a variable and groups the data by that variable. Anything that happens after that is only calculated within the group variable. To turn off grouping, use `ungroup()`. It's always good practice to `ungroup()` after you're done grouping. Although it doesn't matter if you won't be doing any more operations on the dataset.
+
+```{r t2_group_by, eval = F, cache = TRUE}
+
+# Here's an example that produces a similar result 
+# as in the count() example above
+
+irisz %>%
+  group_by(Location) %>%
+  summarize(n = n()) %>%
+  ungroup()
+
+```
+
+Let's build on this, by adding `mean()` and `sd()` to the summary.
+
+```{r t2_group_by2, eval = F}
+# Since mean() and sd() require numeric inputs,
+# let's use mutate to change Petal.Length into a numeric data type
+# We'll also tell mean() and sd() to ignore NAs in the calculation
+
+irisz %>%
+  mutate(Petal.Length = as.numeric(Petal.Length)) %>%
+  group_by(Location) %>%
+  summarize(n = n(),
+            mean(Petal.Length, na.rm = T),
+            sd(Petal.Length, na.rm = T)) %>%
+  ungroup()
+
+```
+
+Comprehension: Try calculating the min and max Petal Length for each Species. Use `group_by()`.
+
+
+Warning! Sometimes multiple packages have functions that do different things but have the same name. For example, there is a `summarize()` in both the `dplyr` package and the `plyr` package. If both packages are loaded into your R session, R might just default to the last loaded package. To specify which package you want the function to come from, you can put the package name before the function `... %>% dplyr::summarize(n = n()) %>% ...`. Compare this function between the two packages by entering `?summarize` and reading the two options. Then try each one on the previous example. 
+
+
+
+#### Recap: Tidyverse vs Base R
+
+
+To review, tidyverse is just another way to code in R with new functions and a framework based on the pipe `%>%`. You can always use a combination of both base R functions and tidyverse functions. Let's approach a question by first using tidyverse and then using base R.
+
+We have a dataframe, `df`,  with measumerments of flowers. We're interested in finding the average size of the setosa species across different geographical locations. We'll break this down into a few steps (breaking problems down into steps is a great start to any coding problem):
+
+1. Filter the dataframe to only include measurments for the setosa species
+2. Create a new single variable for size which combines length and width of the petal of a flower `size = petal.length * petal.width`
+3. Group measurements by location and calculate the mean and standard deviation of flower sizes in that location
+
+In Base R, we would do something along the lines of the following:
+
+```{r, t1_tidy1,eval=F}
+
+# 1) Filter the data
+df_filtered <- df[Species == "setosa"]
+
+# 2) Create new variable
+df_filtered$Size = df_filtered$Petal.Length * df_filtered$Petal.Width
+
+# 3) Aggregate and summarize
+aggregate(data = df_filtered, 
+          by = Location, 
+          FUN = function(x) c(mean = mean(x), sd = sd(x)))
+
+```
+
+
+How would you perform the above operation using tidyverse functions and the `%>%`? Give it a try before seeing the answer below. 
+
+```{r, t1_tidy2,eval=F}
+
+df %>%
+  # 1) Filter the data
+  filter(Species == "setosa") %>%
+  # 2) Create new variable
+  mutate(Size = Petal.Length * Petal.Width) %>%
+  # 3) Aggregate and summarize
+  group_by(Location) %>%
+  summarize(Size.Mean = mean(Size),
+            Size.SD = sd(Size)) %>%
+  ungroup()
+
+```
+
+
+Note how in the base R version above we use intermediate steps (e.g. assignment to a dataframe `df_filtered`). 
+Alternatively, in base R, we could nestle all of these functions but that is also difficult to read.
+The functions and pipe in the tidyverse make data manipulation TIDY!
+
