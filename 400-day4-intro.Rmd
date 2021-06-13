@@ -27,7 +27,7 @@ Before you start reading through Section 3 for today or taking part in synchrono
 | 10:45 AM PDT  | 11:30 AM PDT| Synchronous   | Peer coding exercises on Zoom | Melissa, Samson, ???    |
 | 11:30 AM PDT  | 12:15 PM PDT| Asynchronous  | Work through [sections 3.4-3.5](https://darachm.github.io/dll-r/making-plots-with-ggplot2.html) | Support on Slack channel! |
 | 12:15 PM PDT  | 12:45 PM PDT| Lunch Break   | Take a computer break!        |       N/A       |
-| 12:45 PM PDT  | 1:30 PM PDT | Synchronous   | Peer coding exercises on Zoom | Melissa, ???    |
+| 12:45 PM PDT  | 1:30 PM PDT | Synchronous   | Peer coding exercises on Zoom | Melissa, Margaret    |
 | 1:30 PM PDT   | 2:00 PM PDT | Asynchronous  | Work through [sections 3.6](https://darachm.github.io/dll-r/applying-basic-stats.html)     | Support on Slack channel! |
 | 2:00 PM PDT   | 2:30 PM PDT | Snack Break   | Take a computer break!        |       N/A       |
-| 2:30 PM PDT   | 3:30 PM PDT | Synchronous   | Wrap-up session on Zoom       |       Samson, ???       |
+| 2:30 PM PDT   | 3:30 PM PDT | Synchronous   | Wrap-up session on Zoom       |       Samson, Margaret       |
