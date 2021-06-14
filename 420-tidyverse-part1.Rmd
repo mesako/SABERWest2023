@@ -6,17 +6,7 @@ output:
 
 ## Tidyverse Part 1/2: functions and pipes
 
-### Goals to be reworked alongside content
-
-* Socio-technical context of tidyverse, ie that it's not base R but oh boy it's popular and well supported by a company - but not base R
-* Tidyverse/dplyr takes a more database-like approach to moving data tables around
-* Identify and predict what a magrittr pipe does
-* Filter data tables, select and rename columns
-* Mutate columns
-* Pipe some stuff between functions, and write that out in a script
-* Melt and gather
-* Utilize group_by
-
+Goal: Understand the tidyverse framework of pipes and functions, as well as how to apply it to tidy data frame cleaning and manipulation.
 
 ### Welcome to the tidyverse! 
 
