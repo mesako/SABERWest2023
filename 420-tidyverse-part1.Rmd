@@ -127,7 +127,6 @@ Using the pipe, we can keep it streamlined into one step as above, but separate 
 We can apply the same piping method to vectors also. Think about the vector that is the column `Sepal.Length` in the dataframe `irisz` which we have been using.
 Try this on your own! Use pipes to string together the following operations: starting with the vector `irisz$Sepal.Length`, sort it, make the values numeric, and make a histogram. These three functions were also introduced in the previous section.
 
-
 Hopefully by now you have a sense for how the pipe in tidyverse works and how it can work with functions we already know and can be applied to data frames, vectors, and scalars. Another big contribution tidyverse makes to the data science in R is the addition of new functions!
 
 ### Essential tidyverse functions
@@ -145,10 +144,13 @@ Reminder: if you ever want to know more about these functions, just use the help
 
 #### Selecting, deleting, reordering columns
 
+**Selecting columns**
 In base R, if we wanted to select certain columns (e.g. column names c1, c2, c6, c7) from a dataframe, `df`, we would do something like this: `df[c("c1", "c2", "c6", "c7")]`. With tidyverse, we can use the `select(c1, c2, c6, c7)` function (from `dplyr`).
 
+**Deleting columns**
 To delete a column, just add a `-` before the column name inside of `select()`.
 
+**Reordering columns**
 Select can also be used to reorder columns. Just specify the order of columns in `select()`.
 
 Let's try selecting columns from the `irisz` dataset
@@ -177,7 +179,8 @@ irisz %>%
 
 Note that select() subsets the dataframe to the specified columns. The output is a dataframe, even if only one column is selected
 
-What if we want to extract one column as a vector? 
+**What if we want to extract one column as a vector? **
+
 In base R, we would use the `$` operation to select a single column as a vector. With tidyverse, we can use the `pull()` function (from `dplyr`). Notice that pull() will only accept a single column name and will return a vector
 
 ```{r pull, eval = F}
@@ -209,7 +212,8 @@ irisz %>%
 
 ```
 
-Try it on your own! We're interested in cases where the species `virginica` has an extremely wide, but short petal. Filter the `irisz` dataset to only include the species `virginica`, where the petal width is greater than the petal length. How many observations are there?
+*Try it on your own! *
+Coding Task A: We're interested in cases where the species `virginica` has an extremely wide, but short petal. Filter the `irisz` dataset to only include the species `virginica`, where the petal width is greater than the petal length. How many observations are there?
 
 #### Creating and renaming columns
 
@@ -257,9 +261,8 @@ irisz %>%
 ```
 
 
-
-Try it on your own! 
-Come up with a single numeric measure of flower size (some combination of the measurments in the data frame). Create a new column for this new variable.
+*Try it on your own!*
+Coding Task B: Come up with a single numeric measure of flower size (some combination of the measurments in the data frame). Create a new column for this new variable.
 
 
 Sometimes, we just need to rename an existing column. Use `rename()` to specify the new and old column names, `rename(new_name = old_name)`. Let's rename the location column to be "Country".
@@ -328,7 +331,8 @@ irisz %>%
 
 ```
 
-Comprehension: Try calculating the min and max Petal Length for each Species. Use `group_by()`.
+*Try it on your own!*
+Coding Task C: Try calculating the min and max Petal Length for each Species. Use `group_by()`.
 
 
 Warning! Sometimes multiple packages have functions that do different things but have the same name. For example, there is a `summarize()` in both the `dplyr` package and the `plyr` package. If both packages are loaded into your R session, R might just default to the last loaded package. To specify which package you want the function to come from, you can put the package name before the function `... %>% dplyr::summarize(n = n()) %>% ...`. Compare this function between the two packages by entering `?summarize` and reading the two options. Then try each one on the previous example. 
