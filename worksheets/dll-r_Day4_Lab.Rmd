@@ -88,13 +88,73 @@ my.strings
 
 ------
 
-#### Section 3.2: Using tidyverse
+#### Section 3.2: Tidyverse Part 1/2: functions and pipes
+
+**Task A:** We're interested in cases where the species `virginica` has an extremely wide, but short petal. Filter the `irisz` dataset to only include the species `virginica`, where the petal width is greater than the petal length. How many observations are there?
+
+```{r}
+# Your code here
+```
+
+**TaskB:** Come up with a single numeric measure of flower size (some combination of the measurments in the data frame). Create a new column for this new variable.
+
+```{r}
+# Code here
+```
+
+**Task C:** Calculate the min and max Petal Length for each Species. Use `group_by()`
+
+```{r}
+# Code here
+```
 
 ------
 
-#### Section 3.3: Using tidyverse
 
-------
+#### Section 3.3: Tidyverse Part 2/2: reshaping data
+
+Use the three example datasets in 3.3 to answer the following questions
+
+**Task A:** Reshape each of the following datasets as specified: 
+Sketch out what the data frame should look like. Describe the steps to make it tidy. Then, write code in R using `gather()`, `spread()`, `separate()`, `unite()` to reshape each of the data frames.
+
+1. Starting with `df_1`, we need cases and counts in each in their own column so we can eventually make a plot of cases vs counts. 
+
+```{r}
+# Code here
+```
+2. Starting with `df_2`, we need the state in a separate column so we can calculate the total number of cases by state.
+
+```{r}
+# Code here
+```
+
+3. Starting with `df_3`, we need to simplify the table so the state columns are in a single column.
+
+```{r}
+# Code here
+```
+
+
+**Task B:** Use the reshaped datasets to do the following:
+
+1. Starting with `df_1`, make a plot of cases vs counts, where each point represents a county (beware of counties with the same name but in different states).
+
+```{r}
+# Code here
+```
+
+2. Starting with `df_2`, calculate the total number of cases for each county. Plot a histogram of the total case counts. 
+
+```{r}
+# Code here
+```
+
+3. Starting with `df_3`, calculate the total number of cases for each state. There is a way to do this given the current form of the table. Instead, reshape the data so it's tidy and use `group_by()` to calculate the total case count per state
+
+```{r}
+# Code here
+```
 
 #### Synchronous Activities
 
