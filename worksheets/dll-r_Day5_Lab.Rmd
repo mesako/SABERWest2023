@@ -9,7 +9,7 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-This worksheet was created by [darachm](https://github.com/darachm) and ? with a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License](https://github.com/darachm/dll-r/blob/main/LICENSE.md).
+This worksheet was created by [darachm](https://github.com/darachm) and [Samson](https://github.com/samson920) with a [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 License](https://github.com/darachm/dll-r/blob/main/LICENSE.md).
 
 #### Instructions for this Worksheet
 
@@ -29,3 +29,26 @@ Write your code and/or your response underneath each task prompt. To render your
 
 *Your response here*
 
+#### End of Class Summary
+
+Now is an opportunity for you to put together everything that you've learned to start asking questions about data. There are a few datasets listed below, along with questions about the data. First, design some analyses you can do to answer the question. Some examples might be comparing the means between certain populations, plotting the distribution of a variable (or multiple variables), or . For all of these datasets, make sure to explore the data a little bit with commands like head() and tail() before jumping into your analysis so you're familiar with the data.
+
+**Iris Dataset**
+
+You can load this dataset with `data(iris)`
+
+What variable is most useful for distinguishing between species?
+
+What species has the biggest variability in flower size?
+
+
+
+**Alzheimer's Microarray Analysis**
+
+Download the data from *insert path*
+
+What gene is most associated with Alzheimer's disease (based on the unadjusted p-value)?
+
+How many genes have unadjusted p-values less than 0.05?
+
+Do some reading on p-values. Why do you think the adjusted p-value is included in the data?
