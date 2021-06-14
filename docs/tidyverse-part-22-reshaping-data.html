@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.6 Conclusion | DLL 2021, R section</title>
+  <title>3.5 Tidyverse Part 2/2: reshaping data | DLL 2021, R section</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.6 Conclusion | DLL 2021, R section" />
+  <meta property="og:title" content="3.5 Tidyverse Part 2/2: reshaping data | DLL 2021, R section" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.6 Conclusion | DLL 2021, R section" />
+  <meta name="twitter:title" content="3.5 Tidyverse Part 2/2: reshaping data | DLL 2021, R section" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -34,8 +34,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="writing-reusable-code.html"/>
-<link rel="next" href="appendix.html"/>
+<link rel="prev" href="tidyverse-part-12-functions-and-pipes.html"/>
+<link rel="next" href="making-plots-with-ggplot2.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -296,46 +296,118 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="conclusion-1" class="section level2">
-<h2><span class="header-section-number">4.6</span> Conclusion</h2>
-<p>Today we covered:</p>
+<div id="tidyverse-part-22-reshaping-data" class="section level2">
+<h2><span class="header-section-number">3.5</span> Tidyverse Part 2/2: reshaping data</h2>
+<p>Goal: Understand when reshaping a dataframe is necessary and how to do it using tidyverse functions <code>gather()</code> and <code>spread()</code></p>
+<div id="why-tidy-data" class="section level3">
+<h3><span class="header-section-number">3.5.1</span> Why tidy data</h3>
+<p>So far we’ve used two datasets: <code>irisz</code> and <code>msleep</code>. Even though there is some missing data in these datasets, for the most part, they are quite neat. Notice how each line represents a single observation and each column represents a single variable. There is no redundancy in the rows or columns. Sometimes datasets will have columns with columns that mean the same thing but apply to only certain subsets of the data. Columns like this can be collapsed.</p>
+<p>On the other hadn, sometimes data will be recorded together in the same column, when they are in fact two different types of data. Imagine if conservation status in the <code>msleep</code> dataset were appended to the name. If we wanted to perform an analysis based on conservation status, we would need to tidy that up by making sure it’s in a separate columns.</p>
+</div>
+<div id="how-to-tidy-data" class="section level3">
+<h3><span class="header-section-number">3.5.2</span> How to tidy data</h3>
+<p>The reality is that datasets don’t always come in neat format. Before and during data analysis, we will often need to “tidy” datasets. tidyverse has 4 important functions for tidying data:</p>
 <ul>
-<li>loops to repeat code</li>
-<li>aspects of nice (re)usable code</li>
-<li>writing code modularly with functions</li>
-<li>finding and using packages</li>
-<li>writing an Rmarkdown report</li>
-<li>finding help and tackling a complex problem</li>
+<li><code>gather()</code>: change data from a wide to long format - i.e. reduce extra columns</li>
+<li><code>spread()</code>: change data from a long to wide format - i.e. expand a column into multiple columns</li>
+<li><code>separate()</code>: spearate a column into 2 or more columns based on a pattern or delimeter</li>
+<li><code>unite()</code>: unite multiple columns into 1</li>
 </ul>
-<p>We hope you are better oriented and prepared to
-repeat your analyses to build a complete story,
-reproduce these larger analyses workflows,
-extend from your work to do more complicated
-workflows,
-and share your analyses with others in a
-well-organized but complete way.</p>
-<p>You can extend on these ideas. Here’s a couple of
-areas that might be useful:</p>
-<dl>
-<dt>Workflow / pipeline tools</dt>
-<dd><p>These are automation tools to smartly run
-different chunks of analyses. This is really
-handy when parts of your workflow take a
-long time, and you usually don’t want to be<br />
-re-running those, but you do want it to be
-able to run the whole thing automatically.</p>
-<p>You can use old-school shell-like tools such
-as “<a href="https://makefiletutorial.com/">Make/Makefiles</a>”,
-newfangled but complex tools
-like “Nextflow”
-or “snakemake”,
-or R-specific tooks like
-“<a href="https://books.ropensci.org/targets/walkthrough.html">targets</a>”.</p>
-</dd>
-</dl>
+<p>In lieu of re-inventing the wheel, here’s an excellent explanation and illustration of the concept of tidy data and how to apply these functions to make data tidy.</p>
+<p><strong>Read this excerpt from Data Science in R by Garret Grolemand <a href="https://garrettgman.github.io/tidying/" class="uri">https://garrettgman.github.io/tidying/</a></strong></p>
+<p>For the asynchronous portion, let’s apply these principles and functions to a new dataset. I’ll set up a few example datasets based on the original. Answer the questions starting from the appropriate example dataset (e.g. <code>df_1</code>, <code>df_2</code>, <code>df_3</code>).</p>
+</div>
+<div id="the-dataset-covid-19-cases" class="section level3">
+<h3><span class="header-section-number">3.5.3</span> The dataset: COVID-19 Cases</h3>
+<p>Even though we’re just using this dataset to learn about tidyverse, it’s always important to read about the dataset. Downloading data can be difficult and we don’t want to dive into that if the data is not what we want. So always read about it first! Read the <a href="https://github.com/nytimes/covid-19-data">introduction on Github</a>. Based on the description of the dataset, try to answer these questions: (no need to look at the actual data, the description should be sufficient)</p>
+<ol style="list-style-type: decimal">
+<li>Why was this data collected?</li>
+<li>When was the data last updated?</li>
+<li>What kind of data is it? Is it genetic data, imaging data, text data? Is it descriptive, numeric, categorical?</li>
+<li>How was the data collected? One or many sources?</li>
+<li>Are there imperfections in the data? Limitations? E.g. missing data, different data meanings?</li>
+</ol>
+<p>We’ll read in the data straight from github. This is a lot of data (every county in the U.S.) so to make it more manageable downstream, we’ll filter the dataset to only include:</p>
+<ol style="list-style-type: decimal">
+<li>A few states: California, Washington, Illinois, Nebraska, and Florida. Feel free to add your own state!</li>
+<li>The last total count of cases and deaths</li>
+</ol>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
+<pre><code>## ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
+## ✔ tibble  3.1.2     ✔ dplyr   1.0.6
+## ✔ tidyr   1.1.3     ✔ stringr 1.4.0
+## ✔ readr   1.4.0     ✔ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb268-1" data-line-number="1">data_url =<span class="st"> &quot;https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv&quot;</span></a>
+<a class="sourceLine" id="cb268-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb268-3" data-line-number="3">favorite_states =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;California&quot;</span>, <span class="st">&quot;Washington&quot;</span>, <span class="st">&quot;Illinois&quot;</span>, <span class="st">&quot;Nebraska&quot;</span>,  <span class="st">&quot;Florida&quot;</span>)</a>
+<a class="sourceLine" id="cb268-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb268-5" data-line-number="5">df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(data_url,</a>
+<a class="sourceLine" id="cb268-6" data-line-number="6">           <span class="dt">header =</span> T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb268-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(state <span class="op">%in%</span><span class="st"> </span>favorite_states) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb268-8" data-line-number="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">date =</span> <span class="kw">as.Date</span>(date,<span class="dt">format=</span><span class="st">&quot;%Y-%m-%d&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb268-9" data-line-number="9"><span class="st">  </span><span class="kw">filter</span>(date <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(date))</a></code></pre></div>
+<p>Test your knowledge! Use functions we learned in the last section to answer these questions:</p>
+<ol style="list-style-type: decimal">
+<li>What is the last date for recorded cases? Is it the same for all states/counties?</li>
+<li>Are all of the states listed in <code>favorite_states</code> in the dataset?</li>
+<li>How many counties are there for each of the states?</li>
+</ol>
+</div>
+<div id="example-datasets" class="section level3">
+<h3><span class="header-section-number">3.5.4</span> Example datasets</h3>
+<p>Here are three example datasets that will serve as starting points for answering tidy data questions that follow</p>
+<p><strong>Example Dataset #1:<code>df_1</code></strong>
+Three columns: county, cases, deaths</p>
+<div class="sourceCode" id="cb269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb269-1" data-line-number="1">df_<span class="dv">1</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb269-2" data-line-number="2"><span class="st">  </span>tidyr<span class="op">::</span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;metric&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;count&quot;</span>, <span class="kw">c</span>(cases, deaths)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb269-3" data-line-number="3"><span class="st">  </span><span class="kw">arrange</span>(state,county)</a>
+<a class="sourceLine" id="cb269-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb269-5" data-line-number="5"><span class="kw">head</span>(df_<span class="dv">1</span>)</a></code></pre></div>
+<pre><code>##         date  county      state fips metric count
+## 1 2021-06-13 Alameda California 6001  cases 89408
+## 2 2021-06-13 Alameda California 6001 deaths  1719
+## 3 2021-06-13  Alpine California 6003  cases    89
+## 4 2021-06-13  Alpine California 6003 deaths     0
+## 5 2021-06-13  Amador California 6005  cases  3720
+## 6 2021-06-13  Amador California 6005 deaths    47</code></pre>
+<p><strong>Example Dataset #2:<code>df_2</code></strong>
+Five columns: date, fips, metric corresponding to count, count, location (county, state)</p>
+<div class="sourceCode" id="cb271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb271-1" data-line-number="1">df_<span class="dv">2</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb271-2" data-line-number="2"><span class="st">  </span>tidyr<span class="op">::</span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;metric&quot;</span>, </a>
+<a class="sourceLine" id="cb271-3" data-line-number="3">                <span class="dt">value =</span> <span class="st">&quot;count&quot;</span>, </a>
+<a class="sourceLine" id="cb271-4" data-line-number="4">                <span class="kw">c</span>(cases, deaths)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb271-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">county_state_fips =</span> <span class="kw">paste0</span>(county,<span class="st">&quot;,&quot;</span>, state, <span class="st">&quot;,&quot;</span>, fips)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb271-6" data-line-number="6"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>county,<span class="op">-</span>state)</a>
+<a class="sourceLine" id="cb271-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb271-8" data-line-number="8"><span class="kw">head</span>(df_<span class="dv">2</span>)</a></code></pre></div>
+<pre><code>##         date fips metric count         county_state_fips
+## 1 2021-06-13 6001  cases 89408   Alameda,California,6001
+## 2 2021-06-13 6003  cases    89    Alpine,California,6003
+## 3 2021-06-13 6005  cases  3720    Amador,California,6005
+## 4 2021-06-13 6007  cases 12576     Butte,California,6007
+## 5 2021-06-13 6009  cases  2195 Calaveras,California,6009
+## 6 2021-06-13 6011  cases  2276    Colusa,California,6011</code></pre>
+<p><strong>Example Dataset #3:<code>df_3</code></strong>
+A column with the county name, followed by columns for each state with the number of cases for that state/county pair.</p>
+<div class="sourceCode" id="cb273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb273-1" data-line-number="1">df_<span class="dv">3</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb273-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(county,state,cases) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb273-3" data-line-number="3"><span class="st">  </span>tidyr<span class="op">::</span><span class="kw">spread</span>(<span class="dt">key =</span> <span class="st">&quot;state&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;cases&quot;</span>)</a>
+<a class="sourceLine" id="cb273-4" data-line-number="4">  </a>
+<a class="sourceLine" id="cb273-5" data-line-number="5"><span class="kw">head</span>(df_<span class="dv">3</span>)</a></code></pre></div>
+<pre><code>##      county California Florida Illinois Nebraska Washington
+## 1     Adams         NA      NA     8654     3181       2212
+## 2   Alachua         NA   25293       NA       NA         NA
+## 3   Alameda      89408      NA       NA       NA         NA
+## 4 Alexander         NA      NA      473       NA         NA
+## 5    Alpine         89      NA       NA       NA         NA
+## 6    Amador       3720      NA       NA       NA         NA</code></pre>
+<p>Use these three datasets to complete the coding exercises in the corresponding worksheet.</p>
 
 </div>
-<!-- </div> -->
+</div>
 <p style="margin-top:10em;text-align:center;font-size:small;">
     <a href="https://github.com/darachm/dll-r/blob/main/LICENSE.md">
         Licensed Creative Commons Attribution-NonCommercial-ShareAlike 4.0
@@ -361,8 +433,8 @@ for (var i=0; i < listz.length; i++) {
           </div>
         </div>
       </div>
-<a href="writing-reusable-code.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="appendix.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tidyverse-part-12-functions-and-pipes.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="making-plots-with-ggplot2.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -394,7 +466,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/darachm/dll-r/edit/main/599-wrapup.Rmd",
+"link": "https://github.com/darachm/dll-r/edit/main/430-tidyverse-part2.Rmd",
 "text": "Edit"
 },
 "history": {

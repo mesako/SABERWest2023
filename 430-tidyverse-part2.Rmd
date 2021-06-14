@@ -47,7 +47,7 @@ We'll read in the data straight from github. This is a lot of data (every county
 2. The last total count of cases and deaths
 
 
-```{r,no_eval,eval=F}
+```{r,invisible,echo=FALSE, results = FALSE}
 
 library(tidyverse)
 
