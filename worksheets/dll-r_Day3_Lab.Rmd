@@ -17,11 +17,9 @@ Write your code and/or your response underneath each task prompt. To render your
 
 ------
 
-#### Section 2.1: Navigating Rstudio
+#### Section 2.1: Navigating Rstudio and Section 2.2: Using Rmds
 
-------
-
-#### Section 2.2: Using Rmds
+There are no tasks for these two sections, please just read through and explore in Rstudio.
 
 ------
 

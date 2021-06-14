@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.3 Essential tidyverse functions | DLL 2021, R section</title>
+  <title>4 Day 5 - workflows, loops, packages, and help | DLL 2021, R section</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.3 Essential tidyverse functions | DLL 2021, R section" />
+  <meta property="og:title" content="4 Day 5 - workflows, loops, packages, and help | DLL 2021, R section" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.3 Essential tidyverse functions | DLL 2021, R section" />
+  <meta name="twitter:title" content="4 Day 5 - workflows, loops, packages, and help | DLL 2021, R section" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -34,8 +34,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="using-tidyverse.html"/>
-<link rel="next" href="tidyverse-part-12-functions-and-pipes.html"/>
+<link rel="prev" href="applying-basic-stats.html"/>
+<link rel="next" href="what-is-a-workflow.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -296,367 +296,149 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="essential-tidyverse-functions" class="section level2">
-<h2><span class="header-section-number">3.3</span> Essential tidyverse functions</h2>
-<p>Let’s start with the essential functions of <code>tidyverse</code>. All of these are from the sub-package <a href="https://dplyr.tidyverse.org">dplyr</a></p>
-<p><code>select()</code>: subset columns
-<code>filter()</code>: subset rows on conditions
-<code>arrange()</code>: sort results
-<code>mutate()</code>: create new columns by using information from other columns
-<code>group_by()</code> and <code>summarize()</code>: create summary statistics on grouped data
-<code>count()</code>: count discrete values</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1"><span class="co"># Let&#39;s select just the location </span></a>
-<a class="sourceLine" id="cb215-2" data-line-number="2"><span class="kw">select</span>(irisz, Location)</a></code></pre></div>
-<pre><code>##     Location
-## 1      Korea
-## 2      China
-## 3      Korea
-## 4      China
-## 5      China
-## 6     Canada
-## 7      China
-## 8      China
-## 9     Russia
-## 10     Japan
-## 11    Russia
-## 12    Canada
-## 13     Korea
-## 14    Russia
-## 15    Canada
-## 16    Canada
-## 17     Korea
-## 18     Korea
-## 19     Japan
-## 20     Korea
-## 21    Russia
-## 22     Korea
-## 23     Japan
-## 24     Japan
-## 25    Russia
-## 26    Russia
-## 27     Japan
-## 28    Russia
-## 29     Japan
-## 30    Canada
-## 31    Canada
-## 32    Canada
-## 33    Russia
-## 34    Russia
-## 35    Russia
-## 36    Russia
-## 37     Korea
-## 38     Japan
-## 39     Korea
-## 40     Japan
-## 41     Japan
-## 42     Japan
-## 43     Japan
-## 44     Korea
-## 45     China
-## 46          
-## 47    Canada
-## 48    Canada
-## 49    Canada
-## 50    Canada
-## 51          
-## 52          
-## 53          
-## 54       USA
-## 55       USA
-## 56       USA
-## 57       USA
-## 58       USA
-## 59       USA
-## 60          
-## 61    Canada
-## 62    Canada
-## 63    Canada
-## 64    Canada
-## 65    Canada
-## 66    Canada
-## 67    Canada
-## 68    Canada
-## 69    Canada
-## 70    Canada
-## 71    Canada
-## 72    Canada
-## 73       USA
-## 74    Canada
-## 75    Canada
-## 76    Canada
-## 77    Canada
-## 78    Canada
-## 79          
-## 80       USA
-## 81    Canada
-## 82    Canada
-## 83    Canada
-## 84       USA
-## 85       USA
-## 86       USA
-## 87       USA
-## 88       USA
-## 89       USA
-## 90    Canada
-## 91       USA
-## 92       USA
-## 93       USA
-## 94       USA
-## 95       USA
-## 96       USA
-## 97    Canada
-## 98    Canada
-## 99    Canada
-## 100         
-## 101      USA
-## 102      USA
-## 103      USA
-## 104      USA
-## 105      USA
-## 106      USA
-## 107         
-## 108      USA
-## 109      USA
-## 110      USA
-## 111      USA
-## 112      USA
-## 113      USA
-## 114         
-## 115      USA
-## 116      USA
-## 117      USA
-## 118      USA
-## 119      USA
-## 120      USA
-## 121      USA
-## 122      USA
-## 123      USA
-## 124      USA
-## 125      USA
-## 126      USA
-## 127         
-## 128      USA
-## 129      USA
-## 130      USA
-## 131      USA
-## 132      USA
-## 133      USA
-## 134         
-## 135      USA
-## 136      USA
-## 137      USA
-## 138         
-## 139      USA
-## 140      USA
-## 141      USA
-## 142      USA
-## 143         
-## 144      USA
-## 145      USA
-## 146      USA
-## 147      USA
-## 148      USA
-## 149      USA
-## 150</code></pre>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1"><span class="co"># Let&#39;s select both the Location and Species columns </span></a>
-<a class="sourceLine" id="cb217-2" data-line-number="2"><span class="co"># and see what unique combinations are present in the dataset</span></a>
-<a class="sourceLine" id="cb217-3" data-line-number="3"><span class="kw">unique</span>(<span class="kw">select</span>(irisz, <span class="kw">c</span>(Location, Species)))</a></code></pre></div>
-<pre><code>##     Location    Species
-## 1      Korea     setosa
-## 2      China     setosa
-## 6     Canada     setosa
-## 8      China           
-## 9     Russia     setosa
-## 10     Japan     setosa
-## 46               setosa
-## 51           versicolor
-## 54       USA versicolor
-## 61    Canada versicolor
-## 101      USA  virginica
-## 107           virginica
-## 143</code></pre>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1"><span class="co"># We can also do this with the pipe</span></a>
-<a class="sourceLine" id="cb219-2" data-line-number="2">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb219-3" data-line-number="3"><span class="st">  </span><span class="kw">select</span>(Location, Species) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb219-4" data-line-number="4"><span class="st">  </span><span class="kw">unique</span>()</a></code></pre></div>
-<pre><code>##     Location    Species
-## 1      Korea     setosa
-## 2      China     setosa
-## 6     Canada     setosa
-## 8      China           
-## 9     Russia     setosa
-## 10     Japan     setosa
-## 46               setosa
-## 51           versicolor
-## 54       USA versicolor
-## 61    Canada versicolor
-## 101      USA  virginica
-## 107           virginica
-## 143</code></pre>
-<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1"><span class="co"># Note that select() subsets the dataframe to the specified columns</span></a>
-<a class="sourceLine" id="cb221-2" data-line-number="2"><span class="co"># The output is a dataframe, even if only one column is selected</span></a>
-<a class="sourceLine" id="cb221-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb221-4" data-line-number="4"><span class="co"># What if we want to extract one column as a vector?</span></a>
-<a class="sourceLine" id="cb221-5" data-line-number="5"><span class="co"># For this we use pull() instead of select()</span></a>
-<a class="sourceLine" id="cb221-6" data-line-number="6"><span class="co"># pull() returns a vector</span></a>
-<a class="sourceLine" id="cb221-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb221-8" data-line-number="8">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb221-9" data-line-number="9"><span class="st">  </span><span class="kw">pull</span>(Location) </a></code></pre></div>
-<pre><code>##   [1] &quot;Korea&quot;  &quot;China&quot;  &quot;Korea&quot;  &quot;China&quot;  &quot;China&quot;  &quot;Canada&quot; &quot;China&quot;  &quot;China&quot; 
-##   [9] &quot;Russia&quot; &quot;Japan&quot;  &quot;Russia&quot; &quot;Canada&quot; &quot;Korea&quot;  &quot;Russia&quot; &quot;Canada&quot; &quot;Canada&quot;
-##  [17] &quot;Korea&quot;  &quot;Korea&quot;  &quot;Japan&quot;  &quot;Korea&quot;  &quot;Russia&quot; &quot;Korea&quot;  &quot;Japan&quot;  &quot;Japan&quot; 
-##  [25] &quot;Russia&quot; &quot;Russia&quot; &quot;Japan&quot;  &quot;Russia&quot; &quot;Japan&quot;  &quot;Canada&quot; &quot;Canada&quot; &quot;Canada&quot;
-##  [33] &quot;Russia&quot; &quot;Russia&quot; &quot;Russia&quot; &quot;Russia&quot; &quot;Korea&quot;  &quot;Japan&quot;  &quot;Korea&quot;  &quot;Japan&quot; 
-##  [41] &quot;Japan&quot;  &quot;Japan&quot;  &quot;Japan&quot;  &quot;Korea&quot;  &quot;China&quot;  &quot;&quot;       &quot;Canada&quot; &quot;Canada&quot;
-##  [49] &quot;Canada&quot; &quot;Canada&quot; &quot;&quot;       &quot;&quot;       &quot;&quot;       &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;   
-##  [57] &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;&quot;       &quot;Canada&quot; &quot;Canada&quot; &quot;Canada&quot; &quot;Canada&quot;
-##  [65] &quot;Canada&quot; &quot;Canada&quot; &quot;Canada&quot; &quot;Canada&quot; &quot;Canada&quot; &quot;Canada&quot; &quot;Canada&quot; &quot;Canada&quot;
-##  [73] &quot;USA&quot;    &quot;Canada&quot; &quot;Canada&quot; &quot;Canada&quot; &quot;Canada&quot; &quot;Canada&quot; &quot;&quot;       &quot;USA&quot;   
-##  [81] &quot;Canada&quot; &quot;Canada&quot; &quot;Canada&quot; &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;   
-##  [89] &quot;USA&quot;    &quot;Canada&quot; &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;   
-##  [97] &quot;Canada&quot; &quot;Canada&quot; &quot;Canada&quot; &quot;&quot;       &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;   
-## [105] &quot;USA&quot;    &quot;USA&quot;    &quot;&quot;       &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;   
-## [113] &quot;USA&quot;    &quot;&quot;       &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;   
-## [121] &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;&quot;       &quot;USA&quot;   
-## [129] &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;&quot;       &quot;USA&quot;    &quot;USA&quot;   
-## [137] &quot;USA&quot;    &quot;&quot;       &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;&quot;       &quot;USA&quot;   
-## [145] &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;USA&quot;    &quot;&quot;</code></pre>
-<div id="filtering-dataframes" class="section level3">
-<h3><span class="header-section-number">3.3.1</span> Filtering dataframes</h3>
-<p>The basics of filtering are the <code>filter()</code> function and boolean operators (<code>&gt;</code>, <code>&lt;</code>, <code>==</code>), learned in section xxx</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1"><span class="co"># Filter for Petal.Length greater than x</span></a>
-<a class="sourceLine" id="cb223-2" data-line-number="2">x =<span class="st"> </span><span class="dv">7</span></a>
-<a class="sourceLine" id="cb223-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb223-4" data-line-number="4">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb223-5" data-line-number="5"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">as.numeric</span>(Sepal.Length) <span class="op">&gt;</span><span class="st"> </span>x)</a></code></pre></div>
-<pre><code>## Warning in mask$eval_all_filter(dots, env_filter): NAs introduced by coercion</code></pre>
-<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species Location
-## 1           7.1           3          5.9         2.1 virginica      USA
-## 2           7.6           3          6.6         2.1 virginica      USA
-## 3           7.2         3.6          6.1         2.5 virginica      USA
-## 4           7.7         3.8          6.7         2.2 virginica      USA
-## 5           7.7         2.6          6.9          23 virginica      USA
-## 6           7.7         2.8          6.7           2 virginica      USA
-## 7           7.2         3.2            6         1.8 virginica      USA
-## 8           7.2           3          5.8         1.6 virginica      USA
-## 9           7.4         2.8          6.1         1.9 virginica      USA
-## 10          7.9         3.8          6.4           2 virginica      USA
-## 11          7.7           3          6.1         2.3 virginica      USA</code></pre>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" data-line-number="1"><span class="co"># filter to get observations of setosa species from Korea</span></a>
-<a class="sourceLine" id="cb226-2" data-line-number="2">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb226-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>,</a>
-<a class="sourceLine" id="cb226-4" data-line-number="4">         Location <span class="op">==</span><span class="st"> &quot;Korea&quot;</span>)</a></code></pre></div>
-<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Location
-## 1           5.1         3.5          1.4         0.2  setosa    Korea
-## 2           4.7         3.2          1.3         0.2  setosa    Korea
-## 3           4.8           3          1.4         0.1  setosa    Korea
-## 4           5.4         3.9          1.3         0.4  setosa    Korea
-## 5           5.1         3.5          1.4         0.3  setosa    Korea
-## 6           5.1         3.8          1.5         0.3  setosa    Korea
-## 7           5.1         3.7          1.5         0.4  setosa    Korea
-## 8           5.5        0.35          1.3         0.2  setosa    Korea
-## 9           4.4           3          1.3         0.2  setosa    Korea
-## 10          n/a         n/a          1.6         0.6  setosa    Korea</code></pre>
-</div>
-<div id="creating-new-variables" class="section level3">
-<h3><span class="header-section-number">3.3.2</span> Creating new variables</h3>
-<p><to do ></p>
-</div>
-<div id="summarizing-data" class="section level3">
-<h3><span class="header-section-number">3.3.3</span> Summarizing data</h3>
-<p>Summarizing data is very important in data analysis. It allows you to get a big picture overview of a new dataset: type, range of values, etc. These are also types of summaries to think about including when in the exploratory stages: before running analyses on a dataset, create a summary of the dataset. Present this in during your update meetings during your summer project, and keep these summaries on hand in case you or others have questions about it throughout the course of your project.</p>
-<p>For summarizing data in tidyverse, let’s explore the functions <code>count()</code>, <code>group_by()</code>, <code>summarize()</code></p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1"><span class="co"># Count the number of observations for each Location</span></a>
-<a class="sourceLine" id="cb228-2" data-line-number="2">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb228-3" data-line-number="3"><span class="st">  </span><span class="kw">count</span>(Location)</a></code></pre></div>
-<pre><code>##   Location  n
-## 1          14
-## 2   Canada 35
-## 3    China  6
-## 4    Japan 11
-## 5    Korea 10
-## 6   Russia 11
-## 7      USA 63</code></pre>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1"><span class="co"># Count the number of observations for each unique combination</span></a>
-<a class="sourceLine" id="cb230-2" data-line-number="2"><span class="co"># of location and species</span></a>
-<a class="sourceLine" id="cb230-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb230-4" data-line-number="4">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb230-5" data-line-number="5"><span class="st">  </span><span class="kw">count</span>(Location, Species)</a></code></pre></div>
-<pre><code>##    Location    Species  n
-## 1                       1
-## 2               setosa  1
-## 3           versicolor  6
-## 4            virginica  6
-## 5    Canada     setosa 11
-## 6    Canada versicolor 24
-## 7     China             1
-## 8     China     setosa  5
-## 9     Japan     setosa 11
-## 10    Korea     setosa 10
-## 11   Russia     setosa 11
-## 12      USA versicolor 20
-## 13      USA  virginica 43</code></pre>
-<p>What if we want to do more than just count the number of occurrences for a given group? Let’s calculate summary statistics like mean and standard deviation.
-<code>group_by</code> takes a variable and groups the data by that variable. Anything that happens after that is only calculated within the group variable. To turn off grouping, use <code>ungroup()</code>. It’s always good practice to <code>ungroup()</code> after you’re done grouping. Although it doesn’t matter if you won’t be doing any more operations on the dataset.</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1"><span class="co"># Here&#39;s an example that produces a similar result </span></a>
-<a class="sourceLine" id="cb232-2" data-line-number="2"><span class="co"># as in the count() example above</span></a>
-<a class="sourceLine" id="cb232-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb232-4" data-line-number="4">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb232-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(Location) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb232-6" data-line-number="6"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb232-7" data-line-number="7"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
-<pre><code>## # A tibble: 7 x 2
-##   Location     n
-##   &lt;chr&gt;    &lt;int&gt;
-## 1 &quot;&quot;          14
-## 2 &quot;Canada&quot;    35
-## 3 &quot;China&quot;      6
-## 4 &quot;Japan&quot;     11
-## 5 &quot;Korea&quot;     10
-## 6 &quot;Russia&quot;    11
-## 7 &quot;USA&quot;       63</code></pre>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" data-line-number="1"><span class="co"># Since mean() and sd() require numeric inputs,</span></a>
-<a class="sourceLine" id="cb234-2" data-line-number="2"><span class="co"># let&#39;s use mutate to change Petal.Length into a numeric data type</span></a>
-<a class="sourceLine" id="cb234-3" data-line-number="3"><span class="co"># We&#39;ll also tell mean() and sd() to ignore NAs in the calculation</span></a>
-<a class="sourceLine" id="cb234-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb234-5" data-line-number="5">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb234-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Petal.Length =</span> <span class="kw">as.numeric</span>(Petal.Length)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb234-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(Location) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb234-8" data-line-number="8"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>(),</a>
-<a class="sourceLine" id="cb234-9" data-line-number="9">            <span class="kw">mean</span>(Petal.Length, <span class="dt">na.rm =</span> T),</a>
-<a class="sourceLine" id="cb234-10" data-line-number="10">            <span class="kw">sd</span>(Petal.Length, <span class="dt">na.rm =</span> T)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb234-11" data-line-number="11"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
-<pre><code>## Warning in mask$eval_all_mutate(quo): NAs introduced by coercion</code></pre>
-<pre><code>## # A tibble: 7 x 4
-##   Location     n `mean(Petal.Length, na.rm = T)` `sd(Petal.Length, na.rm = T)`
-##   &lt;chr&gt;    &lt;int&gt;                           &lt;dbl&gt;                         &lt;dbl&gt;
-## 1 &quot;&quot;          14                            4.51                         0.990
-## 2 &quot;Canada&quot;    35                            3.39                         1.30 
-## 3 &quot;China&quot;      6                            1.52                         0.194
-## 4 &quot;Japan&quot;     11                            1.43                         0.205
-## 5 &quot;Korea&quot;     10                            1.4                          0.105
-## 6 &quot;Russia&quot;    11                            1.48                         0.218
-## 7 &quot;USA&quot;       63                            5.21                         0.826</code></pre>
-<p>Comprehension: Try calculating the min and max Petal Length for each Species. Use <code>group_by()</code>.</p>
-<p>We can also use base R functions with the tidyverse <code>%&gt;%</code> and/or functions</p>
-<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb237-1" data-line-number="1"><span class="co"># How many of each location are there? Use the base R table() function</span></a>
-<a class="sourceLine" id="cb237-2" data-line-number="2"><span class="co"># Use the pull() function</span></a>
-<a class="sourceLine" id="cb237-3" data-line-number="3">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb237-4" data-line-number="4"><span class="st">  </span><span class="kw">pull</span>(Location) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb237-5" data-line-number="5"><span class="st">  </span><span class="kw">table</span>()</a></code></pre></div>
-<pre><code>## .
-##        Canada  China  Japan  Korea Russia    USA 
-##     14     35      6     11     10     11     63</code></pre>
-</div>
-<div id="updating-fields-based-on-a-condition" class="section level3">
-<h3><span class="header-section-number">3.3.4</span> Updating fields based on a condition</h3>
-</div>
-<div id="reshaping-data-long-and-wide" class="section level3">
-<h3><span class="header-section-number">3.3.5</span> Reshaping data: long and wide</h3>
-<p><code>gather()</code> and <code>spread()</code></p>
-<p>Advanced: <code>reshape()</code> (dcast package)</p>
-
-</div>
+<div id="day-5---workflows-loops-packages-and-help" class="section level1">
+<h1><span class="header-section-number">4</span> Day 5 - workflows, loops, packages, and help</h1>
+<p>Today we’re going to learn about applying these R
+skills to
+repeat, reproduce, extend, and share your analyses.</p>
+<p>First, let’s review the last two days.</p>
+<!-- exercise -->
+<!--are we trying to make students think about writing functions and clean code? I'm not sure that's clear if this is asynchronous reading-->
+<ul>
+<li>What have we done?</li>
+<li>Crack open your code - can you use it again?</li>
+<li>Can you adapt it to modify your question,
+feed in new data, and modify the
+scientifically-important bits easily?</li>
+<li>Can you share it with someone and they follow
+along?</li>
+</ul>
+<hr />
+<p>Our goals are to learn how to:</p>
+<ul>
+<li>organize work in a folder and rmarkdown files</li>
+<li>build a workflow analyzing some viral proteins in a <em>scalable</em> way</li>
+<li>modify our workflow to expand the analyses</li>
+<li>obtain and use packages to user other people’s work</li>
+<li>tackling new problems with new R packages</li>
+</ul>
+<hr />
+<p><strong>Preparing for Today:</strong>
+Please make sure you have completed all readings and activities from
+Section 3: Day 4 - tidyverse and visualizations.</p>
+<p>Before you start reading through Section 4 for today or taking part in
+synchronous activities, download and <a href="https://github.com/darachm/dll-r/blob/main/worksheets/dll-r_Day5_Lab.Rmd">open today’s
+worksheet</a>.
+On this Github page, please right-click the button that says “Raw” and click
+“Save Link As…” to get a local copy of this Rmd file on your computer and
+open it in Rstudio.</p>
+<p><strong>Today’s Schedule:</strong></p>
+<table>
+<colgroup>
+<col width="16%" />
+<col width="13%" />
+<col width="16%" />
+<col width="35%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Start Time</th>
+<th>End Time</th>
+<th>Activity</th>
+<th>Description</th>
+<th>Facilitator</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10:00 AM PDT</td>
+<td>10:15 AM PDT</td>
+<td>Synchronous - lecture, groups</td>
+<td>Intro</td>
+<td>Darach, Melissa, Samson, Margaret, Zac</td>
+</tr>
+<tr class="even">
+<td>10:15 AM PDT</td>
+<td>10:45 AM PDT</td>
+<td>Synchronous - lecture, groups</td>
+<td>4.1 Organizing workflows, more rmarkdown</td>
+<td>Darach, Melissa, Samson, Margaret, Zac</td>
+</tr>
+<tr class="odd">
+<td>10:45 AM PDT</td>
+<td>11:15 AM PDT</td>
+<td>Asynchronous - video, slack, etc</td>
+<td>4.2 Project - analyze viral protein sequences</td>
+<td>Darach, Samson, Margaret, Zac</td>
+</tr>
+<tr class="even">
+<td>11:15 AM PDT</td>
+<td>11:45 AM PDT</td>
+<td>Synchronous - lecture, groups</td>
+<td>4.2 Extending the analysis to look for motifs … and what else? string data?</td>
+<td>Darach, Melissa, Samson, Margaret, Zac</td>
+</tr>
+<tr class="odd">
+<td>11:45 AM PDT</td>
+<td>12:15 PM PDT</td>
+<td>Asynchronous - video, slack, etc</td>
+<td>4.2 Project - analyze viral protein sequences</td>
+<td>Darach, Samson, Margaret</td>
+</tr>
+<tr class="even">
+<td>12:15 PM PDT</td>
+<td>12:45 PM PDT</td>
+<td>Break</td>
+<td>Take a computer break!</td>
+<td>N/A</td>
+</tr>
+<tr class="odd">
+<td>12:45 PM PDT</td>
+<td>01:00 PM PDT</td>
+<td>Synchronous - lecture</td>
+<td>4.3 Packages - why and how</td>
+<td>Darach, Samson, Margaret, Zac</td>
+</tr>
+<tr class="even">
+<td>12:45 PM PDT</td>
+<td>01:15 PM PDT</td>
+<td>Asynchronous - video, slack, etc</td>
+<td>4.3 Packages - install stuff</td>
+<td>Darach, Samson, Margaret, Zac</td>
+</tr>
+<tr class="odd">
+<td>01:15 PM PDT</td>
+<td>01:45 PM PDT</td>
+<td>Synchronous - lecture, groups</td>
+<td>4.4 Demo/discuss some places to find help</td>
+<td>Darach, Samson, Margaret, Zac</td>
+</tr>
+<tr class="even">
+<td>01:45 PM PDT</td>
+<td>02:30 PM PDT</td>
+<td>Synchronous - groups</td>
+<td>4.4 Attempt ambitious tutorials</td>
+<td>Darach, Samson, Margaret</td>
+</tr>
+<tr class="odd">
+<td>02:30 PM PDT</td>
+<td>02:45 PM PDT</td>
+<td>Synchronous - lecture, groups</td>
+<td>4.5 Writing nice code (if time)</td>
+<td>Darach, Samson, Margaret, Zac</td>
+</tr>
+<tr class="even">
+<td>02:45 PM PDT</td>
+<td>03:00 PM PDT</td>
+<td>Synchronous - discussion</td>
+<td>4.6 Wrapping up</td>
+<td>Darach, Samson, Margaret, Zac</td>
+</tr>
+</tbody>
+</table>
+<!-- -->
+<!--chapter:end:500-day5-intro.Rmd-->
 </div>
 <p style="margin-top:10em;text-align:center;font-size:small;">
     <a href="https://github.com/darachm/dll-r/blob/main/LICENSE.md">
@@ -683,8 +465,8 @@ for (var i=0; i < listz.length; i++) {
           </div>
         </div>
       </div>
-<a href="using-tidyverse.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tidyverse-part-12-functions-and-pipes.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="applying-basic-stats.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="what-is-a-workflow.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -716,7 +498,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/darachm/dll-r/edit/main/420-tidyverse-part1_v2.Rmd",
+"link": "https://github.com/darachm/dll-r/edit/main/510-repro-workflows.Rmd",
 "text": "Edit"
 },
 "history": {

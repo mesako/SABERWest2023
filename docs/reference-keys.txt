@@ -86,7 +86,7 @@ describing-quantitative-variables
 finding-differences-in-data
 identifying-correlations
 producing-linear-models
-day-5---building-workflows-loops-using-packages-and-finding-help-in-new-areas
+day-5---workflows-loops-packages-and-help
 what-is-a-workflow
 organizing-files
 use-a-notebook-to-generate-reports
