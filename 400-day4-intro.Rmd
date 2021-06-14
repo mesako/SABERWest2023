@@ -30,4 +30,4 @@ Before you start reading through Section 3 for today or taking part in synchrono
 | 12:45 PM PDT  | 1:30 PM PDT | Synchronous   | Peer coding exercises on Zoom | **Melissa**, Margaret, Zac    |
 | 1:30 PM PDT   | 2:00 PM PDT | Asynchronous  | Work through [sections 3.6](https://darachm.github.io/dll-r/applying-basic-stats.html)     | Support on Slack channel! |
 | 2:00 PM PDT   | 2:30 PM PDT | Snack Break   | Take a computer break!        |       N/A       |
-| 2:30 PM PDT   | 3:30 PM PDT | Synchronous   | Wrap-up session on Zoom       |       Samson, Margaret, Zac       |
+| 2:30 PM PDT   | 3:30 PM PDT | Synchronous   | Wrap-up session on Zoom       |       **Samson**, Margaret, Zac       |
