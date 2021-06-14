@@ -45,10 +45,21 @@ What species has the biggest variability in flower size?
 
 **Alzheimer's Microarray Analysis**
 
-Download the data from *insert path*
+These data are originally from https://www.kaggle.com/andrewgao/alzheimer-microarray-analysis. You can download them from https://github.com/darachm/dll-r/tree/main/data
 
 What gene is most associated with Alzheimer's disease (based on the unadjusted p-value)?
 
 How many genes have unadjusted p-values less than 0.05?
 
 Do some reading on p-values. Why do you think the adjusted p-value is included in the data?
+
+
+**Mortality Data**
+
+The CDC tracks data on mortality in the United States. We have downloaded a dataset on mortality by state, by week across a few years. You can download the data from https://github.com/darachm/dll-r/tree/main/data, though the data were originally from https://www.kaggle.com/codebreaker619/usa-weekly-counts-of-deaths-by-state-and-causes.
+
+What state has the highest number of deaths per year based on the data reported here? Do you think this is a fair way to look at the data? What can you do to help make the analysis more fair across states if you wanted to understand which states had the highest death rates?
+
+What cause of death has increased the most from 2014 to 2018? Which has decreased?
+
+What week (based on the MMWR week column) generally has the highest mortality?
