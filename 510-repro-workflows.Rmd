@@ -1,11 +1,9 @@
-
 ## What is a workflow?
 
 What does it take to do an analysis?
 
 When you embark on some project, it's helpful (but not necessary) to plan
-where you are going. 
-It's best to setup and keep track of factors like:
+where you are going. It's best to think about factors like:
 
 - What data am I analyzing? What format is it in, and is that going to change?
     Will there be a lot more of this data that I want to process in the future?
@@ -19,7 +17,7 @@ big (or many) flat files, processing the data into a useful form, sometimes
 using extra packages to analyze the data, then generating plots and statistical
 summaries of what you found - usually in an Rmarkdown-generated report.
 
-So let's start building up some skills!
+So let's start building up some good habits and skills!
 
 ---
 
@@ -50,28 +48,14 @@ In at least this author's experience, it is common practice to:
 [do](https://dzone.com/articles/data-science-project-folder-structure)
 [this](https://data.library.arizona.edu/data-management/best-practices/data-project-organization).
 The correct style is whatever works for you and your research community.
-Ask your supervisor.
+
+**Ask your supervisor.**
 
 ---
 
-Here's one diagram:
+Here's one diagram of how this might look:
 
-<img src="https://storage.googleapis.com/plos-corpus-prod/10.1371/journal.pcbi.1000424/1/pcbi.1000424.g001.PNG_L?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=wombat-sa%40plos-prod.iam.gserviceaccount.com%2F20210612%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20210612T004314Z&X-Goog-Expires=86400&X-Goog-SignedHeaders=host&X-Goog-Signature=2ae284989b7dd8d846c50bfe02ab95a30e17263bb5160661aec71c2f43ec3285f1f9d583f3029e0afb984e92cabdcbf7731ea00606e88ee14bc99ac88465fe70a2246248e4a3dc756d8cbb826e5199fe60a6052b002ca41f783b64b1200be0404c0d5bdff582a9fe8228acc1d5c298bff42fc51d31d9f819457fe6ca04649ed2fcdaaf67fcc5c3e86b74b8c5a8fb3282e5c0391bb60206c0f65b2748575f507fc5fb732c861b6cc6210cb03f51f03d882dffe234c5c5050a0e6eb619f51beab1d17980d7d1d09947a2a1008dcd3a4e0727062e501c04e1e54f75621283449a305155cba0fe971391f3a9a21ca1e3d172615782e974215c18e00f317d54baa4f6"
-    alt="Example from Noble PLoS 2009" width="100%"/>
-
----
-
-Work in groups.
-Take your work from yesterday, on teh tidyverse stuff.
-Go ahead and set that up as a separate demo, maybe call it `tidyverse-demo`.
-
-Setup the appropriate folder structures.
-Put stuff in there
-Run it
-
-Discuss in a group how you organize your work, what you think would be useful.
-What are some disadvantages to this system?
-Can you work around those?
+![Example from Noble PLoS 2009](img/noble2009.png)
 
 ---
 
@@ -92,17 +76,7 @@ There are at least two approaches:
 - `jupyter` is the defacto standard for *interactive* notebooks
 
 Here, we only recommend `rmarkdown`, as it is simpler to setup, use, and
-distribute results from.
-
----
-
-How do you usually save notes/code/instructions?
-
-How are you saving your notes for this class?
-
-How do you share this with others?
-
-Let's take one of the 
+distribute results from, and is most commonly used by the R community.
 
 ---
 
@@ -126,7 +100,9 @@ Basically, it does this:
     usually a HTML file.
 
 `rmarkdown` is maintained by the RStudio company.
-They generate [a lot of helpful "cheatsheets"](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown-2.0.pdf) too.
+They generate 
+[a lot of helpful "cheatsheets"](https://raw.githubusercontent.com/rstudio/cheatsheets/master/rmarkdown-2.0.pdf)
+too.
 
 #### Chunk options
 
@@ -206,31 +182,43 @@ theme: yeti
 ---
 ````
 
-See more themes, and options, [here](https://bookdown.org/yihui/rmarkdown/html-document.html#appearance-and-style).
-
----
-
-Spruce up your rmarkdown. Go ahead and change the time,
-some of the options in the header.
-Change soem chunk options, maybe cahce to go faster
-
-When you're done, share any new tricks or useful ideas in teh slack channel,
-or in your groups.
+See more themes, and options, 
+[here](https://bookdown.org/yihui/rmarkdown/html-document.html#appearance-and-style).
 
 ### Sharing with others
 
-How are you going to share the outputs with others?
-When do they just need the HTML file?
+You'll need to share your work with others.
+This means all of what was done, the numbers and graphs made, and also
+_what you were thinking and what you now think_.
+In science, failure is **totally** an option, and is useful if it is paired
+with explanations of what didn't work. 
+"Success" is fine too, I guess, but you aren't probably going to learn as much.
 
-What does someone need to re-run your analyses?
-When do they need your code and your data?
+Either way, prepare to share!
 
-When you start generating research output (analyses, etc), ask your
-supervisor about how they are going to store your work.
-Where does the data live, so that someone can access it again?
-Where does the code live, so that someone else can use it?
-Where do the lessons learned go?
+- Keep notes and write up text about what you were thinking, what you were
+    trying to do, and how it turned out.
+- You can do that in between code chunks in an Rmarkdown file.
+- You can also turn your Rmarkdown file into a set of presentation slides,
+    by adding the following line in the YAML header:
 
-Think about the next person coming along, or yourself in 3 months.
+        output: slidy_presentation
+
+    or
+
+        output: 
+            slidy_presentation:
+                theme: default
+            
+Also, consider how you are going to share the data or analysis files.
+Ask your supervisor for details.
+
+Think about the next person coming along to the project, 
+or yourself in 3 months to a year from now. 
+What do you need to understand what you did and what you learned, and how to
+build off of it?
+
+
+
 
 
