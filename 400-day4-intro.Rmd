@@ -4,8 +4,10 @@
 
 By the end of today's session, students will be able to: 
 
-* Read in and process data starting from a local saved file
-* Transform, scale, filter, and convert values within a dataset
+* Read in and process data starting from a local saved file.
+* Transform, scale, filter, and convert values within a dataset.
+* Manipulate data frames using tidyverse piping and functions.
+* Reshape a data frame so that it is "tidy" and appropriate for a given analysis.
 * Describe the roles of data, aesthetics, and geoms in ggplot functions.
 * Choose the correct aesthetics and alter the geom parameters for a scatter plot, histogram, or box plot.
 * Customize plot scales, titles, subtitles, themes, fonts, layout, and orientation.
