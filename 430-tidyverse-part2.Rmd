@@ -76,9 +76,10 @@ Test your knowledge! Use functions we learned in the last section to answer thes
 2. Are all of the states listed in `favorite_states` in the dataset?
 3. How many counties are there for each of the states?
 
-### Example datasets
+#### Example datasets
 
-Here are three example datasets that will serve as starting points for answering tidy data questions that follow
+**Use the following three datasets to complete the coding exercises** in [today's worksheet](https://github.com/darachm/dll-r/blob/main/worksheets/dll-r_Day4_Lab.Rmd).
+The datasets are based on the New York Times Data, which is loaded above. 
 
 **Example Dataset #1:`df_1`**
 Three columns: county, cases, deaths
