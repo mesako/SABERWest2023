@@ -4,8 +4,10 @@
 
 By the end of today's session, students will be able to: 
 
-* Read in and process data starting from a local saved file
-* Transform, scale, filter, and convert values within a dataset
+* Read in and process data starting from a local saved file.
+* Transform, scale, filter, and convert values within a dataset.
+* Manipulate data frames using tidyverse piping and functions.
+* Reshape a data frame so that it is "tidy" and appropriate for a given analysis.
 * Describe the roles of data, aesthetics, and geoms in ggplot functions.
 * Choose the correct aesthetics and alter the geom parameters for a scatter plot, histogram, or box plot.
 * Customize plot scales, titles, subtitles, themes, fonts, layout, and orientation.
@@ -23,11 +25,11 @@ Before you start reading through Section 3 for today or taking part in synchrono
 
 |   Start Time  |   End Time  |   Activity    |          Description          |   Facilitator   |
 | ------------- | ----------- | ------------- | ----------------------------- | --------------- |
-| 10:00 AM PDT  | 10:45 AM PDT| Asynchronous  | Work through [sections 3.1-3.3](https://darachm.github.io/dll-r/reading-and-processing-data.html) | ??? |
+| 10:00 AM PDT  | 10:45 AM PDT| Asynchronous  | Work through [sections 3.1-3.3](https://darachm.github.io/dll-r/reading-and-processing-data.html) | **Margaret** |
 | 10:45 AM PDT  | 11:30 AM PDT| Synchronous   | Peer coding exercises on Zoom | **Margaret**, Melissa, Samson, Zac |
-| 11:30 AM PDT  | 12:15 PM PDT| Asynchronous  | Work through [sections 3.4-3.5](https://darachm.github.io/dll-r/making-plots-with-ggplot2.html) | **Melissa** |
+| 11:30 AM PDT  | 12:15 PM PDT| Asynchronous  | Work through [sections 3.4-3.5](https://darachm.github.io/dll-r/making-plots-with-ggplot2.html) | **Melissa**, Margaret |
 | 12:15 PM PDT  | 12:45 PM PDT| Lunch Break   | Take a computer break!        |       N/A       |
 | 12:45 PM PDT  | 1:30 PM PDT | Synchronous   | Peer coding exercises on Zoom | **Melissa**, Margaret, Zac    |
-| 1:30 PM PDT   | 2:00 PM PDT | Asynchronous  | Work through [sections 3.6](https://darachm.github.io/dll-r/applying-basic-stats.html)     | ??? |
+| 1:30 PM PDT   | 2:00 PM PDT | Asynchronous  | Work through [sections 3.6](https://darachm.github.io/dll-r/applying-basic-stats.html)     | Margaret |
 | 2:00 PM PDT   | 2:30 PM PDT | Snack Break   | Take a computer break!        |       N/A       |
 | 2:30 PM PDT   | 3:30 PM PDT | Synchronous   | Wrap-up session on Zoom       |       **Samson**, Margaret, Zac       |

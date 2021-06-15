@@ -30,6 +30,13 @@ This method is straightforward, but you need to have pre-calculated the summary 
 ```r
 feeding.data <- msleep2 %>% group_by(vore) %>% 
   summarize(mean_se(awake))
+```
+
+```
+## `summarise()` ungrouping output (override with `.groups` argument)
+```
+
+```r
 feeding.data
 ```
 

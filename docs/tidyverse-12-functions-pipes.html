@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.2 Tidyverse Part 1/2: functions and pipes | DLL 2021, R section</title>
+  <title>3.2 Tidyverse 1/2: functions &amp; pipes | DLL 2021, R section</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.2 Tidyverse Part 1/2: functions and pipes | DLL 2021, R section" />
+  <meta property="og:title" content="3.2 Tidyverse 1/2: functions &amp; pipes | DLL 2021, R section" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.2 Tidyverse Part 1/2: functions and pipes | DLL 2021, R section" />
+  <meta name="twitter:title" content="3.2 Tidyverse 1/2: functions &amp; pipes | DLL 2021, R section" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -35,7 +35,7 @@
   
   
 <link rel="prev" href="reading-and-processing-data.html"/>
-<link rel="next" href="tidyverse-part-22-reshaping-data.html"/>
+<link rel="next" href="tidyverse-22-reshaping-data.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -183,17 +183,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.1" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html#loading-a-file-into-r"><i class="fa fa-check"></i><b>3.1.1</b> Loading a file into R</a></li>
 <li class="chapter" data-level="3.1.2" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html#handling-issues-in-data"><i class="fa fa-check"></i><b>3.1.2</b> Handling issues in data</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="tidyverse-part-12-functions-and-pipes.html"><a href="tidyverse-part-12-functions-and-pipes.html"><i class="fa fa-check"></i><b>3.2</b> Tidyverse Part 1/2: functions and pipes</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="tidyverse-part-12-functions-and-pipes.html"><a href="tidyverse-part-12-functions-and-pipes.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>3.2.1</b> Welcome to the tidyverse!</a></li>
-<li class="chapter" data-level="3.2.2" data-path="tidyverse-part-12-functions-and-pipes.html"><a href="tidyverse-part-12-functions-and-pipes.html#lets-start-by-making-sure-tidyverse-is-installed"><i class="fa fa-check"></i><b>3.2.2</b> Let’s start by making sure Tidyverse is installed</a></li>
-<li class="chapter" data-level="3.2.3" data-path="tidyverse-part-12-functions-and-pipes.html"><a href="tidyverse-part-12-functions-and-pipes.html#the-tidyverse-pipe"><i class="fa fa-check"></i><b>3.2.3</b> The tidyverse pipe %&gt;%</a></li>
-<li class="chapter" data-level="3.2.4" data-path="tidyverse-part-12-functions-and-pipes.html"><a href="tidyverse-part-12-functions-and-pipes.html#essential-tidyverse-functions"><i class="fa fa-check"></i><b>3.2.4</b> Essential tidyverse functions</a></li>
+<li class="chapter" data-level="3.2" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html"><i class="fa fa-check"></i><b>3.2</b> Tidyverse 1/2: functions &amp; pipes</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>3.2.1</b> Welcome to the tidyverse!</a></li>
+<li class="chapter" data-level="3.2.2" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html#load-tidyverse"><i class="fa fa-check"></i><b>3.2.2</b> Load tidyverse</a></li>
+<li class="chapter" data-level="3.2.3" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html#how-to-pipe"><i class="fa fa-check"></i><b>3.2.3</b> How to pipe %&gt;%</a></li>
+<li class="chapter" data-level="3.2.4" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html#essential-tidyverse-functions"><i class="fa fa-check"></i><b>3.2.4</b> Essential tidyverse functions</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="tidyverse-part-22-reshaping-data.html"><a href="tidyverse-part-22-reshaping-data.html"><i class="fa fa-check"></i><b>3.3</b> Tidyverse Part 2/2: reshaping data</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="tidyverse-part-22-reshaping-data.html"><a href="tidyverse-part-22-reshaping-data.html#why-tidy-data"><i class="fa fa-check"></i><b>3.3.1</b> Why tidy data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="tidyverse-part-22-reshaping-data.html"><a href="tidyverse-part-22-reshaping-data.html#how-to-tidy-data"><i class="fa fa-check"></i><b>3.3.2</b> How to tidy data</a></li>
-<li class="chapter" data-level="3.3.3" data-path="tidyverse-part-22-reshaping-data.html"><a href="tidyverse-part-22-reshaping-data.html#the-dataset-covid-19-cases"><i class="fa fa-check"></i><b>3.3.3</b> The dataset: COVID-19 Cases</a></li>
-<li class="chapter" data-level="3.3.4" data-path="tidyverse-part-22-reshaping-data.html"><a href="tidyverse-part-22-reshaping-data.html#example-datasets"><i class="fa fa-check"></i><b>3.3.4</b> Example datasets</a></li>
+<li class="chapter" data-level="3.3" data-path="tidyverse-22-reshaping-data.html"><a href="tidyverse-22-reshaping-data.html"><i class="fa fa-check"></i><b>3.3</b> Tidyverse 2/2: reshaping data</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="tidyverse-22-reshaping-data.html"><a href="tidyverse-22-reshaping-data.html#why-tidy-data"><i class="fa fa-check"></i><b>3.3.1</b> Why tidy data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="tidyverse-22-reshaping-data.html"><a href="tidyverse-22-reshaping-data.html#how-to-tidy-data"><i class="fa fa-check"></i><b>3.3.2</b> How to tidy data</a></li>
+<li class="chapter" data-level="3.3.3" data-path="tidyverse-22-reshaping-data.html"><a href="tidyverse-22-reshaping-data.html#data-exploration-with-tidyverse"><i class="fa fa-check"></i><b>3.3.3</b> Data exploration with tidyverse</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a><ul>
 <li class="chapter" data-level="3.4.1" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.4.1</b> Getting started with a ggplot</a></li>
@@ -242,13 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4.2" data-path="getting-help-troubleshooting.html"><a href="getting-help-troubleshooting.html#debugging-specific-problems"><i class="fa fa-check"></i><b>4.4.2</b> Debugging specific problems</a></li>
 <li class="chapter" data-level="4.4.3" data-path="getting-help-troubleshooting.html"><a href="getting-help-troubleshooting.html#minimal-reproducible-examples"><i class="fa fa-check"></i><b>4.4.3</b> Minimal reproducible examples</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html"><i class="fa fa-check"></i><b>4.5</b> Writing (re)usable code</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#functions-as-modular-steps"><i class="fa fa-check"></i><b>4.5.1</b> Functions as modular steps</a></li>
-<li class="chapter" data-level="4.5.2" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#tips-for-modular-workflows"><i class="fa fa-check"></i><b>4.5.2</b> Tips for modular workflows</a></li>
-<li class="chapter" data-level="4.5.3" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#apply-is-a-popular-tool"><i class="fa fa-check"></i><b>4.5.3</b> Apply is a popular tool</a></li>
-<li class="chapter" data-level="4.5.4" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#learn-from-examples"><i class="fa fa-check"></i><b>4.5.4</b> Learn from examples</a></li>
-<li class="chapter" data-level="4.5.5" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#style-guides-can-be-inspiring"><i class="fa fa-check"></i><b>4.5.5</b> Style guides can be inspiring</a></li>
-</ul></li>
+<li class="chapter" data-level="4.5" data-path="the-struggle.html"><a href="the-struggle.html"><i class="fa fa-check"></i><b>4.5</b> The Struggle</a></li>
 <li class="chapter" data-level="4.6" data-path="conclusion-1.html"><a href="conclusion-1.html"><i class="fa fa-check"></i><b>4.6</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a><ul>
@@ -265,6 +258,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6.3" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html#publishing-onto-the-main-page-so-its-hosted-at-the-url"><i class="fa fa-check"></i><b>5.6.3</b> Publishing onto the main page, so it’s hosted at the URL</a></li>
 </ul></li>
 <li class="chapter" data-level="5.7" data-path="more-links.html"><a href="more-links.html"><i class="fa fa-check"></i><b>5.7</b> More links</a></li>
+<li class="chapter" data-level="5.8" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html"><i class="fa fa-check"></i><b>5.8</b> Writing (re)usable code</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#functions-as-modular-steps"><i class="fa fa-check"></i><b>5.8.1</b> Functions as modular steps</a></li>
+<li class="chapter" data-level="5.8.2" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#tips-for-modular-workflows"><i class="fa fa-check"></i><b>5.8.2</b> Tips for modular workflows</a></li>
+<li class="chapter" data-level="5.8.3" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#apply-is-a-popular-tool"><i class="fa fa-check"></i><b>5.8.3</b> Apply is a popular tool</a></li>
+<li class="chapter" data-level="5.8.4" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#learn-from-examples"><i class="fa fa-check"></i><b>5.8.4</b> Learn from examples</a></li>
+<li class="chapter" data-level="5.8.5" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#style-guides-can-be-inspiring"><i class="fa fa-check"></i><b>5.8.5</b> Style guides can be inspiring</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -283,8 +283,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tidyverse-part-12-functions-and-pipes" class="section level2">
-<h2><span class="header-section-number">3.2</span> Tidyverse Part 1/2: functions and pipes</h2>
+<div id="tidyverse-12-functions-pipes" class="section level2">
+<h2><span class="header-section-number">3.2</span> Tidyverse 1/2: functions &amp; pipes</h2>
 <p>Goal: Understand the tidyverse framework of pipes and functions, as well as how to apply it to tidy data frame cleaning and manipulation.</p>
 <div id="welcome-to-the-tidyverse" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Welcome to the tidyverse!</h3>
@@ -305,8 +305,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Feeling motivated to accelerate data cleaning and analysis using the tidyverse?</p>
 </div>
 </div>
-<div id="lets-start-by-making-sure-tidyverse-is-installed" class="section level3">
-<h3><span class="header-section-number">3.2.2</span> Let’s start by making sure Tidyverse is installed</h3>
+<div id="load-tidyverse" class="section level3">
+<h3><span class="header-section-number">3.2.2</span> Load tidyverse</h3>
 <p>Download tidyverse
 Remember we only have to install once</p>
 <div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</a></code></pre></div>
@@ -322,8 +322,8 @@ Remember we only have to install once</p>
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
 <p>If loading the library returns an error message saying it’s not installed, then go to the <a href="https://tinyurl.com/ssrpsoftwareguide">SSRP Pre-installation guide</a> and follow the instructions for installing tidyverse</p>
 </div>
-<div id="the-tidyverse-pipe" class="section level3">
-<h3><span class="header-section-number">3.2.3</span> The tidyverse pipe %&gt;%</h3>
+<div id="how-to-pipe" class="section level3">
+<h3><span class="header-section-number">3.2.3</span> How to pipe %&gt;%</h3>
 <p>The tidyverse pipe can be used with most base R functions and with all tidyverse-specific functions, which we’ll learn more about soon. Although we’ll focus on using tidyverse pipe and functions on data frames, the pipe can also be used on vectors and even scalars.</p>
 <div id="pipes-with-dataframes" class="section level5">
 <h5><span class="header-section-number">3.2.3.0.1</span> Pipes with dataframes</h5>
@@ -601,7 +601,7 @@ for (var i=0; i < listz.length; i++) {
         </div>
       </div>
 <a href="reading-and-processing-data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="tidyverse-part-22-reshaping-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tidyverse-22-reshaping-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

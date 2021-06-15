@@ -282,7 +282,7 @@ str(patient.data)
 
 ```
 ## 'data.frame':	3 obs. of  3 variables:
-##  $ name          : chr  "oakley" "rashmi" "kiran"
+##  $ name          : Factor w/ 3 levels "kiran","oakley",..: 2 3 1
 ##  $ heart_rate    : num  78 68 95
 ##  $ disease_status: logi  FALSE FALSE TRUE
 ```
@@ -292,13 +292,13 @@ summary(patient.data)
 ```
 
 ```
-##      name             heart_rate    disease_status 
-##  Length:3           Min.   :68.00   Mode :logical  
-##  Class :character   1st Qu.:73.00   FALSE:2        
-##  Mode  :character   Median :78.00   TRUE :1        
-##                     Mean   :80.33                  
-##                     3rd Qu.:86.50                  
-##                     Max.   :95.00
+##      name     heart_rate    disease_status 
+##  kiran :1   Min.   :68.00   Mode :logical  
+##  oakley:1   1st Qu.:73.00   FALSE:2        
+##  rashmi:1   Median :78.00   TRUE :1        
+##             Mean   :80.33                  
+##             3rd Qu.:86.50                  
+##             Max.   :95.00
 ```
 
 You can add new rows and columns using the `rbind` and `cbind` functions. Let's pretend that we had collected additional information about our patients, such as their self-reported gender. We can add this as a new column (`cbind` short for bind column) (worksheet task 2.5.3A).
@@ -396,7 +396,8 @@ head(all.patients$gender)
 ```
 
 ```
-## [1] "M" "F" NA  NA  "M" "F"
+## [1] M    F    <NA> <NA> M    F   
+## Levels: F M
 ```
 
 ```r
@@ -421,7 +422,10 @@ all.patients <- rbind(all.patients,
 ```
 
 ```
-## Warning in `[<-.factor`(`*tmp*`, ri, value = "NB"): invalid factor level, NA
+## Warning in `[<-.factor`(`*tmp*`, ri, value = "lupe"): invalid factor level, NA
+## generated
+
+## Warning in `[<-.factor`(`*tmp*`, ri, value = "lupe"): invalid factor level, NA
 ## generated
 ```
 
@@ -437,7 +441,7 @@ all.patients
 ## 4    eun         86           TRUE   <NA>
 ## 5  sasha         79           TRUE      M
 ## 6 mattie         64          FALSE      F
-## 7   lupe         72          FALSE   <NA>
+## 7   <NA>         72          FALSE   <NA>
 ```
 
 What has happened with this new addition? If you tried to add a new patient to the dataframe that had a gender that wasn't already represented in the data, chances are you had a warning and that gender was turned to `NA`.
@@ -461,6 +465,14 @@ all.patients <- rbind(all.patients,
                         heart_rate = 101, 
                         disease_status = TRUE, 
                         gender = "M"))
+```
+
+```
+## Warning in `[<-.factor`(`*tmp*`, ri, value = "chihiro"): invalid factor level,
+## NA generated
+```
+
+```r
 all.patients$gender
 ```
 
@@ -479,6 +491,14 @@ all.patients <- rbind(all.patients,
                         heart_rate = 101, 
                         disease_status = TRUE, 
                         gender = "NB"))
+```
+
+```
+## Warning in `[<-.factor`(`*tmp*`, ri, value = "ayodele"): invalid factor level,
+## NA generated
+```
+
+```r
 all.patients$gender
 ```
 

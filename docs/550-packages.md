@@ -1,7 +1,8 @@
 ## Packages - install and use
 
-Let’s take a look at your code from the last few days. 
+Think about sharing your code from the last few days. 
 How would you share this with the other people in the course?
+Can they use it easily and flexibly to handle lots of different problems?
 
 R, like other languages, is built on a package system - if you wrap up your 
 code in particular expected ways and put it in particular expected places, 
@@ -33,7 +34,7 @@ already installed.
 Call `library()` function, with an argument of the library name,
 as a string.
 
-Try loading this one:
+For example:
 
 
 ```r
@@ -61,14 +62,17 @@ are located, ready to be loaded when you want to use them.
 
 Try it out.
 
-#### stringdist
+Want to try it again? You can uninstall packages by removing them:
 
-Get the `stringdist` library, use it to: 
 
-- compare the distance between strings "ATCGATCG" and "ATCGAACG"
-        using the methods "hamming" and "lv"
-- compare the distance between strings "ATCGATCG" and "ATCGAATCGC"
-        using the methods "hamming" and "lv"
+```r
+remove.packages("stringdist")
+```
+
+Each package has a [page on CRAN](https://cran.r-project.org/web/packages/stringdist/index.html)
+with lots more information. The reference manual is a very specific reference
+document with per function level documentation.
+Vingettes are write ups that are more explaining how to do things - usually.
 
 #### ggrepel
 
@@ -81,18 +85,18 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+## ── Attaching packages ───────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 ```
 
 ```
-## ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
-## ✔ tibble  3.1.2     ✔ dplyr   1.0.6
-## ✔ tidyr   1.1.3     ✔ stringr 1.4.0
-## ✔ readr   1.4.0     ✔ forcats 0.5.1
+## ✔ ggplot2 3.3.2     ✔ purrr   0.3.4
+## ✔ tibble  3.0.4     ✔ dplyr   1.0.2
+## ✔ tidyr   1.1.2     ✔ stringr 1.4.0
+## ✔ readr   1.4.0     ✔ forcats 0.5.0
 ```
 
 ```
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ──────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
@@ -257,10 +261,6 @@ palette_check(ghibli_palettes$PonyoMedium,plot=T)
 ## 4   tritanopia 7  9.939857  21   20 4.587519  35.34529 60.29190
 ```
 
-Check out your favorite palette with the function.
-
-Any bad, non distinguishable ones?
-
 Other packages on there:
 
 - [Sports field plotting](https://github.com/rossdrucker/sportyR)
@@ -305,6 +305,10 @@ BiocManager::install('DESeq2')
 
 Hold off on installing this quite yet. It'd take a while.
 In Bioconductor, I always say to update 'none' (press 'n' when prompted).
+
+There's lots of good documentation on each 
+[package's webpage](https://bioconductor.org/packages/release/bioc/html/DESeq2.html),
+like [vingettes](https://www.bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html).
 
 ### What packages do you have already? 
 

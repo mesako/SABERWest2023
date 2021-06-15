@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.5 Writing (re)usable code | DLL 2021, R section</title>
+  <title>5.8 Writing (re)usable code | DLL 2021, R section</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.5 Writing (re)usable code | DLL 2021, R section" />
+  <meta property="og:title" content="5.8 Writing (re)usable code | DLL 2021, R section" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.5 Writing (re)usable code | DLL 2021, R section" />
+  <meta name="twitter:title" content="5.8 Writing (re)usable code | DLL 2021, R section" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -34,8 +34,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="getting-help-troubleshooting.html"/>
-<link rel="next" href="conclusion-1.html"/>
+<link rel="prev" href="more-links.html"/>
+
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -74,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -183,17 +183,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1.1" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html#loading-a-file-into-r"><i class="fa fa-check"></i><b>3.1.1</b> Loading a file into R</a></li>
 <li class="chapter" data-level="3.1.2" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html#handling-issues-in-data"><i class="fa fa-check"></i><b>3.1.2</b> Handling issues in data</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="tidyverse-part-12-functions-and-pipes.html"><a href="tidyverse-part-12-functions-and-pipes.html"><i class="fa fa-check"></i><b>3.2</b> Tidyverse Part 1/2: functions and pipes</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="tidyverse-part-12-functions-and-pipes.html"><a href="tidyverse-part-12-functions-and-pipes.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>3.2.1</b> Welcome to the tidyverse!</a></li>
-<li class="chapter" data-level="3.2.2" data-path="tidyverse-part-12-functions-and-pipes.html"><a href="tidyverse-part-12-functions-and-pipes.html#lets-start-by-making-sure-tidyverse-is-installed"><i class="fa fa-check"></i><b>3.2.2</b> Let’s start by making sure Tidyverse is installed</a></li>
-<li class="chapter" data-level="3.2.3" data-path="tidyverse-part-12-functions-and-pipes.html"><a href="tidyverse-part-12-functions-and-pipes.html#the-tidyverse-pipe"><i class="fa fa-check"></i><b>3.2.3</b> The tidyverse pipe %&gt;%</a></li>
-<li class="chapter" data-level="3.2.4" data-path="tidyverse-part-12-functions-and-pipes.html"><a href="tidyverse-part-12-functions-and-pipes.html#essential-tidyverse-functions"><i class="fa fa-check"></i><b>3.2.4</b> Essential tidyverse functions</a></li>
+<li class="chapter" data-level="3.2" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html"><i class="fa fa-check"></i><b>3.2</b> Tidyverse 1/2: functions &amp; pipes</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>3.2.1</b> Welcome to the tidyverse!</a></li>
+<li class="chapter" data-level="3.2.2" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html#load-tidyverse"><i class="fa fa-check"></i><b>3.2.2</b> Load tidyverse</a></li>
+<li class="chapter" data-level="3.2.3" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html#how-to-pipe"><i class="fa fa-check"></i><b>3.2.3</b> How to pipe %&gt;%</a></li>
+<li class="chapter" data-level="3.2.4" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html#essential-tidyverse-functions"><i class="fa fa-check"></i><b>3.2.4</b> Essential tidyverse functions</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="tidyverse-part-22-reshaping-data.html"><a href="tidyverse-part-22-reshaping-data.html"><i class="fa fa-check"></i><b>3.3</b> Tidyverse Part 2/2: reshaping data</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="tidyverse-part-22-reshaping-data.html"><a href="tidyverse-part-22-reshaping-data.html#why-tidy-data"><i class="fa fa-check"></i><b>3.3.1</b> Why tidy data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="tidyverse-part-22-reshaping-data.html"><a href="tidyverse-part-22-reshaping-data.html#how-to-tidy-data"><i class="fa fa-check"></i><b>3.3.2</b> How to tidy data</a></li>
-<li class="chapter" data-level="3.3.3" data-path="tidyverse-part-22-reshaping-data.html"><a href="tidyverse-part-22-reshaping-data.html#the-dataset-covid-19-cases"><i class="fa fa-check"></i><b>3.3.3</b> The dataset: COVID-19 Cases</a></li>
-<li class="chapter" data-level="3.3.4" data-path="tidyverse-part-22-reshaping-data.html"><a href="tidyverse-part-22-reshaping-data.html#example-datasets"><i class="fa fa-check"></i><b>3.3.4</b> Example datasets</a></li>
+<li class="chapter" data-level="3.3" data-path="tidyverse-22-reshaping-data.html"><a href="tidyverse-22-reshaping-data.html"><i class="fa fa-check"></i><b>3.3</b> Tidyverse 2/2: reshaping data</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="tidyverse-22-reshaping-data.html"><a href="tidyverse-22-reshaping-data.html#why-tidy-data"><i class="fa fa-check"></i><b>3.3.1</b> Why tidy data</a></li>
+<li class="chapter" data-level="3.3.2" data-path="tidyverse-22-reshaping-data.html"><a href="tidyverse-22-reshaping-data.html#how-to-tidy-data"><i class="fa fa-check"></i><b>3.3.2</b> How to tidy data</a></li>
+<li class="chapter" data-level="3.3.3" data-path="tidyverse-22-reshaping-data.html"><a href="tidyverse-22-reshaping-data.html#data-exploration-with-tidyverse"><i class="fa fa-check"></i><b>3.3.3</b> Data exploration with tidyverse</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a><ul>
 <li class="chapter" data-level="3.4.1" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.4.1</b> Getting started with a ggplot</a></li>
@@ -224,11 +223,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.2.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#reading-in-tab-delimited-file"><i class="fa fa-check"></i><b>4.2.1</b> Reading in tab-delimited file</a></li>
 <li class="chapter" data-level="4.2.2" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#string-stuff"><i class="fa fa-check"></i><b>4.2.2</b> String stuff</a></li>
 <li class="chapter" data-level="4.2.3" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#loops---doing-a-similar-task-multiple-times"><i class="fa fa-check"></i><b>4.2.3</b> Loops - doing a similar task multiple times</a></li>
-<li class="chapter" data-level="4.2.4" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#extending-the-workflow"><i class="fa fa-check"></i><b>4.2.4</b> Extending the workflow</a></li>
-<li class="chapter" data-level="4.2.5" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#some-operations-on-strings"><i class="fa fa-check"></i><b>4.2.5</b> Some operations on strings</a></li>
-<li class="chapter" data-level="4.2.6" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#back-to-the-motifs"><i class="fa fa-check"></i><b>4.2.6</b> Back to the motifs</a></li>
-<li class="chapter" data-level="4.2.7" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#conclusion"><i class="fa fa-check"></i><b>4.2.7</b> Conclusion</a></li>
-<li class="chapter" data-level="4.2.8" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#extra-extra."><i class="fa fa-check"></i><b>4.2.8</b> Extra extra….</a></li>
+<li class="chapter" data-level="4.2.4" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#storing-values-from-a-loop"><i class="fa fa-check"></i><b>4.2.4</b> Storing values from a loop</a></li>
+<li class="chapter" data-level="4.2.5" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#extending-the-workflow"><i class="fa fa-check"></i><b>4.2.5</b> Extending the workflow</a></li>
+<li class="chapter" data-level="4.2.6" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#conclusion"><i class="fa fa-check"></i><b>4.2.6</b> Conclusion</a></li>
+<li class="chapter" data-level="4.2.7" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#totally-optional-supplements-for-your-edification"><i class="fa fa-check"></i><b>4.2.7</b> Totally optional supplements, for your edification</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html"><i class="fa fa-check"></i><b>4.3</b> Packages - install and use</a><ul>
 <li class="chapter" data-level="4.3.1" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#cran-is-the-canonical-r-package-resource"><i class="fa fa-check"></i><b>4.3.1</b> CRAN is the canonical R package resource</a></li>
@@ -243,13 +241,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.4.2" data-path="getting-help-troubleshooting.html"><a href="getting-help-troubleshooting.html#debugging-specific-problems"><i class="fa fa-check"></i><b>4.4.2</b> Debugging specific problems</a></li>
 <li class="chapter" data-level="4.4.3" data-path="getting-help-troubleshooting.html"><a href="getting-help-troubleshooting.html#minimal-reproducible-examples"><i class="fa fa-check"></i><b>4.4.3</b> Minimal reproducible examples</a></li>
 </ul></li>
-<li class="chapter" data-level="4.5" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html"><i class="fa fa-check"></i><b>4.5</b> Writing (re)usable code</a><ul>
-<li class="chapter" data-level="4.5.1" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#functions-as-modular-steps"><i class="fa fa-check"></i><b>4.5.1</b> Functions as modular steps</a></li>
-<li class="chapter" data-level="4.5.2" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#tips-for-modular-workflows"><i class="fa fa-check"></i><b>4.5.2</b> Tips for modular workflows</a></li>
-<li class="chapter" data-level="4.5.3" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#apply-is-a-popular-tool"><i class="fa fa-check"></i><b>4.5.3</b> Apply is a popular tool</a></li>
-<li class="chapter" data-level="4.5.4" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#learn-from-examples"><i class="fa fa-check"></i><b>4.5.4</b> Learn from examples</a></li>
-<li class="chapter" data-level="4.5.5" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#style-guides-can-be-inspiring"><i class="fa fa-check"></i><b>4.5.5</b> Style guides can be inspiring</a></li>
-</ul></li>
+<li class="chapter" data-level="4.5" data-path="the-struggle.html"><a href="the-struggle.html"><i class="fa fa-check"></i><b>4.5</b> The Struggle</a></li>
 <li class="chapter" data-level="4.6" data-path="conclusion-1.html"><a href="conclusion-1.html"><i class="fa fa-check"></i><b>4.6</b> Conclusion</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a><ul>
@@ -266,6 +258,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.6.3" data-path="how-to-edit-this-document.html"><a href="how-to-edit-this-document.html#publishing-onto-the-main-page-so-its-hosted-at-the-url"><i class="fa fa-check"></i><b>5.6.3</b> Publishing onto the main page, so it’s hosted at the URL</a></li>
 </ul></li>
 <li class="chapter" data-level="5.7" data-path="more-links.html"><a href="more-links.html"><i class="fa fa-check"></i><b>5.7</b> More links</a></li>
+<li class="chapter" data-level="5.8" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html"><i class="fa fa-check"></i><b>5.8</b> Writing (re)usable code</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#functions-as-modular-steps"><i class="fa fa-check"></i><b>5.8.1</b> Functions as modular steps</a></li>
+<li class="chapter" data-level="5.8.2" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#tips-for-modular-workflows"><i class="fa fa-check"></i><b>5.8.2</b> Tips for modular workflows</a></li>
+<li class="chapter" data-level="5.8.3" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#apply-is-a-popular-tool"><i class="fa fa-check"></i><b>5.8.3</b> Apply is a popular tool</a></li>
+<li class="chapter" data-level="5.8.4" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#learn-from-examples"><i class="fa fa-check"></i><b>5.8.4</b> Learn from examples</a></li>
+<li class="chapter" data-level="5.8.5" data-path="writing-reusable-code.html"><a href="writing-reusable-code.html#style-guides-can-be-inspiring"><i class="fa fa-check"></i><b>5.8.5</b> Style guides can be inspiring</a></li>
+</ul></li>
 </ul></li>
 </ul>
 
@@ -285,7 +284,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="writing-reusable-code" class="section level2">
-<h2><span class="header-section-number">4.5</span> Writing (re)usable code</h2>
+<h2><span class="header-section-number">5.8</span> Writing (re)usable code</h2>
 <ul>
 <li><p>Crack open your code - can you use it again?</p></li>
 <li><p>Can you adapt it to modify your question, feed in new data,
@@ -293,7 +292,7 @@ and modify the scientifically-important bits easily?</p></li>
 </ul>
 <hr />
 <div id="functions-as-modular-steps" class="section level3">
-<h3><span class="header-section-number">4.5.1</span> Functions as modular steps</h3>
+<h3><span class="header-section-number">5.8.1</span> Functions as modular steps</h3>
 <p>The beauty and danger of any programming project is that there are many ways
 to organize equivalent functionality.
 While liberating, unorganized variety in your code is more difficult for
@@ -321,8 +320,8 @@ at once so that
 <p>Functions are handy.
 For example, let’s calculate the standard error of a sample of values:</p>
 <div class="incremental">
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" data-line-number="1">values &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb451-2" data-line-number="2"><span class="kw">stderr</span>(values)</a></code></pre></div>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb458-1" title="1">values &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">3</span>,<span class="dv">6</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb458-2" title="2"><span class="kw">stderr</span>(values)</a></code></pre></div>
 <pre><code>## Error in stderr(values): unused argument (values)</code></pre>
 </div>
 <div class="incremental">
@@ -336,19 +335,19 @@ standard error of the mean.</p>
 Perhaps they assume that everyone will write their own standard error function?</p>
 <p>Let’s write one.</p>
 <p>How do you calculate the standard error of the mean of a sample?
-<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>
+<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>
 Does that look familiar from your stats classes?</p>
 <p>Let’s code it up. I recommend you first develop the code in your functions
 by playing with it interactively:</p>
 <div class="incremental">
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" data-line-number="1"><span class="kw">sd</span>(values)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(values))</a></code></pre></div>
+<div class="sourceCode" id="cb460"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb460-1" title="1"><span class="kw">sd</span>(values)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(values))</a></code></pre></div>
 <pre><code>## [1] 0.4484541</code></pre>
 <p>To use this multiple times, we could just copy and paste it into each script
 or workflow we want to use it in. However, this leaves lots of complexity
 for the future user to have to handle.</p>
 <p>For example, we can copy and paste a new variable name into the code:</p>
-<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb455-1" data-line-number="1">values2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">30</span>,<span class="dv">20</span>)</a>
-<a class="sourceLine" id="cb455-2" data-line-number="2"><span class="kw">sd</span>(values2)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(values))</a></code></pre></div>
+<div class="sourceCode" id="cb462"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb462-1" title="1">values2 &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">30</span>,<span class="dv">20</span>)</a>
+<a class="sourceLine" id="cb462-2" title="2"><span class="kw">sd</span>(values2)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(values))</a></code></pre></div>
 <pre><code>## [1] 3.162278</code></pre>
 <p>This can lead to errors in writing, small incorrect parts.
 In the above example, I purposefully neglected to change the second <code>values</code>
@@ -362,7 +361,7 @@ on a new input can be an opportunity for introducing errors, typos.</p>
 </div>
 <hr />
 <div id="write-it-as-a-function" class="section level4">
-<h4><span class="header-section-number">4.5.1.1</span> Write it as a function!</h4>
+<h4><span class="header-section-number">5.8.1.1</span> Write it as a function!</h4>
 <p>This would make a useful function.</p>
 <ul>
 <li>What are the parameters? Are any defaults set?</li>
@@ -376,21 +375,21 @@ Later, you could change the function to fix bugs, and you don’t have to then
 fix all the places you copied it to - it’s fixing the code <em>inside</em>
 the function.</p>
 <div class="incremental">
-<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb457-1" data-line-number="1">sez &lt;-<span class="st"> </span><span class="cf">function</span>(x) {<span class="kw">sd</span>(x)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(x))}</a>
-<a class="sourceLine" id="cb457-2" data-line-number="2"><span class="kw">sez</span>(values)</a></code></pre></div>
+<div class="sourceCode" id="cb464"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb464-1" title="1">sez &lt;-<span class="st"> </span><span class="cf">function</span>(x) {<span class="kw">sd</span>(x)<span class="op">/</span><span class="kw">sqrt</span>(<span class="kw">length</span>(x))}</a>
+<a class="sourceLine" id="cb464-2" title="2"><span class="kw">sez</span>(values)</a></code></pre></div>
 <pre><code>## [1] 0.4484541</code></pre>
-<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb459-1" data-line-number="1"><span class="kw">sez</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>))</a></code></pre></div>
-<pre><code>## [1] 0.2743078</code></pre>
-<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb461-1" data-line-number="1"><span class="kw">sez</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>))</a></code></pre></div>
-<pre><code>## [1] 0.1074308</code></pre>
-<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb463-1" data-line-number="1"><span class="kw">sez</span>(<span class="kw">rpois</span>(<span class="fl">1e3</span>,<span class="dv">3</span>))</a></code></pre></div>
-<pre><code>## [1] 0.05490882</code></pre>
+<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb466-1" title="1"><span class="kw">sez</span>(<span class="kw">rnorm</span>(<span class="dv">10</span>))</a></code></pre></div>
+<pre><code>## [1] 0.2786735</code></pre>
+<div class="sourceCode" id="cb468"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb468-1" title="1"><span class="kw">sez</span>(<span class="kw">rnorm</span>(<span class="dv">100</span>))</a></code></pre></div>
+<pre><code>## [1] 0.1049428</code></pre>
+<div class="sourceCode" id="cb470"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb470-1" title="1"><span class="kw">sez</span>(<span class="kw">rpois</span>(<span class="fl">1e3</span>,<span class="dv">3</span>))</a></code></pre></div>
+<pre><code>## [1] 0.05554657</code></pre>
 </div>
 <hr />
 </div>
 </div>
 <div id="tips-for-modular-workflows" class="section level3">
-<h3><span class="header-section-number">4.5.2</span> Tips for modular workflows</h3>
+<h3><span class="header-section-number">5.8.2</span> Tips for modular workflows</h3>
 <ul>
 <li><p>Try to not “hardcode” things - if it’s a number, consider if it can be a
 <em>parameter</em> that is “passed in” as an argument.</p></li>
@@ -405,7 +404,7 @@ and what to expect, generally comment things.</p></li>
 <hr />
 </div>
 <div id="apply-is-a-popular-tool" class="section level3">
-<h3><span class="header-section-number">4.5.3</span> Apply is a popular tool</h3>
+<h3><span class="header-section-number">5.8.3</span> Apply is a popular tool</h3>
 <p>Apply is another common way of doing something over and over.
 It is a very compact way to take pieces of a list, vector, dataframe, or matrix
 and put them into a function. There are:</p>
@@ -420,10 +419,10 @@ and put them into a function. There are:</p>
 and how to read other code that has these.</p>
 <hr />
 <p>Some people <em>strongly</em> prefer coding this way. Here is an example:</p>
-<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb465-1" data-line-number="1">list_of_protein_files &lt;-<span class="st"> </span><span class="kw">lapply</span>(</a>
-<a class="sourceLine" id="cb465-2" data-line-number="2">        <span class="kw">list.files</span>(<span class="st">&quot;data/viral_structural_proteins/&quot;</span>,<span class="dt">full.names=</span>T),</a>
-<a class="sourceLine" id="cb465-3" data-line-number="3">        read.delim,</a>
-<a class="sourceLine" id="cb465-4" data-line-number="4">        <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F)</a></code></pre></div>
+<div class="sourceCode" id="cb472"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb472-1" title="1">list_of_protein_files &lt;-<span class="st"> </span><span class="kw">lapply</span>(</a>
+<a class="sourceLine" id="cb472-2" title="2">        <span class="kw">list.files</span>(<span class="st">&quot;data/viral_structural_proteins/&quot;</span>,<span class="dt">full.names=</span>T),</a>
+<a class="sourceLine" id="cb472-3" title="3">        read.delim,</a>
+<a class="sourceLine" id="cb472-4" title="4">        <span class="dt">sep=</span><span class="st">&quot;</span><span class="ch">\t</span><span class="st">&quot;</span>,<span class="dt">header=</span>F)</a></code></pre></div>
 <p>These all:</p>
 <ul>
 <li>take some variable with multiple values, either along a list or along the
@@ -440,22 +439,22 @@ style if you’d like to learn.</p>
 <hr />
 </div>
 <div id="learn-from-examples" class="section level3">
-<h3><span class="header-section-number">4.5.4</span> Learn from examples</h3>
+<h3><span class="header-section-number">5.8.4</span> Learn from examples</h3>
 <p>Let’s look at two chunks of code from
 <a href="https://github.com/sashaflevy/PPiSeq">a paper</a> (lightly edited).
 The experiment is counting barcoded lineages of yeast cells to estimate
 “PPIs” (protein-protein interactions)
-<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a></p>
+<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a></p>
 <p>Here’s an example of one style of writing R script:</p>
-<div class="sourceCode" id="cb466"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb466-1" data-line-number="1"><span class="co"># filter out bad barcode lineages ( &lt;= 2 time points counts &gt; 0, or maximum of each time point &lt;= 5 or total counts of a lineage &lt; 10)</span></a>
-<a class="sourceLine" id="cb466-2" data-line-number="2">bad_index =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">nrow</span>(DBC_known_counts))</a>
-<a class="sourceLine" id="cb466-3" data-line-number="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(bad_index)){</a>
-<a class="sourceLine" id="cb466-4" data-line-number="4">        counts =<span class="st"> </span><span class="kw">as.numeric</span>(DBC_known_counts[i, <span class="dv">4</span><span class="op">:</span><span class="dv">8</span>])</a>
-<a class="sourceLine" id="cb466-5" data-line-number="5">        <span class="cf">if</span> (<span class="kw">length</span>(<span class="kw">which</span>(counts <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)) <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span><span class="kw">max</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">|</span><span class="st"> </span><span class="kw">sum</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>){</a>
-<a class="sourceLine" id="cb466-6" data-line-number="6">                bad_index[i] =<span class="st"> </span><span class="dv">1</span></a>
-<a class="sourceLine" id="cb466-7" data-line-number="7">        }</a>
-<a class="sourceLine" id="cb466-8" data-line-number="8">}</a>
-<a class="sourceLine" id="cb466-9" data-line-number="9"><span class="kw">length</span>(<span class="kw">which</span>(bad_index <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)) <span class="co"># 1447775</span></a></code></pre></div>
+<div class="sourceCode" id="cb473"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb473-1" title="1"><span class="co"># filter out bad barcode lineages ( &lt;= 2 time points counts &gt; 0, or maximum of each time point &lt;= 5 or total counts of a lineage &lt; 10)</span></a>
+<a class="sourceLine" id="cb473-2" title="2">bad_index =<span class="st"> </span><span class="kw">rep</span>(<span class="dv">0</span>, <span class="kw">nrow</span>(DBC_known_counts))</a>
+<a class="sourceLine" id="cb473-3" title="3"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">length</span>(bad_index)){</a>
+<a class="sourceLine" id="cb473-4" title="4">        counts =<span class="st"> </span><span class="kw">as.numeric</span>(DBC_known_counts[i, <span class="dv">4</span><span class="op">:</span><span class="dv">8</span>])</a>
+<a class="sourceLine" id="cb473-5" title="5">        <span class="cf">if</span> (<span class="kw">length</span>(<span class="kw">which</span>(counts <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>)) <span class="op">&lt;</span><span class="st"> </span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span><span class="kw">max</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">5</span> <span class="op">|</span><span class="st"> </span><span class="kw">sum</span>(counts) <span class="op">&lt;</span><span class="st"> </span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb473-6" title="6">                bad_index[i] =<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb473-7" title="7">        }</a>
+<a class="sourceLine" id="cb473-8" title="8">}</a>
+<a class="sourceLine" id="cb473-9" title="9"><span class="kw">length</span>(<span class="kw">which</span>(bad_index <span class="op">==</span><span class="st"> </span><span class="dv">1</span>)) <span class="co"># 1447775</span></a></code></pre></div>
 <!-- exercise -->
 <ul>
 <li>What is going on here?</li>
@@ -465,22 +464,22 @@ The experiment is counting barcoded lineages of yeast cells to estimate
 </ul>
 <hr />
 <p>Here’s another example from the same author:</p>
-<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb467-1" data-line-number="1">Random_reference &lt;-<span class="st"> </span><span class="cf">function</span>(PPI_multiple, all_PPI_filtered, size, sampling_number){</a>
-<a class="sourceLine" id="cb467-2" data-line-number="2">  PPI_PPiseq =<span class="st"> </span>PPI_multiple[,<span class="dv">1</span>]</a>
-<a class="sourceLine" id="cb467-3" data-line-number="3">  RRS_size=<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb467-4" data-line-number="4">  RRS=<span class="st"> </span><span class="kw">character</span>(<span class="dt">length=</span><span class="dv">0</span>)</a>
-<a class="sourceLine" id="cb467-5" data-line-number="5">  <span class="cf">while</span> (RRS_size <span class="op">&lt;</span><span class="st"> </span>size) {</a>
-<a class="sourceLine" id="cb467-6" data-line-number="6">    yeast_PPI_random=<span class="st"> </span>all_PPI_filtered[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="st"> </span><span class="kw">length</span>(all_PPI_filtered), sampling_number, <span class="dt">replace=</span>F)]</a>
-<a class="sourceLine" id="cb467-7" data-line-number="7">    RRS=<span class="st"> </span><span class="kw">unique</span>(<span class="kw">c</span>(RRS, yeast_PPI_random))</a>
-<a class="sourceLine" id="cb467-8" data-line-number="8">    RRS_overlap=<span class="st"> </span><span class="kw">intersect</span>(RRS, PPI_PPiseq)</a>
-<a class="sourceLine" id="cb467-9" data-line-number="9">    RRS_size=<span class="st"> </span><span class="kw">length</span>(RRS_overlap)</a>
-<a class="sourceLine" id="cb467-10" data-line-number="10">  } </a>
-<a class="sourceLine" id="cb467-11" data-line-number="11">  RRS_duplicate_marked =<span class="st"> </span><span class="kw">mark_duplicates_fast</span>(RRS_overlap)</a>
-<a class="sourceLine" id="cb467-12" data-line-number="12">  <span class="kw">return</span> (RRS_duplicate_marked[,<span class="dv">1</span>])</a>
-<a class="sourceLine" id="cb467-13" data-line-number="13">}</a>
-<a class="sourceLine" id="cb467-14" data-line-number="14"></a>
-<a class="sourceLine" id="cb467-15" data-line-number="15"><span class="co"># ... and later ...</span></a>
-<a class="sourceLine" id="cb467-16" data-line-number="16"><span class="kw">Random_reference</span>(PPI_multiple, all_PPI_filtered, number_PPI, sample_number)</a></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb474-1" title="1">Random_reference &lt;-<span class="st"> </span><span class="cf">function</span>(PPI_multiple, all_PPI_filtered, size, sampling_number){</a>
+<a class="sourceLine" id="cb474-2" title="2">  PPI_PPiseq =<span class="st"> </span>PPI_multiple[,<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb474-3" title="3">  RRS_size=<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb474-4" title="4">  RRS=<span class="st"> </span><span class="kw">character</span>(<span class="dt">length=</span><span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb474-5" title="5">  <span class="cf">while</span> (RRS_size <span class="op">&lt;</span><span class="st"> </span>size) {</a>
+<a class="sourceLine" id="cb474-6" title="6">    yeast_PPI_random=<span class="st"> </span>all_PPI_filtered[<span class="kw">sample</span>(<span class="dv">1</span><span class="op">:</span><span class="st"> </span><span class="kw">length</span>(all_PPI_filtered), sampling_number, <span class="dt">replace=</span>F)]</a>
+<a class="sourceLine" id="cb474-7" title="7">    RRS=<span class="st"> </span><span class="kw">unique</span>(<span class="kw">c</span>(RRS, yeast_PPI_random))</a>
+<a class="sourceLine" id="cb474-8" title="8">    RRS_overlap=<span class="st"> </span><span class="kw">intersect</span>(RRS, PPI_PPiseq)</a>
+<a class="sourceLine" id="cb474-9" title="9">    RRS_size=<span class="st"> </span><span class="kw">length</span>(RRS_overlap)</a>
+<a class="sourceLine" id="cb474-10" title="10">  } </a>
+<a class="sourceLine" id="cb474-11" title="11">  RRS_duplicate_marked =<span class="st"> </span><span class="kw">mark_duplicates_fast</span>(RRS_overlap)</a>
+<a class="sourceLine" id="cb474-12" title="12">  <span class="kw">return</span> (RRS_duplicate_marked[,<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb474-13" title="13">}</a>
+<a class="sourceLine" id="cb474-14" title="14"></a>
+<a class="sourceLine" id="cb474-15" title="15"><span class="co"># ... and later ...</span></a>
+<a class="sourceLine" id="cb474-16" title="16"><span class="kw">Random_reference</span>(PPI_multiple, all_PPI_filtered, number_PPI, sample_number)</a></code></pre></div>
 <!-- exercise -->
 <p>Same questions.</p>
 <hr />
@@ -490,7 +489,7 @@ The experiment is counting barcoded lineages of yeast cells to estimate
 <hr />
 </div>
 <div id="style-guides-can-be-inspiring" class="section level3">
-<h3><span class="header-section-number">4.5.5</span> Style guides can be inspiring</h3>
+<h3><span class="header-section-number">5.8.5</span> Style guides can be inspiring</h3>
 <p>What’s your coding style going to be?</p>
 <ul>
 <li><a href="https://style.tidyverse.org/">tidyverse style guide</a></li>
@@ -566,11 +565,41 @@ ease of changing models
 
 </div>
 </div>
+<!-- </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="footnotes">
 <hr />
-<ol start="11">
-<li id="fn11"><p>I always forget and look at wikipedia…<a href="writing-reusable-code.html#fnref11" class="footnote-back">↩</a></p></li>
-<li id="fn12"><p>Ask Darach if you want details, or <a href="doi.org/10.7554/eLife.62365">read the paper</a><a href="writing-reusable-code.html#fnref12" class="footnote-back">↩</a></p></li>
+<ol start="10">
+<li id="fn10"><p>I always forget and look at wikipedia…<a href="writing-reusable-code.html#fnref10" class="footnote-back">↩</a></p></li>
+<li id="fn11"><p>Ask Darach if you want details, or <a href="doi.org/10.7554/eLife.62365">read the paper</a><a href="writing-reusable-code.html#fnref11" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 <p style="margin-top:10em;text-align:center;font-size:small;">
@@ -598,8 +627,8 @@ for (var i=0; i < listz.length; i++) {
           </div>
         </div>
       </div>
-<a href="getting-help-troubleshooting.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="conclusion-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="more-links.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -631,7 +660,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/darachm/dll-r/edit/main/590-writing-modular-code.Rmd",
+"link": "https://github.com/darachm/dll-r/edit/main/990-writing-modular-code.Rmd",
 "text": "Edit"
 },
 "history": {

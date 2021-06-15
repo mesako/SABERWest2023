@@ -3,7 +3,7 @@ output:
   pdf_document: default
   html_document: default
 ---
-## Tidyverse Part 2/2: reshaping data
+## Tidyverse 2/2: reshaping data
 
 Goal: Understand when reshaping a dataframe is necessary and how to do it using tidyverse functions `gather()` and `spread()`
 
@@ -12,7 +12,7 @@ Goal: Understand when reshaping a dataframe is necessary and how to do it using 
 
 So far we've used two datasets: `irisz` and `msleep`. Even though there is some missing data in these datasets, for the most part, they are quite neat. Notice how each line represents a single observation and each column represents a single variable. There is no redundancy in the rows or columns. Sometimes datasets will have columns with columns that mean the same thing but apply to only certain subsets of the data. Columns like this can be collapsed.
 
-On the other hadn, sometimes data will be recorded together in the same column, when they are in fact two different types of data. Imagine if conservation status in the `msleep` dataset were appended to the name. If we wanted to perform an analysis based on conservation status, we would need to tidy that up by making sure it's in a separate columns.
+On the other hand, sometimes data will be recorded together in the same column, when they are in fact two different types of data. Imagine if conservation status in the `msleep` dataset were appended to the name. If we wanted to perform an analysis based on conservation status, we would need to tidy that up by making sure it's in a separate columns.
 
 
 ### How to tidy data
@@ -31,7 +31,9 @@ In lieu of re-inventing the wheel, here's an excellent explanation and illustrat
 
 For the asynchronous portion, let's apply these principles and functions to a new dataset. I'll set up a few example datasets based on the original. Answer the questions starting from the appropriate example dataset (e.g. `df_1`, `df_2`, `df_3`).
 
-### The dataset: COVID-19 Cases
+### Data exploration with tidyverse
+
+**The dataset: New York Times COVID-19 cases**
 
 Even though we're just using this dataset to learn about tidyverse, it's always important to read about the dataset. Downloading data can be difficult and we don't want to dive into that if the data is not what we want. So always read about it first! Read the [introduction on Github](https://github.com/nytimes/covid-19-data). Based on the description of the dataset, try to answer these questions: (no need to look at the actual data, the description should be sufficient)
 
@@ -49,18 +51,18 @@ We'll read in the data straight from github. This is a lot of data (every county
 
 
 ```
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+## ── Attaching packages ───────────────────────────────────────────────────── tidyverse 1.3.0 ──
 ```
 
 ```
-## ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
-## ✔ tibble  3.1.2     ✔ dplyr   1.0.6
-## ✔ tidyr   1.1.3     ✔ stringr 1.4.0
-## ✔ readr   1.4.0     ✔ forcats 0.5.1
+## ✔ ggplot2 3.3.2     ✔ purrr   0.3.4
+## ✔ tibble  3.0.4     ✔ dplyr   1.0.2
+## ✔ tidyr   1.1.2     ✔ stringr 1.4.0
+## ✔ readr   1.4.0     ✔ forcats 0.5.0
 ```
 
 ```
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ──────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
@@ -85,9 +87,10 @@ Test your knowledge! Use functions we learned in the last section to answer thes
 2. Are all of the states listed in `favorite_states` in the dataset?
 3. How many counties are there for each of the states?
 
-### Example datasets
+#### Example datasets
 
-Here are three example datasets that will serve as starting points for answering tidy data questions that follow
+**Use the following three datasets to complete the coding exercises** in [today's worksheet](https://github.com/darachm/dll-r/blob/main/worksheets/dll-r_Day4_Lab.Rmd).
+The datasets are based on the New York Times Data, which is loaded above. 
 
 **Example Dataset #1:`df_1`**
 Three columns: county, cases, deaths
@@ -159,6 +162,6 @@ head(df_3)
 ```
 
 
-Use these three datasets to complete the coding exercises in the corresponding worksheet.
+**Use these three datasets to complete the coding exercises** in [today's worksheet](https://github.com/darachm/dll-r/blob/main/worksheets/dll-r_Day4_Lab.Rmd)
 
 
