@@ -270,6 +270,10 @@ Work together, make sure everyone is moving along nicely.
 If you're having trouble, ask for help from your peers, and/or teaching folks.
 Some are short, some are longer - if you finish one, attempt another!
 
+
+
+
+
 **SARS2 antibody escape**
 
 Starr et al Bloom used the Awesome Power Of Yeast Genetics to map
@@ -331,6 +335,20 @@ occur.
 
 - Can you figure out how to do this, how to calculate the amino acid frequencies
     across all the viral structural proteins in all the files?
+
+**Mass cytometry data**
+
+Mass cytometry is [so cool](https://youtu.be/eNKMdVMglvI?t=374) 
+(well, 7500 kelvin, so hot I guess). It generates 
+[data like this](https://static-content.springer.com/esm/art%3A10.1038%2Fs41467-020-15956-9/MediaObjects/41467_2020_15956_MOESM3_ESM.xlsx).
+Each one of those is a single cell, for all those parameters.
+It's like single-cell RNA seq, but way more accurate on a per-cell measure
+(and protein not RNA).
+
+Take a look at that last tab in the Excel file, and export it as a CSV
+(or TSV if you prefer).
+
+- Analyze what factors are changing as the melanoma experiment progresses.
 
 
 
