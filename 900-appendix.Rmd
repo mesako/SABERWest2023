@@ -1,9 +1,11 @@
-# Appendix - links
+# Appendix 
+
+## Some links and some extras
 
 This is for collecting factoids, ideas, and links that may be useful 
 as reference (if not inspiration) for your future R practice.
 
-## Ideas for figures
+### Ideas for figures
 
 - An [interactive page](https://ft-interactive.github.io/visual-vocabulary/)
     showing different types of figures
@@ -11,7 +13,7 @@ as reference (if not inspiration) for your future R practice.
 - Claus Wilke's [cowplot](https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html) 
     package is a great way to make multi-panel figures with ggplot, so A B etc.
 
-## More links
+### More links
 
 - [Claus Wilke's dataviz bookdown](https://clauswilke.com/dataviz/)
 - [Computational Genomics with R](https://compgenomr.github.io/book/)
@@ -19,7 +21,7 @@ as reference (if not inspiration) for your future R practice.
 - [R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/)
 - [Biostars books on scripting, programming, genomics](https://www.biostars.org/p/225812/)
 
-## More about workflows
+### More about workflows
 
 We talked about workflows in R, but much of bioinformatics workflows are
 happening outside of R, in bash (etc).

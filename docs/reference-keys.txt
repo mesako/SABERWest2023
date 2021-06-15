@@ -110,7 +110,8 @@ debugging-specific-problems
 minimal-reproducible-examples
 the-struggle
 conclusion-1
-appendix---links
+appendix
+some-links-and-some-extras
 ideas-for-figures
 more-links
 more-about-workflows
