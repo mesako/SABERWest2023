@@ -66,6 +66,39 @@ decreased?
 What week (based on the MMWR week column) generally has the highest mortality?
 
 
+**Calculating codon freuencies in the viral proteins**
+
+Let's say you are actually looking for motif occurances, and doing
+a careful job about balancing your test cases and inputs, etc.
+
+Your null model might depend on how often certain amino acids tend to
+occur. How might you write some R code to count up each occurance
+of each amino acid in this dataset?
+
+Here's a complex line of code that may be adaptable to this problem:
+
+    table(
+        factor(
+            unlist(
+                strsplit("ACABA",split="")
+            ),
+            levels=c("A","B","C","D","E","F","G")
+        )
+    )
+
+`table` tabulates the occurances of a string/factor,
+`factor` with a `levels` argument can create "spaces" for unobserved
+letters/strings,
+`unlist` turns a list into not a list,
+`strsplit` breaks up a string into a vector of strings using a pattern
+that can also be "".
+
+Can you figure out how to do this, how to calculate the amino acid frequencies
+across all the viral structural proteins in all the files?
+
+
+
+
 
 
 
@@ -219,9 +252,43 @@ Read/skim/work through 4.2.2
 
 ### (5)
 
+Read/skim/work through 4.2.3 
+
+- Write a simple for loop that just prints out the ascending numbers.
+- Loop through the first five or so filenames, printing them out.
+- Modify this to actually read the file and print out the protein
+    sequence.
+- Modify this to calculate and print how long the protein sequence is,
+    and print it out.
+- Modify the loop to only process files that end in "5.tsv".
 
 
+### (6)
 
+Read/skim/work through 4.2.4
+
+- Make some vectors of different types, and look at them with `str` or `is`.
+    Feel free to copy and paste to generate these.
+- Try making different sequences with `seq`. I suggest looking at the help `?`
+    - Do 5 to 10 by 1's
+    - Do 10 to 5 by 1's
+    - Do 5 to 100 by 5's
+- Write (or modify) the loop across files to calculate and save the
+    length of the protein sequence in a vector, maybe call it `lengthz`.
+- Once that works for 5, do it for all of them.
+- Plot the result, the vector of lengths of protein sequences,
+    using a histogram.
+
+**Totally optional extra challenges**
+- Modify your workflow/script here to look for occurrences of the "PRRA"
+    motif in the sequences.
+- In what viruses, what proteins does it pop up?
+    How does that affect your interpretation?
+- Does it show up where you'd expect it to?
+    What might that suggest about this dataset?
+- How might we come up with a null model for this? 
+    How often would this occur? Under what assumptions? 
+    How do you test that?
 
 
 
