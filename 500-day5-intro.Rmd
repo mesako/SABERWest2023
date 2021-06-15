@@ -49,17 +49,17 @@ open it in Rstudio.
 
 | Start Time | End Time | Activity |   Description   | Facilitator |
 | ------------- | ----------- | ------------- | ----------------------------- | --------------- |
-| 10:00 AM PDT | 10:15 AM PDT | Synchronous - lecture | 4.1 organizing workflows | Darach, Melissa, Samson, Margaret, Zac |
-| 10:15 AM PDT | 10:45 AM PDT | Synchronous - breakout rooms | 4.1 exercises | Darach, Melissa, Samson, Margaret, Zac |
+| 10:00 AM PDT | 10:15 AM PDT | Synchronous - lecture | 4.1 organizing workflows | **Darach**, Melissa, Samson, Margaret, Zac |
+| 10:15 AM PDT | 10:45 AM PDT | Synchronous - breakout rooms | 4.1 exercises | **Darach**, Melissa, Samson, Margaret, Zac |
 | 10:45 AM PDT | 12:00 PM PDT | Asynchronous - video, slack, etc | 4.2 Project - analyze viral protein sequences | Darach, Samson, Margaret, Zac |
-| 12:00 PM PDT | 12:15 PM PDT | Synchronous - lecture | 4.2 Modular, extandable workflows | Darach, Melissa, Samson, Margaret |
+| 12:00 PM PDT | 12:15 PM PDT | Synchronous - lecture | 4.2 Modular, extandable workflows | **Darach**, Melissa, Samson, Margaret |
 | 12:15 PM PDT | 12:45 PM PDT | Break | Lunch. Take a computer break!  |  N/A  |
-| 12:45 PM PDT | 01:00 PM PDT | Synchronous - lecture | 4.3 Packages - why and how | Darach, Samson, Margaret, Zac |
+| 12:45 PM PDT | 01:00 PM PDT | Synchronous - lecture | 4.3 Packages - why and how | **Darach**, Samson, Margaret, Zac |
 | 01:00 PM PDT | 01:45 PM PDT | Asynchronous - video, slack, etc | 4.3 exericses | Darach, Samson, Margaret, Zac |
-| 01:45 PM PDT | 02:15 PM PDT | Synchronous - lecture | 4.4 Demo/discuss some places to find help | Darach, Samson, Margaret |
+| 01:45 PM PDT | 02:15 PM PDT | Synchronous - lecture | 4.4 Demo/discuss some places to find help | **Darach**, Samson, Margaret |
 | 02:15 PM PDT | 02:30 PM PDT | Break | Take a computer break!  |  N/A  |
-| 02:30 PM PDT | 03:15 PM PDT | Synchronous - groups | 4.4 projects - attempt ambitious tutorials | Darach, Samson, Margaret, Zac |
-| 03:15 PM PDT | 03:30 PM PDT | Synchronous - lecture | 4.5 Wrapping up | Darach, Samson, Margaret, Zac |
+| 02:30 PM PDT | 03:15 PM PDT | Synchronous - groups | 4.4 projects - attempt ambitious tutorials | **Darach**, Samson, Margaret, Zac |
+| 03:15 PM PDT | 03:30 PM PDT | Synchronous - lecture | 4.5 Wrapping up | **Darach**, Samson, Margaret, Zac |
 
 <!-- -->
 

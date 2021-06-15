@@ -74,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(title);
+  { content: attr(data-line-number);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -292,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">2.2.3</span> Overview of how to write an R chunk</h3>
 <p>The next part of an R Markdown file is the R. You can insert a chunk of R code by writing the following <img src="./img/rmd_basics/fig3.png" alt="r chunk example" /></p>
 <p>This will run the code in the block! Try adding that block of code somewhere in your demo Rmd file. In case you’re having trouble finding it, the character that’s repeated three times is the backtick, it’s usually on the upper left of your keyboard. You should now see output that looks like this in your R Markdown file; make sure you Knit the Rmd file to check!</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">print</span>(<span class="st">&#39;This is R code!&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">print</span>(<span class="st">&#39;This is R code!&#39;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;This is R code!&quot;</code></pre>
 <p>You’ll notice that there’s some R code chunks already present in your R Markdown file. Let’s talk about them! The first code chunk looks like this <img src="./img/rmd_basics/fig4.png" alt="demo rmd file first code chunk" /></p>
 <p>Let’s talk about <code>{r setup, include=FALSE}</code>. The first character <code>r</code> just indicates that this is an R code chunk. Then, there is a space followed by <code>setup</code>. This is a name for the code chunk and is option. It cannot contain any spaces. Then, following the comma, you’ll see <code>include=FALSE</code>. This means that the code is not visible in the Rmd file once compiled and neither is the output. However, the code chunk is still run. Create a new Rmd file, but click “Create empty document” instead of “Ok” on the pop up menu. Now, create a code chunk that looks like this <img src="./img/rmd_basics/fig5.png" alt="new code chunk example" /></p>
