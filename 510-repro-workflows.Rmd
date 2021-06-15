@@ -178,9 +178,18 @@ like so:
 ---
 title: "Titled"
 author: "yours"
-theme: yeti 
+output:
+    html_document:
+        theme: yeti 
 ---
 ````
+
+Note that it (`theme: yeti`) has to be indented after `html_document:`,
+indented after `output:`.
+
+For more info and practice about YAML, see this 
+[YAML parser](https://nodeca.github.io/js-yaml/) to see what YAML you
+are actually writing.
 
 See more themes, and options, 
 [here](https://bookdown.org/yihui/rmarkdown/html-document.html#appearance-and-style).
