@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4.3 Packages - install and use | DLL 2021, R section</title>
+  <title>5 Appendix - links | DLL 2021, R section</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4.3 Packages - install and use | DLL 2021, R section" />
+  <meta property="og:title" content="5 Appendix - links | DLL 2021, R section" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4.3 Packages - install and use | DLL 2021, R section" />
+  <meta name="twitter:title" content="5 Appendix - links | DLL 2021, R section" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -34,8 +34,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="analyzing-viral-protein-sequences.html"/>
-<link rel="next" href="getting-help-troubleshooting.html"/>
+<link rel="prev" href="conclusion-1.html"/>
+<link rel="next" href="ideas-for-figures.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -273,233 +273,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="packages---install-and-use" class="section level2">
-<h2><span class="header-section-number">4.3</span> Packages - install and use</h2>
-<p>Think about sharing your code from the last few days.
-How would you share this with the other people in the course?
-Can they use it easily and flexibly to handle lots of different problems?</p>
-<p>R, like other languages, is built on a package system - if you wrap up your
-code in particular expected ways and put it in particular expected places,
-it is very easy for others to get and use your code</p>
-<p>Packages are
-<a href="https://ourcodingclub.github.io/tutorials/writing-r-package/">said to be easy to make</a>,
-<a href="https://hilaryparker.com/2014/04/29/writing-an-r-package-from-scratch/">from scratch</a>.
-There’s more <a href="https://r-pkgs.org/">comprehensive instruction here</a>.
-Personally, the author has never had cause to make one, but I can report that
-they’re very easy to use!</p>
-<hr />
-<div id="cran-is-the-canonical-r-package-resource" class="section level3">
-<h3><span class="header-section-number">4.3.1</span> CRAN is the canonical R package resource</h3>
-<p>The Comprehensive R Archive Netowrk
-<a href="https://cran.r-project.org/web/packages/">CRAN</a>
-is an integral part of the R environment.
-This is a global and free resource for storing and distributing code
-as R packages - well documented and designed chunks of code.</p>
-<p>You can install packages using the RStudio IDE, but it’s most important
-to know how to do it in R - what’s happening just under the hood.</p>
-<p>Use <code>library</code> to load packages.
-You should be able to load a package you’ve
-already installed.
-Call <code>library()</code> function, with an argument of the library name,
-as a string.</p>
-<p>For example:</p>
-<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb428-1" title="1"><span class="kw">library</span>(<span class="st">&quot;stringdist&quot;</span>)</a>
-<a class="sourceLine" id="cb428-2" title="2"><span class="kw">library</span>(stringdist)</a></code></pre></div>
-<p>Don’t have it? You can look for packages by using a search engine, or finding
-suggestions in the documentation, papers. Once you have a package name, use</p>
-<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb429-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;stringdist&quot;</span>)</a></code></pre></div>
-<p>to install it. You may need to select a “mirror”. This is just where you
-are downloading from, usually just go with “0-Cloud”
-<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>.</p>
-<p>What did this do?
-It retrieves and downloads the package’s code and documentation to
-what’s called your library.
-That’s a folder on your computer where the compiled versions of the packages
-are located, ready to be loaded when you want to use them.</p>
-<p>Try it out.</p>
-<p>Want to try it again? You can uninstall packages by removing them:</p>
-<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb430-1" title="1"><span class="kw">remove.packages</span>(<span class="st">&quot;stringdist&quot;</span>)</a></code></pre></div>
-<p>Each package has a <a href="https://cran.r-project.org/web/packages/stringdist/index.html">page on CRAN</a>
-with lots more information. The reference manual is a very specific reference
-document with per function level documentation.
-Vingettes are write ups that are more explaining how to do things - usually.</p>
-<div id="ggrepel" class="section level4">
-<h4><span class="header-section-number">4.3.1.1</span> ggrepel</h4>
-<p>Sometimes points are way to close, and you can’t label them properly.
-For example,</p>
-<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb431-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<pre><code>## ── Attaching packages ───────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
-<pre><code>## ✔ ggplot2 3.3.2     ✔ purrr   0.3.4
-## ✔ tibble  3.0.4     ✔ dplyr   1.0.2
-## ✔ tidyr   1.1.2     ✔ stringr 1.4.0
-## ✔ readr   1.4.0     ✔ forcats 0.5.0</code></pre>
-<pre><code>## ── Conflicts ──────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<div class="sourceCode" id="cb435"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb435-1" title="1"><span class="kw">set.seed</span>(<span class="dv">1234</span>) <span class="co"># this is just to get the same results each time we run</span></a>
-<a class="sourceLine" id="cb435-2" title="2"></a>
-<a class="sourceLine" id="cb435-3" title="3"><span class="kw">read_csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>,<span class="dt">col_types=</span><span class="st">&#39;nnnncc&#39;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb435-4" title="4"><span class="st">    </span><span class="kw">slice_sample</span>(<span class="dt">n=</span><span class="dv">20</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb435-5" title="5"><span class="st">    </span><span class="kw">ggplot</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb435-6" title="6"><span class="st">    </span><span class="kw">aes</span>(<span class="dt">x=</span>Sepal.Length,<span class="dt">y=</span>Sepal.Width,<span class="dt">col=</span>Species,<span class="dt">label=</span>Species)<span class="op">+</span></a>
-<a class="sourceLine" id="cb435-7" title="7"><span class="st">    </span><span class="kw">geom_label</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb435-8" title="8"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<pre><code>## Warning: 4 parsing failures.
-## row          col expected actual            file
-##  44 Sepal.Length a number    n/a &#39;data/iris.csv&#39;
-##  44 Sepal.Width  a number    n/a &#39;data/iris.csv&#39;
-## 148 Petal.Length a number    n/a &#39;data/iris.csv&#39;
-## 148 Petal.Width  a number    n/a &#39;data/iris.csv&#39;</code></pre>
-<pre><code>## Warning: Removed 1 rows containing missing values (geom_label).</code></pre>
-<p><img src="550-packages_files/figure-html/iris_overplot_example-1.png" width="672" /></p>
-<p>The <code>ggrepel</code> library, from CRAN, is a handy way to achieve this:</p>
-<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb438-1" title="1"><span class="kw">library</span>(ggrepel)</a>
-<a class="sourceLine" id="cb438-2" title="2"></a>
-<a class="sourceLine" id="cb438-3" title="3"><span class="kw">set.seed</span>(<span class="dv">1234</span>) <span class="co"># this is just to get the same results each time we run</span></a>
-<a class="sourceLine" id="cb438-4" title="4"></a>
-<a class="sourceLine" id="cb438-5" title="5"><span class="kw">read_csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>,<span class="dt">col_types=</span><span class="st">&#39;nnnncc&#39;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb438-6" title="6"><span class="st">    </span><span class="kw">slice_sample</span>(<span class="dt">n=</span><span class="dv">20</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb438-7" title="7"><span class="st">    </span><span class="kw">ggplot</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb438-8" title="8"><span class="st">    </span><span class="kw">aes</span>(<span class="dt">x=</span>Sepal.Length,<span class="dt">y=</span>Sepal.Width,<span class="dt">col=</span>Species,<span class="dt">label=</span>Species)<span class="op">+</span></a>
-<a class="sourceLine" id="cb438-9" title="9"><span class="st">    </span><span class="kw">geom_label_repel</span>()<span class="op">+</span></a>
-<a class="sourceLine" id="cb438-10" title="10"><span class="st">    </span><span class="kw">geom_point</span>()</a></code></pre></div>
-<pre><code>## Warning: 4 parsing failures.
-## row          col expected actual            file
-##  44 Sepal.Length a number    n/a &#39;data/iris.csv&#39;
-##  44 Sepal.Width  a number    n/a &#39;data/iris.csv&#39;
-## 148 Petal.Length a number    n/a &#39;data/iris.csv&#39;
-## 148 Petal.Width  a number    n/a &#39;data/iris.csv&#39;</code></pre>
-<pre><code>## Warning: Removed 1 rows containing missing values (geom_label_repel).</code></pre>
-<p><img src="550-packages_files/figure-html/iris_ggrepel-1.png" width="672" /></p>
-<hr />
-</div>
-</div>
-<div id="using-packages-without-library-ing-them" class="section level3">
-<h3><span class="header-section-number">4.3.2</span> Using packages without <code>library()</code>-ing them</h3>
-<p>Some packages you don’t really want to have to go through the trouble of
-loading, you’ll just want one function.
-For example, this website is generated with one function, <code>render_book()</code>
-in the package <code>bookdown</code>. Instead of:</p>
-<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb441-1" title="1"><span class="kw">library</span>(bookdown)</a>
-<a class="sourceLine" id="cb441-2" title="2"><span class="kw">render_book</span>()</a></code></pre></div>
-<p>I can save a line by just using <code>::</code></p>
-<div class="sourceCode" id="cb442"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb442-1" title="1">bookdown<span class="op">::</span><span class="kw">render_book</span>()</a></code></pre></div>
-<p>This means I am looking in library <code>bookdown</code> for function <code>render_book</code>.
-The function is hidden again right afterwards, but it is useful if you just
-want to run one function from a library, once.</p>
-<p>This is <em>super handy</em> when wanting to typeset (<code>render</code>) a <code>Rmd</code> file:</p>
-<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb443-1" title="1">rmarkdown<span class="op">::</span><span class="kw">render</span>()</a></code></pre></div>
-<p>I <em>never</em> load the <code>rmarkdown</code> package, I just type the above. A lot.
-<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a></p>
-<hr />
-</div>
-<div id="github-is-a-common-place-for-sharing-packges-in-development" class="section level3">
-<h3><span class="header-section-number">4.3.3</span> Github is a common place for sharing packges in development</h3>
-<p>Installing from github requires some different programming -
-and there’s libraries with functions for this.</p>
-<div class="sourceCode" id="cb444"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb444-1" title="1"><span class="kw">library</span>(<span class="st">&quot;remotes&quot;</span>)</a></code></pre></div>
-<p>This used to be part of the <code>devtools</code> package, but the authors have been
-“uncoupling” these to make each package simple and composable.</p>
-<div id="lets-install-a-package-off-of-github." class="section level4">
-<h4><span class="header-section-number">4.3.3.1</span> Let’s install a package off of github.</h4>
-<p>Here’s a cool <a href="https://github.com/ewenme/ghibli">Ghibli color palette</a>,
-so you can change sets of colors for your plots.
-Try installing it with:</p>
-<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb445-1" title="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;ewenme/ghibli&quot;</span>)</a></code></pre></div>
-<p>Then adapt one of your previous plots (that has colors) to use these new
-color palettes.</p>
-</div>
-<div id="lets-install-another-one-to-check-the-previous" class="section level4">
-<h4><span class="header-section-number">4.3.3.2</span> Let’s install another one, to check the previous</h4>
-<p>Colorblind folks can’t distinguish between certain colors so well.
-Designing figures so that colorblind folks can readily distinguish the
-relevant differences is a <em>good idea</em>. It makes for a better figure, just
-like increasing the font size and cleaning up distracting artifacts.</p>
-<p>The <code>ghibli</code> package above has been claimed to be somewhat good for
-plotting for universal visibility. Is that true?</p>
-<p>Let’s install this package to check:</p>
-<div class="sourceCode" id="cb446"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb446-1" title="1">remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;nowosad/colorblindcheck&quot;</span>,<span class="dt">upgrade=</span><span class="st">&quot;never&quot;</span>)</a></code></pre></div>
-<p>Then</p>
-<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb447-1" title="1"><span class="kw">library</span>(ghibli)</a>
-<a class="sourceLine" id="cb447-2" title="2"><span class="kw">library</span>(colorblindcheck)</a>
-<a class="sourceLine" id="cb447-3" title="3"></a>
-<a class="sourceLine" id="cb447-4" title="4"><span class="kw">palette_check</span>(ghibli_palettes<span class="op">$</span>PonyoMedium,<span class="dt">plot=</span>T)</a></code></pre></div>
-<p><img src="550-packages_files/figure-html/checkitout-1.png" width="672" /></p>
-<pre><code>##           name n tolerance ncp ndcp min_dist mean_dist max_dist
-## 1       normal 7  9.939857  21   21 9.939857  36.11891 59.92427
-## 2 deuteranopia 7  9.939857  21   19 7.044647  30.14324 52.02502
-## 3   protanopia 7  9.939857  21   20 8.068943  26.94418 50.93756
-## 4   tritanopia 7  9.939857  21   20 4.587519  35.34529 60.29190</code></pre>
-<p>Other packages on there:</p>
-<ul>
-<li><a href="https://github.com/rossdrucker/sportyR">Sports field plotting</a></li>
-<li><a href="https://github.com/wilkelab/ggridges">Ridgeplots in ggplot2</a></li>
-<li>what else?</li>
-</ul>
-<!-- remotes::install_github("wilkelab/ggridges" -->
-<hr />
-</div>
-</div>
-<div id="bioconductor-is-a-great-place-for-bio-related-packages" class="section level3">
-<h3><span class="header-section-number">4.3.4</span> Bioconductor is a great place for bio-related packages</h3>
-<p>Bioconductor is a giant repository of just scientific, well bio-focused,
-packages. It’s where a lot of bioinformatics software gets published.
-However, it has it’s own package system and thus package manager.
-You will have to install it … from CRAN. Like so:</p>
-<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb449-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;BiocManager&quot;</span>)</a></code></pre></div>
-<p>That installs a package with a function that then installs Bioconductor
-packages. It’s actually easy. Let’s give it a try by installing and
-using the <code>limma</code> package to analyze some gene expression data.</p>
-<p>If you’re recall from before, we can use <code>::</code> to avoid having to actually
-<code>library</code> the whole package:</p>
-<div class="sourceCode" id="cb450"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb450-1" title="1">BiocManager<span class="op">::</span><span class="kw">install</span>()</a></code></pre></div>
-<p>And so we can use this to install important packages like <code>DESeq2</code>.</p>
-<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" title="1">BiocManager<span class="op">::</span><span class="kw">install</span>(<span class="st">&#39;DESeq2&#39;</span>)</a></code></pre></div>
-<p>Hold off on installing this quite yet. It’d take a while.
-In Bioconductor, I always say to update ‘none’ (press ‘n’ when prompted).</p>
-<p>There’s lots of good documentation on each
-<a href="https://bioconductor.org/packages/release/bioc/html/DESeq2.html">package’s webpage</a>,
-like <a href="https://www.bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html">vingettes</a>.</p>
-</div>
-<div id="what-packages-do-you-have-already" class="section level3">
-<h3><span class="header-section-number">4.3.5</span> What packages do you have already?</h3>
-<p>You have a few. Here’s a list:</p>
-<div class="sourceCode" id="cb452"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb452-1" title="1"><span class="kw">installed.packages</span>()</a></code></pre></div>
-<p>But which are loaded?</p>
-<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" title="1"><span class="kw">sessionInfo</span>()</a></code></pre></div>
-<p>The packages are in a directory, the location is stored in this:</p>
-<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb454-1" title="1"><span class="kw">.libPaths</span>()</a></code></pre></div>
-<p>I’m not running that one, as it’ll be different for each user.</p>
-<hr />
-</div>
-<div id="major-problems-with-package-installations" class="section level3">
-<h3><span class="header-section-number">4.3.6</span> Major problems with package installations</h3>
-<p>Somethings can go wrong. You’ll want to pay attention to what is output
-from the installation attempt. Look for errors. Scroll up to find warnings
-and errors.</p>
-<p>These can arise from multiple ways. Here’s a few ideas:</p>
-<ul>
-<li>the package name you put in is misspelled</li>
-<li>the package is in another repo (CRAN, Bioconductor, etc)</li>
-<li>your internet is down (this is more of a Stanford WiFi problem)</li>
-<li>your R package library directory is not writable (you don’t have permission)</li>
-<li>the package is not available for this version of R</li>
-<li>the package relies on the system having programs or software or libraries
-installed that are not installed (less of a problem with RStudio)</li>
-<li>the package actually has a bug</li>
-</ul>
-<p>Let’s next talk about how to find help for problems.</p>
-<hr />
-
-</div>
-</div>
-<div class="footnotes">
-<hr />
-<ol start="7">
-<li id="fn7"><p>I have no idea where this is, never heard of that country!<a href="packages-install-and-use.html#fnref7" class="footnote-back">↩</a></p></li>
-<li id="fn8"><p>Or, I use the one-liner in bash of
-<code>Rscript -e 'rmarkdown::render("notebook.Rmd")'</code> <a href="packages-install-and-use.html#fnref8" class="footnote-back">↩</a></p></li>
-</ol>
+<div id="appendix---links" class="section level1">
+<h1><span class="header-section-number">5</span> Appendix - links</h1>
+<p>This is for collecting factoids, ideas, and links that may be useful
+as reference (if not inspiration) for your future R practice.</p>
 </div>
 <p style="margin-top:10em;text-align:center;font-size:small;">
     <a href="https://github.com/darachm/dll-r/blob/main/LICENSE.md">
@@ -526,8 +303,8 @@ for (var i=0; i < listz.length; i++) {
           </div>
         </div>
       </div>
-<a href="analyzing-viral-protein-sequences.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="getting-help-troubleshooting.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="conclusion-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ideas-for-figures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -559,7 +336,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/darachm/dll-r/edit/main/550-packages.Rmd",
+"link": "https://github.com/darachm/dll-r/edit/main/900-appendix.Rmd",
 "text": "Edit"
 },
 "history": {

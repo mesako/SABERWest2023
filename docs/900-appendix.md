@@ -1,62 +1,40 @@
-# Appendix
+# Appendix - links
 
-Useful bits
+This is for collecting factoids, ideas, and links that may be useful 
+as reference (if not inspiration) for your future R practice.
 
-## Additional tutorials
-
-- a list
-- of tutorials
-
-### sub sub section
-
-## More challenges
-
-Challenge yourself 
-
-- Extra datasets ere
-
-
-## Figures ideas
+## Ideas for figures
 
 - An [interactive page](https://ft-interactive.github.io/visual-vocabulary/)
     showing different types of figures
 - A [R graph gallery](https://www.r-graph-gallery.com/)
+- Claus Wilke's [cowplot](https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html) 
+    package is a great way to make multi-panel figures with ggplot, so A B etc.
+
+## More links
+
+- [Claus Wilke's dataviz bookdown](https://clauswilke.com/dataviz/)
+- [Computational Genomics with R](https://compgenomr.github.io/book/)
+- [UC Davis bioinformatics trainings](https://ucdavis-bioinformatics-training.github.io/)
+- [R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/)
+- [Biostars books on scripting, programming, genomics](https://www.biostars.org/p/225812/)
+
+## More about workflows
+
+We talked about workflows in R, but much of bioinformatics workflows are
+happening outside of R, in bash (etc).
+To handle those, there are more sophisticated workflows that will 
+generate steps from combinations of parameters, schedule and allocate those
+across HPC and remote commercial (amazon/google) computing, and automatically
+generate analytics and reports to help you optimize your workflows.
+
+These include SnakeMake, Nextflow, and CWL. And others, but these are the
+main ones.
+This author recommends Nextflow. There's a bit more of a learning curve than
+SnakeMake, but it is well built and very flexible. 
+
+These will not be necessary for summer projects, but may be useful skills
+for bioinformatics research for at least the next 5-10 years.
 
 
-## Rmd example of code chunk
-
-
-```r
-knitr::kable(
-  head(iris, 20), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
-```
-
-
-
-Table: (\#tab:nice-tab-appendix)Here is a nice table!
-
-| Sepal.Length| Sepal.Width| Petal.Length| Petal.Width|Species |
-|------------:|-----------:|------------:|-----------:|:-------|
-|          5.1|         3.5|          1.4|         0.2|setosa  |
-|          4.9|         3.0|          1.4|         0.2|setosa  |
-|          4.7|         3.2|          1.3|         0.2|setosa  |
-|          4.6|         3.1|          1.5|         0.2|setosa  |
-|          5.0|         3.6|          1.4|         0.2|setosa  |
-|          5.4|         3.9|          1.7|         0.4|setosa  |
-|          4.6|         3.4|          1.4|         0.3|setosa  |
-|          5.0|         3.4|          1.5|         0.2|setosa  |
-|          4.4|         2.9|          1.4|         0.2|setosa  |
-|          4.9|         3.1|          1.5|         0.1|setosa  |
-|          5.4|         3.7|          1.5|         0.2|setosa  |
-|          4.8|         3.4|          1.6|         0.2|setosa  |
-|          4.8|         3.0|          1.4|         0.1|setosa  |
-|          4.3|         3.0|          1.1|         0.1|setosa  |
-|          5.8|         4.0|          1.2|         0.2|setosa  |
-|          5.7|         4.4|          1.5|         0.4|setosa  |
-|          5.4|         3.9|          1.3|         0.4|setosa  |
-|          5.1|         3.5|          1.4|         0.3|setosa  |
-|          5.7|         3.8|          1.7|         0.3|setosa  |
-|          5.1|         3.8|          1.5|         0.3|setosa  |
 
