@@ -1,10 +1,13 @@
 
-## Writing (re)usable code
+## Style - writing (re)usable code
 
 - Crack open your code - can you use it again?
 
 - Can you adapt it to modify your question, feed in new data,
 and modify the scientifically-important bits easily?
+
+It might be useful for you to be able to do these two things!
+Modular design with functions is one way to do that.
 
 ---
 
@@ -313,52 +316,4 @@ Be lazy and copy others!
 
 ---
 
-
-
-<!--
-
-#### Let's write a plotting module/function
-
-How about a `ggplot2` style boxplot?
-
-
-Write a function that makes a ggplot2 boxplot for some numbers.
-
-What should the function take, what should it do?
-
-What is "some numbers"?
-
-What should it return?
-
-[NOTE]: calling ggplot inside a function may not print, you may have to
-    wrap it in `print(ggplot code)` or return the ggplot object as
-    a variable
-
----
-
-### More complex workflow
-
-Let's write a simulation of viral evolution.
-
-(could be a bad idea, considering....)
-
-More examples/exercise
-
-show a simulation of something…. genetic drift of a virus replicating?
-
-lineage G1312F
-
-exercise - wrap the entire analysis as a function
-
-talk about ease of calling
-
-ease of tweaking this
-
-exercise - break into subfunctions, generate and plot
-
-ease of changing models
-
----
-
--->
 
