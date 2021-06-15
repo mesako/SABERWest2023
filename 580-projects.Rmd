@@ -31,7 +31,7 @@ between these, builds an ecology of learning that helps everyone.
 
 Through this summer, try to do that for and with each other!
 
-Check out the [worksheet document](worksheets/dll-r_Day5_Lab.html) for 
+Check out the [worksheet document](worksheets/dll-r_Day5_Lab.Rmd) for 
 problems to attempt in this section.
 
 ---
