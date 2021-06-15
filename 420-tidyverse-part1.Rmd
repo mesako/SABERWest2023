@@ -4,7 +4,7 @@ output:
   html_document: default
 ---
 
-## Tidyverse Part 1/2: functions and pipes
+## Tidyverse 1/2: functions & pipes
 
 Goal: Understand the tidyverse framework of pipes and functions, as well as how to apply it to tidy data frame cleaning and manipulation.
 
@@ -36,7 +36,7 @@ In the previous example, we could call the function using a pipe like so:
 Feeling motivated to accelerate data cleaning and analysis using the tidyverse?
 
 
-### Let's start by making sure Tidyverse is installed
+### Load tidyverse
 
 Download tidyverse
 Remember we only have to install once
@@ -53,7 +53,7 @@ library(tidyverse)
 
 If loading the library returns an error message saying it's not installed, then go to the [SSRP Pre-installation guide](https://tinyurl.com/ssrpsoftwareguide) and follow the instructions for installing tidyverse
 
-### The tidyverse pipe %>%
+### How to pipe %>%
 
 The tidyverse pipe can be used with most base R functions and with all tidyverse-specific functions, which we'll learn more about soon. Although we'll focus on using tidyverse pipe and functions on data frames, the pipe can also be used on vectors and even scalars.
 
