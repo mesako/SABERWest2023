@@ -1,0 +1,37 @@
+## The Struggle
+
+> It never gets any easier. You just have to love it.
+> -- Professor Suse Broyde
+
+People get good at R, linux, biochemistry, trombone, whatever by spending
+years in the practice of those skills, facts, and ideas.
+To develop this expertise, you must simply attempt problems.
+Some say this is a productive way to learn things, to engage in a productive
+struggle. 
+It's this way for R, same thing for research.
+
+How challenging should things be?
+Some folks offer the simple guidance that you should be doing just fine 1/3rd
+of the time, completely confident to the point of boredom for another 1/3rd,
+and struggling completely out of your depth for another 1/3rd. 
+These are arbitrary numbers, but the point is that you should be struggling
+with new things from a solid basis of routine skill.
+Build up the basics, and practice them in your work, by applying your new
+skills.
+
+The biggest advantage you can build for yourself may be in maintaining a
+learning community.
+It's really handy to have supervisors, co-workers, and friends  who you can
+go to for help.
+Additionally, by helping others 
+_you hone the skills that are the basis for your further development_.
+A teacher's skills often dull without students.
+Engaging in a learning community as a teacher or student, and switching roles
+between these, builds an ecology of learning that helps everyone.
+
+Through this summer, try to do that for and with each other!
+
+Check out the [worksheet document](worksheets/dll-r_Day5_Lab.html) for 
+problems to attempt in this section.
+
+---
