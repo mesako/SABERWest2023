@@ -1,0 +1,402 @@
+---
+title: "Worksheet for Day 5 - building workflows"
+author: "YOUR NAME HERE"
+date: "`r Sys.Date()`"
+output:
+    html_document:
+        theme: journal
+#    slidy_presentation:
+#        theme: default
+---
+
+
+
+
+This worksheet was created by [darachm](https://github.com/darachm) and
+[Samson](https://github.com/samson920) with a [Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0
+License](https://github.com/darachm/dll-r/blob/main/LICENSE.md).
+
+# Instructions for this Worksheet
+
+Write your code and/or your response underneath each task prompt. To render
+your worksheet, click on the Knit button in Rstudio, or run the 
+`render` function directly from your R console: 
+
+```{r,renderdoc,eval=F}
+rmarkdown::render("dll-r_Day5_Lab.Rmd")
+```
+
+_( Don't understand what this is doing? Bring that up when we get to the
+rmarkdown and package sections! )_
+
+Be sure that your code is
+able to execute completely and that the result you expect is shown in the
+resulting html file.
+
+------
+
+# Day 5, Section 4 - workflows etc.
+
+## 4.1 exercises
+
+### (1)
+
+Work together. 
+Take your work from yesterday, the tidyverse plots.
+Organize it into a separate project directory, maybe called something like
+`tidyverse-demo`. 
+Include the Rmd scripts in an appropriate directory (`scripts`?),
+the data in the `data` directory.
+Write the Rmd so you can generate your whole report
+by running `render` (in Console or via the 'Knit' button).
+
+CAUTION: reading or writing files may not work! Instead of using something
+like:
+
+```{r,indemo,eval=F}
+read.csv("that_file.csv")
+```
+
+you may have to look "up" and "over" (remember from day1/2?), like so:
+
+```{r,indemo2,eval=F}
+read.csv("../data/that_file.csv")
+```
+
+and for writing plots into an output directory:
+
+```{r,outdemo,eval=F}
+png("../outputs/that.png")
+# plotz
+dev.off()
+```
+
+**Optional**
+
+Consider making your rmarkdown file more fancy.
+Go ahead and change the time, some of the options in the header.
+Maybe a theme, maybe
+<marquee style="display:block;width:50%;">add some HTML tags to modify your rmarkdown file,</marquee> 
+because it's all turned into HTML anyways!
+
+When you're done, share any new tricks or useful ideas in the slack channel,
+or in your groups.
+
+### (2) Discuss your organization styles
+
+In your group, discuss how you organize your work, 
+and what you think would be useful or not useful.
+
+How do you usually save notes/code/instructions?
+
+How do you share this with others?
+
+What are some disadvantages to this system?
+Can you work around those?
+
+How do you leave instructions for future users?
+
+### (3) **OPTIONAL** Discuss your organizational plan with your supervisor!
+
+When you start this summer, consider asking your supervisor about organization:
+
+Where does the data live? Where is going to be archived for future users?
+
+What will you be expected to share? In what formats, written reports or 
+presentations, slide decks?
+
+
+
+
+## 4.2 exercises
+
+### (1)
+
+Take a look at the files in the `data/viral_structural_proteins/` directory.
+
+How do you do this using bash tools as you learned on Day1/2?
+- (Hint: there is a "Terminal" table in Rstudio where you can type bash commands)
+
+How do you do something similar using R?
+
+### (2)
+
+If you haven't already, go ahead and set up your project folder.
+
+- make a `data` folder, and move/copy the `viral_structural_proteins` folder
+    into that
+- make a `scripts` directory, and put this `Rmd` file in there
+- make a note in the `Rmd` about where the data came from
+
+### (3) 
+
+Start with 4.2.1
+
+Check out the documentation/help for `read.delim` to learn what two arguments
+you need to set to read one of these files.
+
+Additionally, what other argument can you set to prevent the character strings
+from being turned into factors?
+
+- What is `viral_protein_data`? What kind of variable?
+- How do we find the column names?
+- What are two ways to access the protein sequence?
+
+### (4) 
+
+Read/skim/work through 4.2.2
+
+- Read and save one of the protein sequence files, 
+    maybe as `viral_protein_data`.
+- Search for different amino acid combinations in there. 
+    See any repeats? Any particularly common or rare amino acid?
+    Combination of those? Do a few.
+    `grepl`
+- See if you can change all of a certain amino acid to another amino acid
+    in the sequence (`sub`, `gsub`).
+- How do we calculate the number of characters in this protein sequence?
+    ( Try searching with "??`number of characters`" )
+
+### (5)
+
+Read/skim/work through 4.2.3 
+
+- Write a simple for loop that just prints out the ascending numbers.
+- Loop through the first five or so filenames, printing them out.
+- Modify this to actually read the file and print out the protein
+    sequence.
+- Modify this to calculate and print how long the protein sequence is,
+    and print it out.
+- Modify the loop to only process files that end in "5.tsv".
+
+
+### (6)
+
+Read/skim/work through 4.2.4
+
+- Make some vectors of different types, and look at them with `str` or `is`.
+    Feel free to copy and paste to generate these.
+- Try making different sequences with `seq`. I suggest looking at the help `?`
+    - Do 5 to 10 by 1's
+    - Do 10 to 5 by 1's
+    - Do 5 to 100 by 5's
+- Write (or modify) the loop across files to calculate and save the
+    length of the protein sequence in a vector, maybe call it `lengthz`.
+- Once that works for 5, do it for all of them.
+- Plot the result, the vector of lengths of protein sequences,
+    using a histogram.
+
+**Totally optional extra challenges**
+- Modify your workflow/script here to look for occurrences of the "PRRA"
+    motif in the sequences.
+- In what viruses, what proteins does it pop up?
+    How does that affect your interpretation?
+- Does it show up where you'd expect it to?
+    What might that suggest about this dataset?
+- How might we come up with a null model for this? 
+    How often would this occur? Under what assumptions? 
+    How do you test that?
+
+
+## 4.3 exercises
+
+Installing things! 
+
+### (1)
+
+Check out section 4.3.1
+
+Install the `stringdist` library, and use it to: 
+
+- compare the distance between strings "ATCGATCG" and "ATCGAACG"
+        using the methods "hamming" and "lv"
+- compare the distance between strings "ATCGATCG" and "ATCGAATCGC"
+        using the methods "hamming" and "lv"
+
+Check out the 
+[official page for the package on CRAN](https://cran.r-project.org/web/packages/stringdist/index.html).
+Look at the "reference manual" and the "vingette". 
+Somtimes these are very technical (like this one), other ones (like `cowplot`
+below) have more tutorials.
+
+### (2)
+
+Check out section 4.3.2
+
+- Make sure you have the `rmarkdown` package installed. 
+- Use `rmarkdown::render()` on this file to typeset it into an HTML file.
+
+### (3)
+
+Check out section 4.3.3
+
+- Install the `colorblindcheck` package from `nowosad`.
+- Use it to `palette_check` out the 
+    default^[I _believe_ this is the default, not sure.] 
+    color palette from R (`rainbow(8)`). Use `plot=T` to make sure you are
+    plotting it for inspection.
+- How does this palette look, for folks with different color vision mappings?
+
+### (4)
+
+Check out section 4.3.5 (skipping Bioconductor...)
+
+- What's your current session info?
+- What packages do you have installed?
+- Where are they located on your computer?
+
+
+
+
+
+
+
+
+## 4.5 some problems
+
+Here are some problems to attempt now, while we're working together 
+synchronously. You can also try more of these later for more of a challenge.
+
+Let's split into groups, and work through some of these problems.
+These are designed to be somewhat challenging, having to use new functionality.
+They should be doable, even if you're just copy and pasting, but you've got
+to know what to copy and paste, in what order, and how to solve errors that
+come up.
+
+You should approach these problems as a group. Work together, make sure
+everyone is moving along nicely.
+If you're having trouble, ask for help from your peers.
+If you've got the prior background where you're already familiar with this,
+and are picking up on it quickly, then take the time to help your peers learn.
+Teaching is learning, and building a learning community has benefits for all
+participants.
+
+Science depends upon it.
+
+Take the time to discuss what each step is doing. Try to learn from the example
+code. Also, ask instructors for help explaining it!
+
+Multi-panel figures
+: Claus Wilke's [cowplot](https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html)
+    package is a great way to make multi-panel figures with ggplot.
+    Install it and use this to make a multi-panel figure exploring the
+    iris dataset from yesterday. Take the multiple kinds of plots, and
+    arrange them into whatever single figure looks good.
+
+SARS2 antibody escape data analysis
+: Starr et al Bloom used the Awesome Power Of Yeast Genetics to map
+    SARS-CoV-2 antibody escape probabilities early on in the pandemic.
+    Download the dataset [here](https://science.sciencemag.org/content/371/6531/850/tab-figures-data),
+    read it in, and analyze it.
+    Consider making a heatmap using `geom_tile`, and grouping/aggregating
+    the data by amino acid types, or antibodies added.
+
+Differential expression analysis with DESeq2
+: Love, Andres, and Huber's DESeq2 package is a well used and highly respected
+    package for doing differential expression of counts data, for RNAseq
+    (bulk and sc) or barseq or whatever, it's pretty handy.
+    Attempt to work through [the tutorial](https://www.bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#count-matrix-input), 
+    I recommend starting with the count data from the `pasilla` package.
+    The idea is that you're doing DE analysis on RNAseq from a Drosophila
+    RNAi knockdown of the pasilla gene, to see what that gene's expression 
+    affects expression of.
+    The tutorial is a bit tangled, so work as a team to follow and pick 
+    through it.
+
+
+Other ones? If you have an idea, propose it and maybe there's a group that
+wants to attempt it. Keep it to be things you can readily do in R.
+
+
+Now is an opportunity for you to put together everything that you've learned to
+start asking questions about data. There are a few datasets listed below, along
+with questions about the data. First, design some analyses you can do to answer
+the question. Some examples might be comparing the means between certain
+populations, plotting the distribution of a variable (or multiple variables),
+or . For all of these datasets, make sure to explore the data a little bit with
+commands like head() and tail() before jumping into your analysis so you're
+familiar with the data.
+
+**Iris Dataset**
+
+You can load this dataset with `data(iris)`
+
+What variable is most useful for distinguishing between species?
+
+What species has the biggest variability in flower size?
+
+
+
+**Alzheimer's Microarray Analysis**
+
+These data are originally from
+https://www.kaggle.com/andrewgao/alzheimer-microarray-analysis. You can
+download them from https://github.com/darachm/dll-r/tree/main/data
+
+What gene is most associated with Alzheimer's disease (based on the unadjusted
+p-value)?
+
+How many genes have unadjusted p-values less than 0.05?
+
+Do some reading on p-values. Why do you think the adjusted p-value is included
+in the data?
+
+
+**Mortality Data**
+
+The CDC tracks data on mortality in the United States. We have downloaded a
+dataset on mortality by state, by week across a few years. You can download the
+data from https://github.com/darachm/dll-r/tree/main/data, though the data were
+originally from
+https://www.kaggle.com/codebreaker619/usa-weekly-counts-of-deaths-by-state-and-causes.
+
+What state has the highest number of deaths per year based on the data reported
+here? Do you think this is a fair way to look at the data? What can you do to
+help make the analysis more fair across states if you wanted to understand
+which states had the highest death rates?
+
+What cause of death has increased the most from 2014 to 2018? Which has
+decreased?
+
+What week (based on the MMWR week column) generally has the highest mortality?
+
+
+**Calculating codon freuencies in the viral proteins**
+
+Let's say you are actually looking for motif occurances, and doing
+a careful job about balancing your test cases and inputs, etc.
+
+Your null model might depend on how often certain amino acids tend to
+occur. How might you write some R code to count up each occurance
+of each amino acid in this dataset?
+
+Here's a complex line of code that may be adaptable to this problem:
+
+    table(
+        factor(
+            unlist(
+                strsplit("ACABA",split="")
+            ),
+            levels=c("A","B","C","D","E","F","G")
+        )
+    )
+
+`table` tabulates the occurances of a string/factor,
+`factor` with a `levels` argument can create "spaces" for unobserved
+letters/strings,
+`unlist` turns a list into not a list,
+`strsplit` breaks up a string into a vector of strings using a pattern
+that can also be "".
+
+Can you figure out how to do this, how to calculate the amino acid frequencies
+across all the viral structural proteins in all the files?
+
+
+
+
+
+
+
+
+
