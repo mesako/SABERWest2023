@@ -253,80 +253,41 @@ Check out section 4.3.5 (skipping Bioconductor...)
 
 
 
-## 4.5 some problems
-
-Here are some problems to attempt now, while we're working together 
-synchronously. You can also try more of these later for more of a challenge.
-
-Let's split into groups, and work through some of these problems.
-These are designed to be somewhat challenging, having to use new functionality.
-They should be doable, even if you're just copy and pasting, but you've got
-to know what to copy and paste, in what order, and how to solve errors that
-come up.
-
-You should approach these problems as a group. Work together, make sure
-everyone is moving along nicely.
-If you're having trouble, ask for help from your peers.
-If you've got the prior background where you're already familiar with this,
-and are picking up on it quickly, then take the time to help your peers learn.
-Teaching is learning, and building a learning community has benefits for all
-participants.
-
-Science depends upon it.
-
-Take the time to discuss what each step is doing. Try to learn from the example
-code. Also, ask instructors for help explaining it!
-
-Multi-panel figures
-: Claus Wilke's [cowplot](https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html)
-    package is a great way to make multi-panel figures with ggplot.
-    Install it and use this to make a multi-panel figure exploring the
-    iris dataset from yesterday. Take the multiple kinds of plots, and
-    arrange them into whatever single figure looks good.
-
-SARS2 antibody escape data analysis
-: Starr et al Bloom used the Awesome Power Of Yeast Genetics to map
-    SARS-CoV-2 antibody escape probabilities early on in the pandemic.
-    Download the dataset [here](https://science.sciencemag.org/content/371/6531/850/tab-figures-data),
-    read it in, and analyze it.
-    Consider making a heatmap using `geom_tile`, and grouping/aggregating
-    the data by amino acid types, or antibodies added.
-
-Differential expression analysis with DESeq2
-: Love, Andres, and Huber's DESeq2 package is a well used and highly respected
-    package for doing differential expression of counts data, for RNAseq
-    (bulk and sc) or barseq or whatever, it's pretty handy.
-    Attempt to work through [the tutorial](https://www.bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html#count-matrix-input), 
-    I recommend starting with the count data from the `pasilla` package.
-    The idea is that you're doing DE analysis on RNAseq from a Drosophila
-    RNAi knockdown of the pasilla gene, to see what that gene's expression 
-    affects expression of.
-    The tutorial is a bit tangled, so work as a team to follow and pick 
-    through it.
-
-
-Other ones? If you have an idea, propose it and maybe there's a group that
-wants to attempt it. Keep it to be things you can readily do in R.
+## 4.5 some bigger group problems
 
 
 Now is an opportunity for you to put together everything that you've learned to
 start asking questions about data. There are a few datasets listed below, along
 with questions about the data. First, design some analyses you can do to answer
 the question. Some examples might be comparing the means between certain
-populations, plotting the distribution of a variable (or multiple variables),
-or . For all of these datasets, make sure to explore the data a little bit with
+populations, plotting the distribution of a variable (or multiple variables). 
+For all of these datasets, make sure to explore the data a little bit with
 commands like head() and tail() before jumping into your analysis so you're
 familiar with the data.
 
+Let's split into groups.
+Work together, make sure everyone is moving along nicely.
+If you're having trouble, ask for help from your peers, and/or teaching folks.
+Some are short, some are longer - if you finish one, attempt another!
+
+**SARS2 antibody escape**
+
+Starr et al Bloom used the Awesome Power Of Yeast Genetics to map
+SARS-CoV-2 antibody escape probabilities early on in the pandemic.
+Download the dataset [here](https://science.sciencemag.org/content/371/6531/850/tab-figures-data),
+read it in, and analyze it.
+Consider making a heatmap using `geom_tile`, and grouping/aggregating
+the data by amino acid types, or antibodies added.
+
+- Are there different amino acids that tend to be mutated to enable escape?
+- Are there particular regions where changes are associated with escape?
+
 **Iris Dataset**
 
-You can load this dataset with `data(iris)`
+You can load this dataset from the `data` folder, `iris.csv`.
 
-What variable is most useful for distinguishing between species?
-
-What species has the biggest variability in flower size?
-
-
+- What variable is most useful for distinguishing between species?
+- What species has the biggest variability in flower size?
 
 **Alzheimer's Microarray Analysis**
 
@@ -334,12 +295,10 @@ These data are originally from
 https://www.kaggle.com/andrewgao/alzheimer-microarray-analysis. You can
 download them from https://github.com/darachm/dll-r/tree/main/data
 
-What gene is most associated with Alzheimer's disease (based on the unadjusted
+- What gene is most associated with Alzheimer's disease (based on the unadjusted
 p-value)?
-
-How many genes have unadjusted p-values less than 0.05?
-
-Do some reading on p-values. Why do you think the adjusted p-value is included
+- How many genes have unadjusted p-values less than 0.05?
+- Do some reading on p-values. Why do you think the adjusted p-value is included
 in the data?
 
 
@@ -351,47 +310,27 @@ data from https://github.com/darachm/dll-r/tree/main/data, though the data were
 originally from
 https://www.kaggle.com/codebreaker619/usa-weekly-counts-of-deaths-by-state-and-causes.
 
-What state has the highest number of deaths per year based on the data reported
+- What state has the highest number of deaths per year based on the data reported
 here? Do you think this is a fair way to look at the data? What can you do to
 help make the analysis more fair across states if you wanted to understand
 which states had the highest death rates?
-
-What cause of death has increased the most from 2014 to 2018? Which has
+- What cause of death has increased the most from 2014 to 2018? Which has
 decreased?
-
-What week (based on the MMWR week column) generally has the highest mortality?
-
+- What week (based on the MMWR week column) generally has the highest mortality?
 
 **Calculating codon freuencies in the viral proteins**
 
-Let's say you are actually looking for motif occurances, and doing
+Let's say you are actually looking for motif occurances in the viral protein
+dataset we analyzed earlier, and doing
 a careful job about balancing your test cases and inputs, etc.
-
 Your null model might depend on how often certain amino acids tend to
-occur. How might you write some R code to count up each occurance
-of each amino acid in this dataset?
+occur. 
 
-Here's a complex line of code that may be adaptable to this problem:
+- How might you write some R code to count up each occurance of each amino 
+    acid in this dataset (all ~240 proteins)?
 
-    table(
-        factor(
-            unlist(
-                strsplit("ACABA",split="")
-            ),
-            levels=c("A","B","C","D","E","F","G")
-        )
-    )
-
-`table` tabulates the occurances of a string/factor,
-`factor` with a `levels` argument can create "spaces" for unobserved
-letters/strings,
-`unlist` turns a list into not a list,
-`strsplit` breaks up a string into a vector of strings using a pattern
-that can also be "".
-
-Can you figure out how to do this, how to calculate the amino acid frequencies
-across all the viral structural proteins in all the files?
-
+- Can you figure out how to do this, how to calculate the amino acid frequencies
+    across all the viral structural proteins in all the files?
 
 
 

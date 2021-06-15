@@ -8,6 +8,8 @@ as reference (if not inspiration) for your future R practice.
 - An [interactive page](https://ft-interactive.github.io/visual-vocabulary/)
     showing different types of figures
 - A [R graph gallery](https://www.r-graph-gallery.com/)
+- Claus Wilke's [cowplot](https://cran.r-project.org/web/packages/cowplot/vignettes/introduction.html) 
+    package is a great way to make multi-panel figures with ggplot, so A B etc.
 
 ## More links
 
@@ -33,5 +35,6 @@ SnakeMake, but it is well built and very flexible.
 
 These will not be necessary for summer projects, but may be useful skills
 for bioinformatics research for at least the next 5-10 years.
+
 
 
