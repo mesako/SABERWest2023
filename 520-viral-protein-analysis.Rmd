@@ -72,7 +72,7 @@ enter-key to search for it.
 
 #### Back to the file-reading...
 
-Use `read.delim` to read in one of the files.
+We can use `read.delim` to read in one of the files.
 You will have to specify the delimiter/separator.
 "\t" is usually how you specify a TAB character in character strings, like
 you would set as that argument.
@@ -100,9 +100,14 @@ not do that, to leave it `as.is`.
 viral_protein_data <- read.delim("data/viral_structural_proteins/viral_proteins_100.tsv",
     sep="\t",header=F,as.is=T)
 viral_protein_data
+is(viral_protein_data$V3)
 ```
 
 This is how you do it in base R. How do you do this in tidyverse?
+You can use `read_delim` or `read_tsv`, with different arguments,
+such as `col_names=F` to prevent it from reading the first line as a header.
+Also, no factor conversion :) 
+
 
 ```{=html}
 </div>
@@ -110,10 +115,100 @@ This is how you do it in base R. How do you do this in tidyverse?
 
 ---
 
+
+
+
 ### String stuff
 
 Once we have that, we can test how we will process the protein sequence.
 For now, let's just calculate the length of the protein sequence.
+
+Character strings are a common type of data, and there's lots of ways to
+cut, dice, extract, and recognize elements to help your work.
+Here's some tools/ideas:
+
+#### Base R tools
+
+Let's start with one of those above sentences.
+You can make a string by putting characters in between single or double quotes:
+
+```{r,examplestring,cache=T}
+stringz <- "Character strings are a common type of data, and there's lots of ways to"
+stringz
+is(stringz)
+str(stringz)
+```
+
+`grep` and `grepl` are good for searching for patterns (like `grep` in bash).
+The first returns position, the second returns `TRUE` or `FALSE`.
+
+I only ever use `grepl` anymore. It searches for a `pattern` string
+in a character vector `x`, and returns a logical vector.
+With a logical vector, you can do a lot, like indexing/slicing or sum-ing.
+
+```{r,grepz,cache=T}
+grepl(pattern="common type",x=stringz)
+grepl("rare type",stringz)
+grepl(" [comn]* type",stringz)
+```
+
+So see that last one with the `[]*` stuff?
+Called a regular expression.
+You can use complex 
+[regular expressions](https://bookdown.org/rdpeng/rprogdatascience/regular-expressions.html)
+to specify more complex patterns.
+These can get 
+[really complex](https://r4ds.had.co.nz/strings.html#matching-patterns-with-regular-expressions)
+and [really powerful](https://cs.lmu.edu/~ray/notes/regex/).
+We're not going to explain these here, except just for the example below.
+
+Ask on Slack later if you'd like more help with something specific.
+
+Also of use is `sub` and `gsub`. 
+These substitute patterns with replacements, for the
+first occurrence (`sub`) or globally (`gsub`).
+These are really handy for modifying data-tables.
+
+For example, let's say you'd like to split up filenames by dates:
+
+```{r,subexample,cache=T}
+datar <- data.frame(stringsAsFactors=F,
+    filenames=c(
+        "210607_pilot_transformation_works.jpeg",
+        "210609_transformation_seems_to_work.jpeg",
+        "210610_failed_gel_images.jpeg"
+    )
+)
+datar$dates <- gsub(pattern="(\\d\\d\\d\\d\\d\\d)_(.*)\\.jpeg",
+        replacement="\\1",x=datar$filenames)
+datar$names <- gsub(pattern="(\\d\\d\\d\\d\\d\\d)_(.*)\\.jpeg",
+        replacement="\\2",x=datar$filenames)
+datar
+```
+
+The above uses regular expressions, where `\\d` is matching any digit, 
+`.*` matches anything, and `()` denote "groups" to "capture".
+In the "replacement", these "groups" are referred to by `\\1` or `\\2`.
+
+These "capture groups" are **super useful**!
+You can use them to take out matches and re-arrange them.
+
+So, `(\\d\\d\\d\\d\\d\\d)_` matches six digits followed by an underscore,
+such as `210618_`, and saves it as `\\1`.  So
+
+```{r,subdemoagain,cache=T}
+gsub(pattern="(\\d\\d\\d\\d\\d\\d)_(.*)",replacement="\\1",x="210616_after")
+gsub(pattern="(\\d\\d\\d\\d\\d\\d)_(.*)",replacement="\\2",x="210616_after")
+```
+
+There are better (cleaner) ways of doing this with tidyverse, 
+basics are important. See a bit of tidyverse/stringr stuff in the end of this 
+4.2 section, if you're curious.
+
+
+
+
+
 
 
 
@@ -592,75 +687,6 @@ How?
         step slightly easier.]
 
 3. Plot the results. How often do you find this motif in this dataset?
-
-### Some operations on strings
-
-Character strings are a common type of data, and there's lots of ways to
-cut, dice, extract, and recognize elements to help your work.
-Here's some ideas:
-
-#### Base R tools
-
-Let's start with one of those above sentences.
-You can make a string by putting characters in between single or double quotes:
-
-```{r,examplestring,cache=T}
-stringz <- "Character strings are a common type of data, and there's lots of ways to"
-stringz
-is(stringz)
-str(stringz)
-```
-
-`grep` and `grepl` are good for searching for patterns (like `grep` in bash).
-The first returns position, the second returns `TRUE` or `FALSE`.
-What kind of value is that then?
-
-I only ever use `grepl` anymore. It searches for a `pattern` string
-in a character vector `x`.
-
-```{r,grepz,cache=T}
-grepl(pattern="common type",x=stringz)
-grepl("rare type",stringz)
-grepl(" [comn]* type",stringz)
-```
-
-You can use complex 
-[regular expressions](https://bookdown.org/rdpeng/rprogdatascience/regular-expressions.html)
-to specify more complex patterns.
-These can get 
-[really complex](https://r4ds.had.co.nz/strings.html#matching-patterns-with-regular-expressions)
-and [really powerful](https://cs.lmu.edu/~ray/notes/regex/).
-We're not going to explain these here, except just for the example below.
-
-Ask on Slack later if you'd like more help with something specific.
-
-Also of use is `sub` and `gsub`. 
-These substitute patterns with replacements, for the
-first occurrence (`sub`) or globally (`gsub`).
-These are really handy for modifying data-tables.
-
-For example, let's say you'd like to split up filenames by dates:
-
-```{r,subexample,cache=T}
-datar <- data.frame(stringsAsFactors=F,
-    filenames=c(
-        "210607_pilot_transformation_works.jpeg",
-        "210609_transformation_seems_to_work.jpeg",
-        "210610_failed_gel_images.jpeg"
-    )
-)
-datar$dates <- gsub(pattern="(\\d\\d\\d\\d\\d\\d)_(.*)\\.jpeg",
-        replacement="\\1",x=datar$filenames)
-datar$names <- gsub(pattern="(\\d\\d\\d\\d\\d\\d)_(.*)\\.jpeg",
-        replacement="\\2",x=datar$filenames)
-datar
-```
-
-The above uses regular expressions, where `\\d` is matching any digit, 
-`.*` matches anything, and `()` denote "groups" to "capture".
-In the "replacement", these "groups" are referred to by `\\1` or `\\2`.
-
-There are better (cleaner) ways of doing this...
 
 #### stringr and the tidyverse
 

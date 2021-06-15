@@ -9,113 +9,7 @@ output:
 #        theme: default
 ---
 
-This worksheet was created by [darachm](https://github.com/darachm) and
-[Samson](https://github.com/samson920) with a [Creative Commons
-Attribution-NonCommercial-ShareAlike 4.0
-License](https://github.com/darachm/dll-r/blob/main/LICENSE.md).
 
-# Instructions for this Worksheet
-
-Write your code and/or your response underneath each task prompt. To render
-your worksheet, click on the Knit button in Rstudio, or run the 
-`render` function directly from your R console: 
-
-```{r,renderdoc,eval=F}
-rmarkdown::render("dll-r_Day5_Lab.Rmd")
-```
-
-_( Don't understand what this is doing? Bring that up when we get to the
-rmarkdown and package sections! )_
-
-Be sure that your code is
-able to execute completely and that the result you expect is shown in the
-resulting html file.
-
-------
-
-# Day 5, Section 4 - workflows etc.
-
-## 4.1 exercises
-
-### (1) Organize yesterday's work 
-
-Work together. 
-Take your work from yesterday, the tidyverse plots.
-Organize it into a separate project directory, maybe called something like
-`tidyverse-demo`. 
-Include the Rmd scripts in an appropriate directory (`scripts`?),
-the data in the `data` directory.
-Write the Rmd so you can generate your whole report
-by running `render` (in Console or via the 'Knit' button).
-
-CAUTION: reading or writing files may not work! Instead of using something
-like:
-
-```{r,indemo,eval=F}
-read.csv("that_file.csv")
-```
-
-you may have to look "up" and "over" (remember from day1/2?), like so:
-
-```{r,indemo2,eval=F}
-read.csv("../data/that_file.csv")
-```
-
-and for writing plots into an output directory:
-
-```{r,outdemo,eval=F}
-png("../outputs/that.png")
-# plotz
-dev.off()
-```
-
-**Optional**
-
-Consider making your rmarkdown file more fancy.
-Go ahead and change the time, some of the options in the header.
-Maybe a theme, maybe
-<marquee style="display:block;width:50%;">add some HTML tags to modify your rmarkdown file,</marquee> 
-because it's all turned into HTML anyways!
-
-When you're done, share any new tricks or useful ideas in the slack channel,
-or in your groups.
-
-### (2) Discuss your organization styles
-
-In your group, discuss how you organize your work, 
-and what you think would be useful or not useful.
-
-How do you usually save notes/code/instructions?
-
-How do you share this with others?
-
-What are some disadvantages to this system?
-Can you work around those?
-
-How do you leave instructions for future users?
-
-### (3) **OPTIONAL** Discuss your organizational plan with your supervisor!
-
-Consider asking your supervisor about organization before you start.
-
-Where does the data live? Where is going to be archived for future users?
-
-What will you be expected to share? In what formats, written reports or 
-presentations, slide decks?
-
-## Section 4.2: 
-
-Loops to read many files
-
-##### Section 4.2.1: Reading in one file
-
-**Task A:** ???
-
-```{r}
-# Your code here
-```
-
-*Your response here*
 
 #### End of Class Summary
 
@@ -170,5 +64,166 @@ What cause of death has increased the most from 2014 to 2018? Which has
 decreased?
 
 What week (based on the MMWR week column) generally has the highest mortality?
+
+
+
+
+
+
+
+This worksheet was created by [darachm](https://github.com/darachm) and
+[Samson](https://github.com/samson920) with a [Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0
+License](https://github.com/darachm/dll-r/blob/main/LICENSE.md).
+
+# Instructions for this Worksheet
+
+Write your code and/or your response underneath each task prompt. To render
+your worksheet, click on the Knit button in Rstudio, or run the 
+`render` function directly from your R console: 
+
+```{r,renderdoc,eval=F}
+rmarkdown::render("dll-r_Day5_Lab.Rmd")
+```
+
+_( Don't understand what this is doing? Bring that up when we get to the
+rmarkdown and package sections! )_
+
+Be sure that your code is
+able to execute completely and that the result you expect is shown in the
+resulting html file.
+
+------
+
+# Day 5, Section 4 - workflows etc.
+
+## 4.1 exercises
+
+### 4.1.1 Organize yesterday's work 
+
+Work together. 
+Take your work from yesterday, the tidyverse plots.
+Organize it into a separate project directory, maybe called something like
+`tidyverse-demo`. 
+Include the Rmd scripts in an appropriate directory (`scripts`?),
+the data in the `data` directory.
+Write the Rmd so you can generate your whole report
+by running `render` (in Console or via the 'Knit' button).
+
+CAUTION: reading or writing files may not work! Instead of using something
+like:
+
+```{r,indemo,eval=F}
+read.csv("that_file.csv")
+```
+
+you may have to look "up" and "over" (remember from day1/2?), like so:
+
+```{r,indemo2,eval=F}
+read.csv("../data/that_file.csv")
+```
+
+and for writing plots into an output directory:
+
+```{r,outdemo,eval=F}
+png("../outputs/that.png")
+# plotz
+dev.off()
+```
+
+**Optional**
+
+Consider making your rmarkdown file more fancy.
+Go ahead and change the time, some of the options in the header.
+Maybe a theme, maybe
+<marquee style="display:block;width:50%;">add some HTML tags to modify your rmarkdown file,</marquee> 
+because it's all turned into HTML anyways!
+
+When you're done, share any new tricks or useful ideas in the slack channel,
+or in your groups.
+
+### 4.1.2 Discuss your organization styles
+
+In your group, discuss how you organize your work, 
+and what you think would be useful or not useful.
+
+How do you usually save notes/code/instructions?
+
+How do you share this with others?
+
+What are some disadvantages to this system?
+Can you work around those?
+
+How do you leave instructions for future users?
+
+### 4.1.3 **OPTIONAL** Discuss your organizational plan with your supervisor!
+
+When you start this summer, consider asking your supervisor about organization:
+
+Where does the data live? Where is going to be archived for future users?
+
+What will you be expected to share? In what formats, written reports or 
+presentations, slide decks?
+
+
+
+
+## 4.2 exercises
+
+### (1)
+
+Take a look at the files in the `data/viral_structural_proteins/` directory.
+
+How do you do this using bash tools as you learned on Day1/2?
+- (Hint: there is a "Terminal" table in Rstudio where you can type bash commands)
+
+How do you do something similar using R?
+
+### (2)
+
+If you haven't already, go ahead and set up your project folder.
+
+- make a `data` folder, and move/copy the `viral_structural_proteins` folder
+    into that
+- make a `scripts` directory, and put this `Rmd` file in there
+- make a note in the `Rmd` about where the data came from
+
+### (3) 
+
+Start with 4.2.1
+
+Check out the documentation/help for `read.delim` to learn what two arguments
+you need to set to read one of these files.
+
+Additionally, what other argument can you set to prevent the character strings
+from being turned into factors?
+
+- What is `viral_protein_data`? What kind of variable?
+- How do we find the column names?
+- What are two ways to access the protein sequence?
+
+### (4) 
+
+Read/skim/work through 4.2.2
+
+- Read and save one of the protein sequence files, 
+    maybe as `viral_protein_data`.
+- Search for different amino acid combinations in there. 
+    See any repeats? Any particularly common or rare amino acid?
+    Combination of those? Do a few.
+    `grepl`
+- See if you can change all of a certain amino acid to another amino acid
+    in the sequence (`sub`, `gsub`).
+- How do we calculate the number of characters in this protein sequence?
+    ( Try searching with "??`number of characters`" )
+
+### (5)
+
+
+
+
+
+
+
 
 
