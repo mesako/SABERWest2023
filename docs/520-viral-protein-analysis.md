@@ -31,18 +31,21 @@ reading tab-delimited files.
 ^[The formats you're likely going to have to deal with are CSV, TSV,
     FASTQ, FASTA, SAM - at least. ]
 
-How do you inspect these files?
-What bash tools do you use to look at these?
+One trick to look at files using R is using `readLines()` function.
+This just reads lines, up to the argument `n=` number of lines.
+Try something like:
 
----
 
-Go ahead and set up your project folder.
+```r
+readLines("data/viral_structural_proteins/viral_proteins_242.tsv",n=5)
+```
 
-- make a `data` folder, and copy the `viral_structural_proteins` folder
-    into that
-- make a `scripts` directory, and start a new `Rmd` file in there
-- make a note in the `Rmd` about where the data came from
-- load any libraries you want to use
+```
+## [1] "YP_009724393.1 membrane glycoprotein \tSevere acute respiratory syndrome coronavirus 2\tMADSNGTITVEELKKLLEQWNLVIGFLFLTWICLLQFAYANRNRFLYIIKLIFLWLLWPVTLACFVLAAVYRINWITGGIAIAMACLVGLMWLSYFIASFRLFARTRSMWSFNPETNILLNVPLHGTILTRPLLESELVIGAVILRGHLRIAGHHLGRCDIKDLPKEITVATSRTLSYYKLGASQRVAGDSGFAAYSRYRIGNYKLNTDHSSSSDNIALLVQ"
+```
+
+Whenever using these commands, put your cursor in the quotes and then hit TAB,
+to use autocomplete.
 
 ---
 
@@ -74,14 +77,10 @@ enter-key to search for it.
 
 #### Back to the file-reading...
 
-What does `?read.delim` say it does?
-How do you set the delimiter/separator as a tab?
-^[Often this is typed into computers and scripts as "\t", as the tab key 
-    will often not put a TAB character into where you're typing.]
-
-Is the function expecting there to be a file "header"?
-( This would where the first line of the file has the name of each column )
-Do we want to set this to `TRUE` or `FALSE` ?)
+Use `read.delim` to read in one of the files.
+You will have to specify the delimiter/separator.
+"\t" is usually how you specify a TAB character in character strings, like
+you would set as that argument.
 
 ```{=html}
 <div class="incremental">
@@ -103,20 +102,51 @@ viral_protein_data
 ## 1 MSSVTTPAPVYTWTADEAIKFLKEWNFSLGIILLFITVILQFGYTSRSMFVYVIKMIILWLMWPLTIILTIFNCVYALNNVYLGFSIVFTIVAIIMWIVYFVNSIRLFIRTGSWWSFNPETNNLMCIDMKGRMYVRPIIEDYHTLTVTIIRGHLYMQGIKLGTGYSLSDLPAYVTVAKVSHLLTYKRGFLDKIGDTSGFAVYVKSKVGNYRLPSTQKGSGLDTALLRNNI
 ```
 
-- What is `viral_protein_data`? What kind of variable?
-- How do we find the column names?
-- What are two ways to access the protein sequence?
-- How do we calculate the number of characters in this protein sequence?
-    ( Try searching with "??`number of characters`" )
+What type is that third column?
 
-What type is the `V3` column? What should it be?
-How do we tell R to treat these strings as they are, and not convert to factors?
+
+```r
+is(viral_protein_data$V3)
+```
+
+```
+## [1] "character"           "vector"              "data.frameRowLabels"
+## [4] "SuperClassMethod"
+```
+
+Huh, looks like it'll convert it to a factor automatically. Let's tell it to 
+not do that, to leave it `as.is`.
+
+
+```r
+viral_protein_data <- read.delim("data/viral_structural_proteins/viral_proteins_100.tsv",
+    sep="\t",header=F,as.is=T)
+viral_protein_data
+```
+
+```
+##                           V1
+## 1 Q8V433.1 Membrane protein 
+##                                                       V2
+## 1 Bovine respiratory coronavirus (strain 98TXSF-110-LUN)
+##                                                                                                                                                                                                                                       V3
+## 1 MSSVTTPAPVYTWTADEAIKFLKEWNFSLGIILLFITVILQFGYTSRSMFVYVIKMIILWLMWPLTIILTIFNCVYALNNVYLGFSIVFTIVAIIMWIVYFVNSIRLFIRTGSWWSFNPETNNLMCIDMKGRMYVRPIIEDYHTLTVTIIRGHLYMQGIKLGTGYSLSDLPAYVTVAKVSHLLTYKRGFLDKIGDTSGFAVYVKSKVGNYRLPSTQKGSGLDTALLRNNI
+```
 
 This is how you do it in base R. How do you do this in tidyverse?
 
 ```{=html}
 </div>
 ```
+
+---
+
+### String stuff
+
+Once we have that, we can test how we will process the protein sequence.
+For now, let's just calculate the length of the protein sequence.
+
+
 
 ---
 
