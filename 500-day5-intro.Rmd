@@ -24,13 +24,13 @@ First, let's review the last two days.
 
 ---
 
-Our goals are to learn how to:
+Our goals are to learn:
 
-- organize work in a folder and rmarkdown files
-- build a workflow analyzing some viral proteins in a *scalable* way
-- modify our workflow to expand the analyses
-- obtain and use packages to user other people's work
-- tackling new problems with new R packages
+- Why and how to organize work in a folder and rmarkdown files
+- How look for patterns and calculate lengths of strings
+- Why and how to write loops to do many analyses in a scalable way
+- What packages are for, how to find them, and how to install them
+- How to find help and tackle new problems with a learning community
 
 ---
 
