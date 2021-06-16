@@ -15,7 +15,8 @@ as reference (if not inspiration) for your future R practice.
 
 ### More links
 
-- [A whole bunch of cheatsheets and example sheets of common commands and ways to do things](https://www.rstudio.com/resources/cheatsheets/)
+- [A whole bunch of cheatsheets and example sheets of common commands and ways to do things](https://www.rstudio.com/resources/cheatsheets/#contributed-cheatsheets), 
+    check under "Contributed Cheatsheets" for some great ones, or browse them all
 
 - [Claus Wilke's dataviz bookdown](https://clauswilke.com/dataviz/)
 - [Computational Genomics with R](https://compgenomr.github.io/book/)
