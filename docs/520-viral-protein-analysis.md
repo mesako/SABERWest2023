@@ -127,8 +127,9 @@ is(viral_protein_data$V3)
 ```
 
 ```
-## [1] "character"           "vector"              "data.frameRowLabels"
-## [4] "SuperClassMethod"
+## [1] "factor"              "integer"             "oldClass"           
+## [4] "double"              "numeric"             "vector"             
+## [7] "data.frameRowLabels"
 ```
 
 Huh, looks like it'll convert it to a factor automatically. Let's tell it to 
@@ -968,17 +969,17 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+## ── Attaching packages ───────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 ```
 
 ```
-## ✔ tibble  3.1.2     ✔ purrr   0.3.4
-## ✔ tidyr   1.1.3     ✔ dplyr   1.0.6
-## ✔ readr   1.4.0     ✔ forcats 0.5.1
+## ✔ tibble  3.0.4     ✔ purrr   0.3.4
+## ✔ tidyr   1.1.2     ✔ dplyr   1.0.2
+## ✔ readr   1.4.0     ✔ forcats 0.5.0
 ```
 
 ```
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ──────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
@@ -1058,18 +1059,18 @@ tibble(
 
 ```
 ## # A tibble: 243 x 2
-##    filenames                                             rawfiles             
-##    <chr>                                                 <list>               
-##  1 data/viral_structural_proteins/viral_proteins_000.tsv <spec_tbl_df [1 × 3]>
-##  2 data/viral_structural_proteins/viral_proteins_001.tsv <spec_tbl_df [1 × 3]>
-##  3 data/viral_structural_proteins/viral_proteins_002.tsv <spec_tbl_df [1 × 3]>
-##  4 data/viral_structural_proteins/viral_proteins_003.tsv <spec_tbl_df [1 × 3]>
-##  5 data/viral_structural_proteins/viral_proteins_004.tsv <spec_tbl_df [1 × 3]>
-##  6 data/viral_structural_proteins/viral_proteins_005.tsv <spec_tbl_df [1 × 3]>
-##  7 data/viral_structural_proteins/viral_proteins_006.tsv <spec_tbl_df [1 × 3]>
-##  8 data/viral_structural_proteins/viral_proteins_007.tsv <spec_tbl_df [1 × 3]>
-##  9 data/viral_structural_proteins/viral_proteins_008.tsv <spec_tbl_df [1 × 3]>
-## 10 data/viral_structural_proteins/viral_proteins_009.tsv <spec_tbl_df [1 × 3]>
+##    filenames                                             rawfiles        
+##    <chr>                                                 <list>          
+##  1 data/viral_structural_proteins/viral_proteins_000.tsv <tibble [1 × 3]>
+##  2 data/viral_structural_proteins/viral_proteins_001.tsv <tibble [1 × 3]>
+##  3 data/viral_structural_proteins/viral_proteins_002.tsv <tibble [1 × 3]>
+##  4 data/viral_structural_proteins/viral_proteins_003.tsv <tibble [1 × 3]>
+##  5 data/viral_structural_proteins/viral_proteins_004.tsv <tibble [1 × 3]>
+##  6 data/viral_structural_proteins/viral_proteins_005.tsv <tibble [1 × 3]>
+##  7 data/viral_structural_proteins/viral_proteins_006.tsv <tibble [1 × 3]>
+##  8 data/viral_structural_proteins/viral_proteins_007.tsv <tibble [1 × 3]>
+##  9 data/viral_structural_proteins/viral_proteins_008.tsv <tibble [1 × 3]>
+## 10 data/viral_structural_proteins/viral_proteins_009.tsv <tibble [1 × 3]>
 ## # … with 233 more rows
 ```
 

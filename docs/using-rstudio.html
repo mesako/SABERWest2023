@@ -74,7 +74,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -347,7 +347,7 @@ Follow along with the steps below on your own computer.
 <img src="img/r_basics/Fig8.png" alt="Zoom on environment with variable" />
 <p class="caption">Zoom on environment with variable</p>
 </div>
-<p>This will store the value 7 in a variable called x. You should now see a variable named x pop up with the value 7! You can also store other types of data in variables. Try typing <code>y &lt;- &quot;hello&quot;</code> in your console. Now if you type <code>y</code>, you should see “hello” printed!</p>
+<p>This will store the value 7 in a variable called x. You should now see a variable named x pop up with the value 7! You can also store other types of data in variables. Try typing <code>y &lt;- "hello"</code> in your console. Now if you type <code>y</code>, you should see “hello” printed!</p>
 <p>If needed, you can save your current environment and all the variables in it (also called a workspace) by clicking the save button on top. Directly to the left of the save button is a button to load a pre-existing workspace. This can be useful if you have been doing analysis in the console instead of a script and want to save some of your variables to share with someone else.</p>
 <p>The history tab shows a history of commands you have run. If you double click on a command, it will put it in the console for you and you can click enter to run it. However, be careful that some environment variables may have changed! Try typing <code>x</code> in the console to see the value of x. You should 7 print out. Now try typing <code>x &lt;- x+2</code> in the console. You should see the value 9. The line of code we just wrote took the value of x, added 2, and stored that new value in x. Because x was 7, the new value is 9. If you type <code>x</code> again, you’ll see the value 9 print out. Similarly, if you use the same command from your history, if any of the variables involved as changed, the output may be different. Once you overwrite a variable, you cannot recover its old value!</p>
 <p>You will probably not use these last two tabs. The connection tab allows you to connect to some kinds of external databases (though more commonly your mentors will provide you with some data files for you to load in a script). The tutorial tab can help walk you through various things in R.</p>
@@ -359,15 +359,15 @@ Follow along with the steps below on your own computer.
 <div id="putting-it-all-together" class="section level3">
 <h3><span class="header-section-number">2.1.5</span> Putting It All Together</h3>
 <p>Let’s put what we’ve learned together. Copy the code below and paste it into a blank R script.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">print</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">print</span>(x)</a></code></pre></div>
 <pre><code>## [1] 1 2 3</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">print</span>(<span class="kw">sum</span>(x))</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw">print</span>(<span class="kw">sum</span>(x))</a></code></pre></div>
 <pre><code>## [1] 6</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">x[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">print</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">x[<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">print</span>(x)</a></code></pre></div>
 <pre><code>## [1] 0 2 3</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">print</span>(<span class="kw">sum</span>(x))</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">print</span>(<span class="kw">sum</span>(x))</a></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>The first line of code stores a vector of numbers into the variable x. The next line prints that list. The next line takes the sum of those numbers and prints that. A command that does something else is called a function. Here, sum is a function that takes a vector of numbers as its input, and outputs the sum of all the numbers.</p>
 <p>The next line of code changes the first value in the vector and replaces it with 3. We can see that change when we print the vector. We can also see the sum changed accordingly. In R, whenever we call a function we write the name of the number, then put the inputs (also called arguments) in parenthesis after the name of the function. There are other built in functions like mean() and min(). We can also write our own functions. We’ll work with functions more throughout the week.</p>
