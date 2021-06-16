@@ -34,11 +34,11 @@ You'll notice that there's some R code chunks already present in your R Markdown
 
 Let's talk about `{r setup, include=FALSE}`. The first character `r` just indicates that this is an R code chunk. Then, there is a space followed by `setup`. This is a name for the code chunk and is option. It cannot contain any spaces. Then, following the comma, you'll see `include=FALSE`. This means that the code is not visible in the Rmd file once compiled and neither is the output. However, the code chunk is still run. Create a new Rmd file, but click "Create empty document" instead of "Ok" on the pop up menu. Now, create a code chunk that looks like this ![new code chunk example](./img/rmd_basics/fig5.png)
 
-When you click Knit, you'll get an error because we haven't defined x! Put a new code chunk _before_ that one where you set `include=FALSE` and define x to be a number in that code chunk (remember you set variables with the arrow operator, like `x <- 5`). 
+When you click Knit, you'll get an error because we haven't defined x! Put a new line of code in that code chunk where you define x to be some number (remember, we set variables with the `<-` operator, like `x <- 10`). 
 
 Now, let's say that you only wanted to print the value of x, but didn't want the code to show up. In the second code chunk where you are printing x, set echo=FALSE. Remember to include a comma after the `r` (or after the name of the chunk, if you gave it a name). Now, when you knit the file, you should only see the value of x printed, like this: ![knit code chunk](./img/rmd_basics/fig6.png)
 
-Now, let's say you wanted to show someone how they write some code, but you don't actually want to run it. Change `echo=FALSE` to 'eval=FALSE`. Now, when you knit the Rmd, you should see the code but not the printed output, like this: ![code only output for new code chunk](./img/rmd_basics/fig7.png).
+Now, let's say you wanted to show someone how they write some code, but you don't actually want to run it. Change `echo=FALSE` to `eval=FALSE`. Now, when you knit the Rmd, you should see the code but not the printed output, like this: ![code only output for new code chunk](./img/rmd_basics/fig7.png).
 
 If an Rmd file is taking a long time to knit, that could be because some of the code is taking a long time to run. The code is rerun every time you knit the file! If this is the case, you can add a `cache=TRUE` flag to a code chunk which will stop it from running every time you knit the Rmd file. It will only run if you change something. You can add multiple flags to a code chunk by using commas between them.
 

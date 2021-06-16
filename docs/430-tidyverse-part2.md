@@ -51,7 +51,7 @@ We'll read in the data straight from github. This is a lot of data (every county
 
 
 ```
-## ── Attaching packages ───────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+## ── Attaching packages ───────────────────────────────────────────────────── tidyverse 1.3.0 ──
 ```
 
 ```
@@ -62,7 +62,7 @@ We'll read in the data straight from github. This is a lot of data (every county
 ```
 
 ```
-## ── Conflicts ──────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ──────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
