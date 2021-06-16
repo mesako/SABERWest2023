@@ -21,11 +21,11 @@ Before you start reading through Section 2 for today or taking part in synchrono
 
 |   Start Time  |   End Time  |   Activity    |          Description          |   Facilitator   |
 | ------------- | ----------- | ------------- | ----------------------------- | --------------- |
-| 10:00 AM PDT  | 10:45 AM PDT| Synchronous   | Welcome session on Zoom       | **Melissa**, Samson, Margaret, Darach, Zac  |
+| 10:00 AM PDT  | 10:45 AM PDT| Synchronous   | Welcome session on Zoom       | **Melissa**, Samson, Margaret, Zac  |
 | 10:45 AM PDT  | 11:30 AM PDT| Asynchronous  | Work through [sections 2.1-2.3](https://darachm.github.io/dll-r/navigating-rstudio.html) | **Zac**, Samson |
 | 11:30 AM PDT  | 12:15 PM PDT| Synchronous   | Peer coding exercises on Zoom | **Melissa**, Samson, Darach, Zac  |
 | 12:15 PM PDT  | 12:45 PM PDT| Lunch Break   | Take a computer break!        |       N/A       |
-| 12:45 PM PDT  | 1:30 PM PDT | Asynchronous  | Work through [sections 2.4-2.5](https://darachm.github.io/dll-r/working-with-vectors.html) | **Margaret**, Zac, Samson |
+| 12:45 PM PDT  | 1:30 PM PDT | Asynchronous  | Work through [sections 2.4-2.5](https://darachm.github.io/dll-r/working-with-vectors.html) | **Margaret**, Zac, Samson, Darach |
 | 1:30 PM PDT   | 2:30 PM PDT | Synchronous   | Peer coding exercises on Zoom | **Melissa**, Samson, Darach, Zac  |
 | 2:30 PM PDT   | 3:00 PM PDT | Snack Break   | Take a computer break!        |       N/A       |
 | 3:00 PM PDT   | 3:30 PM PDT | Synchronous   | Wrap-up session on Zoom       |   **Samson**, Margaret, Darach, Zac   |
