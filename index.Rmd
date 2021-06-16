@@ -88,6 +88,7 @@ Please visit each day's specific page for the exact schedule:
 + [Day 4 Schedule](https://darachm.github.io/dll-r/day-4-tidyverse-and-visualizations.html)
 + [Day 5 Schedule](https://darachm.github.io/dll-r/day-5-building-workflows-using-packages-writing-reusable-code-sharing-analyses.html)
 
+Each time segment lists who among the teaching team will be around to assist. We encourage you to poke the Slack channel (so below for info) with questions, but you can feel free to tag (@) or directly message the person responsible for the time slot/content you have questions about.
 
 ### Asynchronous sessions
 
@@ -97,13 +98,10 @@ You will be expected to progress through this website during asynchronous
 work time in this 3-day period. We developed this website/document for your reference,
 as a living textbook and collection of "slides" and code snippets.
 
-We have also made short teaching videos uploaded on Youtube that are embedded 
-where appropriate on this site. These mini-lectures are intended to complement 
-the text for those with different learning preferences.
-
 As you go through this website during the asynchronous sessions, you should also complete
 the exercises provided in the accompanying worksheets. If you have questions and/or
-need help, you should reach out to us and your peers on Slack.
+need help, you should reach out to us and your peers on Slack. We are
+also happy to jump into a Zoom call to work through issues with you.
 
 Tips:
 
