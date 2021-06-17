@@ -280,18 +280,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Goal: Understand the tidyverse framework of pipes and functions, as well as how to apply it to tidy data frame cleaning and manipulation.</p>
 <div id="welcome-to-the-tidyverse" class="section level3">
 <h3><span class="header-section-number">3.2.1</span> Welcome to the tidyverse!</h3>
-<p><a href="https://www.tidyverse.org">Tidyverse</a> is a suite of R packages that are very useful for data science when we need to manipulate data frames and visualize data. The most important packages in tidyverse for our workshop will be <a href="https://dplyr.tidyverse.org">dplyr</a> and <a href="https://ggplot2.tidyverse.org">ggplot2</a>. It builds on the base R functions and data types we’ve studied so far. It just provides a different design framework for working with data in R. The main two features of tidyverse are 1) a new suite of very useful functions and 2) the pipe <code>%&gt;%</code> which will allow us to go send data from one function to the next without using intermediate steps or nesting functions together.</p>
+<p><a href="https://www.tidyverse.org">Tidyverse</a> is a suite of R packages that are very useful for data science when we need to manipulate data frames and visualize data. The most important packages in tidyverse for our workshop will be <a href="https://dplyr.tidyverse.org">dplyr</a> and <a href="https://ggplot2.tidyverse.org">ggplot2</a>. It builds on the base R functions and data types we’ve studied so far. It just provides a different design framework for working with data in R. The main two features of tidyverse are</p>
+<ol style="list-style-type: decimal">
+<li>A new suite of very useful, intuitive functions</li>
+<li>The pipe <code>%&gt;%</code> which will allow us to go send data from one function to the next without using intermediate steps or nesting functions together</li>
+</ol>
 <div id="preview-new-functions-in-tidyverse" class="section level4">
 <h4><span class="header-section-number">3.2.1.1</span> Preview: new functions in tidyverse</h4>
-<p>Let’s say we have a dataframe, <code>df</code>, which has the name and age (in years) of everyone in a class. We want to create a new variable of age in months. In base R, we would do it this way:
-<code>df$age_months &lt;- df$age_years * 12</code></p>
+<p>Let’s say we have a dataframe, <code>df</code>, which has the name and age (in years) of everyone in a class. We want to create a new variable of age in months. In base R, we would do it this way:</p>
+<p><code>df$age_months &lt;- df$age_years * 12</code></p>
 <p>In tidyverse, we can use the function <code>mutate()</code> to create a new variable. As with most tidyverse functions, <code>mutate()</code> takes the dataset as the first argument and the operation as the second. Here the operation is to create the new variable.</p>
 <p><code>mutate(df, age_months = age_years * 12)</code></p>
-<p>As you will see with more complex examples, these functions can make dataset operations more readable, especially when strung together with a pipe.</p>
+<p>As you will see with more complex examples, <strong>these functions can make dataset operations more readable, especially when strung together with a pipe</strong>.</p>
 </div>
 <div id="preview-the-pipe-in-tidyverse" class="section level4">
 <h4><span class="header-section-number">3.2.1.2</span> Preview: the pipe in tidyverse</h4>
-<p>For example, recall the <code>head()</code> function used in the previous section. If you have a data frame, <code>df</code>, instead of peaking at it with <code>head(df)</code>, you can pipe it into the <code>head()</code> function like this: <code>df %&gt;% head()</code>. This might seem like more work than just calling the function around the data frame object, but when you need to run a bunch of functions on a data frame, it becomes much TIDIER!</p>
+<p>Recall the <code>head()</code> function used in the previous section. If you have a data frame, <code>df</code>, instead of peaking at the first few lines with <code>head(df)</code>, you can pipe it into the <code>head()</code> function like this: <code>df %&gt;% head()</code>. This might seem like more work than just calling the function around the data frame object, but when you need to run a bunch of functions on a data frame, it becomes much TIDIER!</p>
 <p>In the previous example, we could call the function using a pipe like so:</p>
 <p><code>df %&gt;% mutate(age_months = age_years * 12)</code></p>
 <p>Feeling motivated to accelerate data cleaning and analysis using the tidyverse?</p>
@@ -299,19 +303,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="load-tidyverse" class="section level3">
 <h3><span class="header-section-number">3.2.2</span> Load tidyverse</h3>
-<p>Download tidyverse
-Remember we only have to install once</p>
-<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;tidyverse&quot;</span>)</a></code></pre></div>
 <p>Load the tidyverse library</p>
-<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
-<pre><code>## ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
-## ✔ tibble  3.1.2     ✔ dplyr   1.0.6
-## ✔ tidyr   1.1.3     ✔ stringr 1.4.0
-## ✔ readr   1.4.0     ✔ forcats 0.5.1</code></pre>
-<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## ✖ dplyr::filter() masks stats::filter()
-## ✖ dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb200-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<p>If tidyverse is already installed, loading the library should not return an error message. It is ok if it says there are package conflicts - this happens when different packages that are loaded have functions with the same name (but probably do different things). Just take note of the conflicts. If you use those other packages/functions then you’ll have to specify which package the function you’re using comes from. For example if <code>mutate()</code> was also in another package, to use the tidyverse version I would write <code>tidyr::mutate()</code> instead of just <code>mutate()</code></p>
 <p>If loading the library returns an error message saying it’s not installed, then go to the <a href="https://tinyurl.com/ssrpsoftwareguide">SSRP Pre-installation guide</a> and follow the instructions for installing tidyverse</p>
 </div>
 <div id="how-to-pipe" class="section level3">
@@ -320,12 +314,12 @@ Remember we only have to install once</p>
 <div id="pipes-with-dataframes" class="section level5">
 <h5><span class="header-section-number">3.2.3.0.1</span> Pipes with dataframes</h5>
 <p>Let’s read in the iris dataset used in the previous section. Peak at it with <code>head()</code> to check that the columns look intact.</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1"><span class="co"># Load the dataset and peak at it with the head() function</span></a>
-<a class="sourceLine" id="cb205-2" data-line-number="2">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>, </a>
-<a class="sourceLine" id="cb205-3" data-line-number="3">                  <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;n/a&quot;</span>), </a>
-<a class="sourceLine" id="cb205-4" data-line-number="4">                  <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb205-5" data-line-number="5"></a>
-<a class="sourceLine" id="cb205-6" data-line-number="6"><span class="kw">head</span>(irisz)</a></code></pre></div>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" data-line-number="1"><span class="co"># Load the dataset and peak at it with the head() function</span></a>
+<a class="sourceLine" id="cb201-2" data-line-number="2">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>, </a>
+<a class="sourceLine" id="cb201-3" data-line-number="3">                  <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;n/a&quot;</span>), </a>
+<a class="sourceLine" id="cb201-4" data-line-number="4">                  <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb201-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb201-6" data-line-number="6"><span class="kw">head</span>(irisz)</a></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Location
 ## 1          5.1         3.5          1.4         0.2  setosa    Korea
 ## 2          4.9         3.0          1.4         0.2  setosa    China
@@ -333,33 +327,52 @@ Remember we only have to install once</p>
 ## 4          4.6         3.1          1.5         0.2  setosa    China
 ## 5          5.0         3.6          1.4         0.2  setosa    China
 ## 6          5.4          NA          1.7         0.4  setosa   Canada</code></pre>
-<p>Now let’s try using the pipe <code>%&gt;%</code> to do this.</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1">irisz <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</a></code></pre></div>
-<p>Try this out on your own with the <code>summary()</code> function. Do it with and without the pipe.</p>
+<p>Now let’s try this using the pipe <code>%&gt;%</code>.</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" data-line-number="1">irisz <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</a></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Location
+## 1          5.1         3.5          1.4         0.2  setosa    Korea
+## 2          4.9         3.0          1.4         0.2  setosa    China
+## 3          4.7         3.2          1.3         0.2  setosa    Korea
+## 4          4.6         3.1          1.5         0.2  setosa    China
+## 5          5.0         3.6          1.4         0.2  setosa    China
+## 6          5.4          NA          1.7         0.4  setosa   Canada</code></pre>
+<p>Practice this with other functions we’ve used so far: <code>summary()</code>, <code>unique()</code>, <code>str()</code>, <code>dim()</code>, <code>table()</code>, and even <code>hist()</code>!. Do it with and without the pipe.</p>
 <p>Pretty simple right?</p>
 <p>Notice how the <code>%&gt;%</code> pipe is sending the output from before it to the function after it. This <code>%&gt;%</code> is similar to the <code>|</code> we use on the command line to send data from one operation to the next: <code>sort data.txt | uniq -c</code> (sort a data file and count the number of unique lines)</p>
+<p><strong>Pipes can string together functions</strong></p>
 <p>In the previous section, we learned how to read in a file with <code>read.csv()</code>, get unique values with <code>unique()</code>, and get the dimensions of a data frame with <code>dim()</code>. Let’s try these operations using the pipe instead of performing them as separate operations.</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb208-1" data-line-number="1"><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>, </a>
-<a class="sourceLine" id="cb208-2" data-line-number="2">         <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;n/a&quot;</span>), </a>
-<a class="sourceLine" id="cb208-3" data-line-number="3">         <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb208-4" data-line-number="4"><span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb208-5" data-line-number="5"><span class="st">  </span><span class="kw">dim</span>()</a></code></pre></div>
-<p>This little example just illustrates how to string together functions we already know by using the pipe <code>%&gt;%</code>. There isn’t a clear reason why we would want the unique rows only before checking the dimensions of the data frame…so don’t over think that!</p>
-</div>
-<div id="pipes-with-scalars" class="section level5">
-<h5><span class="header-section-number">3.2.3.0.2</span> Pipes with scalars</h5>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" data-line-number="1">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb205-2" data-line-number="2"><span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb205-3" data-line-number="3"><span class="st">  </span><span class="kw">dim</span>()</a></code></pre></div>
+<pre><code>## [1] 150   6</code></pre>
+<p>Notice how each operation is on one line so it’s easy to read the sequence of operations.</p>
+<p><strong>Pipes with scalars</strong></p>
 <p>To take the square root of a number <code>x</code> and round it to <code>y</code> digits, we would use the <code>sqrt()</code> and <code>round()</code> functions</p>
-<p>In base R we would do the following:
-Let: <code>x = 112; y = 2</code>
-In two steps (with an intermediate, z): <code>z &lt;- sqrt(x); round(z, digits = y)</code>
-In one step: <code>round(sqrt(112), digit = 2)</code></p>
-<p>Using the pipe, we can keep it streamlined into one step as above, but separate the functions so it’s easier to read.
-<code>sqrt(x) %&gt;% round(digits = y)</code></p>
-</div>
-<div id="pipes-with-vectors" class="section level5">
-<h5><span class="header-section-number">3.2.3.0.3</span> Pipes with vectors</h5>
-<p>We can apply the same piping method to vectors also. Think about the vector that is the column <code>Sepal.Length</code> in the dataframe <code>irisz</code> which we have been using.
-Try this on your own! Use pipes to string together the following operations: starting with the vector <code>irisz$Sepal.Length</code>, sort it, make the values numeric, and make a histogram. These three functions were also introduced in the previous section.</p>
+<p>Here’s what this looks like with and without the pipe:</p>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" data-line-number="1">x =<span class="st"> </span><span class="dv">112</span></a>
+<a class="sourceLine" id="cb207-2" data-line-number="2">y =<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb207-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb207-4" data-line-number="4"><span class="co"># Two steps without the pipe</span></a>
+<a class="sourceLine" id="cb207-5" data-line-number="5">z &lt;-<span class="st"> </span><span class="kw">sqrt</span>(x)</a>
+<a class="sourceLine" id="cb207-6" data-line-number="6"><span class="kw">round</span>(z, <span class="dt">digits =</span> y)</a></code></pre></div>
+<pre><code>## [1] 10.58</code></pre>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1"><span class="co"># One step without the pipe</span></a>
+<a class="sourceLine" id="cb209-2" data-line-number="2"><span class="kw">round</span>(<span class="kw">sqrt</span>(x), <span class="dt">digits =</span> y)</a></code></pre></div>
+<pre><code>## [1] 10.58</code></pre>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1"><span class="co"># One step with the pipe</span></a>
+<a class="sourceLine" id="cb211-2" data-line-number="2"><span class="kw">sqrt</span>(x) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">round</span>(<span class="dt">digits =</span> y)</a></code></pre></div>
+<pre><code>## [1] 10.58</code></pre>
+<p><strong>Pipes with vectors</strong></p>
+<p>We can apply the same piping method to vectors. Think about the vector that is the column <code>Sepal.Length</code> in the dataframe <code>irisz</code> which we have been using.</p>
+<p>We’ll use pipes to string together the following operations starting with the <strong>vector</strong> <code>irisz$Sepal.Length</code>: sort it, make the values numeric, and make a histogram. (These three functions were also introduced in the previous section.)</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1"><span class="co"># One step with the pipe</span></a>
+<a class="sourceLine" id="cb213-2" data-line-number="2">irisz<span class="op">$</span>Sepal.Length <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb213-3" data-line-number="3"><span class="st">  </span><span class="kw">as.numeric</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb213-4" data-line-number="4"><span class="st">  </span><span class="kw">sort</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb213-5" data-line-number="5"><span class="st">  </span><span class="kw">hist</span>()</a></code></pre></div>
+<p><img src="420-tidyverse-part1_files/figure-html/t2_pipe5-1.png" width="672" /></p>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" data-line-number="1"><span class="co"># One step without the pipe requires lots of parentheses</span></a>
+<a class="sourceLine" id="cb214-2" data-line-number="2"><span class="kw">hist</span>(<span class="kw">sort</span>(<span class="kw">as.numeric</span>(irisz<span class="op">$</span>Sepal.Length)))</a></code></pre></div>
 <p>Hopefully by now you have a sense for how the pipe in tidyverse works and how it can work with functions we already know and can be applied to data frames, vectors, and scalars. Another big contribution tidyverse makes to the data science in R is the addition of new functions!</p>
 </div>
 </div>
@@ -374,57 +387,81 @@ Try this on your own! Use pipes to string together the following operations: sta
 <li><code>group_by()</code> and <code>summarize()</code>: create summary statistics on grouped data</li>
 <li><code>count()</code>: count discrete values</li>
 </ul>
-<p>Reminder: if you ever want to know more about these functions, just use the help function - <code>?</code> followed by the function of interest. For example: <code>?select</code></p>
+<p><strong>Reminder</strong>: if you ever want to know more about these functions, just use the help function - <code>?</code> followed by the function of interest. For example: <code>?select</code></p>
 <div id="selecting-deleting-reordering-columns" class="section level4">
 <h4><span class="header-section-number">3.2.4.1</span> Selecting, deleting, reordering columns</h4>
-<p><strong>Selecting columns</strong>
-In base R, if we wanted to select certain columns (e.g. column names c1, c2, c6, c7) from a dataframe, <code>df</code>, we would do something like this: <code>df[c(&quot;c1&quot;, &quot;c2&quot;, &quot;c6&quot;, &quot;c7&quot;)]</code>. With tidyverse, we can use the <code>select(c1, c2, c6, c7)</code> function (from <code>dplyr</code>).</p>
-<p><strong>Deleting columns</strong>
-To delete a column, just add a <code>-</code> before the column name inside of <code>select()</code>.</p>
-<p><strong>Reordering columns</strong>
-Select can also be used to reorder columns. Just specify the order of columns in <code>select()</code>.</p>
+<p><strong>Selecting columns</strong></p>
+<p>In base R, if we wanted to select certain columns (e.g. column names c1, c2, c6, c7) from a dataframe, <code>df</code>, we would do something like this: <code>df[c(&quot;c1&quot;, &quot;c2&quot;, &quot;c6&quot;, &quot;c7&quot;)]</code>. With tidyverse, we can use the <code>select(c1, c2, c6, c7)</code> function (from <code>dplyr</code>).</p>
+<p><strong>Deleting columns</strong></p>
+<p>To delete a column, just add a <code>-</code> before the column name inside of <code>select()</code>.</p>
+<p><strong>Reordering columns</strong></p>
+<p>Select can also be used to reorder columns. Just specify the order of columns in <code>select()</code>.</p>
 <p>Let’s try selecting columns from the <code>irisz</code> dataset</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" data-line-number="1"><span class="co"># Let&#39;s select just the location </span></a>
-<a class="sourceLine" id="cb209-2" data-line-number="2"><span class="kw">select</span>(irisz, Location)</a>
-<a class="sourceLine" id="cb209-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb209-4" data-line-number="4"><span class="co"># Remove the Location column</span></a>
-<a class="sourceLine" id="cb209-5" data-line-number="5"><span class="kw">select</span>(irisz, <span class="op">-</span>Location)</a>
-<a class="sourceLine" id="cb209-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb209-7" data-line-number="7"><span class="co"># Let&#39;s select both the Location and Species columns </span></a>
-<a class="sourceLine" id="cb209-8" data-line-number="8"><span class="co"># and see what unique combinations are present in the dataset</span></a>
-<a class="sourceLine" id="cb209-9" data-line-number="9"><span class="kw">unique</span>(<span class="kw">select</span>(irisz, <span class="kw">c</span>(Location, Species)))</a>
-<a class="sourceLine" id="cb209-10" data-line-number="10"></a>
-<a class="sourceLine" id="cb209-11" data-line-number="11"><span class="co"># Note that the order returned is the order specified in select()</span></a>
-<a class="sourceLine" id="cb209-12" data-line-number="12"><span class="co"># Originally Location came after Species, but now they are reordered.</span></a>
-<a class="sourceLine" id="cb209-13" data-line-number="13"></a>
-<a class="sourceLine" id="cb209-14" data-line-number="14"><span class="co"># We can also do this with the pipe</span></a>
-<a class="sourceLine" id="cb209-15" data-line-number="15">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb209-16" data-line-number="16"><span class="st">  </span><span class="kw">select</span>(Location, Species) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb209-17" data-line-number="17"><span class="st">  </span><span class="kw">unique</span>()</a></code></pre></div>
-<p>Note that select() subsets the dataframe to the specified columns. The output is a dataframe, even if only one column is selected</p>
+<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1"><span class="co"># Let&#39;s select just the location </span></a>
+<a class="sourceLine" id="cb215-2" data-line-number="2"><span class="kw">select</span>(irisz, Location)</a>
+<a class="sourceLine" id="cb215-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb215-4" data-line-number="4"><span class="co"># Remove the Location column</span></a>
+<a class="sourceLine" id="cb215-5" data-line-number="5"><span class="kw">select</span>(irisz, <span class="op">-</span>Location)</a>
+<a class="sourceLine" id="cb215-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb215-7" data-line-number="7"><span class="co"># Let&#39;s select both the Location and Species columns </span></a>
+<a class="sourceLine" id="cb215-8" data-line-number="8"><span class="co"># and see what unique combinations are present in the dataset</span></a>
+<a class="sourceLine" id="cb215-9" data-line-number="9"><span class="kw">unique</span>(<span class="kw">select</span>(irisz, <span class="kw">c</span>(Location, Species)))</a>
+<a class="sourceLine" id="cb215-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb215-11" data-line-number="11"><span class="co"># Note that the order returned is the order specified in select()</span></a>
+<a class="sourceLine" id="cb215-12" data-line-number="12"><span class="co"># Originally Location came after Species, but now they are reordered.</span></a>
+<a class="sourceLine" id="cb215-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb215-14" data-line-number="14"><span class="co"># We can also do this with the pipe</span></a>
+<a class="sourceLine" id="cb215-15" data-line-number="15">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb215-16" data-line-number="16"><span class="st">  </span><span class="kw">select</span>(Location, Species) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb215-17" data-line-number="17"><span class="st">  </span><span class="kw">unique</span>()</a></code></pre></div>
+<p>Note that <code>select()</code> subsets the dataframe to the specified columns. The output is a <strong>data frame</strong> (not a vector), even if only one column is selected</p>
 <p><strong>What if we want to extract one column as a vector? </strong></p>
 <p>In base R, we would use the <code>$</code> operation to select a single column as a vector. With tidyverse, we can use the <code>pull()</code> function (from <code>dplyr</code>). Notice that pull() will only accept a single column name and will return a vector</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb210-1" data-line-number="1">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb210-2" data-line-number="2"><span class="st">  </span><span class="kw">pull</span>(Location) </a></code></pre></div>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" data-line-number="1"><span class="co"># Base R</span></a>
+<a class="sourceLine" id="cb216-2" data-line-number="2">irisz<span class="op">$</span>Location</a>
+<a class="sourceLine" id="cb216-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb216-4" data-line-number="4"><span class="co"># With the pipe and tidyverse function pull()</span></a>
+<a class="sourceLine" id="cb216-5" data-line-number="5">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb216-6" data-line-number="6"><span class="st">  </span><span class="kw">pull</span>(Location) </a></code></pre></div>
 </div>
 <div id="filtering-dataframes" class="section level4">
 <h4><span class="header-section-number">3.2.4.2</span> Filtering dataframes</h4>
 <p>The basics of filtering data frames in tidyverse are the <code>filter()</code> function and boolean operators (<code>&gt;</code>, <code>&lt;</code>, <code>==</code>) learned in section 2.4.3.
 Let’s try two examples:</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" data-line-number="1"><span class="co"># Filter for Petal.Length greater than x</span></a>
-<a class="sourceLine" id="cb211-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb211-3" data-line-number="3">x =<span class="st"> </span><span class="dv">7</span></a>
-<a class="sourceLine" id="cb211-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb211-5" data-line-number="5">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb211-6" data-line-number="6"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">as.numeric</span>(Sepal.Length) <span class="op">&gt;</span><span class="st"> </span>x)</a>
-<a class="sourceLine" id="cb211-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb211-8" data-line-number="8"><span class="co"># Filter to get observations of setosa species from Korea</span></a>
-<a class="sourceLine" id="cb211-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb211-10" data-line-number="10">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb211-11" data-line-number="11"><span class="st">  </span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>,</a>
-<a class="sourceLine" id="cb211-12" data-line-number="12">         Location <span class="op">==</span><span class="st"> &quot;Korea&quot;</span>)</a></code></pre></div>
-<p><em>Try it on your own! </em>
-Coding Task A: We’re interested in cases where the species <code>virginica</code> has an extremely wide, but short petal. Filter the <code>irisz</code> dataset to only include the species <code>virginica</code>, where the petal width is greater than the petal length. How many observations are there?</p>
+<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1"><span class="co"># Filter for Petal.Length greater than x</span></a>
+<a class="sourceLine" id="cb217-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb217-3" data-line-number="3">x =<span class="st"> </span><span class="dv">7</span></a>
+<a class="sourceLine" id="cb217-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb217-5" data-line-number="5">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb217-6" data-line-number="6"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">as.numeric</span>(Sepal.Length) <span class="op">&gt;</span><span class="st"> </span>x)</a></code></pre></div>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species Location
+## 1           7.1         3.0          5.9         2.1 virginica      USA
+## 2           7.6         3.0          6.6         2.1 virginica      USA
+## 3           7.2         3.6          6.1         2.5 virginica      USA
+## 4           7.7         3.8          6.7         2.2 virginica      USA
+## 5           7.7         2.6          6.9        23.0 virginica      USA
+## 6           7.7         2.8          6.7         2.0 virginica      USA
+## 7           7.2         3.2          6.0         1.8 virginica      USA
+## 8           7.2         3.0          5.8         1.6 virginica      USA
+## 9           7.4         2.8          6.1         1.9 virginica      USA
+## 10          7.9         3.8          6.4         2.0 virginica      USA
+## 11          7.7         3.0          6.1         2.3 virginica      USA</code></pre>
+<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" data-line-number="1"><span class="co"># Filter to get observations of setosa species from Korea</span></a>
+<a class="sourceLine" id="cb219-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb219-3" data-line-number="3">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb219-4" data-line-number="4"><span class="st">  </span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>,</a>
+<a class="sourceLine" id="cb219-5" data-line-number="5">         Location <span class="op">==</span><span class="st"> &quot;Korea&quot;</span>)</a></code></pre></div>
+<pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Location
+## 1           5.1        3.50          1.4         0.2  setosa    Korea
+## 2           4.7        3.20          1.3         0.2  setosa    Korea
+## 3           4.8        3.00          1.4         0.1  setosa    Korea
+## 4           5.4        3.90          1.3         0.4  setosa    Korea
+## 5           5.1        3.50          1.4         0.3  setosa    Korea
+## 6           5.1        3.80          1.5         0.3  setosa    Korea
+## 7           5.1        3.70          1.5         0.4  setosa    Korea
+## 8           5.5        0.35          1.3         0.2  setosa    Korea
+## 9           4.4        3.00          1.3         0.2  setosa    Korea
+## 10           NA          NA          1.6         0.6  setosa    Korea</code></pre>
 </div>
 <div id="creating-and-renaming-columns" class="section level4">
 <h4><span class="header-section-number">3.2.4.3</span> Creating and renaming columns</h4>
@@ -432,16 +469,23 @@ Coding Task A: We’re interested in cases where the species <code>virginica</co
 <p>Let’s say we wanted to create a new column for the <code>irisz</code> dataset which has the row number.</p>
 <p>In base R, we would do something like <code>irisz$row_number &lt;- seq(1,nrow(irisz))</code>. Here, <code>seq()</code> creates a sequence of numbers from 1 to the number of rows in <code>irisz</code>.</p>
 <p>In tidyverse we can do it using the <code>mutate()</code> and <code>row_number()</code> functions. So it doesn’t output the whole data frame, we’ll pipe it directly into <code>head()</code></p>
-<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb212-1" data-line-number="1">irisz <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb212-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">row_number =</span> <span class="kw">row_number</span>()) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb212-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb221-1" data-line-number="1">irisz <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb221-2" data-line-number="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">row_number =</span> <span class="kw">row_number</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb221-3" data-line-number="3"><span class="st">  </span><span class="kw">head</span>()</a></code></pre></div>
+<pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Location row_number
+## 1          5.1         3.5          1.4         0.2  setosa    Korea          1
+## 2          4.9         3.0          1.4         0.2  setosa    China          2
+## 3          4.7         3.2          1.3         0.2  setosa    Korea          3
+## 4          4.6         3.1          1.5         0.2  setosa    China          4
+## 5          5.0         3.6          1.4         0.2  setosa    China          5
+## 6          5.4          NA          1.7         0.4  setosa   Canada          6</code></pre>
 <p>See the row number column?</p>
 <p>Mutate can also be used to update a column without creating a new one.</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" data-line-number="1"><span class="co"># Change sepal length to be 10x what it currently is</span></a>
-<a class="sourceLine" id="cb213-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb213-3" data-line-number="3">irisz <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb213-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Sepal.Length =</span> <span class="dv">10</span><span class="op">*</span>Sepal.Length ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb213-5" data-line-number="5"><span class="st">  </span><span class="kw">head</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1"><span class="co"># Change sepal length to be 10x what it currently is</span></a>
+<a class="sourceLine" id="cb223-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb223-3" data-line-number="3">irisz <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb223-4" data-line-number="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Sepal.Length =</span> <span class="dv">10</span><span class="op">*</span>Sepal.Length ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb223-5" data-line-number="5"><span class="st">  </span><span class="kw">head</span>()</a></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Location
 ## 1           51         3.5          1.4         0.2  setosa    Korea
 ## 2           49         3.0          1.4         0.2  setosa    China
@@ -451,10 +495,10 @@ Coding Task A: We’re interested in cases where the species <code>virginica</co
 ## 6           54          NA          1.7         0.4  setosa   Canada</code></pre>
 <p>What if all the setosa measurements were actually supposed to be the virginica species?
 Let’s use the <code>ifelse()</code> function which accepts a conditional test, value if true, value if false.</p>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" data-line-number="1">irisz <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb215-2" data-line-number="2"><span class="st">  </span><span class="co"># If Species is setosa, change it to virginica, otherwise use the value in Species </span></a>
-<a class="sourceLine" id="cb215-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Species =</span> <span class="kw">ifelse</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>, <span class="st">&quot;virginica&quot;</span>, Species )) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb215-4" data-line-number="4"><span class="st">  </span><span class="kw">head</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">irisz <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb225-2" data-line-number="2"><span class="st">  </span><span class="co"># If Species is setosa, change it to virginica, otherwise use the value in Species </span></a>
+<a class="sourceLine" id="cb225-3" data-line-number="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Species =</span> <span class="kw">ifelse</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>, <span class="st">&quot;virginica&quot;</span>, Species )) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb225-4" data-line-number="4"><span class="st">  </span><span class="kw">head</span>()</a></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species Location
 ## 1          5.1         3.5          1.4         0.2 virginica    Korea
 ## 2          4.9         3.0          1.4         0.2 virginica    China
@@ -462,20 +506,25 @@ Let’s use the <code>ifelse()</code> function which accepts a conditional test,
 ## 4          4.6         3.1          1.5         0.2 virginica    China
 ## 5          5.0         3.6          1.4         0.2 virginica    China
 ## 6          5.4          NA          1.7         0.4 virginica   Canada</code></pre>
-<p><em>Try it on your own!</em>
-Coding Task B: Come up with a single numeric measure of flower size (some combination of the measurments in the data frame). Create a new column for this new variable.</p>
+<p><strong>Renaming columns</strong></p>
 <p>Sometimes, we just need to rename an existing column. Use <code>rename()</code> to specify the new and old column names, <code>rename(new_name = old_name)</code>. Let’s rename the location column to be “Country”.</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" data-line-number="1">irisz <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb217-2" data-line-number="2"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">Country =</span> Location)</a></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb227-1" data-line-number="1">irisz <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb227-2" data-line-number="2"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">Country =</span> Location)</a></code></pre></div>
 <p>Want to change row names into a column or a column into a row name? Check out <code>rownames_to_column()</code> and <code>column_to_rownames()</code>.</p>
 </div>
 <div id="summarizing-data" class="section level4">
 <h4><span class="header-section-number">3.2.4.4</span> Summarizing data</h4>
 <p>Summarizing data is very important in data analysis. It allows you to get a big picture overview of a new dataset: type, range of values, etc. These are also types of summaries to think about including when in the exploratory stages or a project: before running analyses on a dataset, create a summary of the dataset. Present this during your update meetings for your summer project and keep these summaries on hand in case you or others have questions about the dataset throughout the course of your project.</p>
-<p>For summarizing data in tidyverse, let’s explore the functions <code>count()</code>, <code>group_by()</code>, <code>summarize()</code></p>
-<p>The function <code>count()</code> does what it sounds like - it counds the number of unique observations for the specified column(s)</p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" data-line-number="1">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb218-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(Location)</a></code></pre></div>
+<p>For summarizing data in tidyverse, let’s explore the functions</p>
+<ul>
+<li><code>count()</code></li>
+<li><code>group_by()</code></li>
+<li><code>summarize()</code></li>
+</ul>
+<p>The function <code>count()</code> does what it sounds like - it counts the number of unique observations for the specified column(s)</p>
+<p><strong>Count on one variable in the data frame</strong></p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" data-line-number="1">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb228-2" data-line-number="2"><span class="st">  </span><span class="kw">count</span>(Location)</a></code></pre></div>
 <pre><code>##   Location  n
 ## 1   Canada 35
 ## 2    China  6
@@ -484,11 +533,12 @@ Coding Task B: Come up with a single numeric measure of flower size (some combin
 ## 5   Russia 11
 ## 6      USA 63
 ## 7     &lt;NA&gt; 14</code></pre>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" data-line-number="1"><span class="co"># Count the number of observations for each unique combination</span></a>
-<a class="sourceLine" id="cb220-2" data-line-number="2"><span class="co"># of location and species</span></a>
-<a class="sourceLine" id="cb220-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb220-4" data-line-number="4">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb220-5" data-line-number="5"><span class="st">  </span><span class="kw">count</span>(Location, Species)</a></code></pre></div>
+<p><strong>Count on more than one variable in the data frame</strong></p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" data-line-number="1"><span class="co"># Count the number of observations for each combination</span></a>
+<a class="sourceLine" id="cb230-2" data-line-number="2"><span class="co"># of location and species</span></a>
+<a class="sourceLine" id="cb230-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb230-4" data-line-number="4">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb230-5" data-line-number="5"><span class="st">  </span><span class="kw">count</span>(Location, Species)</a></code></pre></div>
 <pre><code>##    Location    Species  n
 ## 1    Canada     setosa 11
 ## 2    Canada versicolor 24
@@ -503,31 +553,39 @@ Coding Task B: Come up with a single numeric measure of flower size (some combin
 ## 11     &lt;NA&gt; versicolor  6
 ## 12     &lt;NA&gt;  virginica  6
 ## 13     &lt;NA&gt;       &lt;NA&gt;  1</code></pre>
-<p>Can you think of another (perhaps longer) way to count using other functions, such as select(), unique(), n(), pull(), or table()?</p>
-<p>What if we want to do more than just count the number of occurrences for a given group? Let’s calculate summary statistics like mean and standard deviation.
-<code>group_by</code> takes a variable and groups the data by that variable. Anything that happens after that is only calculated within the group variable. To turn off grouping, use <code>ungroup()</code>. It’s always good practice to <code>ungroup()</code> after you’re done grouping. Although it doesn’t matter if you won’t be doing any more operations on the dataset.</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" data-line-number="1"><span class="co"># Here&#39;s an example that produces a similar result </span></a>
-<a class="sourceLine" id="cb222-2" data-line-number="2"><span class="co"># as in the count() example above</span></a>
-<a class="sourceLine" id="cb222-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb222-4" data-line-number="4">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb222-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(Location) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb222-6" data-line-number="6"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb222-7" data-line-number="7"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
+<p>Can you think of another (perhaps longer) way to count using other functions, such as <code>select()</code>, <code>unique()</code>, <code>n()</code>, <code>pull()</code>, or <code>table()</code>?</p>
+<p><strong>Summarizing WITHIN groups</strong></p>
+<p>What if we want to do more than just count the number of occurrences for a given group? <code>group_by</code> takes a variable and groups the data by that variable. Anything that happens after that is only calculated within the group variable. To turn off grouping, use <code>ungroup()</code>. It’s always good practice to <code>ungroup()</code> after you’re done grouping. Although it doesn’t matter if you won’t be doing any more operations on the dataset.</p>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" data-line-number="1"><span class="co"># Here&#39;s an example that produces a similar result </span></a>
+<a class="sourceLine" id="cb232-2" data-line-number="2"><span class="co"># as in the count() example above</span></a>
+<a class="sourceLine" id="cb232-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb232-4" data-line-number="4">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb232-5" data-line-number="5"><span class="st">  </span><span class="kw">group_by</span>(Location) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb232-6" data-line-number="6"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb232-7" data-line-number="7"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
 <p>Let’s build on this, by adding <code>mean()</code> and <code>sd()</code> to the summary.</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" data-line-number="1"><span class="co"># Since mean() and sd() require numeric inputs,</span></a>
-<a class="sourceLine" id="cb223-2" data-line-number="2"><span class="co"># let&#39;s use mutate to change Petal.Length into a numeric data type</span></a>
-<a class="sourceLine" id="cb223-3" data-line-number="3"><span class="co"># We&#39;ll also tell mean() and sd() to ignore NAs in the calculation</span></a>
-<a class="sourceLine" id="cb223-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb223-5" data-line-number="5">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb223-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Petal.Length =</span> <span class="kw">as.numeric</span>(Petal.Length)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb223-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(Location) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb223-8" data-line-number="8"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>(),</a>
-<a class="sourceLine" id="cb223-9" data-line-number="9">            <span class="kw">mean</span>(Petal.Length, <span class="dt">na.rm =</span> T),</a>
-<a class="sourceLine" id="cb223-10" data-line-number="10">            <span class="kw">sd</span>(Petal.Length, <span class="dt">na.rm =</span> T)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb223-11" data-line-number="11"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
-<p><em>Try it on your own!</em>
-Coding Task C: Try calculating the min and max Petal Length for each Species. Use <code>group_by()</code>.</p>
-<p>Warning! Sometimes multiple packages have functions that do different things but have the same name. For example, there is a <code>summarize()</code> in both the <code>dplyr</code> package and the <code>plyr</code> package. If both packages are loaded into your R session, R might just default to the last loaded package. To specify which package you want the function to come from, you can put the package name before the function <code>... %&gt;% dplyr::summarize(n = n()) %&gt;% ...</code>. Compare this function between the two packages by entering <code>?summarize</code> and reading the two options. Then try each one on the previous example.</p>
+<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb233-1" data-line-number="1"><span class="co"># Since mean() and sd() require numeric inputs,</span></a>
+<a class="sourceLine" id="cb233-2" data-line-number="2"><span class="co"># let&#39;s use mutate to change Petal.Length into a numeric data type</span></a>
+<a class="sourceLine" id="cb233-3" data-line-number="3"><span class="co"># We&#39;ll also tell mean() and sd() to ignore NAs in the calculation</span></a>
+<a class="sourceLine" id="cb233-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb233-5" data-line-number="5">irisz <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb233-6" data-line-number="6"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Petal.Length =</span> <span class="kw">as.numeric</span>(Petal.Length)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb233-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(Location) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb233-8" data-line-number="8"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>(),</a>
+<a class="sourceLine" id="cb233-9" data-line-number="9">            <span class="kw">mean</span>(Petal.Length, <span class="dt">na.rm =</span> T),</a>
+<a class="sourceLine" id="cb233-10" data-line-number="10">            <span class="kw">sd</span>(Petal.Length, <span class="dt">na.rm =</span> T)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb233-11" data-line-number="11"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
+<pre><code>## # A tibble: 7 x 4
+##   Location     n `mean(Petal.Length, na.rm = T)` `sd(Petal.Length, na.rm = T)`
+##   &lt;fct&gt;    &lt;int&gt;                           &lt;dbl&gt;                         &lt;dbl&gt;
+## 1 Canada      35                            3.39                         1.30 
+## 2 China        6                            1.52                         0.194
+## 3 Japan       11                            1.43                         0.205
+## 4 Korea       10                            1.4                          0.105
+## 5 Russia      11                            1.48                         0.218
+## 6 USA         63                            5.21                         0.826
+## 7 &lt;NA&gt;        14                            4.51                         0.990</code></pre>
+<p><strong>Warning!</strong> Remember how multiple packages have functions that do different things but have the same name?. For example, there is a <code>summarize()</code> in both the <code>dplyr</code> package and the <code>plyr</code> package. If both packages are loaded into your R session, R might just default to the last loaded package. <strong>To specify which package you want the function to come from, you can put the package name before the function</strong> <code>... %&gt;% dplyr::summarize(n = n()) %&gt;% ...</code>. If you have time, compare this function between the two packages by entering <code>?summarize</code> and reading the two options. Then try each one on the previous example.</p>
 </div>
 <div id="recap-tidyverse-vs-base-r" class="section level4">
 <h4><span class="header-section-number">3.2.4.5</span> Recap: Tidyverse vs Base R</h4>
@@ -539,29 +597,29 @@ Coding Task C: Try calculating the min and max Petal Length for each Species. Us
 <li>Group measurements by location and calculate the mean and standard deviation of flower sizes in that location</li>
 </ol>
 <p>In Base R, we would do something along the lines of the following:</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" data-line-number="1"><span class="co"># 1) Filter the data</span></a>
-<a class="sourceLine" id="cb224-2" data-line-number="2">df_filtered &lt;-<span class="st"> </span>df[Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>]</a>
-<a class="sourceLine" id="cb224-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb224-4" data-line-number="4"><span class="co"># 2) Create new variable</span></a>
-<a class="sourceLine" id="cb224-5" data-line-number="5">df_filtered<span class="op">$</span>Size =<span class="st"> </span>df_filtered<span class="op">$</span>Petal.Length <span class="op">*</span><span class="st"> </span>df_filtered<span class="op">$</span>Petal.Width</a>
-<a class="sourceLine" id="cb224-6" data-line-number="6"></a>
-<a class="sourceLine" id="cb224-7" data-line-number="7"><span class="co"># 3) Aggregate and summarize</span></a>
-<a class="sourceLine" id="cb224-8" data-line-number="8"><span class="kw">aggregate</span>(<span class="dt">data =</span> df_filtered, </a>
-<a class="sourceLine" id="cb224-9" data-line-number="9">          <span class="dt">by =</span> Location, </a>
-<a class="sourceLine" id="cb224-10" data-line-number="10">          <span class="dt">FUN =</span> <span class="cf">function</span>(x) <span class="kw">c</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(x), <span class="dt">sd =</span> <span class="kw">sd</span>(x)))</a></code></pre></div>
+<div class="sourceCode" id="cb235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb235-1" data-line-number="1"><span class="co"># 1) Filter the data</span></a>
+<a class="sourceLine" id="cb235-2" data-line-number="2">df_filtered &lt;-<span class="st"> </span>df[Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>]</a>
+<a class="sourceLine" id="cb235-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb235-4" data-line-number="4"><span class="co"># 2) Create new variable</span></a>
+<a class="sourceLine" id="cb235-5" data-line-number="5">df_filtered<span class="op">$</span>Size =<span class="st"> </span>df_filtered<span class="op">$</span>Petal.Length <span class="op">*</span><span class="st"> </span>df_filtered<span class="op">$</span>Petal.Width</a>
+<a class="sourceLine" id="cb235-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb235-7" data-line-number="7"><span class="co"># 3) Aggregate and summarize</span></a>
+<a class="sourceLine" id="cb235-8" data-line-number="8"><span class="kw">aggregate</span>(<span class="dt">data =</span> df_filtered, </a>
+<a class="sourceLine" id="cb235-9" data-line-number="9">          <span class="dt">by =</span> Location, </a>
+<a class="sourceLine" id="cb235-10" data-line-number="10">          <span class="dt">FUN =</span> <span class="cf">function</span>(x) <span class="kw">c</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(x), <span class="dt">sd =</span> <span class="kw">sd</span>(x)))</a></code></pre></div>
 <p>How would you perform the above operation using tidyverse functions and the <code>%&gt;%</code>? Give it a try before seeing the answer below.</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" data-line-number="1">df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb225-2" data-line-number="2"><span class="st">  </span><span class="co"># 1) Filter the data</span></a>
-<a class="sourceLine" id="cb225-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb225-4" data-line-number="4"><span class="st">  </span><span class="co"># 2) Create new variable</span></a>
-<a class="sourceLine" id="cb225-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Size =</span> Petal.Length <span class="op">*</span><span class="st"> </span>Petal.Width) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb225-6" data-line-number="6"><span class="st">  </span><span class="co"># 3) Aggregate and summarize</span></a>
-<a class="sourceLine" id="cb225-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(Location) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb225-8" data-line-number="8"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Size.Mean =</span> <span class="kw">mean</span>(Size),</a>
-<a class="sourceLine" id="cb225-9" data-line-number="9">            <span class="dt">Size.SD =</span> <span class="kw">sd</span>(Size)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb225-10" data-line-number="10"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" data-line-number="1">df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb236-2" data-line-number="2"><span class="st">  </span><span class="co"># 1) Filter the data</span></a>
+<a class="sourceLine" id="cb236-3" data-line-number="3"><span class="st">  </span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb236-4" data-line-number="4"><span class="st">  </span><span class="co"># 2) Create new variable</span></a>
+<a class="sourceLine" id="cb236-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Size =</span> Petal.Length <span class="op">*</span><span class="st"> </span>Petal.Width) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb236-6" data-line-number="6"><span class="st">  </span><span class="co"># 3) Aggregate and summarize</span></a>
+<a class="sourceLine" id="cb236-7" data-line-number="7"><span class="st">  </span><span class="kw">group_by</span>(Location) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb236-8" data-line-number="8"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">Size.Mean =</span> <span class="kw">mean</span>(Size),</a>
+<a class="sourceLine" id="cb236-9" data-line-number="9">            <span class="dt">Size.SD =</span> <span class="kw">sd</span>(Size)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb236-10" data-line-number="10"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
 <p>Note how in the base R version above we use intermediate steps (e.g. assignment to a dataframe <code>df_filtered</code>).
-Alternatively, in base R, we could nestle all of these functions but that is also difficult to read.
+Alternatively, in base R, we could nestle all of these functions but that is difficult to read (so many parentheses!).
 The functions and pipe in the tidyverse make data manipulation TIDY!</p>
 
 </div>
