@@ -43,8 +43,6 @@ preview-the-pipe-in-tidyverse
 load-tidyverse
 how-to-pipe
 pipes-with-dataframes
-pipes-with-scalars
-pipes-with-vectors
 essential-tidyverse-functions
 selecting-deleting-reordering-columns
 filtering-dataframes
