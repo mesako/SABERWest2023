@@ -21,7 +21,8 @@ License](https://github.com/darachm/dll-r/blob/main/LICENSE.md).
 
 Write your code and/or your response underneath each task prompt. To render
 your worksheet, click on the Knit button in Rstudio, or run the 
-`render` function directly from your R console: 
+`render` function directly from your R console by copying and
+pasting in this line of code: 
 
 ```{r,renderdoc,eval=F}
 rmarkdown::render("dll-r_Day5_Lab.Rmd")
@@ -30,9 +31,8 @@ rmarkdown::render("dll-r_Day5_Lab.Rmd")
 _( Don't understand what this is doing? Bring that up when we get to the
 rmarkdown and package sections! )_
 
-Be sure that your code is
-able to execute completely and that the result you expect is shown in the
-resulting html file.
+Be sure that your code is able to execute and that the result you expect is 
+shown in the resulting html file.
 
 ------
 
@@ -40,10 +40,12 @@ resulting html file.
 
 ## 4.1 exercises
 
-### (1)
+### do this after we finish 4.1
 
 Work together. 
-Take your work from yesterday, the tidyverse plots.
+Take your work from yesterday, the work making ggplots.
+Didn't make any ggplots? Now's your chance!!!
+
 Organize it into a separate project directory, maybe called something like
 `tidyverse-demo`. 
 Include the Rmd scripts in an appropriate directory (`scripts`?),
@@ -64,126 +66,70 @@ you may have to look "up" and "over" (remember from day1/2?), like so:
 read.csv("../data/that_file.csv")
 ```
 
-and for writing plots into an output directory:
+and for writing plots into an output directory, you would also need
+to specify a path like "../outputs/that.jpeg"
 
-```{r,outdemo,eval=F}
-png("../outputs/that.png")
-# plotz
-dev.off()
-```
+In your group, discuss topics *such as*:
 
-**Optional**
-
-Consider making your rmarkdown file more fancy.
-Go ahead and change the time, some of the options in the header.
-Maybe a theme, maybe
-<marquee style="display:block;width:50%;">add some HTML tags to modify your rmarkdown file,</marquee> 
-because it's all turned into HTML anyways!
-
-When you're done, share any new tricks or useful ideas in the slack channel,
-or in your groups.
-
-### (2) Discuss your organization styles
-
-In your group, discuss how you organize your work, 
-and what you think would be useful or not useful.
-
-How do you usually save notes/code/instructions?
-
-How do you share this with others?
-
-What are some disadvantages to this system?
-Can you work around those?
-
-How do you leave instructions for future users?
-
-### (3) **OPTIONAL** Discuss your organizational plan with your supervisor!
-
-When you start this summer, consider asking your supervisor about organization:
-
-Where does the data live? Where is going to be archived for future users?
-
-What will you be expected to share? In what formats, written reports or 
-presentations, slide decks?
-
-
-
+- How you organize your work, and what you think would be useful or not useful.
+- How do you usually save notes/code/instructions?
+- How do you share this with others?
+- What are some disadvantages to this system?
+- How do you leave instructions for future users?
 
 ## 4.2 exercises
 
-### (1)
+Read 4.2.1 - 4.2.4, and after each of these attempt the exercises below.
+
+4.2.1 and 4.2.3 are the most important to do!
+
+### do after 4.2.1
 
 Take a look at the files in the `data/viral_structural_proteins/` directory.
 
-How do you do this using bash tools as you learned on Day1/2?
-- (Hint: there is a "Terminal" table in Rstudio where you can type bash commands)
+Read in one of the viral structural protein files.
 
-How do you do something similar using R?
-
-### (2)
-
-If you haven't already, go ahead and set up your project folder.
-
-- make a `data` folder, and move/copy the `viral_structural_proteins` folder
-    into that
-- make a `scripts` directory, and put this `Rmd` file in there
-- make a note in the `Rmd` about where the data came from
-
-### (3) 
-
-Start with 4.2.1
-
-Check out the documentation/help for `read.delim` to learn what two arguments
-you need to set to read one of these files.
+You can check out the help for `read.delim` to learn what two arguments
+you need to set to read one of these files, to control (1) what's in between
+different fields and (2) if you need a header. 
 
 Additionally, what other argument can you set to prevent the character strings
 from being turned into factors?
 
-- What is `viral_protein_data`? What kind of variable?
-- How do we find the column names?
-- What are two ways to access the protein sequence?
+### do after 4.2.2
 
-### (4) 
+What are two ways to access the protein sequence?
 
-Read/skim/work through 4.2.2
+Use `grepl` to determine it has a certain combination of letters (make
+something up, like "QQ") in the sequence using `grepl`.
 
-- Read and save one of the protein sequence files, 
-    maybe as `viral_protein_data`.
-- Search for different amino acid combinations in there. 
-    See any repeats? Any particularly common or rare amino acid?
-    Combination of those? Do a few.
-    `grepl`
-- See if you can change all of a certain amino acid to another amino acid
-    in the sequence (`sub`, `gsub`).
-- How do we calculate the number of characters in this protein sequence?
-    ( Try searching with "??`number of characters`" )
+Then, copy and modify this code to turn every set of those letters into a
+different set of letters (or more or less letters!).
+Use `gsub` or `sub`.
 
-### (5)
+How do we calculate the number of characters in this protein sequence?
+( Try searching with "??`number of characters`" )
 
-Read/skim/work through 4.2.3 
+### do after 4.2.3
 
-- Write a simple for loop that just prints out the ascending numbers.
+- Write a simple for loop that just prints out ascending numbers.
+    Whatever numbers. You choose.
 - Loop through the first five or so filenames, printing them out.
+- Modify the loop to only process files that end in "5.tsv".
 - Modify this to actually read the file and print out the protein
     sequence.
 - Modify this to calculate and print how long the protein sequence is,
     and print it out.
-- Modify the loop to only process files that end in "5.tsv".
 
+### do after 4.2.4
 
-### (6)
-
-Read/skim/work through 4.2.4
-
-- Make some vectors of different types, and look at them with `str` or `is`.
-    Feel free to copy and paste to generate these.
 - Try making different sequences with `seq`. I suggest looking at the help `?`
     - Do 5 to 10 by 1's
     - Do 10 to 5 by 1's
     - Do 5 to 100 by 5's
 - Write (or modify) the loop across files to calculate and save the
     length of the protein sequence in a vector, maybe call it `lengthz`.
-- Once that works for 5, do it for all of them.
+    Do this for all the protein sequence files.
 - Plot the result, the vector of lengths of protein sequences,
     using a histogram.
 
@@ -203,11 +149,15 @@ Read/skim/work through 4.2.4
 
 Installing things! 
 
-### (1)
+### do after 4.3.1
 
-Check out section 4.3.1
+- What's your current session info?
+- What packages do you have installed?
+- Where are they located on your computer?
 
-Install the `stringdist` library, and use it to: 
+### do after 4.3.2
+
+Install the `stringdist` library from CRAN, and use it to: 
 
 - compare the distance between strings "ATCGATCG" and "ATCGAACG"
         using the methods "hamming" and "lv"
@@ -220,31 +170,22 @@ Look at the "reference manual" and the "vingette".
 Somtimes these are very technical (like this one), other ones (like `cowplot`
 below) have more tutorials.
 
-### (2)
+### do after 4.3.3
 
-Check out section 4.3.2
-
-- Make sure you have the `rmarkdown` package installed. 
 - Use `rmarkdown::render()` on this file to typeset it into an HTML file.
+    Make sure you have the `rmarkdown` package installed. 
 
-### (3)
+### do after 4.3.4
 
-Check out section 4.3.3
-
-- Install the `colorblindcheck` package from `nowosad`.
+- Install the `colorblindcheck` package from user `nowosad`.
+    It is located at `https://github.com/nowosad/colorblindcheck`.
 - Use it to `palette_check` out the 
     default^[I _believe_ this is the default, not sure.] 
     color palette from R (`rainbow(8)`). Use `plot=T` to make sure you are
     plotting it for inspection.
 - How does this palette look, for folks with different color vision mappings?
+    Any obvious problems?
 
-### (4)
-
-Check out section 4.3.5 (skipping Bioconductor...)
-
-- What's your current session info?
-- What packages do you have installed?
-- Where are they located on your computer?
 
 
 
@@ -285,13 +226,6 @@ the data by amino acid types, or antibodies added.
 
 - Are there different amino acids that tend to be mutated to enable escape?
 - Are there particular regions where changes are associated with escape?
-
-**Iris Dataset**
-
-You can load this dataset from the `data` folder, `iris.csv`.
-
-- What variable is most useful for distinguishing between species?
-- What species has the biggest variability in flower size?
 
 **Alzheimer's Microarray Analysis**
 
@@ -349,6 +283,16 @@ Take a look at that last tab in the Excel file, and export it as a CSV
 (or TSV if you prefer).
 
 - Analyze what factors are changing as the melanoma experiment progresses.
+
+
+
+**Iris Dataset**
+
+You can load this dataset from the `data` folder, `iris.csv`.
+
+- What variable is most useful for distinguishing between species?
+- What species has the biggest variability in flower size?
+
 
 
 
