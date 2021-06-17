@@ -117,8 +117,12 @@ not do that, to leave it `as.is`.
 viral_protein_data <- read.delim("data/viral_structural_proteins/viral_proteins_100.tsv",
     sep="\t",header=F,as.is=T)
 viral_protein_data
+colnames(V3)
 is(viral_protein_data$V3)
 ```
+
+Note that you can find the column names, or names of columns, using `colnames`.
+Or `names`. And you can inspect the type in several different ways.
 
 This is how you do it in base R. How do you do this in tidyverse?
 You can use `read_delim` or `read_tsv`, with different arguments,

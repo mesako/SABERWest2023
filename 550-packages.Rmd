@@ -17,6 +17,31 @@ they're very easy to use!
 
 ---
 
+### What packages do you have already? 
+
+You have a few. Here's a list:
+
+```{r,listpkgs,eval=F}
+installed.packages()
+```
+
+But which are loaded?
+
+```{r,listloadedpkgs,eval=F}
+sessionInfo()
+```
+
+The packages are in a directory, the location is stored in this:
+
+```{r,libpaths,eval=F}
+.libPaths()
+```
+
+I'm not running that one, as it'll be different for each user. 
+
+---
+
+
 ### CRAN is the canonical R package resource
 
 The Comprehensive R Archive Netowrk 
@@ -236,29 +261,6 @@ There's lots of good documentation on each
 [package's webpage](https://bioconductor.org/packages/release/bioc/html/DESeq2.html),
 like [vingettes](https://www.bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html).
 
-### What packages do you have already? 
-
-You have a few. Here's a list:
-
-```{r,listpkgs,eval=F}
-installed.packages()
-```
-
-But which are loaded?
-
-```{r,listloadedpkgs,eval=F}
-sessionInfo()
-```
-
-The packages are in a directory, the location is stored in this:
-
-```{r,libpaths,eval=F}
-.libPaths()
-```
-
-I'm not running that one, as it'll be different for each user. 
-
----
 
 ### Major problems with package installations
 
