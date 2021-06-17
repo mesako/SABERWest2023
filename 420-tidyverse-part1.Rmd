@@ -43,7 +43,7 @@ Feeling motivated to accelerate data cleaning and analysis using the tidyverse?
 
 Load the tidyverse library
 
-```{r,loadtidy,cache=F, eval = F}
+```{r,loadtidy, cache=F, eval = T}
 library(tidyverse)
 ```
 
@@ -175,7 +175,7 @@ To delete a column, just add a `-` before the column name inside of `select()`.
 
 Select can also be used to reorder columns. Just specify the order of columns in `select()`.
 
-Let's try selecting columns from the `irisz` dataset
+**Selecting and deselecting in the `irisz` dataset**
 
 ```{r select_dplyr, eval = F, cache = TRUE}
 
@@ -185,14 +185,26 @@ select(irisz, Location)
 # Remove the Location column
 select(irisz, -Location)
 
-# Let's select both the Location and Species columns 
-# and see what unique combinations are present in the dataset
+```
+
+
+**Selecting multiple columns**
+
+Let's select both the Location and Species columns and see what unique combinations are present in the dataset
+
+```{r select_twovar, cache = T}
+
 unique(select(irisz, c(Location, Species)))
 
 # Note that the order returned is the order specified in select()
 # Originally Location came after Species, but now they are reordered.
 
-# We can also do this with the pipe
+```
+
+We can also do this in with the pipe. 
+
+```{r withpipe, eval = T}
+
 irisz %>%
   select(Location, Species) %>%
   unique()
@@ -286,12 +298,13 @@ irisz %>%
 
 **Renaming columns**
 
-Sometimes, we just need to rename an existing column. Use `rename()` to specify the new and old column names, `rename(new_name = old_name)`. Let's rename the location column to be "Country".
+Sometimes, we just need to rename an existing column. Use `rename()` to specify the new and old column names, `rename(new_name = old_name)`. Let's rename the location column to be "Country". Let's just pipe it directly into `colnames()` which will give us the column names of the data frame.
 
-```{r t2_rename, eval = F}
+```{r t2_rename, eval = T}
 
 irisz %>% 
-  rename(Country = Location)
+  rename(Country = Location) %>%
+  colnames()
 
 ```
 
@@ -336,7 +349,7 @@ Can you think of another (perhaps longer) way to count using other functions, su
 
 What if we want to do more than just count the number of occurrences for a given group? `group_by` takes a variable and groups the data by that variable. Anything that happens after that is only calculated within the group variable. To turn off grouping, use `ungroup()`. It's always good practice to `ungroup()` after you're done grouping. Although it doesn't matter if you won't be doing any more operations on the dataset.
 
-```{r t2_group_by, eval = F, cache = TRUE}
+```{r t2_group_by, eval = T, cache = TRUE}
 
 # Here's an example that produces a similar result 
 # as in the count() example above
@@ -347,74 +360,39 @@ irisz %>%
   ungroup()
 
 ```
+Try taking away the `ungroup()` and see if it changes the result.
 
-Let's build on this, by adding `mean()` and `sd()` to the summary.
+
+Let's build on this. We also want to calculate the `mean()` and `sd()` for a new variable called size for each location. Size is going to be `length * width` of the sepal. Our process is:
+
+1. Create a new column for size using `mutate()`
+2. Group the data by Location using `group_by()`
+3. Summarize the mean and standard deviation of the group using `summarize()`
 
 ```{r t2_group_by2, cache = T}
+
 # Since mean() and sd() require numeric inputs,
-# let's use mutate to change Petal.Length into a numeric data type
 # We'll also tell mean() and sd() to ignore NAs in the calculation
 
 irisz %>%
-  mutate(Petal.Length = as.numeric(Petal.Length)) %>%
+  mutate(size = as.numeric(Sepal.Length) * as.numeric(Sepal.Width)) %>%
   group_by(Location) %>%
   summarize(n = n(),
-            mean(Petal.Length, na.rm = T),
-            sd(Petal.Length, na.rm = T)) %>%
-  ungroup()
+            mean_size = mean(Petal.Length, na.rm = T),
+            mean_sd = sd(Petal.Length, na.rm = T)) %>%
+    ungroup()
 
 ```
 
-**Warning!** Remember how multiple packages have functions that do different things but have the same name?. For example, there is a `summarize()` in both the `dplyr` package and the `plyr` package. If both packages are loaded into your R session, R might just default to the last loaded package. **To specify which package you want the function to come from, you can put the package name before the function** `... %>% dplyr::summarize(n = n()) %>% ...`. If you have time, compare this function between the two packages by entering `?summarize` and reading the two options. Then try each one on the previous example. 
+For a further challenge, let's clean up this table. Arrange the data so the countries with largest number of observations are at the top. Also, remove observations with no location.
 
 
 #### Recap: Tidyverse vs Base R
 
-To review, tidyverse is just another way to code in R with new functions and a framework based on the pipe `%>%`. You can always use a combination of both base R functions and tidyverse functions. Let's approach a question by first using tidyverse and then using base R.
+To review, tidyverse is just another way to code in R with new functions and a framework based on the pipe `%>%`. You can always use a combination of both base R functions and tidyverse functions. 
 
-We have a dataframe, `df`,  with measumerments of flowers. We're interested in finding the average size of the setosa species across different geographical locations. We'll break this down into a few steps (breaking problems down into steps is a great start to any coding problem):
+There are some great resources on tidyverse functions. Here are a couple: 
 
-1. Filter the dataframe to only include measurments for the setosa species
-2. Create a new single variable for size which combines length and width of the petal of a flower `size = petal.length * petal.width`
-3. Group measurements by location and calculate the mean and standard deviation of flower sizes in that location
-
-In Base R, we would do something along the lines of the following:
-
-```{r, t1_tidy1,eval=F}
-
-# 1) Filter the data
-df_filtered <- df[Species == "setosa"]
-
-# 2) Create new variable
-df_filtered$Size = df_filtered$Petal.Length * df_filtered$Petal.Width
-
-# 3) Aggregate and summarize
-aggregate(data = df_filtered, 
-          by = Location, 
-          FUN = function(x) c(mean = mean(x), sd = sd(x)))
-
-```
-
-
-How would you perform the above operation using tidyverse functions and the `%>%`? Give it a try before seeing the answer below. 
-
-```{r, t1_tidy2,eval=F}
-
-df %>%
-  # 1) Filter the data
-  filter(Species == "setosa") %>%
-  # 2) Create new variable
-  mutate(Size = Petal.Length * Petal.Width) %>%
-  # 3) Aggregate and summarize
-  group_by(Location) %>%
-  summarize(Size.Mean = mean(Size),
-            Size.SD = sd(Size)) %>%
-  ungroup()
-
-```
-
-
-Note how in the base R version above we use intermediate steps (e.g. assignment to a dataframe `df_filtered`). 
-Alternatively, in base R, we could nestle all of these functions but that is difficult to read (so many parentheses!).
-The functions and pipe in the tidyverse make data manipulation TIDY!
+- **[Beginner's tidyverse cheat sheet](https://s3.amazonaws.com/assets.datacamp.com/blog_assets/Tidyverse+Cheat+Sheet.pdf)**. The `dplyr` section includes the functions we focused on today. The `ggplot2` section is what we'll go over in the next section.
+- **[Introduction to tidyverse](https://brianward1428.medium.com/introduction-to-tidyverse-7b3dbf2337d5)** includes a more comprehensive overview of tidyverse, from reading in data to applying essential functions (what we did today) to more advanced topics such as reshaping data frames.
 
