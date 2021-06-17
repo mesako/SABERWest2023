@@ -117,7 +117,7 @@ not do that, to leave it `as.is`.
 viral_protein_data <- read.delim("data/viral_structural_proteins/viral_proteins_100.tsv",
     sep="\t",header=F,as.is=T)
 viral_protein_data
-colnames(V3)
+colnames(viral_protein_data)
 is(viral_protein_data$V3)
 ```
 
