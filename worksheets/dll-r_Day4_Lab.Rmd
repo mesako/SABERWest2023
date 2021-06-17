@@ -90,30 +90,71 @@ my.strings
 
 #### Section 3.2: Tidyverse Part 1/2: functions and pipes
 
-**Task A:** We're interested in cases where the species `virginica` has an extremely wide, but short petal. Filter the `irisz` dataset to only include the species `virginica`, where the petal width is greater than the petal length. How many observations are there?
+**Task A: Pipe with a dataset.** How many of each conservation status are there in the `msleep` dataset? Use the `%>%` to pipe the a column into the `table()` function from base R.
 
 ```{r}
 # Your code here
 ```
 
-**TaskB:** Come up with a single numeric measure of flower size (some combination of the measurments in the data frame). Create a new column for this new variable.
+**Task B: Pipe with a vector.** Here's a random vector of 200 numbers between 1 and 100. Use the `unique()` function and then into the `length()` function to find how many unique numbers there are. Note: the numbers are random so they won't be the same for whoever you're working with. 
+
+```{r}
+
+rand.nums <- sample(1:100, 200, replace=TRUE) 
+
+```
+
+
+**Task C: Petals only.** We're sharing our `iris` data with a collaborator who only wants petal measurements across species. Let's clean up the dataset for them. Remove any numeric columns that are not petal measurements.
 
 ```{r}
 # Code here
 ```
 
-**Task C:** Calculate the min and max Petal Length for each Species. Use `group_by()`
+HINT: Removing is another wa of (de-)selecting.
+
+**Task D: One size fits all.** Come up with a single numeric measure of flower size (some combination of the measurments in the data frame) - you decide! Create a column for this new variable. Be sure to use the tidyverse function introduced.
 
 ```{r}
 # Code here
 ```
+
+How would you create a new column in base R (without the `%>%` and the tidyverse function used above)?
+
+**Task D: Petal ranking.** Create a new column that has the "Petal Rank" - The flower with the largest petal length should be `1`, the second should be `2`, etc.
+
+```{r}
+# Code here
+```
+
+HINT: If you sort the `iris` dataset by Petal Length then the rank is just the row number (function: `row_number()`)
+
+**Task E: Shortest petals.** What is the minimum Petal Length for each Species? Use `group_by()`. We're going to present this as a table in lab meeting so let's put the important results at the top. Sort so the observation with the smallest petal length is at the top. Which species has the smallest petal length?
+
+```{r}
+# Code here
+```
+
+What's one way of checking that your code actually calculated the min and the max of the column? Describe in words or show code. Ask others how they would check their work.
+
+
+**Task F: Funny petal shapes.** We're interested in cases where the species `virginica` has an extremely wide, but short petal. Filter the `irisz` dataset to only include the species `virginica`, where the petal width is greater than the petal length. How many observations are there?
+
+```{r}
+# Your code here
+```
+
+HINT: How do we compare two values (e.g. greater than, less than, equal to)?
+
 
 ------
 
 
-#### Section 3.3: Tidyverse Part 2/2: reshaping data
+#### (OPTIONAL) Section 3.3: Tidyverse Part 2/2: reshaping data
 
-Use the three example datasets in 3.3 to answer the following questions
+This is an advanced tidyverse section that we will not be covering in the course. If you feel up to it, give it a try!
+
+Use the three example datasets introduced in 3.3 to answer the following questions
 
 **Task A:** Reshape each of the following datasets as specified: 
 Sketch out what the data frame should look like. Describe the steps to make it tidy. Then, write code in R using `gather()`, `spread()`, `separate()`, `unite()` to reshape each of the data frames.
@@ -156,17 +197,56 @@ Sketch out what the data frame should look like. Describe the steps to make it t
 # Code here
 ```
 
+
 #### Synchronous Activities
 
 **If you reach this point during the asynchronous session, please stop and wait until the synchronous session starts.**
+Some of these exercises are more challenging than the asynchronous exercises. Be sure to check that you understand the asynchronous exercises before starting with these.
 
-**Task:** ???
+
+**Task A: To select or deselect?**  Remove the columns in the `msleep` dataset that have NAs in them. Use the tidyverse function we learned in this section to select/deselect columns. Is it easier to remove columns we don't want or select columns we want? Do it both ways.
 
 ```{r}
 # Your code here
 ```
 
-*Your response here*
+Check the number of columns to make sure it worked. What type of object does this function return? Is it a data frame or a vector?
+
+
+**Task B: Descriptive naming.**  The column called `name` in the `msleep` dataset is a bit vague. Look up the description of the `msleep` dataset with `?msleep`. Based on the description of this column what's a more informative name for the column? Rename it.
+
+```{r}
+# Your code here
+```
+
+Are there any other columns that should be renamed? Try renaming two columns in one step.
+
+
+**Task C: Most popular genera.** What are the top 10 most common genera in the `msleep` dataset? 
+
+```{r}
+# Your code here
+```
+
+HINT: Count the number of each genus in the dataset. Then sort the result so the genus with the highest count is at the top of the output.  Use the `%>%` and tidyverse functions.
+
+**Task D: Longest sleepers.** Which mammal in the `msleep` dataset has the longest sleep_cycle? Use the `filter()` function.
+
+```{r}
+# Your code here
+```
+
+HINT: You'll need to compare the observations to the max sleep cycle in the dataset. How do we compare values?
+
+
+**Task E: Top body weight in each vore.**: Use `group_by()` to find the largest bodyweight among each `vore`? Does this output which mammal has the largest body weight for each vore? If not, how would your code change to show the name of the mammal who hwas the largest bodyweight?
+
+```{r}
+# Your code here
+```
+
+HINT: There are many ways to do this!
+
 
 ------
 
