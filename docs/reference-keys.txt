@@ -73,7 +73,7 @@ day-5---workflows-loops-packages-and-help
 what-is-a-workflow
 organizing-files
 use-a-notebook-to-generate-reports
-background
+background-about-rmarkdown
 chunk-options
 document-options
 sharing-with-others
@@ -93,6 +93,7 @@ totally-optional-supplements-for-your-edification
 stringr-and-the-tidyverse
 more-tidyverse-demo
 packages---install-and-use
+what-packages-do-you-have-already
 cran-is-the-canonical-r-package-resource
 ggrepel
 using-packages-without-library-ing-them
@@ -100,7 +101,6 @@ github-is-a-common-place-for-sharing-packges-in-development
 lets-install-a-package-off-of-github.
 lets-install-another-one-to-check-the-previous
 bioconductor-is-a-great-place-for-bio-related-packages
-what-packages-do-you-have-already
 major-problems-with-package-installations
 getting-help---troubleshooting
 where-to-start-general-help
@@ -113,6 +113,7 @@ some-links-and-some-extras
 ideas-for-figures
 more-links
 more-about-workflows
+rmarkdown-for-slides
 style---writing-reusable-code
 functions-as-modular-steps
 write-it-as-a-function

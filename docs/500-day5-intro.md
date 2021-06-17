@@ -4,17 +4,27 @@ title: "Day 5 - building workflows, loops, using packages, and finding help in n
 
 # Day 5 - workflows, loops, packages, and help
 
-Today we're going to learn about applying these R 
-skills to 
-repeat, reproduce, extend, and share your analyses.
+*Important links*:
 
-First, let's review the last two days.
+- [The Syllabus / Notes](https://darachm.github.io/dll-r/index.html) - you are here!
+- [The Worksheet for Day 5](https://github.com/darachm/dll-r/raw/main/worksheets/dll-r_Day5_Lab.Rmd) - save it, 
+    and open it from inside RStudio ( control/combo + o key, usually). 
+    You can also go [here](https://github.com/darachm/dll-r/blob/main/worksheets/dll-r_Day5_Lab.Rmd)
+    and then click "Raw", and save that as a file. Open that inside Rstudio.
+- [The Document of Honourable Errors](https://docs.google.com/document/d/1s8PI8TzC3OD6FrvZYfjr44tNDypXfZ7rZxdQ3AwFBTI/edit?usp=sharing) - errors are cool and useful! 
+    Put any error messages you find on here, so we can check out those cool errors together
+
+<img src="https://media.giphy.com/media/12qq4Em3MVuwJW/giphy.gif" width="400"/>
+
+Today we're going to learn about applying R skills to 
+repeat, reproduce, extend, and share your analyses.
 
 <!-- exercise -->
 
 <!--are we trying to make students think about writing functions and clean code? I'm not sure that's clear if this is asynchronous reading-->
 
-- What have we done?
+Here's some broad questions to reflect on the previous two days:
+
 - Crack open your code - can you use it again?
 - Can you adapt it to modify your question, 
   feed in new data, and modify the
@@ -27,7 +37,7 @@ First, let's review the last two days.
 Our goals are to learn:
 
 - Why and how to organize work in a folder and rmarkdown files
-- How look for patterns and calculate lengths of strings
+- How look at character strings, to look for patterns and calculate lengths of strings
 - Why and how to write loops to do many analyses in a scalable way
 - What packages are for, how to find them, and how to install them
 - How to find help and tackle new problems with a learning community
@@ -36,14 +46,12 @@ Our goals are to learn:
 
 **Preparing for Today:**
 Please make sure you have completed all readings and activities from 
-Section 3: Day 4 - tidyverse and visualizations. 
+the previous days. If you have not found the time to do so, go ahead and join
+us to start on this material today.
 
-Before you start reading through Section 4 for today or taking part in
-synchronous activities, download and [open today's
-worksheet](https://github.com/darachm/dll-r/blob/main/worksheets/dll-r_Day5_Lab.Rmd).
-On this Github page, please right-click the button that says "Raw" and click
-"Save Link As..." to get a local copy of this Rmd file on your computer and
-open it in Rstudio.
+This site will stay up for at least several months (if not years), so these
+notes and worksheets (and us!) will be available long after.
+
 
 **Today's Schedule:**
 

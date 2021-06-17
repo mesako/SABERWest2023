@@ -17,6 +17,34 @@ they're very easy to use!
 
 ---
 
+### What packages do you have already? 
+
+You have a few. Here's a list:
+
+
+```r
+installed.packages()
+```
+
+But which are loaded?
+
+
+```r
+sessionInfo()
+```
+
+The packages are in a directory, the location is stored in this:
+
+
+```r
+.libPaths()
+```
+
+I'm not running that one, as it'll be different for each user. 
+
+---
+
+
 ### CRAN is the canonical R package resource
 
 The Comprehensive R Archive Netowrk 
@@ -85,18 +113,18 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+## ── Attaching packages ───────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
 ```
 
 ```
-## ✔ ggplot2 3.3.3     ✔ purrr   0.3.4
-## ✔ tibble  3.1.2     ✔ dplyr   1.0.6
-## ✔ tidyr   1.1.3     ✔ stringr 1.4.0
-## ✔ readr   1.4.0     ✔ forcats 0.5.1
+## ✔ ggplot2 3.3.2     ✔ purrr   0.3.4
+## ✔ tibble  3.0.4     ✔ dplyr   1.0.2
+## ✔ tidyr   1.1.2     ✔ stringr 1.4.0
+## ✔ readr   1.4.0     ✔ forcats 0.5.0
 ```
 
 ```
-## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ──────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
@@ -310,32 +338,6 @@ There's lots of good documentation on each
 [package's webpage](https://bioconductor.org/packages/release/bioc/html/DESeq2.html),
 like [vingettes](https://www.bioconductor.org/packages/devel/bioc/vignettes/DESeq2/inst/doc/DESeq2.html).
 
-### What packages do you have already? 
-
-You have a few. Here's a list:
-
-
-```r
-installed.packages()
-```
-
-But which are loaded?
-
-
-```r
-sessionInfo()
-```
-
-The packages are in a directory, the location is stored in this:
-
-
-```r
-.libPaths()
-```
-
-I'm not running that one, as it'll be different for each user. 
-
----
 
 ### Major problems with package installations
 

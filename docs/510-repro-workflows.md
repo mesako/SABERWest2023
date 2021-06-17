@@ -48,39 +48,41 @@ In at least this author's experience, it is common practice to:
 [do](https://dzone.com/articles/data-science-project-folder-structure)
 [this](https://data.library.arizona.edu/data-management/best-practices/data-project-organization).
 The correct style is whatever works for you and your research community.
+Ask your supervisor.
 
-**Ask your supervisor.**
+***--> Let's go ahead and make an organized folder structure to work in <--***
 
----
+You can change files and such using RStudio. Go to the panel on the bottom
+right, and switch it to "Files" tab. You might see something like this:
 
-Here's one diagram of how this might look:
+![a mostly empty directory](img/file_org/nothing.png)
 
-![Example from Noble PLoS 2009](img/noble2009.png)
+Go ahead and make a new folder, maybe call it "project":
+
+![making new folder](img/file_org/newfolder.png)
+
+Then, make folders to hold different types of files.
+What folders should we make?
+`data`, `scripts`, `output` is a good start.
+
+Then, put a copy of the [day5 worksheet](https://raw.githubusercontent.com/darachm/dll-r/main/worksheets/dll-r_Day5_Lab.Rmd) in `scripts` folder.
+You can move it however you like, using a folder, bash, or save-as.
+Put that in the `scripts` folder.
 
 ---
 
 ### Use a notebook to generate reports
 
 Self-documented code means code that can be understood without an external 
-explanation. It is often easier to write alongside and inside the code 
-than to generate a completely separate document to explain it.
-
-Code notebooks are pretty much the 
-best way^[Except in extremely limited computational environments, 
-where these tools are not available or would generate too much extra 
-computation per unit work.]
-to go about doing this.
-There are at least two approaches:
-
-- `rmarkdown` is the premier tool for typesetting *static* notebooks
-- `jupyter` is the defacto standard for *interactive* notebooks
-
-Here, we only recommend `rmarkdown`, as it is simpler to setup, use, and
-distribute results from, and is most commonly used by the R community.
+explanation. 
+You should probably do this with a code notebook.
+`rmarkdown` is the premier tool for typesetting *static* notebooks, and it's
+simpler to setup, use, and distribute results from, 
+and is most commonly used by the R community.
 
 ---
 
-#### Background
+#### Background about `rmarkdown`
 
 The `rmarkdown` package was created by
 [Yihui Xie](https://www.rstudio.com/speakers/yihui-xie/),
@@ -200,6 +202,11 @@ See more themes, and options,
 ### Sharing with others
 
 You'll need to share your work with others.
+Think about the next person coming along to the project, 
+or yourself in 3 months to a year from now. 
+What do you need to understand what you did and what you learned, and how to
+build off of it?
+
 This means all of what was done, the numbers and graphs made, and also
 _what you were thinking and what you now think_.
 In science, failure is **totally** an option, and is useful if it is paired
@@ -211,24 +218,9 @@ Either way, prepare to share!
 - Keep notes and write up text about what you were thinking, what you were
     trying to do, and how it turned out.
 - You can do that in between code chunks in an Rmarkdown file.
-- You can also turn your Rmarkdown file into a set of presentation slides,
-    by adding the following line in the YAML header:
-
-        output: slidy_presentation
-
-    or
-
-        output: 
-            slidy_presentation:
-                theme: default
             
-Also, consider how you are going to share the data or analysis files.
-Ask your supervisor for details.
-
-Think about the next person coming along to the project, 
-or yourself in 3 months to a year from now. 
-What do you need to understand what you did and what you learned, and how to
-build off of it?
+Ask your supervisor for details about what you're going to produce and share
+with folks.
 
 
 

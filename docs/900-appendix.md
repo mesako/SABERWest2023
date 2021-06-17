@@ -43,4 +43,17 @@ These will not be necessary for summer projects, but may be useful skills
 for bioinformatics research for at least the next 5-10 years.
 
 
+### Rmarkdown for slides
 
+Want to put a bunch of R plots into some slides?
+You can also turn your Rmarkdown file into a set of presentation slides,
+by adding the following line in the YAML header:
+
+    output: slidy_presentation
+
+    output: 
+        slidy_presentation:
+            theme: default
+            
+This makes a HTML file you can open in your browser, like slides (left, right
+for the slides).
