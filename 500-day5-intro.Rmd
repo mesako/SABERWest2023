@@ -11,8 +11,11 @@ title: "Day 5 - building workflows, loops, using packages, and finding help in n
     and open it from inside RStudio ( control/combo + o key, usually). 
     You can also go [here](https://github.com/darachm/dll-r/blob/main/worksheets/dll-r_Day5_Lab.Rmd)
     and then click "Raw", and save that as a file. Open that inside Rstudio.
+
+<!--
 - [The Document of Honourable Errors](https://docs.google.com/document/d/1s8PI8TzC3OD6FrvZYfjr44tNDypXfZ7rZxdQ3AwFBTI/edit?usp=sharing) - errors are cool and useful! 
     Put any error messages you find on here, so we can check out those cool errors together
+-->
 
 <img src="https://media.giphy.com/media/12qq4Em3MVuwJW/giphy.gif" width="400"/>
 
@@ -66,8 +69,8 @@ notes and worksheets (and us!) will be available long after.
 | 01:15 PM PDT | 02:00 PM PDT | Asynchronous - video, slack, etc | 4.3 exericses | Darach, Samson, Margaret, Zac |
 | 02:00 PM PDT | 02:30 PM PDT | Synchronous - lecture | 4.4 Demo/discuss some places to find help | **Darach**, Samson, Margaret |
 | 02:30 PM PDT | 02:45 PM PDT | Break | Take a computer break!  |  N/A  |
-| 02:45 PM PDT | 03:00 PM PDT | Synchronous - lecture | 4.5 Wrapping up | **Darach**, Samson, Margaret, Zac |
-| 03:00 PM PDT | 03:30 PM PDT | Synchronous - groups | 4.4 projects - attempt ambitious tutorials | **Darach**, Samson, Margaret, Zac |
+| 02:45 PM PDT | 03:15 PM PDT | Synchronous - groups | 4.4 projects - attempt ambitious tutorials | **Darach**, Samson, Margaret, Zac |
+| 03:15 PM PDT | 03:30 PM PDT | Synchronous - lecture | 4.5 Wrapping up | **Darach**, Samson, Margaret, Zac |
 
 <!-- -->
 
