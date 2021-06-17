@@ -43,7 +43,7 @@ Feeling motivated to accelerate data cleaning and analysis using the tidyverse?
 
 Load the tidyverse library
 
-```{r,loadtidy,cache=F, eval = F}
+```{r,loadtidy, message=FALSE}
 library(tidyverse)
 ```
 
