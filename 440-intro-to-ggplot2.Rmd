@@ -158,7 +158,9 @@ This matches what we already saw in the boxplot, showing that there are differen
 
 ------
 
-### Generating heatmaps
+### Generating heatmaps (OPTIONAL)
+
+If you are already familiar with ggplot2 or progress quickly through that material, you may consider reading this subsection. Otherwise, feel free to skip ahead!
 
 Heatmaps are a useful way to show the values of multiple samples across many measurements. You can visualize a heatmap by thinking of your dataframe, this tabular data, if it had each cell colorcoded based on how high or low the value is.
 

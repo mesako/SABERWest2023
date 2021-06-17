@@ -61,7 +61,7 @@ getting-started-with-a-ggplot
 changing-plot-aesthetics
 exploring-simple-plots
 visualizing-between-groups
-generating-heatmaps
+generating-heatmaps-optional
 making-scientific-figures
 plotting-error-bars
 showing-trends-in-data

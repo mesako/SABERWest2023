@@ -23,14 +23,14 @@ head(msleep)
 
 ```
 ## # A tibble: 6 x 11
-##   name  genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   <chr> <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Chee… Acin… carni Carn… lc                  12.1      NA        NA      11.9
-## 2 Owl … Aotus omni  Prim… <NA>                17         1.8      NA       7  
-## 3 Moun… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
-## 4 Grea… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
-## 5 Cow   Bos   herbi Arti… domesticated         4         0.7       0.667  20  
-## 6 Thre… Brad… herbi Pilo… <NA>                14.4       2.2       0.767   9.6
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
+## 1 Cheetah Acin… carni Carn… lc                  12.1      NA        NA      11.9
+## 2 Owl mo… Aotus omni  Prim… <NA>                17         1.8      NA       7  
+## 3 Mounta… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
+## 4 Greate… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
+## 5 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+## 6 Three-… Brad… herbi Pilo… <NA>                14.4       2.2       0.767   9.6
 ## # … with 2 more variables: brainwt <dbl>, bodywt <dbl>
 ```
 
@@ -230,7 +230,9 @@ This matches what we already saw in the boxplot, showing that there are differen
 
 ------
 
-### Generating heatmaps
+### Generating heatmaps (OPTIONAL)
+
+If you are already familiar with ggplot2 or progress quickly through that material, you may consider reading this subsection. Otherwise, feel free to skip ahead!
 
 Heatmaps are a useful way to show the values of multiple samples across many measurements. You can visualize a heatmap by thinking of your dataframe, this tabular data, if it had each cell colorcoded based on how high or low the value is.
 

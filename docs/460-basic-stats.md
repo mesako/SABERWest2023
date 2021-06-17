@@ -11,14 +11,14 @@ head(msleep)
 
 ```
 ## # A tibble: 6 x 11
-##   name  genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   <chr> <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Chee… Acin… carni Carn… lc                  12.1      NA        NA      11.9
-## 2 Owl … Aotus omni  Prim… <NA>                17         1.8      NA       7  
-## 3 Moun… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
-## 4 Grea… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
-## 5 Cow   Bos   herbi Arti… domesticated         4         0.7       0.667  20  
-## 6 Thre… Brad… herbi Pilo… <NA>                14.4       2.2       0.767   9.6
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
+## 1 Cheetah Acin… carni Carn… lc                  12.1      NA        NA      11.9
+## 2 Owl mo… Aotus omni  Prim… <NA>                17         1.8      NA       7  
+## 3 Mounta… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
+## 4 Greate… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
+## 5 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+## 6 Three-… Brad… herbi Pilo… <NA>                14.4       2.2       0.767   9.6
 ## # … with 2 more variables: brainwt <dbl>, bodywt <dbl>
 ```
 
@@ -334,18 +334,18 @@ summary(my.mod)
 ## 
 ## Residuals:
 ##      Min       1Q   Median       3Q      Max 
-## -0.20686 -0.07565 -0.07184 -0.03565  1.18663 
+## -0.78804 -0.08422 -0.07634 -0.02839  2.06190 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(>|t|)   
-## (Intercept) 0.0761566  0.0479290   1.589  0.12330   
-## bodywt      0.0009228  0.0003162   2.919  0.00686 **
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 8.592e-02  4.821e-02   1.782   0.0804 .  
+## bodywt      9.639e-04  5.027e-05  19.176   <2e-16 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.2459 on 28 degrees of freedom
-## Multiple R-squared:  0.2333,	Adjusted R-squared:  0.2059 
-## F-statistic:  8.52 on 1 and 28 DF,  p-value: 0.006859
+## Residual standard error: 0.3526 on 54 degrees of freedom
+## Multiple R-squared:  0.8719,	Adjusted R-squared:  0.8696 
+## F-statistic: 367.7 on 1 and 54 DF,  p-value: < 2.2e-16
 ```
 
 In the summary of the results of this modeling, we see that `bodywt` is a significant predictor of `brainwt` in the `msleep` dataset. We can provide more predictors into our formula in the format: `outcome ~ predictor1 + predictor2 + ...` (worksheet tasks 3.6.4B and 3.6.4C).
@@ -363,19 +363,19 @@ summary(my.mod2)
 ## 
 ## Residuals:
 ##     Min      1Q  Median      3Q     Max 
-## -4.3940 -2.2591 -0.1205  1.3586  7.5917 
+## -7.4531 -2.2517 -0.2619  2.0531  9.2283 
 ## 
 ## Coefficients:
-##              Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) 12.309310   0.675518  18.222  < 2e-16 ***
-## bodywt      -0.014261   0.004874  -2.926  0.00688 ** 
-## brainwt     -3.290750   2.551012  -1.290  0.20800    
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) 10.6722485  0.5898643  18.093   <2e-16 ***
+## bodywt       0.0007953  0.0016703   0.476    0.636    
+## brainwt     -2.3518943  1.6180072  -1.454    0.152    
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 3.319 on 27 degrees of freedom
-## Multiple R-squared:  0.4012,	Adjusted R-squared:  0.3569 
-## F-statistic: 9.046 on 2 and 27 DF,  p-value: 0.0009843
+## Residual standard error: 4.193 on 53 degrees of freedom
+## Multiple R-squared:  0.1337,	Adjusted R-squared:  0.101 
+## F-statistic: 4.088 on 2 and 53 DF,  p-value: 0.02232
 ```
 
 These results suggest that neither `bodywt` nor `brainwt` are significant predictors of `sleep_total`. That means that the value of either of those measurements does not give us information that helps us guess the total sleep duration for a mammal accurately.

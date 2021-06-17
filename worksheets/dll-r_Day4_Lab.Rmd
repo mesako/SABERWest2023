@@ -271,7 +271,9 @@ library(ggplot2)
 
 ------
 
-##### Section 3.4.5: Generating heatmaps
+##### Section 3.4.5: Generating heatmaps (OPTIONAL)
+
+For a challenge, you can complete these exercises if you have already done the rest of 3.4 and 3.5. Otherwise, we suggest proceeding to section 3.5.
 
 **Task A:** Create a new tabular dataset from the `iris` dataset where you extract just two of the quantatitive variables. Save this new dataset to a variable.
 

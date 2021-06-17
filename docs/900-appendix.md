@@ -15,11 +15,15 @@ as reference (if not inspiration) for your future R practice.
 
 ### More links
 
+- [A whole bunch of cheatsheets and example sheets of common commands and ways to do things](https://www.rstudio.com/resources/cheatsheets/#contributed-cheatsheets), 
+    check under "Contributed Cheatsheets" for some great ones, or browse them all
+
 - [Claus Wilke's dataviz bookdown](https://clauswilke.com/dataviz/)
 - [Computational Genomics with R](https://compgenomr.github.io/book/)
 - [UC Davis bioinformatics trainings](https://ucdavis-bioinformatics-training.github.io/)
 - [R Programming for Data Science](https://bookdown.org/rdpeng/rprogdatascience/)
 - [Biostars books on scripting, programming, genomics](https://www.biostars.org/p/225812/)
+- [Some basic non-tidyverse common commands](https://www.maths.usyd.edu.au/u/jchan/Rcommands.pdf)
 
 ### More about workflows
 
