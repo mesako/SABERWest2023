@@ -320,15 +320,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()</code></pre>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" data-line-number="1">data_url =<span class="st"> &quot;https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv&quot;</span></a>
-<a class="sourceLine" id="cb240-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb240-3" data-line-number="3">favorite_states =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;California&quot;</span>, <span class="st">&quot;Washington&quot;</span>, <span class="st">&quot;Illinois&quot;</span>, <span class="st">&quot;Nebraska&quot;</span>,  <span class="st">&quot;Florida&quot;</span>)</a>
-<a class="sourceLine" id="cb240-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb240-5" data-line-number="5">df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(data_url,</a>
-<a class="sourceLine" id="cb240-6" data-line-number="6">           <span class="dt">header =</span> T) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb240-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(state <span class="op">%in%</span><span class="st"> </span>favorite_states) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb240-8" data-line-number="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">date =</span> <span class="kw">as.Date</span>(date,<span class="dt">format=</span><span class="st">&quot;%Y-%m-%d&quot;</span>)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb240-9" data-line-number="9"><span class="st">  </span><span class="kw">filter</span>(date <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(date))</a></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1">data_url =<span class="st"> &quot;https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv&quot;</span></a>
+<a class="sourceLine" id="cb245-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb245-3" data-line-number="3">favorite_states =<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;California&quot;</span>, <span class="st">&quot;Washington&quot;</span>, <span class="st">&quot;Illinois&quot;</span>, <span class="st">&quot;Nebraska&quot;</span>,  <span class="st">&quot;Florida&quot;</span>)</a>
+<a class="sourceLine" id="cb245-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb245-5" data-line-number="5">df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(data_url,</a>
+<a class="sourceLine" id="cb245-6" data-line-number="6">           <span class="dt">header =</span> T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb245-7" data-line-number="7"><span class="st">  </span><span class="kw">filter</span>(state <span class="op">%in%</span><span class="st"> </span>favorite_states) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb245-8" data-line-number="8"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">date =</span> <span class="kw">as.Date</span>(date,<span class="dt">format=</span><span class="st">&quot;%Y-%m-%d&quot;</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb245-9" data-line-number="9"><span class="st">  </span><span class="kw">filter</span>(date <span class="op">==</span><span class="st"> </span><span class="kw">max</span>(date))</a></code></pre></div>
 <p>Test your knowledge! Use functions we learned in the last section to answer these questions:</p>
 <ol style="list-style-type: decimal">
 <li>What is the last date for recorded cases? Is it the same for all states/counties?</li>
@@ -341,11 +341,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 The datasets are based on the New York Times Data, which is loaded above.</p>
 <p><strong>Example Dataset #1:<code>df_1</code></strong>
 Three columns: county, cases, deaths</p>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb241-1" data-line-number="1">df_<span class="dv">1</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb241-2" data-line-number="2"><span class="st">  </span>tidyr<span class="op">::</span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;metric&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;count&quot;</span>, <span class="kw">c</span>(cases, deaths)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb241-3" data-line-number="3"><span class="st">  </span><span class="kw">arrange</span>(state,county)</a>
-<a class="sourceLine" id="cb241-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb241-5" data-line-number="5"><span class="kw">head</span>(df_<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb246-1" data-line-number="1">df_<span class="dv">1</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb246-2" data-line-number="2"><span class="st">  </span>tidyr<span class="op">::</span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;metric&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;count&quot;</span>, <span class="kw">c</span>(cases, deaths)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb246-3" data-line-number="3"><span class="st">  </span><span class="kw">arrange</span>(state,county)</a>
+<a class="sourceLine" id="cb246-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb246-5" data-line-number="5"><span class="kw">head</span>(df_<span class="dv">1</span>)</a></code></pre></div>
 <pre><code>##         date  county      state fips metric count
 ## 1 2021-06-13 Alameda California 6001  cases 89408
 ## 2 2021-06-13 Alameda California 6001 deaths  1719
@@ -355,14 +355,14 @@ Three columns: county, cases, deaths</p>
 ## 6 2021-06-13  Amador California 6005 deaths    47</code></pre>
 <p><strong>Example Dataset #2:<code>df_2</code></strong>
 Five columns: date, fips, metric corresponding to count, count, location (county, state)</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" data-line-number="1">df_<span class="dv">2</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb243-2" data-line-number="2"><span class="st">  </span>tidyr<span class="op">::</span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;metric&quot;</span>, </a>
-<a class="sourceLine" id="cb243-3" data-line-number="3">                <span class="dt">value =</span> <span class="st">&quot;count&quot;</span>, </a>
-<a class="sourceLine" id="cb243-4" data-line-number="4">                <span class="kw">c</span>(cases, deaths)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb243-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">county_state_fips =</span> <span class="kw">paste0</span>(county,<span class="st">&quot;,&quot;</span>, state, <span class="st">&quot;,&quot;</span>, fips)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb243-6" data-line-number="6"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>county,<span class="op">-</span>state)</a>
-<a class="sourceLine" id="cb243-7" data-line-number="7"></a>
-<a class="sourceLine" id="cb243-8" data-line-number="8"><span class="kw">head</span>(df_<span class="dv">2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb248-1" data-line-number="1">df_<span class="dv">2</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb248-2" data-line-number="2"><span class="st">  </span>tidyr<span class="op">::</span><span class="kw">gather</span>(<span class="dt">key =</span> <span class="st">&quot;metric&quot;</span>, </a>
+<a class="sourceLine" id="cb248-3" data-line-number="3">                <span class="dt">value =</span> <span class="st">&quot;count&quot;</span>, </a>
+<a class="sourceLine" id="cb248-4" data-line-number="4">                <span class="kw">c</span>(cases, deaths)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb248-5" data-line-number="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">county_state_fips =</span> <span class="kw">paste0</span>(county,<span class="st">&quot;,&quot;</span>, state, <span class="st">&quot;,&quot;</span>, fips)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb248-6" data-line-number="6"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>county,<span class="op">-</span>state)</a>
+<a class="sourceLine" id="cb248-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb248-8" data-line-number="8"><span class="kw">head</span>(df_<span class="dv">2</span>)</a></code></pre></div>
 <pre><code>##         date fips metric count         county_state_fips
 ## 1 2021-06-13 6001  cases 89408   Alameda,California,6001
 ## 2 2021-06-13 6003  cases    89    Alpine,California,6003
@@ -372,11 +372,11 @@ Five columns: date, fips, metric corresponding to count, count, location (county
 ## 6 2021-06-13 6011  cases  2276    Colusa,California,6011</code></pre>
 <p><strong>Example Dataset #3:<code>df_3</code></strong>
 A column with the county name, followed by columns for each state with the number of cases for that state/county pair.</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" data-line-number="1">df_<span class="dv">3</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb245-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(county,state,cases) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb245-3" data-line-number="3"><span class="st">  </span>tidyr<span class="op">::</span><span class="kw">spread</span>(<span class="dt">key =</span> <span class="st">&quot;state&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;cases&quot;</span>)</a>
-<a class="sourceLine" id="cb245-4" data-line-number="4">  </a>
-<a class="sourceLine" id="cb245-5" data-line-number="5"><span class="kw">head</span>(df_<span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" data-line-number="1">df_<span class="dv">3</span> &lt;-<span class="st"> </span>df <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb250-2" data-line-number="2"><span class="st">  </span><span class="kw">select</span>(county,state,cases) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb250-3" data-line-number="3"><span class="st">  </span>tidyr<span class="op">::</span><span class="kw">spread</span>(<span class="dt">key =</span> <span class="st">&quot;state&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;cases&quot;</span>)</a>
+<a class="sourceLine" id="cb250-4" data-line-number="4">  </a>
+<a class="sourceLine" id="cb250-5" data-line-number="5"><span class="kw">head</span>(df_<span class="dv">3</span>)</a></code></pre></div>
 <pre><code>##      county California Florida Illinois Nebraska Washington
 ## 1     Adams         NA      NA     8654     3181       2212
 ## 2   Alachua         NA   25293       NA       NA         NA
