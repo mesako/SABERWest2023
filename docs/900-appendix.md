@@ -15,7 +15,7 @@ as reference (if not inspiration) for your future R practice.
 
 ### More links
 
-- [swirl](https://swirlstats.com/)]
+- [swirl](https://swirlstats.com/)
     is an excellent interactive tutorial package you can install and work 
     through yourself for more practice, 
     get [started here](https://swirlstats.com/students.html)
