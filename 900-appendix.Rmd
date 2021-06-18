@@ -15,7 +15,10 @@ as reference (if not inspiration) for your future R practice.
 
 ### More links
 
-- [swirl - an excellent interactive tutorial package you can install and work through yourself for more practice](https://swirlstats.com/)
+- [swirl](https://swirlstats.com/)]
+    is an excellent interactive tutorial package you can install and work 
+    through yourself for more practice, 
+    get [started here](https://swirlstats.com/students.html)
 
 - [A whole bunch of cheatsheets and example sheets of common commands and ways to do things](https://www.rstudio.com/resources/cheatsheets/#contributed-cheatsheets), 
     check under "Contributed Cheatsheets" for some great ones, or browse them all
