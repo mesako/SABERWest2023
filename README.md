@@ -1,14 +1,7 @@
-This repo is for hosting notes, Rmds for the DLL 2021 R section
-
-# How to edit/contribute to the [hosted bookdown thing](https://darachm.github.io/dll-r)
+# How to edit/contribute to the [hosted bookdown thing](https://mesako.github.io/SABERWest2023)
 
 Which is accessible at 
-[darachm.github.io/dll-r](https://darachm.github.io/dll-r)
-
-## Setup
-1. Clone the repo locally 
-
-    `git clone https://github.com/darachm/dll-r`
+[mesako.github.io/SABERWest2023](https://mesako.github.io/SABERWest2023)
 
 ## Edit/work on it
 
