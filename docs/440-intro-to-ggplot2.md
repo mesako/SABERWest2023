@@ -22,15 +22,15 @@ head(msleep)
 ```
 
 ```
-## # A tibble: 6 x 11
-##   name  genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
-##   <chr> <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
-## 1 Chee… Acin… carni Carn… lc                  12.1      NA        NA      11.9
-## 2 Owl … Aotus omni  Prim… <NA>                17         1.8      NA       7  
-## 3 Moun… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
-## 4 Grea… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
-## 5 Cow   Bos   herbi Arti… domesticated         4         0.7       0.667  20  
-## 6 Thre… Brad… herbi Pilo… <NA>                14.4       2.2       0.767   9.6
+## # A tibble: 6 × 11
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   <chr>   <chr> <chr> <chr> <chr>              <dbl>     <dbl>       <dbl> <dbl>
+## 1 Cheetah Acin… carni Carn… lc                  12.1      NA        NA      11.9
+## 2 Owl mo… Aotus omni  Prim… <NA>                17         1.8      NA       7  
+## 3 Mounta… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
+## 4 Greate… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
+## 5 Cow     Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+## 6 Three-… Brad… herbi Pilo… <NA>                14.4       2.2       0.767   9.6
 ## # … with 2 more variables: brainwt <dbl>, bodywt <dbl>
 ```
 

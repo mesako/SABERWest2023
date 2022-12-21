@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>1.3 Workshop expectations | DLL 2021, R section</title>
+  <title>2 Day 4 - tidyverse and visualizations | DLL 2021, R section</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="1.3 Workshop expectations | DLL 2021, R section" />
+  <meta property="og:title" content="2 Day 4 - tidyverse and visualizations | DLL 2021, R section" />
   <meta property="og:type" content="book" />
   
   <meta property="og:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="1.3 Workshop expectations | DLL 2021, R section" />
+  <meta name="twitter:title" content="2 Day 4 - tidyverse and visualizations | DLL 2021, R section" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -33,8 +33,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="structure-and-resources.html"/>
-<link rel="next" href="day-4---tidyverse-and-visualizations.html"/>
+<link rel="prev" href="workshop-expectations.html"/>
+<link rel="next" href="reading-and-processing-data.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -217,27 +217,104 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="workshop-expectations" class="section level2 hasAnchor" number="1.3">
-<h2><span class="header-section-number">1.3</span> Workshop expectations<a href="workshop-expectations.html#workshop-expectations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<ol style="list-style-type: decimal">
-<li>Be respectful and compassionate.</li>
-<li>Teach one another, learn from one another.</li>
-<li>Aim for productive struggle.</li>
-</ol>
+<div id="day-4---tidyverse-and-visualizations" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Day 4 - tidyverse and visualizations<a href="day-4---tidyverse-and-visualizations.html#day-4---tidyverse-and-visualizations" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p><strong>Learning Goals:</strong></p>
+<p>By the end of today’s session, students will be able to:</p>
 <ul>
-<li>You will learn best if you make a good faith effort before seeking help.</li>
-<li>However, you should always seek help if you feel truly stuck.</li>
+<li>Read in and process data starting from a local saved file.</li>
+<li>Transform, scale, filter, and convert values within a dataset.</li>
+<li>Manipulate data frames using tidyverse piping and functions.</li>
+<li>Reshape a data frame so that it is “tidy” and appropriate for a given analysis.</li>
+<li>Describe the roles of data, aesthetics, and geoms in ggplot functions.</li>
+<li>Choose the correct aesthetics and alter the geom parameters for a scatter plot, histogram, or box plot.</li>
+<li>Customize plot scales, titles, subtitles, themes, fonts, layout, and orientation.</li>
+<li>Layer multiple geoms in a single plot, including error bars for data analysis.</li>
+<li>Save a ggplot to a local file.</li>
+<li>Analyze dataset using a variety of statistical approaches.</li>
 </ul>
-<ol start="4" style="list-style-type: decimal">
-<li>Create your own sense of challenge.</li>
-</ol>
-<ul>
-<li>Pick activities that you will learn and grow from.</li>
-<li>If you don’t find something challenging, make it challenging for yourself.</li>
-</ul>
-
+<p><strong>Preparing for Today:</strong>
+Please make sure you have completed all readings and activities from Section 2: Day 3 - introduction to R. You will also have some time at the start of the day to do the first sections 3.1-3.2.</p>
+<p>Before you start reading through Section 3 for today or taking part in synchronous activities, download and <a href="https://github.com/darachm/dll-r/blob/main/worksheets/dll-r_Day4_Lab.Rmd">open today’s worksheet</a>. On this Github page, please right-click the button that says “Raw” and click “Save Link As…” to get a local copy of this Rmd file on your computer and open it in Rstudio.</p>
+<p><strong>Today’s Schedule:</strong></p>
+<table>
+<colgroup>
+<col width="16%" />
+<col width="13%" />
+<col width="16%" />
+<col width="35%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Start Time</th>
+<th>End Time</th>
+<th>Activity</th>
+<th>Description</th>
+<th>Facilitator</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>10:00 AM PDT</td>
+<td>10:45 AM PDT</td>
+<td>Asynchronous</td>
+<td>Work through <a href="https://darachm.github.io/dll-r/reading-and-processing-data.html">sections 3.1-3.2</a></td>
+<td><strong>Margaret</strong>, Darach</td>
+</tr>
+<tr class="even">
+<td>10:45 AM PDT</td>
+<td>11:30 AM PDT</td>
+<td>Synchronous</td>
+<td>Peer coding exercises on Zoom</td>
+<td><strong>Margaret</strong>, Melissa, Samson, Zac, Darach</td>
+</tr>
+<tr class="odd">
+<td>11:30 AM PDT</td>
+<td>12:15 PM PDT</td>
+<td>Asynchronous</td>
+<td>Work through <a href="https://darachm.github.io/dll-r/making-plots-with-ggplot2.html">sections 3.4-3.5</a>, 3.4.5 is optional</td>
+<td><strong>Melissa</strong>, Margaret, Darach</td>
+</tr>
+<tr class="even">
+<td>12:15 PM PDT</td>
+<td>12:45 PM PDT</td>
+<td>Lunch Break</td>
+<td>Take a computer break!</td>
+<td>N/A</td>
+</tr>
+<tr class="odd">
+<td>12:45 PM PDT</td>
+<td>1:30 PM PDT</td>
+<td>Synchronous</td>
+<td>Peer coding exercises on Zoom</td>
+<td><strong>Melissa</strong>, Margaret, Zac</td>
+</tr>
+<tr class="even">
+<td>1:30 PM PDT</td>
+<td>2:00 PM PDT</td>
+<td>Asynchronous</td>
+<td>Work through <a href="https://darachm.github.io/dll-r/applying-basic-stats.html">sections 3.6</a></td>
+<td><strong>Margaret</strong>, Samson, Darach</td>
+</tr>
+<tr class="odd">
+<td>2:00 PM PDT</td>
+<td>2:30 PM PDT</td>
+<td>Snack Break</td>
+<td>Take a computer break!</td>
+<td>N/A</td>
+</tr>
+<tr class="even">
+<td>2:30 PM PDT</td>
+<td>3:30 PM PDT</td>
+<td>Synchronous</td>
+<td>Wrap-up session on Zoom</td>
+<td><strong>Samson</strong>, Margaret, Zac</td>
+</tr>
+</tbody>
+</table>
+<!--chapter:end:400-day4-intro.Rmd-->
 </div>
-<!-- </div> -->
 <p style="margin-top:10em;text-align:center;font-size:small;">
     <a href="https://github.com/darachm/dll-r/blob/main/LICENSE.md">
         Licensed Creative Commons Attribution-NonCommercial-ShareAlike 4.0
@@ -263,8 +340,8 @@ for (var i=0; i < listz.length; i++) {
           </div>
         </div>
       </div>
-<a href="structure-and-resources.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="day-4---tidyverse-and-visualizations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="workshop-expectations.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="reading-and-processing-data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -295,7 +372,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/darachm/dll-r/edit/main/index.Rmd",
+"link": "https://github.com/darachm/dll-r/edit/main/410-process-data.Rmd",
 "text": "Edit"
 },
 "history": {

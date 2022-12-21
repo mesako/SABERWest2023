@@ -51,18 +51,18 @@ We'll read in the data straight from github. This is a lot of data (every county
 
 
 ```
-## ── Attaching packages ───────────────────────────────────────────────────────────────────────────────────── tidyverse 1.3.0 ──
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
 ```
 
 ```
-## ✔ ggplot2 3.3.2     ✔ purrr   0.3.4
-## ✔ tibble  3.0.4     ✔ dplyr   1.0.2
-## ✔ tidyr   1.1.2     ✔ stringr 1.4.0
-## ✔ readr   1.4.0     ✔ forcats 0.5.0
+## ✔ ggplot2 3.3.5     ✔ purrr   0.3.4
+## ✔ tibble  3.1.6     ✔ dplyr   1.0.8
+## ✔ tidyr   1.2.0     ✔ stringr 1.4.0
+## ✔ readr   2.1.2     ✔ forcats 0.5.1
 ```
 
 ```
-## ── Conflicts ──────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ```
@@ -105,13 +105,13 @@ head(df_1)
 ```
 
 ```
-##         date  county      state fips metric count
-## 1 2021-06-13 Alameda California 6001  cases 89408
-## 2 2021-06-13 Alameda California 6001 deaths  1719
-## 3 2021-06-13  Alpine California 6003  cases    89
-## 4 2021-06-13  Alpine California 6003 deaths     0
-## 5 2021-06-13  Amador California 6005  cases  3720
-## 6 2021-06-13  Amador California 6005 deaths    47
+##         date  county      state fips metric  count
+## 1 2022-05-13 Alameda California 6001  cases 284054
+## 2 2022-05-13 Alameda California 6001 deaths   1868
+## 3 2022-05-13  Alpine California 6003  cases    126
+## 4 2022-05-13  Alpine California 6003 deaths      0
+## 5 2022-05-13  Amador California 6005  cases   9242
+## 6 2022-05-13  Amador California 6005 deaths     86
 ```
 
 **Example Dataset #2:`df_2`**
@@ -130,13 +130,13 @@ head(df_2)
 ```
 
 ```
-##         date fips metric count         county_state_fips
-## 1 2021-06-13 6001  cases 89408   Alameda,California,6001
-## 2 2021-06-13 6003  cases    89    Alpine,California,6003
-## 3 2021-06-13 6005  cases  3720    Amador,California,6005
-## 4 2021-06-13 6007  cases 12576     Butte,California,6007
-## 5 2021-06-13 6009  cases  2195 Calaveras,California,6009
-## 6 2021-06-13 6011  cases  2276    Colusa,California,6011
+##         date fips metric  count         county_state_fips
+## 1 2022-05-13 6001  cases 284054   Alameda,California,6001
+## 2 2022-05-13 6003  cases    126    Alpine,California,6003
+## 3 2022-05-13 6005  cases   9242    Amador,California,6005
+## 4 2022-05-13 6007  cases  40181     Butte,California,6007
+## 5 2022-05-13 6009  cases   7754 Calaveras,California,6009
+## 6 2022-05-13 6011  cases   4549    Colusa,California,6011
 ```
 
 **Example Dataset #3:`df_3`**
@@ -153,12 +153,12 @@ head(df_3)
 
 ```
 ##      county California Florida Illinois Nebraska Washington
-## 1     Adams         NA      NA     8654     3181       2212
-## 2   Alachua         NA   25293       NA       NA         NA
-## 3   Alameda      89408      NA       NA       NA         NA
-## 4 Alexander         NA      NA      473       NA         NA
-## 5    Alpine         89      NA       NA       NA         NA
-## 6    Amador       3720      NA       NA       NA         NA
+## 1     Adams         NA      NA    22525     6541       4926
+## 2   Alachua         NA   69008       NA       NA         NA
+## 3   Alameda     284054      NA       NA       NA         NA
+## 4 Alexander         NA      NA     1288       NA         NA
+## 5    Alpine        126      NA       NA       NA         NA
+## 6    Amador       9242      NA       NA       NA         NA
 ```
 
 

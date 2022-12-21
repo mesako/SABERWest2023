@@ -4,19 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3.2 Tidyverse 1/2: functions &amp; pipes | DLL 2021, R section</title>
+  <title>2.2 Tidyverse 1/2: functions &amp; pipes | DLL 2021, R section</title>
   <meta name="description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
-  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.31 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3.2 Tidyverse 1/2: functions &amp; pipes | DLL 2021, R section" />
+  <meta property="og:title" content="2.2 Tidyverse 1/2: functions &amp; pipes | DLL 2021, R section" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   <meta name="github-repo" content="darachm/dll-r" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.2 Tidyverse 1/2: functions &amp; pipes | DLL 2021, R section" />
+  <meta name="twitter:title" content="2.2 Tidyverse 1/2: functions &amp; pipes | DLL 2021, R section" />
   
   <meta name="twitter:description" content="A living syllabus for the R section of DLL 2021, at Stanford" />
   
@@ -36,7 +35,8 @@
   
 <link rel="prev" href="reading-and-processing-data.html"/>
 <link rel="next" href="tidyverse-22-reshaping-data.html"/>
-<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -52,31 +52,33 @@
 
 
 
-
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -85,15 +87,15 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {  }
+  {   }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -106,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -137,126 +139,65 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">DLL 2021 R workshops</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Workshop Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Workshop Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="workshop-goals.html"><a href="workshop-goals.html"><i class="fa fa-check"></i><b>1.1</b> Workshop goals</a></li>
-<li class="chapter" data-level="1.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html"><i class="fa fa-check"></i><b>1.2</b> Structure and resources</a><ul>
+<li class="chapter" data-level="1.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html"><i class="fa fa-check"></i><b>1.2</b> Structure and resources</a>
+<ul>
 <li class="chapter" data-level="1.2.1" data-path="structure-and-resources.html"><a href="structure-and-resources.html#workshop-schedule"><i class="fa fa-check"></i><b>1.2.1</b> Workshop schedule</a></li>
 <li class="chapter" data-level="1.2.2" data-path="structure-and-resources.html"><a href="structure-and-resources.html#asynchronous-sessions"><i class="fa fa-check"></i><b>1.2.2</b> Asynchronous sessions</a></li>
 <li class="chapter" data-level="1.2.3" data-path="structure-and-resources.html"><a href="structure-and-resources.html#synchronous-sessions"><i class="fa fa-check"></i><b>1.2.3</b> Synchronous sessions</a></li>
 </ul></li>
 <li class="chapter" data-level="1.3" data-path="workshop-expectations.html"><a href="workshop-expectations.html"><i class="fa fa-check"></i><b>1.3</b> Workshop expectations</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="day-3-intoduction-to-r.html"><a href="day-3-intoduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Day 3 - intoduction to R</a><ul>
-<li class="chapter" data-level="2.1" data-path="using-rstudio.html"><a href="using-rstudio.html"><i class="fa fa-check"></i><b>2.1</b> Using RStudio</a><ul>
-<li class="chapter" data-level="2.1.1" data-path="using-rstudio.html"><a href="using-rstudio.html#r-scripts-in-rstudio"><i class="fa fa-check"></i><b>2.1.1</b> R Scripts in RStudio</a></li>
-<li class="chapter" data-level="2.1.2" data-path="using-rstudio.html"><a href="using-rstudio.html#console-and-terminal"><i class="fa fa-check"></i><b>2.1.2</b> Console and Terminal</a></li>
-<li class="chapter" data-level="2.1.3" data-path="using-rstudio.html"><a href="using-rstudio.html#environment-and-history"><i class="fa fa-check"></i><b>2.1.3</b> Environment and History</a></li>
-<li class="chapter" data-level="2.1.4" data-path="using-rstudio.html"><a href="using-rstudio.html#files-plots-and-packages"><i class="fa fa-check"></i><b>2.1.4</b> Files, Plots, and Packages</a></li>
-<li class="chapter" data-level="2.1.5" data-path="using-rstudio.html"><a href="using-rstudio.html#putting-it-all-together"><i class="fa fa-check"></i><b>2.1.5</b> Putting It All Together</a></li>
+<li class="chapter" data-level="2" data-path="day-4---tidyverse-and-visualizations.html"><a href="day-4---tidyverse-and-visualizations.html"><i class="fa fa-check"></i><b>2</b> Day 4 - tidyverse and visualizations</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html"><i class="fa fa-check"></i><b>2.1</b> Reading and processing data</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html#loading-a-file-into-r"><i class="fa fa-check"></i><b>2.1.1</b> Loading a file into R</a></li>
+<li class="chapter" data-level="2.1.2" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html#handling-issues-in-data"><i class="fa fa-check"></i><b>2.1.2</b> Handling issues in data</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="using-rmds.html"><a href="using-rmds.html"><i class="fa fa-check"></i><b>2.2</b> Using Rmds</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="using-rmds.html"><a href="using-rmds.html#basic-structure"><i class="fa fa-check"></i><b>2.2.1</b> Basic Structure</a></li>
-<li class="chapter" data-level="2.2.2" data-path="using-rmds.html"><a href="using-rmds.html#overview-of-markdown"><i class="fa fa-check"></i><b>2.2.2</b> Overview of Markdown</a></li>
-<li class="chapter" data-level="2.2.3" data-path="using-rmds.html"><a href="using-rmds.html#overview-of-how-to-write-an-r-chunk"><i class="fa fa-check"></i><b>2.2.3</b> Overview of how to write an R chunk</a></li>
-<li class="chapter" data-level="2.2.4" data-path="using-rmds.html"><a href="using-rmds.html#final-thoughts"><i class="fa fa-check"></i><b>2.2.4</b> Final Thoughts</a></li>
+<li class="chapter" data-level="2.2" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html"><i class="fa fa-check"></i><b>2.2</b> Tidyverse 1/2: functions &amp; pipes</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>2.2.1</b> Welcome to the tidyverse!</a></li>
+<li class="chapter" data-level="2.2.2" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html#load-tidyverse"><i class="fa fa-check"></i><b>2.2.2</b> Load tidyverse</a></li>
+<li class="chapter" data-level="2.2.3" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html#how-to-pipe"><i class="fa fa-check"></i><b>2.2.3</b> How to pipe %&gt;%</a></li>
+<li class="chapter" data-level="2.2.4" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html#essential-tidyverse-functions"><i class="fa fa-check"></i><b>2.2.4</b> Essential tidyverse functions</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html"><i class="fa fa-check"></i><b>2.3</b> Getting started in R</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html#getting-help-in-r"><i class="fa fa-check"></i><b>2.3.1</b> Getting help in R</a></li>
-<li class="chapter" data-level="2.3.2" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html#using-variables-and-data-types"><i class="fa fa-check"></i><b>2.3.2</b> Using variables and data types</a></li>
-<li class="chapter" data-level="2.3.3" data-path="getting-started-in-r.html"><a href="getting-started-in-r.html#using-functions"><i class="fa fa-check"></i><b>2.3.3</b> Using functions</a></li>
+<li class="chapter" data-level="2.3" data-path="tidyverse-22-reshaping-data.html"><a href="tidyverse-22-reshaping-data.html"><i class="fa fa-check"></i><b>2.3</b> Tidyverse 2/2: reshaping data</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="tidyverse-22-reshaping-data.html"><a href="tidyverse-22-reshaping-data.html#why-tidy-data"><i class="fa fa-check"></i><b>2.3.1</b> Why tidy data</a></li>
+<li class="chapter" data-level="2.3.2" data-path="tidyverse-22-reshaping-data.html"><a href="tidyverse-22-reshaping-data.html#how-to-tidy-data"><i class="fa fa-check"></i><b>2.3.2</b> How to tidy data</a></li>
+<li class="chapter" data-level="2.3.3" data-path="tidyverse-22-reshaping-data.html"><a href="tidyverse-22-reshaping-data.html#data-exploration-with-tidyverse"><i class="fa fa-check"></i><b>2.3.3</b> Data exploration with tidyverse</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="working-with-vectors.html"><a href="working-with-vectors.html"><i class="fa fa-check"></i><b>2.4</b> Working with vectors</a><ul>
-<li class="chapter" data-level="2.4.1" data-path="working-with-vectors.html"><a href="working-with-vectors.html#building-vectors"><i class="fa fa-check"></i><b>2.4.1</b> Building vectors</a></li>
-<li class="chapter" data-level="2.4.2" data-path="working-with-vectors.html"><a href="working-with-vectors.html#indexing-and-subsetting-vectors"><i class="fa fa-check"></i><b>2.4.2</b> Indexing and subsetting vectors</a></li>
-<li class="chapter" data-level="2.4.3" data-path="working-with-vectors.html"><a href="working-with-vectors.html#using-logic-and-logicals"><i class="fa fa-check"></i><b>2.4.3</b> Using logic and logicals</a></li>
-<li class="chapter" data-level="2.4.4" data-path="working-with-vectors.html"><a href="working-with-vectors.html#modifying-vectors"><i class="fa fa-check"></i><b>2.4.4</b> Modifying vectors</a></li>
+<li class="chapter" data-level="2.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>2.4</b> Making plots with ggplot2</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>2.4.1</b> Getting started with a ggplot</a></li>
+<li class="chapter" data-level="2.4.2" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#changing-plot-aesthetics"><i class="fa fa-check"></i><b>2.4.2</b> Changing plot aesthetics</a></li>
+<li class="chapter" data-level="2.4.3" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#exploring-simple-plots"><i class="fa fa-check"></i><b>2.4.3</b> Exploring simple plots</a></li>
+<li class="chapter" data-level="2.4.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>2.4.4</b> Visualizing between groups</a></li>
+<li class="chapter" data-level="2.4.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#generating-heatmaps-optional"><i class="fa fa-check"></i><b>2.4.5</b> Generating heatmaps (OPTIONAL)</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html"><i class="fa fa-check"></i><b>2.5</b> Working with dataframes</a><ul>
-<li class="chapter" data-level="2.5.1" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html#indexing-and-subsetting-dataframes"><i class="fa fa-check"></i><b>2.5.1</b> Indexing and subsetting dataframes</a></li>
-<li class="chapter" data-level="2.5.2" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html#exploring-dataframes"><i class="fa fa-check"></i><b>2.5.2</b> Exploring dataframes</a></li>
-<li class="chapter" data-level="2.5.3" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html#building-and-modifying-dataframes"><i class="fa fa-check"></i><b>2.5.3</b> Building and modifying dataframes</a></li>
-<li class="chapter" data-level="2.5.4" data-path="working-with-dataframes.html"><a href="working-with-dataframes.html#handling-datatypes-in-dataframes"><i class="fa fa-check"></i><b>2.5.4</b> Handling datatypes in dataframes</a></li>
+<li class="chapter" data-level="2.5" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html"><i class="fa fa-check"></i><b>2.5</b> Making scientific figures</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#plotting-error-bars"><i class="fa fa-check"></i><b>2.5.1</b> Plotting error bars</a></li>
+<li class="chapter" data-level="2.5.2" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#showing-trends-in-data"><i class="fa fa-check"></i><b>2.5.2</b> Showing trends in data</a></li>
+<li class="chapter" data-level="2.5.3" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#saving-figures-locally"><i class="fa fa-check"></i><b>2.5.3</b> Saving figures locally</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="day-4-tidyverse-and-visualizations.html"><a href="day-4-tidyverse-and-visualizations.html"><i class="fa fa-check"></i><b>3</b> Day 4 - tidyverse and visualizations</a><ul>
-<li class="chapter" data-level="3.1" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html"><i class="fa fa-check"></i><b>3.1</b> Reading and processing data</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html#loading-a-file-into-r"><i class="fa fa-check"></i><b>3.1.1</b> Loading a file into R</a></li>
-<li class="chapter" data-level="3.1.2" data-path="reading-and-processing-data.html"><a href="reading-and-processing-data.html#handling-issues-in-data"><i class="fa fa-check"></i><b>3.1.2</b> Handling issues in data</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html"><i class="fa fa-check"></i><b>3.2</b> Tidyverse 1/2: functions &amp; pipes</a><ul>
-<li class="chapter" data-level="3.2.1" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html#welcome-to-the-tidyverse"><i class="fa fa-check"></i><b>3.2.1</b> Welcome to the tidyverse!</a></li>
-<li class="chapter" data-level="3.2.2" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html#load-tidyverse"><i class="fa fa-check"></i><b>3.2.2</b> Load tidyverse</a></li>
-<li class="chapter" data-level="3.2.3" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html#how-to-pipe"><i class="fa fa-check"></i><b>3.2.3</b> How to pipe %&gt;%</a></li>
-<li class="chapter" data-level="3.2.4" data-path="tidyverse-12-functions-pipes.html"><a href="tidyverse-12-functions-pipes.html#essential-tidyverse-functions"><i class="fa fa-check"></i><b>3.2.4</b> Essential tidyverse functions</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="tidyverse-22-reshaping-data.html"><a href="tidyverse-22-reshaping-data.html"><i class="fa fa-check"></i><b>3.3</b> Tidyverse 2/2: reshaping data</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="tidyverse-22-reshaping-data.html"><a href="tidyverse-22-reshaping-data.html#why-tidy-data"><i class="fa fa-check"></i><b>3.3.1</b> Why tidy data</a></li>
-<li class="chapter" data-level="3.3.2" data-path="tidyverse-22-reshaping-data.html"><a href="tidyverse-22-reshaping-data.html#how-to-tidy-data"><i class="fa fa-check"></i><b>3.3.2</b> How to tidy data</a></li>
-<li class="chapter" data-level="3.3.3" data-path="tidyverse-22-reshaping-data.html"><a href="tidyverse-22-reshaping-data.html#data-exploration-with-tidyverse"><i class="fa fa-check"></i><b>3.3.3</b> Data exploration with tidyverse</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html"><i class="fa fa-check"></i><b>3.4</b> Making plots with ggplot2</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#getting-started-with-a-ggplot"><i class="fa fa-check"></i><b>3.4.1</b> Getting started with a ggplot</a></li>
-<li class="chapter" data-level="3.4.2" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#changing-plot-aesthetics"><i class="fa fa-check"></i><b>3.4.2</b> Changing plot aesthetics</a></li>
-<li class="chapter" data-level="3.4.3" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#exploring-simple-plots"><i class="fa fa-check"></i><b>3.4.3</b> Exploring simple plots</a></li>
-<li class="chapter" data-level="3.4.4" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#visualizing-between-groups"><i class="fa fa-check"></i><b>3.4.4</b> Visualizing between groups</a></li>
-<li class="chapter" data-level="3.4.5" data-path="making-plots-with-ggplot2.html"><a href="making-plots-with-ggplot2.html#generating-heatmaps-optional"><i class="fa fa-check"></i><b>3.4.5</b> Generating heatmaps (OPTIONAL)</a></li>
-</ul></li>
-<li class="chapter" data-level="3.5" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html"><i class="fa fa-check"></i><b>3.5</b> Making scientific figures</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#plotting-error-bars"><i class="fa fa-check"></i><b>3.5.1</b> Plotting error bars</a></li>
-<li class="chapter" data-level="3.5.2" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#showing-trends-in-data"><i class="fa fa-check"></i><b>3.5.2</b> Showing trends in data</a></li>
-<li class="chapter" data-level="3.5.3" data-path="making-scientific-figures.html"><a href="making-scientific-figures.html#saving-figures-locally"><i class="fa fa-check"></i><b>3.5.3</b> Saving figures locally</a></li>
-</ul></li>
-<li class="chapter" data-level="3.6" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html"><i class="fa fa-check"></i><b>3.6</b> Applying basic stats</a><ul>
-<li class="chapter" data-level="3.6.1" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#describing-quantitative-variables"><i class="fa fa-check"></i><b>3.6.1</b> Describing quantitative variables</a></li>
-<li class="chapter" data-level="3.6.2" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#finding-differences-in-data"><i class="fa fa-check"></i><b>3.6.2</b> Finding differences in data</a></li>
-<li class="chapter" data-level="3.6.3" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#identifying-correlations"><i class="fa fa-check"></i><b>3.6.3</b> Identifying correlations</a></li>
-<li class="chapter" data-level="3.6.4" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#producing-linear-models"><i class="fa fa-check"></i><b>3.6.4</b> Producing linear models</a></li>
+<li class="chapter" data-level="2.6" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html"><i class="fa fa-check"></i><b>2.6</b> Applying basic stats</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#describing-quantitative-variables"><i class="fa fa-check"></i><b>2.6.1</b> Describing quantitative variables</a></li>
+<li class="chapter" data-level="2.6.2" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#finding-differences-in-data"><i class="fa fa-check"></i><b>2.6.2</b> Finding differences in data</a></li>
+<li class="chapter" data-level="2.6.3" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#identifying-correlations"><i class="fa fa-check"></i><b>2.6.3</b> Identifying correlations</a></li>
+<li class="chapter" data-level="2.6.4" data-path="applying-basic-stats.html"><a href="applying-basic-stats.html#producing-linear-models"><i class="fa fa-check"></i><b>2.6.4</b> Producing linear models</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="day-5-workflows-loops-packages-and-help.html"><a href="day-5-workflows-loops-packages-and-help.html"><i class="fa fa-check"></i><b>4</b> Day 5 - workflows, loops, packages, and help</a><ul>
-<li class="chapter" data-level="4.1" data-path="what-is-a-workflow.html"><a href="what-is-a-workflow.html"><i class="fa fa-check"></i><b>4.1</b> What is a workflow?</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="what-is-a-workflow.html"><a href="what-is-a-workflow.html#organizing-files"><i class="fa fa-check"></i><b>4.1.1</b> Organizing files</a></li>
-<li class="chapter" data-level="4.1.2" data-path="what-is-a-workflow.html"><a href="what-is-a-workflow.html#use-a-notebook-to-generate-reports"><i class="fa fa-check"></i><b>4.1.2</b> Use a notebook to generate reports</a></li>
-<li class="chapter" data-level="4.1.3" data-path="what-is-a-workflow.html"><a href="what-is-a-workflow.html#sharing-with-others"><i class="fa fa-check"></i><b>4.1.3</b> Sharing with others</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html"><i class="fa fa-check"></i><b>4.2</b> Analyzing viral protein sequences</a><ul>
-<li class="chapter" data-level="4.2.1" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#reading-in-tab-delimited-file"><i class="fa fa-check"></i><b>4.2.1</b> Reading in tab-delimited file</a></li>
-<li class="chapter" data-level="4.2.2" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#string-stuff"><i class="fa fa-check"></i><b>4.2.2</b> String stuff</a></li>
-<li class="chapter" data-level="4.2.3" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#loops---doing-a-similar-task-multiple-times"><i class="fa fa-check"></i><b>4.2.3</b> Loops - doing a similar task multiple times</a></li>
-<li class="chapter" data-level="4.2.4" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#storing-values-from-a-loop"><i class="fa fa-check"></i><b>4.2.4</b> Storing values from a loop</a></li>
-<li class="chapter" data-level="4.2.5" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#extending-the-workflow"><i class="fa fa-check"></i><b>4.2.5</b> Extending the workflow</a></li>
-<li class="chapter" data-level="4.2.6" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#conclusion"><i class="fa fa-check"></i><b>4.2.6</b> Conclusion</a></li>
-<li class="chapter" data-level="4.2.7" data-path="analyzing-viral-protein-sequences.html"><a href="analyzing-viral-protein-sequences.html#totally-optional-supplements-for-your-edification"><i class="fa fa-check"></i><b>4.2.7</b> Totally optional supplements, for your edification</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html"><i class="fa fa-check"></i><b>4.3</b> Packages - install and use</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#what-packages-do-you-have-already"><i class="fa fa-check"></i><b>4.3.1</b> What packages do you have already?</a></li>
-<li class="chapter" data-level="4.3.2" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#cran-is-the-canonical-r-package-resource"><i class="fa fa-check"></i><b>4.3.2</b> CRAN is the canonical R package resource</a></li>
-<li class="chapter" data-level="4.3.3" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#using-packages-without-library-ing-them"><i class="fa fa-check"></i><b>4.3.3</b> Using packages without <code>library()</code>-ing them</a></li>
-<li class="chapter" data-level="4.3.4" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#github-is-a-common-place-for-sharing-packges-in-development"><i class="fa fa-check"></i><b>4.3.4</b> Github is a common place for sharing packges in development</a></li>
-<li class="chapter" data-level="4.3.5" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#bioconductor-is-a-great-place-for-bio-related-packages"><i class="fa fa-check"></i><b>4.3.5</b> Bioconductor is a great place for bio-related packages</a></li>
-<li class="chapter" data-level="4.3.6" data-path="packages-install-and-use.html"><a href="packages-install-and-use.html#major-problems-with-package-installations"><i class="fa fa-check"></i><b>4.3.6</b> Major problems with package installations</a></li>
-</ul></li>
-<li class="chapter" data-level="4.4" data-path="getting-help-troubleshooting.html"><a href="getting-help-troubleshooting.html"><i class="fa fa-check"></i><b>4.4</b> Getting help - troubleshooting</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="getting-help-troubleshooting.html"><a href="getting-help-troubleshooting.html#where-to-start-general-help"><i class="fa fa-check"></i><b>4.4.1</b> Where to start? General help</a></li>
-<li class="chapter" data-level="4.4.2" data-path="getting-help-troubleshooting.html"><a href="getting-help-troubleshooting.html#debugging-specific-problems"><i class="fa fa-check"></i><b>4.4.2</b> Debugging specific problems</a></li>
-<li class="chapter" data-level="4.4.3" data-path="getting-help-troubleshooting.html"><a href="getting-help-troubleshooting.html#minimal-reproducible-examples"><i class="fa fa-check"></i><b>4.4.3</b> Minimal reproducible examples</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="the-struggle.html"><a href="the-struggle.html"><i class="fa fa-check"></i><b>4.5</b> The Struggle</a></li>
-<li class="chapter" data-level="4.6" data-path="conclusion-1.html"><a href="conclusion-1.html"><i class="fa fa-check"></i><b>4.6</b> Conclusion</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a><ul>
-<li class="chapter" data-level="5.1" data-path="some-links-and-some-extras.html"><a href="some-links-and-some-extras.html"><i class="fa fa-check"></i><b>5.1</b> Some links and some extras</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="some-links-and-some-extras.html"><a href="some-links-and-some-extras.html#ideas-for-figures"><i class="fa fa-check"></i><b>5.1.1</b> Ideas for figures</a></li>
-<li class="chapter" data-level="5.1.2" data-path="some-links-and-some-extras.html"><a href="some-links-and-some-extras.html#more-links"><i class="fa fa-check"></i><b>5.1.2</b> More links</a></li>
-<li class="chapter" data-level="5.1.3" data-path="some-links-and-some-extras.html"><a href="some-links-and-some-extras.html#more-about-workflows"><i class="fa fa-check"></i><b>5.1.3</b> More about workflows</a></li>
-<li class="chapter" data-level="5.1.4" data-path="some-links-and-some-extras.html"><a href="some-links-and-some-extras.html#rmarkdown-for-slides"><i class="fa fa-check"></i><b>5.1.4</b> Rmarkdown for slides</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="style-writing-reusable-code.html"><a href="style-writing-reusable-code.html"><i class="fa fa-check"></i><b>5.2</b> Style - writing (re)usable code</a><ul>
-<li class="chapter" data-level="5.2.1" data-path="style-writing-reusable-code.html"><a href="style-writing-reusable-code.html#functions-as-modular-steps"><i class="fa fa-check"></i><b>5.2.1</b> Functions as modular steps</a></li>
-<li class="chapter" data-level="5.2.2" data-path="style-writing-reusable-code.html"><a href="style-writing-reusable-code.html#tips-for-modular-workflows"><i class="fa fa-check"></i><b>5.2.2</b> Tips for modular workflows</a></li>
-<li class="chapter" data-level="5.2.3" data-path="style-writing-reusable-code.html"><a href="style-writing-reusable-code.html#apply-is-a-popular-tool"><i class="fa fa-check"></i><b>5.2.3</b> Apply is a popular tool</a></li>
-<li class="chapter" data-level="5.2.4" data-path="style-writing-reusable-code.html"><a href="style-writing-reusable-code.html#learn-from-examples"><i class="fa fa-check"></i><b>5.2.4</b> Learn from examples</a></li>
-<li class="chapter" data-level="5.2.5" data-path="style-writing-reusable-code.html"><a href="style-writing-reusable-code.html#style-guides-can-be-inspiring"><i class="fa fa-check"></i><b>5.2.5</b> Style guides can be inspiring</a></li>
+<li class="chapter" data-level="3" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>3</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="some-links-and-some-extras.html"><a href="some-links-and-some-extras.html"><i class="fa fa-check"></i><b>3.1</b> Some links and some extras</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="some-links-and-some-extras.html"><a href="some-links-and-some-extras.html#ideas-for-figures"><i class="fa fa-check"></i><b>3.1.1</b> Ideas for figures</a></li>
+<li class="chapter" data-level="3.1.2" data-path="some-links-and-some-extras.html"><a href="some-links-and-some-extras.html#more-links"><i class="fa fa-check"></i><b>3.1.2</b> More links</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -276,51 +217,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="tidyverse-12-functions-pipes" class="section level2">
-<h2><span class="header-section-number">3.2</span> Tidyverse 1/2: functions &amp; pipes</h2>
+<div id="tidyverse-12-functions-pipes" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Tidyverse 1/2: functions &amp; pipes<a href="tidyverse-12-functions-pipes.html#tidyverse-12-functions-pipes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Goal: Understand the tidyverse framework of pipes and functions, as well as how to apply it to tidy data frame cleaning and manipulation.</p>
-<div id="welcome-to-the-tidyverse" class="section level3">
-<h3><span class="header-section-number">3.2.1</span> Welcome to the tidyverse!</h3>
+<div id="welcome-to-the-tidyverse" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Welcome to the tidyverse!<a href="tidyverse-12-functions-pipes.html#welcome-to-the-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><a href="https://www.tidyverse.org">Tidyverse</a> is a suite of R packages that are very useful for data science when we need to manipulate data frames and visualize data. The most important packages in tidyverse for our workshop will be <a href="https://dplyr.tidyverse.org">dplyr</a> and <a href="https://ggplot2.tidyverse.org">ggplot2</a>. It builds on the base R functions and data types we’ve studied so far. It just provides a different design framework for working with data in R. The main two features of tidyverse are</p>
 <ol style="list-style-type: decimal">
 <li>A new suite of very useful, intuitive functions</li>
 <li>The pipe <code>%&gt;%</code> which will allow us to go send data from one function to the next without using intermediate steps or nesting functions together</li>
 </ol>
-<div id="preview-new-functions-in-tidyverse" class="section level4">
-<h4><span class="header-section-number">3.2.1.1</span> Preview: new functions in tidyverse</h4>
+<div id="preview-new-functions-in-tidyverse" class="section level4 hasAnchor" number="2.2.1.1">
+<h4><span class="header-section-number">2.2.1.1</span> Preview: new functions in tidyverse<a href="tidyverse-12-functions-pipes.html#preview-new-functions-in-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Let’s say we have a dataframe, <code>df</code>, which has the name and age (in years) of everyone in a class. We want to create a new variable of age in months. In base R, we would do it this way:</p>
 <p><code>df$age_months &lt;- df$age_years * 12</code></p>
 <p>In tidyverse, we can use the function <code>mutate()</code> to create a new variable. As with most tidyverse functions, <code>mutate()</code> takes the dataset as the first argument and the operation as the second. Here the operation is to create the new variable.</p>
 <p><code>mutate(df, age_months = age_years * 12)</code></p>
 <p>As you will see with more complex examples, <strong>these functions can make dataset operations more readable, especially when strung together with a pipe</strong>.</p>
 </div>
-<div id="preview-the-pipe-in-tidyverse" class="section level4">
-<h4><span class="header-section-number">3.2.1.2</span> Preview: the pipe in tidyverse</h4>
+<div id="preview-the-pipe-in-tidyverse" class="section level4 hasAnchor" number="2.2.1.2">
+<h4><span class="header-section-number">2.2.1.2</span> Preview: the pipe in tidyverse<a href="tidyverse-12-functions-pipes.html#preview-the-pipe-in-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Recall the <code>head()</code> function used in the previous section. If you have a data frame, <code>df</code>, instead of peaking at the first few lines with <code>head(df)</code>, you can pipe it into the <code>head()</code> function like this: <code>df %&gt;% head()</code>. This might seem like more work than just calling the function around the data frame object, but when you need to run a bunch of functions on a data frame, it becomes much TIDIER!</p>
 <p>In the previous example, we could call the function using a pipe like so:</p>
 <p><code>df %&gt;% mutate(age_months = age_years * 12)</code></p>
 <p>Feeling motivated to accelerate data cleaning and analysis using the tidyverse?</p>
 </div>
 </div>
-<div id="load-tidyverse" class="section level3">
-<h3><span class="header-section-number">3.2.2</span> Load tidyverse</h3>
+<div id="load-tidyverse" class="section level3 hasAnchor" number="2.2.2">
+<h3><span class="header-section-number">2.2.2</span> Load tidyverse<a href="tidyverse-12-functions-pipes.html#load-tidyverse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Load the tidyverse library</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb204-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="tidyverse-12-functions-pipes.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
 <p>If tidyverse is already installed, loading the library should not return an error message. It is ok if it says there are package conflicts - this happens when different packages that are loaded have functions with the same name (but probably do different things). Just take note of the conflicts. If you use those other packages/functions then you’ll have to specify which package the function you’re using comes from. For example if <code>mutate()</code> was also in another package, to use the tidyverse version I would write <code>tidyr::mutate()</code> instead of just <code>mutate()</code></p>
 <p>If loading the library returns an error message saying it’s not installed, then go to the <a href="https://tinyurl.com/ssrpsoftwareguide">SSRP Pre-installation guide</a> and follow the instructions for installing tidyverse</p>
 </div>
-<div id="how-to-pipe" class="section level3">
-<h3><span class="header-section-number">3.2.3</span> How to pipe %&gt;%</h3>
+<div id="how-to-pipe" class="section level3 hasAnchor" number="2.2.3">
+<h3><span class="header-section-number">2.2.3</span> How to pipe %&gt;%<a href="tidyverse-12-functions-pipes.html#how-to-pipe" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The tidyverse pipe can be used with most base R functions and with all tidyverse-specific functions, which we’ll learn more about soon. Although we’ll focus on using tidyverse pipe and functions on data frames, the pipe can also be used on vectors and even scalars.</p>
-<div id="pipes-with-dataframes" class="section level5">
-<h5><span class="header-section-number">3.2.3.0.1</span> Pipes with dataframes</h5>
+<div id="pipes-with-dataframes" class="section level5 hasAnchor" number="2.2.3.0.1">
+<h5><span class="header-section-number">2.2.3.0.1</span> Pipes with dataframes<a href="tidyverse-12-functions-pipes.html#pipes-with-dataframes" class="anchor-section" aria-label="Anchor link to header"></a></h5>
 <p>Let’s read in the iris dataset used in the previous section. Peak at it with <code>head()</code> to check that the columns look intact.</p>
-<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" title="1"><span class="co"># Load the dataset and peak at it with the head() function</span></a>
-<a class="sourceLine" id="cb205-2" title="2">irisz &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>, </a>
-<a class="sourceLine" id="cb205-3" title="3">                  <span class="dt">na.strings =</span> <span class="kw">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;n/a&quot;</span>), </a>
-<a class="sourceLine" id="cb205-4" title="4">                  <span class="dt">stringsAsFactors =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb205-5" title="5"></a>
-<a class="sourceLine" id="cb205-6" title="6"><span class="kw">head</span>(irisz)</a></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="tidyverse-12-functions-pipes.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset and peak at it with the head() function</span></span>
+<span id="cb50-2"><a href="tidyverse-12-functions-pipes.html#cb50-2" aria-hidden="true" tabindex="-1"></a>irisz <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/iris.csv&quot;</span>, </span>
+<span id="cb50-3"><a href="tidyverse-12-functions-pipes.html#cb50-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;n/a&quot;</span>), </span>
+<span id="cb50-4"><a href="tidyverse-12-functions-pipes.html#cb50-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">stringsAsFactors =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb50-5"><a href="tidyverse-12-functions-pipes.html#cb50-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-6"><a href="tidyverse-12-functions-pipes.html#cb50-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(irisz)</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Location
 ## 1          5.1         3.5          1.4         0.2  setosa    Korea
 ## 2          4.9         3.0          1.4         0.2  setosa    China
@@ -329,7 +270,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5          5.0         3.6          1.4         0.2  setosa    China
 ## 6          5.4          NA          1.7         0.4  setosa   Canada</code></pre>
 <p>Now let’s try this using the pipe <code>%&gt;%</code>.</p>
-<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" title="1">irisz <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="tidyverse-12-functions-pipes.html#cb52-1" aria-hidden="true" tabindex="-1"></a>irisz <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Location
 ## 1          5.1         3.5          1.4         0.2  setosa    Korea
 ## 2          4.9         3.0          1.4         0.2  setosa    China
@@ -342,43 +283,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Notice how the <code>%&gt;%</code> pipe is sending the output from before it to the function after it. This <code>%&gt;%</code> is similar to the <code>|</code> we use on the command line to send data from one operation to the next: <code>sort data.txt | uniq -c</code> (sort a data file and count the number of unique lines)</p>
 <p><strong>Pipes can string together functions</strong></p>
 <p>In the previous section, we learned how to read in a file with <code>read.csv()</code>, get unique values with <code>unique()</code>, and get the dimensions of a data frame with <code>dim()</code>. Let’s try these operations using the pipe instead of performing them as separate operations.</p>
-<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" title="1">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb209-2" title="2"><span class="st">  </span><span class="kw">unique</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb209-3" title="3"><span class="st">  </span><span class="kw">dim</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="tidyverse-12-functions-pipes.html#cb54-1" aria-hidden="true" tabindex="-1"></a>irisz <span class="sc">%&gt;%</span></span>
+<span id="cb54-2"><a href="tidyverse-12-functions-pipes.html#cb54-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb54-3"><a href="tidyverse-12-functions-pipes.html#cb54-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">dim</span>()</span></code></pre></div>
 <pre><code>## [1] 150   6</code></pre>
 <p>Notice how each operation is on one line so it’s easy to read the sequence of operations.</p>
 <p><strong>Pipes with scalars</strong></p>
 <p>To take the square root of a number <code>x</code> and round it to <code>y</code> digits, we would use the <code>sqrt()</code> and <code>round()</code> functions</p>
 <p>Here’s what this looks like with and without the pipe:</p>
-<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" title="1">x =<span class="st"> </span><span class="dv">112</span></a>
-<a class="sourceLine" id="cb211-2" title="2">y =<span class="st"> </span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb211-3" title="3"></a>
-<a class="sourceLine" id="cb211-4" title="4"><span class="co"># Two steps without the pipe</span></a>
-<a class="sourceLine" id="cb211-5" title="5">z &lt;-<span class="st"> </span><span class="kw">sqrt</span>(x)</a>
-<a class="sourceLine" id="cb211-6" title="6"><span class="kw">round</span>(z, <span class="dt">digits =</span> y)</a></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="tidyverse-12-functions-pipes.html#cb56-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">112</span></span>
+<span id="cb56-2"><a href="tidyverse-12-functions-pipes.html#cb56-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">2</span></span>
+<span id="cb56-3"><a href="tidyverse-12-functions-pipes.html#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="tidyverse-12-functions-pipes.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Two steps without the pipe</span></span>
+<span id="cb56-5"><a href="tidyverse-12-functions-pipes.html#cb56-5" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(x)</span>
+<span id="cb56-6"><a href="tidyverse-12-functions-pipes.html#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(z, <span class="at">digits =</span> y)</span></code></pre></div>
 <pre><code>## [1] 10.58</code></pre>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" title="1"><span class="co"># One step without the pipe</span></a>
-<a class="sourceLine" id="cb213-2" title="2"><span class="kw">round</span>(<span class="kw">sqrt</span>(x), <span class="dt">digits =</span> y)</a></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="tidyverse-12-functions-pipes.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One step without the pipe</span></span>
+<span id="cb58-2"><a href="tidyverse-12-functions-pipes.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sqrt</span>(x), <span class="at">digits =</span> y)</span></code></pre></div>
 <pre><code>## [1] 10.58</code></pre>
-<div class="sourceCode" id="cb215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb215-1" title="1"><span class="co"># One step with the pipe</span></a>
-<a class="sourceLine" id="cb215-2" title="2"><span class="kw">sqrt</span>(x) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">round</span>(<span class="dt">digits =</span> y)</a></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="tidyverse-12-functions-pipes.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One step with the pipe</span></span>
+<span id="cb60-2"><a href="tidyverse-12-functions-pipes.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(x) <span class="sc">%&gt;%</span> <span class="fu">round</span>(<span class="at">digits =</span> y)</span></code></pre></div>
 <pre><code>## [1] 10.58</code></pre>
 <p><strong>Pipes with vectors</strong></p>
 <p>We can apply the same piping method to vectors. Think about the vector that is the column <code>Sepal.Length</code> in the dataframe <code>irisz</code> which we have been using.</p>
 <p>We’ll use pipes to string together the following operations starting with the <strong>vector</strong> <code>irisz$Sepal.Length</code>: sort it, make the values numeric, and make a histogram. (These three functions were also introduced in the previous section.)</p>
-<div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb217-1" title="1"><span class="co"># One step with the pipe</span></a>
-<a class="sourceLine" id="cb217-2" title="2">irisz<span class="op">$</span>Sepal.Length <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb217-3" title="3"><span class="st">  </span><span class="kw">as.numeric</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb217-4" title="4"><span class="st">  </span><span class="kw">sort</span>() <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb217-5" title="5"><span class="st">  </span><span class="kw">hist</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="tidyverse-12-functions-pipes.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One step with the pipe</span></span>
+<span id="cb62-2"><a href="tidyverse-12-functions-pipes.html#cb62-2" aria-hidden="true" tabindex="-1"></a>irisz<span class="sc">$</span>Sepal.Length <span class="sc">%&gt;%</span></span>
+<span id="cb62-3"><a href="tidyverse-12-functions-pipes.html#cb62-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.numeric</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb62-4"><a href="tidyverse-12-functions-pipes.html#cb62-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sort</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb62-5"><a href="tidyverse-12-functions-pipes.html#cb62-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>()</span></code></pre></div>
 <p><img src="420-tidyverse-part1_files/figure-html/t2_pipe5-1.png" width="672" /></p>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" title="1"><span class="co"># One step without the pipe requires lots of parentheses</span></a>
-<a class="sourceLine" id="cb218-2" title="2"><span class="kw">hist</span>(<span class="kw">sort</span>(<span class="kw">as.numeric</span>(irisz<span class="op">$</span>Sepal.Length)))</a></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="tidyverse-12-functions-pipes.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="co"># One step without the pipe requires lots of parentheses</span></span>
+<span id="cb63-2"><a href="tidyverse-12-functions-pipes.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">sort</span>(<span class="fu">as.numeric</span>(irisz<span class="sc">$</span>Sepal.Length)))</span></code></pre></div>
 <p>Hopefully by now you have a sense for how the pipe in tidyverse works and how it can work with functions we already know and can be applied to data frames, vectors, and scalars. Another big contribution tidyverse makes to the data science in R is the addition of new functions!</p>
 </div>
 </div>
-<div id="essential-tidyverse-functions" class="section level3">
-<h3><span class="header-section-number">3.2.4</span> Essential tidyverse functions</h3>
+<div id="essential-tidyverse-functions" class="section level3 hasAnchor" number="2.2.4">
+<h3><span class="header-section-number">2.2.4</span> Essential tidyverse functions<a href="tidyverse-12-functions-pipes.html#essential-tidyverse-functions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Let’s start with the essential functions of <code>tidyverse</code>. All of these are from the sub-package <a href="https://dplyr.tidyverse.org">dplyr</a></p>
 <ul>
 <li><code>select()</code>: subset columns</li>
@@ -389,8 +330,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><code>count()</code>: count discrete values</li>
 </ul>
 <p><strong>Reminder</strong>: if you ever want to know more about these functions, just use the help function - <code>?</code> followed by the function of interest. For example: <code>?select</code></p>
-<div id="selecting-deleting-reordering-columns" class="section level4">
-<h4><span class="header-section-number">3.2.4.1</span> Selecting, deleting, reordering columns</h4>
+<div id="selecting-deleting-reordering-columns" class="section level4 hasAnchor" number="2.2.4.1">
+<h4><span class="header-section-number">2.2.4.1</span> Selecting, deleting, reordering columns<a href="tidyverse-12-functions-pipes.html#selecting-deleting-reordering-columns" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p><strong>Selecting columns</strong></p>
 <p>In base R, if we wanted to select certain columns (e.g. column names c1, c2, c6, c7) from a dataframe, <code>df</code>, we would do something like this: <code>df[c("c1", "c2", "c6", "c7")]</code>. With tidyverse, we can use the <code>select(c1, c2, c6, c7)</code> function (from <code>dplyr</code>).</p>
 <p><strong>Deleting columns</strong></p>
@@ -398,14 +339,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><strong>Reordering columns</strong></p>
 <p>Select can also be used to reorder columns. Just specify the order of columns in <code>select()</code>.</p>
 <p><strong>Selecting and deselecting in the <code>irisz</code> dataset</strong></p>
-<div class="sourceCode" id="cb219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb219-1" title="1"><span class="co"># Let&#39;s select just the location </span></a>
-<a class="sourceLine" id="cb219-2" title="2"><span class="kw">select</span>(irisz, Location)</a>
-<a class="sourceLine" id="cb219-3" title="3"></a>
-<a class="sourceLine" id="cb219-4" title="4"><span class="co"># Remove the Location column</span></a>
-<a class="sourceLine" id="cb219-5" title="5"><span class="kw">select</span>(irisz, <span class="op">-</span>Location)</a></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="tidyverse-12-functions-pipes.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s select just the location </span></span>
+<span id="cb64-2"><a href="tidyverse-12-functions-pipes.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(irisz, Location)</span>
+<span id="cb64-3"><a href="tidyverse-12-functions-pipes.html#cb64-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb64-4"><a href="tidyverse-12-functions-pipes.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove the Location column</span></span>
+<span id="cb64-5"><a href="tidyverse-12-functions-pipes.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(irisz, <span class="sc">-</span>Location)</span></code></pre></div>
 <p><strong>Selecting multiple columns</strong></p>
 <p>Let’s select both the Location and Species columns and see what unique combinations are present in the dataset</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" title="1"><span class="kw">unique</span>(<span class="kw">select</span>(irisz, <span class="kw">c</span>(Location, Species)))</a></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="tidyverse-12-functions-pipes.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(<span class="fu">select</span>(irisz, <span class="fu">c</span>(Location, Species)))</span></code></pre></div>
 <pre><code>##     Location    Species
 ## 1      Korea     setosa
 ## 2      China     setosa
@@ -420,12 +361,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 101      USA  virginica
 ## 107     &lt;NA&gt;  virginica
 ## 143     &lt;NA&gt;       &lt;NA&gt;</code></pre>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" title="1"><span class="co"># Note that the order returned is the order specified in select()</span></a>
-<a class="sourceLine" id="cb222-2" title="2"><span class="co"># Originally Location came after Species, but now they are reordered.</span></a></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="tidyverse-12-functions-pipes.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that the order returned is the order specified in select()</span></span>
+<span id="cb67-2"><a href="tidyverse-12-functions-pipes.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Originally Location came after Species, but now they are reordered.</span></span></code></pre></div>
 <p>We can also do this in with the pipe.</p>
-<div class="sourceCode" id="cb223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb223-1" title="1">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb223-2" title="2"><span class="st">  </span><span class="kw">select</span>(Location, Species) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb223-3" title="3"><span class="st">  </span><span class="kw">unique</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="tidyverse-12-functions-pipes.html#cb68-1" aria-hidden="true" tabindex="-1"></a>irisz <span class="sc">%&gt;%</span></span>
+<span id="cb68-2"><a href="tidyverse-12-functions-pipes.html#cb68-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Location, Species) <span class="sc">%&gt;%</span></span>
+<span id="cb68-3"><a href="tidyverse-12-functions-pipes.html#cb68-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unique</span>()</span></code></pre></div>
 <pre><code>##     Location    Species
 ## 1      Korea     setosa
 ## 2      China     setosa
@@ -443,23 +384,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Note that <code>select()</code> subsets the dataframe to the specified columns. The output is a <strong>data frame</strong> (not a vector), even if only one column is selected</p>
 <p><strong>What if we want to extract one column as a vector? </strong></p>
 <p>In base R, we would use the <code>$</code> operation to select a single column as a vector. With tidyverse, we can use the <code>pull()</code> function (from <code>dplyr</code>). Notice that pull() will only accept a single column name and will return a vector</p>
-<div class="sourceCode" id="cb225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb225-1" title="1"><span class="co"># Base R</span></a>
-<a class="sourceLine" id="cb225-2" title="2">irisz<span class="op">$</span>Location</a>
-<a class="sourceLine" id="cb225-3" title="3"></a>
-<a class="sourceLine" id="cb225-4" title="4"><span class="co"># With the pipe and tidyverse function pull()</span></a>
-<a class="sourceLine" id="cb225-5" title="5">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb225-6" title="6"><span class="st">  </span><span class="kw">pull</span>(Location) </a></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="tidyverse-12-functions-pipes.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Base R</span></span>
+<span id="cb70-2"><a href="tidyverse-12-functions-pipes.html#cb70-2" aria-hidden="true" tabindex="-1"></a>irisz<span class="sc">$</span>Location</span>
+<span id="cb70-3"><a href="tidyverse-12-functions-pipes.html#cb70-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb70-4"><a href="tidyverse-12-functions-pipes.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="co"># With the pipe and tidyverse function pull()</span></span>
+<span id="cb70-5"><a href="tidyverse-12-functions-pipes.html#cb70-5" aria-hidden="true" tabindex="-1"></a>irisz <span class="sc">%&gt;%</span></span>
+<span id="cb70-6"><a href="tidyverse-12-functions-pipes.html#cb70-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(Location) </span></code></pre></div>
 </div>
-<div id="filtering-dataframes" class="section level4">
-<h4><span class="header-section-number">3.2.4.2</span> Filtering dataframes</h4>
+<div id="filtering-dataframes" class="section level4 hasAnchor" number="2.2.4.2">
+<h4><span class="header-section-number">2.2.4.2</span> Filtering dataframes<a href="tidyverse-12-functions-pipes.html#filtering-dataframes" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The basics of filtering data frames in tidyverse are the <code>filter()</code> function and boolean operators (<code>&gt;</code>, <code>&lt;</code>, <code>==</code>) learned in section 2.4.3.
 Let’s try two examples:</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" title="1"><span class="co"># Filter for Petal.Length greater than x</span></a>
-<a class="sourceLine" id="cb226-2" title="2"></a>
-<a class="sourceLine" id="cb226-3" title="3">x =<span class="st"> </span><span class="dv">7</span></a>
-<a class="sourceLine" id="cb226-4" title="4"></a>
-<a class="sourceLine" id="cb226-5" title="5">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb226-6" title="6"><span class="st">  </span><span class="kw">filter</span>(<span class="kw">as.numeric</span>(Sepal.Length) <span class="op">&gt;</span><span class="st"> </span>x)</a></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="tidyverse-12-functions-pipes.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter for Petal.Length greater than x</span></span>
+<span id="cb71-2"><a href="tidyverse-12-functions-pipes.html#cb71-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-3"><a href="tidyverse-12-functions-pipes.html#cb71-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">7</span></span>
+<span id="cb71-4"><a href="tidyverse-12-functions-pipes.html#cb71-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-5"><a href="tidyverse-12-functions-pipes.html#cb71-5" aria-hidden="true" tabindex="-1"></a>irisz <span class="sc">%&gt;%</span></span>
+<span id="cb71-6"><a href="tidyverse-12-functions-pipes.html#cb71-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">as.numeric</span>(Sepal.Length) <span class="sc">&gt;</span> x)</span></code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width   Species Location
 ## 1           7.1         3.0          5.9         2.1 virginica      USA
 ## 2           7.6         3.0          6.6         2.1 virginica      USA
@@ -472,11 +413,11 @@ Let’s try two examples:</p>
 ## 9           7.4         2.8          6.1         1.9 virginica      USA
 ## 10          7.9         3.8          6.4         2.0 virginica      USA
 ## 11          7.7         3.0          6.1         2.3 virginica      USA</code></pre>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" title="1"><span class="co"># Filter to get observations of setosa species from Korea</span></a>
-<a class="sourceLine" id="cb228-2" title="2"></a>
-<a class="sourceLine" id="cb228-3" title="3">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb228-4" title="4"><span class="st">  </span><span class="kw">filter</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>,</a>
-<a class="sourceLine" id="cb228-5" title="5">         Location <span class="op">==</span><span class="st"> &quot;Korea&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="tidyverse-12-functions-pipes.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter to get observations of setosa species from Korea</span></span>
+<span id="cb73-2"><a href="tidyverse-12-functions-pipes.html#cb73-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-3"><a href="tidyverse-12-functions-pipes.html#cb73-3" aria-hidden="true" tabindex="-1"></a>irisz <span class="sc">%&gt;%</span></span>
+<span id="cb73-4"><a href="tidyverse-12-functions-pipes.html#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>,</span>
+<span id="cb73-5"><a href="tidyverse-12-functions-pipes.html#cb73-5" aria-hidden="true" tabindex="-1"></a>         Location <span class="sc">==</span> <span class="st">&quot;Korea&quot;</span>)</span></code></pre></div>
 <pre><code>##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species Location
 ## 1           5.1        3.50          1.4         0.2  setosa    Korea
 ## 2           4.7        3.20          1.3         0.2  setosa    Korea
@@ -489,15 +430,15 @@ Let’s try two examples:</p>
 ## 9           4.4        3.00          1.3         0.2  setosa    Korea
 ## 10           NA          NA          1.6         0.6  setosa    Korea</code></pre>
 </div>
-<div id="creating-and-renaming-columns" class="section level4">
-<h4><span class="header-section-number">3.2.4.3</span> Creating and renaming columns</h4>
+<div id="creating-and-renaming-columns" class="section level4 hasAnchor" number="2.2.4.3">
+<h4><span class="header-section-number">2.2.4.3</span> Creating and renaming columns<a href="tidyverse-12-functions-pipes.html#creating-and-renaming-columns" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Creating columns in tidyverse is simple with the <code>mutate()</code> function.</p>
 <p>Let’s say we wanted to create a new column for the <code>irisz</code> dataset which has the row number.</p>
 <p>In base R, we would do something like <code>irisz$row_number &lt;- seq(1,nrow(irisz))</code>. Here, <code>seq()</code> creates a sequence of numbers from 1 to the number of rows in <code>irisz</code>.</p>
 <p>In tidyverse we can do it using the <code>mutate()</code> and <code>row_number()</code> functions. So it doesn’t output the whole data frame, we’ll pipe it directly into <code>head()</code></p>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" title="1">irisz <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb230-2" title="2"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">row_number =</span> <span class="kw">row_number</span>()) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb230-3" title="3"><span class="st">  </span><span class="kw">head</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="tidyverse-12-functions-pipes.html#cb75-1" aria-hidden="true" tabindex="-1"></a>irisz <span class="sc">%&gt;%</span> </span>
+<span id="cb75-2"><a href="tidyverse-12-functions-pipes.html#cb75-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">row_number =</span> <span class="fu">row_number</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb75-3"><a href="tidyverse-12-functions-pipes.html#cb75-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Location row_number
 ## 1          5.1         3.5          1.4         0.2  setosa    Korea          1
 ## 2          4.9         3.0          1.4         0.2  setosa    China          2
@@ -507,11 +448,11 @@ Let’s try two examples:</p>
 ## 6          5.4          NA          1.7         0.4  setosa   Canada          6</code></pre>
 <p>See the row number column?</p>
 <p>Mutate can also be used to update a column without creating a new one.</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" title="1"><span class="co"># Change sepal length to be 10x what it currently is</span></a>
-<a class="sourceLine" id="cb232-2" title="2"></a>
-<a class="sourceLine" id="cb232-3" title="3">irisz <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb232-4" title="4"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Sepal.Length =</span> <span class="dv">10</span><span class="op">*</span>Sepal.Length ) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb232-5" title="5"><span class="st">  </span><span class="kw">head</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="tidyverse-12-functions-pipes.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Change sepal length to be 10x what it currently is</span></span>
+<span id="cb77-2"><a href="tidyverse-12-functions-pipes.html#cb77-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-3"><a href="tidyverse-12-functions-pipes.html#cb77-3" aria-hidden="true" tabindex="-1"></a>irisz <span class="sc">%&gt;%</span> </span>
+<span id="cb77-4"><a href="tidyverse-12-functions-pipes.html#cb77-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Sepal.Length =</span> <span class="dv">10</span><span class="sc">*</span>Sepal.Length ) <span class="sc">%&gt;%</span></span>
+<span id="cb77-5"><a href="tidyverse-12-functions-pipes.html#cb77-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width Species Location
 ## 1           51         3.5          1.4         0.2  setosa    Korea
 ## 2           49         3.0          1.4         0.2  setosa    China
@@ -521,10 +462,10 @@ Let’s try two examples:</p>
 ## 6           54          NA          1.7         0.4  setosa   Canada</code></pre>
 <p>What if all the setosa measurements were actually supposed to be the virginica species?
 Let’s use the <code>ifelse()</code> function which accepts a conditional test, value if true, value if false.</p>
-<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" title="1">irisz <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb234-2" title="2"><span class="st">  </span><span class="co"># If Species is setosa, change it to virginica, otherwise use the value in Species </span></a>
-<a class="sourceLine" id="cb234-3" title="3"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Species =</span> <span class="kw">ifelse</span>(Species <span class="op">==</span><span class="st"> &quot;setosa&quot;</span>, <span class="st">&quot;virginica&quot;</span>, Species )) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb234-4" title="4"><span class="st">  </span><span class="kw">head</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="tidyverse-12-functions-pipes.html#cb79-1" aria-hidden="true" tabindex="-1"></a>irisz <span class="sc">%&gt;%</span> </span>
+<span id="cb79-2"><a href="tidyverse-12-functions-pipes.html#cb79-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># If Species is setosa, change it to virginica, otherwise use the value in Species </span></span>
+<span id="cb79-3"><a href="tidyverse-12-functions-pipes.html#cb79-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Species =</span> <span class="fu">ifelse</span>(Species <span class="sc">==</span> <span class="st">&quot;setosa&quot;</span>, <span class="st">&quot;virginica&quot;</span>, Species )) <span class="sc">%&gt;%</span></span>
+<span id="cb79-4"><a href="tidyverse-12-functions-pipes.html#cb79-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>()</span></code></pre></div>
 <pre><code>##   Sepal.Length Sepal.Width Petal.Length Petal.Width   Species Location
 ## 1          5.1         3.5          1.4         0.2 virginica    Korea
 ## 2          4.9         3.0          1.4         0.2 virginica    China
@@ -534,15 +475,15 @@ Let’s use the <code>ifelse()</code> function which accepts a conditional test,
 ## 6          5.4          NA          1.7         0.4 virginica   Canada</code></pre>
 <p><strong>Renaming columns</strong></p>
 <p>Sometimes, we just need to rename an existing column. Use <code>rename()</code> to specify the new and old column names, <code>rename(new_name = old_name)</code>. Let’s rename the location column to be “Country”. Let’s just pipe it directly into <code>colnames()</code> which will give us the column names of the data frame.</p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" title="1">irisz <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb236-2" title="2"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">Country =</span> Location) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb236-3" title="3"><span class="st">  </span><span class="kw">colnames</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="tidyverse-12-functions-pipes.html#cb81-1" aria-hidden="true" tabindex="-1"></a>irisz <span class="sc">%&gt;%</span> </span>
+<span id="cb81-2"><a href="tidyverse-12-functions-pipes.html#cb81-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Country =</span> Location) <span class="sc">%&gt;%</span></span>
+<span id="cb81-3"><a href="tidyverse-12-functions-pipes.html#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;Sepal.Length&quot; &quot;Sepal.Width&quot;  &quot;Petal.Length&quot; &quot;Petal.Width&quot;  &quot;Species&quot;     
 ## [6] &quot;Country&quot;</code></pre>
 <p>Want to change row names into a column or a column into a row name? Check out <code>rownames_to_column()</code> and <code>column_to_rownames()</code>.</p>
 </div>
-<div id="summarizing-data" class="section level4">
-<h4><span class="header-section-number">3.2.4.4</span> Summarizing data</h4>
+<div id="summarizing-data" class="section level4 hasAnchor" number="2.2.4.4">
+<h4><span class="header-section-number">2.2.4.4</span> Summarizing data<a href="tidyverse-12-functions-pipes.html#summarizing-data" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Summarizing data is very important in data analysis. It allows you to get a big picture overview of a new dataset: type, range of values, etc. These are also types of summaries to think about including when in the exploratory stages or a project: before running analyses on a dataset, create a summary of the dataset. Present this during your update meetings for your summer project and keep these summaries on hand in case you or others have questions about the dataset throughout the course of your project.</p>
 <p>For summarizing data in tidyverse, let’s explore the functions</p>
 <ul>
@@ -552,8 +493,8 @@ Let’s use the <code>ifelse()</code> function which accepts a conditional test,
 </ul>
 <p>The function <code>count()</code> does what it sounds like - it counts the number of unique observations for the specified column(s)</p>
 <p><strong>Count on one variable in the data frame</strong></p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" title="1">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb238-2" title="2"><span class="st">  </span><span class="kw">count</span>(Location)</a></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="tidyverse-12-functions-pipes.html#cb83-1" aria-hidden="true" tabindex="-1"></a>irisz <span class="sc">%&gt;%</span></span>
+<span id="cb83-2"><a href="tidyverse-12-functions-pipes.html#cb83-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Location)</span></code></pre></div>
 <pre><code>##   Location  n
 ## 1   Canada 35
 ## 2    China  6
@@ -563,11 +504,11 @@ Let’s use the <code>ifelse()</code> function which accepts a conditional test,
 ## 6      USA 63
 ## 7     &lt;NA&gt; 14</code></pre>
 <p><strong>Count on more than one variable in the data frame</strong></p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" title="1"><span class="co"># Count the number of observations for each combination</span></a>
-<a class="sourceLine" id="cb240-2" title="2"><span class="co"># of location and species</span></a>
-<a class="sourceLine" id="cb240-3" title="3"></a>
-<a class="sourceLine" id="cb240-4" title="4">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb240-5" title="5"><span class="st">  </span><span class="kw">count</span>(Location, Species)</a></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="tidyverse-12-functions-pipes.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of observations for each combination</span></span>
+<span id="cb85-2"><a href="tidyverse-12-functions-pipes.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="co"># of location and species</span></span>
+<span id="cb85-3"><a href="tidyverse-12-functions-pipes.html#cb85-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb85-4"><a href="tidyverse-12-functions-pipes.html#cb85-4" aria-hidden="true" tabindex="-1"></a>irisz <span class="sc">%&gt;%</span></span>
+<span id="cb85-5"><a href="tidyverse-12-functions-pipes.html#cb85-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(Location, Species)</span></code></pre></div>
 <pre><code>##    Location    Species  n
 ## 1    Canada     setosa 11
 ## 2    Canada versicolor 24
@@ -585,15 +526,14 @@ Let’s use the <code>ifelse()</code> function which accepts a conditional test,
 <p>Can you think of another (perhaps longer) way to count using other functions, such as <code>select()</code>, <code>unique()</code>, <code>n()</code>, <code>pull()</code>, or <code>table()</code>?</p>
 <p><strong>Summarizing WITHIN groups</strong></p>
 <p>What if we want to do more than just count the number of occurrences for a given group? <code>group_by</code> takes a variable and groups the data by that variable. Anything that happens after that is only calculated within the group variable. To turn off grouping, use <code>ungroup()</code>. It’s always good practice to <code>ungroup()</code> after you’re done grouping. Although it doesn’t matter if you won’t be doing any more operations on the dataset.</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" title="1"><span class="co"># Here&#39;s an example that produces a similar result </span></a>
-<a class="sourceLine" id="cb242-2" title="2"><span class="co"># as in the count() example above</span></a>
-<a class="sourceLine" id="cb242-3" title="3"></a>
-<a class="sourceLine" id="cb242-4" title="4">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb242-5" title="5"><span class="st">  </span><span class="kw">group_by</span>(Location) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb242-6" title="6"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>()) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb242-7" title="7"><span class="st">  </span><span class="kw">ungroup</span>()</a></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<pre><code>## # A tibble: 7 x 2
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="tidyverse-12-functions-pipes.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Here&#39;s an example that produces a similar result </span></span>
+<span id="cb87-2"><a href="tidyverse-12-functions-pipes.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="co"># as in the count() example above</span></span>
+<span id="cb87-3"><a href="tidyverse-12-functions-pipes.html#cb87-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-4"><a href="tidyverse-12-functions-pipes.html#cb87-4" aria-hidden="true" tabindex="-1"></a>irisz <span class="sc">%&gt;%</span></span>
+<span id="cb87-5"><a href="tidyverse-12-functions-pipes.html#cb87-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Location) <span class="sc">%&gt;%</span></span>
+<span id="cb87-6"><a href="tidyverse-12-functions-pipes.html#cb87-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb87-7"><a href="tidyverse-12-functions-pipes.html#cb87-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 2
 ##   Location     n
 ##   &lt;fct&gt;    &lt;int&gt;
 ## 1 Canada      35
@@ -610,18 +550,17 @@ Let’s use the <code>ifelse()</code> function which accepts a conditional test,
 <li>Group the data by Location using <code>group_by()</code></li>
 <li>Summarize the mean and standard deviation of the group using <code>summarize()</code></li>
 </ol>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" title="1"><span class="co"># Since mean() and sd() require numeric inputs,</span></a>
-<a class="sourceLine" id="cb245-2" title="2"><span class="co"># We&#39;ll also tell mean() and sd() to ignore NAs in the calculation</span></a>
-<a class="sourceLine" id="cb245-3" title="3"></a>
-<a class="sourceLine" id="cb245-4" title="4">irisz <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb245-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">size =</span> <span class="kw">as.numeric</span>(Sepal.Length) <span class="op">*</span><span class="st"> </span><span class="kw">as.numeric</span>(Sepal.Width)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb245-6" title="6"><span class="st">  </span><span class="kw">group_by</span>(Location) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb245-7" title="7"><span class="st">  </span><span class="kw">summarize</span>(<span class="dt">n =</span> <span class="kw">n</span>(),</a>
-<a class="sourceLine" id="cb245-8" title="8">            <span class="dt">mean_size =</span> <span class="kw">mean</span>(Petal.Length, <span class="dt">na.rm =</span> T),</a>
-<a class="sourceLine" id="cb245-9" title="9">            <span class="dt">mean_sd =</span> <span class="kw">sd</span>(Petal.Length, <span class="dt">na.rm =</span> T)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb245-10" title="10"><span class="st">    </span><span class="kw">ungroup</span>()</a></code></pre></div>
-<pre><code>## `summarise()` ungrouping output (override with `.groups` argument)</code></pre>
-<pre><code>## # A tibble: 7 x 4
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="tidyverse-12-functions-pipes.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Since mean() and sd() require numeric inputs,</span></span>
+<span id="cb89-2"><a href="tidyverse-12-functions-pipes.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We&#39;ll also tell mean() and sd() to ignore NAs in the calculation</span></span>
+<span id="cb89-3"><a href="tidyverse-12-functions-pipes.html#cb89-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb89-4"><a href="tidyverse-12-functions-pipes.html#cb89-4" aria-hidden="true" tabindex="-1"></a>irisz <span class="sc">%&gt;%</span></span>
+<span id="cb89-5"><a href="tidyverse-12-functions-pipes.html#cb89-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">size =</span> <span class="fu">as.numeric</span>(Sepal.Length) <span class="sc">*</span> <span class="fu">as.numeric</span>(Sepal.Width)) <span class="sc">%&gt;%</span></span>
+<span id="cb89-6"><a href="tidyverse-12-functions-pipes.html#cb89-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Location) <span class="sc">%&gt;%</span></span>
+<span id="cb89-7"><a href="tidyverse-12-functions-pipes.html#cb89-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb89-8"><a href="tidyverse-12-functions-pipes.html#cb89-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_size =</span> <span class="fu">mean</span>(Petal.Length, <span class="at">na.rm =</span> T),</span>
+<span id="cb89-9"><a href="tidyverse-12-functions-pipes.html#cb89-9" aria-hidden="true" tabindex="-1"></a>            <span class="at">mean_sd =</span> <span class="fu">sd</span>(Petal.Length, <span class="at">na.rm =</span> T)) <span class="sc">%&gt;%</span></span>
+<span id="cb89-10"><a href="tidyverse-12-functions-pipes.html#cb89-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ungroup</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 7 × 4
 ##   Location     n mean_size mean_sd
 ##   &lt;fct&gt;    &lt;int&gt;     &lt;dbl&gt;   &lt;dbl&gt;
 ## 1 Canada      35      3.39   1.30 
@@ -633,8 +572,8 @@ Let’s use the <code>ifelse()</code> function which accepts a conditional test,
 ## 7 &lt;NA&gt;        14      4.51   0.990</code></pre>
 <p>For a further challenge, let’s clean up this table. Arrange the data so the countries with largest number of observations are at the top. Also, remove observations with no location.</p>
 </div>
-<div id="recap-tidyverse-vs-base-r" class="section level4">
-<h4><span class="header-section-number">3.2.4.5</span> Recap: Tidyverse vs Base R</h4>
+<div id="recap-tidyverse-vs-base-r" class="section level4 hasAnchor" number="2.2.4.5">
+<h4><span class="header-section-number">2.2.4.5</span> Recap: Tidyverse vs Base R<a href="tidyverse-12-functions-pipes.html#recap-tidyverse-vs-base-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>To review, tidyverse is just another way to code in R with new functions and a framework based on the pipe <code>%&gt;%</code>. You can always use a combination of both base R functions and tidyverse functions.</p>
 <p>There are some great resources on tidyverse functions. Here are a couple:</p>
 <ul>
@@ -675,7 +614,6 @@ for (var i=0; i < listz.length; i++) {
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -715,6 +653,10 @@ gitbook.start({
 "text": null
 },
 "download": ["DLL 2021 R syllabus site.html"],
+"search": {
+"engine": "fuse",
+"options": null
+},
 "toc": {
 "collapse": "subsection"
 },
